@@ -7,6 +7,8 @@ gem 'jquery-rails', '>= 0.2.6'
 gem 'sqlite3'
 gem 'mysql2'
 
+gem 'devise'
+
 # Deployment
 gem 'vlad'
 gem 'vlad-git'

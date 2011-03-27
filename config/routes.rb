@@ -1,4 +1,6 @@
 Hcking::Application.routes.draw do
+  devise_for :users
+
   resources :organizations
 
   # The priority is based upon order of creation:
