@@ -22,4 +22,5 @@ gem 'watchr'
 gem 'spork', '~> 0.9.0.rc'
 group :development, :test do
   gem 'rspec-rails'
+  gem "nifty-generators"
 end

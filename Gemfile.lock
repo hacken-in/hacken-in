@@ -46,6 +46,7 @@ GEM
     mime-types (1.16)
     mysql2 (0.2.6)
     newrelic_rpm (2.13.4)
+    nifty-generators (0.4.2)
     open4 (0.9.6)
     polyglot (0.3.1)
     rack (1.2.2)
@@ -106,6 +107,7 @@ DEPENDENCIES
   jquery-rails (>= 0.2.6)
   mysql2
   newrelic_rpm
+  nifty-generators
   rails (= 3.0.5)
   ri_cal (~> 0.8.7)
   rspec-rails
