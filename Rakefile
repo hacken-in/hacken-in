@@ -5,3 +5,18 @@ require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
 Hcking::Application.load_tasks
+
+begin
+  require 'vlad'
+  Vlad.load :scm => :git
+
+  task "vlad:update" do
+    Rake::Task["vlad:copy_config_files"].invoke
+  end
+
+  task "vlad:deploy" => %w[
+    vlad:update vlad:migrate vlad:bundle:install vlad:start_app vlad:cleanup
+  ]
+rescue LoadError
+  # do nothing
+end
