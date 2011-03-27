@@ -10,4 +10,12 @@ describe Organization do
     Organization.create.should be_persisted
   end
 
+  it "has a name and a description" do
+    org = Organization.create(:name => "HallO", :description=>"Very long description is needed")
+    
+    newOrg = Organization.find(org.id)
+    newOrg.name.should == "HallO"
+    newOrg.description.should == "Very long description is needed"
+  end
+
 end
