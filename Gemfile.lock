@@ -43,6 +43,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.16)
     mysql2 (0.2.6)
+    newrelic_rpm (2.13.4)
     open4 (0.9.6)
     polyglot (0.3.1)
     rack (1.2.2)
@@ -85,6 +86,7 @@ PLATFORMS
 DEPENDENCIES
   jquery-rails (>= 0.2.6)
   mysql2
+  newrelic_rpm
   rails (= 3.0.5)
   sqlite3
   vlad
