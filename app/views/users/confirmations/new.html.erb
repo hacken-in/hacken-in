@@ -1,0 +1,12 @@
+<h2>Email-Bestätigung erneut versenden</h2>
+
+<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
+  <%= i18n_devise_error_messages! %>
+
+  <p><%= f.label :email %><br />
+  <%= f.text_field :email %></p>
+
+  <p><%= f.submit "erneut versenden" %></p>
+<% end %>
+
+<%= render :partial => "users/shared/links" %>

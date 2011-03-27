@@ -1,0 +1,42 @@
+de:
+  errors:
+    messages:
+      not_found: "Nicht gefunden"
+      already_confirmed: "ist bereits bestätigt"
+      not_locked: "war nicht gesperrt"
+      not_saved:
+        one:    "Leider konnte das Konto nicht gespeichert werden."
+        other:  "Leider gab es %{count} Fehler bei dem Speichern des Kontos."
+
+  devise:
+    failure:
+      unauthenticated: 'Du musst dich zuerst anmelden.'
+      unconfirmed: 'Du musst dein Konto zuerst bestätigen.'
+      locked: 'Dein Konto ist gesperrt.'
+      invalid: 'Falscher Benutzername oder falsches Passwort.'
+      invalid_token: 'Ungültiger Schlüssel.'
+      timeout: 'Die Sitzung ist abgelaufen, bitte melde dich erneut an.'
+      inactive: 'Dein Konto ist noch nicht aktiviert.'
+    sessions:
+      signed_in: 'Erfolgreich angemeldet.'
+      signed_out: 'Erfolgreich abgemeldet.'
+    passwords:
+      send_instructions: 'Du wirst in Kürze eine E-Mail erhalten, in der dir erklärt wird, wie du dein Passwort zurücksetzt.'
+      updated: 'Dein Passwort wurde erfolreich geändert. Du bist nun angemeldet.'
+    confirmations:
+      send_instructions: 'Du wirst in Kürze eine E-Mail erhalten mit deren Hilfe du deinen Konto bestätigen kannst.'
+      confirmed: 'Dein Konto wurde erfolgreich bestätigt. Du bist nun angemeldet.'
+    registrations:
+      signed_up: 'Der Benutzer wurde erfolgreich angelegt.'
+      updated: 'You updated your account successfully.'
+      destroyed: 'Der Benutzer wurde erfolgreich gelöscht.'
+    unlocks:
+      send_instructions: 'Du wirst in Kürze eine E-Mail mit den Anweisungen zum Entsperren des Kontos erhalten.'
+      unlocked: 'Dein Konto wurde erfolgreich entsperrt. Du bist nun angemeldet'
+    mailer:
+      confirmation_instructions:
+        subject: 'Anweisungen zur Bestätigung'
+      reset_password_instructions:
+        subject: 'Anweisungen zur Passwortwiederherstellung'
+      unlock_instructions:
+        subject: 'Anweisungen zum entsperren'
