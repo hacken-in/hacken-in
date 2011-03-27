@@ -16,7 +16,7 @@ begin
   end
 
   task "vlad:deploy" => %w[
-    vlad:update vlad:migrate vlad:bundle:install vlad:start_app vlad:cleanup
+    vlad:update vlad:migrate vlad:bundle:install vlad:migrate vlad:start_app vlad:cleanup
   ]
 rescue LoadError
   # do nothing
