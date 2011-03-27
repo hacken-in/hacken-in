@@ -17,3 +17,9 @@ gem 'newrelic_rpm'
 # Date Handling
 gem 'ice_cube', "~> 0.6.6"
 gem 'ri_cal', "~> 0.8.7"
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'watchr'
+  gem 'spork', '~> 0.9.0.rc'
+end
