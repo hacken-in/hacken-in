@@ -12,6 +12,7 @@ begin
 
   task "vlad:update" do
     Rake::Task["vlad:copy_config_files"].invoke
+    Rake::Task["vlad:call_passenger"].invoke
   end
 
   task "vlad:deploy" => %w[

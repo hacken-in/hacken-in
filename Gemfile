@@ -18,8 +18,8 @@ gem 'newrelic_rpm'
 gem 'ice_cube', "~> 0.6.6"
 gem 'ri_cal', "~> 0.8.7"
 
+gem 'watchr'
+gem 'spork', '~> 0.9.0.rc'
 group :development, :test do
   gem 'rspec-rails'
-  gem 'watchr'
-  gem 'spork', '~> 0.9.0.rc'
 end
