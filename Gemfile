@@ -13,3 +13,7 @@ gem 'vlad-git'
 
 # Monitoring
 gem 'newrelic_rpm'
+
+# Date Handling
+gem 'ice_cube', "~> 0.6.6"
+gem 'ri_cal', "~> 0.8.7"
