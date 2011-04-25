@@ -23,6 +23,9 @@ gem 'ri_cal', "~> 0.8.7"
 # Coffeescript
 gem "barista"
 
+# Sass Stylesheets
+gem "sass"
+
 gem 'watchr'
 gem 'spork', '~> 0.9.0.rc'
 
