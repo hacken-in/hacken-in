@@ -12,11 +12,10 @@ begin
 
   task "vlad:update" do
     Rake::Task["vlad:copy_config_files"].invoke
-    Rake::Task["vlad:call_passenger"].invoke
   end
 
-  task "vlad:deploy" => %w[
-    vlad:update vlad:migrate vlad:bundle:install vlad:migrate vlad:start_app vlad:cleanup
+  task "vlad:release" => %w[
+    vlad:update vlad:migrate vlad:bundle:install vlad:migrate vlad:start_app vlad:call_passenger vlad:cleanup
   ]
 rescue LoadError
   # do nothing
