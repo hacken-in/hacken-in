@@ -12,6 +12,7 @@ begin
 
   task "vlad:update" do
     Rake::Task["vlad:copy_config_files"].invoke
+    Rake::Task["barista:brew"].invoke
   end
 
   task "vlad:release" => %w[
