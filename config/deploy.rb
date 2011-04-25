@@ -26,8 +26,19 @@ namespace :vlad do
   desc "Compile coffeescript files"
   remote_task :coffee, :roles => :app do
     puts "Coffeescripts compilieren"
+    require 'barista'
     require File.expand_path('../initializers/barista_config', __FILE__)
-    Rake::Task["barista:brew"].invoke
+   
+    if Rails.logger.nil?
+      require 'logger'
+      Rails.logger = Logger.new(STDOUT)
+    end
+
+    Rails.logger.debug "Hallo" 
+    puts "hm.."
+    puts Barista.class.name
+    Barista.compile_all!
+    #Rake::Task["barista:brew"].invoke
   end
 
 end
