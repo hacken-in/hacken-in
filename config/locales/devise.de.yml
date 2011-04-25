@@ -27,9 +27,9 @@ de:
       send_instructions: 'Du wirst in Kürze eine E-Mail erhalten mit deren Hilfe du deinen Konto bestätigen kannst.'
       confirmed: 'Dein Konto wurde erfolgreich bestätigt. Du bist nun angemeldet.'
     registrations:
-      signed_up: 'Der Benutzer wurde erfolgreich angelegt.'
-      updated: 'You updated your account successfully.'
-      destroyed: 'Der Benutzer wurde erfolgreich gelöscht.'
+      signed_up: 'Dein Konto wurde erfolgreich angelegt.'
+      updated: 'Dein Konto wurde aktualisiert.'
+      destroyed: 'Dein Konto wurde erfolgreich gelöscht.'
     unlocks:
       send_instructions: 'Du wirst in Kürze eine E-Mail mit den Anweisungen zum Entsperren des Kontos erhalten.'
       unlocked: 'Dein Konto wurde erfolgreich entsperrt. Du bist nun angemeldet'
