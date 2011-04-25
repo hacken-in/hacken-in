@@ -8,6 +8,7 @@ Hcking::Application.load_tasks
 
 namespace :assets do
   task :coffee do
+    puts "Jetzt assets compilieren"
     Rake::Task["barista:brew"].invoke
   end
 end
