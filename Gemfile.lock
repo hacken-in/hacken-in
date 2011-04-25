@@ -118,7 +118,7 @@ PLATFORMS
 
 DEPENDENCIES
   barista
-  devise
+  devise (~> 1.2.1)
   ice_cube (~> 0.6.7)
   jquery-rails (>= 0.2.6)
   mysql2
