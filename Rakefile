@@ -6,13 +6,6 @@ require 'rake'
 
 Hcking::Application.load_tasks
 
-namespace :assets do
-  remote_task :coffee do
-    puts "Coffeescripts compilieren"
-    Rake::Task["barista:brew"].invoke
-  end
-end
-
 begin
   require 'vlad'
   Vlad.load :scm => :git
