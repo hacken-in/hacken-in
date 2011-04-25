@@ -6,6 +6,15 @@ require 'rake'
 
 Hcking::Application.load_tasks
 
+namespace :assets do
+  task :coffee do
+    require 'barista'
+    require './config/initializers/barista_config'
+    
+    Barista.compile_all! true, false
+  end
+end
+
 begin
   require 'vlad'
   Vlad.load :scm => :git
@@ -15,7 +24,7 @@ begin
   end
 
   task "vlad:release" => %w[
-    vlad:update vlad:migrate vlad:bundle:install vlad:migrate barista:brew vlad:start_app vlad:call_passenger vlad:cleanup
+    vlad:update vlad:migrate vlad:bundle:install vlad:migrate assets:coffee vlad:start_app vlad:call_passenger vlad:cleanup
   ]
 rescue LoadError
   # do nothing
