@@ -17,13 +17,39 @@ a {
   overflow: hidden; 
 }
 
+#headline {
+  width: 840px;
+  margin: 0 auto;
+  margin-top: 20px;
+  a {
+    font-size: 16px;
+    text-decoration: none;
+    color: white;
+    &:hover {
+      text-decoration: underline;
+      color: #C66;
+    }
+  }
+}
+
 #container {
-  width: 75%;
+  width: 760px;
   margin: 0 auto;
   background-color: #FFF;
   padding: 20px 40px;
   border: solid 1px black;
-  margin-top: 20px; 
+  margin-top: 10px;
+}
+
+#footer {
+  width: 840px;
+  margin: 0px auto;
+  padding-top: 10px;
+  font-size: 11px;
+  color: black;
+  a {
+    color: black;
+  }
 }
 
 #flash_notice, #flash_error, #flash_alert {
