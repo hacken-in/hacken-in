@@ -7,8 +7,8 @@ require 'rake'
 Hcking::Application.load_tasks
 
 namespace :assets do
-  task :coffee do
-    puts "Jetzt assets compilieren"
+  remote_task :coffee do
+    puts "Coffeescripts compilieren"
     Rake::Task["barista:brew"].invoke
   end
 end
