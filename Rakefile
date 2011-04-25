@@ -8,10 +8,7 @@ Hcking::Application.load_tasks
 
 namespace :assets do
   task :coffee do
-    require 'barista'
-    require './config/initializers/barista_config'
-    
-    Barista.compile_all! true, false
+    Rake::Task["barista:brew"].invoke
   end
 end
 
