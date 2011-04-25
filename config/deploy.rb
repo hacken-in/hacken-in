@@ -25,7 +25,7 @@ namespace :vlad do
 
   desc "Compile coffeescript files"
   remote_task :coffee, :roles => :app do
-    run "RAILS_ENV=production rake barista:brew"
+    run "cd #{release_path};RAILS_ENV=production rake barista:brew"
   end
 
 end
