@@ -23,4 +23,11 @@ namespace :vlad do
     run "wget -O /tmp/bla.html http://wood.hcking.de"
   end
 
+  desc "Compile coffeescript files"
+  remote_task :coffee, :roles => :app do
+    puts "Coffeescripts compilieren"
+    require File.expand_path('../initializers/barista_config', __FILE__)
+    Rake::Task["barista:brew"].invoke
+  end
+
 end
