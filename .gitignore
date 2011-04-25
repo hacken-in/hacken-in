@@ -3,5 +3,5 @@ config/database.yml
 db/*.sqlite3
 log/*.log
 tmp/
-public/coffeescripts
+public/javascripts/*.js
 public/stylesheets/*.css
