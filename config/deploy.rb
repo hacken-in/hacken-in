@@ -38,6 +38,8 @@ namespace :vlad do
     puts "hm.."
     puts Barista.class.name
     Barista.compile_all!
+   
+    puts Barista.root
     #Rake::Task["barista:brew"].invoke
   end
 
