@@ -54,6 +54,9 @@ Hcking::Application.routes.draw do
   # just remember to delete public/index.html.
   root :to => "welcome#index"
 
+  # Static pages like hcking.de/impressum
+  match ':page_name' => 'pages#show'
+
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
