@@ -45,6 +45,7 @@ GEM
       abstract (>= 1.0.0)
     i18n (0.5.0)
     ice_cube (0.6.7)
+    itslog (0.1.0)
     jquery-rails (0.2.7)
       rails (~> 3.0)
       thor (~> 0.14.4)
@@ -120,6 +121,7 @@ DEPENDENCIES
   barista
   devise (~> 1.2.1)
   ice_cube (~> 0.6.7)
+  itslog
   jquery-rails (>= 0.2.6)
   mysql2
   newrelic_rpm
