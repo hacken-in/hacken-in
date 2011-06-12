@@ -12,8 +12,8 @@ gem 'sass-rails', "~> 3.1.0.rc"
 gem 'coffee-script'
 gem 'uglifier'
 
-# # Monitoring
-gem 'newrelic_rpm'
+# Monitoring
+# gem 'newrelic_rpm'
 
 # Date Handling
 gem 'ice_cube', "~> 0.6.7"
