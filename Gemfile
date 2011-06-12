@@ -21,7 +21,7 @@ gem 'ri_cal', "~> 0.8.7"
 
 # Other dependencies
 gem 'jquery-rails'
-gem 'devise', "~> 1.2.1"
+gem 'devise', "~> 1.3"
 
 # Javascript runtime
 gem 'execjs'
