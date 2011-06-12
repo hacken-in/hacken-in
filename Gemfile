@@ -23,6 +23,10 @@ gem 'ri_cal', "~> 0.8.7"
 gem 'jquery-rails'
 gem 'devise', "~> 1.2.1"
 
+# Javascript runtime
+gem 'execjs'
+gem 'therubyracer'
+
 group :development do
   # Deployment
   gem 'vlad', :require => false
