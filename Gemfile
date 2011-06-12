@@ -36,5 +36,12 @@ end
 group :test do
   # Pretty printed test output
   gem 'turn', :require => false
-  gem 'watchr'
+  gem 'guard'
+  gem 'guard-test'
+  gem 'guard-livereload'
+  if RUBY_PLATFORM.downcase.include?("darwin") 
+    gem 'rb-fsevent'
+    gem 'growl'
+  end
+
 end
