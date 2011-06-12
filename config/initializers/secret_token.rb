@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Hcking::Application.config.secret_token = '1175186721f60f54ed0ac30c41306ef92c905494680aefb79a63c16c78d11e34d88c79cb6bb3132d10d882da007afc1480bc5af651eef4f601bda29b4f006ffa'
+Hcking::Application.config.secret_token = '9b6305ce99040fc11e41b03fd915543a57caff83df6b70220e53cb76be79d33514b17cdee8184fdd062c0b94f0db84ad7cccef1e0bd99c32b3c45f0813a7ec74'

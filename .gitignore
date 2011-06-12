@@ -1,7 +1,8 @@
 .bundle
-config/database.yml
 db/*.sqlite3
 log/*.log
 tmp/
-public/javascripts/*.js
-public/stylesheets/*.css
+.sass-cache/
+config/database.yml
+.rvmrc
+public/assets
