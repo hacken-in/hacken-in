@@ -23,9 +23,10 @@ namespace :vlad do
     run "wget -O /tmp/bla.html http://wood.hcking.de"
   end
 
-  desc "Compile coffeescript files"
-  remote_task :coffee, :roles => :app do
-    run "cd #{release_path};RAILS_ENV=production rake barista:brew"
+  desc "Regenerate assets"
+  remote_task :regenerate_assets, :roles => :app do
+    run "cd #{release_path};RAILS_ENV=production bundle exec rake assets:precompile"
   end
 
 end
+
