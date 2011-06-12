@@ -4,7 +4,7 @@ system 'clear'
 def growl(message)
   growlnotify = `which growlnotify`.chomp
   title = "Watchr Test Results"
-  options = "-w -n Watchr -m '#{message}' '#{title}'"
+  options = "-w -n Watchr -m '#{message.gsub(/\e\[\d+m/, "")}' '#{title}'"
   system %(#{growlnotify} #{options} &)
 end
 
