@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Hcking</title>
+  <title><%= content_for?(:title) ? yield(:title) + " - " : "" %>hcking</title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <div id="headline">
+    <a href="/">Hcking</a>
+  </div>
+  <div id="container">
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+    <% end %>
+    <%= content_tag :h1, yield(:title) if show_title? %>
+    <%= yield %>
+  </div>
+  <div id="footer">
+    Dieser Event-Kalender ist ein Service von <a href="http://bitboxer.de">Bitboxer</a>. 
+    <a href="/impressum">Impressum</a>.
+  </div>
 </body>
 </html>
