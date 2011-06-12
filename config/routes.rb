@@ -1,4 +1,6 @@
 Hcking::Application.routes.draw do
+  devise_for :users
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +50,10 @@ Hcking::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'welcome#index'
+
+  # Static pages like hcking.de/impressum
+  match ':page_name' => 'pages#show'
 
   # See how all your routes lay out with "rake routes"
 
