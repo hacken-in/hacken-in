@@ -13,7 +13,7 @@
     if current_date != entry.first.to_date 
       current_date = entry.first.to_date
 %>
-    <h3><%= current_date %></h3>
+    <h3><%= current_date.strftime("%d.%m.%Y") %></h3>
   <% end %>
   <p><%= entry.first.strftime("%H:%M") %> <%= link_to entry.last.name, event_path(entry.last) %></p>
 <% end %>
