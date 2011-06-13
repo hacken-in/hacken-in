@@ -10,7 +10,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110425200634) do
+ActiveRecord::Schema.define(:version => 20110613115646) do
+
+  create_table "events", :force => true do |t|
+    t.string   "name"
+    t.text     "address"
+    t.text     "description"
+    t.text     "schedule_yaml"
+    t.string   "url"
+    t.string   "twitter"
+    t.float    "lat"
+    t.float    "long"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "events", ["lat"], :name => "index_events_on_lat"
+  add_index "events", ["long"], :name => "index_events_on_long"
 
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
