@@ -9,6 +9,17 @@ class Event < ActiveRecord::Base
     events
   end
 
+  def self.get_ordered_events(start_date, end_date)
+    events = []
+    Event.find_in_range(start_date, end_date).each do |event|
+      event.schedule.occurrences_between(start_date, end_date).each do |time|
+        events << {time: time, event:event}
+      end
+    end
+
+    events.sort_by {|el| el.first}
+  end
+
   def schedule
     if @schedule.nil?
       if !self.schedule_yaml.blank?

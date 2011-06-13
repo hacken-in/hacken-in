@@ -8,15 +8,20 @@
 <h2>Events in den nächsten 4 Wochen:</h2>
 
 <% current_date = nil %>
-<% list_events(Date.today, Date.today + 4.weeks).each do |entry| %>
+<% Event.get_ordered_events(Date.today, Date.today + 4.weeks).each do |entry| %>
 <% 
-    if current_date != entry.first.to_date 
-      current_date = entry.first.to_date
+    if current_date != entry[:time].to_date 
+      current_date = entry[:time].to_date
 %>
     <h3><%= current_date.strftime("%d.%m.%Y") %></h3>
   <% end %>
-  <p><%= entry.first.strftime("%H:%M") %> <%= link_to entry.last.name, event_path(entry.last) %></p>
+  <p><%= entry[:time].strftime("%H:%M") %> <%= link_to entry[:event].name, event_path(entry[:event]) %></p>
 <% end %>
+
+<p>
+  Den Kalender gibt es auch als <a href="/ical.ics">iCal</a>. Den Link einfach als Abo zum
+  eigenen Kalender hinzufügen.
+</p>
 
 <p>
   Hier fehlt ein Event? Dann schick mir eine <a href="mailto:mail@hcking.de">E-Mail</a>.

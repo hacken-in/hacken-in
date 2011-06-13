@@ -17,7 +17,7 @@ gem 'uglifier'
 
 # Date Handling
 gem 'ice_cube', "~> 0.6.7"
-gem 'ri_cal', "~> 0.8.7"
+gem 'ri_cal', "~> 0.8.8"
 
 # Other dependencies
 gem 'jquery-rails'

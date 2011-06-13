@@ -155,7 +155,7 @@ DEPENDENCIES
   rails (= 3.1.0.rc4)
   rake (~> 0.9)
   rb-fsevent
-  ri_cal (~> 0.8.7)
+  ri_cal (~> 0.8.8)
   sass-rails (~> 3.1.0.rc)
   sqlite3
   therubyracer
