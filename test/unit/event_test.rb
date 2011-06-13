@@ -42,4 +42,24 @@ class EventTest < ActiveSupport::TestCase
     assert_equal 2, Event.find_in_range(Date.new(2011,6,1), Date.new(2011,7,1)).size
   end
 
+  test "get ordered list" do
+    event = Event.new
+    event.schedule.add_recurrence_date(Time.new(2011,6,13,14,20,0,0))
+    event.save
+    event = Event.new
+    event.schedule.add_recurrence_date(Time.new(2010,6,13,14,20,0,0))
+    event.save
+    event = Event.new
+    event.schedule.add_recurrence_date(Time.new(2011,6,15,14,20,0,0))
+    event.save
+    event = Event.new
+    event.schedule.add_recurrence_date(Time.new(2011,7,15,14,20,0,0))
+    event.save
+
+    ordered = Event.get_ordered_events(Date.new(2011,6,1), Date.new(2011,7,1))
+    assert_equal 2, ordered.size
+    assert_equal Time.new(2011,6,13,16,20,0,"+02:00"), ordered[0][:time]
+    assert_equal Time.new(2011,6,15,16,20,0,"+02:00"), ordered[1][:time]
+  end
+
 end
