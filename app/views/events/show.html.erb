@@ -1,0 +1,13 @@
+<h1><%= @event.name %></h1>
+
+<%= simple_format @event.description %>
+
+<p class="address"><%= @event.address %></p>
+
+<h2>Die nächsten Events:</h2>
+
+<ul>
+<% @event.schedule.next_occurrences(4, Date.today).each do |date| %>
+  <li><%= date.strftime("%d.%m.%Y  %H:%M") %></li>
+<% end %>
+</ul>

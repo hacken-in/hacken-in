@@ -12,4 +12,8 @@ class RoutesTest < ActionDispatch::IntegrationTest
     assert_routing "unavailable", { :controller => "pages", :action => "show", :page_name => "unavailable" }
   end
 
+  test "event resource available" do
+    assert_routing "events/4", {:controller => "events", :action => "show", :id => "4" }
+  end
+
 end
