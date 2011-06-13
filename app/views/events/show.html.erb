@@ -4,6 +4,14 @@
 
 <p class="address"><%= @event.address %></p>
 
+<% unless @event.url.blank? %>
+<p><%= link_to @event.url, @event.url %></p>
+<% end %>
+
+<% unless @event.twitter.blank? %>
+<p><%= link_to "@#{@event.twitter}", "http://twitter.com/#{@event.twitter}" %></p>
+<% end %>
+
 <h2>Die nächsten Events:</h2>
 
 <ul>
