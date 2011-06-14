@@ -1,7 +1,7 @@
 # ToDo
 
-- iCal-Export
 - Gui to edit events
+- Map
 - Good layout
 - Calender-Import
 
