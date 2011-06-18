@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class EventsControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
 
   test "should get event" do
     event = FactoryGirl.create(:simple)
