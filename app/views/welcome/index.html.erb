@@ -23,9 +23,13 @@
   eigenen Kalender hinzufügen.
 </p>
 
-<p>
-  Hier fehlt ein Event? Dann schick mir eine <a href="mailto:mail@hcking.de">E-Mail</a>.
-</p>
+<% if can? :create, Event %>
+  <%= link_to "Event hinzufügen", new_event_path %>
+<% else %>
+  <p>
+    Hier fehlt ein Event? Dann schick mir eine <a href="mailto:mail@hcking.de">E-Mail</a>.
+  </p>
+<% end %>
 
 <p>
   <a href="http://twitter.com/hackcologne" class="twitter-follow-button" data-show-count="false" data-lang="de">Follow @hackcologne</a>

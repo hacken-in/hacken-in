@@ -4,6 +4,11 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
+  def new
+    @event = Event.new
+    authorize! :create, Event
+  end
+
   def edit
     @event = Event.find(params[:id])
     authorize! :update, @article
