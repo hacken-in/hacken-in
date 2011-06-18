@@ -163,3 +163,6 @@ de:
         password_confirmation: Passwort bestätigen
         current_password: Aktuelles Passwort
         remember_me: Angemeldet bleiben
+      event:
+        address: Adresse
+        description: Beschreibung

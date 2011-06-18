@@ -1,0 +1,12 @@
+
+<%= semantic_form_for @event do |form| %>
+  <%= form.inputs do  %>
+    <%= form.input :name %>
+    <%= form.input :description, :input_html => { :class => 'autogrow', :rows => 10} %>
+    <%= form.input :address, :input_html => { :class => 'autogrow', :rows => 5} %>
+    <%= form.input :url %>
+    <%= form.input :twitter %>
+   <% end %>
+  <%= form.buttons %>
+<% end %>
+
