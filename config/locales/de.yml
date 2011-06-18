@@ -166,3 +166,12 @@ de:
       event:
         address: Adresse
         description: Beschreibung
+
+  formtastic:
+    :yes: "Ja"
+    :no: "Nein"
+    :submit: "Absenden"
+    :required: "Benötigt"
+    :create: "Erzeuge %{model}"
+    :update: "Änderungen speichern"
+
