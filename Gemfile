@@ -22,6 +22,7 @@ gem 'ri_cal', "~> 0.8.8"
 # Other dependencies
 gem 'jquery-rails'
 gem 'devise', "~> 1.3"
+gem 'cancan'
 
 # Javascript runtime
 gem 'execjs'
@@ -36,6 +37,7 @@ end
 group :test do
   # Pretty printed test output
   gem 'turn', :require => false
+  gem 'factory_girl_rails', "~> 1.1.beta1"
   gem 'guard'
   gem 'guard-test'
   gem 'guard-livereload'
