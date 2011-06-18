@@ -24,6 +24,7 @@ gem 'jquery-rails'
 gem 'devise', "~> 1.3"
 gem 'cancan'
 gem 'gabba'
+gem 'formtastic', '~> 1.2.4'
 
 # Javascript runtime
 gem 'execjs'

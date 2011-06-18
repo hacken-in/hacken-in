@@ -16,6 +16,10 @@
   <%= link_to "Bearbeiten", edit_event_path(@event) %>
 <% end %>
 
+<% if can? :delete, @event %>
+  <%= link_to "Löschen", event_path(@event), :method => :delete, :confirm => "Wirklich löschen?" %>
+<% end %>
+
 <h2>Die nächsten Events:</h2>
 
 <%

@@ -1,6 +1,8 @@
 class Event < ActiveRecord::Base
   before_save :schedule_to_yaml
 
+  validates_presence_of :name
+
   def self.find_in_range(start_date, end_date)
     events = []
     Event.all.each do |event|
