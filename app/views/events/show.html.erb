@@ -12,6 +12,10 @@
 <p><%= link_to "@#{@event.twitter}", "http://twitter.com/#{@event.twitter}" %></p>
 <% end %>
 
+<% if can? :update, @event %>
+  <%= link_to "Bearbeiten", edit_event_path(@event) %>
+<% end %>
+
 <h2>Die nächsten Events:</h2>
 
 <%
