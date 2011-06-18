@@ -19,6 +19,16 @@ class EventsControllerTest < ActionController::TestCase
     assert_redirected_to :controller => 'welcome', :action => 'index'
   end
 
+  test "should not create if not bodo" do
+    event = FactoryGirl.create(:simple)
+    get :new
+    assert_redirected_to :controller => 'welcome', :action => 'index'
+
+    sign_in FactoryGirl.create(:user)
+    get :new
+    assert_redirected_to :controller => 'welcome', :action => 'index'
+  end
+
   test "should edit if bodo" do
     event = FactoryGirl.create(:simple)
     sign_in FactoryGirl.create(:bodo)
