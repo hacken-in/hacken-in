@@ -9,16 +9,9 @@ class EventsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should redirect instead of showing list of events if bodo" do
-    get :index
-    assert_redirected_to root_path
-  end
-
-  test "should show list of events if bodo" do
-    sign_in FactoryGirl.create(:bodo)
+  test "should  showing list of events" do
     get :index
     assert_response :success
-    assert_template "index"
   end
 
   test "should not edit if not bodo" do
