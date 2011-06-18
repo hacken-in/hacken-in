@@ -1,7 +1,9 @@
 class EventsController < ApplicationController
 
   def index
-    redirect_to root_path
+    if !can? :update, Event
+      redirect_to root_path
+    end
   end
 
   def show
