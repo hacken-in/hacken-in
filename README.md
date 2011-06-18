@@ -5,6 +5,7 @@
 - Good layout
 - Calender-Import
 - Opengraph http://developers.facebook.com/docs/opengraph/
+- Post to Twitter
 
 # Events:
 
