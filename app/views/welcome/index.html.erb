@@ -23,9 +23,13 @@
   eigenen Kalender hinzufügen.
 </p>
 
+<p>
+<%= link_to "Alle Events", events_path %> 
 <% if can? :create, Event %>
-  <%= link_to "Event hinzufügen", new_event_path %>
+  | <%= link_to "Event hinzufügen", new_event_path %>
+</p>
 <% else %>
+</p>
   <p>
     Hier fehlt ein Event? Dann schick mir eine <a href="mailto:mail@hcking.de">E-Mail</a>.
   </p>
