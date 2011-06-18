@@ -23,6 +23,7 @@ gem 'ri_cal', "~> 0.8.8"
 gem 'jquery-rails'
 gem 'devise', "~> 1.3"
 gem 'cancan'
+gem 'gabba'
 
 # Javascript runtime
 gem 'execjs'

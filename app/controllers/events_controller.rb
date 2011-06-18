@@ -27,6 +27,7 @@ class EventsController < ApplicationController
         end
       end
     end
+    Gabba::Gabba.new("UA-954244-12", "wood.hcking.de").event("Event", "iCal")
     render :text => cal
   end
 
