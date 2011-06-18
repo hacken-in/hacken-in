@@ -4,6 +4,7 @@
 - Map
 - Good layout
 - Calender-Import
+- Opengraph http://developers.facebook.com/docs/opengraph/
 
 # Events:
 
