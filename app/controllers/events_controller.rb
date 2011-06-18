@@ -1,7 +1,12 @@
 class EventsController < ApplicationController
 
   def show
-    @event = Event.find_by_id(params[:id])
+    @event = Event.find(params[:id])
+  end
+
+  def edit
+    @event = Event.find(params[:id])
+    authorize! :update, @article
   end
 
   def ical
