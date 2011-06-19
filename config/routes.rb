@@ -2,7 +2,7 @@ Hcking::Application.routes.draw do
   devise_for :users
 
   resources :events
-  match 'ical' => "events#ical"
+  match 'ical' => "ical#index"
 
   root :to => 'welcome#index'
 
