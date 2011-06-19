@@ -10,6 +10,7 @@ class IcalControllerTest < ActionController::TestCase
     event.save
     get :index
     assert_response :success
+    assert_equal "text/calendar", @response.headers["Content-Type"]
 
     expected = <<DESC
 BEGIN:VCALENDAR
