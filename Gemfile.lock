@@ -86,6 +86,7 @@ GEM
     mime-types (1.16)
     multi_json (1.0.3)
     mysql2 (0.3.2)
+    newrelic_rpm (3.1.1)
     open4 (1.0.1)
     orm_adapter (0.0.5)
     polyglot (0.3.1)
@@ -166,6 +167,7 @@ DEPENDENCIES
   ice_cube (~> 0.6.7)
   jquery-rails
   mysql2
+  newrelic_rpm (~> 3.1.1)
   rails (= 3.1.0.rc4)
   rake (~> 0.9)
   rb-fsevent
