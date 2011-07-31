@@ -32,7 +32,7 @@
 
 <%= simple_format @event.description %>
 
-<p class="address"><%= @event.location %><br/><%= @event.street%><br/><%= @event.zipcode %> <% @event.city %></p>
+<p class="address"><%= @event.location %><br/><%= @event.street%><br/><%= @event.zipcode %> <%= @event.city %></p>
 
 <% unless @event.url.blank? %>
 <p><%= link_to @event.url, @event.url %></p>
