@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'test_helper'
 
 class EventTest < ActiveSupport::TestCase
@@ -60,6 +61,18 @@ class EventTest < ActiveSupport::TestCase
     assert_equal 2, ordered.size
     assert_equal Time.new(2011,6,13,16,20,0,"+02:00"), ordered[0][:time]
     assert_equal Time.new(2011,6,15,16,20,0,"+02:00"), ordered[1][:time]
+  end
+
+  test "check if adress is geocoded after save" do
+    event = Event.new(name: "Hallo")
+    event.location = "Cowoco in der Gasmotorenfabrik, 3. Etage"
+    event.street = "Deutz-Mülheimerstraße 129"
+    event.city = "Köln"
+    event.zipcode = "51063"
+    event.save
+
+    assert_equal 50.9490279, event.latitude
+    assert_equal 6.986784900000001, event.longitude
   end
 
 end
