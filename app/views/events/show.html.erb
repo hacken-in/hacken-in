@@ -34,14 +34,30 @@
 <% else %>
   <p>Keine Events geplant</p>
 <% end %>
-<p>
+<div id='twitter_like'>
   <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="hckingcologne">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-  <div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=213379535367603&amp;xfbml=1"></script><fb:like href="<%= event_url(@event)%>" send="true" width="450" show_faces="true" font=""></fb:like>
-</p>
+</div>
+<div id='fb_like'>
+  <div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=213379535367603&amp;xfbml=1"></script><fb:like href="<%= event_url(@event)%>" send="true" width="450" show_faces="false" font="" layout="button_count"></fb:like>
+</div>
 
-<%= @event.schedule.rdates.count %> - 
-<%= @event.schedule.exdates.count %> - 
-<%= @event.schedule.rrules.count %> - 
+<% if can? :update, @event %>
+
+<h3>Daten bearbeiten:</h3>
+
+<h4>Event-Daten:</h4>
+
+<%= @event.schedule.rdates.count %>
+
+<h4>Diese Daten ausschließen:</h4>
+
+<%= @event.schedule.exdates.count %>
+
+<h4>Regeln:</h4>
+
+<%= @event.schedule.rrules.count %>
+
+<% end %>
 
 <p>
   <a href="/">Zurück zur Übersicht</a>
