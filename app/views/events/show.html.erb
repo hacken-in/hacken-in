@@ -1,8 +1,38 @@
 <h1><%= @event.name %></h1>
 
+<% unless @event.latitude.blank? or @event.longitude.blank? %>
+ <% content_for :javascript do %>
+    <script type="text/javascript"
+        src="http://maps.googleapis.com/maps/api/js?sensor=false">
+    </script>
+    <script type="text/javascript">
+  function initialize() {
+    var latlng = new google.maps.LatLng(<%= @event.latitude %>, <%= @event.longitude %>);
+    var myOptions = {
+      zoom: 13,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("map_canvas"),
+        myOptions);
+
+    var marker = new google.maps.Marker({
+      position: latlng, 
+      map: map, 
+      title: "<%= escape_javascript(@event.location.html_safe) %>"
+    });
+  }
+  $(function() {
+   initialize();
+  });
+  </script>
+<% end %>
+<div id="map_canvas" style="width:350px; height:200px"></div>
+<% end %>
+
 <%= simple_format @event.description %>
 
-<p class="address"><%= @event.address %></p>
+<p class="address"><%= @event.location %><br/><%= @event.street%><br/><%= @event.zipcode %> <% @event.city %></p>
 
 <% unless @event.url.blank? %>
 <p><%= link_to @event.url, @event.url %></p>
