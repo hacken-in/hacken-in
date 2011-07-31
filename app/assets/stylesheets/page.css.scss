@@ -32,6 +32,7 @@ a {
 }
 
 #container {
+  position: relative;
   width: 760px;
   margin: 0 auto;
   background-color: #FFF;
@@ -101,4 +102,10 @@ a {
 
 #fb_like, #twitter_like {
   height: 25px;
+}
+
+#map_canvas {
+  float: right;
+  margin-left: 10px;
+  border: 1px solid #efefef;
 }

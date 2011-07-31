@@ -33,7 +33,12 @@ class Event < ActiveRecord::Base
   def schedule
     if @schedule.nil?
       if !self.schedule_yaml.blank?
-        @schedule = IceCube::Schedule.from_yaml(self.schedule_yaml)
+        begin
+          @schedule = IceCube::Schedule.from_yaml(self.schedule_yaml)
+        rescue => e
+          # Shit, parsing went wrong
+          @schedule = IceCube::Schedule.new(Time.now)
+        end
       else
         @schedule = IceCube::Schedule.new(Time.now)
       end
