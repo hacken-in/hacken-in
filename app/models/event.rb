@@ -3,6 +3,10 @@ class Event < ActiveRecord::Base
 
   validates_presence_of :name
 
+  # Geocoding
+  geocoded_by :address
+  after_validation :geocode
+
   def self.find_in_range(start_date, end_date)
     events = []
     Event.all.each do |event|
@@ -20,6 +24,10 @@ class Event < ActiveRecord::Base
     end
 
     events.sort_by {|el| el.first}
+  end
+
+  def address
+    "#{self.location}, #{self.street}, #{self.zipcode}, #{self.city}"
   end
 
   def schedule

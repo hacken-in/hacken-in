@@ -10,11 +10,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110613115646) do
+ActiveRecord::Schema.define(:version => 20110731100129) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
-    t.text     "address"
     t.text     "description"
     t.text     "schedule_yaml"
     t.string   "url"
@@ -23,6 +22,13 @@ ActiveRecord::Schema.define(:version => 20110613115646) do
     t.float    "long"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "location"
+    t.string   "street"
+    t.string   "zipcode"
+    t.string   "city"
+    t.string   "country"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "events", ["lat"], :name => "index_events_on_lat"
