@@ -35,18 +35,17 @@ group :development do
   # Deployment
   gem 'vlad', :require => false
   gem 'vlad-git', :require => false
+  group :darwin do
+    gem 'rb-fsevent'
+    gem 'growl'
+  end
+  gem 'guard'
+  gem 'guard-test'
+  gem 'guard-livereload'
 end
 
 group :test do
   # Pretty printed test output
   gem 'turn', :require => false
   gem 'factory_girl_rails', "~> 1.1.beta1"
-  gem 'guard'
-  gem 'guard-test'
-  gem 'guard-livereload'
-  if RUBY_PLATFORM.downcase.include?("darwin") 
-    gem 'rb-fsevent'
-    gem 'growl'
-  end
-
 end
