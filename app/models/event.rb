@@ -49,7 +49,7 @@ class Event < ActiveRecord::Base
   private
 
   def schedule_to_yaml
-    self.schedule_yaml = self.schedule.to_yaml
+    self.schedule_yaml = @schedule.to_yaml if !@schedule.nil?
   end
 
 end
