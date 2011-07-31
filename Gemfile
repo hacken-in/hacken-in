@@ -25,6 +25,7 @@ gem 'devise', "~> 1.3"
 gem 'cancan'
 gem 'gabba'
 gem 'formtastic', '~> 1.2.4'
+gem 'geocoder', '~> 1.0'
 
 # Javascript runtime
 gem 'execjs'
