@@ -118,11 +118,11 @@ GEM
     rb-fsevent (0.4.0)
     rdoc (3.9.1)
     ri_cal (0.8.8)
-    sass (3.1.2)
-    sass-rails (3.1.0.rc.2)
+    sass (3.1.7)
+    sass-rails (3.1.0.rc.5)
       actionpack (~> 3.1.0.rc1)
       railties (~> 3.1.0.rc1)
-      sass (>= 3.1.2)
+      sass (>= 3.1.4)
       sprockets (>= 2.0.0.beta.9)
     sprockets (2.0.0.beta.12)
       hike (~> 1.2)
@@ -174,7 +174,7 @@ DEPENDENCIES
   rake (~> 0.9)
   rb-fsevent
   ri_cal (~> 0.8.8)
-  sass-rails (~> 3.1.0.rc)
+  sass-rails (~> 3.1.0.rc.5)
   sqlite3
   therubyracer
   turn
