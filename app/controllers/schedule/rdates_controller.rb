@@ -13,7 +13,8 @@ class Schedule::RdatesController < ApplicationController
     @event.schedule.add_recurrence_date(rdate)
     if !@event.save
       redirect_to(@event, :alert => 'Datum konnte nicht hinzugefügt werden.')
-    else
+    else 
+      expire_fragment("event_occurences_#{@event.id}")
       redirect_to(@event, :notice => 'Datum hinzugefügt.')
     end
   end
@@ -28,6 +29,7 @@ class Schedule::RdatesController < ApplicationController
     if !@event.save
       redirect_to(@event, :alert => 'Datum konnte nicht entfernt werden.')
     else
+      expire_fragment("event_occurences_#{@event.id}")
       redirect_to(@event, :notice => 'Datum entfernt.')
     end
   end
