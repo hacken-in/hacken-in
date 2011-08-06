@@ -22,7 +22,7 @@ DTEND;VALUE=DATE-TIME:#{(time + 1.hour).utc.strftime("%Y%m%dT%H%M%SZ")}
 DTSTART;VALUE=DATE-TIME:#{time.utc.strftime("%Y%m%dT%H%M%SZ")}
 DESCRIPTION:
 SUMMARY:SimpleEvent
-LOCATION:
+LOCATION:\\, \\, \\, 
 END:VEVENT
 END:VCALENDAR
 DESC

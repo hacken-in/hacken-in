@@ -1,6 +1,7 @@
 # encoding: utf-8
 
 class Schedule::RulesController < ApplicationController
+  cache_sweeper :event_sweeper
 
   def create
     @event = Event.find(params[:event_id])
@@ -11,7 +12,6 @@ class Schedule::RulesController < ApplicationController
     if !@event.save
       redirect_to(@event, :alert => 'Datum konnte nicht hinzugefügt werden.')
     else
-      expire_fragment("event_occurences_#{@event.id}")
       redirect_to(@event, :notice => 'Datum hinzugefügt.')
     end
   end
@@ -26,7 +26,6 @@ class Schedule::RulesController < ApplicationController
     if !@event.save
       redirect_to(@event, :alert => 'Datum konnte nicht entfernt werden.')
     else
-      expire_fragment("event_occurences_#{@event.id}")
       redirect_to(@event, :notice => 'Datum entfernt.')
     end
   end

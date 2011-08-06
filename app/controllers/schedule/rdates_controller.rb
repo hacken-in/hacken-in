@@ -4,6 +4,7 @@ require 'datetime_parser'
 
 class Schedule::RdatesController < ApplicationController
   include DatetimeParser
+  cache_sweeper :event_sweeper
 
   def create
     @event = Event.find(params[:event_id])
@@ -14,7 +15,6 @@ class Schedule::RdatesController < ApplicationController
     if !@event.save
       redirect_to(@event, :alert => 'Datum konnte nicht hinzugefügt werden.')
     else 
-      expire_fragment("event_occurences_#{@event.id}")
       redirect_to(@event, :notice => 'Datum hinzugefügt.')
     end
   end
@@ -29,7 +29,6 @@ class Schedule::RdatesController < ApplicationController
     if !@event.save
       redirect_to(@event, :alert => 'Datum konnte nicht entfernt werden.')
     else
-      expire_fragment("event_occurences_#{@event.id}")
       redirect_to(@event, :notice => 'Datum entfernt.')
     end
   end
