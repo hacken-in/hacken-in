@@ -6,6 +6,7 @@ gem 'rake', '~> 0.9'
 # Databases
 gem 'sqlite3'
 gem 'mysql2'
+gem 'memcache-client'
 
 # Asset template engines
 gem 'sass-rails', "~> 3.1.0.rc.5"
