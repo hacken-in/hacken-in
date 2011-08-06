@@ -109,7 +109,7 @@
   <% @event.schedule.rrules.each_with_index do |rrule, index| %>
     <li>
       <%= rrule.to_s %>
-      <%= link_to "Löschen", event_schedule_rdate_path(@event, :id => index), 
+      <%= link_to "Löschen", event_schedule_rule_path(@event, :id => index), 
                 :method => :delete, 
                 :confirm => "Sind sie sicher?"%>
     </li>
