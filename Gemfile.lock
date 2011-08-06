@@ -83,6 +83,7 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    memcache-client (1.8.5)
     mime-types (1.16)
     multi_json (1.0.3)
     mysql2 (0.3.6)
@@ -168,6 +169,7 @@ DEPENDENCIES
   guard-test
   ice_cube (~> 0.6.7)
   jquery-rails
+  memcache-client
   mysql2
   newrelic_rpm (~> 3.1.1)
   rails (= 3.1.0.rc5)
