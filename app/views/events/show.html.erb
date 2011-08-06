@@ -53,18 +53,19 @@
 
 <h2>Die nächsten Events:</h2>
 
-<%
-   occurrences = @event.schedule.next_occurrences(4, Date.today)
-%>
-<% if occurrences.size > 0 %>
-  <ul>
-  <% occurrences.each do |date| %>
-    <li><%= date.strftime("%d.%m.%Y um %H:%M") %></li>
+<% cache("event_occurences_#{@event.id}") do %>
+  <% occurrences = @event.schedule.next_occurrences(4, Date.today) %>
+  <% if occurrences.size > 0 %>
+    <ul>
+    <% occurrences.each do |date| %>
+      <li><%= date.strftime("%d.%m.%Y um %H:%M") %></li>
+    <% end %>
+    </ul>
+  <% else %>
+    <p>Keine Events geplant</p>
   <% end %>
-  </ul>
-<% else %>
-  <p>Keine Events geplant</p>
 <% end %>
+
 <div id='twitter_like'>
   <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="hckingcologne">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 </div>

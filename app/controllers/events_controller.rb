@@ -48,6 +48,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.update_attributes(params[:event])
+        expire_fragment("event_occurences_#{@event.id}")
         format.html { redirect_to(@event, :notice => 'Event aktualisiert') }
         format.xml  { head :ok }
       else
