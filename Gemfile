@@ -8,7 +8,7 @@ gem 'sqlite3'
 gem 'mysql2'
 
 # Asset template engines
-gem 'sass-rails', "~> 3.1.0.rc"
+gem 'sass-rails', "~> 3.1.0.rc.5"
 gem 'coffee-script'
 gem 'uglifier'
 
