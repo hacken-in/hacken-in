@@ -49,7 +49,6 @@ class Event < ActiveRecord::Base
 
   def schedule=(cube_obj)
     @schedule = cube_obj
-    self.schedule_yaml = cube_obj.to_yaml
   end
 
   private

@@ -7,8 +7,11 @@ class Schedule::RulesController < ApplicationController
     @event = Event.find(params[:event_id])
     authorize! :update, @event
 
-#    exdate = parse_datetime_select(params[:exdate], "date")    
-#    @event.schedule.add_exception_date(exdate)
+    rule = {}
+    day_hashes = [:sunday, :monday, :tuesday, :wednesday, :thursday, :friday, :saturday]
+    rule[day_hashes[params[:day_of_week].to_i]] = [params[:week_number].to_i]
+    @event.schedule.add_recurrence_rule IceCube::Rule.monthly.day_of_week(rule)
+
     if !@event.save
       redirect_to(@event, :alert => 'Datum konnte nicht hinzugefügt werden.')
     else
