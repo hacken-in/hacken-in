@@ -20,6 +20,7 @@ class Schedule::UpdateController < ApplicationController
     else
       expire_fragment("event_occurences_#{@event.id}")
       expire_action(:controller => '/welcome', :action => 'index')
+      expire_action(:controller => '/ical', :action => 'index')
       redirect_to(@event, :notice => 'Event geändert.')
     end
   end
