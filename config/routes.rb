@@ -3,7 +3,9 @@ Hcking::Application.routes.draw do
 
   resources :events do
     namespace "schedule" do
-      resources :rdates, :exdates, :rules, :update
+      resources :rdates, :exdates, :rules
+
+      match 'update' => 'update#update', :via => :put
     end
   end
   match 'ical' => "ical#index"
