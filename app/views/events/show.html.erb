@@ -77,6 +77,20 @@
 
 <h3>Daten bearbeiten:</h3>
 
+<%= form_tag(event_schedule_update_path(@event), :method => :put) %>
+  <p>Start-Datum:</p>
+  <div>
+    <%= datetime_select("start_date", "date", :start_year => Date.today.year, :default => @event.schedule.start_time) %>
+  </div>
+
+  <p>Länge (in Minuten)</p>
+  <div>
+    <%= number_field_tag 'duration', @event.schedule.duration, :min => 0 %>
+  </div>
+
+  <%= submit_tag "Ändern" %>
+</form>
+
 <%
   default_time = 3.days.from_now.to_time.change(:hour => 20, :minute => 0)
  %>
@@ -99,7 +113,7 @@
 <% end %>
 
 <%= form_tag(event_schedule_rdates_path(@event), :method => :create) %>
-<%= datetime_select("rdate", "date", :start_year => Date.today.year, :default => default_time) %>
+  <%= datetime_select("rdate", "date", :start_year => Date.today.year, :default => default_time) %>
   <%= submit_tag "Anlegen" %>
 </form>
 

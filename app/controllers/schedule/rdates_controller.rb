@@ -14,7 +14,7 @@ class Schedule::RdatesController < ApplicationController
     @event.schedule.add_recurrence_date(rdate)
     if !@event.save
       redirect_to(@event, :alert => 'Datum konnte nicht hinzugefügt werden.')
-    else 
+    else
       redirect_to(@event, :notice => 'Datum hinzugefügt.')
     end
   end
