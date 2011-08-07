@@ -85,7 +85,7 @@
 
   <p>Länge (in Minuten)</p>
   <div>
-    <%= number_field_tag 'duration', @event.schedule.duration, :min => 0 %>
+    <%= number_field_tag 'duration', (@event.schedule.duration / 60).round, :min => 0 %>
   </div>
 
   <%= submit_tag "Ändern" %>

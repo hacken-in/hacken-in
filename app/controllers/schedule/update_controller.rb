@@ -12,9 +12,8 @@ class Schedule::UpdateController < ApplicationController
 
     hash = @event.schedule.to_hash
     start_date = parse_datetime_select(params[:start_date], "date")
-
+    hash[:duration] = params[:duration].to_i * 60
     @event.schedule = IceCube::Schedule.from_hash(hash,
-                                    :duration => params[:duration],
                                     :start_date_override => start_date)
 
     if !@event.save
