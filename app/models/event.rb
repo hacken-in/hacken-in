@@ -37,10 +37,11 @@ class Event < ActiveRecord::Base
           @schedule = IceCube::Schedule.from_yaml(self.schedule_yaml)
         rescue => e
           # Shit, parsing went wrong
-          @schedule = IceCube::Schedule.new(Time.now, :duration => 60)
         end
-      else
-        @schedule = IceCube::Schedule.new(Time.now, :duration => 60)
+      end
+
+      if @schedule.nil?
+        @schedule = IceCube::Schedule.new(Time.now, :duration => 60 * 60)
       end
     end
     @schedule
