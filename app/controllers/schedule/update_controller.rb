@@ -4,7 +4,6 @@ require 'datetime_parser'
 
 class Schedule::UpdateController < ApplicationController
   include DatetimeParser
-  cache_sweeper :event_sweeper
 
   def update
     @event = Event.find(params[:event_id])
@@ -19,6 +18,8 @@ class Schedule::UpdateController < ApplicationController
     if !@event.save
       redirect_to(@event, :alert => 'Event konnte nicht geändert werden.')
     else
+      expire_fragment("event_occurences_#{@event.id}")
+      expire_action(:controller => '/welcome', :action => 'index')
       redirect_to(@event, :notice => 'Event geändert.')
     end
   end
