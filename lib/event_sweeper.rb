@@ -20,6 +20,6 @@ class EventSweeper < ActionController::Caching::Sweeper
   def expire_cache_for(event)
     expire_fragment("event_occurences_#{event.id}")
     expire_action(:controller => '/welcome', :action => 'index')
-    expire_action(:controller => '/ical', :action => 'index')
+    expire_action(:controller => '/ical', :action => 'index', :format => :ics)
   end
 end
