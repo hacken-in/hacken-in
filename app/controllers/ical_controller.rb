@@ -1,5 +1,5 @@
 class IcalController < ApplicationController
-  caches_action :index
+  caches_action :inde, :expires_in => 10.minutes
 
   def index
     response.headers["Content-Type"] = "text/calendar"
