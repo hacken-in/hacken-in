@@ -27,7 +27,7 @@ class Event < ActiveRecord::Base
   end
 
   def address
-    "#{self.location}, #{self.street}, #{self.zipcode}, #{self.city}"
+    "#{self.street}, #{self.zipcode}, #{self.city}"
   end
 
   def schedule
