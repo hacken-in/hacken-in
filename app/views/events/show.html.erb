@@ -1,4 +1,4 @@
-<h1 id='event_name'><%= @event.name %></h1>
+<% title @event.name %>
 
 <% unless @event.latitude.blank? or @event.longitude.blank? %>
    <% content_for :javascript do %>
@@ -24,10 +24,10 @@
         }
 
         $(function() {
-          $('#event_name').after('<div id="map_canvas" style="width:350px; height:200px"></div>');
+          $('h1').after('<div id="map_canvas" style="width:350px; height:200px"></div>');
           initialize();
-      });
-    </script>
+        });
+      </script>
   <% end %>
 <% end %>
 
