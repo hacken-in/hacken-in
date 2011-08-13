@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110731100129) do
+ActiveRecord::Schema.define(:version => 20110813121030) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20110731100129) do
     t.string   "country"
     t.float    "latitude"
     t.float    "longitude"
+    t.boolean  "full_day",      :default => false
   end
 
   add_index "events", ["lat"], :name => "index_events_on_lat"

@@ -6,10 +6,22 @@ class IcalController < ApplicationController
     cal = RiCal.Calendar do
       Event.get_ordered_events(Date.today, Date.today + 8.weeks).each do |entry|
         event do
+
+          start_time = entry[:time]
+          end_time  = (entry[:time] + (entry[:event].schedule.duration || 3600))
+
+          if entry[:event].full_day
+            start_time = start_time.to_date
+            end_time = end_time.to_date
+          else
+            start_time = start_time.utc
+            end_time = end_time.utc
+          end
+
           summary     entry[:event].name
           description ActionController::Base.helpers.strip_tags(entry[:event].description || "")
-          dtstart     entry[:time].utc
-          dtend       (entry[:time] + (entry[:event].schedule.duration || 3600)).utc
+          dtstart     start_time
+          dtend       end_time
           location    (entry[:event].address || "")
           url         entry[:event].url if !entry[:event].url.blank?
         end
