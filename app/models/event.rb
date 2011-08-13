@@ -28,7 +28,12 @@ class Event < ActiveRecord::Base
   end
 
   def address
-    "#{self.street}, #{self.zipcode}, #{self.city}"
+    value = ""
+    value << self.street unless self.street.blank?
+    value << ", " unless self.zipcode.blank? and self.city.blank?
+    value << "#{self.zipcode} " unless self.zipcode.blank?
+    value << self.city unless self.city.blank?
+    value
   end
 
   def schedule

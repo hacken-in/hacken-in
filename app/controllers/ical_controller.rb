@@ -17,12 +17,13 @@ class IcalController < ApplicationController
             start_time = start_time.utc
             end_time = end_time.utc
           end
+          loc = [entry[:event].location, entry[:event].address].delete_if{|d|d.blank?}.join(", ").strip
 
           summary     entry[:event].name
           description ActionController::Base.helpers.strip_tags(entry[:event].description || "")
           dtstart     start_time
           dtend       end_time
-          location    (entry[:event].address || "")
+          location    loc unless loc.blank?
           url         entry[:event].url if !entry[:event].url.blank?
         end
       end
