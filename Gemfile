@@ -17,7 +17,7 @@ gem 'uglifier'
 gem 'newrelic_rpm', '~>3.1.1'
 
 # Date Handling
-gem 'ice_cube', "~> 0.6.7"
+gem 'ice_cube', "~> 0.6.12"
 gem 'ri_cal', "~> 0.8.8"
 
 # Other dependencies
