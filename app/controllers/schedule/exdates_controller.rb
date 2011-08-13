@@ -13,9 +13,9 @@ class Schedule::ExdatesController < ApplicationController
     exdate = parse_datetime_select(params[:exdate], "date")    
     @event.schedule.add_exception_date(exdate)
     if !@event.save
-      redirect_to(@event, :alert => 'Datum konnte nicht hinzugefügt werden.')
+      redirect_to(event_path(@event), :alert => 'Datum konnte nicht hinzugefügt werden.')
     else
-      redirect_to(@event, :notice => 'Datum hinzugefügt.')
+      redirect_to(event_path(@event), :notice => 'Datum hinzugefügt.')
     end
   end
 
@@ -27,9 +27,9 @@ class Schedule::ExdatesController < ApplicationController
     @event.schedule.remove_exception_date(exdate)
 
     if !@event.save
-      redirect_to(@event, :alert => 'Datum konnte nicht entfernt werden.')
+      redirect_to(event_path(@event), :alert => 'Datum konnte nicht entfernt werden.')
     else
-      redirect_to(@event, :notice => 'Datum entfernt.')
+      redirect_to(event_path(@event), :notice => 'Datum entfernt.')
     end
   end
 

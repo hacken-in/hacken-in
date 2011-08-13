@@ -1,7 +1,5 @@
 # ToDo
 
-! Test for new Controllers
-
 - Opengraph http://developers.facebook.com/docs/opengraph/
 - Full Day Events
 - Post to Twitter ( heute: @devhousefriday um 19:00
