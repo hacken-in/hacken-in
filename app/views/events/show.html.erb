@@ -58,7 +58,7 @@
   <% if occurrences.size > 0 %>
     <ul>
     <% occurrences.each do |date| %>
-      <li><%= date.strftime("%d.%m.%Y um %H:%M") %></li>
+      <li><%= @event.full_day? ? date.strftime("%d.%m.%Y") :  date.strftime("%d.%m.%Y um %H:%M") %></li>
     <% end %>
     </ul>
   <% else %>
