@@ -166,6 +166,7 @@ de:
       event:
         address: Adresse
         description: Beschreibung
+        full_day: Ganzer Tag
 
   formtastic:
     :yes: "Ja"

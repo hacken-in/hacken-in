@@ -21,7 +21,7 @@
 %>
     <h3><%= current_date.strftime("%d.%m.%Y") %></h3>
   <% end %>
-  <p><%= entry[:time].strftime("%H:%M") %> <%= link_to entry[:event].name, event_path(entry[:event]) %></p>
+  <p><%=  entry[:time].strftime("%H:%M") if !entry[:event].full_day %> <%= link_to entry[:event].name, event_path(entry[:event]) %></p>
 <% end %>
 
 <p>

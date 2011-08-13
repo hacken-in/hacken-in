@@ -19,11 +19,12 @@ class Event < ActiveRecord::Base
     events = []
     Event.find_in_range(start_date, end_date).each do |event|
       event.schedule.occurrences_between(start_date, end_date).each do |time|
+        time = time.beginning_of_day if event.full_day
         events << {time: time, event:event}
       end
     end
 
-    events.sort_by {|el| el.first}
+    events.sort_by {|el| [el[:time], el[:event].name]}
   end
 
   def address
