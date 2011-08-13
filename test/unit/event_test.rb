@@ -71,8 +71,8 @@ class EventTest < ActiveSupport::TestCase
     event.zipcode = "51063"
     event.save
 
-    assert_equal 50.9490279, event.latitude
-    assert_equal 6.986784900000001, event.longitude
+    assert_equal 50.9490221, event.latitude
+    assert_equal 6.9868273, event.longitude
   end
 
 end
