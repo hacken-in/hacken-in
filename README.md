@@ -1,6 +1,6 @@
 # ToDo
 
-! Test for new Controllers and Models
+! Test for new Controllers and Libs
 
 - Opengraph http://developers.facebook.com/docs/opengraph/
 - Full Day Events
