@@ -28,12 +28,7 @@ class Event < ActiveRecord::Base
   end
 
   def address
-    value = ""
-    value << self.street unless self.street.blank?
-    value << ", " unless self.street.blank? and self.zipcode.blank? and self.city.blank?
-    value << "#{self.zipcode} " unless self.zipcode.blank?
-    value << self.city unless self.city.blank?
-    value
+    [self.street, "#{self.zipcode} #{self.city}"].delete_if {|d| d.blank?}.collect{|d|d.strip}.join(", ")
   end
 
   def schedule

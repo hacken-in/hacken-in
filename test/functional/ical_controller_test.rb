@@ -30,6 +30,14 @@ class IcalControllerTest < ActionController::TestCase
     event3.city = "cologne"
     event3.save
 
+    event4 = FactoryGirl.create(:simple)
+    time4 = Time.now + 48.hours
+    event4.schedule.add_recurrence_date(time4)
+    event4.full_day = true
+    event4.location = "home"
+    event4.city = "cologne"
+    event4.save
+
     get :index
     assert_response :success
     assert_equal "text/calendar", @response.headers["Content-Type"]
@@ -52,6 +60,13 @@ DTSTART;VALUE=DATE-TIME:#{time.utc.strftime("%Y%m%dT%H%M%SZ")}
 DESCRIPTION:description
 URL:url
 SUMMARY:SimpleEvent
+END:VEVENT
+BEGIN:VEVENT
+DTEND;VALUE=DATE:#{time4.strftime("%Y%m%d")}
+DTSTART;VALUE=DATE:#{time4.strftime("%Y%m%d")}
+DESCRIPTION:
+SUMMARY:SimpleEvent
+LOCATION:home\\, cologne
 END:VEVENT
 BEGIN:VEVENT
 DTEND;VALUE=DATE:#{time2.strftime("%Y%m%d")}
