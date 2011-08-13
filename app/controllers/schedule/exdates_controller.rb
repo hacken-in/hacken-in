@@ -34,4 +34,3 @@ class Schedule::ExdatesController < ApplicationController
   end
 
 end
-
