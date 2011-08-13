@@ -79,4 +79,27 @@ class EventTest < ActiveSupport::TestCase
     assert_equal 6.9868273, event.longitude
   end
 
+  test "event adress formatting" do
+    event = Event.new(name: "Hallo")
+    event.location = "Cowoco in der Gasmotorenfabrik, 3. Etage"
+    event.street = "Deutz-Mülheimerstraße 129"
+    event.city = "Köln"
+    event.zipcode = "51063"
+    assert_equal "Deutz-Mülheimerstraße 129, 51063 Köln", event.address
+
+    event = Event.new(name: "Hallo")
+    event.street = "Deutz-Mülheimerstraße 129"
+    event.city = "Köln"
+    assert_equal "Deutz-Mülheimerstraße 129, Köln", event.address
+
+    event = Event.new(name: "Hallo")
+    event.street = "Deutz-Mülheimerstraße 129"
+    assert_equal "Deutz-Mülheimerstraße 129", event.address
+
+    event = Event.new(name: "Hallo")
+    event.city = "Köln"
+    event.zipcode = "51063"
+    assert_equal "51063 Köln", event.address
+  end
+
 end
