@@ -2,29 +2,26 @@
 
 <% unless @event.latitude.blank? or @event.longitude.blank? %>
    <% content_for :javascript do %>
-      <script type="text/javascript"
-          src="http://maps.googleapis.com/maps/api/js?sensor=false">
-      </script>
+      <script type="text/javascript" src="http://tile.cloudmade.com/wml/latest/web-maps-lite.js"></script>
       <script type="text/javascript">
         function initialize() {
-          var latlng = new google.maps.LatLng(<%= @event.latitude %>, <%= @event.longitude %>);
-          var myOptions = {
-            zoom: 13,
-            center: latlng,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-          };
-          var map = new google.maps.Map(document.getElementById("map_canvas"),
-              myOptions);
-
-          var marker = new google.maps.Marker({
-            position: latlng, 
-            map: map, 
-            title: "<%= escape_javascript(@event.location.html_safe) %>"
+          var cloudmade = new CM.Tiles.CloudMade.Web({
+              key: '785896de12ad4cf892e32b9ec16b5cde',
+              styleId: 997
           });
+          var map = new CM.Map('map_canvas', cloudmade);
+
+          var myMarkerLatLng = new CM.LatLng(<%= @event.latitude %>, <%= @event.longitude %>);
+          var myMarker = new CM.Marker(myMarkerLatLng);
+
+          map.setCenter(myMarkerLatLng, 14);
+          map.addOverlay(myMarker);
+          map.addControl(new CM.SmallMapControl());
+
         }
 
         $(function() {
-          $('h1').after('<div id="map_canvas" style="width:350px; height:200px"></div>');
+          $('h1').after('<div id="map_canvas" style="width:350px; height:250px"></div>');
           initialize();
         });
       </script>
