@@ -48,18 +48,18 @@ PRODID;X-RICAL-TZSOURCE=TZINFO:-//com.denhaven2/NONSGML ri_cal gem//EN
 CALSCALE:GREGORIAN
 VERSION:2.0
 BEGIN:VEVENT
-DTEND;VALUE=DATE:#{time3.strftime("%Y%m%d")}
-DTSTART;VALUE=DATE:#{time3.strftime("%Y%m%d")}
-DESCRIPTION:
-SUMMARY:SimpleEvent
-LOCATION:street\\, zipcode cologne
-END:VEVENT
-BEGIN:VEVENT
 DTEND;VALUE=DATE-TIME:#{(time + 1.hour).utc.strftime("%Y%m%dT%H%M%SZ")}
 DTSTART;VALUE=DATE-TIME:#{time.utc.strftime("%Y%m%dT%H%M%SZ")}
 DESCRIPTION:description
 URL:url
 SUMMARY:SimpleEvent
+END:VEVENT
+BEGIN:VEVENT
+DTEND;VALUE=DATE:#{time3.strftime("%Y%m%d")}
+DTSTART;VALUE=DATE:#{time3.strftime("%Y%m%d")}
+DESCRIPTION:
+SUMMARY:SimpleEvent
+LOCATION:street\\, zipcode cologne
 END:VEVENT
 BEGIN:VEVENT
 DTEND;VALUE=DATE:#{time4.strftime("%Y%m%d")}
