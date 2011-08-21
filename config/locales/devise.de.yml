@@ -10,6 +10,7 @@ de:
 
   devise:
     failure:
+      already_authenticated: "Du bist schon angemeldet."
       unauthenticated: 'Du musst dich zuerst anmelden.'
       unconfirmed: 'Du musst dein Konto zuerst bestätigen.'
       locked: 'Dein Konto ist gesperrt.'
