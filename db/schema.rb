@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110813121030) do
+ActiveRecord::Schema.define(:version => 20110821091433) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -36,8 +37,8 @@ ActiveRecord::Schema.define(:version => 20110813121030) do
   add_index "events", ["long"], :name => "index_events_on_long"
 
   create_table "users", :force => true do |t|
-    t.string   "email",                               :default => "", :null => false
-    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
+    t.string   "email",                               :default => "",    :null => false
+    t.string   "encrypted_password",   :limit => 128, :default => "",    :null => false
     t.string   "reset_password_token"
     t.string   "remember_token"
     t.datetime "remember_created_at"
@@ -48,6 +49,7 @@ ActiveRecord::Schema.define(:version => 20110813121030) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "admin",                               :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
