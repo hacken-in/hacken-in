@@ -3,6 +3,7 @@ FactoryGirl.define do
     email 'bodo@wannawork.de'
     password "hallo123"
     password_confirmation "hallo123"
+    admin true
   end
 
   factory :user, :class => 'user' do

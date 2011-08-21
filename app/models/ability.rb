@@ -3,7 +3,7 @@ class Ability
 
   def initialize(user)
     user ||= User.new
-    if user.email == "bodo@wannawork.de"
+    if user.admin
       can :manage, :all
     end
   end
