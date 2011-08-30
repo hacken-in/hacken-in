@@ -40,9 +40,13 @@ group :development do
     gem 'rb-fsevent'
     gem 'growl'
   end
+  
+  # guard
   gem 'guard'
   gem 'guard-test'
   gem 'guard-livereload'
+  gem 'guard-pow'
+  gem 'guard-bundler'
 end
 
 group :test do
