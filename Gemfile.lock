@@ -76,6 +76,9 @@ GEM
     guard-test (0.3.0)
       guard (>= 0.2.2)
       test-unit (~> 2.2)
+    guard-yard (1.0.0)
+      guard (>= 0.2.2)
+      yard (>= 0.7.0)
     hike (1.2.1)
     i18n (0.6.0)
     ice_cube (0.6.13)
@@ -124,6 +127,7 @@ GEM
       open4 (~> 0.9.0)
       rake (~> 0.8)
     rb-fsevent (0.4.3.1)
+    rdiscount (1.6.8)
     rdoc (3.9.4)
     ri_cal (0.8.8)
     sass (3.1.7)
@@ -158,6 +162,7 @@ GEM
       vlad (>= 2.1.0)
     warden (1.0.5)
       rack (>= 1.0)
+    yard (0.7.2)
 
 PLATFORMS
   ruby
@@ -177,6 +182,7 @@ DEPENDENCIES
   guard-livereload
   guard-pow
   guard-test
+  guard-yard
   ice_cube (~> 0.6.12)
   jquery-rails
   memcache-client
@@ -185,6 +191,7 @@ DEPENDENCIES
   rails (= 3.1.0)
   rake (~> 0.9)
   rb-fsevent
+  rdiscount
   ri_cal (~> 0.8.8)
   sass-rails (~> 3.1.0)
   sqlite3

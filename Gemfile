@@ -47,6 +47,9 @@ group :development do
   gem 'guard-livereload'
   gem 'guard-pow'
   gem 'guard-bundler'
+  gem 'guard-yard'
+
+  gem 'rdiscount' # for yard formatting
 end
 
 group :test do
