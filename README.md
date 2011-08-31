@@ -1,31 +1,14 @@
-## Was ist hcking?
+## Welcome
 
-Alles was einen Nerd interessiert (fürs Erste) in Köln und Umgebung
+This is the code of [hcking.de](http://hcking.de). Hcking.de is an event
+calendar for geeks in and around cologne.
 
-## Milestone 1
+If you want to participate, feel free to fork and send us a pull request!
 
-* Design [Lucas]
-* HAML [Lucas]
-* Tags
-* Suche
-* Pagination (will_paginate)
-* Blog eventuell einbinden [Bodo: Besprechung]
-* Caching [Bodo]
-* Test Coverage
-* Code Aufräumen für Open Source
+## Note on Patches/Pull Requests
 
-## Milestone 2
-
-* Personalisieren
-  * Eigener Kalender
-  * Favorites / Ausschließen siehe Stack Overflow
-  * Teilnahme Anzeigen
-  * Gravatar
-
-## Other Ideas
-
-* Opengraph http://developers.facebook.com/docs/opengraph/
-* Post to Twitter ( heute: @devhousefriday um 19:00 http://hcking.de/e/1 )
-* Good layout
-* Calender-Import
-* Newsletter
+* Fork the project.
+* Make your feature addition or bug fix.
+* Add tests for it. This is important so I don't break it in a future version unintentionally.
+* Commit
+* Send me a pull request. Bonus points for topic branche
