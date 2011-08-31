@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0.rc6'
+gem 'rails', '3.1.0'
 gem 'rake', '~> 0.9'
 
 # Databases
@@ -9,7 +9,7 @@ gem 'mysql2'
 gem 'memcache-client'
 
 # Asset template engines
-gem 'sass-rails', "~> 3.1.0.rc.5"
+gem 'sass-rails', "~> 3.1.0"
 gem 'coffee-script'
 gem 'uglifier'
 
