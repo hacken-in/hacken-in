@@ -34,6 +34,8 @@ gem 'geocoder', '~> 1.0'
 gem 'execjs'
 gem 'therubyracer'
 
+gem 'rdiscount' # for yard formatting
+
 group :development do
   # Deployment
   gem 'vlad', :require => false
@@ -51,7 +53,6 @@ group :development do
   gem 'guard-bundler'
   gem 'guard-yard'
 
-  gem 'rdiscount' # for yard formatting
 end
 
 group :test do
