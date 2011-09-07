@@ -1,7 +1,7 @@
 !!! 5
 %html
   %head
-    %title= content_for?(:title) ? yield(:title) + " - " : "hcking.de"
+    %title= content_for?(:title) ? yield(:title) + " – hcking.de" : "hcking.de"
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
