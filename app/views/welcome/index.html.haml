@@ -22,8 +22,9 @@
     = link_to entry[:event].name, event_path(entry[:event])
 
 %p
-  Den Kalender gibt es auch als <a href="/ical.ics">iCal</a>. Den Link einfach als Abo zum
-  eigenen Kalender hinzufügen.
+  Den Kalender gibt es auch als
+  =link_to "iCal", "abonnieren"
+  \.
 
 %p
   = link_to "Alle Events", events_path
