@@ -4,7 +4,7 @@
     %title= content_for?(:title) ? yield(:title) + " – hcking.de" : "hcking.de"
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
-    %link{:rel=>"shortcut icon", :href=> "#{asset_path "favicon.png"}"}
+    %link{:rel=>"shortcut icon", :href=> "#{asset_path "favicon.png", "images"}"}
     = csrf_meta_tags
     :javascript
 
