@@ -52,6 +52,10 @@ class Event < ActiveRecord::Base
     @schedule = cube_obj
   end
 
+  def to_param
+    "#{self.id}-#{self.name.parameterize}"
+  end
+  
   private
 
   def schedule_to_yaml
