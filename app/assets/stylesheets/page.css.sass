@@ -1,46 +1,80 @@
+// Variable Decleration
+// ATTENTION: If you change one of these values
+// don't forget to change the images as well
+$page_background: #A5BDCE
+$header_background: #2C2C2C
+$content_background: #F1F1F1
+$content_foreground: #333
+$content_border: #8F8F8F
+$content_width: 840px
+$logo_height: 146px
+
+// Design and Layout
+
 body
-  background-color: #4B7399
+  background-color: $page_background
   font-family: Verdana, Helvetica, Arial
   font-size: 14px
 
-a
-  img
-    border: none
-  color: #0000FF
-
-.clear
-  clear: both
-  height: 0
-  overflow: hidden
-
 header
-  width: 840px
-  margin: 0 auto
-  margin-top: 20px
+  background: $header_background image-url("header_background.png") no-repeat
+  background-position: bottom
+  height: $logo_height
+  width: $content_width - 40px
+  margin: 20px auto 0
+  padding: 30px 25px
+  img
+    float: left
+    margin-right: 20px
   a
-    font-size: 16px
+    display: block
+    float: left
+    clear: right
+    padding-top: 60px
+    height: $logo_height - 60px
+    font-size: 26px
     text-decoration: none
-    color: white
+    color: #CCC
     &:hover
       text-decoration: underline
 
 section
   position: relative
-  width: 760px
+  width: $content_width - 80px
   margin: 0 auto
-  background-color: #FFF
+  background-color: $content_background
+  color: $content_foreground
   padding: 20px 40px
-  border: solid 1px black
-  margin-top: 10px
+  border-left: solid 1px $content_border
+  border-right: solid 1px $content_border
+  border-bottom: solid 1px $content_border
+  a
+    img
+      border: none
+    color: $content_foreground - #222
+  h1, h2
+    color: $content_foreground - #222
+  h3
+    background: image-url("heading_background.png") no-repeat
+    background-position: left
+    display: block
+    padding: 10px 0px 0px 46px
+    width: 250px - 46px
+    height: 50px - 10px
+    position: relative
+    left: -46px
 
 footer
-  width: 840px
+  width: $content_width
   margin: 0px auto
   padding-top: 10px
   font-size: 11px
+  text-align: center
   color: black
   a
     color: black
+
+// Flash
 
 .flash_notice, .flash_error, .flash_alert
   padding: 5px 8px
@@ -56,6 +90,8 @@ footer
 
 .fieldWithErrors
   display: inline
+
+// Error Messages
 
 .error_messages
   width: 400px
@@ -78,8 +114,15 @@ footer
   ul
     margin: 0
 
+// Misc Styles
+
 .address
   font-style: italic
+
+.clear
+  clear: both
+  height: 0
+  overflow: hidden
 
 #fb_like, #twitter_like
   height: 25px
