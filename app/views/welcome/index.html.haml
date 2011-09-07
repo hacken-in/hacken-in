@@ -21,10 +21,7 @@
     = entry[:time].strftime("%H:%M") if !entry[:event].full_day
     = link_to entry[:event].name, event_path(entry[:event])
 
-%p
-  Den Kalender gibt es auch als
-  =link_to "iCal", "abonnieren"
-  \.
+%p Den Kalender gibt es auch als #{link_to "iCal", "abonnieren"}.
 
 %p
   = link_to "Alle Events", events_path
