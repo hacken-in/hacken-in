@@ -1,0 +1,74 @@
+- title @event.name
+
+- unless @event.latitude.blank? or @event.longitude.blank?
+  - content_for :javascript do
+    %script{:type => "text/javascript", :src => "http://tile.cloudmade.com/wml/latest/web-maps-lite.js"}
+    :javascript
+      function initialize() {
+        var cloudmade = new CM.Tiles.CloudMade.Web({
+            key: '785896de12ad4cf892e32b9ec16b5cde',
+            styleId: 997
+        });
+        var map = new CM.Map('map_canvas', cloudmade);
+
+        var myMarkerLatLng = new CM.LatLng(<%= @event.latitude %>, <%= @event.longitude %>);
+        var myMarker = new CM.Marker(myMarkerLatLng);
+
+        map.setCenter(myMarkerLatLng, 14);
+        map.addOverlay(myMarker);
+        map.addControl(new CM.SmallMapControl());
+
+      }
+
+      $(function() {
+        $('h1').after('<div id="map_canvas" style="width:350px; height:250px"></div>');
+        initialize();
+      });
+
+= simple_format @event.description
+
+.address
+  = @event.location
+  %br
+  = @event.street
+  %br
+  = @event.zipcode
+  = @event.city
+
+- unless @event.url.blank?
+  %p= link_to @event.url, @event.url
+
+- unless @event.twitter.blank?
+  %p= link_to "@#{@event.twitter}", "http://twitter.com/#{@event.twitter}"
+
+- if can? :update, @event
+  = link_to "Bearbeiten", edit_event_path(@event)
+
+- if can? :delete, @event
+  = link_to "Löschen", event_path(@event), :method => :delete, :confirm => "Wirklich löschen?"
+
+%h2 Die nächsten Events:
+
+- cache("event_occurences_#{@event.id}") do
+  - occurrences = @event.schedule.next_occurrences(4, Date.today)
+  - if occurrences.size > 0
+    %ul
+      - occurrences.each do |date|
+        %li= @event.full_day? ? date.strftime("%d.%m.%Y") :  date.strftime("%d.%m.%Y um %H:%M")
+  - else
+    %p Keine Events geplant
+
+#twitter_like
+  <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="hackcologne">Tweet</a>
+  <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+
+#fb_like
+  #fb-root
+    <script src="http://connect.facebook.net/en_US/all.js#appId=213379535367603&amp;xfbml=1"></script>
+    <fb:like href="<%= event_url(@event)%>" send="true" width="450" show_faces="false" font="" layout="button_count"></fb:like>
+
+- if can? :update, @event
+  = render "edit"
+
+%p
+  %a{:href => "/"} Zurück zur Übersicht

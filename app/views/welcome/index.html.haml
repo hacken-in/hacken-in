@@ -1,0 +1,43 @@
+%h1 Events für Hacker
+
+.flash_notice
+  Hcking.de ist in der Alpha-Phase. Hast du bock zu helfen? Zum Beispiel beim 
+  Design der Seite oder beim hinzufügen von weiteren Features?
+  Dann schreib <a href='mailto:mail@hcking.de'>mir</a> eine Mail. Danke!
+
+%p
+  Hacker, Entwickler, Geek, Nerd? Langweilst du dich in deinem Keller? Dann bist du hier genau
+  richtig. Hier gibt's eine Auflistung aller Events rund um Köln. <a href="/about">Mehr...</a>
+
+%h2 Events in den nächsten 4 Wochen:
+
+- current_date = nil
+- Event.get_ordered_events(Date.today, Date.today + 4.weeks).each do |entry|
+  - if current_date != entry[:time].to_date 
+    - current_date = entry[:time].to_date
+    %h3
+      = current_date.strftime("%d.%m.%Y")
+  %p
+    = entry[:time].strftime("%H:%M") if !entry[:event].full_day
+    = link_to entry[:event].name, event_path(entry[:event])
+
+%p
+  Den Kalender gibt es auch als <a href="/ical.ics">iCal</a>. Den Link einfach als Abo zum
+  eigenen Kalender hinzufügen.
+
+%p
+  = link_to "Alle Events", events_path
+  - if can? :create, Event
+    |
+    = link_to "Event hinzufügen", new_event_path
+  - else
+  %p
+    Hier fehlt ein Event? Dann schick mir eine <a href="mailto:mail@hcking.de">E-Mail</a>.
+
+#twitter_like
+  <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+  <a href="http://twitter.com/hackcologne" class="twitter-follow-button" data-show-count="false" data-lang="de">Follow @hackcologne</a>
+#fb_like
+  #fb-root
+  <script src="http://connect.facebook.net/en_US/all.js#appId=213379535367603&amp;xfbml=1"></script>
+  <fb:like href="http://hcking.de" send="true" width="450" show_faces="false" font="" layout="button_count"></fb:like>

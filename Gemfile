@@ -12,6 +12,7 @@ gem 'memcache-client'
 gem 'sass-rails', "~> 3.1.0"
 gem 'coffee-script'
 gem 'uglifier'
+gem 'haml'
 
 # Monitoring 
 gem 'newrelic_rpm', '~>3.1.1'
@@ -54,6 +55,6 @@ end
 
 group :test do
   # Pretty printed test output
-  gem 'turn', :require => false
+  # gem 'turn', :require => false
   gem 'factory_girl_rails', "~> 1.1.beta1"
 end
