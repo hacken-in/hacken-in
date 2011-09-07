@@ -14,7 +14,7 @@ class PagesController < ApplicationController
   end
 
   def self.find_partials
-    Dir.glob(Rails.root.join('app', 'views', 'pages', '_*.erb')).map do |file|
+    Dir.glob(Rails.root.join('app', 'views', 'pages', '_*.haml')).map do |file|
       file = Pathname.new(file).basename.to_s
       # Strip leading _ and then everything from the first . to the end of the name
       file.sub(/^_/, '').sub(/\..+$/, '')
