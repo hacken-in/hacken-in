@@ -13,6 +13,7 @@ gem 'sass-rails', "~> 3.1.0"
 gem 'coffee-script'
 gem 'uglifier'
 gem 'haml'
+gem 'redcarpet'
 
 # Monitoring 
 gem 'newrelic_rpm', '~>3.1.1'
