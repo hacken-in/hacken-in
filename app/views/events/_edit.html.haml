@@ -1,0 +1,60 @@
+%h3 Daten bearbeiten:
+
+= form_tag(event_schedule_update_path(@event), :method => :put) do
+  %p Start-Datum:
+  %div= datetime_select("start_date", "date", :start_year => Date.today.year, :default => @event.schedule.start_time)
+
+  %p Länge (in Minuten)
+  %div= number_field_tag 'duration', (@event.schedule.duration / 60).round, :min => 0
+
+  = submit_tag "Ändern"
+
+- default_time = 3.days.from_now.to_time.change(:hour => 20, :minute => 0)
+
+%h4 Event-Daten:
+
+- if @event.schedule.rdates.count > 0
+  %ul
+    - @event.schedule.rdates.each_with_index do |rdate, index|
+      %li
+        = rdate.strftime("%d.%m.%Y um %H:%M")
+        = link_to "Löschen", event_schedule_rdate_path(@event, :id => index), :method => :delete, :confirm => "Sind sie sicher?"
+- else
+  %p Keine Daten vorhanden
+
+= form_tag(event_schedule_rdates_path(@event), :method => :create) do
+  = datetime_select("rdate", "date", :start_year => Date.today.year, :default => default_time)
+  = submit_tag "Anlegen"
+
+%h4 Regeln:
+
+- if @event.schedule.rrules.count > 0
+  %ul
+    - @event.schedule.rrules.each_with_index do |rrule, index|
+      %li
+        = rrule.to_s
+        = link_to "Löschen", event_schedule_rule_path(@event, :id => index), :method => :delete, :confirm => "Sind sie sicher?"
+- else
+  %p Keine Regeln vorhanden
+
+= form_tag(event_schedule_rules_path(@event), :method => :create) do
+  Am
+  = select_tag "week_number", options_for_select([["ersten", "1"], ["zweiten", "2"], ["dritten", "3"], ["vierten", "4"], ["fünften", "5"], ["letzten", "-1"]])
+  = select_tag "day_of_week", weekday_select_option
+  des Monats.
+  = submit_tag "Anlegen"
+
+%h4 Diese Daten ausschließen:
+
+- if @event.schedule.exdates.count > 0
+  %ul
+    - @event.schedule.exdates.each_with_index do |exdate, index|
+      %li
+        = exdate.strftime("%d.%m.%Y um %H:%M")
+        = link_to "Löschen", event_schedule_exdate_path(@event, :id => index), :method => :delete, :confirm => "Sind sie sicher?"
+- else
+  %p Keine Daten vorhanden
+
+= form_tag(event_schedule_exdates_path(@event), :method => :create) do
+  = datetime_select("exdate", "date", :start_year => Date.today.year, :default => default_time)
+  = submit_tag "Anlegen"
