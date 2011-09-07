@@ -1,0 +1,19 @@
+- title "Abonnieren"
+
+%p
+  Die iCal-URL zum abonnieren des Kalender ist:
+
+%input{:size=> 40, :value => url_for(:action=>"index", :controller=>"ical", :format => "ical", :only_path => false)}
+
+:markdown
+  # Google Calendar
+
+  In der linken Spalte neben "Other Calendars" auf den Pfeil klicken und dann auf "Add by URL".
+
+  Nun einfach die URL des Kalenders einfügen.
+
+  # Apple iCal
+
+  Im Menü "Kalender" auf "Abonnieren" klicken und dort die URL des Kalenders einfügen.
+
+  [Zurück zur Übersicht](/)
