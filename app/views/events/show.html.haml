@@ -49,7 +49,7 @@
 
 %h2 Die nächsten Events:
 
-- cache("event_occurences_#{@event.id}") do
+- cache("event_occurences_#{@event.id}", :expires_in => 10.minutes) do
   - occurrences = @event.schedule.next_occurrences(4, Date.today)
   - if occurrences.size > 0
     %ul
