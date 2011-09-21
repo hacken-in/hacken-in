@@ -28,13 +28,16 @@
     %header
       = image_tag "#{asset_path "logo.gif"}"
       %a{:href => "/"} hcking.de
-    
+
     %section
       - flash.each do |name, msg|
         = content_tag :div, msg, :class => "flash_#{name}"
       = content_tag :h1, yield(:title) if show_title?
+
+      - if content_for? :aside
+        %aside= yield :aside
       = yield
-    
+
     %footer
       Dieser Event-Kalender ist ein Service von
       %a{:href => "http://bodotasche.de"} Bodo "bitboxer" Tasche
