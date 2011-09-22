@@ -17,8 +17,6 @@ body
   font-size: 14px
 
 header
-  background: $header_background image-url("header_background.png") no-repeat
-  background-position: bottom
   height: $logo_height
   width: $content_width - 40px
   margin: 20px auto 0
@@ -37,6 +35,12 @@ header
     color: #CCC
     &:hover
       text-decoration: underline
+
+header.with_aside
+  background: $header_background image-url("header_background_with_aside.png") no-repeat bottom
+
+header.without_aside
+  background: $header_background image-url("header_background_without_aside.png") no-repeat bottom
 
 section
   position: relative
