@@ -29,7 +29,7 @@
       = image_tag "#{asset_path "logo.gif"}"
       %a{:href => "/"} hcking.de
 
-    %section
+    %section{:class => "#{content_for?(:aside) ? 'with' : 'without'}_aside"}
       - flash.each do |name, msg|
         = content_tag :div, msg, :class => "flash_#{name}"
       = content_tag :h1, yield(:title) if show_title?

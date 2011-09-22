@@ -42,7 +42,6 @@ section
   position: relative
   width: $content_width - 80px
   margin: 0 auto
-  background: image-url("content_background.png") repeat-y
   color: $content_foreground
   padding: 20px 40px
   border-left: solid 1px $content_border
@@ -63,6 +62,12 @@ section
     height: 50px - 10px
     position: relative
     left: -46px
+
+section.with_aside
+  background: image-url("content_background.png") repeat-y
+
+section.without_aside
+  background: $content_background
 
 aside
   float: right
