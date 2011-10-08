@@ -11,9 +11,9 @@
 <% end -%>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-  <%= link_to "Email für die Aktivierung nicht erhalten?", new_confirmation_path(resource_name) %><br />
+  <%= link_to "E-Mail für die Aktivierung nicht erhalten?", new_confirmation_path(resource_name) %><br />
 <% end -%>
 
 <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
-  <%= link_to "Email zum entsperren des Kontos nicht bekommen?", new_unlock_path(resource_name) %><br />
+  <%= link_to "E-Mail zum entsperren des Kontos nicht bekommen?", new_unlock_path(resource_name) %><br />
 <% end -%>

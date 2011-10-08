@@ -159,6 +159,7 @@ de:
         record_invalid: "Gültigkeitsprüfung ist fehlgeschlagen: %{errors}"
     attributes:
       user:
+        email: E-Mail
         password: Passwort
         password_confirmation: Passwort bestätigen
         current_password: Aktuelles Passwort
