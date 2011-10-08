@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(:version => 20111008134519) do
   create_table "single_events", :force => true do |t|
     t.string   "topic"
     t.text     "description"
-    t.date     "date"
     t.time     "time"
     t.integer  "event_id"
     t.datetime "created_at"
