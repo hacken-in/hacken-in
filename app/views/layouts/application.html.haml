@@ -27,7 +27,18 @@
         :alt =>"Fork me on GitHub"}
     %header{:class => "#{content_for?(:aside) ? 'with' : 'without'}_aside"}
       = image_tag "#{asset_path "logo.gif"}"
-      %a{:href => "/"} hcking.de
+      %a{:href => "/", :class => "logo"} hcking.de
+      #user_login
+        - if current_user
+          Hallo
+          %a{:href => "#{edit_user_registration_path}"}<
+            = current_user.nickname
+          \|
+          %a{:href => "#{destroy_user_session_path}"} Abmelden
+        - else
+          %a{:href => "#{new_user_session_path}"} Anmelden
+          \|
+          %a{:href => "#{new_user_registration_path}"} Registrieren
 
     %section{:class => "#{content_for?(:aside) ? 'with' : 'without'}_aside"}
       - flash.each do |name, msg|
