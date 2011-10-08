@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  topic: 
+  description: 
+  date: 
+  time: 
+  event_id: 
+
+two:
+  topic: 
+  description: 
+  date: 
+  time: 
+  event_id: 
