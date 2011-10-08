@@ -102,4 +102,33 @@ class EventTest < ActiveSupport::TestCase
     assert_equal "51063 Köln", event.address
   end
 
+  test "generate single events for a new event" do
+    event = Event.new(name: "Hallo")
+
+    event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
+
+    event.save
+    assert_difference 'SingleEvent.count', 12 do
+      event.generate_single_events
+    end
+  end
+
+  test "generate single events if pattern changed" do
+    event = Event.new(name: "Hallo")
+
+    event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
+
+    event.save
+    event.generate_single_events
+
+    event.schedule.remove_recurrence_rule IceCube::Rule.weekly.day(:thursday)
+
+    event.save
+
+    assert_difference "SingleEvent.count", -12 do
+      event.generate_single_events
+    end
+
+  end
+
 end
