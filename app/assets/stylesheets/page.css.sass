@@ -17,6 +17,7 @@ body
   font-size: 14px
 
 header
+  position: relative
   height: $logo_height
   width: $content_width - 40px
   margin: 20px auto 0
@@ -24,7 +25,7 @@ header
   img
     float: left
     margin-right: 20px
-  a
+  a.logo
     display: block
     float: left
     clear: right
@@ -41,6 +42,16 @@ header.with_aside
 
 header.without_aside
   background: $header_background image-url("header_background_without_aside.png") no-repeat bottom
+
+header #user_login
+  color: white
+  position: absolute
+  bottom: 12px
+  right: 10px
+  a
+    color: #A5BDCE
+    &:visited
+      color: #A5BDCE
 
 section
   position: relative
