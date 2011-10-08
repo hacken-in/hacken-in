@@ -1,5 +1,8 @@
 class Event < ActiveRecord::Base
   before_save :schedule_to_yaml
+  
+  # Provide tagging
+  acts_as_taggable
 
   validates_presence_of :name
 

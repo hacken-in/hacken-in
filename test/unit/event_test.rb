@@ -101,5 +101,16 @@ class EventTest < ActiveSupport::TestCase
     event.zipcode = "51063"
     assert_equal "51063 Köln", event.address
   end
+  
+  test "tagging" do
+    event = Event.new(name: "Hallo") 
+    assert_equal 0, event.tags.count
+    
+    event.tag_list = "ruby, rails"
+    assert_equal event.tag_list, ["ruby", "rails"]
+    
+    event.tag_list << "jquery"
+    assert_equal event.tag_list, ["ruby", "rails", "jquery"]
+  end
 
 end
