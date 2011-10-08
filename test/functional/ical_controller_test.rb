@@ -42,11 +42,18 @@ class IcalControllerTest < ActionController::TestCase
     assert_response :success
     assert_equal "text/calendar", @response.headers["Content-Type"]
 
-    expected = <<DESC
+    vcal_start =<<DESC
 BEGIN:VCALENDAR
 PRODID;X-RICAL-TZSOURCE=TZINFO:-//com.denhaven2/NONSGML ri_cal gem//EN
 CALSCALE:GREGORIAN
 VERSION:2.0
+DESC
+
+    vcal_end =<<DESC
+END:VCALENDAR
+DESC
+    
+  vcal_event =<<DESC
 BEGIN:VEVENT
 DTEND;VALUE=DATE-TIME:#{(time + 1.hour).utc.strftime("%Y%m%dT%H%M%SZ")}
 DTSTART;VALUE=DATE-TIME:#{time.utc.strftime("%Y%m%dT%H%M%SZ")}
@@ -54,20 +61,9 @@ DESCRIPTION:description
 URL:url
 SUMMARY:SimpleEvent
 END:VEVENT
-BEGIN:VEVENT
-DTEND;VALUE=DATE:#{time3.strftime("%Y%m%d")}
-DTSTART;VALUE=DATE:#{time3.strftime("%Y%m%d")}
-DESCRIPTION:
-SUMMARY:SimpleEvent
-LOCATION:street\\, zipcode cologne
-END:VEVENT
-BEGIN:VEVENT
-DTEND;VALUE=DATE:#{time4.strftime("%Y%m%d")}
-DTSTART;VALUE=DATE:#{time4.strftime("%Y%m%d")}
-DESCRIPTION:
-SUMMARY:SimpleEvent
-LOCATION:home\\, cologne
-END:VEVENT
+DESC
+
+  vcal_event2 =<<DESC
 BEGIN:VEVENT
 DTEND;VALUE=DATE:#{time2.strftime("%Y%m%d")}
 DTSTART;VALUE=DATE:#{time2.strftime("%Y%m%d")}
@@ -75,10 +71,34 @@ DESCRIPTION:
 SUMMARY:SimpleEvent
 LOCATION:home\\, street\\, zipcode cologne
 END:VEVENT
-END:VCALENDAR
 DESC
 
-    assert_equal expected,  @response.body
+  vcal_event3 =<<DESC
+BEGIN:VEVENT
+DTEND;VALUE=DATE:#{time3.strftime("%Y%m%d")}
+DTSTART;VALUE=DATE:#{time3.strftime("%Y%m%d")}
+DESCRIPTION:
+SUMMARY:SimpleEvent
+LOCATION:street\\, zipcode cologne
+END:VEVENT
+DESC
+
+  vcal_event4 =<<DESC
+BEGIN:VEVENT
+DTEND;VALUE=DATE:#{time4.strftime("%Y%m%d")}
+DTSTART;VALUE=DATE:#{time4.strftime("%Y%m%d")}
+DESCRIPTION:
+SUMMARY:SimpleEvent
+LOCATION:home\\, cologne
+END:VEVENT
+DESC
+
+    assert @response.body.start_with? vcal_start
+    assert @response.body.end_with? vcal_end
+    assert @response.body.include? vcal_event
+    assert @response.body.include? vcal_event2
+    assert @response.body.include? vcal_event3
+    assert @response.body.include? vcal_event4
   end
 
 end

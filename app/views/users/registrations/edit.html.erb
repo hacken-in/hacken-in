@@ -3,6 +3,9 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
 
+  <p><%= f.label :nickname %><br />
+  <%= f.text_field :nickname %></p>
+
   <p><%= f.label :email %><br />
   <%= f.text_field :email %></p>
 
@@ -12,7 +15,7 @@
   <p><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></p>
 
-  <p><%= f.label :current_password %> <i>(um änderungen zu machen, brauchen wir dein aktuelles Passwort)</i><br />
+  <p><%= f.label :current_password %> <i>(um Änderungen zu machen, brauchen wir dein aktuelles Passwort)</i><br />
   <%= f.password_field :current_password %></p>
 
   <p><%= f.submit "Speichern" %></p>
@@ -20,6 +23,6 @@
 
 <h3>Konto löschen</h3>
 
-<p>Du willst dein Konto löschen? <br> <%= link_to "Ja, bitte mein Konto löschen", registration_path(resource_name), :confirm => "Bist du sicher?", :method => :delete %>.</p>
+<p>Du willst dein Konto löschen? <br> <%= link_to "Ja, bitte mein Konto löschen", registration_path(resource_name), :confirm => "Bist Du sicher?", :method => :delete %>.</p>
 
 <%= link_to "Zurück", :back %>
