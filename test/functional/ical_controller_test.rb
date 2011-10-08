@@ -42,17 +42,6 @@ class IcalControllerTest < ActionController::TestCase
     assert_response :success
     assert_equal "text/calendar", @response.headers["Content-Type"]
 
-    # 
-    # 
-    # 
-    # 
-    # 
-    # 
-    # 
-    # 
-    
-
-    
     vcal_start =<<DESC
 BEGIN:VCALENDAR
 PRODID;X-RICAL-TZSOURCE=TZINFO:-//com.denhaven2/NONSGML ri_cal gem//EN
@@ -110,9 +99,6 @@ DESC
     assert @response.body.include? vcal_event2
     assert @response.body.include? vcal_event3
     assert @response.body.include? vcal_event4
-
-
-
   end
 
 end
