@@ -1,5 +1,11 @@
 class Event < ActiveRecord::Base
+  has_many :single_events
+
   before_save :schedule_to_yaml
+  after_save :generate_single_events
+
+  # Provide tagging
+  acts_as_taggable
 
   validates_presence_of :name
 
@@ -26,6 +32,23 @@ class Event < ActiveRecord::Base
 
     events.sort_by {|el| [el[:time], el[:event].name]}
   end
+
+  def generate_single_events
+    self.single_events.in_future.each do |single_event|
+      # Delete SingleEvents that don't match the pattern
+      unless schedule.occurs_at? single_event.time
+        single_event.destroy
+      end
+    end
+
+    self.schedule.next_occurrences(12).each do |occurence|
+      # Add SingleEvents that are in the pattern, but haven't been created so far
+      if self.single_events.in_future.where("time = ?", occurence).empty?
+        self.single_events.create(:time => occurence)
+      end
+    end
+  end
+
 
   def address
     [self.street, "#{self.zipcode} #{self.city}"].delete_if {|d| d.blank?}.collect{|d|d.strip}.join(", ")

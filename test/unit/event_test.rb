@@ -101,5 +101,45 @@ class EventTest < ActiveSupport::TestCase
     event.zipcode = "51063"
     assert_equal "51063 Köln", event.address
   end
+  
+  test "tagging" do
+    event = Event.new(name: "Hallo") 
+    assert_equal 0, event.tags.count
+    
+    event.tag_list = "ruby, rails"
+    assert_equal event.tag_list, ["ruby", "rails"]
+    
+    event.tag_list << "jquery"
+    assert_equal event.tag_list, ["ruby", "rails", "jquery"]
+  end
+
+  test "generate single events for a new event" do
+    event = Event.new(name: "Hallo")
+
+    event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
+
+    event.save
+    assert_difference 'SingleEvent.count', 12 do
+      event.generate_single_events
+    end
+  end
+
+  test "generate single events if pattern changed" do
+    event = Event.new(name: "Hallo")
+
+    event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
+
+    event.save
+    event.generate_single_events
+
+    event.schedule.remove_recurrence_rule IceCube::Rule.weekly.day(:thursday)
+
+    event.save
+
+    assert_difference "SingleEvent.count", -12 do
+      event.generate_single_events
+    end
+
+  end
 
 end
