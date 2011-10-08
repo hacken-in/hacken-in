@@ -36,6 +36,16 @@ ActiveRecord::Schema.define(:version => 20111008134519) do
   add_index "events", ["lat"], :name => "index_events_on_lat"
   add_index "events", ["long"], :name => "index_events_on_long"
 
+  create_table "single_events", :force => true do |t|
+    t.string   "topic"
+    t.text     "description"
+    t.date     "date"
+    t.time     "time"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
