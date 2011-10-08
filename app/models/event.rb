@@ -2,6 +2,7 @@ class Event < ActiveRecord::Base
   has_many :single_events
 
   before_save :schedule_to_yaml
+  after_save :generate_single_events
 
   validates_presence_of :name
 
