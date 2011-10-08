@@ -36,6 +36,8 @@ gem 'therubyracer'
 
 gem 'rdiscount' # for yard formatting
 
+gem 'zero-clipboard-rails'
+
 group :development do
   # Deployment
   gem 'vlad', :require => false

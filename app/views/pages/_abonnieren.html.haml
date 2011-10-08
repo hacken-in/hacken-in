@@ -1,9 +1,20 @@
+- content_for :javascript_assets do
+  subscribe
+
 - title "Abonnieren"
 
 %p
   Die iCal-URL zum abonnieren des Kalender ist:
 
-%input{:size=> 40, :value => url_for(:action=>"index", :controller=>"ical", :format => "ical", :only_path => false)}
+%input{:size=> 40, :id => "icallink", :value => url_for(:action=>"index", :controller=>"ical", :format => "ical", :only_path => false)}
+
+%span{:id => "d_clip_button"} Klick hier
+
+<script language="JavaScript">
+var clip = new ZeroClipboard.Client();
+clip.setText( $('#icallink').val() );
+clip.glue( 'd_clip_button' );
+</script>
 
 :markdown
   # Google Calendar
