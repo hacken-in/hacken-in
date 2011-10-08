@@ -21,6 +21,10 @@
         clip.setText( $('#icallink').val() );
         clip.glue( 'd_clip_button' );
       });
+      $("#icallink").mouseup(function(){
+        this.select();
+        return false;
+      });
     });
 
 :markdown
