@@ -1,0 +1,17 @@
+= @event.full_day? ? @single_event.time.strftime("%d.%m.%Y") :  @single_event.time.strftime("%d.%m.%Y um %H:%M")
+
+= simple_format @single_event.description
+
+.address
+  = @event.location
+  %br
+  = @event.street
+  %br
+  = @event.zipcode
+  = @event.city
+
+- unless @event.url.blank?
+  %p= link_to @event.url, @event.url
+
+- unless @event.twitter.blank?
+  %p= link_to "@#{@event.twitter}", "http://twitter.com/#{@event.twitter}"
