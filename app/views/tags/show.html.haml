@@ -4,9 +4,8 @@
 - unless @events.empty?
   - @events.each do |event|
     %p
-      = event.name
-      %ul.tags
-        - event.tag_list.each do |tag|
-          %li= link_to tag, tag_path(tag)
+      = link_to event.name, event_path(event)
+      = render 'tags/tags', :event => event
+      
 - else
   %p Es scheint keine Events mit diesem Tag zu geben.
