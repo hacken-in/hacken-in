@@ -2,6 +2,9 @@
 
 %ul
   - Event.order(:name).each do |event|
-    %li= link_to event.name, event_path(event)
+    %li
+      = link_to event.name, event_path(event)
+      <br/>
+      = render "tags/tags", :event => event
 
 = link_to "Zurück", root_path
