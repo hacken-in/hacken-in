@@ -49,7 +49,6 @@ class Event < ActiveRecord::Base
     end
   end
 
-
   def address
     [self.street, "#{self.zipcode} #{self.city}"].delete_if {|d| d.blank?}.collect{|d|d.strip}.join(", ")
   end

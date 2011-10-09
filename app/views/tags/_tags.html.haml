@@ -1,0 +1,4 @@
+- unless event.tag_list.empty?
+  %ul.tags
+    - event.tag_list.each do |tag|
+      %li= link_to tag, tag_path(tag)

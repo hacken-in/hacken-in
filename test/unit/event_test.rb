@@ -107,10 +107,13 @@ class EventTest < ActiveSupport::TestCase
     assert_equal 0, event.tags.count
 
     event.tag_list = "ruby, rails"
-    assert_equal event.tag_list, ["ruby", "rails"]
+    assert_equal ["ruby", "rails"], event.tag_list
 
     event.tag_list << "jquery"
-    assert_equal event.tag_list, ["ruby", "rails", "jquery"]
+    assert_equal  ["ruby", "rails", "jquery"], event.tag_list
+    event.save
+    event.reload
+    assert_equal ["ruby", "rails", "jquery"], event.tags.map {|e| e.name}
   end
 
   test "generate single events for a new event" do
