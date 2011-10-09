@@ -144,4 +144,11 @@ class EventTest < ActiveSupport::TestCase
     assert_equal old_single_events, event.single_events.map{|e| e.id}
   end
 
+  test "future_single_event_creation" do
+    event = FactoryGirl.create(:simple)
+    event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
+    assert_difference "SingleEvent.count", 12 do
+      event.future_single_event_creation
+    end
+  end
 end
