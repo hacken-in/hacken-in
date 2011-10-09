@@ -1,7 +1,0 @@
-<p>Hallo <%= @resource.email %>!</p>
-
-<p>Du musst jetzt nur noch deine E-Mail-Adresse bestätigen, in dem du diesen Link klickst:</p>
-
-<p><%= link_to 'E-Mail-Adresse bestätigen', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
-
-<p>Danke!</p>
