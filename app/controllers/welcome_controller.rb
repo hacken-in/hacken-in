@@ -3,6 +3,12 @@ class WelcomeController < ApplicationController
 
   def index
     
+    if user_signed_in? && !current_user.hate_list.empty?
+      
+      @events = Event.tagged_with(current_user.hate_list, exclude: true).get_ordered_events(Date.today, Date.today + 4.weeks)
+    else
+      @events = Event.get_ordered_events(Date.today, Date.today + 4.weeks)
+    end
   end
 
 end
