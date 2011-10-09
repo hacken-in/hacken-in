@@ -1,6 +1,8 @@
 Hcking::Application.routes.draw do
   devise_for :users
-
+  
+  resources :tags
+  
   resources :events do
     namespace "schedule" do
       resources :rdates, :exdates, :rules
@@ -13,4 +15,6 @@ Hcking::Application.routes.draw do
   root :to => 'welcome#index'
 
   match ':page_name' => 'pages#show'
+  
+
 end
