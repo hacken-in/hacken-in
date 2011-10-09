@@ -53,11 +53,12 @@ group :development do
   
   # guard
   gem 'guard'
-  gem 'guard-test'
+  gem 'guard-test', "~> 0.4.0"
   gem 'guard-livereload'
   gem 'guard-pow'
   gem 'guard-bundler'
   gem 'guard-yard'
+  gem 'guard-spork'
 
 end
 
@@ -65,4 +66,5 @@ group :test do
   # Pretty printed test output
   # gem 'turn', :require => false
   gem 'factory_girl_rails', "~> 1.1.beta1"
+  gem 'spork-testunit'
 end
