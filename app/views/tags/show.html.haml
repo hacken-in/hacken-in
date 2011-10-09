@@ -1,0 +1,12 @@
+
+%h2 Events mit diesem Tag
+
+- unless @events.empty?
+  - @events.each do |event|
+    %p
+      = event.name
+      %ul.tags
+        - event.tag_list.each do |tag|
+          %li= link_to tag, tag_path(tag)
+- else
+  %p Es scheint keine Events mit diesem Tag zu geben.
