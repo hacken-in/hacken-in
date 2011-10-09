@@ -7,6 +7,7 @@ Hcking::Application.routes.draw do
 
       match 'update' => 'update#update', :via => :put
     end
+     resources :single_events, :only => [:show, :update, :edit]
   end
   match 'ical' => "ical#index"
 
