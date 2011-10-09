@@ -1,6 +1,7 @@
 Hcking::Application.routes.draw do
   devise_for :users
   
+  match 'tags/:tagname'  => 'tags#show'
   resources :tags
   
   resources :events do
