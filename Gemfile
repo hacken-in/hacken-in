@@ -40,6 +40,7 @@ gem 'therubyracer'
 gem 'rdiscount' # for yard formatting
 
 gem 'zero-clipboard-rails'
+gem 'gravatar_image_tag'
 
 group :development do
   # Deployment

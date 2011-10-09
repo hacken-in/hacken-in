@@ -3,6 +3,11 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
 
+  <p>
+    <%= link_to gravatar_image_tag(current_user.email, :alt => 'Change on Gravatar', :gravatar => { :default => :identicon, :size => 30 }),"http://www.gravatar.com" %>
+    <%= link_to "Change on Gravatar.com", "http://gravatar.com" %>
+  </p>
+
   <p><%= f.label :nickname %><br />
   <%= f.text_field :nickname %></p>
 
@@ -17,7 +22,6 @@
 
   <p><%= f.label :current_password %> <i>(um Änderungen zu machen, brauchen wir dein aktuelles Passwort)</i><br />
   <%= f.password_field :current_password %></p>
-
   <p><%= f.submit "Speichern" %></p>
 <% end %>
 
