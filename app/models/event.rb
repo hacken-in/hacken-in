@@ -34,21 +34,23 @@ class Event < ActiveRecord::Base
   end
 
   def generate_single_events
-    self.single_events.in_future.each do |single_event|
-      # Delete SingleEvents that don't match the pattern
-      unless schedule.occurs_at? single_event.time
-        single_event.destroy
-      end
-    end
+    self.future_single_events_cleanup
+    self.future_single_event_creation
+  end
 
-    self.schedule.next_occurrences(12).each do |occurence|
-      # Add SingleEvents that are in the pattern, but haven't been created so far
-      if self.single_events.in_future.where("time = ?", occurence).empty?
-        self.single_events.create(:time => occurence)
-      end
+  # Delete SingleEvents that don't match the pattern
+  def future_single_events_cleanup
+    self.single_events.in_future.each do |single_event|
+      single_event.destroy unless schedule.occurs_at?(single_event.time.change(:usec =>0))
     end
   end
 
+  # Add SingleEvents that are in the pattern, but haven't been created so far
+  def future_single_event_creation
+    self.schedule.next_occurrences(12).each do |occurence_with_usec|
+        self.single_events.create(:time => occurence_with_usec) if self.single_events.in_future.where(:time => occurence_with_usec).empty?
+    end
+  end
 
   def address
     [self.street, "#{self.zipcode} #{self.city}"].delete_if {|d| d.blank?}.collect{|d|d.strip}.join(", ")
