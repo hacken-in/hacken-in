@@ -29,7 +29,7 @@
       = image_tag "#{asset_path "logo.gif"}"
       %a{:href => "/", :class => "logo"} hcking.de
       #user_login
-        - if current_user
+        - if user_signed_in?
           Hallo
           %a{:href => "#{edit_user_registration_path}"}<
             = current_user.nickname
