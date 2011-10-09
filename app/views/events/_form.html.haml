@@ -1,20 +1,7 @@
 = content_for :javascript do
   :javascript
     $(function() {
-      $("#event_tag_list").tokenInput([
-        {id: 7, name: "Ruby"},
-        {id: 11, name: "Python"},
-        {id: 13, name: "JavaScript"},
-        {id: 17, name: "ActionScript"},
-        {id: 19, name: "Scheme"},
-        {id: 23, name: "Lisp"},
-        {id: 29, name: "C#"},
-        {id: 31, name: "Fortran"},
-        {id: 37, name: "Visual Basic"},
-        {id: 41, name: "C"},
-        {id: 43, name: "C++"},
-        {id: 47, name: "Java"}
-      ], {theme: "facebook", allowNewItems: true, 
+      $("#event_tag_list").tokenInput("#{tags_path}", {theme: "facebook", allowNewItems: true, 
         hintText: "Gebe einen Tag ein", noResultsText:"Kein Tag gefunden", searchingText:"Suche...",
         tokenValue: "name", prePopulate: #{ tag_list_for_taggable(@event) }});
       $("#event_name").focus();
