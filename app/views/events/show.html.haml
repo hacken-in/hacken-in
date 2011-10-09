@@ -25,11 +25,7 @@
         initialize();
       });
 
-/ Display tags for this event, if any:
-- unless @event.tag_list.empty?
-  %ul.tags
-    - @event.tag_list.each do |tag|
-      %li= tag
+= render "tags/tags", :event => @event
 
 = simple_format @event.description
 
