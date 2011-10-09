@@ -5,4 +5,14 @@ class SingleEvent < ActiveRecord::Base
   def description
     self.read_attribute(:description) || self.event.description
   end
+
+  def SingleEvent.find_or_create(parameters)
+    event = self.where(parameters).first
+
+    if event.nil?
+      return self.create parameters
+    else
+      return event
+    end
+  end
 end

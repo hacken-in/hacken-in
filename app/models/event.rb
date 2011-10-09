@@ -47,8 +47,8 @@ class Event < ActiveRecord::Base
 
   # Add SingleEvents that are in the pattern, but haven't been created so far
   def future_single_event_creation
-    self.schedule.next_occurrences(12).each do |occurence_with_usec|
-        self.single_events.create(:time => occurence_with_usec) if self.single_events.in_future.where(:time => occurence_with_usec).empty?
+    self.schedule.next_occurrences(12).each do |occurence|
+      SingleEvent.find_or_create(:event_id => self.id, :time => occurence)
     end
   end
 

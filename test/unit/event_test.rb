@@ -136,10 +136,14 @@ class EventTest < ActiveSupport::TestCase
     event = FactoryGirl.create(:simple)
     event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
     event.save
-    old_single_events = event.single_events.in_future.map{|e| e.id}
+
+    old_single_events = event.single_events.map{|e| e.id}
+
     event.description = "new desc"
     event.save
+
     se = event.single_events.to_a
+
     assert_equal 12, se.length
     assert_equal old_single_events, event.single_events.map{|e| e.id}
   end
@@ -151,4 +155,17 @@ class EventTest < ActiveSupport::TestCase
       event.future_single_event_creation
     end
   end
+
+  test "don't remove single events that match the rules" do
+    event = FactoryGirl.create(:simple)
+    event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
+    event.save
+
+    single_event_ids = event.single_events.map {|e| e.id}
+
+    event.future_single_events_cleanup
+
+    assert_equal single_event_ids, event.single_events.map {|e| e.id}
+  end
+
 end
