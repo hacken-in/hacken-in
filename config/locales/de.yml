@@ -168,6 +168,10 @@ de:
         address: Adresse
         description: Beschreibung
         full_day: Ganzer Tag
+        location: Veranstaltungsort
+        street: Straße
+        zipcode: Postleitzahl
+        city: Stadt
 
   formtastic:
     :yes: "Ja"

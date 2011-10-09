@@ -30,13 +30,10 @@
     %h3
       = current_date.strftime("%d.%m.%Y")
   .entry
-    = entry[:time].strftime("%H:%M") if !entry[:event].full_day
+    = entry[:time].strftime("%H:%M") unless entry[:event].full_day
     = link_to entry[:event].name, event_path(entry[:event])
     / Display tags for this event, if any:
-    - unless entry[:event].tag_list.empty?
-      %ul.tags
-        - entry[:event].tag_list.each do |tag|
-          %li= tag
+    = render "tags/tags", :event => entry[:event]
 
 %p Den Kalender gibt es auch als #{link_to "iCal", "abonnieren"}.
 

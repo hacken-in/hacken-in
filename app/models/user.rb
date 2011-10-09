@@ -7,9 +7,10 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_protected :admin
-  
+
   validates :email, :uniqueness => true
   validates :nickname, :uniqueness => true
+  validates_exclusion_of :nickname, :in => %w(admin, root, administrator, superuser), :message => "is reserved"
 
   validates :email, :presence => true
   validates :nickname, :presence => true
