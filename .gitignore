@@ -10,3 +10,4 @@ public/assets
 config/newrelic.yml
 doc/*
 .yardoc/*
+nbproject/*

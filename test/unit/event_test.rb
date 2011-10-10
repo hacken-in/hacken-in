@@ -156,6 +156,19 @@ class EventTest < ActiveSupport::TestCase
     end
   end
 
+  test "future_single_events_cleanup" do
+    event = FactoryGirl.create(:simple)
+    event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:monday)
+    event.save
+    first_single_event_id = event.single_events.first.id
+    
+    assert_difference "SingleEvent.count", -12 do
+      event.future_single_events_cleanup
+    end
+    
+    assert_false SingleEvent.exists?(first_single_event_id), "SingleEvent with id=#{first_single_event_id} should be deleted by cleanup."
+  end
+  
   test "don't remove single events that match the rules" do
     event = FactoryGirl.create(:simple)
     event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
