@@ -24,18 +24,22 @@
 %h2 Events in den nächsten vier Wochen:
 
 - current_date = nil
-- Event.get_ordered_events(Date.today, Date.today + 4.weeks).each do |entry|
-  - if current_date != entry[:time].to_date 
-    - current_date = entry[:time].to_date
+
+- @single_events.each do |single_event|
+  - if current_date != single_event.when.to_date
+    - current_date = single_event.when.to_date
     %h3
       = current_date.strftime("%d.%m.%Y")
   .entry
-    = entry[:time].strftime("%H:%M") if !entry[:event].full_day
-    = link_to entry[:event].name, event_path(entry[:event])
+    = single_event.when.strftime("%H:%M") unless single_event.event.full_day
+    - if single_event.topic.blank?
+      = link_to single_event.event.name, :controller => "single_events", :action => "show", :event_id => single_event.event.id, :id => single_event.id
+    - else
+      = link_to "#{single_event.topic} (#{single_event.event.name})", :controller => "single_events", :action => "show", :event_id => single_event.event.id, :id => single_event.id
     / Display tags for this event, if any:
-    - unless entry[:event].tag_list.empty?
+    - unless single_event.event.tag_list.empty?
       %ul.tags
-        - entry[:event].tag_list.each do |tag|
+        - single_event.event.tag_list.each do |tag|
           %li= tag
 
 %p Den Kalender gibt es auch als #{link_to "iCal", "abonnieren"}.
