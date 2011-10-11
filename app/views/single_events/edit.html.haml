@@ -1,2 +1,8 @@
-<h1>SingleEvents#edit</h1>
-<p>Find me in app/views/single_events/edit.html.erb</p>
+%h1 SingleEvente bearbeiten
+
+= semantic_form_for(@single_event, :url => url_for(:action => 'update', :id => @single_event.id)) do |f|
+  = f.input :topic
+  = f.input :description
+
+  = f.buttons do
+    = f.commit_button

@@ -1,29 +1,6 @@
 - title @event.name
 
-- unless @event.latitude.blank? or @event.longitude.blank?
-  - content_for :javascript do
-    %script{:type => "text/javascript", :src => "http://tile.cloudmade.com/wml/latest/web-maps-lite.js"}
-    :javascript
-      function initialize() {
-        var cloudmade = new CM.Tiles.CloudMade.Web({
-            key: '785896de12ad4cf892e32b9ec16b5cde',
-            styleId: 997
-        });
-        var map = new CM.Map('map_canvas', cloudmade);
-
-        var myMarkerLatLng = new CM.LatLng(#{@event.latitude}, #{@event.longitude});
-        var myMarker = new CM.Marker(myMarkerLatLng);
-
-        map.setCenter(myMarkerLatLng, 14);
-        map.addOverlay(myMarker);
-        map.addControl(new CM.SmallMapControl());
-
-      }
-
-      $(function() {
-        $('h1').after('<div id="map_canvas" style="width:350px; height:250px"></div>');
-        initialize();
-      });
+= render "map", :event => @event
 
 / Display tags for this event, if any:
 - unless @event.tag_list.empty?
@@ -55,14 +32,12 @@
 
 %h2 Die nächsten Events:
 
-- cache("event_occurences_#{@event.id}", :expires_in => 10.minutes) do
-  - occurrences = @event.schedule.next_occurrences(4, Date.today)
-  - if occurrences.size > 0
-    %ul
-      - occurrences.each do |date|
-        %li= @event.full_day? ? date.strftime("%d.%m.%Y") :  date.strftime("%d.%m.%Y um %H:%M")
-  - else
-    %p Keine Events geplant
+- if @event.single_events.length > 0
+  %ul
+    - @event.single_events[0..3].each do |single_event|
+      %li= link_to @event.full_day? ? single_event.when.strftime("%d.%m.%Y") : single_event.when.strftime("%d.%m.%Y um %H:%M"), :controller => "single_events", :action => "show", :event_id => @event.id, :id => single_event.id
+- else
+  %p Keine Events geplant
 
 #twitter_like
   <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="hackcologne">Tweet</a>
