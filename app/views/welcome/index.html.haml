@@ -15,8 +15,20 @@
     #fb-root
     <script src="http://connect.facebook.net/en_US/all.js#appId=213379535367603&amp;xfbml=1"></script>
     <fb:like href="http://hcking.de" send="true" width="300" show_faces="false" font="" layout="button_count"></fb:like>
-
-
+    
+  - if user_signed_in?
+    #user_controls
+      #hate_list
+        %h4 Events mit diesen Tags ignorieren
+        - unless current_user.hate_list.empty?
+          %ul.tags.hate_list
+            - current_user.hate_list.each do |hate|
+              %li
+                = link_to hate, tag_path(hate)
+                = link_to "x", user_hate_tag_path(user_id: current_user.id, id: hate), confirm: "Bist du sicher?", method: :delete, :class => "delete", title: "Löschen"
+      = form_for(:user_hate_tags, :url => user_hate_tags_path(:user_id => current_user.id)) do |f|
+        = f.text_field :hate_list, :value => ""
+        = f.submit "Hinzufügen"
 %p
   Hacker, Entwickler, Geek, Nerd? Langweilst du dich in deinem Keller? Dann bist du hier genau
   richtig. Hier gibt's eine Auflistung aller Events rund um Köln. <a href="/about">Mehr&nbsp;...</a>
@@ -37,10 +49,7 @@
     - else
       = link_to "#{single_event.topic} (#{single_event.event.name})", :controller => "single_events", :action => "show", :event_id => single_event.event.id, :id => single_event.id
     / Display tags for this event, if any:
-    - unless single_event.event.tag_list.empty?
-      %ul.tags
-        - single_event.event.tag_list.each do |tag|
-          %li= tag
+    = render "tags/tags", :event => single_event.event
 
 %p Den Kalender gibt es auch als #{link_to "iCal", "abonnieren"}.
 
