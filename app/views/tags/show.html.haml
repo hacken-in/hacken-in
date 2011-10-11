@@ -1,0 +1,11 @@
+
+%h2 Events mit diesem Tag
+
+- unless @events.empty?
+  - @events.each do |event|
+    %p
+      = link_to event.name, event_path(event)
+      = render 'tags/tags', :event => event
+      
+- else
+  %p Es scheint keine Events mit diesem Tag zu geben.
