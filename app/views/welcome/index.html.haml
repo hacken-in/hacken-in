@@ -36,6 +36,7 @@
 %h2 Events in den nächsten vier Wochen:
 
 - current_date = nil
+<<<<<<< HEAD
 
 - @single_events.each do |single_event|
   - if current_date != single_event.when.to_date
@@ -50,6 +51,18 @@
       = link_to "#{single_event.topic} (#{single_event.event.name})", :controller => "single_events", :action => "show", :event_id => single_event.event.id, :id => single_event.id
     / Display tags for this event, if any:
     = render "tags/tags", :event => single_event.event
+=======
+- @events.each do |entry|
+  - if current_date != entry[:time].to_date 
+    - current_date = entry[:time].to_date
+    %h3
+      = current_date.strftime("%d.%m.%Y")
+  .entry
+    = entry[:time].strftime("%H:%M") unless entry[:event].full_day
+    = link_to entry[:event].name, event_path(entry[:event])
+    / Display tags for this event, if any:
+    = render "tags/tags", :event => entry[:event]
+>>>>>>> master
 
 %p Den Kalender gibt es auch als #{link_to "iCal", "abonnieren"}.
 
