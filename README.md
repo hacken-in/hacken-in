@@ -5,7 +5,7 @@ calendar for geeks in and around Cologne.
 
 If you want to participate, feel free to fork and send us a pull request!
 
-We discuss features and problems in our google group that can be found (here)[http://groups.google.com/group/hcking].
+We discuss features and problems in our google group that can be found [here](http://groups.google.com/group/hcking).
 
 # Note on Patches/Pull Requests
 
