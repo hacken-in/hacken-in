@@ -1,0 +1,28 @@
+- title @single_event.topic.blank? ? @event.name : "#{@single_event.topic} (#{@event.name})"
+
+= @event.full_day? ? @single_event.when.strftime("%d.%m.%Y") :  @single_event.when.strftime("%d.%m.%Y um %H:%M")
+
+= render "events/map", :event => @event
+
+= simple_format @single_event.description
+
+.address
+  = @event.location
+  %br
+  = @event.street
+  %br
+  = @event.zipcode
+  = @event.city
+
+- unless @event.url.blank?
+  %p= link_to @event.url, @event.url
+
+- unless @event.twitter.blank?
+  %p= link_to "@#{@event.twitter}", "http://twitter.com/#{@event.twitter}"
+
+%p
+  Zum Event
+  = link_to @event.name, @event
+
+- if can? :update, @event
+  = link_to "Editieren", :action => "edit", :event_id => @event.id, :id => @single_event.id

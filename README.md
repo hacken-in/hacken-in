@@ -1,9 +1,14 @@
 # Welcome
 
+[![Build Status](http://travis-ci.org/bitboxer/hcking.png)](http://travis-ci.org/bitboxer/hcking)
+
 This is the code of [hcking.de](http://hcking.de). Hcking.de is an event
 calendar for geeks in and around Cologne.
 
 If you want to participate, feel free to fork and send us a pull request!
+
+We discuss features and problems in our google group that can be found [here](http://groups.google.com/group/hcking).
+
 
 # Note on Patches/Pull Requests
 

@@ -25,8 +25,6 @@ class TagsControllerTest < ActionController::TestCase
    get :show, :tagname => 'ruby'
    assert_response :success
 
-   puts @response.body
-
    # We look for an anchor to the ruby tag, which should be found.
    assert @response.body =~ /ruby<\/a>/
  end

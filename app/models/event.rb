@@ -34,18 +34,21 @@ class Event < ActiveRecord::Base
   end
 
   def generate_single_events
-    self.single_events.in_future.each do |single_event|
-      # Delete SingleEvents that don't match the pattern
-      unless schedule.occurs_at? single_event.time
-        single_event.destroy
-      end
-    end
+    self.future_single_events_cleanup
+    self.future_single_event_creation
+  end
 
+  # Delete SingleEvents that don't match the pattern
+  def future_single_events_cleanup
+    self.single_events.in_future.each do |single_event|
+      single_event.destroy unless schedule.occurs_at?(single_event.when)
+    end
+  end
+
+  # Add SingleEvents that are in the pattern, but haven't been created so far
+  def future_single_event_creation
     self.schedule.next_occurrences(12).each do |occurence|
-      # Add SingleEvents that are in the pattern, but haven't been created so far
-      if self.single_events.in_future.where("time = ?", occurence).empty?
-        self.single_events.create(:time => occurence)
-      end
+      SingleEvent.find_or_create(:event_id => self.id, :when => occurence)
     end
   end
 
