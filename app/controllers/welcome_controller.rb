@@ -4,12 +4,11 @@ class WelcomeController < ApplicationController
   def index
     @single_events = SingleEvent.getNextWeeks 4
 
-    # TODO: Remove SingleEvents that are hated
-    #if user_signed_in? && !current_user.hate_list.empty?
-    #  @events = Event.tagged_with(current_user.hate_list, exclude: true).get_ordered_events(Date.today, Date.today + 4.weeks)
-    #else
-    #  @events = Event.get_ordered_events(Date.today, Date.today + 4.weeks)
-    #end
+    if user_signed_in? && !current_user.hate_list.empty?
+      @single_events.delete_if do |single_event|
+        (single_event.event.tag_list & current_user.hate_list).length > 0
+      end
+    end
   end
 
 end
