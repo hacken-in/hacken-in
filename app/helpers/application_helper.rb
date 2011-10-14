@@ -12,7 +12,7 @@ module ApplicationHelper
       case
         when date == today then "Heute"
         when date == (today + 1) then "Morgen"
-        else date.strftime("%d. %B %Y")
+        else I18n.localize(date, :format => :long)
       end.html_safe
   end
 
