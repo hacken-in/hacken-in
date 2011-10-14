@@ -5,11 +5,13 @@ class ApplicationHelperTest < ActionView::TestCase
 
   def test_day_output_helper
     today = Date.today
-    tomorrow = Date.today+1
-    day_after_tomorrow = Date.today+2
     assert_equal "Heute", day_output_helper(today)
+
+    tomorrow = Date.today+1
     assert_equal "Morgen", day_output_helper(tomorrow)
-    assert_equal day_after_tomorrow.strftime("%d. %B %Y"), day_output_helper(day_after_tomorrow)
+
+    day_after_tomorrow = Date.today+2
+    assert_equal I18n.localize(day_after_tomorrow, :format => :long), day_output_helper(day_after_tomorrow)
   end
 
-  end
+end
