@@ -1,8 +1,9 @@
-%h1 SingleEvente bearbeiten
+%h1 Diesen Tag des Events bearbeiten
 
 = semantic_form_for(@single_event, :url => url_for(:action => 'update', :id => @single_event.id)) do |f|
-  = f.input :topic
-  = f.input :description
+  = f.inputs do
+    = f.input :topic
+    = f.input :description
 
   = f.buttons do
     = f.commit_button

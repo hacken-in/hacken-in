@@ -172,6 +172,9 @@ de:
         street: Straße
         zipcode: Postleitzahl
         city: Stadt
+      single_event:
+        topic: Überschrift
+        description: Beschreibung
 
   formtastic:
     :yes: "Ja"
