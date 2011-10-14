@@ -36,18 +36,13 @@
 %h2 Events in den nächsten vier Wochen:
 
 - current_date = nil
-<<<<<<< HEAD
-- @events.each do |entry|
-  - if current_date != entry[:time].to_date
-    - current_date = entry[:time].to_date
-=======
 
 - @single_events.each do |single_event|
   - if current_date != single_event.when.to_date
     - current_date = single_event.when.to_date
->>>>>>> upstream/master
     %h3
       = day_output_helper(current_date)
+
   .entry
     = single_event.when.strftime("%H:%M") unless single_event.event.full_day
     - if single_event.topic.blank?
