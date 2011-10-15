@@ -1,7 +1,6 @@
 # encoding: utf-8
 
 class Schedule::RulesController < ApplicationController
-  cache_sweeper :event_sweeper
 
   def create
     @event = Event.find(params[:event_id])

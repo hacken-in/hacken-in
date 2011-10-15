@@ -1,5 +1,4 @@
 class EventsController < ApplicationController
-  cache_sweeper :event_sweeper
 
   def index
   end
