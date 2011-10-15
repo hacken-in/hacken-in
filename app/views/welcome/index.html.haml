@@ -11,7 +11,7 @@
   - if user_signed_in?
     #user_controls
       #hate_list
-        %h4 Events mit diesen Tags ignorieren
+        %h4 Events mit diesen Tags ignorieren:
         - unless current_user.hate_list.empty?
           %ul.tags.hate_list
             - current_user.hate_list.each do |hate|
