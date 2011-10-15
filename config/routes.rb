@@ -2,7 +2,7 @@ Hcking::Application.routes.draw do
   devise_for :users
   
   resources :users do
-    resources :hate_tags, controller: :user_hate_tags
+    resources :hate_tags, controller: :user_hate_tags, :constraints => { :id => /.*/ }
   end
   
   match 'tags/:tagname'  => 'tags#show', :constraints => { :tagname => /.*/ }
