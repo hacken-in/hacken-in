@@ -2,4 +2,4 @@ rvm:
   - 1.9.2
 before_script:
   - "cp config/database.yml_example config/database.yml"
-script: "bundle exec rake test:prepare test"
+script: "bundle exec rake db:drop db:create db:migrate test"
