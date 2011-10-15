@@ -62,9 +62,9 @@ class EventTest < ActiveSupport::TestCase
 
     ordered = Event.get_ordered_events(Date.new(2011,6,1), Date.new(2011,7,1))
     assert_equal 3, ordered.size
-    assert_equal Time.new(2011,6,13,0,0,0,"+02:00"),   ordered[0][:time]
-    assert_equal Time.new(2011,6,13,16,20,0,"+02:00"), ordered[1][:time]
-    assert_equal Time.new(2011,6,15,16,20,0,"+02:00"), ordered[2][:time]
+    assert_equal Time.local(2011,6,13,0,0,0),   ordered[0][:time]
+    assert_equal Time.local(2011,6,13,16,20,0), ordered[1][:time]
+    assert_equal Time.local(2011,6,15,16,20,0), ordered[2][:time]
   end
 
   test "check if adress is geocoded after save" do
