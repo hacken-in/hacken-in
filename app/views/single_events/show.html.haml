@@ -17,11 +17,12 @@
   = @event.zipcode
   = @event.city
 
-- unless @event.url.blank?
-  %p= link_to @event.url, @event.url
-
-- unless @event.twitter.blank?
-  %p= link_to "@#{@event.twitter}", "http://twitter.com/#{@event.twitter}"
+- unless @event.url.blank? && @event.twiter.blank?
+  %p
+    - unless @event.url.blank?
+      = link_to "Webseite", @event.url
+    - unless @event.twitter.blank?
+      = link_to "Twitter", "http://twitter.com/#{@event.twitter}"
 
 %p
   Zur Übersicht von
