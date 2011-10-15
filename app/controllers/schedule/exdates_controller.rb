@@ -4,7 +4,6 @@ require 'datetime_parser'
 
 class Schedule::ExdatesController < ApplicationController
   include ::DatetimeParser
-  cache_sweeper :event_sweeper
 
   def create
     @event = Event.find(params[:event_id])
