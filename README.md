@@ -1,6 +1,6 @@
 # Welcome
 
-[![Build Status](https://travis-ci.org/bitboxer/hcking.png)](https://travis-ci.org/bitboxer/hcking)
+[![Build Status](http://travis-ci.org/bitboxer/hcking.png)](http://travis-ci.org/bitboxer/hcking)
 
 This is the code of [hcking.de](http://hcking.de). Hcking.de is an event
 calendar for geeks in and around Cologne.
