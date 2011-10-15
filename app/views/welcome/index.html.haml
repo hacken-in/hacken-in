@@ -8,14 +8,6 @@
 
     Hier fehlt ein Event? Dann schick uns eine [E-Mail](mailto:mail@hcking.de).
 
-  #twitter_like
-    <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
-    <a href="http://twitter.com/hackcologne" class="twitter-follow-button" data-show-count="false" data-lang="de">Follow @hackcologne</a>
-  #fb_like
-    #fb-root
-    <script src="http://connect.facebook.net/en_US/all.js#appId=213379535367603&amp;xfbml=1"></script>
-    <fb:like href="http://hcking.de" send="true" width="300" show_faces="false" font="" layout="button_count"></fb:like>
-
   - if user_signed_in?
     #user_controls
       #hate_list
@@ -29,6 +21,15 @@
       = form_for(:user_hate_tags, :url => user_hate_tags_path(:user_id => current_user.id)) do |f|
         = f.text_field :hate_list, :value => ""
         = f.submit "Hinzufügen"
+
+  #twitter_like
+    <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+    <a href="http://twitter.com/hackcologne" class="twitter-follow-button" data-show-count="false" data-lang="de">Follow @hackcologne</a>
+  #fb_like
+    #fb-root
+    <script src="http://connect.facebook.net/en_US/all.js#appId=213379535367603&amp;xfbml=1"></script>
+    <fb:like href="http://hcking.de" send="true" width="300" show_faces="false" font="" layout="button_count"></fb:like>
+
 %p
   Hacker, Entwickler, Geek, Nerd? Langweilst du dich in deinem Keller? Dann bist du hier genau
   richtig. Hier gibt's eine Auflistung aller Events rund um Köln. <a href="/about">Mehr&nbsp;...</a>
@@ -51,8 +52,6 @@
       = link_to "#{single_event.topic} (#{single_event.event.name})", :controller => "single_events", :action => "show", :event_id => single_event.event.id, :id => single_event.id
     / Display tags for this event, if any:
     = render "tags/tags", :event => single_event.event
-
-%p Den Kalender gibt es auch als #{link_to "iCal", "abonnieren"}.
 
 %p
   = link_to "Alle Events", events_path
