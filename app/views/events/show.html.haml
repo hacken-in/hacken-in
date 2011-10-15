@@ -14,7 +14,7 @@
   = @event.zipcode
   = @event.city
 
-- unless @event.url.blank? && @event.twiter.blank?
+- unless @event.url.blank? && @event.twitter.blank?
   %p
     - unless @event.url.blank?
       = link_to "Webseite", @event.url

@@ -1,6 +1,6 @@
 class SingleEvent < ActiveRecord::Base
   belongs_to :event
-  scope :in_future, where("'when' >= ?", Time.now)
+  scope :in_future, where("occurrence >= ?", Time.now)
 
   def description
     self.read_attribute(:description) || self.event.description
@@ -17,7 +17,7 @@ class SingleEvent < ActiveRecord::Base
   end
 
   def SingleEvent.getNextWeeks(number_of_weeks)
-    self.where(:when => (Time.now.to_date)..((Time.now + number_of_weeks.weeks).to_date)).order("'when' ASC")
+    self.where(:occurrence => (Time.now.to_date)..((Time.now + number_of_weeks.weeks).to_date)).order("occurrence ASC")
   end
 
 end
