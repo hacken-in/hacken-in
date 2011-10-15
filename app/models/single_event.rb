@@ -14,7 +14,7 @@ class SingleEvent < ActiveRecord::Base
   end
 
   def SingleEvent.getNextWeeks(number_of_weeks)
-    self.where(:occurrence => (Time.now.to_date)..((Time.now + number_of_weeks.weeks).to_date)).order("occurrence ASC")
+    self.where(:occurrence => (Time.now.to_date)..((Time.now + number_of_weeks.weeks).to_date))
   end
 
 end

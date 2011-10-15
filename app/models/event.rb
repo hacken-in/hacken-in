@@ -13,26 +13,6 @@ class Event < ActiveRecord::Base
   geocoded_by :address
   after_validation :geocode
 
-  def self.find_in_range(start_date, end_date)
-    events = []
-    Event.all.each do |event|
-      events << event if event.schedule.occurrences_between(start_date, end_date).size > 0
-    end
-    events
-  end
-
-  def self.get_ordered_events(start_date, end_date)
-    events = []
-    Event.find_in_range(start_date, end_date).each do |event|
-      event.schedule.occurrences_between(start_date, end_date).each do |time|
-        time = time.beginning_of_day if event.full_day
-        events << {time: time, event:event}
-      end
-    end
-
-    events.sort_by {|el| [el[:time], el[:event].name]}
-  end
-
   def generate_single_events
     self.future_single_events_cleanup
     self.future_single_event_creation
