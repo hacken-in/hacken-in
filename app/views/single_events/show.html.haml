@@ -1,6 +1,9 @@
 - title @single_event.topic.blank? ? @event.name : "#{@single_event.topic} (#{@event.name})"
 
-= @event.full_day? ? @single_event.when.strftime("%d.%m.%Y") :  @single_event.when.strftime("%d.%m.%Y um %H:%M")
+= render "tags/tags", :event => @single_event.event
+
+%em
+  = @event.full_day? ? @single_event.when.strftime("%d.%m.%Y") :  @single_event.when.strftime("%d.%m.%Y um %H:%M")
 
 = render "events/map", :event => @event
 

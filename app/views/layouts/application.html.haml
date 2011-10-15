@@ -5,6 +5,7 @@
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
     %link{:rel=>"shortcut icon", :href=> "#{asset_path "favicon.png", "images"}"}
+    %link{:href=>'http://fonts.googleapis.com/css?family=Quattrocento+Sans', :rel=>'stylesheet', :type=>'text/css'}
     = csrf_meta_tags
     :javascript
 
@@ -21,16 +22,13 @@
     = yield(:javascript)
 
   %body
-    %a{:href => "http://github.com/bitboxer/hcking"}
-      %img{:style => "position: absolute; top: 0; right: 0; border: 0;",
-        :src =>"https://a248.e.akamai.net/assets.github.com/img/e6bef7a091f5f3138b8cd40bc3e114258dd68ddf/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67", 
-        :alt =>"Fork me on GitHub"}
     %header{:class => "#{content_for?(:aside) ? 'with' : 'without'}_aside"}
-      = image_tag "#{asset_path "logo.gif"}"
       %a{:href => "/", :class => "logo"} hcking.de
       #user_login
         - if user_signed_in?
           Hallo
+          %a{:href => "#{edit_user_registration_path}"}<
+            = gravatar_image_tag(current_user.email, :gravatar => { :default => :identicon, :size => 16 })
           %a{:href => "#{edit_user_registration_path}"}<
             = current_user.nickname
           \|

@@ -1,93 +1,87 @@
-// Variable Decleration
-// ATTENTION: If you change one of these values
-// don't forget to change the images as well
-$page_background: #A5BDCE
-$header_background: #2C2C2C
-$content_background: #F1F1F1
-$content_foreground: #333
-$content_border: #8F8F8F
 $content_width: 840px
-$logo_height: 146px
+$highlight_color: #C02900
+$link_color: $highlight_color - #222
 
-// Design and Layout
 
 body
-  background-color: $page_background
-  font-family: Verdana, Helvetica, Arial
-  font-size: 14px
+  margin: 0px
+  font-family: 'Quattrocento Sans', sans-serif
+  font-size: 16px
 
 header
-  position: relative
-  height: $logo_height
-  width: $content_width - 40px
-  margin: 20px auto 0
-  padding: 30px 25px
-  img
-    float: left
-    margin-right: 20px
+  width: $content_width
+  margin: 0px auto
+  position: fixed
+  left: 50%
+  margin-left: $content_width / 2 * -1
+  top: 0px
+  padding: 10px
+  color: white
+  background-color: #EB2810
+  z-index: 10
+  a
+    color: white
   a.logo
-    display: block
-    float: left
-    clear: right
-    padding-top: 60px
-    height: $logo_height - 60px
-    font-size: 26px
     text-decoration: none
-    color: #CCC
     &:hover
       text-decoration: underline
 
-header.with_aside
-  background: $header_background image-url("header_background_with_aside.png") no-repeat bottom
+  background-color: #C43C35
+  background-image: -webkit-linear-gradient(top, rgb(238, 95, 91), rgb(196, 60, 53))
+  background-position: 0px -15px
+  background-repeat: repeat-x
+  border-bottom-color: rgba(0, 0, 0, 0.246094)
+  border-bottom-left-radius: 8px
+  border-bottom-right-radius: 8px
+  border-bottom-style: solid
+  border-bottom-width: 1px
+  border-left-color: rgba(0, 0, 0, 0.0976562)
+  border-left-style: solid
+  border-left-width: 1px
+  border-right-color: rgba(0, 0, 0, 0.0976562)
+  border-right-style: solid
+  border-right-width: 1px
+  color: white
+  padding-bottom: 8px
+  padding-left: 16px
+  padding-right: 16px
+  padding-top: 9px
 
-header.without_aside
-  background: $header_background image-url("header_background_without_aside.png") no-repeat bottom
 
 header #user_login
-  color: white
-  position: absolute
-  bottom: 12px
-  right: 10px
-  a
-    color: #A5BDCE
-    &:visited
-      color: #A5BDCE
+  float: right
+
+header #user_login a img
+  vertical-align: text-bottom
+  padding-bottom: 2px
 
 section
-  position: relative
-  width: $content_width - 80px
-  margin: 0 auto
-  color: $content_foreground
-  padding: 20px 40px
-  border-left: solid 1px $content_border
-  border-right: solid 1px $content_border
-  border-bottom: solid 1px $content_border
+  padding-bottom: 20px
+  margin: 60px auto 10px auto
+  width: $content_width - 40px
   a
     img
       border: none
-    color: $content_foreground - #222
-  h1, h2
-    color: $content_foreground - #222
+  a
+    color: black
+    &:hover
+      color: $link_color
+
+  h2
+    font-size: 18px
   h3
-    background: image-url("heading_background.png") no-repeat
-    background-position: left
-    display: block
-    padding: 10px 0px 0px 46px
-    width: 250px - 46px
-    height: 50px - 10px
-    position: relative
-    left: -46px
-
-section.with_aside
-  background: image-url("content_background.png") repeat-y
-
-section.without_aside
-  background: $content_background
+    color: $highlight_color
+    font-size: 16px
 
 aside
   float: right
-  margin-left: 20px
+  margin-left: 30px
   width: 230px
+
+  p
+    margin-top: 0px
+  #user_controls
+    margin-bottom: 20px
 
 // Event taglists
 ul.tags
@@ -96,7 +90,7 @@ ul.tags
   font-size: 80%
   margin-top: 10px
   padding-left: 0px
-  margin-bottom: 5px
+  margin-bottom: 15px
   
   li
     display: inline
@@ -130,17 +124,13 @@ ul.tags.hate_list
       
   li:hover
     background: #bbb
-    
-    
   
 input#user_hate_tags_hate_list
   width: 120px
 
 
 footer
-  width: $content_width
-  margin: 0px auto
-  padding-top: 10px
+  height: 20px
   font-size: 11px
   text-align: center
   color: black
@@ -205,7 +195,8 @@ footer
 
 #map_canvas
   float: right
-  margin-left: 10px
+  margin-left: 15px
+  margin-bottom: 15px
   border: 1px solid #afafaf
 
 .abbonieren
