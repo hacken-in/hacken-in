@@ -26,47 +26,6 @@ class EventTest < ActiveSupport::TestCase
     assert_equal 1, event.schedule.all_occurrences.size
   end
 
-  test "find events in range" do
-    event = Event.new(name: "Hallo")
-    event.schedule.add_recurrence_date(Time.new(2011,6,13,14,20,0,0))
-    assert event.save
-    event = Event.new(name: "Hallo")
-    event.schedule.add_recurrence_date(Time.new(2010,6,13,14,20,0,0))
-    assert event.save
-    event = Event.new(name: "Hallo")
-    event.schedule.add_recurrence_date(Time.new(2011,6,15,14,20,0,0))
-    assert event.save
-    event = Event.new(name: "Hallo")
-    event.schedule.add_recurrence_date(Time.new(2011,7,15,14,20,0,0))
-    assert event.save
-
-    assert_equal 2, Event.find_in_range(Date.new(2011,6,1), Date.new(2011,7,1)).size
-  end
-
-  test "get ordered list" do
-    event = Event.new(name: "Hallo")
-    event.schedule.add_recurrence_date(Time.local(2011,6,13,14,20,0,0))
-    assert event.save
-    event = Event.new(name: "Hallo")
-    event.schedule.add_recurrence_date(Time.local(2010,6,13,14,20,0,0))
-    assert event.save
-    event = Event.new(name: "Hallo")
-    event.schedule.add_recurrence_date(Time.local(2011,6,15,14,20,0,0))
-    assert event.save
-    event = Event.new(name: "Hallo")
-    event.schedule.add_recurrence_date(Time.local(2011,7,15,14,20,0,0))
-    assert event.save
-    event = Event.new(name: "Hallo", full_day: true)
-    event.schedule.add_recurrence_date(Time.local(2011,6,13,18,20,0,0))
-    assert event.save
-
-    ordered = Event.get_ordered_events(Date.new(2011,6,1), Date.new(2011,7,1))
-    assert_equal 3, ordered.size
-    assert_equal Time.local(2011,6,13,0,0,0),   ordered[0][:time]
-    assert_equal Time.local(2011,6,13,14,20,0), ordered[1][:time]
-    assert_equal Time.local(2011,6,15,14,20,0), ordered[2][:time]
-  end
-
   test "check if adress is geocoded after save" do
     event = Event.new(name: "Hallo")
     event.location = "Cowoco in der Gasmotorenfabrik, 3. Etage"

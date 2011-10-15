@@ -37,6 +37,10 @@ class IcalControllerTest < ActionController::TestCase
     event4.location = "home"
     event4.city = "cologne"
     event4.save
+    se = event4.single_events.first
+    se.topic = "First Event"
+    se.description = "First Event Description"
+    se.save
 
     get :index
     assert_response :success
@@ -87,8 +91,8 @@ DESC
 BEGIN:VEVENT
 DTEND;VALUE=DATE:#{time4.strftime("%Y%m%d")}
 DTSTART;VALUE=DATE:#{time4.strftime("%Y%m%d")}
-DESCRIPTION:
-SUMMARY:SimpleEvent
+DESCRIPTION:First Event Description
+SUMMARY:First Event (SimpleEvent)
 LOCATION:home\\, cologne
 END:VEVENT
 DESC
