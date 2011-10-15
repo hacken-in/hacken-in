@@ -5,8 +5,8 @@ Hcking::Application.routes.draw do
     resources :hate_tags, controller: :user_hate_tags
   end
   
-  match 'tags/:tagname'  => 'tags#show'
-  resources :tags
+  match 'tags/:tagname'  => 'tags#show', :constraints => { :tagname => /.*/ }
+  resources :tags, :constraints => { :id => /.*/ }
   
   resources :events do
     namespace "schedule" do
