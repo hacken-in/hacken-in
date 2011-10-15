@@ -1,6 +1,7 @@
 class SingleEvent < ActiveRecord::Base
   belongs_to :event
-  scope :in_future, where("occurrence >= ?", Time.now)
+  scope :in_future, where("occurrence >= ?", Time.now).order(:occurrence)
+  default_scope order(:occurrence)
 
   def SingleEvent.find_or_create(parameters)
     event = self.where(parameters).first

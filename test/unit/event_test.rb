@@ -185,4 +185,17 @@ class EventTest < ActiveSupport::TestCase
     assert_equal single_event_ids, event.single_events.map {|e| e.id}
   end
 
+  test "should get single events ordered" do
+    event = FactoryGirl.create(:simple)
+
+    first = Time.now + 2.days
+    second = Time.now + 5.days
+
+    SingleEvent.create(:event => event, :occurrence => second)
+    SingleEvent.create(:event => event, :occurrence => first)
+
+    assert_equal 2, event.single_events.count
+    assert_equal first, event.single_events[0].occurrence
+    assert_equal second, event.single_events[1].occurrence
+  end
 end
