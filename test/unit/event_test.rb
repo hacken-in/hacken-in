@@ -165,6 +165,7 @@ class EventTest < ActiveSupport::TestCase
     event.save
     first_single_event_id = event.single_events.first.id
     
+    event.schedule.remove_recurrence_rule IceCube::Rule.weekly.day(:monday)
     assert_difference "SingleEvent.count", -12 do
       event.future_single_events_cleanup
     end
