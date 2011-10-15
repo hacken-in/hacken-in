@@ -13,9 +13,8 @@ header
   margin: 0px auto
   position: fixed
   left: 50%
-  margin-left: $content_width / 2 * -1
+  margin-left: ($content_width + 16px * 2) / 2 * -1
   top: 0px
-  padding: 10px
   color: white
   background-color: #EB2810
   z-index: 10
@@ -28,7 +27,6 @@ header
 
   background-color: #C43C35
   background-image: -webkit-linear-gradient(top, rgb(238, 95, 91), rgb(196, 60, 53))
-  background-position: 0px -15px
   background-repeat: repeat-x
   border-bottom-color: rgba(0, 0, 0, 0.246094)
   border-bottom-left-radius: 8px
@@ -42,11 +40,7 @@ header
   border-right-style: solid
   border-right-width: 1px
   color: white
-  padding-bottom: 8px
-  padding-left: 16px
-  padding-right: 16px
-  padding-top: 9px
-
+  padding: 8px 16px
 
 header #user_login
   float: right
