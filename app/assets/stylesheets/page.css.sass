@@ -10,10 +10,8 @@ body
 
 header
   width: $content_width
-  margin: 0px auto
   position: fixed
   left: 50%
-  margin-left: ($content_width + 16px * 2) / 2 * -1
   top: 0px
   color: white
   background-color: #EB2810
@@ -24,6 +22,13 @@ header
     text-decoration: none
     &:hover
       text-decoration: underline
+
+  margin-left: ($content_width + 16px * 2) / 2 * -1
+
+  -moz-box-shadow: 3px 2px 5px #ccc
+  -webkit-box-shadow: 3px 2px 5px #ccc
+  box-shadow: 3px 2px 5px #ccc
+  margin-top: -3px
 
   background-color: #C43C35
   background-image: -webkit-linear-gradient(top, rgb(238, 95, 91), rgb(196, 60, 53))
@@ -40,7 +45,10 @@ header
   border-right-style: solid
   border-right-width: 1px
   color: white
-  padding: 8px 16px
+  padding-bottom: 8px
+  padding-top: 11px
+  padding-right: 16px
+  padding-left: 16px
 
 header #user_login
   float: right
