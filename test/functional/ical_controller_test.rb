@@ -22,7 +22,7 @@ class IcalControllerTest < ActionController::TestCase
     event2.save
 
     event3 = FactoryGirl.create(:simple)
-    time3 = Time.now + 24.hours
+    time3 = (Time.now + 24.hours).beginning_of_day
     event3.schedule.add_recurrence_date(time3)
     event3.full_day = true
     event3.street = "street"
@@ -31,7 +31,7 @@ class IcalControllerTest < ActionController::TestCase
     event3.save
 
     event4 = FactoryGirl.create(:simple)
-    time4 = Time.now + 48.hours
+    time4 = (Time.now + 48.hours).beginning_of_day
     event4.schedule.add_recurrence_date(time4)
     event4.full_day = true
     event4.location = "home"
