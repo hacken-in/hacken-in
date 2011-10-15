@@ -39,13 +39,13 @@
 - current_date = nil
 
 - @single_events.each do |single_event|
-  - if current_date != single_event.when.to_date
-    - current_date = single_event.when.to_date
+  - if current_date != single_event.occurrence.to_date
+    - current_date = single_event.occurrence.to_date
     %h3
       = day_output_helper(current_date)
 
   .entry
-    = single_event.when.strftime("%H:%M") unless single_event.event.full_day
+    = single_event.occurrence.strftime("%H:%M") unless single_event.event.full_day
     - if single_event.topic.blank?
       = link_to single_event.event.name, :controller => "single_events", :action => "show", :event_id => single_event.event.id, :id => single_event.id
     - else
