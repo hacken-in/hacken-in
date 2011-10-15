@@ -16,4 +16,8 @@ module ApplicationHelper
       end.html_safe
   end
 
+  def truncate_html(html, length, opts)
+    HTML_Truncator.truncate(html, length, opts).html_safe
+  end
+
 end

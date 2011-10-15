@@ -7,7 +7,22 @@
 
 = render "events/map", :event => @event
 
-= simple_format @single_event.description
+- if @single_event.description.blank?
+  %p
+    %em
+      Keine Beschreibung vorhanden
+  - else
+    = simple_format @single_event.description
+
+%h3
+  Über #{@single_event.event.name}
+
+- if @single_event.event.description.blank?
+  %p
+    %em
+      Keine Beschreibung vorhanden
+  - else
+    = truncate_html(simple_format(@single_event.event.description), 30, :ellipsis => " ... (#{link_to("mehr", @event)})")
 
 .address
   = @event.location

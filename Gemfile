@@ -41,6 +41,7 @@ gem 'rdiscount' # for yard formatting
 
 gem 'zero-clipboard-rails'
 gem 'gravatar_image_tag'
+gem 'html_truncator'
 
 group :development do
   # Deployment
