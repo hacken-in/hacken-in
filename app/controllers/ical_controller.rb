@@ -23,7 +23,7 @@ class IcalController < ApplicationController
           dtend       end_time
           location    loc unless loc.blank?
           url         Rails.application.routes.url_helpers.event_single_event_url(
-                        :host => Rails.env.production? ? "http://hcking.de" : "http://hcking.dev",
+                        :host => Rails.env.production? ? "hcking.de" : "hcking.dev",
                         :event_id => single_event.event.id, 
                         :id => single_event.id)
         end
