@@ -15,4 +15,9 @@ class SingleEventTest < ActiveSupport::TestCase
       event_yesterday = SingleEvent.create(:occurrence => 1.day.ago)
     end
   end
+
+  test "should generate title based on topic" do
+    assert_equal "SimpleSingleEventTopic (SimpleEvent)", FactoryGirl.create(:single_event).title
+    assert_equal "SimpleEvent", FactoryGirl.create(:single_event_without_topic).title
+  end
 end
