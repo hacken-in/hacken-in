@@ -17,7 +17,7 @@ class IcalController < ApplicationController
           end
           loc = [single_event.event.location, single_event.event.address].delete_if{|d|d.blank?}.join(", ").strip
 
-          summary     single_event.topic.blank? ? single_event.event.name : "#{single_event.topic} (#{single_event.event.name})"
+          summary     single_event.title
           description ActionController::Base.helpers.strip_tags("#{single_event.description}\n\n#{single_event.event.description}".strip)
           dtstart     start_time
           dtend       end_time

@@ -1,4 +1,4 @@
-- title @single_event.topic.blank? ? @event.name : "#{@single_event.topic} (#{@event.name})"
+- title @single_event.title
 
 %h2
   = @event.full_day? ? @single_event.occurrence.strftime("%d.%m.%Y") :  @single_event.occurrence.strftime("%d.%m.%Y um %H:%M")

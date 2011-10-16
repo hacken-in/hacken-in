@@ -50,10 +50,7 @@
 
   .entry
     = single_event.occurrence.strftime("%H:%M") unless single_event.event.full_day
-    - if single_event.topic.blank?
-      = link_to single_event.event.name, :controller => "single_events", :action => "show", :event_id => single_event.event.id, :id => single_event.id
-    - else
-      = link_to "#{single_event.topic} (#{single_event.event.name})", :controller => "single_events", :action => "show", :event_id => single_event.event.id, :id => single_event.id
+    = link_to single_event.title, :controller => "single_events", :action => "show", :event_id => single_event.event.id, :id => single_event.id
     / Display tags for this event, if any:
     = render "tags/tags", :event => single_event.event
 
