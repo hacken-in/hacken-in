@@ -62,7 +62,7 @@ BEGIN:VEVENT
 DTEND;VALUE=DATE-TIME:#{(time + 1.hour).utc.strftime("%Y%m%dT%H%M%SZ")}
 DTSTART;VALUE=DATE-TIME:#{time.utc.strftime("%Y%m%dT%H%M%SZ")}
 DESCRIPTION:description
-URL:http://http://hcking.dev/events/#{event.id}/single_events/#{event.single_events.first.id}
+URL:http://hcking.dev/events/#{event.id}/single_events/#{event.single_events.first.id}
 SUMMARY:SimpleEvent
 END:VEVENT
 DESC
@@ -72,7 +72,7 @@ BEGIN:VEVENT
 DTEND;VALUE=DATE:#{time2.strftime("%Y%m%d")}
 DTSTART;VALUE=DATE:#{time2.strftime("%Y%m%d")}
 DESCRIPTION:
-URL:http://http://hcking.dev/events/#{event2.id}/single_events/#{event2.single_events.first.id}
+URL:http://hcking.dev/events/#{event2.id}/single_events/#{event2.single_events.first.id}
 SUMMARY:SimpleEvent
 LOCATION:home\\, street\\, zipcode cologne
 END:VEVENT
@@ -83,7 +83,7 @@ BEGIN:VEVENT
 DTEND;VALUE=DATE:#{time3.strftime("%Y%m%d")}
 DTSTART;VALUE=DATE:#{time3.strftime("%Y%m%d")}
 DESCRIPTION:
-URL:http://http://hcking.dev/events/#{event3.id}/single_events/#{event3.single_events.first.id}
+URL:http://hcking.dev/events/#{event3.id}/single_events/#{event3.single_events.first.id}
 SUMMARY:SimpleEvent
 LOCATION:street\\, zipcode cologne
 END:VEVENT
@@ -94,7 +94,7 @@ BEGIN:VEVENT
 DTEND;VALUE=DATE:#{time4.strftime("%Y%m%d")}
 DTSTART;VALUE=DATE:#{time4.strftime("%Y%m%d")}
 DESCRIPTION:First Event Description
-URL:http://http://hcking.dev/events/#{event4.id}/single_events/#{event4.single_events.first.id}
+URL:http://hcking.dev/events/#{event4.id}/single_events/#{event4.single_events.first.id}
 SUMMARY:First Event (SimpleEvent)
 LOCATION:home\\, cologne
 END:VEVENT
