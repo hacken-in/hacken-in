@@ -147,8 +147,8 @@ class EventTest < ActiveSupport::TestCase
   test "should get single events ordered" do
     event = FactoryGirl.create(:simple)
 
-    first = Time.now + 2.days
-    second = Time.now + 5.days
+    first = (Time.now + 2.days).localtime
+    second = (Time.now + 5.days).localtime
 
     SingleEvent.create(:event => event, :occurrence => second)
     SingleEvent.create(:event => event, :occurrence => first)
