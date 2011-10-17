@@ -1,7 +1,7 @@
 $content_width: 840px
 $highlight_color: #C02900
 $link_color: $highlight_color - #222
-
+$tag_color: #eee
 
 body
   margin: 0px
@@ -99,18 +99,18 @@ ul.tags
     
     a
       text-decoration: none
-      background: #eee
+      background: $tag_color
       //#6291BF
       color: black
       padding: 2px 5px
       border-radius: 3px 3px
   
     a:hover
-      background: #6291BF - #222
+      background: $tag_color - #222
  
 ul.tags.hate_list
   li
-    background: #6291BF
+    background: $tag_color
     padding: 2px 5px
     margin-right: 4px
     border-radius: 3px 3px
@@ -124,7 +124,7 @@ ul.tags.hate_list
       color: red
       
   li:hover
-    background: #6291BF - #222
+    background: $tag_color - #222
   
 input#user_hate_tags_hate_list
   width: 120px
