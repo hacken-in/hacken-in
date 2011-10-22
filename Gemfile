@@ -39,8 +39,11 @@ gem 'therubyracer'
 
 gem 'rdiscount' # for yard formatting
 
+# Clipboard-Button on iCal Page
 gem 'zero-clipboard-rails'
+# User Picture using gravatar
 gem 'gravatar_image_tag'
+# Truncate HTML on SingelEvent Pages
 gem 'html_truncator'
 
 group :development do
