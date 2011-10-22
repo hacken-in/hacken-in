@@ -1,10 +1,12 @@
 class EventsController < ApplicationController
 
   def index
+    authorize! :index, Event
   end
 
   def show
     @event = Event.find(params[:id])
+    authorize! :show, @event
 
     respond_to do |format|
       format.html # show.html.erb
@@ -14,7 +16,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
-    authorize! :create, Event
+    authorize! :new, @event
 
     respond_to do |format|
       format.html # new.html.erb
@@ -24,12 +26,12 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
-    authorize! :update, @event
+    authorize! :edit, @event
   end
 
   def create
-    authorize! :create, Event
     @event = Event.new(params[:event])
+    authorize! :create, @event
 
     respond_to do |format|
       if @event.save
