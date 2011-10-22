@@ -175,6 +175,12 @@ de:
       single_event:
         topic: Überschrift
         description: Beschreibung
+      comment:
+        body: Inhalt
+    models:
+      comment: Kommentar
+      event: Event
+      single_event: Ereignis
 
   formtastic:
     :yes: "Ja"
