@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   # Tags hated by the user
   acts_as_taggable_on :hates
 
+  has_many :comments
+
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_protected :admin

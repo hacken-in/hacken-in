@@ -1,0 +1,6 @@
+.comment
+  %a{:name => "comment_#{comment.id}", :class => "comment_anchor"}
+  = simple_format comment.body
+  - if can? :destroy, comment
+    = link_to "Editieren", edit_comment_path(comment)
+    = link_to "Löschen", comment_path(comment), confirm: "Ihren Kommentar wirklich löschen?", method: :delete

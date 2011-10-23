@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include CommentsPathHelper
+
   protect_from_forgery
 
   rescue_from CanCan::AccessDenied do |exception|

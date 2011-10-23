@@ -45,3 +45,5 @@
 
 - if can? :update, @event
   = link_to "Editieren", :action => "edit", :event_id => @event.id, :id => @single_event.id
+
+= render :partial => "comments/comments", :locals => {:commentable => @single_event}

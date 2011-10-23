@@ -54,3 +54,6 @@
 
 %p
   %a{:href => "/"} Zurück zur Übersicht
+
+= render :partial => "comments/comments", :locals => {:commentable => @event}
+

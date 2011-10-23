@@ -1,5 +1,7 @@
 class SingleEvent < ActiveRecord::Base
   belongs_to :event
+  has_many :comments, :as => :commentable
+
   scope :in_future, where("occurrence >= ?", Time.now).order(:occurrence)
   default_scope order(:occurrence)
 
@@ -14,6 +16,14 @@ class SingleEvent < ActiveRecord::Base
 
   def title
     self.topic.blank? ? self.event.name : "#{self.topic} (#{self.event.name})"
+  end
+
+  def name
+    if self.event.full_day
+      "#{self.title} am #{self.occurrence.strftime("%d.%m.%Y")}"
+    else
+      "#{self.title} am #{self.occurrence.strftime("%d.%m.%Y um %H:%M")}"
+    end
   end
 
   def <=>(other)
