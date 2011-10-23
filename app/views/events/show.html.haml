@@ -29,9 +29,9 @@
 
 %h2 Die nächsten Events:
 
-- if @event.single_events.length > 0
+- if @event.single_events.today_or_in_future.length > 0
   %ul
-    - @event.single_events[0..3].each do |single_event|
+    - @event.single_events.today_or_in_future[0..3].each do |single_event|
       %li
         = link_to @event.full_day? ? single_event.occurrence.strftime("%d.%m.%Y") : single_event.occurrence.strftime("%d.%m.%Y um %H:%M"), :controller => "single_events", :action => "show", :event_id => @event.id, :id => single_event.id
         - unless single_event.topic.blank?
