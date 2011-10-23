@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
   def create
     @comment = find_commentable.comments.build(params[:comment])
     authorize! :create, @comment
-    @comment.user_id = current_user
+    @comment.user_id = current_user.id
     if @comment.save
       flash[:notice] = "Kommentar angelegt."
       redirect_to commentable_path(@comment, :anchor => "comment_#{@comment.id}")

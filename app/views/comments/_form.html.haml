@@ -1,4 +1,7 @@
-= semantic_form_for comment, url: comment.new_record? ? comments_path(comment) : comment_path(comment) do |form|
-  = form.inputs do
-    = form.input :body
-  = form.buttons
+= form_for comment, url: comment.new_record? ? comments_path(comment) : comment_path(comment) do |form|
+  = gravatar_image_tag(current_user.email, :gravatar => { :default => :identicon, :size => 32 })
+  .content
+    = form.text_area :body
+    %p.help
+      %em (Ein wenig HTML ist erlaubt, z.B. a, strong, em ...)
+    = form.submit "Kommentieren"
