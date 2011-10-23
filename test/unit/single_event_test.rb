@@ -97,7 +97,7 @@ class SingleEventTest < ActiveSupport::TestCase
   end
 
   test "should generate title and name" do
-    single = FactoryGirl.create(:single_event, :occurrence => Time.new(2011, 10, 1, 12, 0, 0).localtime, :topic => "A")
+    single = FactoryGirl.create(:single_event, :topic => "A")
     assert_equal "A (SimpleEvent)", single.title
     assert_equal "A (SimpleEvent) am 01.10.2011 um 12:00", single.name
   end
