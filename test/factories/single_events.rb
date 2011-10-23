@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :single_event, :class => SingleEvent do
     topic "SimpleSingleEventTopic"
+    occurrence Time.new(2011,10,1,12,00)
     association :event, :factory => :simple
   end
 

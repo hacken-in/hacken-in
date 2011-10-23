@@ -1,0 +1,3 @@
+%h2 Kommentar für #{link_to @comment.commentable.name, commentable_path(@comment)}
+
+= render partial: "comments/form", locals: {comment: @comment}

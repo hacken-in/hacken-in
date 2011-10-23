@@ -1,0 +1,14 @@
+%h3 Kommentare
+
+- if commentable.comments.count == 0
+  %p
+    Keine Kommentare vorhanden.
+- else
+  - commentable.comments.each do |comment|
+    = render partial: "comments/comment", locals: {comment: comment}
+
+- if can? :create, :comment
+  = render partial: "comments/form", locals: {comment: commentable.comments.new(body: params[:body])}
+- else
+  %p
+    %em Sie müssen angemeldet sein, um Kommentare abgeben zu können.

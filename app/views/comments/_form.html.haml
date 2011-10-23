@@ -1,0 +1,4 @@
+= semantic_form_for comment, url: comment.new_record? ? comments_path(comment) : comment_path(comment) do |form|
+  = form.inputs do
+    = form.input :body
+  = form.buttons

@@ -157,4 +157,9 @@ class EventTest < ActiveSupport::TestCase
     assert_equal first, event.single_events[0].occurrence
     assert_equal second, event.single_events[1].occurrence
   end
+
+  test "should get title" do
+    event = FactoryGirl.create(:simple)
+    assert_equal "SimpleEvent", event.title
+  end
 end
