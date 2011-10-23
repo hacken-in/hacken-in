@@ -3,6 +3,7 @@ class SingleEvent < ActiveRecord::Base
   has_many :comments, :as => :commentable
 
   scope :in_future, where("occurrence >= ?", Time.now).order(:occurrence)
+  scope :today_or_in_future, where("occurrence >= ?", Time.now.beginning_of_day).order(:occurrence)
   default_scope order(:occurrence)
 
   def self.find_or_create(parameters)
