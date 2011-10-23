@@ -1,6 +1,18 @@
 .comment
   %a{:name => "comment_#{comment.id}", :class => "comment_anchor"}
-  = simple_format comment.body
-  - if can? :destroy, comment
-    = link_to "Editieren", edit_comment_path(comment)
-    = link_to "Löschen", comment_path(comment), confirm: "Ihren Kommentar wirklich löschen?", method: :delete
+  = gravatar_image_tag(comment.user.email, :gravatar => { :default => :identicon, :size => 32 })
+  .content
+    %p.name
+      %strong
+        = comment.user.nickname
+      sagte:
+    %p.date
+      = "#{I18n.localize(comment.created_at, :format => :long)}"
+    = simple_format comment.body
+    - if comment.created_at != comment.updated_at
+      %p.edit_date
+        = "(zuletzt geändert am #{I18n.localize(comment.created_at, :format => :long)})"
+    %p
+      - if can? :destroy, comment
+        = link_to "Editieren", edit_comment_path(comment)
+        = link_to "Löschen", comment_path(comment), confirm: "Ihren Kommentar wirklich löschen?", method: :delete

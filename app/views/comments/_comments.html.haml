@@ -2,7 +2,7 @@
 
 - if commentable.comments.count == 0
   %p
-    Keine Kommentare vorhanden.
+    %em Keine Kommentare vorhanden.
 - else
   - commentable.comments.each do |comment|
     = render partial: "comments/comment", locals: {comment: comment}
