@@ -7,7 +7,7 @@
   - commentable.comments.each do |comment|
     = render partial: "comments/comment", locals: {comment: comment}
 
-- if can? :create, :comment
+- if can? :create, Comment
   = render partial: "comments/form", locals: {comment: commentable.comments.new(body: params[:body])}
 - else
   %p
