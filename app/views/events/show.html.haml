@@ -27,7 +27,7 @@
 - if can? :delete, @event
   = link_to "Löschen", event_path(@event), :method => :delete, :confirm => "Wirklich löschen?"
 
-%h2 Die nächsten Events:
+%h2 Die nächsten Termine:
 
 - if @event.single_events.today_or_in_future.length > 0
   %ul
@@ -38,7 +38,7 @@
           \-
           = single_event.topic
 - else
-  %p Keine Events geplant
+  %p Keine Termine geplant
 
 #twitter_like
   <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="hackcologne">Tweet</a>
