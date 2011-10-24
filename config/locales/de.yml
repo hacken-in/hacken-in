@@ -180,7 +180,7 @@ de:
     models:
       comment: Kommentar
       event: Event
-      single_event: Ereignis
+      single_event: Termin
 
   formtastic:
     :yes: "Ja"
