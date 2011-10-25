@@ -19,16 +19,16 @@ class SingleEventsControllerTest < ActionController::TestCase
 
   test "should not be able to edit if not bodo" do
     single_event = FactoryGirl.create(:single_event)
-    get :edit, :id => single_event.id, :event_id => single_event.event.id
     sign_in FactoryGirl.create(:user)
+    get :edit, :id => single_event.id, :event_id => single_event.event.id
 
     assert_redirected_to :controller => 'welcome', :action => 'index'
   end
 
   test "should be able to edit if bodo" do
     single_event = FactoryGirl.create(:single_event)
-    get :edit, :id => single_event.id, :event_id => single_event.event.id
     sign_in FactoryGirl.create(:bodo)
+    get :edit, :id => single_event.id, :event_id => single_event.event.id
 
     assert_response :success
 
