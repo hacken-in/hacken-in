@@ -9,7 +9,7 @@ class EventsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should  showing list of events" do
+  test "should be showing list of events" do
     get :index
     assert_response :success
   end

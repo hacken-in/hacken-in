@@ -8,10 +8,13 @@ class SingleEventsController < ApplicationController
 
   def edit
     @single_event = SingleEvent.find(params[:id])
+    authorize! :edit, @single_event
   end
 
   def update
     @single_event = SingleEvent.find(params[:id])
+    authorize! :update, @single_event
+
     @single_event.topic = params[:single_event][:topic]
     @single_event.description = params[:single_event][:description]
 
