@@ -113,7 +113,7 @@ class SingleEventTest < ActiveSupport::TestCase
 
   test "should generate opengraph data" do
     single = FactoryGirl.create(:single_event)
-    hash = {"og:description"=>"SimpleSingleEventTopic", "og:title"=>"SimpleSingleEventTopic (SimpleEvent) am 01.10.2011 um 12:00"}
+    hash = {"og:description"=>"SimpleSingleEventTopic", "og:title"=>"SimpleSingleEventTopic (SimpleEvent) am #{single.occurrence.strftime("%d.%m.%Y um %H:%M")}"}
     assert_equal hash, single.to_opengraph
 
     single = FactoryGirl.create(:extended_single_event)
@@ -124,7 +124,7 @@ class SingleEventTest < ActiveSupport::TestCase
        "og:longitude"=>6.9868201,
        "og:postal-code"=>"51063",
        "og:street-address"=>"Deutz-Mülheimerstraße 129",
-       "og:title"=>"SimpleSingleEventTopic (SimpleEvent) am 01.10.2011 um 12:00"}
+       "og:title"=>"SimpleSingleEventTopic (SimpleEvent) am #{single.occurrence.strftime("%d.%m.%Y um %H:%M")}"}
     assert_equal hash, single.to_opengraph
   end
 
