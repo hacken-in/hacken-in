@@ -3,6 +3,8 @@
 class SingleEventsController < ApplicationController
   def show
     @single_event = SingleEvent.find(params[:id])
+    opengraph_data(@single_event.to_opengraph)
+
     @event = @single_event.event
   end
 

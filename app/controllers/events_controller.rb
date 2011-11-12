@@ -8,6 +8,8 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     authorize! :show, @event
 
+    opengraph_data(@event.to_opengraph)
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @event }

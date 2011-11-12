@@ -4,6 +4,13 @@
     %title= content_for?(:title) ? yield(:title) + " – hcking.de" : "hcking.de"
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
+    = render_opengraph("og:title" => "hcking.de",
+            "og:image" => "#{request.protocol}#{request.host_with_port}#{asset_path("welcome_logo.png")}",
+            "og:url" => url_for(:only_path => false),
+            "og:site_name"=> "hcking.de",
+            "fb:admins" => "520869354",
+            "og:type" => "website",
+            "og:description" => "Der Event-Kalender für Nerds")
     %link{:rel=>"shortcut icon", :href=> "#{asset_path "favicon.png", "images"}"}
     %link{:href=>'http://fonts.googleapis.com/css?family=Quattrocento+Sans', :rel=>'stylesheet', :type=>'text/css'}
     = csrf_meta_tags

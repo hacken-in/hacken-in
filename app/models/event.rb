@@ -65,7 +65,20 @@ class Event < ActiveRecord::Base
   def to_param
     "#{self.id}-#{self.name.parameterize}"
   end
-  
+
+  def to_opengraph
+    graph = {}
+    graph["og:title"] = "#{self.name}"
+    graph["og:description"] = HTML_Truncator.truncate(self.description, 40) unless self.description.blank?
+    graph["og:latitude"] = self.latitude if self.latitude
+    graph["og:longitude"] = self.longitude if self.longitude
+    graph["og:street-address"] = self.street unless self.street.blank?
+    graph["og:locality"] = self.location unless self.location.blank?
+    graph["og:postal-code"] = self.zipcode unless self.zipcode.blank?
+    graph["og:country-name"] = self.country unless self.country.blank?
+    graph
+  end
+
   private
 
   def schedule_to_yaml

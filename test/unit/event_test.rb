@@ -171,4 +171,20 @@ class EventTest < ActiveSupport::TestCase
     assert_equal 0, Comment.where(id: comment.id).count
   end
 
+  test "should generate opengraph data" do
+    event = FactoryGirl.create(:simple)
+    hash = {"og:title"=>"SimpleEvent"}
+    assert_equal hash, event.to_opengraph
+
+    event = FactoryGirl.create(:full_event)
+    hash = {"og:country-name"=>"Germany",
+       "og:latitude"=>50.9490714,
+       "og:locality"=>"CoWoCo, Gasmotorenfabrik, 3. Etage",
+       "og:longitude"=>6.9868201,
+       "og:postal-code"=>"51063",
+       "og:street-address"=>"Deutz-Mülheimerstraße 129",
+       "og:title"=>"SimpleEvent"}
+    assert_equal hash, event.to_opengraph
+  end
+
 end
