@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
   has_many :single_events
-  has_many :comments, :as => :commentable
+  has_many :comments, as: :commentable, dependent: :destroy
 
   before_save :schedule_to_yaml
   after_save :generate_single_events

@@ -162,4 +162,13 @@ class EventTest < ActiveSupport::TestCase
     event = FactoryGirl.create(:simple)
     assert_equal "SimpleEvent", event.title
   end
+
+  test "should delete comment when event is deleted" do
+    event = FactoryGirl.create(:simple)
+    comment = event.comments.build(body: "wow!")
+    comment.save
+    event.destroy
+    assert_equal 0, Comment.where(id: comment.id).count
+  end
+
 end
