@@ -97,8 +97,17 @@ class SingleEventTest < ActiveSupport::TestCase
   end
 
   test "should generate title and name" do
-    single = FactoryGirl.create(:single_event, :topic => "A")
+    single = FactoryGirl.create(:single_event, topic: "A")
     assert_equal "A (SimpleEvent)", single.title
     assert_equal "A (SimpleEvent) am #{single.occurrence.strftime("%d.%m.%Y um %H:%M")}", single.name
   end
+
+  test "should delete comment when singleevent is deleted" do
+    single = FactoryGirl.create(:single_event, topic: "A")
+    comment = single.comments.build(body: "wow!")
+    comment.save
+    single.destroy
+    assert_equal 0, Comment.where(id: comment.id).count
+  end
+
 end
