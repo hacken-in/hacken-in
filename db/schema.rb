@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111021201137) do
+ActiveRecord::Schema.define(:version => 20111112155541) do
 
   create_table "comments", :force => true do |t|
     t.text     "body"
@@ -30,8 +30,6 @@ ActiveRecord::Schema.define(:version => 20111021201137) do
     t.text     "schedule_yaml"
     t.string   "url"
     t.string   "twitter"
-    t.float    "lat"
-    t.float    "long"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "location"
@@ -44,8 +42,8 @@ ActiveRecord::Schema.define(:version => 20111021201137) do
     t.boolean  "full_day",      :default => false
   end
 
-  add_index "events", ["lat"], :name => "index_events_on_lat"
-  add_index "events", ["long"], :name => "index_events_on_long"
+  add_index "events", ["latitude"], :name => "index_events_on_latitude"
+  add_index "events", ["longitude"], :name => "index_events_on_longitude"
 
   create_table "single_events", :force => true do |t|
     t.string   "topic"
