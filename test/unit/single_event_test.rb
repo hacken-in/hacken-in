@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'test_helper'
 
 class SingleEventTest < ActiveSupport::TestCase
@@ -108,6 +109,22 @@ class SingleEventTest < ActiveSupport::TestCase
     comment.save
     single.destroy
     assert_equal 0, Comment.where(id: comment.id).count
+  end
+
+  test "should generate opengraph data" do
+    single = FactoryGirl.create(:single_event)
+    hash = {"og:title"=>"SimpleSingleEventTopic (SimpleEvent) am 01.10.2011 um 12:00"}
+    assert_equal hash, single.to_opengraph
+
+    single = FactoryGirl.create(:extended_single_event)
+    hash = {"og:country-name"=>"Germany",
+       "og:latitude"=>50.9490714,
+       "og:locality"=>"CoWoCo, Gasmotorenfabrik, 3. Etage",
+       "og:longitude"=>6.9868201,
+       "og:postal-code"=>"51063",
+       "og:street-address"=>"Deutz-Mülheimerstraße 129",
+       "og:title"=>"SimpleSingleEventTopic (SimpleEvent) am 01.10.2011 um 12:00"}
+    assert_equal hash, single.to_opengraph
   end
 
 end

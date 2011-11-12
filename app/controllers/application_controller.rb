@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include CommentsPathHelper
+  include OpengraphHelper
 
   protect_from_forgery
 

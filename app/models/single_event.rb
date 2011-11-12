@@ -58,4 +58,9 @@ class SingleEvent < ActiveRecord::Base
     end
   end
 
+  def to_opengraph
+    graph = event.to_opengraph
+    graph["og:title"] = self.name
+    graph
+  end
 end
