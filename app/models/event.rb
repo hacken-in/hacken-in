@@ -69,7 +69,7 @@ class Event < ActiveRecord::Base
   def to_opengraph
     graph = {}
     graph["og:title"] = "#{self.name}"
-    graph["og:description"] = HTML_Truncator.truncate(self.description, 40) unless self.description.blank?
+    graph["og:description"] = ActionController::Base.helpers.truncate(ActionController::Base.helpers.strip_tags(self.description), length: 80) unless self.description.blank?
     graph["og:latitude"] = self.latitude if self.latitude
     graph["og:longitude"] = self.longitude if self.longitude
     graph["og:street-address"] = self.street unless self.street.blank?

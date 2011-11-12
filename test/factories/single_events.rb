@@ -7,6 +7,7 @@ FactoryGirl.define do
 
   factory :extended_single_event, :class => SingleEvent do
     topic "SimpleSingleEventTopic"
+    description "wow this is <strong>a</strong> description"
     occurrence Time.new(2011,10,1,12,00)
     association :event, :factory => :full_event
   end
