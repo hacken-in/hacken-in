@@ -227,7 +227,7 @@ class CommentsControllerTest < ActionController::TestCase
     assert_redirected_to :controller => 'single_events',
                          :action => 'show',
                          :id => comment.commentable.id,
-                         :event_id => comment.commentable.event.id,
+                         :event_id => comment.commentable.event.id
   end
 
   test "should not delete event comment if not logged in" do
