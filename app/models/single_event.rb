@@ -61,6 +61,12 @@ class SingleEvent < ActiveRecord::Base
   def to_opengraph
     graph = event.to_opengraph
     graph["og:title"] = self.name
+    if !self.description.blank? || !self.topic.blank?
+      graph["og:description"] = [
+        self.topic,
+        ActionController::Base.helpers.truncate(ActionController::Base.helpers.strip_tags(self.description), length: 80)
+      ].delete_if{|x| x.blank?}.join(" - ")
+    end
     graph
   end
 end

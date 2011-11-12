@@ -183,7 +183,9 @@ class EventTest < ActiveSupport::TestCase
        "og:longitude"=>6.9868201,
        "og:postal-code"=>"51063",
        "og:street-address"=>"Deutz-Mülheimerstraße 129",
-       "og:title"=>"SimpleEvent"}
+       "og:title"=>"SimpleEvent",
+       "og:description" => "Dragée bonbon tootsie roll icing jelly sesame snaps croissant apple pie. Suga..."}
+
     assert_equal hash, event.to_opengraph
   end
 
