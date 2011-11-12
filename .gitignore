@@ -7,7 +7,6 @@ tmp/
 config/database.yml
 .rvmrc
 public/assets
-config/newrelic.yml
 doc/*
 .yardoc/*
 nbproject/*
