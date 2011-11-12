@@ -25,11 +25,7 @@
     = truncate_html(simple_format(@single_event.event.description), 30, :ellipsis => " ... (#{link_to("mehr", @event)})")
 
 .address
-  = @event.location
-  %br
-  = @event.street
-  %br
-  = @event.zipcode
+  = [@event.location, @event.street, @event.zipcode].delete_if {|d|d.blank?}.join("<br>").html_safe
   = @event.city
 
 - unless @event.url.blank? && @event.twitter.blank?
