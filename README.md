@@ -5,7 +5,7 @@
 This is the code of [hcking.de](http://hcking.de). Hcking.de is an event
 calendar for geeks in and around Cologne.
 
-We discuss features and problems in our google group that can be found [here](http://groups.google.com/group/hcking).
+We discuss features and problems in our [google group](http://groups.google.com/group/hcking).
 
 ## Getting Started
 
