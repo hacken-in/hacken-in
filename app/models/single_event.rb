@@ -16,7 +16,7 @@ class SingleEvent < ActiveRecord::Base
   end
 
   def title
-    self.topic.blank? ? self.event.name : "#{self.topic} (#{self.event.name})"
+    self.topic.blank? ? self.event.name : "#{self.event.name} (#{self.topic})"
   end
 
   def name

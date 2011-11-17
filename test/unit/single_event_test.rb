@@ -18,7 +18,7 @@ class SingleEventTest < ActiveSupport::TestCase
   end
 
   test "should generate title based on topic" do
-    assert_equal "SimpleSingleEventTopic (SimpleEvent)", FactoryGirl.create(:single_event).title
+    assert_equal "SimpleEvent (SimpleSingleEventTopic)", FactoryGirl.create(:single_event).title
     assert_equal "SimpleEvent", FactoryGirl.create(:single_event_without_topic).title
   end
 
@@ -99,8 +99,8 @@ class SingleEventTest < ActiveSupport::TestCase
 
   test "should generate title and name" do
     single = FactoryGirl.create(:single_event, topic: "A")
-    assert_equal "A (SimpleEvent)", single.title
-    assert_equal "A (SimpleEvent) am #{single.occurrence.strftime("%d.%m.%Y um %H:%M")}", single.name
+    assert_equal "SimpleEvent (A)", single.title
+    assert_equal "SimpleEvent (A) am #{single.occurrence.strftime("%d.%m.%Y um %H:%M")}", single.name
   end
 
   test "should delete comment when singleevent is deleted" do
@@ -113,7 +113,7 @@ class SingleEventTest < ActiveSupport::TestCase
 
   test "should generate opengraph data" do
     single = FactoryGirl.create(:single_event)
-    hash = {"og:description"=>"SimpleSingleEventTopic", "og:title"=>"SimpleSingleEventTopic (SimpleEvent) am #{single.occurrence.strftime("%d.%m.%Y um %H:%M")}"}
+    hash = {"og:description"=>"SimpleSingleEventTopic", "og:title"=>"SimpleEvent (SimpleSingleEventTopic) am #{single.occurrence.strftime("%d.%m.%Y um %H:%M")}"}
     assert_equal hash, single.to_opengraph
 
     single = FactoryGirl.create(:extended_single_event)
@@ -124,7 +124,7 @@ class SingleEventTest < ActiveSupport::TestCase
        "og:longitude"=>6.9868201,
        "og:postal-code"=>"51063",
        "og:street-address"=>"Deutz-Mülheimerstraße 129",
-       "og:title"=>"SimpleSingleEventTopic (SimpleEvent) am #{single.occurrence.strftime("%d.%m.%Y um %H:%M")}"}
+       "og:title"=>"SimpleEvent (SimpleSingleEventTopic) am #{single.occurrence.strftime("%d.%m.%Y um %H:%M")}"}
     assert_equal hash, single.to_opengraph
   end
 

@@ -95,7 +95,7 @@ DTEND;VALUE=DATE:#{time4.strftime("%Y%m%d")}
 DTSTART;VALUE=DATE:#{time4.strftime("%Y%m%d")}
 DESCRIPTION:First Event Description
 URL:http://hcking.dev/events/#{event4.id}/single_events/#{event4.single_events.first.id}
-SUMMARY:First Event (SimpleEvent)
+SUMMARY:SimpleEvent (First Event)
 LOCATION:home\\, cologne
 END:VEVENT
 DESC
