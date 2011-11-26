@@ -1,0 +1,4 @@
+%h2= @user.nickname
+
+= gravatar_image_tag(@user.email, :class => "user_gravatar", :gravatar => { :default => :identicon, :size => 128 })
+
