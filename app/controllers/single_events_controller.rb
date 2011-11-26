@@ -21,12 +21,36 @@ class SingleEventsController < ApplicationController
     @single_event.description = params[:single_event][:description]
 
     if @single_event.save
-      flash[:notice] = "SingleEvent wurde bearbeitet"
+      flash[:notice] = t "single_events.save.confirmation"
     else
-      flash[:error] = "Beim Speichern ist ein Fehler aufgetreten"
+      flash[:error] = t "single_events.save.error"
     end
 
     redirect_to :method => "show", :event_id => @single_event.event.id, :id => @single_event.id
+  end
+
+  def participate
+    @single_event = SingleEvent.find(params[:id])
+    if user_signed_in?
+      @single_event.users << current_user
+      flash[:notice] = t "single_events.participate.confirmation"
+    else
+      flash[:error] = t "devise.failure.unauthenticated"
+    end
+
+    redirect_to event_single_event_path(@single_event.event,@single_event)
+  end
+
+  def unparticipate
+    @single_event = SingleEvent.find(params[:id])
+    if user_signed_in?
+      @single_event.users.delete current_user
+      flash[:notice] = t "single_events.unparticipate.confirmation"
+    else
+      flash[:error] = t "devise.failure.unauthenticated"
+    end
+
+    redirect_to event_single_event_path(@single_event.event,@single_event)
   end
 
 end

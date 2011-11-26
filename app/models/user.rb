@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   acts_as_taggable_on :hates
 
   has_many :comments
+  has_and_belongs_to_many :single_events, :uniq => true
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
