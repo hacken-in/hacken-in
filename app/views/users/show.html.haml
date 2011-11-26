@@ -1,6 +1,6 @@
-%h2= @user.nickname
-
 = gravatar_image_tag(@user.email, :class => "user_gravatar", :gravatar => { :default => :identicon, :size => 128 })
+
+%h2= @user.nickname
 
 - if current_user == @user
   = link_to "Editieren", edit_user_registration_path
