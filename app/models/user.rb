@@ -30,7 +30,6 @@ class User < ActiveRecord::Base
     if params[:password].blank? and params[:email] == self.email
       params.delete(:current_password)
       params.delete(:password)
-      #params.delete(:password_confirmation) if params[:password_confirmation].blank?
       params.delete(:password_confirmation)
       self.update_without_password(params)
     else

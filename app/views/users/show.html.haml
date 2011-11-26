@@ -2,6 +2,10 @@
 
 = gravatar_image_tag(@user.email, :class => "user_gravatar", :gravatar => { :default => :identicon, :size => 128 })
 
+- if current_user == @user
+  = link_to "Editieren", edit_user_registration_path
+  / edit_user_registration_path
+
 - unless @user.description.blank?
   = convert_markdown @user.description
 
