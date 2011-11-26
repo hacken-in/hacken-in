@@ -3,5 +3,5 @@
   .content
     = form.text_area :body
     %p.help
-      %em (Ein wenig HTML ist erlaubt, z.B. a, strong, em ...)
-    = form.submit "Kommentieren"
+      %em= raw t 'comments._form.markdown_info', :syntax_link => "http://daringfireball.net/projects/markdown/syntax"
+    = form.submit t('comments._form.comment_button')

@@ -20,4 +20,9 @@ module ApplicationHelper
     HTML_Truncator.truncate(html, length, opts).html_safe
   end
 
+  def convert_markdown(markdown_text)
+    markdown_compiler = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(:filter_html => true, :no_styles => true, :safe_links_only => true))
+    return raw markdown_compiler.render(markdown_text)
+  end
+
 end
