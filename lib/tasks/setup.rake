@@ -17,7 +17,9 @@ namespace :setup do
       exit
     end
 
-    if User.create!(:nickname => user, :password => password, :email => email, :admin => true)
+    if user = User.create!(:nickname => user, :password => password, :email => email)
+      user.admin = true
+      user.save
       puts "User created"
     end
   end
