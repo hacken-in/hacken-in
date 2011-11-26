@@ -1,5 +1,8 @@
 de:
 
+  common:
+    confirm_delete: Bist du sicher?
+
   errors:
     template:
       header:
@@ -160,6 +163,10 @@ de:
     attributes:
       user:
         email: E-Mail
+        description: Beschreibung
+        twitter: Twitter Account
+        github: Github Account
+        homepage: Homepage
         password: Passwort
         password_confirmation: Passwort bestätigen
         current_password: Aktuelles Passwort
@@ -186,6 +193,17 @@ de:
     _form:
       markdown_info: Hier kannst du <a href="%{syntax_link}">Markdown</a> benutzen.
       comment_button: Kommentieren
+
+  registrations:
+    edit:
+      edit_profile: Konto bearbeiten
+      change_gravatar: Profilbild ändern auf gravatar.com
+      password_hint: (leer lassen, wenn kein neues Passwort gewünscht ist
+      password_needed: (um Änderungen zu machen, brauchen wir dein aktuelles Passwort)
+      save_profile: Speichern
+      delete_profile: Konto löschen
+      delete_profile_text: Du willst dein Konto löschen?
+      delete_confirm: Ja, bitte mein Konto löschen
 
   formtastic:
     :yes: "Ja"

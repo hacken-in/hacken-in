@@ -1,0 +1,67 @@
+%h2= t 'registrations.edit.edit_profile'
+
+= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+  = devise_error_messages!
+
+  %p
+    = link_to gravatar_image_tag(current_user.email, :alt => 'Change on Gravatar', :gravatar => { :default => :identicon, :size => 128 }),"http://www.gravatar.com"
+    %br
+    = link_to t('registrations.edit.change_gravatar'), "http://gravatar.com", :target => '_blank'
+
+  %p
+    = f.label :nickname
+    %br
+    = f.text_field :nickname
+
+  %p
+    = f.label :email
+    %br
+    = f.text_field :email
+
+  %p
+    = f.label :description
+    %br
+    = f.text_area :description
+
+  %p
+    = f.label :twitter
+    %br
+    = f.text_field :twitter
+
+  %p
+    = f.label :github
+    %br
+    = f.text_field :github
+
+  %p
+    = f.label :homepage
+    %br
+    = f.text_field :homepage
+
+  %p
+    = f.label :password
+    %em= t 'registrations.edit.password_hint'
+    %br
+    = f.password_field :password
+
+  %p
+    = f.label :password_confirmation
+    %br
+    = f.password_field :password_confirmation
+
+  %p
+    = f.label :current_password
+    %i= t 'registrations.edit.password_needed'
+    %br
+    = f.password_field :current_password
+
+  %p= f.submit t('registrations.edit.save_profile')
+
+%h3= t 'registrations.edit.delete_profile'
+
+%p
+  = t 'registrations.edit.delete_profile_text'
+  %br
+  = button_to t('registrations.edit.delete_confirm'), registration_path(resource_name), :confirm => t('common.confirm_delete'), :method => :delete
+
+= link_to "Zurück", :back

@@ -2,3 +2,22 @@
 
 = gravatar_image_tag(@user.email, :class => "user_gravatar", :gravatar => { :default => :identicon, :size => 128 })
 
+- unless @user.description.blank?
+  = convert_markdown @user.description
+
+%ul
+  - unless @user.twitter.blank?
+    %li
+      = "#{t 'activerecord.attributes.user.twitter'}:"
+      = link_to "@" + @user.twitter, "https://twitter.com/#!/#{@user.twitter}"
+
+  - unless @user.github.blank?
+    %li
+      = "#{t 'activerecord.attributes.user.github'}:"
+      = link_to @user.github, "https://github.com/#{@user.github}"
+
+  - unless @user.homepage.blank?
+    %li
+      = "#{t 'activerecord.attributes.user.homepage'}:"
+      = link_to @user.homepage, @user.homepage
+

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111112155541) do
+ActiveRecord::Schema.define(:version => 20111126142948) do
 
   create_table "comments", :force => true do |t|
     t.text     "body"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20111112155541) do
   create_table "single_events", :force => true do |t|
     t.string   "topic"
     t.text     "description"
+    t.date     "date"
     t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -86,6 +87,10 @@ ActiveRecord::Schema.define(:version => 20111112155541) do
     t.datetime "updated_at"
     t.boolean  "admin",                               :default => false
     t.string   "nickname",                            :default => "",    :null => false
+    t.text     "description"
+    t.string   "github",               :limit => nil
+    t.string   "twitter",              :limit => nil
+    t.string   "homepage",             :limit => nil
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
