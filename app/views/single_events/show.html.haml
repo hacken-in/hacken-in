@@ -12,7 +12,7 @@
     %em
       Keine Beschreibung vorhanden
   - else
-    = simple_format @single_event.description
+    = convert_markdown @single_event.description
 
 %h3
   Über #{@single_event.event.name}
