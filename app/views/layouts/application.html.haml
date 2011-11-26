@@ -34,9 +34,9 @@
       #user_login
         - if user_signed_in?
           Hallo
-          %a{:href => "#{edit_user_registration_path}"}<
+          %a{:href => user_path(current_user)}<
             = gravatar_image_tag(current_user.email, :gravatar => { :default => :identicon, :size => 16 })
-          %a{:href => "#{edit_user_registration_path}"}<
+          %a{:href => user_path(current_user)}<
             = current_user.nickname
           \|
           %a{:href => "#{destroy_user_session_path}"} Abmelden
