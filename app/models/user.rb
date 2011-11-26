@@ -27,8 +27,28 @@ class User < ActiveRecord::Base
   end
 
   def update_with_password(params={})
-    params.delete(:current_password)
-    self.update_without_password(params)
+    if params[:password].blank? and params[:email] == self.email
+      params.delete(:current_password)
+      params.delete(:password)
+      #params.delete(:password_confirmation) if params[:password_confirmation].blank?
+      params.delete(:password_confirmation)
+      self.update_without_password(params)
+    else
+      current_password = params.delete(:current_password)
+
+      result = if valid_password?(current_password)
+        update_attributes(params)
+      else
+        self.attributes = params
+        self.valid?
+        self.errors.add(:current_password, current_password.blank? ? :blank : :invalid)
+        false
+      end
+
+      clean_up_passwords
+      result
+    end
+
   end
 
 end
