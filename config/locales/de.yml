@@ -182,6 +182,11 @@ de:
       event: Event
       single_event: Termin
 
+  comments:
+    _form:
+      markdown_info: Hier kannst du <a href="%{syntax_link}">Markdown</a> benutzen.
+      comment_button: Kommentieren
+
   formtastic:
     :yes: "Ja"
     :no: "Nein"

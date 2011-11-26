@@ -139,7 +139,7 @@ GEM
     rdiscount (1.6.8)
     rdoc (3.11)
       json (~> 1.4)
-    redcarpet (1.17.2)
+    redcarpet (2.0.0b5)
     ri_cal (0.8.8)
     sass (3.1.7)
     sass-rails (3.1.0)
@@ -212,7 +212,7 @@ DEPENDENCIES
   rake (~> 0.9)
   rb-fsevent
   rdiscount
-  redcarpet
+  redcarpet (~> 2.0.0b)
   ri_cal (~> 0.8.8)
   sass-rails (~> 3.1.0)
   spork-testunit
