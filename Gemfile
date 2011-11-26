@@ -18,7 +18,7 @@ gem 'uglifier'
 gem 'haml'
 gem 'redcarpet', '~> 2.0.0b'
 
-# Monitoring 
+# Monitoring
 gem 'newrelic_rpm', '~>3.1.1'
 
 # Date Handling
@@ -46,6 +46,9 @@ gem 'gravatar_image_tag'
 # Truncate HTML on SingelEvent Pages
 gem 'html_truncator'
 
+# facebook style tooltip jQuery plugin
+gem 'tipsy-rails', :git => "git://github.com/nragaz/tipsy-rails.git"
+
 group :development do
   # Deployment
   gem 'vlad', :require => false
@@ -54,7 +57,7 @@ group :development do
     gem 'rb-fsevent'
     gem 'growl'
   end
-  
+
   # guard
   gem 'guard'
   gem 'guard-test', "~> 0.4.0"
@@ -63,7 +66,6 @@ group :development do
   gem 'guard-bundler'
   gem 'guard-yard'
   gem 'guard-spork'
-
 end
 
 group :test do

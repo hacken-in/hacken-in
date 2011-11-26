@@ -1,7 +1,3 @@
-%div{class: "flash_notice"}
-  Am 26./27. wollen wir zusammen in einem Hackathon weiter an hcking.de arbeiten. Lust drauf? Details 
-  #{link_to "hier", "/events/53-hcking-de-hackathon"}.
-
 %h1 Events für Hacker in Köln und Umgebung
 
 - content_for :aside do
@@ -57,7 +53,7 @@
     = single_event.occurrence.strftime("%H:%M") unless single_event.event.full_day
     = link_to single_event.title, :controller => "single_events", :action => "show", :event_id => single_event.event.id, :id => single_event.id
     - if !single_event.event.city.blank?
-      %span.cityname 
+      %span.cityname
         = "(#{single_event.event.city})"
     / Display tags for this event, if any:
     = render "tags/tags", :event => single_event.event
