@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111112155541) do
+ActiveRecord::Schema.define(:version => 20111126115023) do
 
   create_table "comments", :force => true do |t|
     t.text     "body"
@@ -53,6 +53,14 @@ ActiveRecord::Schema.define(:version => 20111112155541) do
     t.datetime "updated_at"
     t.datetime "occurrence"
   end
+
+  create_table "single_events_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "single_event_id"
+  end
+
+  add_index "single_events_users", ["single_event_id"], :name => "index_single_events_users_on_single_event_id"
+  add_index "single_events_users", ["user_id"], :name => "index_single_events_users_on_user_id"
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"

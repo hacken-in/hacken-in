@@ -128,4 +128,13 @@ class SingleEventTest < ActiveSupport::TestCase
     assert_equal hash, single.to_opengraph
   end
 
+  test "user can participate on single event" do
+    single = FactoryGirl.create(:single_event)
+    user = FactoryGirl.create(:user)
+    single.users << user
+    single.save
+
+    assert_equal user, single.users.first
+    assert_equal 1, single.users.length
+  end
 end

@@ -1,6 +1,7 @@
 class SingleEvent < ActiveRecord::Base
   belongs_to :event
   has_many :comments, as: :commentable, dependent: :destroy
+  has_and_belongs_to_many :users, :uniq => true
 
   scope :in_future, where("occurrence >= ?", Time.now).order(:occurrence)
   scope :today_or_in_future, where("occurrence >= ?", Time.now.beginning_of_day).order(:occurrence)
