@@ -21,11 +21,11 @@ de:
     abbr_day_names: [So, Mo, Di, Mi, Do, Fr, Sa]
     month_names: [~, Januar, Februar, März, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember]
     abbr_month_names: [~, Jan, Feb, Mär, Apr, Mai, Jun, Jul, Aug, Sep, Okt, Nov, Dez]
-    order: 
+    order:
       - :day
       - :month
       - :year
-  
+
   time:
     formats:
       default: "%A, %d. %B %Y, %H:%M Uhr"
@@ -35,7 +35,7 @@ de:
 
     am: "vormittags"
     pm: "nachmittags"
-      
+
   datetime:
     distance_in_words:
       half_a_minute: 'eine halbe Minute'
@@ -205,6 +205,19 @@ de:
       delete_profile_text: Du willst dein Konto löschen?
       delete_confirm: Ja, bitte mein Konto löschen
 
+  single_events:
+    show:
+      participants: Teilnehmer (%{count})
+    participate:
+      confirmation: "Du nimmst an dem Event teil."
+    unparticipate:
+      confirmation: "Du nimmst nicht mehr an dem Event teil."
+    save:
+      confirmation:
+        "SingleEvent wurde bearbeitet."
+      error:
+        "Beim Speichern ist ein Fehler aufgetreten"
+
   formtastic:
     :yes: "Ja"
     :no: "Nein"
@@ -212,4 +225,5 @@ de:
     :required: "Benötigt"
     :create: "Erzeuge %{model}"
     :update: "Änderungen speichern"
+
 

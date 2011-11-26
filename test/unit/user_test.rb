@@ -30,4 +30,14 @@ class UserTest < ActiveSupport::TestCase
     u = User.create(:nickname => "bitboxer6", :email => "bodo6@example.com", :password => "mylongpassword")
     assert_equal u, User.find_for_database_authentication(:email => "bodo6@example.com")
   end
+
+  test "user can participate on single event" do
+    single = FactoryGirl.create(:single_event)
+    user = FactoryGirl.create(:user)
+    user.single_events << single
+    user.save
+
+    assert_equal single, user.single_events.first
+    assert_equal 1, user.single_events.length
+  end
 end

@@ -4,7 +4,8 @@
 
 = render "tags/tags", :event => @event
 
-= convert_markdown @event.description
+- unless @event.description.blank?
+  = convert_markdown @event.description
 
 .address
   = @event.location
