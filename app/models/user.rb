@@ -26,4 +26,9 @@ class User < ActiveRecord::Base
     self.where("email = ?", conditions[:email]).limit(1).first
   end
 
+  def update_with_password(params={})
+    params.delete(:current_password)
+    self.update_without_password(params)
+  end
+
 end

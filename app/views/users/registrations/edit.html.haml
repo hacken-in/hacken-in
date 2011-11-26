@@ -49,12 +49,6 @@
     %br
     = f.password_field :password_confirmation
 
-  %p
-    = f.label :current_password
-    %i= t 'registrations.edit.password_needed'
-    %br
-    = f.password_field :current_password
-
   %p= f.submit t('registrations.edit.save_profile')
 
 %h3= t 'registrations.edit.delete_profile'
