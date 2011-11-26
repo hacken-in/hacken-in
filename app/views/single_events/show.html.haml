@@ -1,10 +1,5 @@
 - title @single_event.name
 
-%h2
-  = @event.full_day? ? @single_event.occurrence.strftime("%d.%m.%Y") :  @single_event.occurrence.strftime("%d.%m.%Y um %H:%M")
-
-= render "tags/tags", :event => @single_event.event
-
 %div.right_row
   = render "events/map", :event => @event
   %div.map
@@ -18,6 +13,10 @@
       <script src="http://connect.facebook.net/en_US/all.js#appId=213379535367603&amp;xfbml=1"></script>
       <fb:like href="#{event_url(@event)}" send="true" width="450" show_faces="false" font="" layout="button_count"></fb:like>
 
+%h2
+  = @event.full_day? ? @single_event.occurrence.strftime("%d.%m.%Y") :  @single_event.occurrence.strftime("%d.%m.%Y um %H:%M")
+
+= render "tags/tags", :event => @single_event.event
 
 - if @single_event.description.blank?
   %p
