@@ -96,4 +96,36 @@ class SingleEvent < ActiveRecord::Base
     end
   end
 
+  def populate_event_for_rical(cal)
+    start_time = self.occurrence
+    end_time  = (self.occurrence + (self.event.schedule.duration || 3600))
+
+    if self.event.full_day
+      start_time = start_time.to_date
+      end_time = end_time.to_date
+    else
+      start_time = start_time.utc
+      end_time = end_time.utc
+    end
+
+    loc = [self.event.location, self.event.address].delete_if{|d|d.blank?}.join(", ").strip
+    url = Rails.application.routes.url_helpers.event_single_event_url(
+              :host => Rails.env.production? ? "hcking.de" : "hcking.dev",
+              :event_id => self.event.id,
+              :id => self.id)
+
+    description = ActionController::Base.helpers.strip_tags("#{self.description}\n\n#{self.event.description}".strip)
+
+    summary = self.title
+
+    cal.event do |event|
+      event.summary     = summary
+      event.description = description
+      event.dtstart     = start_time
+      event.dtend       = end_time
+      event.location    = loc unless loc.blank?
+      event.url         = url
+    end
+
+  end
 end

@@ -1,12 +1,24 @@
 %h1 Events für Hacker in Köln und Umgebung
 
 - content_for :aside do
+  %strong Kalender
+
+  - if user_signed_in?
+    Abonniere den Kalender:
+
+    %ul
+      %li
+        = link_to "Meine Events", "/personalized_ical/#{current_user.guid}.ical"
+      %li
+        = link_to "Alle Events", "/ical.ical"
+  - else
+    :markdown
+      Abonniere den Kalender via #{link_to "iCal", "abonnieren"}.
+
+
   :markdown
-    **Kalender**
-
-    Abonniere den Kalender via #{link_to "iCal", "abonnieren"}.
-
     Hier fehlt ein Event? Dann schick uns eine [E-Mail](mailto:mail@hcking.de).
+
 
   #user_controls
     #hate_list
