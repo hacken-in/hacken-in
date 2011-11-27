@@ -51,8 +51,7 @@
   = @single_event.city
 
 %p
-  Zur Übersicht von
-  = link_to @event.name, @event
+  Zur Übersicht von #{link_to @event.name, @event}.
 
 - if can? :update, @event
   = link_to "Editieren", :action => "edit", :event_id => @event.id, :id => @single_event.id
