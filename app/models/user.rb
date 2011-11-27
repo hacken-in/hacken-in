@@ -55,4 +55,18 @@ class User < ActiveRecord::Base
     !!self.allow_ignore_view
   end
 
+  def guid
+    guid = read_attribute :guid
+
+    if guid.blank?
+      begin
+        guid = (0..16).to_a.map {|a| rand(16).to_s(16)}.join
+      end while User.where('guid = ?', guid).count > 0
+      write_attribute :guid, guid
+      self.save
+    end
+
+    return guid
+  end
+
 end
