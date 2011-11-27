@@ -25,6 +25,13 @@
   - else
     = convert_markdown @single_event.description
 
+- unless @event.url.blank? && @event.twitter.blank?
+  %p
+    - unless @event.url.blank?
+      = link_to "Webseite", @single_event.url
+    - unless @event.twitter.blank?
+      = link_to "Twitter", "http://twitter.com/#{@event.twitter}"
+
 %h3
   Über #{@single_event.event.name}
 
@@ -38,13 +45,6 @@
 .address
   = [@single_event.location, @single_event.street, @single_event.zipcode].delete_if {|d|d.blank?}.join("<br>").html_safe
   = @single_event.city
-
-- unless @event.url.blank? && @event.twitter.blank?
-  %p
-    - unless @event.url.blank?
-      = link_to "Webseite", @single_event.url
-    - unless @event.twitter.blank?
-      = link_to "Twitter", "http://twitter.com/#{@event.twitter}"
 
 %p
   Zur Übersicht von
