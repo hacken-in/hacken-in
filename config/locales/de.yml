@@ -214,7 +214,7 @@ de:
 
   single_events:
     show:
-      participants: Teilnehmer (%{count})
+      participants: Teilnehmer
     participate:
       confirmation: "Du nimmst an dem Event teil."
     unparticipate:
