@@ -1,9 +1,25 @@
+= content_for :javascript do
+  :javascript
+    $(function() {
+      $("#single_event_tag_list").tokenInput("#{tags_path}", {theme: "facebook", allowNewItems: true, 
+        hintText: "Gebe einen Tag ein", noResultsText:"Kein Tag gefunden", searchingText:"Suche...",
+        tokenValue: "name", prePopulate: #{ tag_list_for_taggable(@single_event) }});
+      $("#event_name").focus();
+    });
+
 %h1 Diesen Tag des Events bearbeiten
 
 = semantic_form_for(@single_event, :url => url_for(:action => 'update', :id => @single_event.id)) do |f|
   = f.inputs do
     = f.input :topic
     = f.input :description
-
+    = f.input :location
+    = f.input :street
+    = f.input :zipcode
+    = f.input :city
+    = f.input :url
+    = f.input :tag_list
+    = f.input :full_day
+ 
   = f.buttons do
     = f.commit_button

@@ -1,4 +1,10 @@
+require 'location'
+
 class SingleEvent < ActiveRecord::Base
+  include Location
+  after_validation :reset_geocode
+  geocoded_by :address
+
   belongs_to :event
   has_many :comments, as: :commentable, dependent: :destroy
   has_and_belongs_to_many :users, :uniq => true
@@ -6,6 +12,9 @@ class SingleEvent < ActiveRecord::Base
   scope :in_future, where("occurrence >= ?", Time.now).order(:occurrence)
   scope :today_or_in_future, where("occurrence >= ?", Time.now.beginning_of_day).order(:occurrence)
   default_scope order(:occurrence)
+
+  # Provide tagging
+  acts_as_taggable
 
   def self.find_or_create(parameters)
     event = where(parameters).first
@@ -70,4 +79,19 @@ class SingleEvent < ActiveRecord::Base
     end
     graph
   end
+
+  # Attribute aus dem Event-Model holen, wenn im SingleEvent nicht
+  # definiert
+  [:url, :duration, :full_day, :location, :street,
+   :zipcode, :city, :country, :latitude, :longitude].each do |item|
+
+    define_method item.to_s do
+      if !self.read_attribute(item).blank?
+        self.read_attribute(item)
+      elsif !self.event.nil?
+        self.event.read_attribute(item)
+      end
+    end
+  end
+
 end

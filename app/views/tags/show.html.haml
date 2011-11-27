@@ -5,7 +5,7 @@
   - @events.each do |event|
     %p
       = link_to event.name, event_path(event)
-      = render 'tags/tags', :event => event
+      = render 'tags/tags', :tag_list => event.tag_list
       
 - else
   %p Es scheint keine Events mit diesem Tag zu geben.

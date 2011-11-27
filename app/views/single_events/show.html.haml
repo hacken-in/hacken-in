@@ -1,7 +1,7 @@
 - title @single_event.name
 
 %div.right_row
-  = render "events/map", :event => @event
+  = render "events/map", :event => @single_event
   %div.map
 
   #twitter_like
@@ -16,7 +16,7 @@
 %h2
   = @event.full_day? ? @single_event.occurrence.strftime("%d.%m.%Y") :  @single_event.occurrence.strftime("%d.%m.%Y um %H:%M")
 
-= render "tags/tags", :event => @single_event.event
+= render "tags/tags", :tag_list => @single_event.event.tag_list + @single_event.tag_list
 
 - if @single_event.description.blank?
   %p
@@ -36,13 +36,13 @@
     = truncate_html(convert_markdown(@single_event.event.description), 30, :ellipsis => " ... (#{link_to("mehr", @event)})")
 
 .address
-  = [@event.location, @event.street, @event.zipcode].delete_if {|d|d.blank?}.join("<br>").html_safe
-  = @event.city
+  = [@single_event.location, @single_event.street, @single_event.zipcode].delete_if {|d|d.blank?}.join("<br>").html_safe
+  = @single_event.city
 
 - unless @event.url.blank? && @event.twitter.blank?
   %p
     - unless @event.url.blank?
-      = link_to "Webseite", @event.url
+      = link_to "Webseite", @single_event.url
     - unless @event.twitter.blank?
       = link_to "Twitter", "http://twitter.com/#{@event.twitter}"
 

@@ -38,6 +38,16 @@ class EventTest < ActiveSupport::TestCase
     assert_not_nil event.longitude
   end
 
+  test "check if adress is not geocoded if no adress is given" do
+    event = Event.new(name: "Hallo")
+    event.latitude = 1.23132
+    event.longitude = 1.22344
+    event.save
+    assert_nil event.latitude
+    assert_nil event.longitude
+  end
+
+
   test "event adress formatting" do
     event = Event.new(name: "Hallo")
     event.location = "Cowoco in der Gasmotorenfabrik, 3. Etage"

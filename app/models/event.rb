@@ -1,4 +1,10 @@
+require 'location'
+
 class Event < ActiveRecord::Base
+  include Location
+  geocoded_by :address
+  after_validation :reset_geocode
+
   has_many :single_events
   has_many :comments, as: :commentable, dependent: :destroy
 
@@ -9,10 +15,6 @@ class Event < ActiveRecord::Base
   acts_as_taggable
 
   validates_presence_of :name
-
-  # Geocoding
-  geocoded_by :address
-  after_validation :geocode
 
   def generate_single_events
     self.future_single_events_cleanup
@@ -31,10 +33,6 @@ class Event < ActiveRecord::Base
     self.schedule.next_occurrences(12).each do |occurence|
       SingleEvent.find_or_create(:event_id => self.id, :occurrence => occurence)
     end
-  end
-
-  def address
-    [self.street, "#{self.zipcode} #{self.city}"].delete_if {|d| d.blank?}.collect{|d|d.strip}.join(", ")
   end
 
   def schedule
@@ -84,5 +82,4 @@ class Event < ActiveRecord::Base
   def schedule_to_yaml
     self.schedule_yaml = @schedule.to_yaml if !@schedule.nil?
   end
-
 end

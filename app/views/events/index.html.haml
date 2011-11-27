@@ -5,6 +5,6 @@
     %li
       = link_to event.name, event_path(event)
       <br/>
-      = render "tags/tags", :event => event
+      = render "tags/tags", :tag_list => event.tag_list
 
 = link_to "Zurück", root_path
