@@ -226,6 +226,10 @@ de:
       no_recent_events: "keine Events"
       recent_comments: "Aktuellste Kommentare"
       no_recent_comments: "keine Kommentare"
+      ignore_tags: "Ignoriert folgende Tags"
+      no_ignore_tags: "Keine ignorierten Tags"
+    edit:
+      allow_ignore_view: "ignorierte Tags öffentlich zeigen"
       
   formtastic:
     :yes: "Ja"

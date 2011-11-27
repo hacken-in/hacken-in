@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :single_events, :uniq => true
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :allow_ignore_view
   attr_protected :admin
 
   validates :email, :uniqueness => true
@@ -49,6 +49,10 @@ class User < ActiveRecord::Base
       result
     end
 
+  end
+  
+  def allow_ignore_view?
+    !!self.allow_ignore_view
   end
 
 end
