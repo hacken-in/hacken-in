@@ -89,6 +89,4 @@ class EventsControllerTest < ActionController::TestCase
     assert_redirected_to root_path
   end
 
-
 end
-
