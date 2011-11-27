@@ -1,0 +1,56 @@
+- title "Abonnieren"
+
+- content_for :javascript_assets do
+  subscribe
+
+- content_for :javascript do
+  %script{:type => "text/javascript", :src => "http://tile.cloudmade.com/wml/latest/web-maps-lite.js"}
+  :javascript
+    $(function() {
+      $('#general_link img').load(function() {
+        var clip = new ZeroClipboard.Client();
+        clip.setText( "#{@general_link}" );
+        clip.glue( 'general_link' );
+      });
+
+      $('#personal_link img').load(function() {
+        var clip = new ZeroClipboard.Client();
+        clip.setText( "#{@personal_link}" );
+        clip.glue( 'personal_link' );
+      });
+
+      $(".ical_link_field").mouseup(function(){
+        this.select();
+        return false;
+      });
+    });
+
+.abbonieren
+  - unless @personal_link.nil?
+    %p
+      Die iCal URL zum Abonnieren deiner Termine ist:
+
+    %input.ical_link_field{ :size => 40, :value => @personal_link }
+    #personal_link
+      = image_tag asset_path("clippy_up.png")
+
+  %p
+    Die iCal URL zum Abonnieren des gesamten Kalenders:
+
+  %input.ical_link_field{ :size => 40, :value => @general_link }
+  #general_link
+    = image_tag asset_path("clippy_up.png")
+
+:markdown
+  # Google Calendar
+
+  In der linken Spalte neben "Other Calendars" auf den Pfeil klicken und dann auf "Add by URL".
+
+  Nun einfach die URL des Kalenders einfügen.
+
+  # Apple iCal
+
+  Im Menü "Kalender" auf "Abonnieren" klicken und dort die URL des Kalenders einfügen. Bei "Automatisch
+  Aktualisieren" bitte "täglich" auswählen.
+
+  [Zurück zur Übersicht](/)
