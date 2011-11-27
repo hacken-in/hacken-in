@@ -1,19 +1,10 @@
 %h1 Events für Hacker in Köln und Umgebung
 
 - content_for :aside do
-  %strong Kalender
+  %h2 Kalender
 
-  - if user_signed_in?
-    Abonniere den Kalender:
-
-    %ul
-      %li
-        = link_to "Meine Events", "/personalized_ical/#{current_user.guid}.ical"
-      %li
-        = link_to "Alle Events", "/ical.ical"
-  - else
-    :markdown
-      Abonniere den Kalender via #{link_to "iCal", "abonnieren"}.
+  :markdown
+    Abonniere den Kalender via #{link_to "iCal", "abonnieren"}.
 
 
   :markdown

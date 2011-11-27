@@ -7,7 +7,7 @@
   %p
     Die iCal-URL zum abonnieren des Kalender ist:
 
-  %input{:size=> 40, :id => "icallink", :value => url_for(:action=>"index", :controller=>"ical", :format => "ical", :only_path => false)}
+  %input{:size=> 40, :id => "icallink", :value => url_for(:action=>"general", :controller=>"ical", :format => "ical", :only_path => false)}
   %div#d_clip_button{:style=>"display:inline-block"}
     =image_tag asset_path("clippy_up.png"), :id=>"clip_button"
     &nbsp;
