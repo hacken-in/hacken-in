@@ -11,6 +11,9 @@
   = form.inputs do
     = form.input :name
     = form.input :description, :input_html => { :class => 'autogrow', :rows => 10}
+    %li
+      %label
+      = render "commons/markdown_info"
     = form.input :location
     = form.input :street
     = form.input :zipcode
