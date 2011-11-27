@@ -42,7 +42,7 @@ class IcalControllerTest < ActionController::TestCase
     se.description = "First Event Description"
     se.save
 
-    get :index
+    get :general
     assert_response :success
     assert_equal "text/calendar", @response.headers["Content-Type"]
 

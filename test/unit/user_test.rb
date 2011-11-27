@@ -40,12 +40,26 @@ class UserTest < ActiveSupport::TestCase
     assert_equal single, user.single_events.first
     assert_equal 1, user.single_events.length
   end
-  
+
   test "ignore tags are not publicy viewable by default" do
     user = FactoryGirl.create(:user)
     assert_false user.allow_ignore_view?
   end
-  
+
+
+  test "user doesn't change his guid" do
+    user = FactoryGirl.create(:user)
+    guid = user.guid
+
+    assert_equal guid, user.guid
+  end
+
+  test "user has guid" do
+    first_user = FactoryGirl.create(:user)
+    second_user = FactoryGirl.create(:another_user)
+
+    assert_not_equal first_user.guid, second_user.guid
+  end
 end
 
 
