@@ -58,12 +58,12 @@
 
     %footer
       Dieser Event-Kalender ist ein Service von
-      %a{:href => "http://bodotasche.de"} Bodo "bitboxer" Tasche
+      = link_to "Bodo \"bitboxer\" Tasche", "/users/2"
       und
-      %a{:href => "https://github.com/moonglum"} Lucas "moonglum" Dohmen
+      = link_to "Lucas \"moonglum\" Dohmen", "/users/3"
       \-
-      %a{:href => "/impressum"} Impressum
+      = link_to "Impressum", "/impressum"
       \-
-      %a{:href => "/about"} Über hcking.de
+      = link_to "Über hcking.de", "/about"
       \-
-      %a{:href => "http://creativecommons.org/licenses/by-nc/3.0/de/"} cc-by-nc 3.0
+      = link_to "cc-by-nc 3.0", "http://creativecommons.org/licenses/by-nc/3.0/de/"
