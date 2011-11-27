@@ -40,4 +40,14 @@ class UserTest < ActiveSupport::TestCase
     assert_equal single, user.single_events.first
     assert_equal 1, user.single_events.length
   end
+  
+  test "ignore tags are not publicy viewable by default" do
+    user = FactoryGirl.create(:user)
+    assert_false user.allow_ignore_view?
+  end
+  
 end
+
+
+
+
