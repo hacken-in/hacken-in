@@ -8,7 +8,8 @@
 
   - unless @user.description.blank?
     = convert_markdown @user.description
-
+  - else
+    = t 'users.show.no_description'
   %ul
     - unless @user.twitter.blank?
       %li
