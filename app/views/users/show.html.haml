@@ -25,6 +25,14 @@
         = "#{t 'activerecord.attributes.user.homepage'}:"
         = link_to @user.homepage, @user.homepage
 
+  - if @user.allow_ignore_view?
+    .ignore_tags
+      %h3= t 'users.show.ignore_tags'
+      - unless @user.hate_list.empty?
+        = render "tags/tags", :tag_list => @user.hate_list
+      - else
+        %p= t 'users.show.no_ignore_tags'
+
   .recent_events
     %h3= t 'users.show.recent_events'
     - unless @recent_events.empty?

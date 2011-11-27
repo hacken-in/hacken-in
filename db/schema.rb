@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111127123258) do
+ActiveRecord::Schema.define(:version => 20111127151746) do
 
   create_table "comments", :force => true do |t|
     t.text     "body"
@@ -108,6 +108,7 @@ ActiveRecord::Schema.define(:version => 20111127123258) do
     t.string   "github"
     t.string   "twitter"
     t.string   "homepage"
+    t.boolean  "allow_ignore_view"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
