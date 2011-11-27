@@ -2,8 +2,14 @@ class PagesController < ApplicationController
 
   def show
     @page_name = params[:page_name].to_s.gsub(/\W/,'')
-    unless partial_exists?(@page_name)
+
+    unless partial_exists? @page_name
       render 'missing', :status => 404
+    end
+
+    if @page_name == "abonnieren"
+      @general_link = url_for( :action => "general", :controller => "ical", :format => "ical", :only_path => false )
+      @personal_link = "/personalized_ical/#{current_user.guid}.ical" if user_signed_in?
     end
   end
 
