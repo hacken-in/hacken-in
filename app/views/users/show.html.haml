@@ -1,27 +1,47 @@
-= gravatar_image_tag(@user.email, :class => "user_gravatar", :gravatar => { :default => :identicon, :size => 128 })
+#user_profile
+  = gravatar_image_tag(@user.email, :class => "user_gravatar", :gravatar => { :default => :identicon, :size => 128 })
 
-%h2= @user.nickname
+  %h2= @user.nickname
 
-- if current_user == @user
-  = link_to "Editieren", edit_user_registration_path
-  / edit_user_registration_path
+  - if current_user == @user
+    = link_to t('users.show.edit'), edit_user_registration_path
 
-- unless @user.description.blank?
-  = convert_markdown @user.description
+  - unless @user.description.blank?
+    = convert_markdown @user.description
 
-%ul
-  - unless @user.twitter.blank?
-    %li
-      = "#{t 'activerecord.attributes.user.twitter'}:"
-      = link_to "@" + @user.twitter, "https://twitter.com/#!/#{@user.twitter}"
+  %ul
+    - unless @user.twitter.blank?
+      %li
+        = "#{t 'activerecord.attributes.user.twitter'}:"
+        = link_to "@" + @user.twitter, "https://twitter.com/#!/#{@user.twitter}"
 
-  - unless @user.github.blank?
-    %li
-      = "#{t 'activerecord.attributes.user.github'}:"
-      = link_to @user.github, "https://github.com/#{@user.github}"
+    - unless @user.github.blank?
+      %li
+        = "#{t 'activerecord.attributes.user.github'}:"
+        = link_to @user.github, "https://github.com/#{@user.github}"
 
-  - unless @user.homepage.blank?
-    %li
-      = "#{t 'activerecord.attributes.user.homepage'}:"
-      = link_to @user.homepage, @user.homepage
+    - unless @user.homepage.blank?
+      %li
+        = "#{t 'activerecord.attributes.user.homepage'}:"
+        = link_to @user.homepage, @user.homepage
 
+  .recent_events
+    %h3= t 'users.show.recent_events'
+    - unless @recent_events.empty?
+      %ul
+        - @recent_events.each do |single_event|
+          %li
+            = link_to single_event.title, controller: :single_events, action: :show, event_id: single_event.event.id, id: single_event.id
+            = day_output_helper single_event.occurrence
+    - else
+      %p= t 'users.show.no_recent_events'
+
+  .recent_comments  
+    %h3= t 'users.show.recent_comments'
+
+    - @recent_comments.each do |comment|
+      %h4.user_profile Kommentar für #{link_to comment.commentable.name, commentable_path(comment)}
+      = render partial: "comments/comment", locals: {comment: comment}
+    - if @recent_comments.empty?
+      %p= t 'users.show.no_recent_comments'
+  

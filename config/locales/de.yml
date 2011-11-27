@@ -218,6 +218,14 @@ de:
       error:
         "Beim Speichern ist ein Fehler aufgetreten"
 
+  users:
+    show:
+      edit: Editieren
+      recent_events: "Zuletzt zugesagt für"
+      no_recent_events: "keine Events"
+      recent_comments: "Aktuellste Kommentare"
+      no_recent_comments: "keine Kommentare"
+      
   formtastic:
     :yes: "Ja"
     :no: "Nein"
