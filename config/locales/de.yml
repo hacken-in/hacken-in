@@ -2,6 +2,7 @@ de:
 
   common:
     confirm_delete: Bist du sicher?
+    markdown_info: Hier kannst du <a href="%{syntax_link}">Markdown</a> benutzen.
 
   errors:
     template:
@@ -191,7 +192,6 @@ de:
 
   comments:
     _form:
-      markdown_info: Hier kannst du <a href="%{syntax_link}">Markdown</a> benutzen.
       comment_button: Kommentieren
 
   registrations:
