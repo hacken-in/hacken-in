@@ -11,6 +11,8 @@ class SingleEvent < ActiveRecord::Base
 
   scope :in_future, where("occurrence >= ?", Time.now).order(:occurrence)
   scope :today_or_in_future, where("occurrence >= ?", Time.now.beginning_of_day).order(:occurrence)
+  scope :recent, lambda { |limit = 3| order(:occurrence).limit(limit) }
+  
   default_scope order(:occurrence)
 
   # Provide tagging

@@ -2,6 +2,7 @@ de:
 
   common:
     confirm_delete: Bist du sicher?
+    markdown_info: Hier kannst du <a href="%{syntax_link}">Markdown</a> benutzen.
 
   errors:
     template:
@@ -191,7 +192,6 @@ de:
 
   comments:
     _form:
-      markdown_info: Hier kannst du <a href="%{syntax_link}">Markdown</a> benutzen.
       comment_button: Kommentieren
 
   registrations:
@@ -219,6 +219,14 @@ de:
       error:
         "Beim Speichern ist ein Fehler aufgetreten"
 
+  users:
+    show:
+      edit: Editieren
+      recent_events: "Zuletzt zugesagt für"
+      no_recent_events: "keine Events"
+      recent_comments: "Aktuellste Kommentare"
+      no_recent_comments: "keine Kommentare"
+      
   formtastic:
     :yes: "Ja"
     :no: "Nein"

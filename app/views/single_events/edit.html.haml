@@ -13,6 +13,9 @@
   = f.inputs do
     = f.input :topic
     = f.input :description
+    %li
+      %label
+      = render "commons/markdown_info"
     = f.input :location
     = f.input :street
     = f.input :zipcode
@@ -20,6 +23,6 @@
     = f.input :url
     = f.input :tag_list
     = f.input :full_day
- 
+
   = f.buttons do
     = f.commit_button
