@@ -25,10 +25,13 @@ gem 'newrelic_rpm', '~>3.1.1'
 gem 'ice_cube', "~> 0.6.12"
 gem 'ri_cal', "~> 0.8.8"
 
+# Authentication
+gem 'devise', "~> 1.3"
+# Authorisation
+gem 'cancan'
+
 # Other dependencies
 gem 'jquery-rails'
-gem 'devise', "~> 1.3"
-gem 'cancan'
 gem 'gabba'
 gem 'formtastic', '~> 1.2.4'
 gem 'geocoder', '~> 1.0'
