@@ -1,11 +1,22 @@
+- unless @single_events.empty?
+  %h2 Events demnächst mit dem Tag "#{params[:tagname]}" :
+  - @single_events.each do |single_event|
+    %p
+      = link_to single_event.title, :controller => "single_events", :action => "show", :event_id => single_event.event.id, :id => single_event.id
+      (
+      = day_output_helper single_event.occurrence
+      )
+      = render "tags/tags", :tag_list => single_event.event.tag_list + single_event.tag_list
 
-%h2 Events mit dem Tag "#{params[:tagname]}"
-
-- unless @events.empty?
+- if !@events.empty?
+  - if !@single_events.empty?
+    %h2 Weitere Events ohne nächstes Datum für "#{params[:tagname]}"
+  - else
+    %h2 Events ohne Datum für "#{params[:tagname]}"
   - @events.each do |event|
     %p
       = link_to event.name, event_path(event)
       = render 'tags/tags', :tag_list => event.tag_list
-      
-- else
+- elsif @single_events.empty?
+  %h2 Events für das Tag "#{params[:tagname]}"
   %p Es scheint keine Events mit diesem Tag zu geben.
