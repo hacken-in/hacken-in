@@ -223,11 +223,12 @@ de:
     show:
       edit: Editieren
       recent_events: "Zuletzt zugesagt für"
-      no_recent_events: "keine Events"
+      no_recent_events: "Keine Events zugesagt."
       recent_comments: "Aktuellste Kommentare"
-      no_recent_comments: "keine Kommentare"
+      no_recent_comments: "Keine Kommentare vorhanden."
       ignore_tags: "Ignoriert folgende Tags"
       no_ignore_tags: "Keine ignorierten Tags"
+      no_description: "Keine Beschreibung vorhanden."
     edit:
       allow_ignore_view: "ignorierte Tags öffentlich zeigen"
       
