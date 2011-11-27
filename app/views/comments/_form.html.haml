@@ -2,6 +2,5 @@
   = gravatar_image_tag((comment.user.nil? ? current_user.email : comment.user.email),:gravatar => { :default => :identicon, :size => 32 })
   .content
     = form.text_area :body
-    %p.help
-      %em= raw t 'comments._form.markdown_info', :syntax_link => "http://daringfireball.net/projects/markdown/syntax"
-    = form.submit t('comments._form.comment_button')
+    = render "commons/markdown_info"
+    = form.submit t('common.comment_button')

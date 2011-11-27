@@ -2,6 +2,7 @@ de:
 
   common:
     confirm_delete: Bist du sicher?
+    markdown_info: Hier kannst du <a href="%{syntax_link}">Markdown</a> benutzen.
 
   errors:
     template:
@@ -191,15 +192,15 @@ de:
 
   comments:
     _form:
-      markdown_info: Hier kannst du <a href="%{syntax_link}">Markdown</a> benutzen.
       comment_button: Kommentieren
 
   registrations:
     edit:
+      danger_zone: Danger Zone
+      warning: Für Felder in der Danger-Zone brauchen wir dein Passwort, um die Änderungen zu machen.
       edit_profile: Konto bearbeiten
       change_gravatar: Profilbild ändern auf gravatar.com
       password_hint: (leer lassen, wenn kein neues Passwort gewünscht ist
-      password_needed: (um Änderungen zu machen, brauchen wir dein aktuelles Passwort)
       save_profile: Speichern
       delete_profile: Konto löschen
       delete_profile_text: Du willst dein Konto löschen?
