@@ -13,7 +13,7 @@
       <script src="http://connect.facebook.net/en_US/all.js#appId=213379535367603&amp;xfbml=1"></script>
       <fb:like href="#{event_url(@event)}" send="true" width="450" show_faces="false" font="" layout="button_count"></fb:like>
 
-= render "tags/tags", :event => @event
+= render "tags/tags", :tag_list => @event.tag_list
 
 - unless @event.description.blank?
   = convert_markdown @event.description

@@ -17,8 +17,7 @@ class SingleEventsController < ApplicationController
     @single_event = SingleEvent.find(params[:id])
     authorize! :update, @single_event
 
-    @single_event.topic = params[:single_event][:topic]
-    @single_event.description = params[:single_event][:description]
+    @single_event.update_attributes(params[:single_event])
 
     if @single_event.save
       flash[:notice] = t "single_events.save.confirmation"

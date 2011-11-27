@@ -137,4 +137,31 @@ class SingleEventTest < ActiveSupport::TestCase
     assert_equal user, single.users.first
     assert_equal 1, single.users.length
   end
+
+  test "get data from event if not defined in model" do
+    single = FactoryGirl.create(:single_event)
+    user = FactoryGirl.create(:user)
+
+    single.event.url = "http://www.example.com"
+    assert_equal "http://www.example.com", single.url
+
+    single.url = "http://www.example.com/single"
+    assert_equal "http://www.example.com/single", single.url
+
+    single.url = ""
+    assert_equal "http://www.example.com", single.url
+  end
+
+  test "check if adress is geocoded after save" do
+    single = FactoryGirl.create(:single_event)
+    single.location = "Cowoco in der Gasmotorenfabrik, 3. Etage"
+    single.street = "Deutz-Mülheimerstraße 129"
+    single.city = "Köln"
+    single.zipcode = "51063"
+    single.save
+
+    assert_not_nil single.latitude
+    assert_not_nil single.longitude
+  end
+
 end

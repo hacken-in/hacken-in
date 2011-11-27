@@ -56,7 +56,7 @@
       %span.cityname
         = "(#{single_event.event.city})"
     / Display tags for this event, if any:
-    = render "tags/tags", :event => single_event.event
+    = render "tags/tags", :tag_list => single_event.event.tag_list + single_event.tag_list
 
 %p
   = link_to "Alle Events", events_path
