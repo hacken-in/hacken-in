@@ -18,9 +18,6 @@ class Schedule::UpdateController < ApplicationController
     if !@event.save
       redirect_to(@event, :alert => 'Event konnte nicht geändert werden.')
     else
-      expire_fragment("event_occurences_#{@event.id}")
-      expire_action(:controller => '/welcome', :action => 'index')
-      expire_action(:controller => '/ical', :action => 'index', :format => :ics)
       redirect_to(@event, :notice => 'Event geändert.')
     end
   end
