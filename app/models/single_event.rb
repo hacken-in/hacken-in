@@ -32,7 +32,7 @@ class SingleEvent < ActiveRecord::Base
   end
 
   def name
-    if self.event.full_day
+    if self.full_day
       "#{self.title} am #{self.occurrence.strftime("%d.%m.%Y")}"
     else
       "#{self.title} am #{self.occurrence.strftime("%d.%m.%Y um %H:%M")}"
@@ -43,8 +43,8 @@ class SingleEvent < ActiveRecord::Base
     if (self.occurrence.year != other.occurrence.year) || (self.occurrence.month != other.occurrence.month) || (self.occurrence.day != other.occurrence.day)
       # not on same day..,
       return self.occurrence <=> other.occurrence
-    elsif self.event.full_day
-      if other.event.full_day
+    elsif self.full_day
+      if other.full_day
         # both are all day
         # sort via topic
         return self.title <=> other.title
@@ -52,7 +52,7 @@ class SingleEvent < ActiveRecord::Base
         # self is all day, other is not
         return -1
       end
-    elsif other.event.full_day
+    elsif other.full_day
       # sother is all day, self is not
       return 1
     else
@@ -88,9 +88,10 @@ class SingleEvent < ActiveRecord::Base
    :zipcode, :city, :country, :latitude, :longitude].each do |item|
 
     define_method item.to_s do
-      if !self.read_attribute(item).blank?
-        self.read_attribute(item)
-      elsif !self.event.nil?
+      value = self.read_attribute(item)
+      if !value.nil? && !(value.class.to_s == "String" && value.blank?)
+        value
+      elsif !self.event.blank?
         self.event.read_attribute(item)
       end
     end
@@ -100,12 +101,15 @@ class SingleEvent < ActiveRecord::Base
     start_time = self.occurrence
     end_time  = (self.occurrence + (self.event.schedule.duration || 3600))
 
-    if self.event.full_day
+    if self.full_day
       start_time = start_time.to_date
       end_time = end_time.to_date
     else
       start_time = start_time.utc
       end_time = end_time.utc
+      if !duration.nil?
+        end_time = start_time + duration.minutes
+      end
     end
 
     loc = [self.event.location, self.event.address].delete_if{|d|d.blank?}.join(", ").strip

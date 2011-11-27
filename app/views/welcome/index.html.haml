@@ -53,7 +53,7 @@
       = day_output_helper(current_date)
 
   .entry
-    = single_event.occurrence.strftime("%H:%M") unless single_event.event.full_day
+    = single_event.occurrence.strftime("%H:%M") unless single_event.full_day
     = link_to single_event.title, :controller => "single_events", :action => "show", :event_id => single_event.event.id, :id => single_event.id
     - if !single_event.event.city.blank?
       %span.cityname

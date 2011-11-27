@@ -22,7 +22,8 @@ gem 'redcarpet', '~> 2.0.0b'
 gem 'newrelic_rpm', '~>3.1.1'
 
 # Date Handling
-gem 'ice_cube', "~> 0.6.12"
+# Own Fork, fixes https://github.com/seejohnrun/ice_cube/issues/43
+gem 'ice_cube', :git => "git://github.com/bitboxer/ice_cube.git"
 gem 'ri_cal', "~> 0.8.8"
 
 # Authentication
