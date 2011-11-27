@@ -143,13 +143,19 @@ class SingleEventTest < ActiveSupport::TestCase
     user = FactoryGirl.create(:user)
 
     single.event.url = "http://www.example.com"
+    single.event.full_day = true
     assert_equal "http://www.example.com", single.url
+    assert single.full_day
 
     single.url = "http://www.example.com/single"
+    single.full_day = false
     assert_equal "http://www.example.com/single", single.url
+    assert !single.full_day
 
     single.url = ""
+    single.full_day = nil
     assert_equal "http://www.example.com", single.url
+    assert single.full_day
   end
 
   test "check if adress is geocoded after save" do

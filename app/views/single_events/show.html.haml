@@ -14,7 +14,7 @@
       <fb:like href="#{event_url(@event)}" send="true" width="450" show_faces="false" font="" layout="button_count"></fb:like>
 
 %h2
-  = @event.full_day? ? @single_event.occurrence.strftime("%d.%m.%Y") :  @single_event.occurrence.strftime("%d.%m.%Y um %H:%M")
+  = @single_event.full_day ? @single_event.occurrence.strftime("%d.%m.%Y") :  @single_event.occurrence.strftime("%d.%m.%Y um %H:%M")
 
 = render "tags/tags", :tag_list => @single_event.event.tag_list + @single_event.tag_list
 

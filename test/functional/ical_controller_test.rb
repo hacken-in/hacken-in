@@ -42,6 +42,33 @@ class IcalControllerTest < ActionController::TestCase
     se.description = "First Event Description"
     se.save
 
+    event5 = FactoryGirl.create(:simple)
+    time5 = (Time.now + 48.hours).beginning_of_day
+    event5.schedule.add_recurrence_date(time5)
+    event5.full_day = false
+    event5.location = "home"
+    event5.city = "cologne"
+    event5.save
+    se = event5.single_events.first
+    se.topic = "First Event"
+    se.description = "First Event Description"
+    se.full_day = true
+    se.save
+
+    event6 = FactoryGirl.create(:simple)
+    time6 = (Time.now + 48.hours).beginning_of_day
+    event6.schedule.add_recurrence_date(time6)
+    event6.full_day = false
+    event6.location = "home"
+    event6.city = "cologne"
+    event6.save
+    se = event6.single_events.first
+    se.topic = "First Event"
+    se.description = "First Event Description"
+    se.duration = 5
+    se.save
+
+
     get :general
     assert_response :success
     assert_equal "text/calendar", @response.headers["Content-Type"]
@@ -95,6 +122,28 @@ DTEND;VALUE=DATE:#{time4.strftime("%Y%m%d")}
 DTSTART;VALUE=DATE:#{time4.strftime("%Y%m%d")}
 DESCRIPTION:First Event Description
 URL:http://hcking.dev/events/#{event4.id}/single_events/#{event4.single_events.first.id}
+SUMMARY:SimpleEvent (First Event)
+LOCATION:home\\, cologne
+END:VEVENT
+DESC
+
+  vcal_event5 =<<DESC
+BEGIN:VEVENT
+DTEND;VALUE=DATE:#{time5.strftime("%Y%m%d")}
+DTSTART;VALUE=DATE:#{time5.strftime("%Y%m%d")}
+DESCRIPTION:First Event Description
+URL:http://hcking.dev/events/#{event5.id}/single_events/#{event5.single_events.first.id}
+SUMMARY:SimpleEvent (First Event)
+LOCATION:home\\, cologne
+END:VEVENT
+DESC
+
+  vcal_event6 =<<DESC
+BEGIN:VEVENT
+DTEND;VALUE=DATE-TIME:#{(time6+5.minutes).strftime("%Y%m%dT%H%M%SZ")}
+DTSTART;VALUE=DATE-TIME:#{time6.strftime("%Y%m%dT%H%M%SZ")}
+DESCRIPTION:First Event Description
+URL:http://hcking.dev/events/#{event6.id}/single_events/#{event6.single_events.first.id}
 SUMMARY:SimpleEvent (First Event)
 LOCATION:home\\, cologne
 END:VEVENT
