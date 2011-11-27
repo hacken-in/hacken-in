@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20111127151746) do
   create_table "single_events", :force => true do |t|
     t.string   "topic"
     t.text     "description"
+    t.date     "date"
     t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -105,10 +106,11 @@ ActiveRecord::Schema.define(:version => 20111127151746) do
     t.boolean  "admin",                               :default => false
     t.string   "nickname",                            :default => "",    :null => false
     t.text     "description"
-    t.string   "github"
-    t.string   "twitter"
-    t.string   "homepage"
     t.boolean  "allow_ignore_view"
+    t.string   "github",               :limit => nil
+    t.string   "twitter",              :limit => nil
+    t.string   "homepage",             :limit => nil
+    t.string   "guid"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

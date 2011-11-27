@@ -25,7 +25,9 @@ Hcking::Application.routes.draw do
       resources :comments
     end
   end
-  match 'ical' => "ical#index"
+
+  match 'ical' => "ical#general"
+  match "personalized_ical/:guid" => "ical#personalized"
 
   root :to => 'welcome#index'
 
