@@ -183,6 +183,12 @@ de:
       single_event:
         topic: Überschrift
         description: Beschreibung
+        full_day: Ganzer Tag
+        location: Veranstaltungsort
+        street: Straße
+        zipcode: Postleitzahl
+        city: Stadt
+        duration: Länge (in Minuten)
       comment:
         body: Inhalt
     models:
