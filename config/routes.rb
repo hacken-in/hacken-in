@@ -28,6 +28,7 @@ Hcking::Application.routes.draw do
 
   match 'ical' => "ical#general"
   match "personalized_ical/:guid" => "ical#personalized"
+  match 'abonnieren' => "welcome#abonnieren"
 
   root :to => 'welcome#index'
 
