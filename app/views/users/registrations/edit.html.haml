@@ -14,14 +14,11 @@
     = f.text_field :nickname
 
   %p
-    = f.label :email
-    %br
-    = f.text_field :email
-
-  %p
     = f.label :description
     %br
     = f.text_area :description, cols: 70, rows: 10
+    %br
+    = render "commons/markdown_info"
 
   %p
     = f.label :twitter
@@ -38,22 +35,32 @@
     %br
     = f.text_field :homepage
 
-  %p
-    = f.label :password
-    %em= t 'registrations.edit.password_hint'
-    %br
-    = f.password_field :password
+  %fieldset
+    %legend
+      = t 'registragions.edit.danger_zone'
+    %p
+      %em
+        = t('registrations.edit.warning')
+    %p
+      = f.label :email
+      %br
+      = f.text_field :email
 
-  %p
-    = f.label :password_confirmation
-    %br
-    = f.password_field :password_confirmation
+    %p
+      = f.label :password
+      %em= t 'registrations.edit.password_hint'
+      %br
+      = f.password_field :password
 
-  %p
-    = f.label :current_password
-    %i= t 'registrations.edit.password_needed'
-    %br
-    = f.password_field :current_password
+    %p
+      = f.label :password_confirmation
+      %br
+      = f.password_field :password_confirmation
+
+    %p
+      = f.label :current_password
+      %br
+      = f.password_field :current_password
 
   %p= f.submit t('registrations.edit.save_profile')
 

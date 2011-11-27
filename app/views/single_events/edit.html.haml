@@ -4,6 +4,9 @@
   = f.inputs do
     = f.input :topic
     = f.input :description
+    %li
+      %label
+      = render "commons/markdown_info"
 
   = f.buttons do
     = f.commit_button

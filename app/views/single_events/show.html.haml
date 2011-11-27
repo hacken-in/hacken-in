@@ -33,7 +33,7 @@
     %em
       Keine Beschreibung vorhanden
   - else
-    = truncate_html(simple_format(@single_event.event.description), 30, :ellipsis => " ... (#{link_to("mehr", @event)})")
+    = truncate_html(convert_markdown(@single_event.event.description), 30, :ellipsis => " ... (#{link_to("mehr", @event)})")
 
 .address
   = [@event.location, @event.street, @event.zipcode].delete_if {|d|d.blank?}.join("<br>").html_safe
