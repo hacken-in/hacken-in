@@ -9,10 +9,10 @@ class TagsController < ApplicationController
   end
   
   def show
-    @single_events = SingleEvent.in_future.where("occurrence < ? ", Date.today + 1.month).tagged_with(params[:tagname]).to_a
+    @single_events = SingleEvent.in_future.where("occurrence < ? ", Date.today + 2.month).tagged_with(params[:tagname]).to_a
     @events = []
     Event.tagged_with(params[:tagname]).order(:name).each do |event|
-      future_events = event.single_events.in_future.where("occurrence < ? ", Date.today + 1.month)
+      future_events = event.single_events.in_future.where("occurrence < ? ", Date.today + 2.month)
       unless future_events.empty?
         @single_events = @single_events + future_events
       else
