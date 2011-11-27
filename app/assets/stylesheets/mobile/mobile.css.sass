@@ -1,0 +1,44 @@
+
+$highlight_color: #C02900
+$link_color: $highlight_color - #222
+$tag_color: #eee
+$header_left_padding: 16px
+
+body
+  margin: 0px
+  font-family: 'Quattrocento Sans', sans-serif
+  font-size: 16px
+
+header
+  width: 100%
+  top: 0px
+  color: white
+  background-color: #EB2810
+  a
+    color: white
+  a.logo
+    margin-left: $header_left_padding
+    text-decoration: none
+    &:hover
+      text-decoration: underline
+  div
+    float: right
+    margin-right: $header_left_padding
+
+  -moz-box-shadow: 0 2px 5px #ccc
+  -webkit-box-shadow: 0 2px 5px #ccc
+  box-shadow: 0 2px 5px #ccc
+
+  background-color: #C43C35
+  background-image: -webkit-linear-gradient(top, rgb(238, 95, 91), rgb(196, 60, 53))
+  background-repeat: repeat-x
+  border-bottom-color: rgba(0, 0, 0, 0.246094)
+  border-bottom-style: solid
+  border-bottom-width: 1px
+  color: white
+  padding-bottom: 8px
+  padding-top: 11px
+  
+body
+  section
+    padding-left: $header_left_padding
