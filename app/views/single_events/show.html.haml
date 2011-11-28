@@ -46,9 +46,7 @@
   - else
     = truncate_html(convert_markdown(@single_event.event.description), 30, :ellipsis => " ... (#{link_to("mehr", @event)})")
 
-.address
-  = [@single_event.location, @single_event.street, @single_event.zipcode].delete_if {|d|d.blank?}.join("<br>").html_safe
-  = @single_event.city
+= render "events/address",:address => @single_event
 
 %p
   Zur Übersicht von #{link_to @event.name, @event}.
