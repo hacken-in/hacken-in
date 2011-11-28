@@ -4,11 +4,6 @@ $link_color: $highlight_color - #222
 $tag_color: #eee
 $header_left_padding: 16px
 
-body
-  margin: 0px
-  font-family: 'Quattrocento Sans', sans-serif
-  font-size: 16px
-
 header
   width: 100%
   top: 0px
@@ -40,5 +35,48 @@ header
   padding-top: 11px
   
 body
+  margin: 0px
+  font-family: 'Quattrocento Sans', sans-serif
+  font-size: 16px
   section
     padding-left: $header_left_padding
+    padding-right: $header_left_padding
+    
+    padding-bottom: 20px
+    
+    a
+      img
+        border: none
+    a
+      color: black
+      &:hover
+        color: $link_color
+
+    h2
+      font-size: 18px
+    h3
+      color: $highlight_color
+      font-size: 16px
+
+aside
+  float: none
+
+
+footer
+  clear: both
+  min-height: 20px
+  font-size: 11px
+  padding-bottom: 10px
+  text-align: center
+  color: black
+  a
+    color: black
+
+p.welcome
+  background-image: url("welcome_logo.png")
+  background-repeat: no-repeat
+  padding-left: 50px
+  min-height: 56px
+  
+#social_stuff
+  display: none

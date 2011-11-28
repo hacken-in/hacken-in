@@ -56,9 +56,9 @@
         = content_tag :div, msg, :class => "flash_#{name}"
       = content_tag :h1, yield(:title) if show_title?
 
+      = yield
       - if content_for? :aside
         %aside= yield :aside
-      = yield
 
       %br{:style => "clear:both"}
 
