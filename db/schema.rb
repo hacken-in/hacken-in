@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111127151746) do
+ActiveRecord::Schema.define(:version => 20111128181849) do
 
   create_table "comments", :force => true do |t|
     t.text     "body"
@@ -39,7 +39,8 @@ ActiveRecord::Schema.define(:version => 20111127151746) do
     t.string   "country"
     t.float    "latitude"
     t.float    "longitude"
-    t.boolean  "full_day",      :default => false
+    t.boolean  "full_day",        :default => false
+    t.string   "twitter_hashtag"
   end
 
   add_index "events", ["latitude"], :name => "index_events_on_latitude"
@@ -48,7 +49,6 @@ ActiveRecord::Schema.define(:version => 20111127151746) do
   create_table "single_events", :force => true do |t|
     t.string   "topic"
     t.text     "description"
-    t.date     "date"
     t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20111127151746) do
     t.string   "country"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "twitter_hashtag"
   end
 
   create_table "single_events_users", :id => false, :force => true do |t|
@@ -106,11 +107,11 @@ ActiveRecord::Schema.define(:version => 20111127151746) do
     t.boolean  "admin",                               :default => false
     t.string   "nickname",                            :default => "",    :null => false
     t.text     "description"
-    t.boolean  "allow_ignore_view"
-    t.string   "github",               :limit => nil
-    t.string   "twitter",              :limit => nil
-    t.string   "homepage",             :limit => nil
+    t.string   "github"
+    t.string   "twitter"
+    t.string   "homepage"
     t.string   "guid"
+    t.boolean  "allow_ignore_view"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
