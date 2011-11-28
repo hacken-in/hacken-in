@@ -18,16 +18,9 @@
 - unless @event.description.blank?
   = convert_markdown @event.description
 
-.address
-  = [@event.location, @event.street, @event.zipcode].delete_if {|d|d.blank?}.join("<br>").html_safe
-  = @event.city
+= render "address",:address => @event
 
-- unless @event.url.blank? && @event.twitter.blank?
-  %p
-    - unless @event.url.blank?
-      = link_to "Webseite", @event.url
-    - unless @event.twitter.blank?
-      = link_to "Twitter", "http://twitter.com/#{@event.twitter}"
+= render "links", :item => @event
 
 - if can? :update, @event
   = link_to "Bearbeiten", edit_event_path(@event)
