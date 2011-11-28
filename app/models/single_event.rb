@@ -84,7 +84,7 @@ class SingleEvent < ActiveRecord::Base
 
   # Attribute aus dem Event-Model holen, wenn im SingleEvent nicht
   # definiert
-  [:url, :duration, :full_day, :location, :street,
+  [:url, :twitter_hashtag, :duration, :full_day, :location, :street,
    :zipcode, :city, :country, :latitude, :longitude].each do |item|
 
     define_method item.to_s do

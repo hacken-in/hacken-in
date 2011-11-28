@@ -29,12 +29,7 @@
   - else
     = convert_markdown @single_event.description
 
-- unless @event.url.blank? && @event.twitter.blank?
-  %p
-    - unless @event.url.blank?
-      = link_to "Webseite", @single_event.url
-    - unless @event.twitter.blank?
-      = link_to "Twitter", "http://twitter.com/#{@event.twitter}"
+= render "events/links", :item => @single_event
 
 %h3
   Über #{@single_event.event.name}
