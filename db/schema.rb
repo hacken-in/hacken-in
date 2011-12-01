@@ -110,8 +110,8 @@ ActiveRecord::Schema.define(:version => 20111128181849) do
     t.string   "github"
     t.string   "twitter"
     t.string   "homepage"
-    t.string   "guid"
     t.boolean  "allow_ignore_view"
+    t.string   "guid"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
