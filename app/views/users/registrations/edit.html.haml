@@ -4,7 +4,7 @@
   = devise_error_messages!
 
   %p
-    = link_to gravatar_image_tag(current_user.email, :alt => 'Change on Gravatar', :gravatar => { :default => :identicon, :size => 128 }),"http://www.gravatar.com"
+    = link_to gravatar_image_tag(current_user.email, :alt => 'Change on Gravatar', :gravatar => { :default => :identicon, :size => 128 }, :class => 'gravatar'),"http://www.gravatar.com"
     %br
     = link_to t('registrations.edit.change_gravatar'), "http://gravatar.com", :target => '_blank'
 
