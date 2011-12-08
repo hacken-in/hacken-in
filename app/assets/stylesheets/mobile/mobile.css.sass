@@ -60,6 +60,7 @@ body
 
 aside
   float: none
+  margin-top: 50px
 
 
 footer
@@ -97,6 +98,18 @@ p.welcome
 .fieldWithErrors
   display: inline
 
+// forms
+input, textarea, button
+  font-size: 14px
+
+#user_edit
+  textarea
+    width: 85%
+  .gravatar
+    float: none
+    width: 60px
+    height: 60px
+
 // Error Messages
 
 .error_messages
@@ -122,4 +135,48 @@ p.welcome
 // fix broken default error div's on labels:
 div.field_with_errors
   display: inline
+
+#user_profile
+  img.user_gravatar
+    float: right
+    width: 50px
+    height: 50px
+
+// Event taglists
+ul.tags
+  list-style-type: none
+  display: block
+  font-size: 80%
+  margin-top: 10px
+  padding-left: 0px
+  margin-bottom: 15px
+
+  li
+    display: inline
+
+    a
+      text-decoration: none
+      background: $tag_color
+      color: black
+      padding: 2px 5px
+      border-radius: 3px 3px
+      
+ul.tags.hate_list
+  li
+    background: $tag_color
+    padding: 2px 5px
+    margin-right: 4px
+    border-radius: 3px 3px
+
+    a
+      background: none
+      border: none
+      padding: 0
+
+    a.delete
+      color: red
+      
+
+input#user_hate_tags_hate_list
+  width: 120px
 
