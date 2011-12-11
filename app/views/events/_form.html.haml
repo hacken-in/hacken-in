@@ -3,11 +3,11 @@
     $(function() {
       $("#event_tag_list").tokenInput("#{tags_path}", {theme: "facebook", allowNewItems: true,
         hintText: "Gebe einen Tag ein", noResultsText:"Kein Tag gefunden", searchingText:"Suche...",
-        tokenValue: "name", prePopulate: #{ tag_list_for_taggable(@event) }});
+        tokenValue: "name", prePopulate: #{ tag_list_for_taggable(event) }});
       $("#event_name").focus();
     });
 
-= semantic_form_for @event do |form|
+= semantic_form_for event do |form|
   = form.inputs do
     = form.input :name
     = form.input :description, :input_html => { :class => 'autogrow', :rows => 10}
