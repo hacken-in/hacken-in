@@ -6,6 +6,8 @@ class SingleEvent < ActiveRecord::Base
   geocoded_by :address
 
   belongs_to :event
+  delegate :title, :name, :description, :city, :to => :event, :prefix => true
+
   has_many :comments, as: :commentable, dependent: :destroy
   has_and_belongs_to_many :users, :uniq => true
 

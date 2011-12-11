@@ -55,9 +55,9 @@
   .entry
     = single_event.occurrence.strftime("%H:%M") unless single_event.full_day
     = link_to single_event.title, :controller => "single_events", :action => "show", :event_id => single_event.event.id, :id => single_event.id
-    - if !single_event.event.city.blank?
+    - if !single_event.event_city.blank?
       %span.cityname
-        = "(#{single_event.event.city})"
+        = "(#{single_event.event_city})"
     / Display tags for this event, if any:
     = render "tags/tags", :tag_list => single_event.event.tag_list + single_event.tag_list
 
