@@ -50,7 +50,7 @@
   = link_to "Editieren", :action => "edit", :event_id => @event.id, :id => @single_event.id
 
 %h3
-  = t ".participants" 
+  = t ".participants"
   - if @single_event.users.length > 0
     = "(#{@single_event.users.length})"
 

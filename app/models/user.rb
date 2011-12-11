@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
     end
 
   end
-  
+
   def allow_ignore_view?
     !!self.allow_ignore_view
   end
