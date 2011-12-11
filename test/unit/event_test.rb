@@ -188,9 +188,9 @@ class EventTest < ActiveSupport::TestCase
 
     event = FactoryGirl.create(:full_event)
     hash = {"og:country-name"=>"Germany",
-       "og:latitude"=>50.9490714,
+       "og:latitude"=>50.94870539999999,
        "og:locality"=>"CoWoCo, Gasmotorenfabrik, 3. Etage",
-       "og:longitude"=>6.9868201,
+       "og:longitude"=>6.986362199999999,
        "og:postal-code"=>"51063",
        "og:street-address"=>"Deutz-Mülheimerstraße 129",
        "og:title"=>"SimpleEvent",

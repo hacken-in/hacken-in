@@ -1,4 +1,4 @@
-- title @single_event.event.title
+- title @single_event.event_title
 
 %div.right_row
   = render "events/map", :event => @single_event
@@ -32,14 +32,14 @@
 = render "events/links", :item => @single_event
 
 %h3
-  Über #{@single_event.event.name}
+  Über #{@single_event.event_name}
 
-- if @single_event.event.description.blank?
+- if @single_event.event_description.blank?
   %p
     %em
       Keine Beschreibung vorhanden
   - else
-    = truncate_html(convert_markdown(@single_event.event.description), 30, :ellipsis => " ... (#{link_to("mehr", @event)})")
+    = truncate_html(convert_markdown(@single_event.event_description), 30, :ellipsis => " ... (#{link_to("mehr", @event)})")
 
 = render "events/address",:address => @single_event
 
@@ -50,7 +50,7 @@
   = link_to "Editieren", :action => "edit", :event_id => @event.id, :id => @single_event.id
 
 %h3
-  = t ".participants" 
+  = t ".participants"
   - if @single_event.users.length > 0
     = "(#{@single_event.users.length})"
 
