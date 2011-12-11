@@ -45,7 +45,7 @@
     - else
       %p= t 'users.show.no_recent_events'
 
-  .recent_comments  
+  .recent_comments
     %h3= t 'users.show.recent_comments'
 
     - @recent_comments.each do |comment|
@@ -53,4 +53,3 @@
       = render partial: "comments/comment", locals: {comment: comment}
     - if @recent_comments.empty?
       %p= t 'users.show.no_recent_comments'
-  
