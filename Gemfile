@@ -75,6 +75,6 @@ end
 group :test do
   # Pretty printed test output
   # gem 'turn', :require => false
-  gem 'factory_girl_rails', "~> 1.1.beta1"
+  gem 'factory_girl_rails', "~> 1.1.beta1", :require => false
   gem 'spork-testunit'
 end

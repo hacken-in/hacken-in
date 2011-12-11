@@ -12,7 +12,7 @@ class WelcomeController < ApplicationController
 
   def abonnieren
     @general_link = url_for( :action => "general", :controller => "ical", :format => "ical", :only_path => false )
-    @personal_link = url_for( :action => "personalized", :controller => "ical", :format => "ical", :only_path => false, :guid => current_user.guid )  if user_signed_in? 
+    @personal_link = url_for( :action => "personalized", :controller => "ical", :format => "ical", :only_path => false, :guid => current_user.guid )  if user_signed_in?
   end
 
 end

@@ -42,7 +42,7 @@
   %p Keine Termine geplant
 
 - if can? :update, @event
-  = render "edit"
+  = render "edit", :event => @event
 
 %p
   %a{:href => "/"} Zurück zur Übersicht

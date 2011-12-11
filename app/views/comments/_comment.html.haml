@@ -1,9 +1,9 @@
 .comment
   %a{:name => "comment_#{comment.id}", :class => "comment_anchor"}
-  %a{:href => user_path(comment.user)}= gravatar_image_tag(comment.user.email, :gravatar => { :default => :identicon, :size => 32 })
+  %a{:href => user_path(comment.user)}= gravatar_image_tag(comment.user_email, :gravatar => { :default => :identicon, :size => 32 })
   .content
     %p.name
-      %strong= link_to comment.user.nickname, user_path(comment.user)
+      %strong= link_to comment.user_nickname, user_path(comment.user)
       sagte:
     %p.date
       = "#{I18n.localize(comment.created_at, :format => :long)}"
