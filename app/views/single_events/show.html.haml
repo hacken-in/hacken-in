@@ -13,7 +13,7 @@
       <script src="http://connect.facebook.net/en_US/all.js#appId=213379535367603&amp;xfbml=1"></script>
       <fb:like href="#{event_url(@event)}" send="true" width="450" show_faces="false" font="" layout="button_count"></fb:like>
 
-- unless @single_event.topic.blank?
+- if @single_event.topic?
   %h2
     = @single_event.topic
 
@@ -22,7 +22,7 @@
 
 = render "tags/tags", :tag_list => @single_event.event.tag_list + @single_event.tag_list
 
-- if @single_event.description.blank?
+- unless @single_event.description?
   %p
     %em
       Keine Beschreibung vorhanden
