@@ -1,5 +1,5 @@
 %h2 Alle Kommentare
 
 - @comments.each do |comment|
-  %h4 Kommentar für #{link_to comment.commentable.name, commentable_path(comment)}
+  %h4 Kommentar für #{link_to comment.commentable_name, commentable_path(comment)}
   = render partial: "comments/comment", locals: {comment: comment}

@@ -49,7 +49,7 @@
     %h3= t 'users.show.recent_comments'
 
     - @recent_comments.each do |comment|
-      %h4.user_profile Kommentar für #{link_to comment.commentable.name, commentable_path(comment)}
+      %h4.user_profile Kommentar für #{link_to comment.commentable_name, commentable_path(comment)}
       = render partial: "comments/comment", locals: {comment: comment}
     - if @recent_comments.empty?
       %p= t 'users.show.no_recent_comments'
