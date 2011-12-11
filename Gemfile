@@ -23,7 +23,7 @@ gem 'newrelic_rpm', '~>3.1.1'
 
 # Date Handling
 # Own Fork, fixes https://github.com/seejohnrun/ice_cube/issues/43
-gem 'ice_cube', :git => "git://github.com/bitboxer/ice_cube.git"
+gem 'ice_cube', "~> 0.7" # :git => "git://github.com/bitboxer/ice_cube.git"
 gem 'ri_cal', "~> 0.8.8"
 
 # Authentication
