@@ -188,15 +188,18 @@ class EventTest < ActiveSupport::TestCase
 
     event = FactoryGirl.create(:full_event)
     hash = {"og:country-name"=>"Germany",
-       "og:latitude"=>50.9490714,
        "og:locality"=>"CoWoCo, Gasmotorenfabrik, 3. Etage",
-       "og:longitude"=>6.9868201,
        "og:postal-code"=>"51063",
        "og:street-address"=>"Deutz-Mülheimerstraße 129",
        "og:title"=>"SimpleEvent",
        "og:description" => "Dragée bonbon tootsie roll icing jelly sesame snaps croissant apple pie. Suga..."}
 
-    assert_equal hash, event.to_opengraph
+    event_opengraph = event.to_opengraph
+    hash.each_pair {|key, value| assert_equal event_opengraph[key], value}
+    
+    # The coordinates change, therefore we only check a few digits:
+    assert_equal event_opengraph["og:latitude"].to_s[0,5], "50.94"
+    assert_equal event_opengraph["og:longitude"].to_s[0,5], "6.986"
   end
 
 end
