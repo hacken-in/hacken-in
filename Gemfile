@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.1'
+gem 'rails', '3.1.3'
 gem 'rake', '~> 0.9'
 
 # Databases
@@ -9,7 +9,7 @@ gem 'mysql2'
 gem 'memcache-client'
 
 # Tags
-gem 'acts-as-taggable-on', '~>2.1.0'
+gem 'acts-as-taggable-on', '~>2.2.0'
 
 # Asset template engines
 gem 'sass-rails', "~> 3.1.0"
@@ -19,7 +19,7 @@ gem 'haml'
 gem 'redcarpet', '~> 2.0.0b'
 
 # Monitoring
-gem 'newrelic_rpm', '~>3.1.1'
+gem 'newrelic_rpm', '~> 3.3.1'
 
 # Date Handling
 # Own Fork, fixes https://github.com/seejohnrun/ice_cube/issues/43
@@ -34,7 +34,7 @@ gem 'cancan'
 # Other dependencies
 gem 'jquery-rails'
 gem 'gabba'
-gem 'formtastic', '~> 1.2.4'
+gem 'formtastic', '~> 2.0.2'
 gem 'geocoder', '~> 1.0'
 
 # Javascript runtime
