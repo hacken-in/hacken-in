@@ -22,8 +22,7 @@ gem 'redcarpet', '~> 2.0.0b'
 gem 'newrelic_rpm', '~> 3.3.1'
 
 # Date Handling
-# Own Fork, fixes https://github.com/seejohnrun/ice_cube/issues/43
-gem 'ice_cube', "~> 0.7" # :git => "git://github.com/bitboxer/ice_cube.git"
+gem 'ice_cube', "~> 0.7"
 gem 'ri_cal', "~> 0.8.8"
 
 # Authentication
@@ -51,7 +50,7 @@ gem 'gravatar_image_tag'
 gem 'html_truncator'
 
 # facebook style tooltip jQuery plugin
-gem 'tipsy-rails', :git => "git://github.com/nragaz/tipsy-rails.git"
+gem 'tipsy-rails', '~> 1.0.2'
 
 group :development do
   # Deployment
