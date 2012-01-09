@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 3.1.3'
+gem 'rails', '~> 3.2.0.rc2'
 gem 'rake', '~> 0.9'
 
 # Databases
@@ -12,7 +12,7 @@ gem 'memcache-client', '~> 1.8.5'
 gem 'acts-as-taggable-on', '~> 2.2.0'
 
 # Asset template engines
-gem 'sass-rails', '~> 3.1.0'
+gem 'sass-rails', '~> 3.2.3'
 gem 'coffee-script', '~> 2.2.0'
 gem 'uglifier', '~> 1.2.0'
 gem 'haml', '~> 3.2.0.alpha.8'
@@ -31,7 +31,7 @@ gem 'devise', '~> 1.3'
 gem 'cancan', '~> 1.6.7'
 
 # Other dependencies
-gem 'jquery-rails', '~> 1.0.19'
+gem 'jquery-rails', '~> 2.0.0'
 gem 'gabba', '~> 0.1.1'
 gem 'formtastic', '~> 2.0.2'
 gem 'geocoder', '~> 1.0'
@@ -62,13 +62,13 @@ group :development do
   end
 
   # guard
-  gem 'guard', '~> 0.8.8'
+  gem 'guard', '~> 0.10.0'
   gem 'guard-test', '~> 0.4.0'
-  gem 'guard-livereload', '~> 0.3.1'
+  gem 'guard-livereload', '~> 0.4.0'
   gem 'guard-pow', '~> 0.2.1'
   gem 'guard-bundler', '~> 0.1.3'
   gem 'guard-yard', '~> 1.0.2'
-  gem 'guard-spork', '~> 0.4.1'
+  gem 'guard-spork', '~> 0.5.1'
 end
 
 group :test do
