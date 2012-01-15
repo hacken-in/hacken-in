@@ -114,7 +114,7 @@ class SingleEvent < ActiveRecord::Base
       end
     end
 
-    loc = [self.event.location, self.event.address].delete_if{|d|d.blank?}.join(", ").strip
+    loc = [self.location, self.address].delete_if{|d|d.blank?}.join(", ").strip
     url = Rails.application.routes.url_helpers.event_single_event_url(
               :host => Rails.env.production? ? "hcking.de" : "hcking.dev",
               :event_id => self.event.id,

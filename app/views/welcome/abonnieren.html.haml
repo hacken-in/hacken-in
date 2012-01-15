@@ -7,16 +7,10 @@
   %script{:type => "text/javascript", :src => "http://tile.cloudmade.com/wml/latest/web-maps-lite.js"}
   :javascript
     $(function() {
-      $('#general_link img').load(function() {
+      $(".clippy_row div img").each(function(num,div) {
         var clip = new ZeroClipboard.Client();
-        clip.setText( "#{@general_link}" );
-        clip.glue( 'general_link' );
-      });
-
-      $('#personal_link img').load(function() {
-        var clip = new ZeroClipboard.Client();
-        clip.setText( "#{@personal_link}" );
-        clip.glue( 'personal_link' );
+        clip.setText($(this).parent().prev().val());
+        clip.glue($(this).parent().attr("id"));
       });
 
       $(".ical_link_field").mouseup(function(){
@@ -26,20 +20,31 @@
     });
 
 .abbonieren
-  - unless @personal_link.nil?
-    %p
-      Die iCal URL zum Abonnieren deiner Termine ist:
-
-    %input.ical_link_field{ :size => 40, :value => @personal_link }
-    #personal_link
-      = image_tag asset_path("clippy_up.png")
-
   %p
     Die iCal URL zum Abonnieren des gesamten Kalenders:
 
-  %input.ical_link_field{ :size => 40, :value => @general_link }
-  #general_link
-    = image_tag asset_path("clippy_up.png")
+  .clippy_row
+    %input.ical_link_field{ :size => 40, :value => url_for( :action => "general", :controller => "ical", :format => "ical", :only_path => false )}
+
+    #general_link
+      = image_tag asset_path("clippy_up.png"), :width => "14px", :height => "14px"
+
+  - if user_signed_in?
+    %p
+      Nur die Termine Abonnieren, an denen man teilnimmt:
+
+    .clippy_row
+      %input.ical_link_field{ :size => 40, :value => url_for(:action => "personalized", :controller => "ical", :format => "ical", :only_path => false, :guid => current_user.guid ) }
+      #personal_link
+        = image_tag asset_path("clippy_up.png"), :width => "14px", :height => "14px"
+
+    %p
+      Alle Termine bis auf solche, deren Tags ausgeschlossen wurden:
+
+    .clippy_row
+      %input.ical_link_field{ :size => 40, :value => url_for(:action => "like_welcome_page", :controller => "ical", :format => "ical", :only_path => false, :guid => current_user.guid ) }
+      #like_welcome
+        = image_tag asset_path("clippy_up.png"), :width => "14px", :height => "14px"
 
 :markdown
   # Google Calendar
