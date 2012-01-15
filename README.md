@@ -28,10 +28,6 @@ If you want to add Events to your local page, you need an administrator:
 1. Run `rake setup:admin user=USERNAME password=PASSWORD email=EMAIL`
 1. Now you can log in with your new administrator ;)
 
-## Using Guard, Spork and Pow for Development
-
-*We currently have an [issue](https://github.com/bitboxer/hcking/issues/33) with our setup. Please read about the problem first.*
-
 ### Pow
 
 Pow is a really comfortable way to run the application on your machine.
