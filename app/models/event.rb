@@ -77,6 +77,12 @@ class Event < ActiveRecord::Base
     graph
   end
 
+  def update_start_date_and_duration(start_date, duration)
+    self.schedule.start_date = start_date
+    self.schedule.start_date = self.schedule.start_date.beginning_of_day if self.full_day
+    self.schedule.duration = duration.to_i * 60
+  end
+
   private
 
   def schedule_to_yaml
