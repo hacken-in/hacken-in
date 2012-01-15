@@ -6,22 +6,22 @@
   - if current_user == @user
     = link_to t('users.show.edit'), edit_user_registration_path
 
-  - unless @user.description.blank?
+  - if @user.description?
     = convert_markdown @user.description
   - else
     = t 'users.show.no_description'
   %ul
-    - unless @user.twitter.blank?
+    - if @user.twitter?
       %li
         = "#{t 'activerecord.attributes.user.twitter'}:"
         = link_to "@" + @user.twitter, "https://twitter.com/#!/#{@user.twitter}"
 
-    - unless @user.github.blank?
+    - if @user.github?
       %li
         = "#{t 'activerecord.attributes.user.github'}:"
         = link_to @user.github, "https://github.com/#{@user.github}"
 
-    - unless @user.homepage.blank?
+    - if @user.homepage?
       %li
         = "#{t 'activerecord.attributes.user.homepage'}:"
         = link_to @user.homepage, @user.homepage
