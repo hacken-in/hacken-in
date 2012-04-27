@@ -8,6 +8,18 @@ calendar for geeks in and around Cologne.
 
 We discuss features and problems in our [google group](http://groups.google.com/group/hcking).
 
+## Scope of Hcking.de
+
+When you want to add an event to hcking.de please check with the following guidelines:
+
+* Currently we only feature events in Ruhr area plus BIG events in europe
+* The following topics are allowed:
+  * Programming (in any language)
+  * Nerd-Culture (like Star Wars, Ponies, Gaming, Comics...)
+  * Software Development Methods and Software Engineering
+  * Electronics and Robots
+  * Networking
+
 ## Getting Started
 
 If you want to work on the Project, follow the steps described here:
