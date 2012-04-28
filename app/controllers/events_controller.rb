@@ -51,7 +51,15 @@ class EventsController < ApplicationController
     authorize! :update, @event
 
     respond_to do |format|
-      if @event.update_attributes(params[:event])
+      @event.start_time = Time.new(params[:event]["start_time(1i)"].to_i,
+                                         params[:event]["start_time(2i)"].to_i,
+                                         params[:event]["start_time(3i)"].to_i,
+                                         params[:event]["start_time(4i)"].to_i,
+                                         params[:event]["start_time(5i)"].to_i) if params[:event]["start_time(1i)"]
+
+      event_params = params[:event].except("start_time(1i)", "start_time(2i)", "start_time(3i)", "start_time(4i)", "start_time(5i)")
+
+      if @event.update_attributes(event_params)
         expire_fragment("event_occurences_#{@event.id}")
         format.html { redirect_to(@event, :notice => 'Event aktualisiert') }
         format.xml  { head :ok }

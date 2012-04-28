@@ -180,6 +180,8 @@ de:
         street: Straße
         zipcode: Postleitzahl
         city: Stadt
+        duration: Länge (in Minuten)
+        start_time: Start-Datum
       single_event:
         topic: Überschrift
         description: Beschreibung
