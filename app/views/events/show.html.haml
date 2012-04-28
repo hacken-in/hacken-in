@@ -28,6 +28,8 @@
 - if can? :delete, @event
   = link_to "Löschen", event_path(@event), method: :delete, confirm: "Wirklich löschen?"
 
+%p= link_to "iCal für diese Eventserie abonnieren", url_for(action: "abonnieren", controller: "welcome", format: "ical", only_path: false, event_id: @event.id)
+
 %h2 Die nächsten Termine:
 
 - if @event.single_events.today_or_in_future.length > 0
