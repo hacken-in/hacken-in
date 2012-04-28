@@ -216,5 +216,15 @@ class EventTest < ActiveSupport::TestCase
     end
     assert_equal 1, event.single_events.count
   end
+  
+  test "should create a single event even if it is before the existing ones" do
+    event = FactoryGirl.create(:simple)
+    
+    event.schedule.add_recurrence_rule(IceCube::SingleOccurrenceRule.new(Time.now + 2.days))
+    event.save
+    assert_equal 1, event.single_events.length
+    event.schedule.add_recurrence_rule(IceCube::SingleOccurrenceRule.new(Time.now + 1.day))
+    assert_equal 2, event.single_events.length
+  end
 
 end

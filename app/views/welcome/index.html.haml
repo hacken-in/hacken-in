@@ -1,4 +1,36 @@
-%h1 Events für Hacker in Köln und Umgebung
+#main_content
+  %h1 Events für Hacker in Köln und Umgebung
+
+  %p.welcome
+    Hacker, Entwickler, Geek, Nerd? Langweilst du dich in deinem Keller? Dann bist du hier genau
+    richtig. Hier gibt's eine Auflistung aller Events rund um Köln. <a href="/about">Mehr&nbsp;...</a>
+
+  %h2 Events in den nächsten vier Wochen:
+
+  - current_date = nil
+
+  - @single_events.each do |single_event|
+    - if current_date != single_event.occurrence.to_date
+      - current_date = single_event.occurrence.to_date
+      %h3
+        = day_output_helper(current_date)
+
+    .entry
+      = single_event.occurrence.strftime("%H:%M") unless single_event.event.full_day
+      = link_to single_event.title, :controller => "single_events", :action => "show", :event_id => single_event.event.id, :id => single_event.id
+      - if !single_event.event.city.blank?
+        %span.cityname
+          = "(#{single_event.event.city})"
+      / Display tags for this event, if any:
+      = render "tags/tags", :tag_list => single_event.event.tag_list + single_event.tag_list
+
+  %p
+    = link_to "Alle Events", events_path
+    - if can? :create, Event
+      |
+      = link_to "Event hinzufügen", new_event_path
+      
+/ ---- /main_content ----------
 
 - content_for :aside do
   %h2 Kalender
@@ -26,44 +58,18 @@
   = form_for(:user_hate_tags, :url => user_signed_in? ? user_hate_tags_path(:user_id => current_user.id) : nil) do |f|
     = f.text_field :hate_list, :value => "", :disabled => !user_signed_in?
     = f.submit "Hinzufügen", :disabled => !user_signed_in?
-  %br
-  %p
-    Forke uns auf<br/>
-    = link_to image_tag(asset_path("github.png")), "http://github.com/bitboxer/hcking"
+  
+  #social_stuff
+    %p.github
+      Forke uns auf<br/>
+      = link_to image_tag(asset_path("github.png")), "http://github.com/bitboxer/hcking"
+    .social_plugins
+      #twitter_like
+        <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+        <a href="http://twitter.com/hackcologne" class="twitter-follow-button" data-show-count="false" data-lang="de">Follow @hackcologne</a>
+      #fb_like
+        #fb-root
+        <script src="http://connect.facebook.net/en_US/all.js#appId=213379535367603&amp;xfbml=1"></script>
+        <fb:like href="http://hcking.de" send="true" width="300" show_faces="false" font="" layout="button_count"></fb:like>
 
-  #twitter_like
-    <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
-    <a href="http://twitter.com/hackcologne" class="twitter-follow-button" data-show-count="false" data-lang="de">Follow @hackcologne</a>
-  #fb_like
-    #fb-root
-    <script src="http://connect.facebook.net/en_US/all.js#appId=213379535367603&amp;xfbml=1"></script>
-    <fb:like href="http://hcking.de" send="true" width="300" show_faces="false" font="" layout="button_count"></fb:like>
-%p.welcome
-  Hacker, Entwickler, Geek, Nerd? Langweilst du dich in deinem Keller? Dann bist du hier genau
-  richtig. Hier gibt's eine Auflistung aller Events rund um Köln. <a href="/about">Mehr&nbsp;...</a>
 
-%h2 Events in den nächsten vier Wochen:
-
-- current_date = nil
-
-- @single_events.each do |single_event|
-  - if current_date != single_event.occurrence.to_date
-    - current_date = single_event.occurrence.to_date
-    %h3
-      = day_output_helper(current_date)
-
-  .entry
-    = single_event.occurrence.strftime("%H:%M") unless single_event.full_day
-    = link_to single_event.title, :controller => "single_events", :action => "show", :event_id => single_event.event.id, :id => single_event.id
-    - if !single_event.event_city.blank?
-      %span.cityname
-        = "(#{single_event.event_city})"
-    / Display tags for this event, if any:
-    = render "tags/tags", :tag_list => single_event.event.tag_list + single_event.tag_list
-
-%p
-  = link_to "Alle Events", events_path
-  - if can? :create, Event
-    |
-    = link_to "Event hinzufügen", new_event_path
-  - else
