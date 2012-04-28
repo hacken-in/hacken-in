@@ -45,7 +45,7 @@
           %a{href: user_path(current_user)}<
             = current_user.nickname
           \|
-          %a{href: "#{destroy_user_session_path}"} Abmelden
+          = link_to "Abmelden", destroy_user_session_path, :method => :delete
         - else
           %a{href: "#{new_user_session_path}"} Anmelden
           \|
