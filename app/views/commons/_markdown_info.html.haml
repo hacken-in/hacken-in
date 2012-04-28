@@ -1,4 +1,5 @@
-%p.help
-  %em
-    = raw t 'common.markdown_info', syntax_link: "http://daringfireball.net/projects/markdown/syntax"
-
+.help
+  .preview
+    %a{href: '#', class: 'show-preview'}= t 'common.markdown_preview_link'
+  .info
+    %em= raw t 'common.markdown_info', syntax_link: "http://daringfireball.net/projects/markdown/syntax"
