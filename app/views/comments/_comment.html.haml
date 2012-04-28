@@ -1,6 +1,6 @@
 .comment
   %a{:name => "comment_#{comment.id}", :class => "comment_anchor"}
-  %a{:href => user_path(comment.user)}= gravatar_image_tag(comment.user_email, :gravatar => { :default => :identicon, :size => 32 })
+  %a{:href => user_path(comment.user)}= gravatar_image_tag(comment.user_email, :gravatar => { :default => :identicon, :size => 32 }, :class => 'gravatar_image')
   .content
     %p.name
       %strong= link_to comment.user_nickname, user_path(comment.user)
