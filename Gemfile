@@ -26,7 +26,7 @@ gem 'ice_cube', "~> 0.8.0"
 gem 'ri_cal', "~> 0.8.8"
 
 # Authentication
-gem 'devise', '~> 1.5.0'
+gem 'devise', '~> 2.0.0'
 # Authorisation
 gem 'cancan', '~> 1.6.7'
 
