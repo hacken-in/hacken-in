@@ -1,0 +1,6 @@
+.address
+  - lines = [h(address.location), h(address.street), h(address.zipcode)].delete_if {|d|d.blank?}
+  = lines.join(tag("br")).html_safe
+  - if address.zipcode.blank? && lines.length > 0
+    %br
+  = address.city

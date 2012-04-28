@@ -9,7 +9,7 @@ class Schedule::ExdatesController < ApplicationController
     @event = Event.find(params[:event_id])
     authorize! :update, @event
 
-    exdate = parse_datetime_select(params[:exdate], "date")    
+    exdate = parse_datetime_select(params[:exdate], "date")
     @event.schedule.add_exception_date(exdate)
     if !@event.save
       redirect_to(event_path(@event), :alert => 'Datum konnte nicht hinzugefügt werden.')

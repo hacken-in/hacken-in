@@ -4,6 +4,7 @@ FactoryGirl.define do
     email 'bodo@wannawork.de'
     password "hallo123"
     password_confirmation "hallo123"
+    guid 'bodoguid'
     admin true
   end
 
@@ -12,6 +13,7 @@ FactoryGirl.define do
     email 'tester@example.com'
     password "hallo123"
     password_confirmation "hallo123"
+    guid 'userguid'
   end
 
   factory :another_user, :class => 'user' do
@@ -19,6 +21,7 @@ FactoryGirl.define do
     email 'tester_two@example.com'
     password "hallo123"
     password_confirmation "hallo123"
+    guid 'anotheruserguid'
   end
 
 end

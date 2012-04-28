@@ -6,22 +6,22 @@
   - if current_user == @user
     = link_to t('users.show.edit'), edit_user_registration_path
 
-  - unless @user.description.blank?
+  - if @user.description?
     = convert_markdown @user.description
   - else
     = t 'users.show.no_description'
   %ul
-    - unless @user.twitter.blank?
+    - if @user.twitter?
       %li
         = "#{t 'activerecord.attributes.user.twitter'}:"
         = link_to "@" + @user.twitter, "https://twitter.com/#!/#{@user.twitter}"
 
-    - unless @user.github.blank?
+    - if @user.github?
       %li
         = "#{t 'activerecord.attributes.user.github'}:"
         = link_to @user.github, "https://github.com/#{@user.github}"
 
-    - unless @user.homepage.blank?
+    - if @user.homepage?
       %li
         = "#{t 'activerecord.attributes.user.homepage'}:"
         = link_to @user.homepage, @user.homepage
@@ -45,12 +45,11 @@
     - else
       %p= t 'users.show.no_recent_events'
 
-  .recent_comments  
+  .recent_comments
     %h3= t 'users.show.recent_comments'
 
     - @recent_comments.each do |comment|
-      %h4.user_profile Kommentar für #{link_to comment.commentable.name, commentable_path(comment)}
+      %h4.user_profile Kommentar für #{link_to comment.commentable_name, commentable_path(comment)}
       = render partial: "comments/comment", locals: {comment: comment}
     - if @recent_comments.empty?
       %p= t 'users.show.no_recent_comments'
-  

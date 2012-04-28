@@ -1,4 +1,4 @@
-- title @single_event.name
+- title @single_event.event_title
 
 %div.right_row
   = render "events/map", :event => @single_event
@@ -13,48 +13,47 @@
       <script src="http://connect.facebook.net/en_US/all.js#appId=213379535367603&amp;xfbml=1"></script>
       <fb:like href="#{event_url(@event)}" send="true" width="450" show_faces="false" font="" layout="button_count"></fb:like>
 
+- if @single_event.topic?
+  %h2
+    = @single_event.topic
+
 %h2
-  = @event.full_day? ? @single_event.occurrence.strftime("%d.%m.%Y") :  @single_event.occurrence.strftime("%d.%m.%Y um %H:%M")
+  = @single_event.full_day ? @single_event.occurrence.strftime("%d.%m.%Y") :  @single_event.occurrence.strftime("%d.%m.%Y um %H:%M")
 
 = render "tags/tags", :tag_list => @single_event.event.tag_list + @single_event.tag_list
 
-- if @single_event.description.blank?
+- unless @single_event.description?
   %p
     %em
       Keine Beschreibung vorhanden
   - else
     = convert_markdown @single_event.description
 
-%h3
-  Über #{@single_event.event.name}
+= render "events/links", :item => @single_event
 
-- if @single_event.event.description.blank?
+%h3
+  Über #{@single_event.event_name}
+
+- if @single_event.event_description.blank?
   %p
     %em
       Keine Beschreibung vorhanden
   - else
-    = truncate_html(convert_markdown(@single_event.event.description), 30, :ellipsis => " ... (#{link_to("mehr", @event)})")
+    = truncate_html(convert_markdown(@single_event.event_description), 30, :ellipsis => " ... (#{link_to("mehr", @event)})")
 
-.address
-  = [@single_event.location, @single_event.street, @single_event.zipcode].delete_if {|d|d.blank?}.join("<br>").html_safe
-  = @single_event.city
-
-- unless @event.url.blank? && @event.twitter.blank?
-  %p
-    - unless @event.url.blank?
-      = link_to "Webseite", @single_event.url
-    - unless @event.twitter.blank?
-      = link_to "Twitter", "http://twitter.com/#{@event.twitter}"
+= render "events/address",:address => @single_event
 
 %p
-  Zur Übersicht von
-  = link_to @event.name, @event
+  Zur Übersicht von #{link_to @event.name, @event}.
 
 - if can? :update, @event
   = link_to "Editieren", :action => "edit", :event_id => @event.id, :id => @single_event.id
 
 %h3
-  = t ".participants", :count => @single_event.users.length
+  = t ".participants"
+  - if @single_event.users.length > 0
+    = "(#{@single_event.users.length})"
+
 - if @single_event.users.empty?
   %p
     %em
@@ -68,6 +67,5 @@
 - elsif user_signed_in?
   %p
     = button_to "Ich nehme doch nicht teil", {:action => "unparticipate", :single_event_id => @single_event.id}, {:method => :put}
-
 
 = render :partial => "comments/comments", :locals => {:commentable => @single_event}

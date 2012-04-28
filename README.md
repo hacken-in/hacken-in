@@ -1,11 +1,24 @@
 # Welcome
 
 [![Build Status](https://secure.travis-ci.org/bitboxer/hcking.png)](http://travis-ci.org/bitboxer/hcking)
+[![Dependency Status](https://gemnasium.com/bitboxer/hcking.png)](https://gemnasium.com/bitboxer/hcking)
 
 This is the code of [hcking.de](http://hcking.de). Hcking.de is an event
 calendar for geeks in and around Cologne.
 
 We discuss features and problems in our [google group](http://groups.google.com/group/hcking).
+
+## Scope of Hcking.de
+
+When you want to add an event to hcking.de please check with the following guidelines:
+
+* Currently we only feature events in Ruhr area plus BIG events in europe
+* The following topics are allowed:
+  * Programming (in any language)
+  * Nerd-Culture (like Star Wars, Ponies, Gaming, Comics...)
+  * Software Development Methods and Software Engineering
+  * Electronics and Robots
+  * Networking
 
 ## Getting Started
 
@@ -26,10 +39,6 @@ If you want to add Events to your local page, you need an administrator:
 
 1. Run `rake setup:admin user=USERNAME password=PASSWORD email=EMAIL`
 1. Now you can log in with your new administrator ;)
-
-## Using Guard, Spork and Pow for Development
-
-*We currently have an [issue](https://github.com/bitboxer/hcking/issues/33) with our setup. Please read about the problem first.*
 
 ### Pow
 
