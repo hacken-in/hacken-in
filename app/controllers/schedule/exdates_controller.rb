@@ -7,7 +7,7 @@ class Schedule::ExdatesController < ApplicationController
 
   def destroy
     @event = Event.find(params[:event_id])
-    authorize! :update, @event
+    authorize! :destroy, @event
 
     exdate = @event.schedule.extimes[params[:id].to_i]
     @event.schedule.remove_exception_time(exdate)

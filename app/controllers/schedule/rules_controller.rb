@@ -20,7 +20,7 @@ class Schedule::RulesController < ApplicationController
 
   def destroy
     @event = Event.find(params[:event_id])
-    authorize! :update, @event
+    authorize! :destroy, @event
 
     rule = @event.schedule.rrules[params[:id].to_i]
     @event.schedule.remove_recurrence_rule(rule)
