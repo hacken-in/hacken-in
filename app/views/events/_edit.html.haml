@@ -1,19 +1,10 @@
-- default_time = 3.days.from_now.to_time.change(:hour => 20, :minute => 0)
-
-%h4 Event-Daten:
-
 - if event.schedule.rtimes.count > 0
+  %h4 Event-Daten:
   %ul
     - event.schedule.rtimes.each_with_index do |rdate, index|
       %li
         = rdate.strftime("%d.%m.%Y um %H:%M")
         = link_to "Löschen", event_schedule_rdate_path(event, :id => index), :method => :delete, :confirm => "Sind sie sicher?"
-- else
-  %p Keine Daten vorhanden
-
-= form_tag(event_schedule_rdates_path(event), :method => :create) do
-  = datetime_select("rdate", "date", :start_year => Date.today.year, :default => default_time)
-  = submit_tag "Anlegen"
 
 %h4 Regeln:
 
@@ -33,7 +24,7 @@
   des Monats.
   = submit_tag "Anlegen"
 
-%h4 Diese Daten ausschließen:
+%h4 Diese Daten sind im Regelwerk ausgeschlossen worden:
 
 - if event.schedule.extimes.count > 0
   %ul
@@ -43,7 +34,3 @@
         = link_to "Löschen", event_schedule_exdate_path(event, :id => index), :method => :delete, :confirm => "Sind sie sicher?"
 - else
   %p Keine Daten vorhanden
-
-= form_tag(event_schedule_exdates_path(event), :method => :create) do
-  = datetime_select("exdate", "date", :start_year => Date.today.year, :default => default_time)
-  = submit_tag "Anlegen"
