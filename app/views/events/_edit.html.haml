@@ -4,7 +4,7 @@
     - event.schedule.rtimes.each_with_index do |rdate, index|
       %li
         = rdate.strftime("%d.%m.%Y um %H:%M")
-        = link_to "Löschen", event_schedule_rdate_path(event, :id => index), :method => :delete, :confirm => "Sind sie sicher?"
+        = link_to "Löschen", event_schedule_rdate_path(event, id: index), method: :delete, confirm: "Sind sie sicher?"
 
 %h4 Regeln:
 
@@ -13,11 +13,11 @@
     - event.schedule.rrules.each_with_index do |rrule, index|
       %li
         = rrule.to_s
-        = link_to "Löschen", event_schedule_rule_path(event, :id => index), :method => :delete, :confirm => "Sind sie sicher?"
+        = link_to "Löschen", event_schedule_rule_path(event, id: index), method: :delete, confirm: "Sind sie sicher?"
 - else
   %p Keine Regeln vorhanden
 
-= form_tag(event_schedule_rules_path(event), :method => :create) do
+= form_tag(event_schedule_rules_path(event), method: :create) do
   Am
   = select_tag "week_number", options_for_select([["ersten", "1"], ["zweiten", "2"], ["dritten", "3"], ["vierten", "4"], ["fünften", "5"], ["letzten", "-1"]])
   = select_tag "day_of_week", weekday_select_option
@@ -31,6 +31,6 @@
     - event.schedule.extimes.each_with_index do |exdate, index|
       %li
         = exdate.strftime("%d.%m.%Y um %H:%M")
-        = link_to "Löschen", event_schedule_exdate_path(event, :id => index), :method => :delete, :confirm => "Sind sie sicher?"
+        = link_to "Löschen", event_schedule_exdate_path(event, id: index), method: :delete, confirm: "Sind sie sicher?"
 - else
   %p Keine Daten vorhanden

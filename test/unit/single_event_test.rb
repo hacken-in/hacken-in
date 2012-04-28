@@ -4,16 +4,16 @@ require 'test_helper'
 class SingleEventTest < ActiveSupport::TestCase
   test "create or find" do
     single_event = FactoryGirl.create(:single_event)
-    assert_equal single_event, SingleEvent.find_or_create(:event_id => single_event.event.id, :occurrence => single_event.occurrence)
+    assert_equal single_event, SingleEvent.find_or_create(event_id: single_event.event.id, occurrence: single_event.occurrence)
   end
 
   test "scope single events in the future" do
     assert_difference "SingleEvent.in_future.count", +1 do
-      event_tomorrow = SingleEvent.create(:occurrence => 1.day.from_now)
+      event_tomorrow = SingleEvent.create(occurrence: 1.day.from_now)
     end
 
     assert_difference "SingleEvent.in_future.count", 0 do
-      event_yesterday = SingleEvent.create(:occurrence => 1.day.ago)
+      event_yesterday = SingleEvent.create(occurrence: 1.day.ago)
     end
   end
 
@@ -24,11 +24,11 @@ class SingleEventTest < ActiveSupport::TestCase
 
   test "should sort events via date if they are not on the same day" do
     time_now = Time.now
-    event_beginning_in_one_day = FactoryGirl.create(:single_event, :occurrence => (time_now + 1.day), :topic => "A")
+    event_beginning_in_one_day = FactoryGirl.create(:single_event, occurrence: (time_now + 1.day), topic: "A")
     event_beginning_in_one_day.event.full_day = false
     event_beginning_in_one_day.event.save
 
-    event_beginning_now = FactoryGirl.create(:single_event, :occurrence => time_now, :topic => "A")
+    event_beginning_now = FactoryGirl.create(:single_event, occurrence: time_now, topic: "A")
     event_beginning_now.event.full_day = false
     event_beginning_now.event.save
 
@@ -39,11 +39,11 @@ class SingleEventTest < ActiveSupport::TestCase
 
   test "should prefer all-day events when sorting" do
     time_now = Time.now
-    all_day_event = FactoryGirl.create(:single_event, :occurrence => time_now, :topic => "A")
+    all_day_event = FactoryGirl.create(:single_event, occurrence: time_now, topic: "A")
     all_day_event.event.full_day = true
     all_day_event.event.save
 
-    not_all_day_event = FactoryGirl.create(:single_event, :occurrence => time_now, :topic => "A")
+    not_all_day_event = FactoryGirl.create(:single_event, occurrence: time_now, topic: "A")
     not_all_day_event.event.full_day = false
     not_all_day_event.event.save
 
@@ -54,11 +54,11 @@ class SingleEventTest < ActiveSupport::TestCase
 
   test "should sort via title when both are all-day events" do
     time_now = Time.now
-    event_beginning_with_a = FactoryGirl.create(:single_event, :occurrence => time_now, :topic => "A")
+    event_beginning_with_a = FactoryGirl.create(:single_event, occurrence: time_now, topic: "A")
     event_beginning_with_a.event.full_day = true
     event_beginning_with_a.event.save
 
-    event_beginning_with_b = FactoryGirl.create(:single_event, :occurrence => time_now, :topic => "B")
+    event_beginning_with_b = FactoryGirl.create(:single_event, occurrence: time_now, topic: "B")
     event_beginning_with_b.event.full_day = true
     event_beginning_with_b.event.save
 
@@ -69,11 +69,11 @@ class SingleEventTest < ActiveSupport::TestCase
 
   test "should sort via time when both are not full day" do
     time_now = Time.now
-    event_beginning_in_one_hour = FactoryGirl.create(:single_event, :occurrence => (time_now + 1.hour), :topic => "A")
+    event_beginning_in_one_hour = FactoryGirl.create(:single_event, occurrence: (time_now + 1.hour), topic: "A")
     event_beginning_in_one_hour.event.full_day = false
     event_beginning_in_one_hour.event.save
 
-    event_beginning_now = FactoryGirl.create(:single_event, :occurrence => time_now, :topic => "A")
+    event_beginning_now = FactoryGirl.create(:single_event, occurrence: time_now, topic: "A")
     event_beginning_now.event.full_day = false
     event_beginning_now.event.save
 
@@ -84,11 +84,11 @@ class SingleEventTest < ActiveSupport::TestCase
 
   test "should sort via title when both are at the same time" do
     time_now = Time.now
-    event_beginning_with_a = FactoryGirl.create(:single_event, :occurrence => time_now, :topic => "A")
+    event_beginning_with_a = FactoryGirl.create(:single_event, occurrence: time_now, topic: "A")
     event_beginning_with_a.event.full_day = false
     event_beginning_with_a.event.save
 
-    event_beginning_with_b = FactoryGirl.create(:single_event, :occurrence => time_now, :topic => "B")
+    event_beginning_with_b = FactoryGirl.create(:single_event, occurrence: time_now, topic: "B")
     event_beginning_with_b.event.full_day = false
     event_beginning_with_b.event.save
 

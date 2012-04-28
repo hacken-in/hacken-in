@@ -4,7 +4,7 @@
   subscribe
 
 - content_for :javascript do
-  %script{:type => "text/javascript", :src => "http://tile.cloudmade.com/wml/latest/web-maps-lite.js"}
+  %script{type: "text/javascript", src: "http://tile.cloudmade.com/wml/latest/web-maps-lite.js"}
   :javascript
     $(function() {
       $(".clippy_row div img").each(function(num,div) {
@@ -24,27 +24,27 @@
     Die iCal URL zum Abonnieren des gesamten Kalenders:
 
   .clippy_row
-    %input.ical_link_field{ :size => 40, :value => url_for( :action => "general", :controller => "ical", :format => "ical", :only_path => false )}
+    %input.ical_link_field{ size: 40, value: url_for( action: "general", controller: "ical", format: "ical", only_path: false )}
 
     #general_link
-      = image_tag asset_path("clippy_up.png"), :width => "14px", :height => "14px"
+      = image_tag asset_path("clippy_up.png"), width: "14px", height: "14px"
 
   - if user_signed_in?
     %p
       Nur die Termine Abonnieren, an denen man teilnimmt:
 
     .clippy_row
-      %input.ical_link_field{ :size => 40, :value => url_for(:action => "personalized", :controller => "ical", :format => "ical", :only_path => false, :guid => current_user.guid ) }
+      %input.ical_link_field{ size: 40, value: url_for(action: "personalized", controller: "ical", format: "ical", only_path: false, guid: current_user.guid ) }
       #personal_link
-        = image_tag asset_path("clippy_up.png"), :width => "14px", :height => "14px"
+        = image_tag asset_path("clippy_up.png"), width: "14px", height: "14px"
 
     %p
       Alle Termine bis auf solche, deren Tags ausgeschlossen wurden:
 
     .clippy_row
-      %input.ical_link_field{ :size => 40, :value => url_for(:action => "like_welcome_page", :controller => "ical", :format => "ical", :only_path => false, :guid => current_user.guid ) }
+      %input.ical_link_field{ size: 40, value: url_for(action: "like_welcome_page", controller: "ical", format: "ical", only_path: false, guid: current_user.guid ) }
       #like_welcome
-        = image_tag asset_path("clippy_up.png"), :width => "14px", :height => "14px"
+        = image_tag asset_path("clippy_up.png"), width: "14px", height: "14px"
 
 :markdown
   # Google Calendar

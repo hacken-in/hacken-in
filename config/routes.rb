@@ -1,29 +1,28 @@
 Hcking::Application.routes.draw do
   devise_for :users
 
-  resources :users, :only => [:show] do
-    resources :hate_tags, controller: :user_hate_tags, :constraints => { :id => /.*/ }, :only => [:create, :destroy]
+  resources :users, only: [:show] do
+    resources :hate_tags, controller: :user_hate_tags, constraints: { id: /.*/ }, only: [:create, :destroy]
   end
 
-  match 'tags/:tagname'  => 'tags#show', :constraints => { :tagname => /.*/ }
-  resources :tags, :constraints => { :id => /.*/ }, :only => [:show, :index]
+  match 'tags/:tagname'  => 'tags#show', constraints: { tagname: /.*/ }
+  resources :tags, constraints: { id: /.*/ }, only: [:show, :index]
 
-  resources :comments, :only => [:index]
+  resources :comments, only: [:index]
 
   resources :events do
-    resources :comments, :only => [:show, :create, :edit, :update, :destroy, :index]
+    resources :comments, only: [:show, :create, :edit, :update, :destroy, :index]
     namespace "schedule" do
-      resources :rdates, :only => [:destroy]
-      resources :rules, :only => [:create, :destroy]
-
-      match 'update' => 'update#update', :via => :put
+      resources :rdates, only: [:destroy]
+      resources :rules, only: [:create, :destroy]
+      match 'update' => 'update#update', via: :put
     end
     resources :single_events do
       member do
         put :participate
         put :unparticipate
       end
-      resources :comments, :only => [:show, :create, :edit, :update, :destroy, :index]
+      resources :comments, only: [:show, :create, :edit, :update, :destroy, :index]
     end
   end
 
@@ -32,7 +31,7 @@ Hcking::Application.routes.draw do
   match "user_ical/:guid" => "ical#like_welcome_page"
   match 'abonnieren' => "welcome#abonnieren"
 
-  root :to => 'welcome#index'
+  root to: 'welcome#index'
 
   match ':page_name' => 'pages#show'
 end

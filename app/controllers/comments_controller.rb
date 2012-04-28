@@ -12,9 +12,9 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     if @comment.save
       flash[:notice] = "Kommentar angelegt."
-      redirect_to commentable_path(@comment, :anchor => "comment_#{@comment.id}")
+      redirect_to commentable_path(@comment, anchor: "comment_#{@comment.id}")
     else
-      redirect_to commentable_path(@comment, :body => params[:comment][:body])
+      redirect_to commentable_path(@comment, body: params[:comment][:body])
     end
   end
 
@@ -32,9 +32,9 @@ class CommentsController < ApplicationController
     authorize! :update, @comment
     if @comment.update_attributes(params[:comment])
       flash[:notice] = "Kommentar aktualisiert."
-      redirect_to commentable_path(@comment, :anchor => "comment_#{@comment.id}")
+      redirect_to commentable_path(@comment, anchor: "comment_#{@comment.id}")
     else
-      redirect_to commentable_path(@comment, :body => params[:comment][:body])
+      redirect_to commentable_path(@comment, body: params[:comment][:body])
     end
   end
 

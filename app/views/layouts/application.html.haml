@@ -12,13 +12,13 @@
     = javascript_include_tag "application"
     = render_opengraph("og:title" => "hcking.de",
             "og:image" => "#{request.protocol}#{request.host_with_port}#{asset_path("welcome_logo.png")}",
-            "og:url" => url_for(:only_path => false),
+            "og:url" => url_for(only_path: false),
             "og:site_name"=> "hcking.de",
             "fb:admins" => "520869354",
             "og:type" => "website",
             "og:description" => "Der Event-Kalender für Nerds")
-    %link{:rel=>"shortcut icon", :href=> "#{asset_path "favicon.png"}"}
-    %link{:href=>'http://fonts.googleapis.com/css?family=Quattrocento+Sans', :rel=>'stylesheet', :type=>'text/css'}
+    %link{rel: "shortcut icon", href: "#{asset_path "favicon.png"}"}
+    %link{href: 'http://fonts.googleapis.com/css?family=Quattrocento+Sans', rel: 'stylesheet', type: 'text/css'}
     = csrf_meta_tags
     :javascript
 
@@ -35,32 +35,32 @@
     = yield(:javascript)
 
   %body
-    %header{:class => "#{content_for?(:aside) ? 'with' : 'without'}_aside"}
-      %a{:href => "/", :class => "logo"} hcking.de
+    %header{class: "#{content_for?(:aside) ? 'with' : 'without'}_aside"}
+      %a{href: "/", class: "logo"} hcking.de
       #user_login
         - if user_signed_in?
           Hallo
-          %a{:href => user_path(current_user)}<
-            = gravatar_image_tag(current_user.email, :gravatar => { :default => :identicon, :size => 16 })
-          %a{:href => user_path(current_user)}<
+          %a{href: user_path(current_user)}<
+            = gravatar_image_tag(current_user.email, gravatar: { default: :identicon, size: 16 })
+          %a{href: user_path(current_user)}<
             = current_user.nickname
           \|
-          %a{:href => "#{destroy_user_session_path}"} Abmelden
+          %a{href: "#{destroy_user_session_path}"} Abmelden
         - else
-          %a{:href => "#{new_user_session_path}"} Anmelden
+          %a{href: "#{new_user_session_path}"} Anmelden
           \|
-          %a{:href => "#{new_user_registration_path}"} Registrieren
+          %a{href: "#{new_user_registration_path}"} Registrieren
 
-    %section{:class => "#{content_for?(:aside) ? 'with' : 'without'}_aside"}
+    %section{class: "#{content_for?(:aside) ? 'with' : 'without'}_aside"}
       - flash.each do |name, msg|
-        = content_tag :div, msg, :class => "flash_#{name}"
+        = content_tag :div, msg, class: "flash_#{name}"
       = content_tag :h1, yield(:title) if show_title?
 
       = yield
       - if content_for? :aside
         %aside= yield :aside
 
-      %br{:style => "clear:both"}
+      %br{style: "clear:both"}
 
     %footer
       Dieser Event-Kalender ist ein Service von
