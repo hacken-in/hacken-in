@@ -22,7 +22,7 @@ gem 'redcarpet', '~> 2.1.0'
 gem 'newrelic_rpm', '~> 3.3.1'
 
 # Date Handling
-gem 'ice_cube', "~> 0.7.6"
+gem 'ice_cube', "~> 0.8.0"
 gem 'ri_cal', "~> 0.8.8"
 
 # Authentication
