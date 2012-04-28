@@ -49,6 +49,8 @@
 
 - if can? :update, @event
   = link_to "Editieren", :action => "edit", :event_id => @event.id, :id => @single_event.id
+- if can? :delete, @single_event
+  = link_to "Löschen", event_single_event_path(@event, @single_event), :method => :delete, :confirm => "Wirklich löschen?"
 
 %h3
   = t ".participants"

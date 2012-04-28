@@ -28,6 +28,13 @@ class SingleEventsController < ApplicationController
     redirect_to :method => "show", :event_id => @single_event.event.id, :id => @single_event.id
   end
 
+  def destroy
+    @single_event = SingleEvent.find(params[:id])
+    authorize! :destroy, @single_event
+    @single_event.destroy
+    redirect_to event_path(@single_event.event)
+  end
+
   def participate
     @single_event = SingleEvent.find(params[:id])
     if user_signed_in?
