@@ -1,0 +1,35 @@
+= content_for :javascript do
+  :javascript
+    $(function() {
+      $("#single_event_tag_list").tokenInput("#{tags_path}", {theme: "facebook", allowNewItems: true,
+        hintText: "Gebe einen Tag ein", noResultsText:"Kein Tag gefunden", searchingText:"Suche...",
+        tokenValue: "name", prePopulate: #{ tag_list_for_taggable(@single_event) }});
+      $("#event_name").focus();
+    });
+
+= semantic_form_for [@event, @single_event] do |f|
+  = f.inputs do
+    - if !@single_event.based_on_rule
+      = f.input :occurrence, as: :datetime_select
+    - else
+      = f.input :occurrence, as: :datetime_select, disabled: true
+      %li
+        %i
+          Dieser Termin ist Teil einer Terminregel. Deswegen kann die Uhrzeit nicht änderbar.
+    = f.input :topic
+    = f.input :description
+    %li
+      %label
+      = render "commons/markdown_info"
+    = f.input :location
+    = f.input :street
+    = f.input :zipcode
+    = f.input :city
+    = f.input :url
+    = f.input :twitter_hashtag
+    = f.input :tag_list
+    = f.input :duration, input_html: { type: "number", style: "width:100px" }
+    = f.input :full_day
+
+  = f.actions do
+    = f.action :submit

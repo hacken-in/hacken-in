@@ -192,6 +192,7 @@ de:
         zipcode: Postleitzahl
         city: Stadt
         duration: Länge (in Minuten)
+        occurrence: Termin
       comment:
         body: Inhalt
     models:
