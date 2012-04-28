@@ -129,7 +129,7 @@ class SingleEventTest < ActiveSupport::TestCase
 
     # The coordinates change, therefore we only check a few digits:
     assert_equal single_event_opengraph["og:latitude"].to_s[0,5], "50.94"
-    assert_equal single_event_opengraph["og:longitude"].to_s[0,5], "6.986"
+    assert_equal single_event_opengraph["og:longitude"].to_s[0,4], "6.98"
   end
 
   test "user can participate on single event" do
