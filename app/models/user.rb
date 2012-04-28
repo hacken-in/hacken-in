@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   # Tags hated by the user
   acts_as_taggable_on :hates
+  acts_as_taggable_on :likes
 
   has_many :comments
   has_and_belongs_to_many :single_events, uniq: true
