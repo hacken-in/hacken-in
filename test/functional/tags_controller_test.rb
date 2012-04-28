@@ -4,7 +4,7 @@ class TagsControllerTest < ActionController::TestCase
   include Devise::TestHelpers
 
   test "should get event tag list" do
-    event = Factory(:event_with_tags)
+    event = FactoryGirl.create(:event_with_tags)
 
     get :index, :format => "js"
     assert_equal "[{\"name\":\"ruby\"},{\"name\":\"rails\"}]", @response.body
@@ -17,7 +17,7 @@ class TagsControllerTest < ActionController::TestCase
  end
  
  test "search for specific tags" do
-   event = Factory(:event_with_tags)   
+   event = FactoryGirl.create(:event_with_tags)
    
    get :show, :tagname => 'none'
    assert_response :success
