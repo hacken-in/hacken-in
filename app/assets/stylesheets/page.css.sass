@@ -182,6 +182,14 @@ footer
   ul
     margin: 0
 
+// fix broken default error div's on labels:
+div.field_with_errors
+  display: inline
+
+#main_content
+  float: left
+  width: 530px
+
 // Welcome Page
 p.welcome
   padding-left: 50px
@@ -201,6 +209,9 @@ p.welcome
   clear: both
   height: 0
   overflow: hidden
+
+#social_stuff
+  margin-top: 10px
 
 #fb_like, #twitter_like
   height: 25px
@@ -246,3 +257,7 @@ fieldset
 .abbonieren
   div
     display: inline-block
+
+#map_canvas
+  width: 350px
+  height: 250px
