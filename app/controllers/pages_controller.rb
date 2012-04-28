@@ -2,7 +2,8 @@ class PagesController < ApplicationController
 
   def show
     @page_name = params[:page_name].to_s.gsub(/\W/,'')
-    unless partial_exists?(@page_name)
+
+    unless partial_exists? @page_name
       render 'missing', :status => 404
     end
   end

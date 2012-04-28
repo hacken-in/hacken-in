@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111127151746) do
+ActiveRecord::Schema.define(:version => 20120428072624) do
 
   create_table "comments", :force => true do |t|
     t.text     "body"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20111127151746) do
   end
 
   add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -39,7 +40,8 @@ ActiveRecord::Schema.define(:version => 20111127151746) do
     t.string   "country"
     t.float    "latitude"
     t.float    "longitude"
-    t.boolean  "full_day",      :default => false
+    t.boolean  "full_day",        :default => false
+    t.string   "twitter_hashtag"
   end
 
   add_index "events", ["latitude"], :name => "index_events_on_latitude"
@@ -62,7 +64,11 @@ ActiveRecord::Schema.define(:version => 20111127151746) do
     t.string   "country"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "twitter_hashtag"
+    t.boolean  "based_on_rule",   :default => false
   end
+
+  add_index "single_events", ["event_id"], :name => "index_single_events_on_event_id"
 
   create_table "single_events_users", :id => false, :force => true do |t|
     t.integer "user_id"
@@ -84,6 +90,7 @@ ActiveRecord::Schema.define(:version => 20111127151746) do
 
   add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
   add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
+  add_index "taggings", ["tagger_id", "tagger_type"], :name => "index_taggings_on_tagger_id_and_tagger_type"
 
   create_table "tags", :force => true do |t|
     t.string "name"

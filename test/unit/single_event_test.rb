@@ -119,13 +119,17 @@ class SingleEventTest < ActiveSupport::TestCase
     single = FactoryGirl.create(:extended_single_event)
     hash = {"og:country-name"=>"Germany",
        "og:description"=>"SimpleSingleEventTopic - wow this is a description",
-       "og:latitude"=>50.9490714,
        "og:locality"=>"CoWoCo, Gasmotorenfabrik, 3. Etage",
-       "og:longitude"=>6.9868201,
        "og:postal-code"=>"51063",
        "og:street-address"=>"Deutz-Mülheimerstraße 129",
        "og:title"=>"SimpleEvent (SimpleSingleEventTopic) am #{single.occurrence.strftime("%d.%m.%Y um %H:%M")}"}
-    assert_equal hash, single.to_opengraph
+    
+    single_event_opengraph = single.to_opengraph
+    hash.each_pair {|key, value| assert_equal single_event_opengraph[key], value}
+
+    # The coordinates change, therefore we only check a few digits:
+    assert_equal single_event_opengraph["og:latitude"].to_s[0,5], "50.94"
+    assert_equal single_event_opengraph["og:longitude"].to_s[0,5], "6.986"
   end
 
   test "user can participate on single event" do
@@ -143,13 +147,19 @@ class SingleEventTest < ActiveSupport::TestCase
     user = FactoryGirl.create(:user)
 
     single.event.url = "http://www.example.com"
+    single.event.full_day = true
     assert_equal "http://www.example.com", single.url
+    assert single.full_day
 
     single.url = "http://www.example.com/single"
+    single.full_day = false
     assert_equal "http://www.example.com/single", single.url
+    assert !single.full_day
 
     single.url = ""
+    single.full_day = nil
     assert_equal "http://www.example.com", single.url
+    assert single.full_day
   end
 
   test "check if adress is geocoded after save" do
