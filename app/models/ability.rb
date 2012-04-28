@@ -6,11 +6,15 @@ class Ability
       can :manage, :all
     end
 
+    if !user.nil?
+      can [:create, :edit, :update], Event
+      can [:create, :edit, :update], SingleEvent
+      can [:edit, :update, :destroy], Comment, user_id: user.id
+      can :create, Comment
+    end
+
     can :read, Event
     can :read, SingleEvent
     can :read, User
-
-    can :create, Comment if !user.nil?
-    can [:edit, :update, :destroy], Comment, user_id: user.id if !user.nil?
   end
 end

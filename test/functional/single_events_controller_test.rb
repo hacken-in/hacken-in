@@ -17,17 +17,9 @@ class SingleEventsControllerTest < ActionController::TestCase
     assert_template("_comments")
   end
 
-  test "should not be able to edit if not bodo" do
+  test "should be able to edit if logged in" do
     single_event = FactoryGirl.create(:single_event)
     sign_in FactoryGirl.create(:user)
-    get :edit, id: single_event.id, event_id: single_event.event.id
-
-    assert_redirected_to controller: 'welcome', action: 'index'
-  end
-
-  test "should be able to edit if bodo" do
-    single_event = FactoryGirl.create(:single_event)
-    sign_in FactoryGirl.create(:bodo)
     get :edit, id: single_event.id, event_id: single_event.event.id
 
     assert_response :success
