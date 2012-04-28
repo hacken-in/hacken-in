@@ -1,5 +1,16 @@
 %h1 Neuer Event
 
+.event_hinweis
+  :markdown
+    Damit hcking.de den Focus auf Nerd-Events nicht verliert, müssen die Events in eine
+    der folgenden Kategorieen fallen:
+
+    * Programmieren (in jedweder Sprache)
+    * Nerd-Kultur (z.B. Star Wars, Ponies, Gaming, Comics...)
+    * Software Development Methoden und Software Engineering
+    * Electronik und Robotik
+    * Networking
+
 = render 'form', event: @event
 
 = link_to 'Zurück', root_path
