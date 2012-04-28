@@ -38,7 +38,7 @@ gem 'geocoder', '~> 1.0'
 
 # Javascript runtime
 gem 'execjs', '~> 1.2.12'
-gem 'therubyracer', '~> 0.10.0beta1'
+gem 'therubyracer', '~> 0.10.1'
 
 gem 'rdiscount', '~> 1.6.8' # for yard formatting
 
