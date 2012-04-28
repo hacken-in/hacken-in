@@ -10,32 +10,7 @@
 - if can? :create, Comment
   :javascript
     $(function() {
-      
-      function showPreview() {
-        $('#comment_body').change(updatePreview).keyup(updatePreview);
-        
-        if ($('.markdown-preview').is(':hidden'))
-          $('.markdown-preview').slideDown();
-        else
-          $('.markdown-preview').slideUp();
-          
-        $('#comment_body').change();
-      }
-      
-      function updatePreview() {
-        var comment_text = $('#comment_body').val();
-        var generated_html = new Showdown.converter().makeHtml(comment_text);
-        $('.markdown-preview').html(generated_html);
-      }
-      
-      
-      // preview for comment
-      $('a.show-preview').click(function(e) {
-        e.preventDefault();
-        
-        showPreview();
-      });
-      
+      registerPreviewHook('#comment_body');
     });
   
   .markdown-preview
