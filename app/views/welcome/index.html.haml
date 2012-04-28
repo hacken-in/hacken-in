@@ -38,11 +38,10 @@
   :markdown
     Abonniere den Kalender via #{link_to "iCal", "abonnieren"}.
 
-
-  :markdown
-    Hier fehlt ein Event? Dann schick uns eine [E-Mail](mailto:mail@hcking.de).
-
-
+  - if user_signed_in?
+    Hier fehlt ein Event? Dann #{link_to "lege ihn an",new_event_path}.
+  - else
+    Hier fehlt ein Event? Dann #{link_to "melde dich an", new_user_session_path} und lege Ihn an.
   - {like: "faven", hate: "ignorieren"}.each do |kind, text|
     #user_controls
       %div{id: "#{kind}_list"}
