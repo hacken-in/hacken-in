@@ -10,9 +10,9 @@
 = semantic_form_for [@event, @single_event] do |f|
   = f.inputs do
     - if !@single_event.based_on_rule
-      = f.input :occurrence, as: :datetime_select
+      = f.input :occurrence, as: :datetime
     - else
-      = f.input :occurrence, as: :datetime_select, disabled: true
+      = f.input :occurrence, as: :datetime, disabled: true
       %li
         %i
           Dieser Termin ist Teil einer Terminregel. Deswegen kann die Uhrzeit nicht änderbar.
