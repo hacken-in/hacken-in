@@ -14,6 +14,7 @@ Hcking::Application.routes.draw do
     resources :comments, only: [:show, :create, :edit, :update, :destroy, :index]
     namespace "schedule" do
       resources :rdates, only: [:destroy]
+      resources :exdates, only: [:destroy]
       resources :rules, only: [:create, :destroy]
       match 'update' => 'update#update', via: :put
     end
