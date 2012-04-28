@@ -47,7 +47,6 @@ class EventTest < ActiveSupport::TestCase
     assert_nil event.longitude
   end
 
-
   test "event adress formatting" do
     event = Event.new(name: "Hallo")
     event.location = "Cowoco in der Gasmotorenfabrik, 3. Etage"
@@ -133,15 +132,15 @@ class EventTest < ActiveSupport::TestCase
     event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:monday)
     event.save
     first_single_event_id = event.single_events.first.id
-    
+
     event.schedule.remove_recurrence_rule IceCube::Rule.weekly.day(:monday)
     assert_difference "SingleEvent.count", -12 do
       event.future_single_events_cleanup
     end
-    
+
     assert_false SingleEvent.exists?(first_single_event_id), "SingleEvent with id=#{first_single_event_id} should be deleted by cleanup."
   end
-  
+
   test "don't remove single events that match the rules" do
     event = FactoryGirl.create(:simple)
     event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
@@ -196,7 +195,7 @@ class EventTest < ActiveSupport::TestCase
 
     event_opengraph = event.to_opengraph
     hash.each_pair {|key, value| assert_equal event_opengraph[key], value}
-    
+
     # The coordinates change, therefore we only check a few digits:
     assert_equal event_opengraph["og:latitude"].to_s[0,5], "50.94"
     assert_equal event_opengraph["og:longitude"].to_s[0,5], "6.986"
@@ -215,16 +214,6 @@ class EventTest < ActiveSupport::TestCase
       event.save
     end
     assert_equal 1, event.single_events.count
-  end
-  
-  test "should create a single event even if it is before the existing ones" do
-    event = FactoryGirl.create(:simple)
-    
-    event.schedule.add_recurrence_rule(IceCube::SingleOccurrenceRule.new(Time.now + 2.days))
-    event.save
-    assert_equal 1, event.single_events.length
-    event.schedule.add_recurrence_rule(IceCube::SingleOccurrenceRule.new(Time.now + 1.day))
-    assert_equal 2, event.single_events.length
   end
 
   test "check ice_cube abstraction" do
