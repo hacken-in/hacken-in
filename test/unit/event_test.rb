@@ -227,4 +227,11 @@ class EventTest < ActiveSupport::TestCase
     assert_equal 2, event.single_events.length
   end
 
+  test "check ice_cube abstraction" do
+    event = FactoryGirl.create(:simple)
+    event.duration = 60
+    event.save
+    assert_equal 60 * 60, event.schedule.duration
+  end
+
 end

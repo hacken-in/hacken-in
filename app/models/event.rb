@@ -14,8 +14,6 @@ class Event < ActiveRecord::Base
   # Provide tagging
   acts_as_taggable
 
-  validates_presence_of :name
-
   def generate_single_events
     self.future_single_events_cleanup
     self.future_single_event_creation
@@ -81,6 +79,22 @@ class Event < ActiveRecord::Base
     self.schedule.start_time = start_time
     self.schedule.start_time = self.schedule.start_time.beginning_of_day if self.full_day
     self.schedule.duration = duration.to_i * 60
+  end
+
+  def duration
+    schedule.duration / 60
+  end
+
+  def duration=(duration)
+    self.schedule.duration = duration.to_i * 60
+  end
+
+  def start_time
+    schedule.start_time
+  end
+
+  def start_time=(start_time)
+    schedule.start_time = start_time
   end
 
   private
