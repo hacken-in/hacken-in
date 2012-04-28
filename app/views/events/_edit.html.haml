@@ -15,24 +15,22 @@
     - event.schedule.rrules.each_with_index do |rrule, index|
       %li
         = rrule.to_s
-        = link_to "Löschen", event_schedule_rule_path(event, id: index), method: :delete, confirm: "Sind sie sicher?"
+        - if can? :destroy, @event
+          = link_to "Löschen", event_schedule_rule_path(event, id: index), method: :delete, confirm: "Sind sie sicher?"
 - else
   %p Keine Regeln vorhanden
 
 = form_tag(event_schedule_rules_path(event), method: :create) do
-  Am
+  Neue Regel anlegen für den
   = select_tag "week_number", options_for_select([["ersten", "1"], ["zweiten", "2"], ["dritten", "3"], ["vierten", "4"], ["fünften", "5"], ["letzten", "-1"]])
   = select_tag "day_of_week", weekday_select_option
   des Monats.
   = submit_tag "Anlegen"
 
-%h4 Diese Daten sind im Regelwerk ausgeschlossen worden:
-
-- if event.schedule.extimes.count > 0
+- if event.schedule.extimes.count > 0 && can?(:destroy, @event)
+  %h4 Diese Daten sind im Regelwerk ausgeschlossen worden:
   %ul
     - event.schedule.extimes.each_with_index do |exdate, index|
       %li
         = exdate.strftime("%d.%m.%Y um %H:%M")
         = link_to "Löschen", event_schedule_exdate_path(event, id: index), method: :delete, confirm: "Sind sie sicher?"
-- else
-  %p Keine Daten vorhanden

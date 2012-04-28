@@ -7,7 +7,7 @@ class Schedule::RdatesController < ApplicationController
 
   def destroy
     @event = Event.find(params[:event_id])
-    authorize! :update, @event
+    authorize! :destroy, @event
 
     rdate = @event.schedule.rtimes[params[:id].to_i]
     @event.schedule.remove_recurrence_time(rdate)
