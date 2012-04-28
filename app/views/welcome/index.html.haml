@@ -43,22 +43,23 @@
     Hier fehlt ein Event? Dann schick uns eine [E-Mail](mailto:mail@hcking.de).
 
 
-  #user_controls
-    #hate_list
-      %h4 Events mit diesen Tags ignorieren:
-      - unless !user_signed_in? || current_user.hate_list.empty?
-        %ul.tags.hate_list
-          - current_user.hate_list.each do |hate|
-            %li
-              = link_to hate, tag_path(hate)
-              = link_to "x", user_hate_tag_path(user_id: current_user.id, id: hate), confirm: "Bist du sicher?", method: :delete, class: "delete", title: "Löschen"
-  - if !user_signed_in?
-    %p
-      %em Melde dich an, um Events mit bestimmten Tags auszuschließen.
-  = form_for(:user_hate_tags, url: user_signed_in? ? user_hate_tags_path(user_id: current_user.id) : nil) do |f|
-    = f.text_field :hate_list, value: "", disabled: !user_signed_in?
-    = f.submit "Hinzufügen", disabled: !user_signed_in?
-  
+  - {like: "faven", hate: "ignorieren"}.each do |kind, text|
+    #user_controls
+      %div{id: "#{kind}_list"}
+        %h4 Events mit diesen Tags #{text}:
+        - unless !user_signed_in? || current_user.send(:"#{kind}_list").empty?
+          %ul.tags{class: "#{kind}_list"}
+            - current_user.send(:"#{kind}_list").each do |tag|
+              %li
+                = link_to tag, tag_path(tag)
+                = link_to "x", user_tag_path(user_id: current_user.id, id: tag, kind: kind), confirm: "Bist du sicher?", method: :delete, class: "delete", title: "Löschen"
+    - if !user_signed_in?
+      %p
+        %em Melde dich an, um Events mit bestimmten Tags #{text}.
+    = form_for(:"user_#{kind}_tags", url: user_signed_in? ? user_tags_path(user_id: current_user.id, kind: kind) : nil) do |f|
+      = f.text_field :"#{kind}_list", value: "", disabled: !user_signed_in?
+      = f.submit "Hinzufügen", disabled: !user_signed_in?
+
   #social_stuff
     %p.github
       Forke uns auf<br/>

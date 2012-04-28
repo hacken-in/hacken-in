@@ -96,6 +96,10 @@ class Event < ActiveRecord::Base
   def start_time=(start_time)
     schedule.start_time = start_time
   end
+  
+  def raw_ical_file
+    URI.parse(read_attribute(:ical_feed)).read
+  end
 
   private
 
