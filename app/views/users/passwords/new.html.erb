@@ -1,6 +1,6 @@
 <h2>Passwort vergessen?</h2>
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
 
   <p><%= f.label :email %><br />
@@ -9,4 +9,4 @@
   <p><%= f.submit "Neues Passwort zusenden" %></p>
 <% end %>
 
-<%= render :partial => "users/shared/links" %>
+<%= render partial: "users/shared/links" %>

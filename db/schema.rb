@@ -11,9 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120428135420) do
+ActiveRecord::Schema.define(version: 20120428135420) do
 
-  create_table "comments", :force => true do |t|
+  create_table "comments", force: true do |t|
     t.text     "body"
     t.integer  "user_id"
     t.integer  "commentable_id"
@@ -22,10 +22,10 @@ ActiveRecord::Schema.define(:version => 20120428135420) do
     t.datetime "updated_at"
   end
 
-  add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
-  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+  add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
-  create_table "events", :force => true do |t|
+  create_table "events", force: true do |t|
     t.string   "name"
     t.text     "description"
     t.text     "schedule_yaml"
@@ -40,19 +40,18 @@ ActiveRecord::Schema.define(:version => 20120428135420) do
     t.string   "country"
     t.float    "latitude"
     t.float    "longitude"
-    t.boolean  "full_day",        :default => false
+    t.boolean  "full_day",        default: false
     t.string   "twitter_hashtag"
     t.string   "ical_feed"
     t.string   "ical_pattern"
   end
 
-  add_index "events", ["latitude"], :name => "index_events_on_latitude"
-  add_index "events", ["longitude"], :name => "index_events_on_longitude"
+  add_index "events", ["latitude"], name: "index_events_on_latitude"
+  add_index "events", ["longitude"], name: "index_events_on_longitude"
 
-  create_table "single_events", :force => true do |t|
+  create_table "single_events", force: true do |t|
     t.string   "topic"
     t.text     "description"
-    t.date     "date"
     t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -68,20 +67,20 @@ ActiveRecord::Schema.define(:version => 20120428135420) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "twitter_hashtag"
-    t.boolean  "based_on_rule",   :default => false
+    t.boolean  "based_on_rule",   default: false
   end
 
-  add_index "single_events", ["event_id"], :name => "index_single_events_on_event_id"
+  add_index "single_events", ["event_id"], name: "index_single_events_on_event_id"
 
-  create_table "single_events_users", :id => false, :force => true do |t|
+  create_table "single_events_users", id: false, force: true do |t|
     t.integer "user_id"
     t.integer "single_event_id"
   end
 
-  add_index "single_events_users", ["single_event_id"], :name => "index_single_events_users_on_single_event_id"
-  add_index "single_events_users", ["user_id"], :name => "index_single_events_users_on_user_id"
+  add_index "single_events_users", ["single_event_id"], name: "index_single_events_users_on_single_event_id"
+  add_index "single_events_users", ["user_id"], name: "index_single_events_users_on_user_id"
 
-  create_table "taggings", :force => true do |t|
+  create_table "taggings", force: true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
     t.string   "taggable_type"
@@ -91,39 +90,38 @@ ActiveRecord::Schema.define(:version => 20120428135420) do
     t.datetime "created_at"
   end
 
-  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
-  add_index "taggings", ["tagger_id", "tagger_type"], :name => "index_taggings_on_tagger_id_and_tagger_type"
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
+  add_index "taggings", ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type"
 
-  create_table "tags", :force => true do |t|
+  create_table "tags", force: true do |t|
     t.string "name"
   end
 
-  create_table "users", :force => true do |t|
-    t.string   "email",                                 :default => "",    :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "",    :null => false
+  create_table "users", force: true do |t|
+    t.string   "email",                                 default: "",    null: false
+    t.string   "encrypted_password",     limit: 128, default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                         :default => 0
+    t.integer  "sign_in_count",                         default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "admin",                                 :default => false
-    t.string   "nickname",                              :default => "",    :null => false
+    t.boolean  "admin",                                 default: false
+    t.string   "nickname",                              default: "",    null: false
     t.text     "description"
     t.string   "github"
     t.string   "twitter"
     t.string   "homepage"
     t.string   "guid"
     t.boolean  "allow_ignore_view"
-    t.time     "reset_password_sent_at"
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["nickname"], :name => "index_users_on_nickname", :unique => true
-  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["nickname"], name: "index_users_on_nickname", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

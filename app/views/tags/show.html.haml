@@ -2,11 +2,11 @@
   %h2 Events demnächst mit dem Tag "#{params[:tagname]}" :
   - @single_events.each do |single_event|
     %p
-      = link_to single_event.title, :controller => "single_events", :action => "show", :event_id => single_event.event.id, :id => single_event.id
+      = link_to single_event.title, controller: "single_events", action: "show", event_id: single_event.event.id, id: single_event.id
       (
       = day_output_helper single_event.occurrence
       )
-      = render "tags/tags", :tag_list => single_event.event.tag_list + single_event.tag_list
+      = render "tags/tags", tag_list: single_event.event.tag_list + single_event.tag_list
 
 - if !@events.empty?
   - if !@single_events.empty?
@@ -16,7 +16,7 @@
   - @events.each do |event|
     %p
       = link_to event.name, event_path(event)
-      = render 'tags/tags', :tag_list => event.tag_list
+      = render 'tags/tags', tag_list: event.tag_list
 - elsif @single_events.empty?
   %h2 Events für das Tag "#{params[:tagname]}"
   %p Es scheint keine Events mit diesem Tag zu geben.

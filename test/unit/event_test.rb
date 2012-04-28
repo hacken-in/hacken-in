@@ -159,8 +159,8 @@ class EventTest < ActiveSupport::TestCase
     first = (Time.now + 2.days).localtime
     second = (Time.now + 5.days).localtime
 
-    SingleEvent.create(:event => event, :occurrence => second)
-    SingleEvent.create(:event => event, :occurrence => first)
+    SingleEvent.create(event: event, occurrence: second)
+    SingleEvent.create(event: event, occurrence: first)
 
     assert_equal 2, event.single_events.count
     assert_equal first, event.single_events[0].occurrence

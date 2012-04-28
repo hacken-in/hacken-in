@@ -11,6 +11,6 @@ class Ability
     can :read, User
 
     can :create, Comment if !user.nil?
-    can [:edit, :update, :destroy], Comment, :user_id => user.id if !user.nil?
+    can [:edit, :update, :destroy], Comment, user_id: user.id if !user.nil?
   end
 end

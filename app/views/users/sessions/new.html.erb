@@ -1,6 +1,6 @@
 <h2>Anmelden</h2>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <p><%= f.label :email %> oder <%= f.label :nickname %><br />
   <%= f.text_field :email %></p>
 
@@ -14,4 +14,4 @@
   <p><%= f.submit "Anmelden" %></p>
 <% end %>
 
-<%= render :partial => "users/shared/links" %>
+<%= render partial: "users/shared/links" %>
