@@ -19,7 +19,7 @@ Hcking::Application.routes.draw do
 
       match 'update' => 'update#update', :via => :put
     end
-    resources :single_events, :only => [:show, :update, :edit] do
+    resources :single_events do
       member do
         put :participate
         put :unparticipate

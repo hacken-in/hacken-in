@@ -3,6 +3,7 @@ require 'location'
 class SingleEvent < ActiveRecord::Base
   include Location
   after_validation :reset_geocode
+  after_destroy :update_event
   geocoded_by :address
 
   belongs_to :event
@@ -133,5 +134,12 @@ class SingleEvent < ActiveRecord::Base
       event.url         = url
     end
 
+  end
+
+  def update_event
+    if based_on_rule
+      event.schedule.add_exception_time(occurrence)
+      event.save
+    end
   end
 end

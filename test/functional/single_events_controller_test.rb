@@ -112,4 +112,38 @@ class SingleEventsControllerTest < ActionController::TestCase
     assert_redirected_to event_single_event_path(single_event.event, single_event)
   end
 
+  test "should not delete if not bodo" do
+    single_event = FactoryGirl.create(:single_event)
+    assert_no_difference 'SingleEvent.count' do
+      put :destroy, id: single_event.id, event_id: single_event.event.id
+    end
+    assert_redirected_to :controller => 'welcome', :action => 'index'
+  end
+
+  test "should delete single event and create reoccurence rule if created by rule" do
+    single_event = FactoryGirl.create(:single_event)
+    event = single_event.event
+    user = FactoryGirl.create(:bodo)
+    sign_in user
+    assert_difference 'SingleEvent.count', -1 do
+      put :destroy, id: single_event.id, event_id: single_event.event.id
+    end
+    event = Event.find(event.id)
+    assert_equal 1, event.schedule.extimes.count
+  end
+
+  test "should delete single event and do not create reoccurence rule" do
+    single_event = FactoryGirl.create(:single_event)
+    single_event.based_on_rule = false
+    single_event.save
+    event = single_event.event
+    user = FactoryGirl.create(:bodo)
+    sign_in user
+    assert_difference 'SingleEvent.count', -1 do
+      put :destroy, id: single_event.id, event_id: single_event.event.id
+    end
+    event = Event.find(event.id)
+    assert_equal 0, event.schedule.extimes.count
+  end
+
 end
