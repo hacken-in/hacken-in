@@ -5,7 +5,7 @@ class EventsControllerTest < ActionController::TestCase
 
   test "should get event" do
     event = FactoryGirl.create(:simple)
-    get :show, :id => event.id
+    get :show, id: event.id
     assert_response :success
   end
 
@@ -16,41 +16,41 @@ class EventsControllerTest < ActionController::TestCase
 
   test "should not edit if not bodo" do
     event = FactoryGirl.create(:simple)
-    get :edit, :id => event.id
-    assert_redirected_to :controller => 'welcome', :action => 'index'
+    get :edit, id: event.id
+    assert_redirected_to controller: 'welcome', action: 'index'
 
     sign_in FactoryGirl.create(:user)
-    get :edit, :id => event.id
-    assert_redirected_to :controller => 'welcome', :action => 'index'
+    get :edit, id: event.id
+    assert_redirected_to controller: 'welcome', action: 'index'
 
-    post :update, :id => event.id, :event => {name: "Hallo"}
+    post :update, id: event.id, event: {name: "Hallo"}
     event.reload
     assert_equal "SimpleEvent", event.name
-    assert_redirected_to :controller => 'welcome', :action => 'index'
+    assert_redirected_to controller: 'welcome', action: 'index'
   end
 
   test "should not create if not bodo" do
     event = FactoryGirl.create(:simple)
     get :new
-    assert_redirected_to :controller => 'welcome', :action => 'index'
+    assert_redirected_to controller: 'welcome', action: 'index'
 
     sign_in FactoryGirl.create(:user)
     get :new
-    assert_redirected_to :controller => 'welcome', :action => 'index'
+    assert_redirected_to controller: 'welcome', action: 'index'
 
     assert_no_difference('Event.count') do
-      put :create, :event => { name: "hallo" }
+      put :create, event: { name: "hallo" }
     end
-    assert_redirected_to :controller => 'welcome', :action => 'index'
+    assert_redirected_to controller: 'welcome', action: 'index'
   end
 
   test "should edit if bodo" do
     event = FactoryGirl.create(:simple)
     sign_in FactoryGirl.create(:bodo)
-    get :edit, :id => event.id
+    get :edit, id: event.id
     assert_response :success
 
-    put :update, :id => event.id,:event => { name: "Hallo" }
+    put :update, id: event.id,event: { name: "Hallo" }
     event.reload
     assert_equal "Hallo", event.name
     assert_redirected_to event_path(event)
@@ -62,7 +62,7 @@ class EventsControllerTest < ActionController::TestCase
     assert_response :success
 
     assert_difference('Event.count') do
-      put :create, :event => { name: "Hallo" }
+      put :create, event: { name: "Hallo" }
     end
     assert_equal "Hallo", assigns(:event).name
     assert_redirected_to event_path(assigns(:event))
@@ -72,7 +72,7 @@ class EventsControllerTest < ActionController::TestCase
     event = FactoryGirl.create(:simple)
 
     assert_no_difference('Event.count') do
-      delete :destroy, :id => event.id
+      delete :destroy, id: event.id
     end
 
     assert_redirected_to root_path
@@ -83,7 +83,7 @@ class EventsControllerTest < ActionController::TestCase
     sign_in FactoryGirl.create(:bodo)
 
     assert_difference('Event.count', -1) do
-      delete :destroy, :id => event.id
+      delete :destroy, id: event.id
     end
 
     assert_redirected_to root_path

@@ -4,7 +4,7 @@ class PagesController < ApplicationController
     @page_name = params[:page_name].to_s.gsub(/\W/,'')
 
     unless partial_exists? @page_name
-      render 'missing', :status => 404
+      render 'missing', status: 404
     end
   end
 

@@ -8,18 +8,18 @@ class User < ActiveRecord::Base
   acts_as_taggable_on :hates
 
   has_many :comments
-  has_and_belongs_to_many :single_events, :uniq => true
+  has_and_belongs_to_many :single_events, uniq: true
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :allow_ignore_view
   attr_protected :admin
 
-  validates :email, :uniqueness => true
-  validates :nickname, :uniqueness => true
-  validates_exclusion_of :nickname, :in => %w(admin, root, administrator, superuser), :message => "is reserved"
+  validates :email, uniqueness: true
+  validates :nickname, uniqueness: true
+  validates_exclusion_of :nickname, in: %w(admin, root, administrator, superuser), message: "is reserved"
 
-  validates :email, :presence => true
-  validates :nickname, :presence => true
+  validates :email, presence: true
+  validates :nickname, presence: true
 
   # http://stackoverflow.com/questions/2997179/ror-devise-sign-in-with-username-or-email
   def self.find_for_database_authentication(conditions={})

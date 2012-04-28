@@ -12,9 +12,9 @@ class Schedule::RulesController < ApplicationController
     @event.schedule.add_recurrence_rule IceCube::Rule.monthly.day_of_week(rule)
 
     if !@event.save
-      redirect_to(@event, :alert => 'Datum konnte nicht hinzugefügt werden.')
+      redirect_to(@event, alert: 'Datum konnte nicht hinzugefügt werden.')
     else
-      redirect_to(@event, :notice => 'Datum hinzugefügt.')
+      redirect_to(@event, notice: 'Datum hinzugefügt.')
     end
   end
 
@@ -26,9 +26,9 @@ class Schedule::RulesController < ApplicationController
     @event.schedule.remove_recurrence_rule(rule)
 
     if !@event.save
-      redirect_to(@event, :alert => 'Datum konnte nicht entfernt werden.')
+      redirect_to(@event, alert: 'Datum konnte nicht entfernt werden.')
     else
-      redirect_to(@event, :notice => 'Datum entfernt.')
+      redirect_to(@event, notice: 'Datum entfernt.')
     end
   end
 

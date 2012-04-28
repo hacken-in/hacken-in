@@ -10,7 +10,7 @@ Hcking::Application.load_tasks
 
 begin
   require 'vlad'
-  Vlad.load :scm => :git
+  Vlad.load scm: :git
 
   task "vlad:copy_files" do
     Rake::Task["vlad:copy_config_files"].invoke

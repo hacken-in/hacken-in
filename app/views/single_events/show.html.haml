@@ -1,7 +1,7 @@
 - title @single_event.event_title
 
 %div.right_row
-  = render "events/map", :event => @single_event
+  = render "events/map", event: @single_event
   %div.map
 
   - unless mobile?
@@ -21,7 +21,7 @@
 %h2
   = @single_event.full_day ? @single_event.occurrence.strftime("%d.%m.%Y") :  @single_event.occurrence.strftime("%d.%m.%Y um %H:%M")
 
-= render "tags/tags", :tag_list => @single_event.event.tag_list + @single_event.tag_list
+= render "tags/tags", tag_list: @single_event.event.tag_list + @single_event.tag_list
 
 - unless @single_event.description?
   %p
@@ -30,7 +30,7 @@
   - else
     = convert_markdown @single_event.description
 
-= render "events/links", :item => @single_event
+= render "events/links", item: @single_event
 
 %h3
   Über #{@single_event.event_name}
@@ -40,17 +40,17 @@
     %em
       Keine Beschreibung vorhanden
   - else
-    = truncate_html(convert_markdown(@single_event.event_description), 30, :ellipsis => " ... (#{link_to("mehr", @event)})")
+    = truncate_html(convert_markdown(@single_event.event_description), 30, ellipsis: " ... (#{link_to("mehr", @event)})")
 
-= render "events/address",:address => @single_event
+= render "events/address",address: @single_event
 
 %p
   Zur Übersicht von #{link_to @event.name, @event}.
 
 - if can? :update, @event
-  = link_to "Editieren", :action => "edit", :event_id => @event.id, :id => @single_event.id
+  = link_to "Editieren", action: "edit", event_id: @event.id, id: @single_event.id
 - if can? :delete, @single_event
-  = link_to "Löschen", event_single_event_path(@event, @single_event), :method => :delete, :confirm => "Wirklich löschen?"
+  = link_to "Löschen", event_single_event_path(@event, @single_event), method: :delete, confirm: "Wirklich löschen?"
 
 %h3
   = t ".participants"
@@ -62,13 +62,13 @@
     %em
       Keine Teilnehmer
 - @single_event.users.each do |user|
-  = link_to gravatar_image_tag(user.email, :gravatar => { :default => :identicon, :size => 32 }, :alt => user.nickname, :class => "gravatar_tooltip", :title => user.nickname),
+  = link_to gravatar_image_tag(user.email, gravatar: { default: :identicon, size: 32 }, alt: user.nickname, class: "gravatar_tooltip", title: user.nickname),
     user_path(user)
 - if user_signed_in? && !@single_event.users.include?(current_user)
   %p
-    = button_to "Ich nehme teil", {:action => "participate", :single_event_id => @single_event.id}, {:method => :put}
+    = button_to "Ich nehme teil", {action: "participate", single_event_id: @single_event.id}, {method: :put}
 - elsif user_signed_in?
   %p
-    = button_to "Ich nehme doch nicht teil", {:action => "unparticipate", :single_event_id => @single_event.id}, {:method => :put}
+    = button_to "Ich nehme doch nicht teil", {action: "unparticipate", single_event_id: @single_event.id}, {method: :put}
 
-= render :partial => "comments/comments", :locals => {:commentable => @single_event}
+= render partial: "comments/comments", locals: {commentable: @single_event}

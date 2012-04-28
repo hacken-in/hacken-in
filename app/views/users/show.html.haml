@@ -1,5 +1,5 @@
 #user_profile
-  = gravatar_image_tag(@user.email, :class => "user_gravatar", :gravatar => { :default => :identicon, :size => 128 })
+  = gravatar_image_tag(@user.email, class: "user_gravatar", gravatar: { default: :identicon, size: 128 })
 
   %h2= @user.nickname
 
@@ -30,7 +30,7 @@
     .ignore_tags
       %h3= t 'users.show.ignore_tags'
       - unless @user.hate_list.empty?
-        = render "tags/tags", :tag_list => @user.hate_list
+        = render "tags/tags", tag_list: @user.hate_list
       - else
         %p= t 'users.show.no_ignore_tags'
 

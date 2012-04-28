@@ -44,7 +44,7 @@ class Event < ActiveRecord::Base
       end
 
       if @schedule.nil?
-        @schedule = IceCube::Schedule.new(Time.now, :duration => 60 * 60)
+        @schedule = IceCube::Schedule.new(Time.now, duration: 60 * 60)
       end
     end
     @schedule

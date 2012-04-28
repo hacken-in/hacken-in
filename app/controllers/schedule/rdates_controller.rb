@@ -13,9 +13,9 @@ class Schedule::RdatesController < ApplicationController
     @event.schedule.remove_recurrence_time(rdate)
 
     if !@event.save
-      redirect_to(@event, :alert => 'Datum konnte nicht entfernt werden.')
+      redirect_to(@event, alert: 'Datum konnte nicht entfernt werden.')
     else
-      redirect_to(@event, :notice => 'Datum entfernt.')
+      redirect_to(@event, notice: 'Datum entfernt.')
     end
   end
 

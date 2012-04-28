@@ -1,6 +1,6 @@
 class CreateSingleEventsUsers < ActiveRecord::Migration
   def change
-    create_table :single_events_users, :id => false do |t|
+    create_table :single_events_users, id: false do |t|
       t.references :user, :single_event
     end
 

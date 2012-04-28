@@ -5,11 +5,11 @@ class CommentsControllerTest < ActionController::TestCase
 
   test "should not get index if not admin" do
     get :index
-    assert_redirected_to :controller => 'welcome', :action => 'index'
+    assert_redirected_to controller: 'welcome', action: 'index'
 
     sign_in FactoryGirl.create(:user)
     get :index
-    assert_redirected_to :controller => 'welcome', :action => 'index'
+    assert_redirected_to controller: 'welcome', action: 'index'
   end
 
   test "should get index if bodo" do
@@ -20,14 +20,14 @@ class CommentsControllerTest < ActionController::TestCase
 
   test "do not create comment for event if not logged in" do
     simple = FactoryGirl.create(:simple)
-    put :create, :event_id => simple.id, :comment => { body: "hallo" }
-    assert_redirected_to :controller => 'welcome', :action => 'index'
+    put :create, event_id: simple.id, comment: { body: "hallo" }
+    assert_redirected_to controller: 'welcome', action: 'index'
   end
 
   test "do not create comment for singleevent if not logged in" do
     simple = FactoryGirl.create(:single_event)
-    put :create, :event_id => simple.event.id, :single_event_id => simple.id, :comment => { body: "hallo" }
-    assert_redirected_to :controller => 'welcome', :action => 'index'
+    put :create, event_id: simple.event.id, single_event_id: simple.id, comment: { body: "hallo" }
+    assert_redirected_to controller: 'welcome', action: 'index'
   end
 
   test "create comment for event if logged in" do
@@ -36,9 +36,9 @@ class CommentsControllerTest < ActionController::TestCase
 
     sign_in user
     assert_difference('Comment.count') do
-      put :create, :event_id => simple.id, :comment => { body: "hallo" }
+      put :create, event_id: simple.id, comment: { body: "hallo" }
     end
-    assert_redirected_to :controller => 'events', :action => 'show', :id => simple.id, :anchor => "comment_1"
+    assert_redirected_to controller: 'events', action: 'show', id: simple.id, anchor: "comment_1"
     simple.reload
     assert_equal "hallo", simple.comments.last.body
     assert_equal user, simple.comments.last.user
@@ -50,9 +50,9 @@ class CommentsControllerTest < ActionController::TestCase
 
     sign_in user
     assert_difference('Comment.count') do
-      put :create, :event_id => simple.event.id, :single_event_id => simple.id, :comment => { body: "hallo" }
+      put :create, event_id: simple.event.id, single_event_id: simple.id, comment: { body: "hallo" }
     end
-    assert_redirected_to :controller => 'single_events', :action => 'show', :event_id => simple.event.id, :id => simple.id, :anchor => "comment_1"
+    assert_redirected_to controller: 'single_events', action: 'show', event_id: simple.event.id, id: simple.id, anchor: "comment_1"
     simple.reload
     assert_equal "hallo", simple.comments.last.body
     assert_equal user, simple.comments.last.user
@@ -60,74 +60,74 @@ class CommentsControllerTest < ActionController::TestCase
 
   test "show singleevent comment" do
     comment = FactoryGirl.create(:single_event_comment)
-    get :show, :single_event_id => comment.commentable.event.id,
-               :event_id => comment.commentable.id,
-               :id => comment.id
+    get :show, single_event_id: comment.commentable.event.id,
+               event_id: comment.commentable.id,
+               id: comment.id
     assert_response :success
   end
 
   test "show event comment" do
     comment = FactoryGirl.create(:event_comment)
-    get :show, :event_id => comment.commentable.id, :id => comment.id
+    get :show, event_id: comment.commentable.id, id: comment.id
     assert_response :success
   end
 
   test "not edit single event comment if not logged in" do
     comment = FactoryGirl.create(:single_event_comment)
-    get :edit, :single_event_id => comment.commentable.event.id,
-               :event_id => comment.commentable.id,
-               :id => comment.id
-    assert_redirected_to :controller => 'welcome', :action => 'index'
+    get :edit, single_event_id: comment.commentable.event.id,
+               event_id: comment.commentable.id,
+               id: comment.id
+    assert_redirected_to controller: 'welcome', action: 'index'
   end
 
   test "not edit single event comment if other user" do
     comment = FactoryGirl.create(:single_event_comment)
     sign_in FactoryGirl.create(:another_user)
-    get :edit, :single_event_id => comment.commentable.event.id,
-               :event_id => comment.commentable.id,
-               :id => comment.id
-    assert_redirected_to :controller => 'welcome', :action => 'index'
+    get :edit, single_event_id: comment.commentable.event.id,
+               event_id: comment.commentable.id,
+               id: comment.id
+    assert_redirected_to controller: 'welcome', action: 'index'
   end
 
   test "edit single event comment if logged in" do
     comment = FactoryGirl.create(:single_event_comment)
     sign_in comment.user
-    get :edit, :single_event_id => comment.commentable.event.id,
-               :event_id => comment.commentable.id,
-               :id => comment.id
+    get :edit, single_event_id: comment.commentable.event.id,
+               event_id: comment.commentable.id,
+               id: comment.id
     assert_response :success
   end
 
   test "not edit event comment if not logged in" do
     comment = FactoryGirl.create(:event_comment)
-    get :edit, :event_id => comment.commentable.id,
-               :id => comment.id
-    assert_redirected_to :controller => 'welcome', :action => 'index'
+    get :edit, event_id: comment.commentable.id,
+               id: comment.id
+    assert_redirected_to controller: 'welcome', action: 'index'
   end
 
   test "not edit event comment if other user" do
     comment = FactoryGirl.create(:event_comment)
     sign_in FactoryGirl.create(:another_user)
-    get :edit, :event_id => comment.commentable.id,
-               :id => comment.id
-    assert_redirected_to :controller => 'welcome', :action => 'index'
+    get :edit, event_id: comment.commentable.id,
+               id: comment.id
+    assert_redirected_to controller: 'welcome', action: 'index'
   end
 
   test "edit event comment if logged in" do
     comment = FactoryGirl.create(:event_comment)
     sign_in comment.user
-    get :edit, :event_id => comment.commentable.id,
-               :id => comment.id
+    get :edit, event_id: comment.commentable.id,
+               id: comment.id
     assert_response :success
   end
 
   test "not update single event comment if not logged in" do
     comment = FactoryGirl.create(:single_event_comment)
-    post :update, :single_event_id => comment.commentable.event.id,
-               :event_id => comment.commentable.id,
-               :id => comment.id,
-               :comment => {:body => "updated"}
-    assert_redirected_to :controller => 'welcome', :action => 'index'
+    post :update, single_event_id: comment.commentable.event.id,
+               event_id: comment.commentable.id,
+               id: comment.id,
+               comment: {body: "updated"}
+    assert_redirected_to controller: 'welcome', action: 'index'
     comment.reload
     assert_equal "single event comment", comment.body
    end
@@ -135,11 +135,11 @@ class CommentsControllerTest < ActionController::TestCase
   test "not update single event comment if other user" do
     comment = FactoryGirl.create(:single_event_comment)
     sign_in FactoryGirl.create(:another_user)
-    post :update, :single_event_id => comment.commentable.event.id,
-               :event_id => comment.commentable.id,
-               :id => comment.id,
-               :comment => {:body => "updated"}
-    assert_redirected_to :controller => 'welcome', :action => 'index'
+    post :update, single_event_id: comment.commentable.event.id,
+               event_id: comment.commentable.id,
+               id: comment.id,
+               comment: {body: "updated"}
+    assert_redirected_to controller: 'welcome', action: 'index'
     comment.reload
     assert_equal "single event comment", comment.body
   end
@@ -147,25 +147,25 @@ class CommentsControllerTest < ActionController::TestCase
   test "update single event comment if logged in" do
     comment = FactoryGirl.create(:single_event_comment)
     sign_in comment.user
-    post :update, :single_event_id => comment.commentable.event.id,
-               :event_id => comment.commentable.id,
-               :id => comment.id,
-               :comment => {:body => "updated"}
-    assert_redirected_to :controller => 'single_events',
-                         :action => 'show',
-                         :id => comment.commentable.id,
-                         :event_id => comment.commentable.event.id,
-                         :anchor => "comment_1"
+    post :update, single_event_id: comment.commentable.event.id,
+               event_id: comment.commentable.id,
+               id: comment.id,
+               comment: {body: "updated"}
+    assert_redirected_to controller: 'single_events',
+                         action: 'show',
+                         id: comment.commentable.id,
+                         event_id: comment.commentable.event.id,
+                         anchor: "comment_1"
     comment.reload
     assert_equal "updated", comment.body
   end
 
   test "not update event comment if not logged in" do
     comment = FactoryGirl.create(:event_comment)
-    post :update, :event_id => comment.commentable.id,
-               :id => comment.id,
-               :comment => {:body => "updated"}
-    assert_redirected_to :controller => 'welcome', :action => 'index'
+    post :update, event_id: comment.commentable.id,
+               id: comment.id,
+               comment: {body: "updated"}
+    assert_redirected_to controller: 'welcome', action: 'index'
     comment.reload
     assert_equal "event comment", comment.body
   end
@@ -173,10 +173,10 @@ class CommentsControllerTest < ActionController::TestCase
   test "not update event comment if other user" do
     comment = FactoryGirl.create(:event_comment)
     sign_in FactoryGirl.create(:another_user)
-    post :update, :event_id => comment.commentable.id,
-               :id => comment.id,
-               :comment => {:body => "updated"}
-    assert_redirected_to :controller => 'welcome', :action => 'index'
+    post :update, event_id: comment.commentable.id,
+               id: comment.id,
+               comment: {body: "updated"}
+    assert_redirected_to controller: 'welcome', action: 'index'
     comment.reload
     assert_equal "event comment", comment.body
   end
@@ -184,13 +184,13 @@ class CommentsControllerTest < ActionController::TestCase
   test "update event comment if logged in" do
     comment = FactoryGirl.create(:event_comment)
     sign_in comment.user
-    post :update, :event_id => comment.commentable.id,
-               :id => comment.id,
-               :comment => {:body => "updated"}
-    assert_redirected_to :controller => 'events',
-                         :action => 'show',
-                         :id => comment.commentable.id,
-                         :anchor => "comment_1"
+    post :update, event_id: comment.commentable.id,
+               id: comment.id,
+               comment: {body: "updated"}
+    assert_redirected_to controller: 'events',
+                         action: 'show',
+                         id: comment.commentable.id,
+                         anchor: "comment_1"
     comment.reload
     assert_equal "updated", comment.body
   end
@@ -198,9 +198,9 @@ class CommentsControllerTest < ActionController::TestCase
   test "should not delete single event comment if not logged in" do
     comment = FactoryGirl.create(:single_event_comment)
     assert_no_difference('Comment.count') do
-      delete :destroy, :event_id => comment.commentable.event.id,
-                       :single_event_id => comment.commentable.id,
-                       :id => comment.id
+      delete :destroy, event_id: comment.commentable.event.id,
+                       single_event_id: comment.commentable.id,
+                       id: comment.id
     end
     assert_redirected_to root_path
   end
@@ -209,9 +209,9 @@ class CommentsControllerTest < ActionController::TestCase
     comment = FactoryGirl.create(:single_event_comment)
     sign_in FactoryGirl.create(:another_user)
     assert_no_difference('Comment.count') do
-      delete :destroy, :event_id => comment.commentable.event.id,
-                       :single_event_id => comment.commentable.id,
-                       :id => comment.id
+      delete :destroy, event_id: comment.commentable.event.id,
+                       single_event_id: comment.commentable.id,
+                       id: comment.id
     end
     assert_redirected_to root_path
   end
@@ -220,21 +220,21 @@ class CommentsControllerTest < ActionController::TestCase
     comment = FactoryGirl.create(:single_event_comment)
     sign_in comment.user
     assert_difference('Comment.count', -1) do
-      delete :destroy, :event_id => comment.commentable.event.id,
-                       :single_event_id => comment.commentable.id,
-                       :id => comment.id
+      delete :destroy, event_id: comment.commentable.event.id,
+                       single_event_id: comment.commentable.id,
+                       id: comment.id
     end
-    assert_redirected_to :controller => 'single_events',
-                         :action => 'show',
-                         :id => comment.commentable.id,
-                         :event_id => comment.commentable.event.id
+    assert_redirected_to controller: 'single_events',
+                         action: 'show',
+                         id: comment.commentable.id,
+                         event_id: comment.commentable.event.id
   end
 
   test "should not delete event comment if not logged in" do
     comment = FactoryGirl.create(:event_comment)
     assert_no_difference('Comment.count') do
-      delete :destroy, :event_id => comment.commentable.id,
-                       :id => comment.id
+      delete :destroy, event_id: comment.commentable.id,
+                       id: comment.id
     end
     assert_redirected_to root_path
   end
@@ -243,8 +243,8 @@ class CommentsControllerTest < ActionController::TestCase
     comment = FactoryGirl.create(:event_comment)
     sign_in FactoryGirl.create(:another_user)
     assert_no_difference('Comment.count') do
-      delete :destroy, :event_id => comment.commentable.id,
-                       :id => comment.id
+      delete :destroy, event_id: comment.commentable.id,
+                       id: comment.id
     end
     assert_redirected_to root_path
   end
@@ -253,12 +253,12 @@ class CommentsControllerTest < ActionController::TestCase
     comment = FactoryGirl.create(:event_comment)
     sign_in comment.user
     assert_difference('Comment.count', -1) do
-      delete :destroy, :event_id => comment.commentable.id,
-                       :id => comment.id
+      delete :destroy, event_id: comment.commentable.id,
+                       id: comment.id
     end
-    assert_redirected_to :controller => 'events',
-                         :action => 'show',
-                         :id => comment.commentable.id
+    assert_redirected_to controller: 'events',
+                         action: 'show',
+                         id: comment.commentable.id
   end
 
 end

@@ -9,8 +9,8 @@ class ActsAsTaggableOnMigration < ActiveRecord::Migration
 
       # You should make sure that the column created is
       # long enough to store the required class names.
-      t.references :taggable, :polymorphic => true
-      t.references :tagger, :polymorphic => true
+      t.references :taggable, polymorphic: true
+      t.references :tagger, polymorphic: true
 
       t.string :context
 
