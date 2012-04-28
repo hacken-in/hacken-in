@@ -2,7 +2,7 @@ Hcking::Application.routes.draw do
   devise_for :users
 
   resources :users, only: [:show] do
-    resources :hate_tags, controller: :user_hate_tags, constraints: { id: /.*/ }, only: [:create, :destroy]
+    resources :tags, controller: :user_tags, path: ":kind", constraints: { id: /.*/, kind: /(like|hate)/ }, only: [:create, :destroy]
   end
 
   match 'tags/:tagname'  => 'tags#show', constraints: { tagname: /.*/ }
