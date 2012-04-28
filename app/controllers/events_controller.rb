@@ -12,7 +12,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @event }
+      format.xml  { render xml: @event }
     end
   end
 
@@ -22,7 +22,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @event }
+      format.xml  { render xml: @event }
     end
   end
 
@@ -37,11 +37,11 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to(@event, :notice => 'Event angelegt.') }
-        format.xml  { render :xml => @event, :status => :created, :location => @event }
+        format.html { redirect_to(@event, notice: 'Event angelegt.') }
+        format.xml  { render xml: @event, status: :created, location: @event }
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
+        format.html { render action: "new" }
+        format.xml  { render xml: @event.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -61,11 +61,11 @@ class EventsController < ApplicationController
 
       if @event.update_attributes(event_params)
         expire_fragment("event_occurences_#{@event.id}")
-        format.html { redirect_to(@event, :notice => 'Event aktualisiert') }
+        format.html { redirect_to(@event, notice: 'Event aktualisiert') }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
+        format.html { render action: "edit" }
+        format.xml  { render xml: @event.errors, status: :unprocessable_entity }
       end
     end
   end

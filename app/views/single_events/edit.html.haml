@@ -9,7 +9,7 @@
 
 %h1 Diesen Tag des Events bearbeiten
 
-= semantic_form_for(@single_event, :url => url_for(:action => 'update', :id => @single_event.id)) do |f|
+= semantic_form_for(@single_event, url: url_for(action: 'update', id: @single_event.id)) do |f|
   = f.inputs do
     = f.input :topic
     = f.input :description
@@ -23,7 +23,7 @@
     = f.input :url
     = f.input :twitter_hashtag
     = f.input :tag_list
-    = f.input :duration, :input_html => { :type => "number", :style => "width:100px" }
+    = f.input :duration, input_html: { type: "number", style: "width:100px" }
     = f.input :full_day
 
   = f.actions do

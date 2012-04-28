@@ -3,13 +3,14 @@ require 'location'
 class SingleEvent < ActiveRecord::Base
   include Location
   after_validation :reset_geocode
+  after_destroy :update_event
   geocoded_by :address
 
   belongs_to :event
-  delegate :title, :name, :description, :city, :to => :event, :prefix => true
+  delegate :title, :name, :description, :city, to: :event, prefix: true
 
   has_many :comments, as: :commentable, dependent: :destroy
-  has_and_belongs_to_many :users, :uniq => true
+  has_and_belongs_to_many :users, uniq: true
 
   scope :in_future, where("occurrence >= ?", Time.now).order(:occurrence)
   scope :today_or_in_future, where("occurrence >= ?", Time.now.beginning_of_day).order(:occurrence)
@@ -26,7 +27,7 @@ class SingleEvent < ActiveRecord::Base
   end
 
   def self.getNextWeeks(number_of_weeks)
-    where(:occurrence => (Time.now.to_date)..((Time.now + number_of_weeks.weeks).to_date)).sort
+    where(occurrence: (Time.now.to_date)..((Time.now + number_of_weeks.weeks).to_date)).sort
   end
 
   def title
@@ -116,9 +117,9 @@ class SingleEvent < ActiveRecord::Base
 
     loc = [self.location, self.address].delete_if{|d|d.blank?}.join(", ").strip
     url = Rails.application.routes.url_helpers.event_single_event_url(
-              :host => Rails.env.production? ? "hcking.de" : "hcking.dev",
-              :event_id => self.event.id,
-              :id => self.id)
+              host: Rails.env.production? ? "hcking.de" : "hcking.dev",
+              event_id: self.event.id,
+              id: self.id)
 
     description = ActionController::Base.helpers.strip_tags("#{self.description}\n\n#{self.event.description}".strip)
 
@@ -133,5 +134,12 @@ class SingleEvent < ActiveRecord::Base
       event.url         = url
     end
 
+  end
+
+  def update_event
+    if based_on_rule
+      event.schedule.add_exception_time(occurrence)
+      event.save
+    end
   end
 end

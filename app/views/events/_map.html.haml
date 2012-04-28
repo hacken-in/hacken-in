@@ -1,6 +1,6 @@
 - unless event.latitude.blank? or event.longitude.blank?
   - content_for :javascript do
-    %script{:type => "text/javascript", :src => "http://tile.cloudmade.com/wml/latest/web-maps-lite.js"}
+    %script{type: "text/javascript", src: "http://tile.cloudmade.com/wml/latest/web-maps-lite.js"}
     :javascript
       function initialize() {
         var cloudmade = new CM.Tiles.CloudMade.Web({

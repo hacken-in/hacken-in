@@ -3,7 +3,7 @@ class IcalController < ApplicationController
   def general
     response.headers["Content-Type"] = "text/calendar"
 
-    events = SingleEvent.where(:occurrence => Date.today..(Date.today + 8.weeks))
+    events = SingleEvent.where(occurrence: Date.today..(Date.today + 8.weeks))
 
     Gabba::Gabba.new("UA-954244-12", "hcking.de").event("Event", "iCal")
     render_events(events)
@@ -12,10 +12,10 @@ class IcalController < ApplicationController
   def personalized
     response.headers["Content-Type"] = "text/calendar"
 
-    user = User.where(:guid => params[:guid]).first
+    user = User.where(guid: params[:guid]).first
 
     events = if user && !params[:guid].blank?
-      user.single_events.where(:occurrence => Date.today..(Date.today + 8.weeks))
+      user.single_events.where(occurrence: Date.today..(Date.today + 8.weeks))
     else
       []
     end
@@ -26,10 +26,10 @@ class IcalController < ApplicationController
   def like_welcome_page
     response.headers["Content-Type"] = "text/calendar"
 
-    user = User.where(:guid => params[:guid]).first
+    user = User.where(guid: params[:guid]).first
 
     events = if user && !params[:guid].blank?
-      SingleEvent.where(:occurrence => Date.today..(Date.today + 8.weeks)).delete_if do |single_event|
+      SingleEvent.where(occurrence: Date.today..(Date.today + 8.weeks)).delete_if do |single_event|
         (
           (single_event.event.tag_list & user.hate_list).length > 0 &&
           (!single_event.users.include? user)

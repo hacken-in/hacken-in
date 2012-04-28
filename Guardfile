@@ -36,7 +36,7 @@ end
 #  watch('spec/spec_helper.rb')
 #end
 
-guard 'test', :drb => false do
+guard 'test', drb: false do
   watch(%r{lib/(.*)\.rb})      { |m| "test/#{m[1]}_test.rb" }
   watch(%r{test/.*_test\.rb})
   watch('test/test_helper.rb') { "test" }

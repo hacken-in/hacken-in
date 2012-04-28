@@ -12,9 +12,9 @@ class Schedule::UpdateController < ApplicationController
     @event.update_start_time_and_duration(parse_datetime_select(params[:start_time], "date"), params[:duration])
 
     if !@event.save
-      redirect_to(@event, :alert => 'Event konnte nicht geändert werden.')
+      redirect_to(@event, alert: 'Event konnte nicht geändert werden.')
     else
-      redirect_to(@event, :notice => 'Event geändert.')
+      redirect_to(@event, notice: 'Event geändert.')
     end
   end
 

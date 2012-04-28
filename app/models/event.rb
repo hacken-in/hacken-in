@@ -22,7 +22,7 @@ class Event < ActiveRecord::Base
   # Delete SingleEvents that don't match the pattern
   def future_single_events_cleanup
     self.single_events.in_future.where(based_on_rule: true).each do |single_event|
-      single_event.destroy unless schedule.occurs_at?(single_event.occurrence)
+      single_event.delete unless schedule.occurs_at?(single_event.occurrence)
     end
   end
 
@@ -44,7 +44,7 @@ class Event < ActiveRecord::Base
       end
 
       if @schedule.nil?
-        @schedule = IceCube::Schedule.new(Time.now, :duration => 60 * 60)
+        @schedule = IceCube::Schedule.new(Time.now, duration: 60 * 60)
       end
     end
     @schedule

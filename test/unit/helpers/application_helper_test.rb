@@ -11,7 +11,7 @@ class ApplicationHelperTest < ActionView::TestCase
     assert_equal "Morgen", day_output_helper(tomorrow)
 
     day_after_tomorrow = Date.today+2
-    assert_equal I18n.localize(day_after_tomorrow, :format => :long), day_output_helper(day_after_tomorrow)
+    assert_equal I18n.localize(day_after_tomorrow, format: :long), day_output_helper(day_after_tomorrow)
   end
 
   def test_convert_markdown
@@ -27,23 +27,23 @@ class ApplicationHelperTest < ActionView::TestCase
     assert_equal 0, collect_links(event).length
 
     event.url = "http://example.com"
-    assert_equal [{:title=>"http://example.com", :url=>"http://example.com"}], collect_links(event)
+    assert_equal [{title: "http://example.com", url: "http://example.com"}], collect_links(event)
 
     event.twitter = "twitter"
-    assert_equal [{:title=>"http://example.com", :url=>"http://example.com"},
-                  {:title=>"@twitter", :url=>"http://twitter.com/twitter"}], collect_links(event)
+    assert_equal [{title: "http://example.com", url: "http://example.com"},
+                  {title: "@twitter", url: "http://twitter.com/twitter"}], collect_links(event)
 
     event.twitter_hashtag = "hashtag"
-    assert_equal [{:title=>"http://example.com", :url=>"http://example.com"},
-                  {:title=>"@twitter", :url=>"http://twitter.com/twitter"},
-                  {:title=>"#hashtag", :url=>"https://twitter.com/search/%23hashtag"}], collect_links(event)
+    assert_equal [{title: "http://example.com", url: "http://example.com"},
+                  {title: "@twitter", url: "http://twitter.com/twitter"},
+                  {title: "#hashtag", url: "https://twitter.com/search/%23hashtag"}], collect_links(event)
 
     single = FactoryGirl.create(:single_event)
     single.event.url = "http://example.com"
     single.event.twitter_hashtag = "hashtag"
     single.event.twitter_hashtag = "hashtag"
-    assert_equal [{:url=>"http://example.com", :title=>"http://example.com"},
-                  {:url=>"https://twitter.com/search/%23hashtag", :title=>"#hashtag"}], collect_links(single)
+    assert_equal [{url: "http://example.com", title: "http://example.com"},
+                  {url: "https://twitter.com/search/%23hashtag", title: "#hashtag"}], collect_links(single)
   end
 
 end

@@ -17,12 +17,12 @@
 
     .entry
       = single_event.occurrence.strftime("%H:%M") unless single_event.event.full_day
-      = link_to single_event.title, :controller => "single_events", :action => "show", :event_id => single_event.event.id, :id => single_event.id
+      = link_to single_event.title, controller: "single_events", action: "show", event_id: single_event.event.id, id: single_event.id
       - if !single_event.event.city.blank?
         %span.cityname
           = "(#{single_event.event.city})"
       / Display tags for this event, if any:
-      = render "tags/tags", :tag_list => single_event.event.tag_list + single_event.tag_list
+      = render "tags/tags", tag_list: single_event.event.tag_list + single_event.tag_list
 
   %p
     = link_to "Alle Events", events_path
@@ -51,13 +51,13 @@
           - current_user.hate_list.each do |hate|
             %li
               = link_to hate, tag_path(hate)
-              = link_to "x", user_hate_tag_path(user_id: current_user.id, id: hate), confirm: "Bist du sicher?", method: :delete, :class => "delete", title: "Löschen"
+              = link_to "x", user_hate_tag_path(user_id: current_user.id, id: hate), confirm: "Bist du sicher?", method: :delete, class: "delete", title: "Löschen"
   - if !user_signed_in?
     %p
       %em Melde dich an, um Events mit bestimmten Tags auszuschließen.
-  = form_for(:user_hate_tags, :url => user_signed_in? ? user_hate_tags_path(:user_id => current_user.id) : nil) do |f|
-    = f.text_field :hate_list, :value => "", :disabled => !user_signed_in?
-    = f.submit "Hinzufügen", :disabled => !user_signed_in?
+  = form_for(:user_hate_tags, url: user_signed_in? ? user_hate_tags_path(user_id: current_user.id) : nil) do |f|
+    = f.text_field :hate_list, value: "", disabled: !user_signed_in?
+    = f.submit "Hinzufügen", disabled: !user_signed_in?
   
   #social_stuff
     %p.github

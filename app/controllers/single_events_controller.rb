@@ -25,7 +25,14 @@ class SingleEventsController < ApplicationController
       flash[:error] = t "single_events.save.error"
     end
 
-    redirect_to :method => "show", :event_id => @single_event.event.id, :id => @single_event.id
+    redirect_to method: "show", event_id: @single_event.event.id, id: @single_event.id
+  end
+
+  def destroy
+    @single_event = SingleEvent.find(params[:id])
+    authorize! :destroy, @single_event
+    @single_event.destroy
+    redirect_to event_path(@single_event.event)
   end
 
   def participate
