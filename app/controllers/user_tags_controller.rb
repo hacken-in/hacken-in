@@ -1,13 +1,14 @@
 # encoding: utf-8
 
-class UserHateTagsController < ApplicationController
+class UserTagsController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
 
     # Only change the currently signed in user
     if current_user == @user
-       @user.hate_list << params[:user_hate_tags][:hate_list]
+       @user.hate_list << params[:user_hate_tags][:hate_list] if params[:user_hate_tags] && params[:user_hate_tags][:hate_list]
+       @user.like_list << params[:user_like_tags][:like_list] if params[:user_like_tags] && params[:user_like_tags][:like_list]
 
        if @user.save
          flash[:notice] = "Tag hinzugefügt."
@@ -24,7 +25,7 @@ class UserHateTagsController < ApplicationController
 
     # Only change the currently signed in user
     if current_user == @user
-       @user.hate_list.remove params[:id]
+       @user.send(:"#{params[:kind]}_list").remove params[:id]
 
        if @user.save
          flash[:notice] = "Tag entfernt."
