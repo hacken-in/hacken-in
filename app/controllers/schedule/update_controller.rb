@@ -9,7 +9,7 @@ class Schedule::UpdateController < ApplicationController
     @event = Event.find(params[:event_id])
     authorize! :update, @event
 
-    @event.update_start_date_and_duration(parse_datetime_select(params[:start_date], "date"), params[:duration])
+    @event.update_start_time_and_duration(parse_datetime_select(params[:start_time], "date"), params[:duration])
 
     if !@event.save
       redirect_to(@event, :alert => 'Event konnte nicht geändert werden.')
