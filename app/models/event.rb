@@ -23,7 +23,7 @@ class Event < ActiveRecord::Base
 
   # Delete SingleEvents that don't match the pattern
   def future_single_events_cleanup
-    self.single_events.in_future.each do |single_event|
+    self.single_events.in_future.where(based_on_rule: true).each do |single_event|
       single_event.destroy unless schedule.occurs_at?(single_event.occurrence)
     end
   end
@@ -31,7 +31,7 @@ class Event < ActiveRecord::Base
   # Add SingleEvents that are in the pattern, but haven't been created so far
   def future_single_event_creation
     self.schedule.next_occurrences(12).each do |occurence|
-      SingleEvent.find_or_create(:event_id => self.id, :occurrence => occurence)
+      SingleEvent.find_or_create(event_id: self.id, occurrence: occurence, based_on_rule: true)
     end
   end
 

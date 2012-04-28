@@ -202,4 +202,19 @@ class EventTest < ActiveSupport::TestCase
     assert_equal event_opengraph["og:longitude"].to_s[0,5], "6.986"
   end
 
+  test "do not delete single events that are not based_on_rule" do
+    event = FactoryGirl.create(:simple)
+    event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
+    event.save
+
+    event.single_events.create(topic: "test topic")
+
+    #    existing single events should be removed
+    event.schedule.remove_recurrence_rule IceCube::Rule.weekly.day(:thursday)
+    assert_difference "SingleEvent.count", -12 do
+      event.save
+    end
+    assert_equal 1, event.single_events.count
+  end
+
 end
