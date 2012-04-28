@@ -33,7 +33,7 @@ gem 'cancan', '~> 1.6.7'
 # Other dependencies
 gem 'jquery-rails', '~> 2.0.0'
 gem 'gabba', '~> 0.3.0'
-gem 'formtastic', '~> 2.0.2'
+gem 'formtastic', '~> 2.2.0'
 gem 'geocoder', '~> 1.0'
 
 # Javascript runtime
