@@ -1,6 +1,31 @@
 # encoding: utf-8
 
 class SingleEventsController < ApplicationController
+
+  def new
+    @event = Event.find(params[:event_id])
+    @single_event = @event.single_events.new
+    @single_event.based_on_rule = false
+    @single_event.occurrence = 2.days.from_now.beginning_of_day + 20.hours
+    authorize! :new, @single_event
+  end
+
+  def create
+    @event = Event.find(params[:event_id])
+    @single_event = @event.single_events.create(params[:single_event])
+    authorize! :create, @single_event
+
+    respond_to do |format|
+      if @single_event.save
+        format.html { redirect_to(@event, notice: 'Termin angelegt.') }
+        format.xml  { render xml: @event, status: :created, location: @event }
+      else
+        format.html { render action: "new" }
+        format.xml  { render xml: @single_event.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def show
     @single_event = SingleEvent.find(params[:id])
     opengraph_data(@single_event.to_opengraph)
@@ -9,6 +34,7 @@ class SingleEventsController < ApplicationController
   end
 
   def edit
+    @event = Event.find(params[:event_id])
     @single_event = SingleEvent.find(params[:id])
     authorize! :edit, @single_event
   end

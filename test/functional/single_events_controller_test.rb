@@ -146,4 +146,17 @@ class SingleEventsControllerTest < ActionController::TestCase
     assert_equal 0, event.schedule.extimes.count
   end
 
+  test "should create new single event" do
+    event = FactoryGirl.create(:simple)
+    sign_in FactoryGirl.create(:bodo)
+    get :new, event_id: event.id
+    assert_response :success
+
+    assert_difference('SingleEvent.count') do
+      put :create, event_id: event.id, single_event: { topic: "Hallo" }
+    end
+    assert_equal "Hallo", assigns(:single_event).topic
+    assert_redirected_to event_path(assigns(:event))
+  end
+
 end
