@@ -5,6 +5,8 @@
         hintText: "Gebe einen Tag ein", noResultsText:"Kein Tag gefunden", searchingText:"Suche...",
         tokenValue: "name", prePopulate: #{ tag_list_for_taggable(@single_event) }});
       $("#event_name").focus();
+	  
+      registerPreviewHook('#single_event_description');
     });
 
 = semantic_form_for [@event, @single_event] do |f|
@@ -17,6 +19,7 @@
         %i
           Dieser Termin ist Teil einer Terminregel. Deswegen kann die Uhrzeit nicht änderbar.
     = f.input :topic
+    .markdown-preview
     = f.input :description
     %li
       %label
