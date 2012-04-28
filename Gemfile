@@ -76,4 +76,5 @@ group :test do
   # gem 'turn', require: false
   gem 'factory_girl_rails', '~> 3.2.0', require: false
   gem 'spork-testunit', '~> 0.0.7'
+  gem 'mocha', '~> 0.11.3', :require => false
 end

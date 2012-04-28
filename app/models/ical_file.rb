@@ -19,5 +19,3 @@ class IcalFile
     end
   end
 end
-
-
