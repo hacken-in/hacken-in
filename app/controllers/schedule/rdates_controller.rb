@@ -10,7 +10,7 @@ class Schedule::RdatesController < ApplicationController
     authorize! :update, @event
 
     rdate = parse_datetime_select(params[:rdate], "date")
-    @event.schedule.add_recurrence_date(rdate)
+    @event.schedule.add_recurrence_time(rdate)
     if !@event.save
       redirect_to(@event, :alert => 'Datum konnte nicht hinzugefügt werden.')
     else
@@ -22,8 +22,8 @@ class Schedule::RdatesController < ApplicationController
     @event = Event.find(params[:event_id])
     authorize! :update, @event
 
-    rdate = @event.schedule.rdates[params[:id].to_i]
-    @event.schedule.remove_recurrence_date(rdate)
+    rdate = @event.schedule.rtimes[params[:id].to_i]
+    @event.schedule.remove_recurrence_time(rdate)
 
     if !@event.save
       redirect_to(@event, :alert => 'Datum konnte nicht entfernt werden.')

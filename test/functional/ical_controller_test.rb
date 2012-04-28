@@ -40,7 +40,7 @@ DESC
 
     event = FactoryGirl.create(:simple)
     time = Time.now + 12.hours
-    event.schedule.add_recurrence_date(time)
+    event.schedule.add_recurrence_time(time)
     event.url = "url"
     event.description = "description"
     event.tag_list << "php"
@@ -50,7 +50,7 @@ DESC
 
     event2 = FactoryGirl.create(:simple)
     time2 = (Date.today + 3.days).to_time
-    event2.schedule.add_recurrence_date(time2)
+    event2.schedule.add_recurrence_time(time2)
     event2.tag_list << "php"
     event2.full_day = true
     event2.location = "home"
@@ -62,7 +62,7 @@ DESC
 
     event3 = FactoryGirl.create(:simple)
     time3 = (Time.now + 24.hours).beginning_of_day
-    event3.schedule.add_recurrence_date(time3)
+    event3.schedule.add_recurrence_time(time3)
     event3.full_day = true
     event3.street = "street"
     event3.zipcode = "zipcode"
@@ -72,7 +72,7 @@ DESC
 
     event4 = FactoryGirl.create(:simple)
     time4 = (Time.now + 48.hours).beginning_of_day
-    event4.schedule.add_recurrence_date(time4)
+    event4.schedule.add_recurrence_time(time4)
     event4.full_day = true
     event4.location = "home"
     event4.city = "cologne"
@@ -85,7 +85,7 @@ DESC
 
     event5 = FactoryGirl.create(:simple)
     time5 = (Time.now + 48.hours).beginning_of_day
-    event5.schedule.add_recurrence_date(time5)
+    event5.schedule.add_recurrence_time(time5)
     event5.full_day = false
     event5.location = "home"
     event5.city = "cologne"
@@ -99,7 +99,7 @@ DESC
 
     event6 = FactoryGirl.create(:simple)
     time6 = (Time.now + 48.hours).beginning_of_day
-    event6.schedule.add_recurrence_date(time6)
+    event6.schedule.add_recurrence_time(time6)
     event6.full_day = false
     event6.location = "home"
     event6.city = "cologne"

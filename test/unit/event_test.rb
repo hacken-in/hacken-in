@@ -6,7 +6,7 @@ class EventTest < ActiveSupport::TestCase
   test "can be saved" do
     event = Event.new(name: "Hallo")
     assert_equal 0, event.schedule.all_occurrences.size
-    event.schedule.add_recurrence_date(Time.new(2012,6,13,14,20,0,0))
+    event.schedule.add_recurrence_time(Time.new(2012,6,13,14,20,0,0))
     assert_equal 1, event.schedule.all_occurrences.size
     assert event.save
 
@@ -21,7 +21,7 @@ class EventTest < ActiveSupport::TestCase
 
     event = Event.new(name: "Hallo")
     schedule = IceCube::Schedule.new(Time.new(2011,6,14,19,30))
-    schedule.add_recurrence_date(Time.new(2012,6,13,14,20,0,0))
+    schedule.add_recurrence_time(Time.new(2012,6,13,14,20,0,0))
     event.schedule = schedule
     assert_equal 1, event.schedule.all_occurrences.size
   end

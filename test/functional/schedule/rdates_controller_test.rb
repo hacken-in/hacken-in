@@ -55,14 +55,14 @@ class Schedule::RdatesControllerTest < ActionController::TestCase
     assert_not_nil flash.notice
     assert_redirected_to event_path(event)
     event = Event.find(event.id)
-    assert_equal 1, event.schedule.rdates.count
-    assert_equal Time.new(1980,5,1,12,30), event.schedule.rdates.first
+    assert_equal 1, event.schedule.rtimes.count
+    assert_equal Time.new(1980,5,1,12,30), event.schedule.rtimes.first
 
     delete :destroy, :event_id => event.id, :id => 0
     assert_not_nil flash.notice
     assert_redirected_to event_path(event)
     event = Event.find(event.id)
-    assert_equal 0, event.schedule.rdates.count
+    assert_equal 0, event.schedule.rtimes.count
   end
 
 end

@@ -77,9 +77,9 @@ class Event < ActiveRecord::Base
     graph
   end
 
-  def update_start_date_and_duration(start_date, duration)
-    self.schedule.start_date = start_date
-    self.schedule.start_date = self.schedule.start_date.beginning_of_day if self.full_day
+  def update_start_time_and_duration(start_time, duration)
+    self.schedule.start_time = start_time
+    self.schedule.start_time = self.schedule.start_time.beginning_of_day if self.full_day
     self.schedule.duration = duration.to_i * 60
   end
 
