@@ -217,6 +217,16 @@ de:
       delete_profile_text: Du willst dein Konto löschen?
       delete_confirm: Ja, bitte mein Konto löschen
 
+  events:
+    show:
+      edit: Bearbeiten
+      delete: Löschen
+      delete_confirm: Wirklich löschen?
+      subscribe_ical: iCal für diese Eventserie abonnieren
+      no_single_events: Keine Termine geplant
+      next_single_events: "Die nächsten Termine:"
+      back: Zurück zur Übersicht
+
   single_events:
     show:
       participants: Teilnehmer
