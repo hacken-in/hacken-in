@@ -14,15 +14,12 @@ class SingleEvent < ActiveRecord::Base
 
   scope :in_future, where("occurrence >= ?", Time.now).order(:occurrence)
   scope :today_or_in_future, where("occurrence >= ?", Time.now.beginning_of_day).order(:occurrence)
+  scope :recent, lambda { |limit = 3| today_or_in_future.limit(limit) }
 
   default_scope order(:occurrence)
 
   # Provide tagging
   acts_as_taggable
-
-  def self.recent(limit = 3)
-    unscoped.order("occurrence asc").limit(limit)
-  end
 
   def self.find_or_create(parameters)
     event = where(parameters).first

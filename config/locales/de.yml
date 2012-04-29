@@ -245,8 +245,8 @@ de:
   users:
     show:
       edit: Editieren
-      recent_events: "Zuletzt zugesagt für"
-      no_recent_events: "Keine Events zugesagt."
+      next_events: "Zugesagt für diese Termine"
+      no_next_events: "Keine Termine zugesagt."
       recent_comments: "Aktuellste Kommentare"
       no_recent_comments: "Keine Kommentare vorhanden."
       ignore_tags: "Ignoriert folgende Tags"

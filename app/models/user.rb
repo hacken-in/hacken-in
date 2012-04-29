@@ -9,15 +9,7 @@ class User < ActiveRecord::Base
   acts_as_taggable_on :likes
 
   has_many :comments
-  has_and_belongs_to_many :single_events, uniq: true do
-    # FIXME: Holy moly, scopes with lambda have a problem when
-    #        there is a default scope. The default scope
-    #        will always be used. It can't be unscoped.
-    #        This is a ugly hack to fix it.
-    def recent(limit=3)
-      unscoped.order("occurrence desc").limit(limit)
-    end
-  end
+  has_and_belongs_to_many :single_events, uniq: true
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :allow_ignore_view

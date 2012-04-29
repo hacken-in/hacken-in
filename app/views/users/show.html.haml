@@ -35,15 +35,15 @@
         %p= t 'users.show.no_ignore_tags'
 
   .recent_events
-    %h3= t 'users.show.recent_events'
-    - unless @recent_events.empty?
+    %h3= t 'users.show.next_events'
+    - unless @next_events.empty?
       %ul
-        - @recent_events.each do |single_event|
+        - @next_events.each do |single_event|
           %li
             = link_to single_event.title, controller: :single_events, action: :show, event_id: single_event.event.id, id: single_event.id
             = day_output_helper single_event.occurrence
     - else
-      %p= t 'users.show.no_recent_events'
+      %p= t 'users.show.no_next_events'
 
   .recent_comments
     %h3= t 'users.show.recent_comments'
