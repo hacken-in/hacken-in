@@ -2,7 +2,7 @@
 %html
   %body
     %h1 Neuer #{@record.class.to_s} # #{@record.id}
-    %p Angelegt von #{User.current.nil? ? "Anonym" : User.current.nickname}.
+    %p Angelegt von #{User.current.nil? ? "Anonym" : link_to(User.current.nickname, user_path(User.current))}.
     %table
       - @record.attributes.keys.each do |key|
         %tr
