@@ -42,7 +42,6 @@
           = single_event.topic
         - if can? :delete, single_event
           = link_to t('events.show.delete'), event_single_event_path(single_event.event, single_event), method: :delete, confirm: t('events.show.delete_confirm')
-
 - else
   %p= t('events.show.no_single_events')
 
@@ -52,17 +51,6 @@
 
 %h3 Wiederholende Termine
 
-- if @event.schedule.rtimes.count > 0
-  %h4 Event-Daten:
-  %ul
-    - @event.schedule.rtimes.each_with_index do |rdate, index|
-      %li
-        = rdate.strftime("%d.%m.%Y um %H:%M")
-        = link_to "Löschen", event_schedule_rdate_path(event, id: index), method: :delete, confirm: "Sind sie sicher?"
-- else
-  %p
-    %em Keine Wiederholende Termine
-
 - if @event.schedule.rrules.count > 0
   %ul
     - @event.schedule.rrules.each_with_index do |rrule, index|
@@ -70,6 +58,9 @@
         = rrule.to_s
         - if can? :destroy, @event
           = link_to "Löschen", event_schedule_rule_path(@event, id: index), method: :delete, confirm: "Sind sie sicher?"
+- else
+  %p
+    %em Keine Wiederholende Termine
 
 - if can? :update, @event
   = form_tag(event_schedule_rules_path(@event), method: :create) do
