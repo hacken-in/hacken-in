@@ -109,9 +109,9 @@ class Event < ActiveRecord::Base
           single_event.occurrence = raw_event.dtstart
           single_event.based_on_rule = false
           single_event.topic = raw_event.summary
-          single_event.description = raw_event.description
-          single_event.url = raw_event.url
-          single_event.location = raw_event.location
+          single_event.description = raw_event.description if raw_event.description
+          single_event.url = raw_event.url if raw_event.url
+          single_event.location = raw_event.location if raw_event.location
           single_event.save
         end
       end
