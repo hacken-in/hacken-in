@@ -32,22 +32,18 @@
 
 %h2= t('events.show.next_single_events')
 
-- if @event.single_events.today_or_in_future.length > 0
-  %ul
-    - @event.single_events.today_or_in_future.each do |single_event|
-      %li
-        = link_to @event.full_day? ? single_event.occurrence.strftime("%d.%m.%Y") : single_event.occurrence.strftime("%d.%m.%Y um %H:%M"), controller: "single_events", action: "show", event_id: @event.id, id: single_event.id
-        - if single_event.topic?
-          \-
-          = single_event.topic
-        - if can? :delete, single_event
-          = link_to t('events.show.delete'), event_single_event_path(single_event.event, single_event), method: :delete, confirm: t('events.show.delete_confirm')
-- else
-  %p= t('events.show.no_single_events')
+%ul
+  - @event.single_events.today_or_in_future.each do |single_event|
+    %li
+      = link_to @event.full_day? ? single_event.occurrence.strftime("%d.%m.%Y") : single_event.occurrence.strftime("%d.%m.%Y um %H:%M"), controller: "single_events", action: "show", event_id: @event.id, id: single_event.id
+      - if single_event.topic?
+        \-
+        = single_event.topic
+      - if can? :delete, single_event
+        = link_to t('events.show.delete'), event_single_event_path(single_event.event, single_event), method: :delete, confirm: t('events.show.delete_confirm')
+  %li= link_to "Neuen Termin anlegen", new_event_single_event_path(@event)
 
 %p= link_to "iCal für diese Eventserie abonnieren", url_for(action: "abonnieren", controller: "welcome", format: "ical", only_path: false, event_id: @event.id)
-
-= link_to "Neuer Termin", new_event_single_event_path(@event)
 
 %h3 Wiederholende Termine
 
