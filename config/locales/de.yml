@@ -4,6 +4,7 @@ de:
     confirm_delete: Bist du sicher?
     markdown_info: Hier kannst du <a href="%{syntax_link}">Markdown</a> benutzen.
     markdown_preview_link: Vorschau
+    back: Zurück
 
   errors:
     template:
