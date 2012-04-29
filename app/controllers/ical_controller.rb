@@ -5,7 +5,7 @@ class IcalController < ApplicationController
 
     events = SingleEvent.where(occurrence: Date.today..(Date.today + 8.weeks))
 
-    Gabba::Gabba.new("UA-954244-12", "hcking.de").event("Event", "iCal")
+    Gabba::Gabba.new("UA-954244-12", "hcking.de").event("Event", "iCal") if Rails.env.production?
     render_events(events)
   end
 
@@ -19,7 +19,7 @@ class IcalController < ApplicationController
     else
       []
     end
-    Gabba::Gabba.new("UA-954244-12", "hcking.de").event("Event", "iCal-personalized")
+    Gabba::Gabba.new("UA-954244-12", "hcking.de").event("Event", "iCal-personalized") if Rails.env.production?
     render_events(events)
   end
 
@@ -39,7 +39,7 @@ class IcalController < ApplicationController
       []
     end
 
-    Gabba::Gabba.new("UA-954244-12", "hcking.de").event("Event", "iCal-not-hated")
+    Gabba::Gabba.new("UA-954244-12", "hcking.de").event("Event", "iCal-not-hated") if Rails.env.production?
     render_events(events)
   end
   
