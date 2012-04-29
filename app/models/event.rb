@@ -9,7 +9,7 @@ class Event < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
 
   before_save :schedule_to_yaml
-  after_save :generate_single_events
+  after_save :generate_single_events, :process_ical
   belongs_to :ical_file
 
   # Provide tagging
