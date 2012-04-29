@@ -58,7 +58,7 @@ class User < ActiveRecord::Base
 
   def guid
     guid = read_attribute :guid
-
+    
     if guid.blank?
       begin
         guid = (0..16).to_a.map {|a| rand(16).to_s(16)}.join
@@ -66,8 +66,21 @@ class User < ActiveRecord::Base
       write_attribute :guid, guid
       self.save
     end
-
+    
     return guid
+  end
+  
+  # Detects if a user likes a single event
+  #
+  # This is the case if the user has more tags from the event-taglist in his
+  # like-list than in his hate-list.
+  #
+  # @param [SingleEvent] single_event the event you want to check
+  # @return [Boolean]
+  def likes?(single_event)
+    event_tags = single_event.tag_list + single_event.event.tag_list
+    
+    (event_tags & self.like_list).size > (event_tags & self.hate_list).size
   end
 
   def self.current

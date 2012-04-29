@@ -50,8 +50,9 @@
     %p
       %em
         Keine Beschreibung vorhanden
-    - else
-      = truncate_html(convert_markdown(@single_event.event_description), 30, ellipsis: " ... (#{link_to("mehr", @event)})")
+  - else
+    = truncate_html(convert_markdown(@single_event.event_description), 30, ellipsis: " ...")
+  #{link_to("Mehr Details &raquo;".html_safe, @event)}
 
   %p= link_to "iCal für diesen Termin abonnieren", url_for(action: "abonnieren", controller: "welcome", format: "ical", only_path: false, single_event_id: @single_event.id)
 

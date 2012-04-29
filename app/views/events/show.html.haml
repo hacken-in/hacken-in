@@ -4,23 +4,27 @@
   = render "map", event: @event
   %div.map
 
-  #twitter_like
-    <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="hackcologne">Tweet</a>
-    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-
-  #fb_like
-    #fb-root
-      <script src="http://connect.facebook.net/en_US/all.js#appId=213379535367603&amp;xfbml=1"></script>
-      <fb:like href="#{event_url(@event)}" send="true" width="450" show_faces="false" font="" layout="button_count"></fb:like>
-
 = render "tags/tags", tag_list: @event.tag_list
 
 - if @event.description?
   = convert_markdown @event.description
-
+- else
+  %p
+    %em
+      Keine Beschreibung vorhanden.
 = render "address",address: @event
 
 = render "links", item: @event
+
+#twitter_like
+  <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="hackcologne">Tweet</a>
+  <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+
+#fb_like
+  #fb-root
+    <script src="http://connect.facebook.net/en_US/all.js#appId=213379535367603&amp;xfbml=1"></script>
+    <fb:like href="#{event_url(@event)}" send="true" width="450" show_faces="false" font="" layout="button_count"></fb:like>
+
 
 - if can? :update, @event
   = link_to t('events..show.edit'), edit_event_path(@event)
@@ -28,11 +32,9 @@
 - if can? :delete, @event
   = link_to t('events.show.delete'), event_path(@event), method: :delete, confirm: t('events.show.delete_confirm')
 
-%p= link_to t('events.show.subscribe_ical'), url_for(action: "abonnieren", controller: "welcome", format: "ical", only_path: false, event_id: @event.id)
-
 %h2= t('events.show.next_single_events')
 
-%ul
+%ul.event_date_list
   - @event.single_events.today_or_in_future.each do |single_event|
     %li
       = link_to @event.full_day? ? single_event.occurrence.strftime("%d.%m.%Y") : single_event.occurrence.strftime("%d.%m.%Y um %H:%M"), controller: "single_events", action: "show", event_id: @event.id, id: single_event.id
@@ -60,11 +62,12 @@
 
 - if can? :update, @event
   = form_tag(event_schedule_rules_path(@event), method: :create) do
-    Neue Regel anlegen für den
+    Neue Regel für den
     = select_tag "week_number", options_for_select([["ersten", "1"], ["zweiten", "2"], ["dritten", "3"], ["vierten", "4"], ["fünften", "5"], ["letzten", "-1"]])
     = select_tag "day_of_week", weekday_select_option
-    des Monats.
-    = submit_tag "Anlegen"
+    des Monats
+    = submit_tag "anlegen"
+    \.
 
 - if @event.schedule.extimes.count > 0 && can?(:destroy, @event)
   %h4 Diese Daten sind im Regelwerk ausgeschlossen worden:
