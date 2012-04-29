@@ -14,6 +14,8 @@ class Event < ActiveRecord::Base
 
   # Provide tagging
   acts_as_taggable
+  
+  attr_writer :ical_url
 
   def generate_single_events
     self.future_single_events_cleanup
@@ -96,6 +98,14 @@ class Event < ActiveRecord::Base
 
   def start_time=(start_time)
     schedule.start_time = start_time
+  end
+  
+  def ical_url
+    if self.ical_file
+      self.ical_file.url
+    else
+      return ""
+    end
   end
   
   def process_ical
