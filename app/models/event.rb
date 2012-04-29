@@ -10,6 +10,7 @@ class Event < ActiveRecord::Base
 
   before_save :schedule_to_yaml
   after_save :generate_single_events
+  belongs_to :ical_file
 
   # Provide tagging
   acts_as_taggable
@@ -97,8 +98,26 @@ class Event < ActiveRecord::Base
     schedule.start_time = start_time
   end
   
-  def raw_ical_file
-    URI.parse(read_attribute(:ical_feed)).read
+  def process_ical
+    self.ical_file.load_from_server
+    
+    if self.ical_file && read_attribute(:ical_hash) != self.ical_file.md5_hash
+      self.ical_file.each_event self.ical_pattern do |raw_event|
+        if SingleEvent.where(occurrence: raw_event.dtstart) == []
+          single_event = SingleEvent.new
+          single_event.event_id = self.id
+          single_event.occurrence = raw_event.dtstart
+          single_event.based_on_rule = false
+          single_event.topic = raw_event.summary
+          single_event.description = raw_event.description
+          single_event.url = raw_event.url
+          single_event.location = raw_event.location
+          single_event.save
+        end
+      end
+      write_attribute :ical_hash, self.ical_file.md5_hash
+    end
+    return self
   end
 
   private
