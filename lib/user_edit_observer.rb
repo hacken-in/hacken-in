@@ -15,7 +15,7 @@ class UserEditObserver < ActiveRecord::Observer
   end
 
   def after_create(record)
-    if (record.kind_of?(SingleEvent) && (record.based_on_rule == true)) || !record.kind_of?(SingleEvent)
+    if (record.kind_of?(SingleEvent) && (record.based_on_rule == false)) || !record.kind_of?(SingleEvent)
       ChangeMailer.mail_create(record).deliver
     end
   end
