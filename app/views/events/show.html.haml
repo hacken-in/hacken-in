@@ -23,12 +23,14 @@
 = render "links", item: @event
 
 - if can? :update, @event
-  = link_to "Bearbeiten", edit_event_path(@event)
+  = link_to t('events..show.edit'), edit_event_path(@event)
 
 - if can? :delete, @event
-  = link_to "Löschen", event_path(@event), method: :delete, confirm: "Wirklich löschen?"
+  = link_to t('events.show.delete'), event_path(@event), method: :delete, confirm: t('events.show.delete_confirm')
 
-%h3 Die nächsten Termine
+%p= link_to t('events.show.subscribe_ical'), url_for(action: "abonnieren", controller: "welcome", format: "ical", only_path: false, event_id: @event.id)
+
+%h2= t('events.show.next_single_events')
 
 - if @event.single_events.today_or_in_future.length > 0
   %ul
@@ -39,10 +41,10 @@
           \-
           = single_event.topic
         - if can? :delete, single_event
-          = link_to "Löschen", event_single_event_path(single_event.event, single_event), method: :delete, confirm: "Wirklich löschen?"
+          = link_to t('events.show.delete'), event_single_event_path(single_event.event, single_event), method: :delete, confirm: t('events.show.delete_confirm')
 
 - else
-  %p Keine Termine geplant
+  %p= t('events.show.no_single_events')
 
 %p= link_to "iCal für diese Eventserie abonnieren", url_for(action: "abonnieren", controller: "welcome", format: "ical", only_path: false, event_id: @event.id)
 
@@ -86,7 +88,7 @@
         = link_to "Löschen", event_schedule_exdate_path(@event, id: index), method: :delete, confirm: "Sind sie sicher?"
 
 %p
-  %a{href: "/"} Zurück zur Übersicht
+  %a{href: "/"}= t('events.show.back')
 
 = render partial: "comments/comments", locals: {commentable: @event}
 
