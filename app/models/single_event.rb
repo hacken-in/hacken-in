@@ -138,6 +138,9 @@ class SingleEvent < ActiveRecord::Base
 
   def update_event
     if based_on_rule
+      if (event.schedule.rtimes.include? occurrence)
+        event.schedule.remove_recurrence_time(occurrence)
+      end
       event.schedule.add_exception_time(occurrence)
       event.save
     end
