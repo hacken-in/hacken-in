@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120428162856) do
+ActiveRecord::Schema.define(:version => 20120428205537) do
 
   create_table "comments", :force => true do |t|
     t.text     "body"
@@ -42,8 +42,9 @@ ActiveRecord::Schema.define(:version => 20120428162856) do
     t.float    "longitude"
     t.boolean  "full_day",        :default => false
     t.string   "twitter_hashtag"
-    t.string   "ical_feed"
     t.string   "ical_pattern"
+    t.integer  "ical_file_id"
+    t.string   "ical_hash"
   end
 
   add_index "events", ["latitude"], :name => "index_events_on_latitude"
@@ -52,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20120428162856) do
   create_table "ical_files", :force => true do |t|
     t.string "md5_hash"
     t.string "url"
+    t.text   "raw"
   end
 
   create_table "single_events", :force => true do |t|
