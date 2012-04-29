@@ -225,7 +225,7 @@ de:
       confirmation: "Du nimmst nicht mehr an dem Event teil."
     save:
       confirmation:
-        "SingleEvent wurde bearbeitet."
+        "Termin wurde bearbeitet."
       error:
         "Beim Speichern ist ein Fehler aufgetreten"
 

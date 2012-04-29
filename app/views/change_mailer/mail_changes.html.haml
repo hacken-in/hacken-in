@@ -1,0 +1,15 @@
+!!! 5
+%html
+  %body
+    %h1 Änderung an #{@record.class.to_s} # #{@record.id}
+    %p Änderung wurde durchgeführt von #{User.current.nil? ? "Anonym" : User.current.nickname}.
+    %h2 Änderungen:
+    %table{border:"1px"}
+      - @changes.keys.each do |key|
+        %tr
+          %th= key
+          %td= @changes[key][0]
+          %td= @changes[key][1]
+    %h2 Json der alten Version:
+    %pre
+      = @record.instance_variable_get(:@user_edit_observer_old_state)
