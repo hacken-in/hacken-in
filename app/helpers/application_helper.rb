@@ -44,4 +44,13 @@ module ApplicationHelper
     links
   end
 
+  def string_for_rule(rule)
+    if rule.validations_for(:day_of_week).first.occ == -1
+      occurrence = "letzten"
+    else
+      occurrence = "#{rule.validations_for(:day_of_week).first.occ}."
+    end
+    "An jedem #{occurrence} #{I18n.t("date.day_names")[rule.validations_for(:day_of_week).first.day]} des Monats"
+  end
+
 end
