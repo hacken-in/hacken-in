@@ -28,7 +28,7 @@ module ApplicationHelper
   def collect_links(item)
     links = []
     unless item.url.blank?
-      links << {url: item.url, title: truncate(item.url,length: 30)}
+      links << {url: item.url, title: truncate(item.url,length: 40)}
     end
 
     if item.class == Event && !item.twitter.blank?

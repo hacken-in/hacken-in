@@ -2,6 +2,7 @@ class EventsController < ApplicationController
 
   def index
     authorize! :index, Event
+    @events = Event.order(:name)
   end
 
   def show

@@ -1,10 +1,10 @@
 %h1 Alle Events
 
 %ul
-  - Event.order(:name).each do |event|
+  - @events.each do |event|
     %li
       = link_to event.name, event_path(event)
       <br/>
       = render "tags/tags", tag_list: event.tag_list
 
-= link_to "Zurück", root_path
+= link_to t('common.back'), root_path

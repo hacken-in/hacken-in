@@ -46,7 +46,7 @@ gem 'rdiscount', '~> 1.6.8' # for yard formatting
 gem 'zero-clipboard-rails', '~> 1.0.1'
 # User Picture using gravatar
 gem 'gravatar_image_tag', '~> 1.1.0'
-# Truncate HTML on SingelEvent Pages
+# Truncate HTML on SingleEvent Pages
 gem 'html_truncator', '~> 0.3.0'
 
 # facebook style tooltip jQuery plugin

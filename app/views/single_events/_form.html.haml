@@ -18,6 +18,8 @@
       %li
         %i
           Dieser Termin ist Teil einer Terminregel. Deswegen kann die Uhrzeit nicht änderbar.
+    = f.input :duration, input_html: { type: "number", style: "width:100px" }
+    = f.input :full_day
     = f.input :topic
     .markdown-preview
     = f.input :description
@@ -31,8 +33,6 @@
     = f.input :url
     = f.input :twitter_hashtag
     = f.input :tag_list
-    = f.input :duration, input_html: { type: "number", style: "width:100px" }
-    = f.input :full_day
 
   = f.actions do
     = f.action :submit
