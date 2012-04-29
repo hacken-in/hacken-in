@@ -33,7 +33,13 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(params[:event])
+    start_time = Time.new(params[:event]["start_time(1i)"].to_i,
+                                         params[:event]["start_time(2i)"].to_i,
+                                         params[:event]["start_time(3i)"].to_i,
+                                         params[:event]["start_time(4i)"].to_i,
+                                         params[:event]["start_time(5i)"].to_i) if params[:event]["start_time(1i)"]
+    @event = Event.new(params[:event].except("start_time(1i)", "start_time(2i)", "start_time(3i)", "start_time(4i)", "start_time(5i)"))
+    @event.start_time = start_time || Time.now
     authorize! :create, @event
 
     respond_to do |format|

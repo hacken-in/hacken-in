@@ -160,7 +160,7 @@ ul.tags
       padding: 2px 5px
       border-radius: 3px 3px
       
-ul.tags.hate_list
+ul.tags.hate_list, ul.tags.like_list
   li
     background: $tag_color
     padding: 2px 5px
@@ -175,7 +175,7 @@ ul.tags.hate_list
     a.delete
       color: red
 
-input#user_hate_tags_hate_list
+input#user_hate_tags_hate_list, input#user_like_tags_like_list
   width: 120px
 
 #map_canvas
@@ -191,14 +191,49 @@ form.new_comment
     display: none
 
 .comment
+  margin-bottom: 5px
   overflow: auto
   .gravatar_image
     float: left
   .content
     float: left
     margin-left: 5px
+    width: 80%
     .name
       margin: 0
     .date
       margin-top: 0
       font-size: 70%
+
+.help
+  overflow: auto
+  margin-bottom: 15px
+  .preview
+    float: left
+  .info
+    font-size: 9px
+    float: right
+    margin-top: 5px
+
+form.event, form.single_event
+  .help
+    width: 95%
+  fieldset
+    border: none 
+  fieldset, ol, li, ul
+    padding: 0
+    margin: 0
+  ol, ul
+    list-style-type: none
+  input[type='text']
+    width: 90%
+  input[type='text'], input[type='submit'], textarea
+    display: block
+    margin-bottom: 10px
+  textarea
+    height: 150px
+    width: 93%
+  label
+    display: block
+  #event_tag_list_input
+    margin-top: 10px
