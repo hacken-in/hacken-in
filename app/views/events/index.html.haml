@@ -8,6 +8,7 @@
       = render "tags/tags", tag_list: event.tag_list
 
 - if can? :create, Event
-  = link_to "Event hinzufügen", new_event_path
+  %p
+    = link_to "Event hinzufügen", new_event_path
 
 = link_to t('common.back'), root_path
