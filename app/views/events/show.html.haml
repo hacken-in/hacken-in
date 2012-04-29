@@ -57,6 +57,9 @@
       %li
         = rdate.strftime("%d.%m.%Y um %H:%M")
         = link_to "Löschen", event_schedule_rdate_path(event, id: index), method: :delete, confirm: "Sind sie sicher?"
+- else
+  %p
+    %em Keine Wiederholende Termine
 
 - if @event.schedule.rrules.count > 0
   %ul
