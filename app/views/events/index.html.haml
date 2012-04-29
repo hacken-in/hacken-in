@@ -1,7 +1,7 @@
 %h1 Alle Events
 
 %ul
-  - Event.order(:name).each do |event|
+  - @events.each do |event|
     %li
       = link_to event.name, event_path(event)
       <br/>
