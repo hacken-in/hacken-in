@@ -2,13 +2,13 @@
 %html
   %head
     %title= content_for?(:title) ? yield(:title) + " – hcking.de" : "hcking.de"
-    
+
     - unless mobile?
       = stylesheet_link_tag "application"
     - else
       = stylesheet_link_tag "mobile/mobile"
       %meta{name: 'viewport', content: 'width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;'}
-    
+
     = javascript_include_tag "application"
     = render_opengraph("og:title" => "hcking.de",
             "og:image" => "#{request.protocol}#{request.host_with_port}#{asset_path("welcome_logo.png")}",
@@ -34,7 +34,7 @@
 
     = yield(:javascript)
 
-  %body
+  %body{:class => "#{controller.controller_name}_#{controller.action_name}" }
     %header{class: "#{content_for?(:aside) ? 'with' : 'without'}_aside"}
       %a{href: "/", class: "logo"} hcking.de
       #user_login
