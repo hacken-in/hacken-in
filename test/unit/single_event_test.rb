@@ -174,32 +174,4 @@ class SingleEventTest < ActiveSupport::TestCase
     assert_not_nil single.longitude
   end
 
-  test "recent single_events are orderd by newest first" do
-    user = FactoryGirl.create(:user)
-    single_one = FactoryGirl.create(:single_event)
-    single_two = FactoryGirl.create(:single_event)
-    single_three = FactoryGirl.create(:single_event)
-    single_one.users << user
-    single_one.occurrence = Time.now - 3.days
-    single_one.save
-    single_two.users << user
-    single_two.occurrence = Time.now - 2.days
-    single_two.save
-    single_three.users << user
-    single_three.occurrence = Time.now - 1.days
-    single_three.save
-
-    user.single_events.recent.each do |d|
-      puts d.occurrence
-    end
-
-    assert_equal 3, user.single_events.length
-    assert_equal single_three, user.single_events.recent[0]
-    assert_equal single_two, user.single_events.recent[1]
-    assert_equal single_one, user.single_events.recent[2]
-  end
-
-
-
-
 end
