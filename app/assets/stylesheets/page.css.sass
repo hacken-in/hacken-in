@@ -1,5 +1,5 @@
 $content_width: 840px
-$side_width: 230px
+$side_width: 300px
 $highlight_color: #C02900
 $link_color: $highlight_color - #222
 $tag_color: #eee
@@ -188,9 +188,14 @@ footer
 div.field_with_errors
   display: inline
 
+h1.first_head,
+h2.first_head,
+h3.first_head
+  margin-top: 0px
+
 #main_content
   float: left
-  width: 530px
+  width: 460px
 
 // Welcome Page
 p.welcome
@@ -298,3 +303,13 @@ form.event, form.single_event
   margin-bottom: 20px
   p
     margin-top: 0px
+
+.left_side
+  float: left
+
+.right_side
+  float: right
+  width: $side_width
+
+.clear
+  clear:both
