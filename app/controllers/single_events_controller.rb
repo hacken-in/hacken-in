@@ -51,7 +51,7 @@ class SingleEventsController < ApplicationController
       flash[:error] = t "single_events.save.error"
     end
 
-    redirect_to method: "show", event_id: @single_event.event.id, id: @single_event.id
+    redirect_to event_id: @single_event.event.id, id: @single_event.id
   end
 
   def destroy
