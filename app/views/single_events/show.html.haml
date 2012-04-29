@@ -49,6 +49,8 @@
 
 = render "events/address",address: @single_event
 
+%p= link_to "iCal für diesen Termin abonnieren", url_for(action: "abonnieren", controller: "welcome", format: "ical", only_path: false, single_event_id: @single_event.id)
+
 %p
   Zur Übersicht von #{link_to @event.name, @event}.
 

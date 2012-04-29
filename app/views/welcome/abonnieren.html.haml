@@ -20,31 +20,44 @@
     });
 
 .abbonieren
-  %p
-    Die iCal URL zum Abonnieren des gesamten Kalenders:
-
-  .clippy_row
-    %input.ical_link_field{ size: 40, value: url_for( action: "general", controller: "ical", format: "ical", only_path: false )}
-
-    #general_link
-      = image_tag asset_path("clippy_up.png"), width: "14px", height: "14px"
-
-  - if user_signed_in?
-    %p
-      Nur die Termine Abonnieren, an denen man teilnimmt:
-
+    
+  - if @event
     .clippy_row
-      %input.ical_link_field{ size: 40, value: url_for(action: "personalized", controller: "ical", format: "ical", only_path: false, guid: current_user.guid ) }
-      #personal_link
+      %input.ical_link_field{ size: 40, value: url_for(action: 'for_event', controller: 'ical', format: 'ical', only_path: false, id: @event.id)}
+      #general_link
         = image_tag asset_path("clippy_up.png"), width: "14px", height: "14px"
 
-    %p
-      Alle Termine bis auf solche, deren Tags ausgeschlossen wurden:
-
+  - elsif @single_event
     .clippy_row
-      %input.ical_link_field{ size: 40, value: url_for(action: "like_welcome_page", controller: "ical", format: "ical", only_path: false, guid: current_user.guid ) }
-      #like_welcome
+      %input.ical_link_field{ size: 40, value: url_for(action: 'for_single_event', controller: 'ical', format: 'ical', only_path: false, id: @single_event.id)}
+      #general_link
         = image_tag asset_path("clippy_up.png"), width: "14px", height: "14px"
+        
+  - else
+    %p
+      Die iCal URL zum Abonnieren des gesamten Kalenders:
+    .clippy_row
+      %input.ical_link_field{ size: 40, value: url_for( action: "general", controller: "ical", format: "ical", only_path: false )}
+
+      #general_link
+        = image_tag asset_path("clippy_up.png"), width: "14px", height: "14px"
+
+    - if user_signed_in?
+      %p
+        Nur die Termine Abonnieren, an denen man teilnimmt:
+
+      .clippy_row
+        %input.ical_link_field{ size: 40, value: url_for(action: "personalized", controller: "ical", format: "ical", only_path: false, guid: current_user.guid ) }
+        #personal_link
+          = image_tag asset_path("clippy_up.png"), width: "14px", height: "14px"
+
+      %p
+        Alle Termine bis auf solche, deren Tags ausgeschlossen wurden:
+
+      .clippy_row
+        %input.ical_link_field{ size: 40, value: url_for(action: "like_welcome_page", controller: "ical", format: "ical", only_path: false, guid: current_user.guid ) }
+        #like_welcome
+          = image_tag asset_path("clippy_up.png"), width: "14px", height: "14px"
 
 :markdown
   # Google Calendar
