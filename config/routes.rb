@@ -30,6 +30,8 @@ Hcking::Application.routes.draw do
   match 'ical' => "ical#general"
   match "personalized_ical/:guid" => "ical#personalized"
   match "user_ical/:guid" => "ical#like_welcome_page"
+  match 'single_event_ical/:id' => 'ical#for_single_event'
+  match 'event_ical/:id' => 'ical#for_event'
   match 'abonnieren' => "welcome#abonnieren"
 
   root to: 'welcome#index'

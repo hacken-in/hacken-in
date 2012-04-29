@@ -1,7 +1,7 @@
 class IcalController < ApplicationController
 
   def general
-    response.headers["Content-Type"] = "text/calendar"
+    set_calendar_headers
 
     events = SingleEvent.where(occurrence: Date.today..(Date.today + 8.weeks))
 
@@ -10,8 +10,8 @@ class IcalController < ApplicationController
   end
 
   def personalized
-    response.headers["Content-Type"] = "text/calendar"
-
+    set_calendar_headers
+    
     user = User.where(guid: params[:guid]).first
 
     events = if user && !params[:guid].blank?
@@ -24,7 +24,7 @@ class IcalController < ApplicationController
   end
 
   def like_welcome_page
-    response.headers["Content-Type"] = "text/calendar"
+    set_calendar_headers
 
     user = User.where(guid: params[:guid]).first
 
@@ -42,8 +42,36 @@ class IcalController < ApplicationController
     Gabba::Gabba.new("UA-954244-12", "hcking.de").event("Event", "iCal-not-hated")
     render_events(events)
   end
+  
+  def for_single_event
+    set_calendar_headers
+    
+    begin
+      single_event = SingleEvent.find(params[:id])
+      render_events [single_event]
+      
+    rescue ActiveRecord::RecordNotFound
+      render_events []
+    end
+  end
+  
+  def for_event
+    set_calendar_headers
+    
+    begin
+      event = Event.find(params[:id])
+      render_events event.single_events
+      
+    rescue ActiveRecord::RecordNotFound
+      render_events []
+    end
+  end
 
   private
+
+  def set_calendar_headers
+    response.headers["Content-Type"] = "text/calendar"
+  end
 
   def render_events(events)
     cal = RiCal.Calendar do |cal|
