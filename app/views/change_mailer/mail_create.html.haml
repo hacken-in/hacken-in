@@ -1,0 +1,10 @@
+!!! 5
+%html
+  %body
+    %h1 Neuer #{@record.class.to_s} # #{@record.id}
+    %p Angelegt von #{User.current.nil? ? "Anonym" : User.current.nickname}.
+    %table
+      - @record.attributes.keys.each do |key|
+        %tr
+          %th= key
+          %td= @record.attributes[key]
