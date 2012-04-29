@@ -33,6 +33,9 @@ class EventsController < ApplicationController
   end
 
   def create
+    ical_url = params[:event]["ical_url"]
+    params[:event].delete "ical_url"
+
     start_time = Time.new(params[:event]["start_time(1i)"].to_i,
                                          params[:event]["start_time(2i)"].to_i,
                                          params[:event]["start_time(3i)"].to_i,
@@ -40,6 +43,17 @@ class EventsController < ApplicationController
                                          params[:event]["start_time(5i)"].to_i) if params[:event]["start_time(1i)"]
     @event = Event.new(params[:event].except("start_time(1i)", "start_time(2i)", "start_time(3i)", "start_time(4i)", "start_time(5i)"))
     @event.start_time = start_time || Time.now
+
+    unless ical_url.blank?
+      ical_file = IcalFile.where("url = ?", ical_url)
+      if ical_file.blank?
+        ical_file = IcalFile.create url: url 
+      else
+        ical_file = ical_file.first
+      end
+      @event.ical_file = ical_file
+    end
+
     authorize! :create, @event
 
     respond_to do |format|
