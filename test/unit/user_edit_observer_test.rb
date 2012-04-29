@@ -2,7 +2,9 @@
 require 'test_helper'
 
 class UserEditObserverTest < ActiveSupport::TestCase
-  setup { ActionMailer::Base.deliveries.clear }
+  def setup
+    ActionMailer::Base.deliveries.clear
+  end
 
   test "Send mail for new comment" do
     simple = FactoryGirl.create(:simple)
@@ -31,8 +33,17 @@ class UserEditObserverTest < ActiveSupport::TestCase
     assert !ActionMailer::Base.deliveries.empty?
   end
 
-  test "Send mail for new single event" do
-    single_event = FactoryGirl.create(:single_event)
+  test "Send no mail for new single event based on rule" do
+    event = FactoryGirl.create(:full_event)
+    ActionMailer::Base.deliveries.clear
+    event.single_events.create(based_on_rule: true, topic: "hallo")
+    assert ActionMailer::Base.deliveries.empty?
+  end
+
+  test "Send mail for new single event without rule" do
+    event = FactoryGirl.create(:full_event)
+    ActionMailer::Base.deliveries.clear
+    event.single_events.create(based_on_rule: false, topic: "hallo")
     assert !ActionMailer::Base.deliveries.empty?
   end
 
