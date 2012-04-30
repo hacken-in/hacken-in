@@ -70,7 +70,7 @@ class IcalController < ApplicationController
   private
 
   def set_calendar_headers
-    response.headers["Content-Type"] = "text/calendar"
+    response.headers["Content-Type"] = "text/calendar; charset=UTF-8"
   end
 
   def render_events(events)

@@ -116,7 +116,7 @@ DESC
   test "should get general ical calendar" do
     get :general
     assert_response :success
-    assert_equal "text/calendar", @response.headers["Content-Type"]
+    assert_equal "text/calendar; charset=UTF-8", @response.headers["Content-Type"]
 
     assert @response.body.start_with? @vcal_start
     assert @response.body.end_with? @vcal_end
@@ -131,19 +131,19 @@ DESC
   test "should get empty personalized ical calendar if no or wrong guid given" do
     get :personalized
     assert_response :success
-    assert_equal "text/calendar", @response.headers["Content-Type"]
+    assert_equal "text/calendar; charset=UTF-8", @response.headers["Content-Type"]
     assert_equal "#{@vcal_start}#{@vcal_end}",@response.body
 
     get :personalized, {guid: "wrongguid"}
     assert_response :success
-    assert_equal "text/calendar", @response.headers["Content-Type"]
+    assert_equal "text/calendar; charset=UTF-8", @response.headers["Content-Type"]
     assert_equal "#{@vcal_start}#{@vcal_end}",@response.body
   end
 
   test "should get personalized ical calendar" do
     get :personalized, {guid: "userguid"}
     assert_response :success
-    assert_equal "text/calendar", @response.headers["Content-Type"]
+    assert_equal "text/calendar; charset=UTF-8", @response.headers["Content-Type"]
 
     assert @response.body.start_with? @vcal_start
     assert @response.body.end_with? @vcal_end
@@ -158,19 +158,19 @@ DESC
   test "should get empty like welcome page ical calendar if no or wrong guid given" do
     get :like_welcome_page
     assert_response :success
-    assert_equal "text/calendar", @response.headers["Content-Type"]
+    assert_equal "text/calendar; charset=UTF-8", @response.headers["Content-Type"]
     assert_equal "#{@vcal_start}#{@vcal_end}",@response.body
 
     get :like_welcome_page, {guid: "wrongguid"}
     assert_response :success
-    assert_equal "text/calendar", @response.headers["Content-Type"]
+    assert_equal "text/calendar; charset=UTF-8", @response.headers["Content-Type"]
     assert_equal "#{@vcal_start}#{@vcal_end}",@response.body
   end
 
   test "should get like welcome page ical calendar" do
     get :like_welcome_page, {guid: "userguid"}
     assert_response :success
-    assert_equal "text/calendar", @response.headers["Content-Type"]
+    assert_equal "text/calendar; charset=UTF-8", @response.headers["Content-Type"]
 
     assert @response.body.start_with? @vcal_start
     assert @response.body.end_with? @vcal_end
