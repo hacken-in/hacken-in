@@ -27,11 +27,11 @@
     = link_to t('users.show.edit'), edit_user_registration_path
 
   .ignore_tags
-    %h3= t 'users.show.love_tags'
+    %h3= t 'users.show.loved_tags'
     - unless @user.like_list.empty?
       = render "tags/tags", tag_list: @user.like_list
     - else
-      %p= t 'users.show.no_fav_tags'
+      %p= t 'users.show.no_loved_tags'
 
   - if @user.allow_ignore_view?
     .ignore_tags

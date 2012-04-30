@@ -251,8 +251,8 @@ de:
       no_recent_comments: "Keine Kommentare vorhanden."
       ignore_tags: "Ignoriert folgende Tags"
       no_ignore_tags: "Keine ignorierten Tags"
-      love_tags: "Liebt folgende Tags"
-      no_love_tags: "Keine geliebten Tags"
+      loved_tags: "Liebt folgende Tags"
+      no_loved_tags: "Keine geliebten Tags"
       no_description: "Keine Beschreibung vorhanden."
     edit:
       allow_ignore_view: "ignorierte Tags öffentlich zeigen"
