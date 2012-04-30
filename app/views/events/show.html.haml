@@ -12,6 +12,11 @@
   %p
     %em
       Keine Beschreibung vorhanden.
+      - if !user_signed_in?
+        Du könntest das ändern, wenn du dich #{link_to "anmeldest", new_user_session_path}.
+      - else
+        Du könntest das #{link_to "ändern", edit_event_path(@event)}!
+
 = render "address",address: @event
 
 = render "links", item: @event

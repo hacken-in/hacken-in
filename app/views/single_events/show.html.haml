@@ -13,7 +13,11 @@
   - unless @single_event.description?
     %p
       %em
-        Keine Beschreibung vorhanden
+        Keine Beschreibung vorhanden.
+        - if !user_signed_in?
+          Du könntest das ändern, wenn du dich #{link_to "anmeldest", new_user_session_path}.
+        - else
+          Du könntest das #{link_to "ändern", edit_event_single_event_path(@event, @single_event)}!
     - else
       = convert_markdown @single_event.description
 
