@@ -3,9 +3,6 @@
 
   %h2= @user.nickname
 
-  - if current_user == @user
-    = link_to t('users.show.edit'), edit_user_registration_path
-
   - if @user.description?
     = convert_markdown @user.description
   - else
@@ -25,6 +22,9 @@
       %li
         = "#{t 'activerecord.attributes.user.homepage'}:"
         = link_to @user.homepage, @user.homepage
+
+  - if current_user == @user
+    = link_to t('users.show.edit'), edit_user_registration_path
 
   - if @user.allow_ignore_view?
     .ignore_tags
