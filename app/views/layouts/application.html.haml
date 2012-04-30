@@ -19,6 +19,9 @@
             "og:description" => "Der Event-Kalender für Nerds")
     %link{rel: "shortcut icon", href: "#{asset_path "favicon.png"}"}
     %link{href: 'http://fonts.googleapis.com/css?family=Quattrocento+Sans', rel: 'stylesheet', type: 'text/css'}
+    %link{rel: "apple-touch-icon", href:"#{asset_path("iphone/welcome_logo.png")}"}
+    %link{rel: "apple-touch-startup-image", href:"#{asset_path("iphone/startup.png")}"}
+
     = csrf_meta_tags
     :javascript
 
