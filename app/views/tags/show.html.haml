@@ -1,12 +1,7 @@
 - unless @single_events.empty?
-  %h2 Events demnächst mit dem Tag "#{params[:tagname]}" :
-  - @single_events.each do |single_event|
-    %p
-      = link_to single_event.title, controller: "single_events", action: "show", event_id: single_event.event.id, id: single_event.id
-      (
-      = day_output_helper single_event.occurrence
-      )
-      = render "tags/tags", tag_list: single_event.event.tag_list + single_event.tag_list
+  %h2 Termine mit dem Tag "#{params[:tagname]}"
+
+  = render 'single_events/lists', single_events: @single_events
 
 - if !@events.empty?
   - if !@single_events.empty?
