@@ -7,24 +7,7 @@
 
   %h2 Events in den nächsten vier Wochen:
 
-  - current_date = nil
-
-  - @single_events.each do |single_event|
-    - if current_date != single_event.occurrence.to_date
-      - current_date = single_event.occurrence.to_date
-      %h3
-        = day_output_helper(current_date)
-
-    .entry
-      - if user_signed_in? && current_user.likes?(single_event)
-        = image_tag asset_path("star.png"), size: "12x12"
-      = single_event.occurrence.strftime("%H:%M") unless single_event.event.full_day
-      = link_to single_event.title, controller: "single_events", action: "show", event_id: single_event.event.id, id: single_event.id
-      - if !single_event.event.city.blank?
-        %span.cityname
-          = "(#{single_event.event.city})"
-      / Display tags for this event, if any:
-      = render "tags/tags", tag_list: single_event.event.tag_list + single_event.tag_list
+  = render 'single_events/lists', single_events: @single_events
 
   %p
     = link_to "Alle Events", events_path
