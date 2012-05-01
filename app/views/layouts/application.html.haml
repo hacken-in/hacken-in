@@ -11,7 +11,7 @@
 
     = javascript_include_tag "application"
     = render_opengraph("og:title" => "hcking.de",
-            "og:image" => "#{request.protocol}#{request.host_with_port}#{asset_path("welcome_logo.png")}",
+            "og:image" => "#{request.protocol}#{request.host_with_port}#{asset_path("opengraph_embed.png")}",
             "og:url" => url_for(only_path: false),
             "og:site_name"=> "hcking.de",
             "fb:admins" => "520869354",
