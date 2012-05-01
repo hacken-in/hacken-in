@@ -14,7 +14,7 @@ class IcalControllerTest < ActionController::TestCase
       event += "DTSTART;VALUE=DATE-TIME:#{single_event.occurrence.utc.strftime("%Y%m%dT%H%M%SZ")}\n"
     end
     event += "DESCRIPTION:#{description}\n"
-    event += "URL:http://hcking.dev/events/#{single_event.event.id}/single_events/#{single_event.id}\n"
+    event += "URL:http://hcking.dev/events/#{single_event.event.id}/dates/#{single_event.id}\n"
     event += "SUMMARY:#{single_event.title}\n"
 
     loc = [single_event.location, single_event.address].delete_if{|d|d.blank?}.join(", ").strip

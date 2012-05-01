@@ -16,6 +16,17 @@ Hcking::Application.routes.draw do
       resources :exdates, only: [:destroy]
       resources :rules, only: [:create, :destroy]
     end
+
+    resources :single_events, path: "dates" do
+      member do
+        put :participate
+        put :unparticipate
+      end
+      resources :comments, only: [:show, :create, :edit, :update, :destroy, :index]
+    end
+
+    # This is duplicate code, but the old routes with single_events must
+    # keep on working
     resources :single_events do
       member do
         put :participate
