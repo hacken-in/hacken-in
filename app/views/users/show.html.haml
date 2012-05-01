@@ -47,7 +47,7 @@
       %ul
         - @next_events.each do |single_event|
           %li
-            = link_to single_event.title, controller: :single_events, action: :show, event_id: single_event.event.id, id: single_event.id
+            = link_to single_event.title, event_single_event_path(single_event.event, single_event)
             = day_output_helper single_event.occurrence
     - else
       %p= t 'users.show.no_next_events'

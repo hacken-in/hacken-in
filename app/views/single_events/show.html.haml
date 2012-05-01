@@ -32,7 +32,7 @@
 
   %p
     - if can? :update, @event
-      = link_to "Editieren", action: "edit", event_id: @event.id, id: @single_event.id
+      = link_to "Editieren", edit_event_single_event_path(@event, @single_event)
     - if can? :delete, @single_event
       = link_to "Löschen", event_single_event_path(@event, @single_event), method: :delete, confirm: "Wirklich löschen?"
 
@@ -76,9 +76,9 @@
     user_path(user)
 - if user_signed_in? && !@single_event.users.include?(current_user)
   %p
-    = button_to "Ich nehme teil", {action: "participate", single_event_id: @single_event.id}, {method: :put}
+    = button_to "Ich nehme teil", participate_event_single_event_path(@single_event.event, @single_event), {method: :put}
 - elsif user_signed_in?
   %p
-    = button_to "Ich nehme doch nicht teil", {action: "unparticipate", single_event_id: @single_event.id}, {method: :put}
+    = button_to "Ich nehme doch nicht teil", unparticipate_event_single_event_path(@single_event.event, @single_event), {method: :put}
 
 = render partial: "comments/comments", locals: {commentable: @single_event}
