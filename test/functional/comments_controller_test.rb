@@ -38,7 +38,7 @@ class CommentsControllerTest < ActionController::TestCase
     assert_difference('Comment.count') do
       put :create, event_id: simple.id, comment: { body: "hallo" }
     end
-    assert_redirected_to controller: 'events', action: 'show', id: simple.id, anchor: "comment_1"
+    assert_redirected_to controller: 'events', action: 'show', id: simple.to_param, anchor: "comment_1"
     simple.reload
     assert_equal "hallo", simple.comments.last.body
     assert_equal user, simple.comments.last.user
@@ -52,7 +52,7 @@ class CommentsControllerTest < ActionController::TestCase
     assert_difference('Comment.count') do
       put :create, event_id: simple.event.id, single_event_id: simple.id, comment: { body: "hallo" }
     end
-    assert_redirected_to controller: 'single_events', action: 'show', event_id: simple.event.id, id: simple.id, anchor: "comment_1"
+    assert_redirected_to controller: 'single_events', action: 'show', event_id: simple.event.to_param, id: simple.id, anchor: "comment_1"
     simple.reload
     assert_equal "hallo", simple.comments.last.body
     assert_equal user, simple.comments.last.user
@@ -153,8 +153,8 @@ class CommentsControllerTest < ActionController::TestCase
                comment: {body: "updated"}
     assert_redirected_to controller: 'single_events',
                          action: 'show',
-                         id: comment.commentable.id,
-                         event_id: comment.commentable.event.id,
+                         id: comment.commentable.to_param,
+                         event_id: comment.commentable.event.to_param,
                          anchor: "comment_1"
     comment.reload
     assert_equal "updated", comment.body
@@ -189,7 +189,7 @@ class CommentsControllerTest < ActionController::TestCase
                comment: {body: "updated"}
     assert_redirected_to controller: 'events',
                          action: 'show',
-                         id: comment.commentable.id,
+                         id: comment.commentable.to_param,
                          anchor: "comment_1"
     comment.reload
     assert_equal "updated", comment.body
@@ -226,8 +226,8 @@ class CommentsControllerTest < ActionController::TestCase
     end
     assert_redirected_to controller: 'single_events',
                          action: 'show',
-                         id: comment.commentable.id,
-                         event_id: comment.commentable.event.id
+                         id: comment.commentable.to_param,
+                         event_id: comment.commentable.event.to_param
   end
 
   test "should not delete event comment if not logged in" do
@@ -258,7 +258,7 @@ class CommentsControllerTest < ActionController::TestCase
     end
     assert_redirected_to controller: 'events',
                          action: 'show',
-                         id: comment.commentable.id
+                         id: comment.commentable.to_param
   end
 
 end
