@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   private
 
   def mobile?
-    request.user_agent =~ /Mobile|webOS/
+    request.user_agent =~ /Mobile|webOS|Opera Mini|Opera Mobi/
   end
 
   def set_current_user
