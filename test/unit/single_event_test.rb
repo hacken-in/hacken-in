@@ -174,4 +174,26 @@ class SingleEventTest < ActiveSupport::TestCase
     assert_not_nil single.longitude
   end
 
+  test "should get single event if by_tag is correct" do
+    single = FactoryGirl.create(:single_event)
+    single.tag_list << "meintag"
+    single.save
+    single2 = FactoryGirl.create(:single_event)
+    single2.tag_list << "notmeintag"
+    single2.save
+
+    assert_equal [single], SingleEvent.by_tag("meintag")
+  end
+
+  test "should get single event if event is tagged" do
+    single = FactoryGirl.create(:single_event)
+    single.event.tag_list << "meintag"
+    single.event.save
+    single2 = FactoryGirl.create(:single_event)
+    single2.tag_list << "notmeintag"
+    single2.save
+
+    assert_equal [single], SingleEvent.by_tag("meintag")
+  end
+
 end

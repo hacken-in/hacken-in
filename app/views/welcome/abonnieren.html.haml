@@ -32,7 +32,11 @@
       %input.ical_link_field{ size: 40, value: url_for(action: 'for_single_event', controller: 'ical', format: 'ical', only_path: false, id: @single_event.id)}
       #general_link
         = image_tag asset_path("clippy_up.png"), width: "14px", height: "14px"
-        
+  - elsif @tag
+    .clippy_row
+      %input.ical_link_field{ size: 40, value: url_for(action: 'for_tag', controller: 'ical', format: 'ical', only_path: false, id: @tag)}
+      #general_link
+        = image_tag asset_path("clippy_up.png"), width: "14px", height: "14px"
   - else
     %p
       Die iCal URL zum Abonnieren des gesamten Kalenders:

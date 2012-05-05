@@ -30,6 +30,10 @@ class SingleEvent < ActiveRecord::Base
     where(occurrence: (Time.now.to_date)..((Time.now + number_of_weeks.weeks).to_date)).sort
   end
 
+  def self.by_tag(tag)
+    tagged_with(tag) | joins(:event).where('events.id in (?)', Event.tagged_with(tag).map(&:id))
+  end
+
   def title
     self.topic.blank? ? self.event.name : "#{self.event.name} (#{self.topic})"
   end

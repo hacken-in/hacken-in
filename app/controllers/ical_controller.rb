@@ -67,6 +67,16 @@ class IcalController < ApplicationController
     end
   end
 
+  def for_tag
+    set_calendar_headers
+    
+    begin
+      render_events SingleEvent.by_tag(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      render_events []
+    end
+  end
+
   private
 
   def set_calendar_headers
