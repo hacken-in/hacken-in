@@ -10,7 +10,8 @@ class TagsController < ApplicationController
 
   def show
     @single_events = SingleEvent.in_future.where("occurrence < ? ", Date.today + 2.month).by_tag(params[:tagname])
-    @events = Event.tagged_with(params[:tagname]).where("events.id not in (?)", @single_events.map{|s| s.event.id})
+    @events = Event.tagged_with(params[:tagname])
+    @events = @events.where("events.id not in (?)", @single_events.map{|s| s.event.id}) unless @single_events.empty?
   end
 
 end
