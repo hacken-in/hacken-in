@@ -42,7 +42,7 @@ Hcking::Application.routes.draw do
   match 'single_event_ical/:id' => 'ical#for_single_event'
   match 'event_ical/:id' => 'ical#for_event'
   match 'tag_ical/:id' => 'ical#for_tag'
-  match 'abonnieren' => "welcome#abonnieren"
+  match 'abonnieren' => "subscribe#index"
 
   root to: 'welcome#index'
 
