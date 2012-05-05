@@ -16,4 +16,4 @@
   %h2 Events für das Tag "#{params[:tagname]}"
   %p Es scheint keine Events mit diesem Tag zu geben.
 
-%p= link_to "iCal für diesen Tag  abonnieren", url_for(action: "abonnieren", controller: "welcome", format: "ical", only_path: false, tag_id: params[:tagname])
+%p= link_to "iCal für diesen Tag  abonnieren", url_for(action: "index", controller: "subscribe", format: "ical", only_path: false, tag_id: params[:tagname])
