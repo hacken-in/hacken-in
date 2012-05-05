@@ -55,6 +55,8 @@
           %a{href: "#{new_user_registration_path}"} Registrieren
 
     %section{class: "#{content_for?(:aside) ? 'with' : 'without'}_aside"}
+      %noscript
+        = content_tag :div, "Leider muss für das benutzen dieser Seite Javascript aktiviert sein", class: "flash_error"
       - flash.each do |name, msg|
         = content_tag :div, msg, class: "flash_#{name}"
       = content_tag :h1, yield(:title) if show_title?
