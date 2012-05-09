@@ -1,8 +1,8 @@
 !!! 5
 %html
   %body
-    %h1 Änderung an #{@record.class.to_s} # #{@record.id}
-    %p Änderung wurde durchgeführt von #{User.current.nil? ? "Anonym" : link_to(User.current.nickname, user_path(User.current))}.
+    %h1 Änderung an #{@record.class.to_s} # #{@record.id} : #{@record.title}
+    %p Änderung wurde durchgeführt von #{User.current.nil? ? "Anonym" : link_to(User.current.nickname, user_url(User.current))}.
     %h2 Änderungen:
     %table{border:"1px"}
       - @changes.keys.each do |key|
