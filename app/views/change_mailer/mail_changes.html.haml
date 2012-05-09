@@ -3,7 +3,7 @@
   %body
     %h1
       Änderung an #{@record.class.to_s} # #{@record.id}
-      - if @record.respond_to? (:tile)
+      - if @record.respond_to? (:title)
         \: #{@record.title}
     %p Änderung wurde durchgeführt von #{User.current.nil? ? "Anonym" : link_to(User.current.nickname, user_url(User.current))}.
     %h2 Änderungen:
