@@ -42,7 +42,7 @@
 %ul.event_date_list
   - @event.single_events.today_or_in_future.each do |single_event|
     %li
-      = link_to @event.full_day? ? single_event.occurrence.strftime("%d.%m.%Y") : single_event.occurrence.strftime("%d.%m.%Y um %H:%M"), event_single_event_path(@event, single_event)  
+      = link_to single_event.full_day? ? single_event.occurrence.strftime("%d.%m.%Y") : single_event.occurrence.strftime("%d.%m.%Y um %H:%M"), event_single_event_path(@event, single_event)  
       - if single_event.topic?
         \-
         = single_event.topic
