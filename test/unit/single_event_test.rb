@@ -8,12 +8,14 @@ class SingleEventTest < ActiveSupport::TestCase
   end
 
   test "scope single events in the future" do
+    event = FactoryGirl.create(:simple)
+
     assert_difference "SingleEvent.in_future.count", +1 do
-      event_tomorrow = SingleEvent.create(occurrence: 1.day.from_now)
+      event_tomorrow = SingleEvent.create(occurrence: 1.day.from_now, event: event)
     end
 
     assert_difference "SingleEvent.in_future.count", 0 do
-      event_yesterday = SingleEvent.create(occurrence: 1.day.ago)
+      event_yesterday = SingleEvent.create(occurrence: 1.day.ago, event: event)
     end
   end
 
