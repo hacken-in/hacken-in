@@ -31,8 +31,17 @@ class Event < ActiveRecord::Base
 
   # Add SingleEvents that are in the pattern, but haven't been created so far
   def future_single_event_creation
-    self.schedule.next_occurrences(12).each do |occurence|
-      SingleEvent.find_or_create(event_id: self.id, occurrence: occurence, based_on_rule: true)
+    self.schedule.next_occurrences(12).each do |time|
+      # remove milliseconds from occurrence, this causes a bug
+      # in sqlite since it uses milliseconds. Sadly the milliseconds
+      # the ice_cube generates are different each time. It's the
+      # current millisecond when the method is called
+      # (See https://github.com/seejohnrun/ice_cube/issues/84)
+      occurrence = Time.new(time.year, time.month, time.day, time.hour, time.min, time.sec)
+      # ToDo: Hot-Fix for Bug #83
+      if !self.schedule.extimes.map(&:to_i).include? occurrence.to_i
+        SingleEvent.find_or_create(event_id: self.id, occurrence: occurrence, based_on_rule: true)
+      end
     end
   end
 
