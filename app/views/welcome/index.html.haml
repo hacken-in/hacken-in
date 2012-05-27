@@ -39,7 +39,7 @@
                 = link_to "x", user_tag_path(user_id: current_user.id, id: tag, kind: kind), confirm: "Bist du sicher?", method: :delete, class: "delete", title: "Löschen"
     - if !user_signed_in?
       %p
-        %em Melde dich an, um Events mit bestimmten Tags #{text}.
+        %em Melde dich an, um Events mit bestimmten Tags zu #{text}.
     = form_for(:"user_#{kind}_tags", url: user_signed_in? ? user_tags_path(user_id: current_user.id, kind: kind) : nil) do |f|
       = f.text_field :"#{kind}_list", value: "", disabled: !user_signed_in?
       = f.submit "Hinzufügen", disabled: !user_signed_in?
