@@ -223,4 +223,17 @@ class EventTest < ActiveSupport::TestCase
     assert_equal 60 * 60, event.schedule.duration
   end
 
+  test "if single event is deleted, add a exception rule and don't recreate it - bug #83" do
+    event = FactoryGirl.create(:simple)
+    event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
+    assert_difference 'SingleEvent.count', 12 do
+      event.save
+    end
+
+    assert_equal 12, event.single_events.count
+    event.single_events.first.destroy
+    event.reload
+    assert_equal 11, event.single_events.count
+  end
+
 end
