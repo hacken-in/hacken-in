@@ -5,7 +5,7 @@ set :deploy_to, "/home/hacking43451/hcking"
 set :user, "hacking43451"
 set :domain, "#{user}@hcking.de"
 set :ssh_flags, ['-p 45672']
-set :repository, 'git://github.com/bitboxer/hcking.git'
+set :repository, 'git://github.com/nerdhub/hcking.git'
 
 set :config_files, ['database.yml', 'newrelic.yml', 'initializers/secret_token.rb']
 
