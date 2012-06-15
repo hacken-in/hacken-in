@@ -4,24 +4,28 @@ require 'test_helper'
 class EventTest < ActiveSupport::TestCase
 
   test "can be saved" do
+    
+    test_date = 7.days.from_now
+    
     event = Event.new(name: "Hallo")
     assert_equal 0, event.schedule.all_occurrences.size
-    event.schedule.add_recurrence_time(Time.new(2012,6,13,14,20,0,0))
+    event.schedule.add_recurrence_time(test_date)
     assert_equal 1, event.schedule.all_occurrences.size
     assert event.save
 
     event = Event.find_by_id(event.id)
     assert_equal 1, event.schedule.all_occurrences.size
-    assert_equal Time.new(2012,6,13,14,20,0,0), event.schedule.all_occurrences.first
+    assert_equal test_date.to_date, event.schedule.all_occurrences.first.to_date
 
     event = Event.new(name: "Hallo")
-    event.schedule_yaml = "--- \n:start_date: 2012-06-13 14:20:22 +02:00\n:rrules: []\n\n:exrules: []\n\n:rdates: \n- 2012-06-13 14:20:22 +02:00\n:exdates: []\n\n:duration: \n:end_time: \n"
+    event.schedule_yaml = "--- \n:start_date: #{test_date}\n:rrules: []\n\n:exrules: []\n\n:rdates: \n- #{test_date}\n:exdates: []\n\n:duration: \n:end_time: \n"
+    
     assert_equal 1, event.schedule.all_occurrences.size
-    assert_equal Time.new(2012,6,13,14,20,22,"+02:00"), event.schedule.all_occurrences.first
+    assert_equal test_date.to_date, event.schedule.all_occurrences.first.to_date
 
     event = Event.new(name: "Hallo")
-    schedule = IceCube::Schedule.new(Time.new(2011,6,14,19,30))
-    schedule.add_recurrence_time(Time.new(2012,6,13,14,20,0,0))
+    schedule = IceCube::Schedule.new(1.year.ago)
+    schedule.add_recurrence_time(7.days.from_now)
     event.schedule = schedule
     assert_equal 1, event.schedule.all_occurrences.size
   end
