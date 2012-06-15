@@ -1,6 +1,6 @@
 # Welcome
 
-[![Build Status](https://secure.travis-ci.org/bitboxer/hcking.png)](http://travis-ci.org/bitboxer/hcking)
+[![Build Status](https://secure.travis-ci.org/nerdhub/hcking.png)](http://travis-ci.org/nerdhub/hcking)
 [![Dependency Status](https://gemnasium.com/nerdhub/hcking.png)](https://gemnasium.com/nerdhub/hcking)
 
 This is the code of [hcking.de](http://hcking.de). Hcking.de is an event
