@@ -3,6 +3,9 @@ source 'http://rubygems.org'
 gem 'rails', '~> 3.2.6'
 gem 'rake', '~> 0.9'
 
+# Theme
+gem 'nerdhub-theme', git: "git@github.com:nerdhub/nerdhub-theme.git"
+
 # Databases
 gem 'sqlite3', '~> 1.3.5'
 gem 'mysql2', '~> 0.3.11'

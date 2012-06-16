@@ -1,3 +1,10 @@
+GIT
+  remote: git@github.com:nerdhub/nerdhub-theme.git
+  revision: 6035e767a77205c09ea1b6457ba63cd107a5eba4
+  specs:
+    nerdhub-theme (0.0.1)
+      rails (~> 3.2.6)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -213,6 +220,7 @@ DEPENDENCIES
   memcache-client (~> 1.8.5)
   mocha (~> 0.11.3)
   mysql2 (~> 0.3.11)
+  nerdhub-theme!
   newrelic_rpm (~> 3.3.1)
   rails (~> 3.2.6)
   rake (~> 0.9)
