@@ -15,7 +15,7 @@ gem 'acts-as-taggable-on', '~> 2.2.0'
 gem 'sass-rails', '~> 3.2.3'
 gem 'coffee-script', '~> 2.2.0'
 gem 'uglifier', '~> 1.2.0'
-gem 'haml', '~> 3.2.0.alpha.8'
+gem 'haml', '~> 3.1.4'
 gem 'redcarpet', '~> 2.1.0'
 
 # Monitoring
