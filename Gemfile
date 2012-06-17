@@ -56,19 +56,19 @@ group :development do
   # Deployment
   gem 'vlad', '~> 2.2.3', require: false
   gem 'vlad-git', '~> 2.2.0', require: false
+
   group :darwin do
     gem 'rb-fsevent', '~> 0.9.0pre4'
     gem 'growl', '~> 1.0.3'
   end
 
   # guard
-  gem 'guard', '~> 1.0.0'
-  gem 'guard-test', '~> 0.4.0'
-  gem 'guard-livereload', '~> 0.4.0'
-  gem 'guard-pow', '~> 0.2.1'
-  gem 'guard-bundler', '~> 0.1.3'
-  gem 'guard-yard', '~> 1.0.2'
-  gem 'guard-spork', '~> 0.7.0'
+  gem 'guard', '~> 1.1.1'
+  gem 'guard-test', '~> 0.5.0'
+  gem 'guard-livereload', '~> 1.0.0'
+  gem 'guard-pow', '~> 1.0.0'
+  gem 'guard-bundler', '~> 1.0.0'
+  gem 'guard-yard', '~> 2.0.0'
 end
 
 group :test do
