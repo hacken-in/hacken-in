@@ -9,7 +9,7 @@ class UserTagsControllerTest < ActionController::TestCase
       sign_in user
 
       assert_difference("user.#{kind}_list.length") do
-        post :create, user_id: user.id, "user_#{kind}_tags" => {"#{kind}_list" => 'tag'}
+        post :create, user_id: user.id, "user_#{kind}_tags" => {"#{kind}_list" => 'tag'}, kind: kind
         user.reload
       end
       assert_redirected_to root_path
@@ -19,7 +19,7 @@ class UserTagsControllerTest < ActionController::TestCase
       user = FactoryGirl.create(:bodo)
 
       assert_no_difference("user.#{kind}_list.length") do
-        post :create, user_id: user.id, "user_#{kind}_tags" => {"#{kind}_list" => 'tag'}
+        post :create, user_id: user.id, "user_#{kind}_tags" => {"#{kind}_list" => 'tag'}, kind: kind
         user.reload
       end
       assert_redirected_to root_path
@@ -30,7 +30,7 @@ class UserTagsControllerTest < ActionController::TestCase
       sign_in FactoryGirl.create(:bodo)
 
       assert_no_difference("user.#{kind}_list.length") do
-        post :create, user_id: user.id, "user_#{kind}_tags" => {"#{kind}_list" => 'tag'}
+        post :create, user_id: user.id, "user_#{kind}_tags" => {"#{kind}_list" => 'tag'}, kind: kind
         user.reload
       end
       assert_redirected_to root_path
@@ -68,7 +68,7 @@ class UserTagsControllerTest < ActionController::TestCase
       user.save
 
       assert_no_difference("user.#{kind}_list.length") do
-        delete :destroy, user_id: user.id, id: '.net'
+        delete :destroy, user_id: user.id, id: '.net', kind: kind
         user.reload
       end
       assert_redirected_to root_path
@@ -82,7 +82,7 @@ class UserTagsControllerTest < ActionController::TestCase
       sign_in FactoryGirl.create(:user)
 
       assert_no_difference("user.#{kind}_list.length") do
-        delete :destroy, user_id: user.id, id: 'tag'
+        delete :destroy, user_id: user.id, id: 'tag', kind: kind
         user.reload
       end
       assert_redirected_to root_path
