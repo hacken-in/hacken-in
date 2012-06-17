@@ -9,7 +9,7 @@ gem 'mysql2', '~> 0.3.11'
 gem 'memcache-client', '~> 1.8.5'
 
 # Tags
-gem 'acts-as-taggable-on', '~> 2.2.0'
+gem 'acts-as-taggable-on', '~> 2.3.1'
 
 # Asset template engines
 gem 'sass-rails', '~> 3.2.3'
@@ -19,14 +19,14 @@ gem 'haml', '~> 3.1.4'
 gem 'redcarpet', '~> 2.1.0'
 
 # Monitoring
-gem 'newrelic_rpm', '~> 3.3.1'
+gem 'newrelic_rpm', '~> 3.4.0'
 
 # Date Handling
 gem 'ice_cube', "~> 0.8.0"
 gem 'ri_cal', "~> 0.8.8"
 
 # Authentication
-gem 'devise', '~> 2.0.0'
+gem 'devise', '~> 2.1.1'
 # Authorisation
 gem 'cancan', '~> 1.6.7'
 
@@ -37,10 +37,8 @@ gem 'formtastic', '~> 2.2.0'
 gem 'geocoder', '~> 1.0'
 
 # Javascript runtime
-gem 'execjs', '~> 1.3.0'
+gem 'execjs', '~> 1.4.0'
 gem 'therubyracer', '~> 0.10.1'
-
-gem 'rdiscount', '~> 1.6.8' # for yard formatting
 
 # Clipboard-Button on iCal Page
 gem 'zero-clipboard-rails', '~> 1.0.1'
@@ -62,6 +60,10 @@ group :development do
     gem 'growl', '~> 1.0.3'
   end
 
+  # YARD:
+  gem 'yard', '~> 0.8.2.1'
+  gem 'rdiscount', '~> 1.6.8'
+
   # guard
   gem 'guard', '~> 1.1.1'
   gem 'guard-test', '~> 0.5.0'
@@ -74,7 +76,7 @@ end
 group :test do
   # Pretty printed test output
   # gem 'turn', require: false
-  gem 'factory_girl_rails', '~> 3.2.0', require: false
+  gem 'factory_girl_rails', '~> 3.4.0', require: false
   gem 'spork-testunit', '~> 0.0.7'
   gem 'mocha', '~> 0.11.3', :require => false
 end
