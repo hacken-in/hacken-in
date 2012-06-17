@@ -2,6 +2,16 @@ language: ruby
 rvm:
   - 1.9.2
   - 1.9.3
+  - rbx-19mode
+  - jruby-19mode
+  - ruby-head
+  - jruby-head
+matrix:
+  allow_failures:
+    - rvm: rbx-19mode
+    - rvm: jruby-19mode
+    - rvm: ruby-head
+    - rvm: jruby-head
 before_script:
   - "cp config/database.yml_example config/database.yml"
 script: "bundle exec rake db:drop db:create db:migrate test"
