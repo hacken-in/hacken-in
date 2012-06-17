@@ -2,14 +2,13 @@ class EventsController < ApplicationController
 
   def index
     authorize! :index, Event
-    @events = Event.order(:name)
+    @events = Event.order :name
   end
 
   def show
-    @event = Event.find(params[:id])
+    @event = Event.find params[:id]
     authorize! :show, @event
-
-    opengraph_data(@event.to_opengraph)
+    opengraph_data @event.to_opengraph
 
     respond_to do |format|
       format.html # show.html.erb
@@ -28,31 +27,16 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = Event.find(params[:id])
+    @event = Event.find params[:id]
     authorize! :edit, @event
   end
 
   def create
     ical_url = params[:event]["ical_url"]
-    params[:event].delete "ical_url"
+    @event = Event.new filtered_params(params[:event])
 
-    start_time = Time.new(params[:event]["start_time(1i)"].to_i,
-                                         params[:event]["start_time(2i)"].to_i,
-                                         params[:event]["start_time(3i)"].to_i,
-                                         params[:event]["start_time(4i)"].to_i,
-                                         params[:event]["start_time(5i)"].to_i) if params[:event]["start_time(1i)"]
-    @event = Event.new(params[:event].except("start_time(1i)", "start_time(2i)", "start_time(3i)", "start_time(4i)", "start_time(5i)"))
-    @event.start_time = start_time || Time.now
-
-    unless ical_url.blank?
-      ical_file = IcalFile.where("url = ?", ical_url)
-      if ical_file.blank?
-        ical_file = IcalFile.create url: url 
-      else
-        ical_file = ical_file.first
-      end
-      @event.ical_file = ical_file
-    end
+    @event.start_time = determine_start_time_for_event params[:event]
+    @event.ical_file  = determine_ical_file_according_to_url ical_url unless ical_url.blank?
 
     authorize! :create, @event
 
@@ -68,20 +52,14 @@ class EventsController < ApplicationController
   end
 
   def update
-    @event = Event.find(params[:id])
+    @event = Event.find params[:id]
     authorize! :update, @event
 
     respond_to do |format|
-      @event.start_time = Time.new(params[:event]["start_time(1i)"].to_i,
-                                         params[:event]["start_time(2i)"].to_i,
-                                         params[:event]["start_time(3i)"].to_i,
-                                         params[:event]["start_time(4i)"].to_i,
-                                         params[:event]["start_time(5i)"].to_i) if params[:event]["start_time(1i)"]
+      @event.start_time = determine_start_time_for_event params[:event]
 
-      event_params = params[:event].except("start_time(1i)", "start_time(2i)", "start_time(3i)", "start_time(4i)", "start_time(5i)")
-
-      if @event.update_attributes(event_params)
-        expire_fragment("event_occurences_#{@event.id}")
+      if @event.update_attributes filtered_params(params[:event])
+        expire_fragment "event_occurences_#{@event.id}"
         format.html { redirect_to(@event, notice: 'Event aktualisiert') }
         format.xml  { head :ok }
       else
@@ -92,9 +70,8 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    @event = Event.find(params[:id])
+    @event = Event.find params[:id]
     authorize! :destroy, @event
-
     @event.destroy
 
     respond_to do |format|
@@ -103,4 +80,31 @@ class EventsController < ApplicationController
     end
   end
 
+  private
+
+  def determine_start_time_for_event(event)
+    start_time = Time.new(event["start_time(1i)"].to_i,
+                                         event["start_time(2i)"].to_i,
+                                         event["start_time(3i)"].to_i,
+                                         event["start_time(4i)"].to_i,
+                                         event["start_time(5i)"].to_i) if event["start_time(1i)"]
+
+    start_time || Time.now
+  end
+
+  def determine_ical_file_according_to_url(url)
+    ical_file = IcalFile.where "url = ?", url
+
+    if ical_file.blank?
+      ical_file = IcalFile.create url: url 
+    else
+      ical_file = ical_file.first
+    end
+    
+    ical_file
+  end
+
+  def filtered_params(params)
+    params.except "start_time(1i)", "start_time(2i)", "start_time(3i)", "start_time(4i)", "start_time(5i)", "ical_url"
+  end
 end
