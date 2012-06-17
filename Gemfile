@@ -18,8 +18,10 @@ gem 'uglifier', '~> 1.2.0'
 gem 'haml', '~> 3.1.4'
 gem 'redcarpet', '~> 2.1.0'
 
-# Monitoring
-gem 'newrelic_rpm', '~> 3.4.0'
+group :production do
+  # Monitoring
+  gem 'newrelic_rpm', '~> 3.4.0' #Only needed in production
+end
 
 # Date Handling
 gem 'ice_cube', "~> 0.8.0"
