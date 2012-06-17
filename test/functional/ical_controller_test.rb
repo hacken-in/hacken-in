@@ -129,19 +129,19 @@ DESC
   end
 
   test "should get empty personalized ical calendar if no or wrong guid given" do
-    get :personalized
+    get :personalized, guid: ""
     assert_response :success
     assert_equal "text/calendar; charset=UTF-8", @response.headers["Content-Type"]
     assert_equal "#{@vcal_start}#{@vcal_end}",@response.body
 
-    get :personalized, {guid: "wrongguid"}
+    get :personalized, guid: "wrongguid"
     assert_response :success
     assert_equal "text/calendar; charset=UTF-8", @response.headers["Content-Type"]
     assert_equal "#{@vcal_start}#{@vcal_end}",@response.body
   end
 
   test "should get personalized ical calendar" do
-    get :personalized, {guid: "userguid"}
+    get :personalized, guid: "userguid"
     assert_response :success
     assert_equal "text/calendar; charset=UTF-8", @response.headers["Content-Type"]
 
@@ -156,12 +156,12 @@ DESC
   end
 
   test "should get empty like welcome page ical calendar if no or wrong guid given" do
-    get :like_welcome_page
+    get :like_welcome_page, guid: ""
     assert_response :success
     assert_equal "text/calendar; charset=UTF-8", @response.headers["Content-Type"]
     assert_equal "#{@vcal_start}#{@vcal_end}",@response.body
 
-    get :like_welcome_page, {guid: "wrongguid"}
+    get :like_welcome_page, guid: "wrongguid"
     assert_response :success
     assert_equal "text/calendar; charset=UTF-8", @response.headers["Content-Type"]
     assert_equal "#{@vcal_start}#{@vcal_end}",@response.body
