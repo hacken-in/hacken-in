@@ -19,7 +19,7 @@ namespace :vlad do
 
   desc "Make a call to the passenger to create a running instance"
   remote_task :call_passenger, roles: :app do
-    run "wget -O /tmp/bla.html http://hcking.de"
+    run "wget -O ~/test.html http://hcking.de;rm ~/test.html"
   end
 
   desc "Regenerate assets"
