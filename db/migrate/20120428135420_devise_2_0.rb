@@ -1,6 +1,8 @@
 class Devise20 < ActiveRecord::Migration
   def up
-    remove_column :users, :remember_token
+    if column_exists? :users, :remember_token
+      remove_column :users, :remember_token
+    end
   end
 
   def down
