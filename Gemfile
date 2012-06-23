@@ -6,7 +6,16 @@ gem 'rake', '~> 0.9'
 # Databases
 gem 'sqlite3', '~> 1.3.5'
 gem 'mysql2', '~> 0.3.11'
-gem 'memcache-client', '~> 1.8.5'
+
+# Memcache Store
+# DO NOT UPGRADE THIS
+# We need exactly this version, because
+# never versions cant' connect to unix
+# sockets. See here:
+#
+#  https://github.com/mperham/dalli/issues/229
+#
+gem 'dalli', '~> 1.1.5'
 
 # Tags
 gem 'acts-as-taggable-on', '~> 2.3.1'
@@ -17,6 +26,7 @@ gem 'coffee-script', '~> 2.2.0'
 gem 'uglifier', '~> 1.2.0'
 gem 'haml', '~> 3.1.4'
 gem 'redcarpet', '~> 2.1.0'
+
 
 # Monitoring
 gem 'newrelic_rpm', '~> 3.4.0'
