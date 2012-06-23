@@ -1,6 +1,6 @@
 # encoding: utf-8
 class ChangeMailer < ActionMailer::Base
-  default :from => "bodo@tvrl.net"
+  default :from => "bodo@hcking.de"
 
   RECIPIENTS = ["bodo@wannawork.de", "lucas.dohmen@koeln.de"]
 
