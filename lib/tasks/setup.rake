@@ -2,7 +2,7 @@ namespace :setup do
 
   desc "add an administrator, rake setup:admin user=USERNAME password=PASSWORD email=EMAIL"
   task admin: :environment do
-    unless user = ENV["user"]
+    unless nick = ENV["user"]
       puts "You must provide an username"
       exit
     end
@@ -17,7 +17,7 @@ namespace :setup do
       exit
     end
 
-    if user = User.create!(nickname: user, password: password, email: email)
+    if user = User.create!(nickname: nick, password: password, email: email.dup)
       user.admin = true
       user.save
       puts "User created"
