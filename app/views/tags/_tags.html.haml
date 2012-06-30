@@ -1,4 +1,17 @@
 - unless tag_list.empty?
   %ul.tags
     - tag_list.each do |tag|
-      %li= link_to tag, tag_path(tag)
+      %li
+        .tag_layer
+          .inner_tag_layer
+            - if user_signed_in?
+              = form_for :user_like_tags, url: user_tags_path(user_id: current_user.id, kind: 'like') do |f|
+                = f.hidden_field :like_list, value: tag
+                = f.submit 'lieben'
+              = form_for :user_hate_tags, url: user_tags_path(user_id: current_user.id, kind: 'hate') do |f|
+                = f.hidden_field :hate_list, value: tag
+                = f.submit 'ignorieren'
+            - else
+              Melde dich an, um dieses Tag zu lieben/ignorieren
+        = link_to tag, tag_path(tag)
+
