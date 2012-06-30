@@ -26,6 +26,7 @@
     = form.input :twitter_hashtag
     / = form.input :ical_url
     / = form.input :ical_pattern
+    = form.input :start_time, as: :time_select, hint: "Bei wiederholenden Terminen gib hier die Uhrzeit an. Die Regel (z.B. 1x im Monat) kannst du nachher im Event selber anlegen."
     = form.input :duration
     = form.input :full_day
     = form.input :tag_list
