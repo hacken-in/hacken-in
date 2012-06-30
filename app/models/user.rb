@@ -15,12 +15,9 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :allow_ignore_view
   attr_protected :admin
 
-  validates :email, uniqueness: true
   validates :nickname, uniqueness: true
-  validates_exclusion_of :nickname, in: %w(admin, root, administrator, superuser), message: "is reserved"
-
-  validates :email, presence: true
   validates :nickname, presence: true
+  validates_exclusion_of :nickname, in: %w(admin, root, administrator, superuser), message: "is reserved"
 
   # http://stackoverflow.com/questions/2997179/ror-devise-sign-in-with-username-or-email
   def self.find_for_database_authentication(conditions={})
@@ -29,6 +26,7 @@ class User < ActiveRecord::Base
   end
 
   def update_with_password(params={})
+
     if params[:password].blank? and params[:email] == self.email
       params.delete(:current_password)
       params.delete(:password)
@@ -36,6 +34,9 @@ class User < ActiveRecord::Base
       self.update_without_password(params)
     else
       current_password = params.delete(:current_password)
+
+      params.delete(:password) if params[:password].blank?
+      params.delete(:password_confirmation) if params[:password_confirmation].blank?
 
       result = if valid_password?(current_password)
         update_attributes(params)
