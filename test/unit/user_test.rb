@@ -46,7 +46,6 @@ class UserTest < ActiveSupport::TestCase
     assert_false user.allow_ignore_view?
   end
 
-
   test "user doesn't change his guid" do
     user = FactoryGirl.create(:user)
     guid = user.guid
@@ -60,8 +59,12 @@ class UserTest < ActiveSupport::TestCase
 
     assert_not_equal first_user.guid, second_user.guid
   end
+
+  test "user can change email only when current password is given" do
+    user = FactoryGirl.create(:user)
+    assert !user.update_with_password(email: "newexample@example.com")
+    assert user.update_with_password(email: "newexample@example.com", current_password: "hallo123")
+    user.reload
+    assert_equal "newexample@example.com", user.email
+  end
 end
-
-
-
-
