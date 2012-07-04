@@ -182,8 +182,6 @@ de:
         street: Straße
         zipcode: Postleitzahl
         city: Stadt
-        ical_url: iCal URL
-        ical_pattern: iCal Pattern
         duration: Länge (in Minuten)
         start_time: Start-Zeit für wiederholende Termine
       single_event:
