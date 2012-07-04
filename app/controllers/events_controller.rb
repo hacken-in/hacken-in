@@ -32,11 +32,9 @@ class EventsController < ApplicationController
   end
 
   def create
-    ical_url = params[:event]["ical_url"]
     @event = Event.new filtered_params(params[:event])
 
     @event.start_time = determine_start_time_for_event params[:event]
-    @event.ical_file  = determine_ical_file_according_to_url ical_url unless ical_url.blank?
 
     authorize! :create, @event
 
@@ -92,19 +90,7 @@ class EventsController < ApplicationController
     start_time || Time.now
   end
 
-  def determine_ical_file_according_to_url(url)
-    ical_file = IcalFile.where "url = ?", url
-
-    if ical_file.blank?
-      ical_file = IcalFile.create url: url 
-    else
-      ical_file = ical_file.first
-    end
-    
-    ical_file
-  end
-
   def filtered_params(params)
-    params.except "start_time(1i)", "start_time(2i)", "start_time(3i)", "start_time(4i)", "start_time(5i)", "ical_url"
+    params.except "start_time(1i)", "start_time(2i)", "start_time(3i)", "start_time(4i)", "start_time(5i)"
   end
 end
