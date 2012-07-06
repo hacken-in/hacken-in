@@ -22,6 +22,13 @@ class ApplicationHelperTest < ActionView::TestCase
     assert_no_match /<script>/, convert_markdown(text_with_arbitrary_html)
   end
 
+  def test_convert_markdown_links
+    markdown_formatted_text = "Let me [google](http://www.google.de) that for you"
+
+    assert_equal "<p>Let me <a href=\"http://www.google.de\">google</a> that for you</p>\n", convert_markdown(markdown_formatted_text)
+    assert_equal "<p>Let me <a href=\"http://www.google.de\" rel=\"nofollow\">google</a> that for you</p>\n", convert_markdown(markdown_formatted_text, true)
+  end
+
   def test_collect_links
     event = Event.new(name: "Hallo")
     assert_equal 0, collect_links(event).length
