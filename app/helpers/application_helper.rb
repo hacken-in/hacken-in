@@ -1,3 +1,5 @@
+require 'redcarpet_extensions'
+
 module ApplicationHelper
 
   def weekday_select_option
@@ -20,9 +22,15 @@ module ApplicationHelper
     HTML_Truncator.truncate(html, length, opts).html_safe
   end
 
-  def convert_markdown(markdown_text)
-    markdown_compiler = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(filter_html: true, no_styles: true, safe_links_only: true))
-    return raw markdown_compiler.render(markdown_text)
+  def convert_markdown(markdown_text, without_follow = false)
+    if without_follow
+      render_class = HTMLwithoutFollow
+    else
+      render_class = Redcarpet::Render::HTML
+    end
+
+    markdown_compiler = Redcarpet::Markdown.new(render_class.new filter_html: true, no_styles: true, safe_links_only: true)
+    raw markdown_compiler.render(markdown_text)
   end
 
   def collect_links(item)
