@@ -6,6 +6,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.balloon
+//= require jquery.tokeninput
+//= require showdown
 //= require zero-clipboard
 //= require tipsy
 //= require_tree .
