@@ -33,14 +33,12 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new filtered_params(params[:event])
-
     @event.start_time = determine_start_time_for_event params[:event]
-
     authorize! :create, @event
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to(@event, notice: 'Event angelegt.') }
+        format.html { redirect_to @event, notice: "Event angelegt." }
         format.xml  { render xml: @event, status: :created, location: @event }
       else
         format.html { render action: "new" }
@@ -52,13 +50,12 @@ class EventsController < ApplicationController
   def update
     @event = Event.find params[:id]
     authorize! :update, @event
+    @event.start_time = determine_start_time_for_event params[:event]
 
     respond_to do |format|
-      @event.start_time = determine_start_time_for_event params[:event]
-
       if @event.update_attributes filtered_params(params[:event])
         expire_fragment "event_occurences_#{@event.id}"
-        format.html { redirect_to(@event, notice: 'Event aktualisiert') }
+        format.html { redirect_to @event, notice: "Event aktualisiert" }
         format.xml  { head :ok }
       else
         format.html { render action: "edit" }
@@ -73,7 +70,7 @@ class EventsController < ApplicationController
     @event.destroy
 
     respond_to do |format|
-      format.html { redirect_to(root_path) }
+      format.html { redirect_to root_path }
       format.xml  { head :ok }
     end
   end
