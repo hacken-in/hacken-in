@@ -10,8 +10,8 @@ class RemoveIcalFeature < ActiveRecord::Migration
     add_column :events, :ical_pattern, :string
     add_column  :events, :ical_file_id, :integer
     add_column  :events, :ical_hash, :string
-    
-    create_table :ical_files, :force => true do |t|
+
+    create_table :ical_files, force: true do |t|
       t.string "md5_hash"
       t.string "url"
       t.text   "raw"

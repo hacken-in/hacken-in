@@ -47,18 +47,18 @@ class EventsController < ApplicationController
       expire_fragment "event_occurences_#{@event.id}"
       flash[:notice] = t "events.update.confirmation"
     end
-    
+
     respond_with @event
   end
 
   def destroy
     @event = Event.find params[:id]
     authorize! :destroy, @event
-    
+
     if @event.destroy
       flash[:notice] = t "events.destroy.confirmation"
     end
-    
+
     respond_with @product, location: root_path
   end
 

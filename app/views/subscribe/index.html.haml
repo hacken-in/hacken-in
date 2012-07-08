@@ -20,7 +20,7 @@
     });
 
 .abbonieren
-    
+
   - if @event
     .clippy_row
       %input.ical_link_field{ size: 40, value: url_for(action: 'for_event', controller: 'ical', format: 'ical', only_path: false, id: @event.id)}
