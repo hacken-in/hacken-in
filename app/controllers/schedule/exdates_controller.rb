@@ -13,9 +13,9 @@ class Schedule::ExdatesController < ApplicationController
     @event.schedule.remove_exception_time(exdate)
 
     if !@event.save
-      redirect_to(event_path(@event), :alert => 'Datum konnte nicht entfernt werden.')
+      redirect_to(event_path(@event), alert: 'Datum konnte nicht entfernt werden.')
     else
-      redirect_to(event_path(@event), :notice => 'Datum entfernt.')
+      redirect_to(event_path(@event), notice: 'Datum entfernt.')
     end
   end
 

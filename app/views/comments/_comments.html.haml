@@ -12,7 +12,7 @@
     $(function() {
       registerPreviewHook('#comment_body');
     });
-  
+
   .markdown-preview
   = render partial: "comments/form", locals: {comment: commentable.comments.new(body: params[:body])}
 - else
