@@ -1,34 +1,29 @@
 class EventsController < ApplicationController
+  respond_to :html, :xml
 
   def index
     authorize! :index, Event
     @events = Event.order :name
+    respond_with @events
   end
 
   def show
     @event = Event.find params[:id]
     authorize! :show, @event
     opengraph_data @event.to_opengraph
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render xml: @event }
-    end
+    respond_with @event
   end
 
   def new
     @event = Event.new
     authorize! :new, @event
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render xml: @event }
-    end
+    respond_with @event
   end
 
   def edit
     @event = Event.find params[:id]
     authorize! :edit, @event
+    respond_with @event
   end
 
   def create
@@ -36,43 +31,35 @@ class EventsController < ApplicationController
     @event.start_time = determine_start_time_for_event params[:event]
     authorize! :create, @event
 
-    respond_to do |format|
-      if @event.save
-        format.html { redirect_to @event, notice: "Event angelegt." }
-        format.xml  { render xml: @event, status: :created, location: @event }
-      else
-        format.html { render action: "new" }
-        format.xml  { render xml: @event.errors, status: :unprocessable_entity }
-      end
+    if @event.save
+      flash[:notice] = t "events.create.confirmation"
     end
+
+    respond_with @event
   end
 
   def update
     @event = Event.find params[:id]
-    authorize! :update, @event
     @event.start_time = determine_start_time_for_event params[:event]
+    authorize! :update, @event
 
-    respond_to do |format|
-      if @event.update_attributes filtered_params(params[:event])
-        expire_fragment "event_occurences_#{@event.id}"
-        format.html { redirect_to @event, notice: "Event aktualisiert" }
-        format.xml  { head :ok }
-      else
-        format.html { render action: "edit" }
-        format.xml  { render xml: @event.errors, status: :unprocessable_entity }
-      end
+    if @event.update_attributes filtered_params(params[:event])
+      expire_fragment "event_occurences_#{@event.id}"
+      flash[:notice] = t "events.update.confirmation"
     end
+    
+    respond_with @event
   end
 
   def destroy
     @event = Event.find params[:id]
     authorize! :destroy, @event
-    @event.destroy
-
-    respond_to do |format|
-      format.html { redirect_to root_path }
-      format.xml  { head :ok }
+    
+    if @event.destroy
+      flash[:notice] = t "events.destroy.confirmation"
     end
+    
+    respond_with @product, location: root_path
   end
 
   private

@@ -227,6 +227,12 @@ de:
       no_single_events: Keine Termine geplant
       next_single_events: "Die nächsten Termine:"
       back: Zurück zur Übersicht
+    create:
+      confirmation: "Event angelegt."
+    update:
+      confirmation: "Event aktualisiert."
+    destroy:
+      confirmation: "Event gelöscht."
 
   single_events:
     show:
