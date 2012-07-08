@@ -1,49 +1,56 @@
 # encoding: utf-8
 class CommentsController < ApplicationController
+  respond_to :html, :xml
 
   def index
     authorize! :index, Comment
     @comments = Comment.order("created_at desc")
+    respond_with @comments
   end
 
   def create
     @comment = find_commentable.comments.build(params[:comment])
-    authorize! :create, @comment
     @comment.user = current_user
+    authorize! :create, @comment
+
     if @comment.save
-      flash[:notice] = "Kommentar angelegt."
-      redirect_to commentable_path(@comment, anchor: "comment_#{@comment.id}")
-    else
-      redirect_to commentable_path(@comment, body: params[:comment][:body])
+      flash[:notice] = t "comments.create.confirmation"
     end
+
+    respond_with @comment, location: commentable_path(@comment, anchor: "comment_#{@comment.id}")
   end
 
   def show
     @comment = Comment.find(params[:id])
+    respond_with @comment
   end
 
   def edit
     @comment = Comment.find(params[:id])
     authorize! :edit, @comment
+    respond_with @comment
   end
 
   def update
     @comment = Comment.find(params[:id])
     authorize! :update, @comment
+
     if @comment.update_attributes(params[:comment])
-      flash[:notice] = "Kommentar aktualisiert."
-      redirect_to commentable_path(@comment, anchor: "comment_#{@comment.id}")
-    else
-      redirect_to commentable_path(@comment, body: params[:comment][:body])
+      flash[:notice] = t "comments.update.confirmation"
     end
+
+    respond_with @comment, location: commentable_path(@comment, anchor: "comment_#{@comment.id}")
   end
 
   def destroy
     @comment = Comment.find(params[:id])
     authorize! :destroy, @comment
-    @comment.destroy
-    flash[:notice] = "Kommentar gelöscht."
-    redirect_to commentable_path(@comment)
+
+    if @comment.destroy
+      flash[:notice] = t "comments.destroy.confirmation"
+    end
+
+    respond_with @comment, location: commentable_path(@comment)
   end
 
   private

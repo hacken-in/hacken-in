@@ -204,6 +204,12 @@ de:
   comments:
     _form:
       comment_button: Kommentieren
+    create:
+      confirmation: "Kommentar angelegt."
+    update:
+      confirmation: "Kommentar aktualisiert."
+    destroy:
+      confirmation: "Kommentar gelöscht."
 
   registrations:
     edit:
