@@ -247,11 +247,13 @@ de:
       confirmation: "Du nimmst an dem Event teil."
     unparticipate:
       confirmation: "Du nimmst nicht mehr an dem Event teil."
-    save:
-      confirmation:
-        "Termin wurde bearbeitet."
-      error:
-        "Beim Speichern ist ein Fehler aufgetreten"
+    update:
+      confirmation: "Termin wurde bearbeitet."
+      error: "Beim Speichern ist ein Fehler aufgetreten"
+    create:
+      confirmation: "Termin angelegt."
+    destroy:
+      confirmation: "Termin gelöscht."
 
   users:
     show:
