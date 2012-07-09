@@ -21,8 +21,10 @@ class Event < ActiveRecord::Base
 
   # Delete SingleEvents that don't match the pattern
   def future_single_events_cleanup
-    self.single_events.in_future.where(based_on_rule: true).each do |single_event|
-      single_event.delete unless schedule.occurs_at?(single_event.occurrence)
+    rule_based_events = self.single_events.in_future.where based_on_rule: true
+
+    rule_based_events.each do |single_event|
+      single_event.delete unless schedule.occurs_at? single_event.occurrence
     end
   end
 
@@ -34,10 +36,18 @@ class Event < ActiveRecord::Base
       # the ice_cube generates are different each time. It's the
       # current millisecond when the method is called
       # (See https://github.com/seejohnrun/ice_cube/issues/84)
-      occurrence = Time.new(time.year, time.month, time.day, time.hour, time.min, time.sec)
+      occurrence = Time.new time.year,
+        time.month,
+        time.day,
+        time.hour,
+        time.min,
+        time.sec
+
       # ToDo: Hot-Fix for Bug #83
       if !self.schedule.extimes.map(&:to_i).include? occurrence.to_i
-        SingleEvent.find_or_create(event_id: self.id, occurrence: occurrence, based_on_rule: true)
+        SingleEvent.find_or_create event_id: self.id,
+          occurrence: occurrence,
+          based_on_rule: true
       end
     end
   end
@@ -46,14 +56,14 @@ class Event < ActiveRecord::Base
     if @schedule.nil?
       if !self.schedule_yaml.blank?
         begin
-          @schedule = IceCube::Schedule.from_yaml(self.schedule_yaml)
+          @schedule = IceCube::Schedule.from_yaml self.schedule_yaml
         rescue => e
           # Shit, parsing went wrong
         end
       end
 
       if @schedule.nil?
-        @schedule = IceCube::Schedule.new(Time.now, duration: 60 * 60)
+        @schedule = IceCube::Schedule.new Time.now, duration: 60 * 60
       end
     end
     @schedule
@@ -73,21 +83,22 @@ class Event < ActiveRecord::Base
 
   def to_opengraph
     graph = {}
-    graph["og:title"] = "#{self.name}"
-    graph["og:description"] = ActionController::Base.helpers.truncate(ActionController::Base.helpers.strip_tags(self.description), length: 80) unless self.description.blank?
-    graph["og:latitude"] = self.latitude if self.latitude
-    graph["og:longitude"] = self.longitude if self.longitude
-    graph["og:street-address"] = self.street unless self.street.blank?
-    graph["og:locality"] = self.location unless self.location.blank?
-    graph["og:postal-code"] = self.zipcode unless self.zipcode.blank?
-    graph["og:country-name"] = self.country unless self.country.blank?
-    graph
-  end
 
-  def update_start_time_and_duration(start_time, duration)
-    self.schedule.start_time = start_time
-    self.schedule.start_time = self.schedule.start_time.beginning_of_day if self.full_day
-    self.schedule.duration = duration.to_i * 60
+    unless self.description.blank?
+      description = ActionController::Base.helpers.strip_tags self.description
+      description = description.truncate 80
+      graph["og:description"] = description
+    end
+
+    graph["og:title"]          = self.name
+    graph["og:latitude"]       = self.latitude   if self.latitude
+    graph["og:longitude"]      = self.longitude  if self.longitude
+    graph["og:street-address"] = self.street     unless self.street.blank?
+    graph["og:locality"]       = self.location   unless self.location.blank?
+    graph["og:postal-code"]    = self.zipcode    unless self.zipcode.blank?
+    graph["og:country-name"]   = self.country    unless self.country.blank?
+
+    graph
   end
 
   def duration
