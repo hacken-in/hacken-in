@@ -1,6 +1,6 @@
 - current_date = nil
 
-- @single_events.each do |single_event|
+- single_events.each do |single_event|
   - if current_date != single_event.occurrence.to_date
     - current_date = single_event.occurrence.to_date
     %h3

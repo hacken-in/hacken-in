@@ -3,15 +3,15 @@
     $(function() {
       $("#single_event_tag_list").tokenInput("#{tags_path}", {theme: "facebook", allowNewItems: true,
         hintText: "Gebe einen Tag ein", noResultsText:"Kein Tag gefunden", searchingText:"Suche...",
-        tokenValue: "name", prePopulate: #{ tag_list_for_taggable(@single_event) }});
+        tokenValue: "name", prePopulate: #{ tag_list_for_taggable(single_event) }});
       $("#event_name").focus();
 
       registerPreviewHook('#single_event_description');
     });
 
-= semantic_form_for [@event, @single_event] do |f|
+= semantic_form_for [event, single_event] do |f|
   = f.inputs do
-    - if !@single_event.based_on_rule
+    - if !single_event.based_on_rule
       = f.input :occurrence, as: :datetime_select
     - else
       = f.input :occurrence, as: :datetime_select, disabled: true
