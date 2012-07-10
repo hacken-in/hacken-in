@@ -89,18 +89,16 @@ class Event < ActiveRecord::Base
   end
 
   def to_opengraph
-    graph = {}
-
-    graph["og:title"]          = self.name         unless self.name.blank?
-    graph["og:description"]    = short_description unless short_description.blank?
-    graph["og:latitude"]       = self.latitude     unless self.latitude.blank?
-    graph["og:longitude"]      = self.longitude    unless self.longitude.blank?
-    graph["og:street-address"] = self.street       unless self.street.blank?
-    graph["og:locality"]       = self.location     unless self.location.blank?
-    graph["og:postal-code"]    = self.zipcode      unless self.zipcode.blank?
-    graph["og:country-name"]   = self.country      unless self.country.blank?
-
-    graph
+    {
+      "og:title"          => name,
+      "og:description"    => short_description,
+      "og:latitude"       => latitude,
+      "og:longitude"      => longitude,
+      "og:street-address" => street,
+      "og:locality"       => location,
+      "og:postal-code"    => zipcode,
+      "og:country-name"   => country
+    }.reject { |key, value| value.blank? }
   end
 
   def duration
