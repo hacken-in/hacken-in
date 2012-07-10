@@ -69,12 +69,9 @@ class IcalController < ApplicationController
   end
 
   def render_events(events)
-    cal = RiCal.Calendar do |cal|
-      events.each do |single_event|
-        single_event.populate_event_for_rical(cal)
-      end
-    end
-    render text: cal
+    ri_cal = RiCal.Calendar
+    ri_cal.events.push *events.to_a.map(&:to_ri_cal_event)
+    render text: ri_cal
   end
 
   def gabba
