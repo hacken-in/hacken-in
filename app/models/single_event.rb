@@ -9,6 +9,7 @@ class SingleEvent < ActiveRecord::Base
 
   belongs_to :event
   delegate :title, :description, to: :event, prefix: true
+  delegate :twitter, to: :event
 
   has_many :comments, as: :commentable, dependent: :destroy
   has_and_belongs_to_many :users, uniq: true
