@@ -1,8 +1,7 @@
 class IcalController < ApplicationController
+  before_filter :set_calendar_headers
 
   def general
-    set_calendar_headers
-
     events = SingleEvent.where(occurrence: Date.today..(Date.today + 8.weeks))
 
     Gabba::Gabba.new("UA-954244-12", "hcking.de").event("Event", "iCal") if Rails.env.production?
@@ -10,8 +9,6 @@ class IcalController < ApplicationController
   end
 
   def personalized
-    set_calendar_headers
-
     user = User.where(guid: params[:guid]).first
 
     events = if user && !params[:guid].blank?
@@ -24,8 +21,6 @@ class IcalController < ApplicationController
   end
 
   def like_welcome_page
-    set_calendar_headers
-
     user = User.where(guid: params[:guid]).first
 
     events = if user && !params[:guid].blank?
@@ -44,8 +39,6 @@ class IcalController < ApplicationController
   end
 
   def for_single_event
-    set_calendar_headers
-
     begin
       single_event = SingleEvent.find(params[:id])
       render_events [single_event]
@@ -56,8 +49,6 @@ class IcalController < ApplicationController
   end
 
   def for_event
-    set_calendar_headers
-
     begin
       event = Event.find(params[:id])
       render_events event.single_events
@@ -68,8 +59,6 @@ class IcalController < ApplicationController
   end
 
   def for_tag
-    set_calendar_headers
-
     begin
       render_events SingleEvent.by_tag(params[:id])
     rescue ActiveRecord::RecordNotFound
