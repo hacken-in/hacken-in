@@ -8,7 +8,7 @@ class SingleEvent < ActiveRecord::Base
   after_destroy :update_event
 
   belongs_to :event
-  delegate :title, :name, :description, :city, to: :event, prefix: true
+  delegate :title, :description, to: :event, prefix: true
 
   has_many :comments, as: :commentable, dependent: :destroy
   has_and_belongs_to_many :users, uniq: true
