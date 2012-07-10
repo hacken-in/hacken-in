@@ -1,4 +1,5 @@
 require 'location'
+require 'time_extensions'
 
 class Event < ActiveRecord::Base
   include Location
@@ -34,10 +35,10 @@ class Event < ActiveRecord::Base
 
   # Add SingleEvents that are in the pattern, but haven't been created so far
   def future_single_event_creation
-    self.schedule.next_occurrences(12).each do |time|
-      occurrence = time_without_ms time
+    self.schedule.next_occurrences(12).each do |occurrence|
+      # ToDo: Hot-Fix for Bug #83, unti ice_cube's issue 84 is resolved
+      occurrence = occurrence.without_ms
 
-      # ToDo: Hot-Fix for Bug #83
       if !self.schedule.extimes.map(&:to_i).include? occurrence.to_i
         SingleEvent.find_or_create event_id: self.id,
           occurrence: occurrence,
@@ -98,19 +99,5 @@ class Event < ActiveRecord::Base
 
   def schedule_to_yaml
     self.schedule_yaml = @schedule.to_yaml if !@schedule.nil?
-  end
-
-  # remove milliseconds from occurrence, this causes a bug
-  # in sqlite since it uses milliseconds. Sadly the milliseconds
-  # the ice_cube generates are different each time. It's the
-  # current millisecond when the method is called
-  # (See https://github.com/seejohnrun/ice_cube/issues/84)
-  def time_without_ms(time)
-    Time.new time.year,
-      time.month,
-      time.day,
-      time.hour,
-      time.min,
-      time.sec
   end
 end
