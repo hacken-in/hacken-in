@@ -148,11 +148,11 @@ DESC
     assert @response.body.start_with? @vcal_start
     assert @response.body.end_with? @vcal_end
     assert @response.body.include? @vcal_event
-    assert !@response.body.include?(@vcal_event2)
-    assert !@response.body.include?(@vcal_event3)
-    assert !@response.body.include?(@vcal_event4)
-    assert !@response.body.include?(@vcal_event5)
-    assert !@response.body.include?(@vcal_event6)
+    assert @response.body.exclude? @vcal_event2
+    assert @response.body.exclude? @vcal_event3
+    assert @response.body.exclude? @vcal_event4
+    assert @response.body.exclude? @vcal_event5
+    assert @response.body.exclude? @vcal_event6
   end
 
   test "should get empty like welcome page ical calendar if no or wrong guid given" do
@@ -175,10 +175,10 @@ DESC
     assert @response.body.start_with? @vcal_start
     assert @response.body.end_with? @vcal_end
     assert @response.body.include? @vcal_event
-    assert !@response.body.include?(@vcal_event2)
-    assert @response.body.include?(@vcal_event3)
-    assert @response.body.include?(@vcal_event4)
-    assert @response.body.include?(@vcal_event5)
-    assert @response.body.include?(@vcal_event6)
+    assert @response.body.exclude? @vcal_event2
+    assert @response.body.include? @vcal_event3
+    assert @response.body.include? @vcal_event4
+    assert @response.body.include? @vcal_event5
+    assert @response.body.include? @vcal_event6
   end
 end

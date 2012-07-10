@@ -106,40 +106,29 @@ class SingleEvent < ActiveRecord::Base
     end
   end
 
-  def populate_event_for_rical(cal)
-    start_time = self.occurrence
-    end_time  = (self.occurrence + (self.event.schedule.duration || 3600))
+  def to_ri_cal_event
+    ri_cal_event = RiCal::Component::Event.new
+    ri_cal_event.summary = title
+    ri_cal_event.description = ActionController::Base.helpers.strip_tags("#{description}\n\n#{event.description}".strip)
 
-    if self.full_day
-      start_time = start_time.to_date
-      end_time = end_time.to_date
+    start_time = occurrence
+    end_time  = (occurrence + (event.schedule.duration || 1.hour))
+
+    if full_day
+      ri_cal_event.dtstart = start_time.to_date
+      ri_cal_event.dtend = end_time.to_date
     else
-      start_time = start_time.utc
-      end_time = end_time.utc
-      if !duration.nil?
-        end_time = start_time + duration.minutes
-      end
+      ri_cal_event.dtstart = start_time.utc
+      ri_cal_event.dtend = duration.nil? ? end_time.utc : (start_time + duration.minutes).utc
     end
 
-    loc = [self.location, self.address].delete_if{|d|d.blank?}.join(", ").strip
-    url = Rails.application.routes.url_helpers.event_single_event_url(
+    location = [self.location, self.address].delete_if(&:blank?).join(", ").strip
+    ri_cal_event.location = location if location.present?
+    ri_cal_event.url = Rails.application.routes.url_helpers.event_single_event_url(
               host: Rails.env.production? ? "hcking.de" : "hcking.dev",
-              event_id: self.event.id,
-              id: self.id)
-
-    description = ActionController::Base.helpers.strip_tags("#{self.description}\n\n#{self.event.description}".strip)
-
-    summary = self.title
-
-    cal.event do |event|
-      event.summary     = summary
-      event.description = description
-      event.dtstart     = start_time
-      event.dtend       = end_time
-      event.location    = loc unless loc.blank?
-      event.url         = url
-    end
-
+              event_id: event.id,
+              id: id)
+    ri_cal_event
   end
 
   def update_event
@@ -150,5 +139,13 @@ class SingleEvent < ActiveRecord::Base
       end
       event.save
     end
+  end
+
+  def is_for_user? user
+    (self.event.tag_list & user.hate_list).length > 0 && self.users.exclude?(user)
+  end
+
+  def self.for_user user
+    scoped.delete_if{ |single_event| single_event.is_for_user? user }
   end
 end
