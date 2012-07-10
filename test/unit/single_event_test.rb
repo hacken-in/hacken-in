@@ -184,7 +184,7 @@ class SingleEventTest < ActiveSupport::TestCase
     single2.tag_list << "notmeintag"
     single2.save
 
-    assert_equal [single], SingleEvent.by_tag("meintag")
+    assert_equal [single], SingleEvent.only_tagged_with("meintag")
   end
 
   test "should get single event if event is tagged" do
@@ -195,7 +195,7 @@ class SingleEventTest < ActiveSupport::TestCase
     single2.tag_list << "notmeintag"
     single2.save
 
-    assert_equal [single], SingleEvent.by_tag("meintag")
+    assert_equal [single], SingleEvent.only_tagged_with("meintag")
   end
 
 end

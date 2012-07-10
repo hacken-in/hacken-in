@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
   def index
-    @single_events = SingleEvent.getNextWeeks 4
+    @single_events = SingleEvent.in_next 4.weeks
 
     if user_signed_in? && !current_user.hate_list.empty?
       @single_events.delete_if do |single_event|

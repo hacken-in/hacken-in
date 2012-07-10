@@ -13,11 +13,18 @@ class SingleEvent < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
   has_and_belongs_to_many :users, uniq: true
 
-  scope :in_future, where("occurrence >= ?", Time.now).order(:occurrence)
-  scope :today_or_in_future, where("occurrence >= ?", Time.now.beginning_of_day).order(:occurrence)
-  scope :recent, lambda { |limit = 3| today_or_in_future.limit(limit) }
-  scope :rule_based_in_future, in_future.where(based_on_rule: true)
-
+  scope :in_future,
+    where("occurrence >= ?", Time.now).order(:occurrence)
+  scope :today_or_in_future,
+    where("occurrence >= ?", Time.now.beginning_of_day).order(:occurrence)
+  scope :recent,
+    lambda { |limit = 3| today_or_in_future.limit(limit) }
+  scope :rule_based_in_future,
+    in_future.where(based_on_rule: true)
+  scope :in_next,
+    lambda { |delta| where(occurrence: (Time.now.to_date)..((Time.now + delta).to_date)).sort }
+  scope :only_tagged_with,
+    lambda { |tag| tagged_with(tag) | joins(:event).where('events.id in (?)', Event.tagged_with(tag).map(&:id)) }
   default_scope order(:occurrence)
 
   acts_as_taggable
@@ -25,14 +32,6 @@ class SingleEvent < ActiveRecord::Base
   def self.find_or_create(parameters)
     event = where(parameters).first
     event.nil? ? create(parameters) : event
-  end
-
-  def self.getNextWeeks(number_of_weeks)
-    where(occurrence: (Time.now.to_date)..((Time.now + number_of_weeks.weeks).to_date)).sort
-  end
-
-  def self.by_tag(tag)
-    tagged_with(tag) | joins(:event).where('events.id in (?)', Event.tagged_with(tag).map(&:id))
   end
 
   def title
@@ -49,28 +48,25 @@ class SingleEvent < ActiveRecord::Base
 
   def <=>(other)
     if (self.occurrence.year != other.occurrence.year) || (self.occurrence.month != other.occurrence.month) || (self.occurrence.day != other.occurrence.day)
-      # not on same day..,
+      # not on same day
       return self.occurrence <=> other.occurrence
     elsif self.full_day
       if other.full_day
-        # both are all day
-        # sort via topic
+        # both are all day, sort via topic
         return self.title <=> other.title
       else
         # self is all day, other is not
         return -1
       end
     elsif other.full_day
-      # sother is all day, self is not
+      # other is all day, self is not
       return 1
     else
-      # both are not all day
-      # sort via time
+      # both are not all day, sort via time
       time_comparison = (self.occurrence <=> other.occurrence)
 
       if time_comparison == 0
-        # they are at the same time
-        # sort via topic
+        # they are at the same time, sort via topic
         return self.title <=> other.title
       else
         return time_comparison
