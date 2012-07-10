@@ -4,7 +4,7 @@ require 'test_helper'
 class SingleEventTest < ActiveSupport::TestCase
   test "create or find" do
     single_event = FactoryGirl.create(:single_event)
-    assert_equal single_event, SingleEvent.find_or_create(event_id: single_event.event.id, occurrence: single_event.occurrence)
+    assert_equal single_event, SingleEvent.where(event_id: single_event.event.id, occurrence: single_event.occurrence).first_or_create
   end
 
   test "scope single events in the future" do
