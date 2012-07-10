@@ -16,7 +16,6 @@ class Event < ActiveRecord::Base
 
   attr_writer :schedule
 
-  # Provide tagging
   acts_as_taggable
 
   def generate_single_events
@@ -26,9 +25,7 @@ class Event < ActiveRecord::Base
 
   # Delete SingleEvents that don't match the pattern
   def future_single_events_cleanup
-    rule_based_events = self.single_events.in_future.where based_on_rule: true
-
-    rule_based_events.each do |single_event|
+    self.single_events.rule_based_in_future.each do |single_event|
       single_event.delete unless schedule.occurs_at? single_event.occurrence
     end
   end
@@ -69,9 +66,7 @@ class Event < ActiveRecord::Base
 
   def short_description
     return nil if self.description.blank?
-
-    description = ActionController::Base.helpers.strip_tags self.description
-    description.truncate 80
+    ActionController::Base.helpers.strip_tags(self.description).truncate 80
   end
 
   def to_opengraph

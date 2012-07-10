@@ -16,10 +16,10 @@ class SingleEvent < ActiveRecord::Base
   scope :in_future, where("occurrence >= ?", Time.now).order(:occurrence)
   scope :today_or_in_future, where("occurrence >= ?", Time.now.beginning_of_day).order(:occurrence)
   scope :recent, lambda { |limit = 3| today_or_in_future.limit(limit) }
+  scope :rule_based_in_future, in_future.where(based_on_rule: true)
 
   default_scope order(:occurrence)
 
-  # Provide tagging
   acts_as_taggable
 
   def self.find_or_create(parameters)
@@ -79,12 +79,8 @@ class SingleEvent < ActiveRecord::Base
   end
 
   def short_description
-    if self.description.blank?
-      nil
-    else
-      description = ActionController::Base.helpers.strip_tags self.description
-      description.truncate 80
-    end
+    return nil if self.description.blank?
+    ActionController::Base.helpers.strip_tags(self.description).truncate 80
   end
 
   def to_opengraph
