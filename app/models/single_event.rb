@@ -81,7 +81,7 @@ class SingleEvent < ActiveRecord::Base
     graph["og:description"] = [
       self.topic,
       short_description
-    ].delete_if{ |x| x.blank? }.join(" - ")
+    ].delete_if(&:blank?).join(" - ")
     graph
   end
 
