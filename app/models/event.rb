@@ -54,7 +54,7 @@ class Event < ActiveRecord::Base
 
   def schedule
     if @schedule.nil?
-      if !self.schedule_yaml.blank?
+      if self.schedule_yaml.present?
         begin
           @schedule = IceCube::Schedule.from_yaml self.schedule_yaml
         rescue => e
@@ -63,7 +63,7 @@ class Event < ActiveRecord::Base
       end
 
       if @schedule.nil?
-        @schedule = IceCube::Schedule.new Time.now, duration: 60 * 60
+        @schedule = IceCube::Schedule.new Time.now, duration: 1.hour
       end
     end
     @schedule
