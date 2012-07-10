@@ -48,15 +48,11 @@ class Event < ActiveRecord::Base
   end
 
   def schedule
-    if @schedule.nil?
-      @schedule = begin
-        IceCube::Schedule.from_yaml self.schedule_yaml
-      rescue TypeError, Psych::SyntaxError
-        IceCube::Schedule.new Time.now, duration: 1.hour
-      end
+    @schedule ||= begin
+      IceCube::Schedule.from_yaml self.schedule_yaml
+    rescue TypeError, Psych::SyntaxError
+      IceCube::Schedule.new Time.now, duration: 1.hour
     end
-
-    @schedule
   end
 
   def title
