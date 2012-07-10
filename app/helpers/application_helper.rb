@@ -35,18 +35,23 @@ module ApplicationHelper
 
   def collect_links(item)
     links = []
+
     unless item.url.blank?
-      links << {url: item.url, title: truncate(item.url,length: 40)}
+      links << { url: item.url,
+        title: truncate(item.url, length: 40)
+      }
     end
 
-    if item.class == Event && !item.twitter.blank?
-      links << {url: "http://twitter.com/#{item.twitter}", title: "@#{item.twitter}"}
-    elsif item.class == SingleEvent && !item.event.twitter.blank?
-      links << {url: "http://twitter.com/#{item.event.twitter}", title: "@#{item.event.twitter}"}
+    unless item.twitter.blank?
+      links << { url: "http://twitter.com/#{item.twitter}",
+        title: "@#{item.twitter}"
+      }
     end
 
     unless item.twitter_hashtag.blank?
-      links << {url: "https://twitter.com/search/%23#{CGI.escape item.twitter_hashtag}", title: "##{item.twitter_hashtag}"}
+      links << { url: "https://twitter.com/search/%23#{CGI.escape item.twitter_hashtag}",
+        title: "##{item.twitter_hashtag}"
+      }
     end
 
     links
