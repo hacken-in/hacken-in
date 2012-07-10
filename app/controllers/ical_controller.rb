@@ -1,10 +1,9 @@
 class IcalController < ApplicationController
   before_filter :set_calendar_headers
+  before_filter :gabba, only: [:general, :personalized, :like_welcome_page], if: ->{ Rails.env.production? }
 
   def general
     events = SingleEvent.where(occurrence: Date.today..(Date.today + 8.weeks))
-
-    Gabba::Gabba.new("UA-954244-12", "hcking.de").event("Event", "iCal") if Rails.env.production?
     render_events(events)
   end
 
@@ -16,7 +15,6 @@ class IcalController < ApplicationController
     else
       []
     end
-    Gabba::Gabba.new("UA-954244-12", "hcking.de").event("Event", "iCal-personalized") if Rails.env.production?
     render_events(events)
   end
 
@@ -33,8 +31,6 @@ class IcalController < ApplicationController
     else
       []
     end
-
-    Gabba::Gabba.new("UA-954244-12", "hcking.de").event("Event", "iCal-not-hated") if Rails.env.production?
     render_events(events)
   end
 
@@ -79,6 +75,15 @@ class IcalController < ApplicationController
       end
     end
     render text: cal
+  end
+
+  def gabba
+    key = case params[:action]
+    when "general" then "iCal"
+    when "personalized" then "iCal-personalized"
+    when "like_welcome_page" then "iCal-not-hated"
+    end
+    Gabba::Gabba.new("UA-954244-12", "hcking.de").event("Event", key)
   end
 
 end
