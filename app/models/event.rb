@@ -8,6 +8,8 @@ class Event < ActiveRecord::Base
   has_many :single_events
   has_many :comments, as: :commentable, dependent: :destroy
 
+  attr_writer :schedule
+
   before_save :schedule_to_yaml
   after_save :generate_single_events
 
@@ -67,10 +69,6 @@ class Event < ActiveRecord::Base
       end
     end
     @schedule
-  end
-
-  def schedule=(cube_obj)
-    @schedule = cube_obj
   end
 
   def title
