@@ -56,7 +56,7 @@ class IcalController < ApplicationController
 
   def for_tag
     begin
-      render_events SingleEvent.by_tag(params[:id])
+      render_events SingleEvent.only_tagged_with params[:id]
     rescue ActiveRecord::RecordNotFound
       render_events []
     end
