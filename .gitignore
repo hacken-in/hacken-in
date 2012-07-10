@@ -10,4 +10,5 @@ public/assets
 doc/*
 .yardoc/*
 nbproject/*
+*.swp
 rails_best_practices_output.html
