@@ -37,9 +37,9 @@ class Event < ActiveRecord::Base
       occurrence = occurrence.without_ms
 
       if !self.schedule.extimes.map(&:to_i).include? occurrence.to_i
-        SingleEvent.find_or_create event_id: self.id,
+        SingleEvent.where(event_id: self.id,
           occurrence: occurrence,
-          based_on_rule: true
+          based_on_rule: true).first_or_create
       end
     end
   end

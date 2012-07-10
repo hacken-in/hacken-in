@@ -29,11 +29,6 @@ class SingleEvent < ActiveRecord::Base
 
   acts_as_taggable
 
-  def self.find_or_create(parameters)
-    event = where(parameters).first
-    event.nil? ? create(parameters) : event
-  end
-
   def title
     self.topic.blank? ? self.event.name : "#{self.event.name} (#{self.topic})"
   end
