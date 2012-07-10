@@ -3,15 +3,15 @@ require 'location'
 class Event < ActiveRecord::Base
   include Location
   geocoded_by :address
+
   after_validation :reset_geocode
+  before_save :schedule_to_yaml
+  after_save :generate_single_events
 
   has_many :single_events
   has_many :comments, as: :commentable, dependent: :destroy
 
   attr_writer :schedule
-
-  before_save :schedule_to_yaml
-  after_save :generate_single_events
 
   # Provide tagging
   acts_as_taggable
@@ -79,22 +79,26 @@ class Event < ActiveRecord::Base
     "#{self.id}-#{self.name.parameterize}"
   end
 
+  def short_description
+    if self.description.blank?
+      nil
+    else
+      description = ActionController::Base.helpers.strip_tags self.description
+      description.truncate 80
+    end
+  end
+
   def to_opengraph
     graph = {}
 
-    unless self.description.blank?
-      description = ActionController::Base.helpers.strip_tags self.description
-      description = description.truncate 80
-      graph["og:description"] = description
-    end
-
-    graph["og:title"]          = self.name
-    graph["og:latitude"]       = self.latitude   if self.latitude
-    graph["og:longitude"]      = self.longitude  if self.longitude
-    graph["og:street-address"] = self.street     unless self.street.blank?
-    graph["og:locality"]       = self.location   unless self.location.blank?
-    graph["og:postal-code"]    = self.zipcode    unless self.zipcode.blank?
-    graph["og:country-name"]   = self.country    unless self.country.blank?
+    graph["og:title"]          = self.name         unless self.name.blank?
+    graph["og:description"]    = short_description unless short_description.blank?
+    graph["og:latitude"]       = self.latitude     unless self.latitude.blank?
+    graph["og:longitude"]      = self.longitude    unless self.longitude.blank?
+    graph["og:street-address"] = self.street       unless self.street.blank?
+    graph["og:locality"]       = self.location     unless self.location.blank?
+    graph["og:postal-code"]    = self.zipcode      unless self.zipcode.blank?
+    graph["og:country-name"]   = self.country      unless self.country.blank?
 
     graph
   end

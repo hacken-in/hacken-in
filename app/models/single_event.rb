@@ -2,9 +2,10 @@ require 'location'
 
 class SingleEvent < ActiveRecord::Base
   include Location
+  geocoded_by :address
+
   after_validation :reset_geocode
   after_destroy :update_event
-  geocoded_by :address
 
   belongs_to :event
   delegate :title, :name, :description, :city, to: :event, prefix: true
@@ -77,13 +78,22 @@ class SingleEvent < ActiveRecord::Base
     end
   end
 
+  def short_description
+    if self.description.blank?
+      nil
+    else
+      description = ActionController::Base.helpers.strip_tags self.description
+      description.truncate 80
+    end
+  end
+
   def to_opengraph
     graph = event.to_opengraph
     graph["og:title"] = self.name
     if !self.description.blank? || !self.topic.blank?
       graph["og:description"] = [
         self.topic,
-        ActionController::Base.helpers.truncate(ActionController::Base.helpers.strip_tags(self.description), length: 80)
+        short_description
       ].delete_if{|x| x.blank?}.join(" - ")
     end
     graph
