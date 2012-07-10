@@ -1,65 +1,32 @@
 class IcalController < ApplicationController
+  GABBA_MAPPING = { general: "iCal", personalized: "iCal-personalized", like_welcome_page: "iCal-not-hated" }
+
   before_filter :set_calendar_headers
-  before_filter :gabba, only: [:general, :personalized, :like_welcome_page], if: ->{ Rails.env.production? }
+  before_filter :gabba, only: GABBA_MAPPING.keys, if: ->{ Rails.env.production? }
+  rescue_from ActiveRecord::RecordNotFound, with: :render_empty
 
   def general
-    events = SingleEvent.where(occurrence: Date.today..(Date.today + 8.weeks))
-    render_events(events)
+    render_events SingleEvent.where(occurrence: time_range)
   end
 
   def personalized
-    user = User.where(guid: params[:guid]).first
-
-    events = if user && !params[:guid].blank?
-      user.single_events.where(occurrence: Date.today..(Date.today + 8.weeks))
-    else
-      []
-    end
-    render_events(events)
+    render_events user.single_events.where(occurrence: time_range)
   end
 
   def like_welcome_page
-    user = User.where(guid: params[:guid]).first
-
-    events = if user && !params[:guid].blank?
-      SingleEvent.where(occurrence: Date.today..(Date.today + 8.weeks)).delete_if do |single_event|
-        (
-          (single_event.event.tag_list & user.hate_list).length > 0 &&
-          (!single_event.users.include? user)
-        )
-      end
-    else
-      []
-    end
-    render_events(events)
+    render_events SingleEvent.where(occurrence: time_range).for_user(user)
   end
 
   def for_single_event
-    begin
-      single_event = SingleEvent.find(params[:id])
-      render_events [single_event]
-
-    rescue ActiveRecord::RecordNotFound
-      render_events []
-    end
+    render_events SingleEvent.find(params[:id])
   end
 
   def for_event
-    begin
-      event = Event.find(params[:id])
-      render_events event.single_events
-
-    rescue ActiveRecord::RecordNotFound
-      render_events []
-    end
+    render_events Event.find(params[:id]).single_events
   end
 
   def for_tag
-    begin
-      render_events SingleEvent.only_tagged_with params[:id]
-    rescue ActiveRecord::RecordNotFound
-      render_events []
-    end
+    render_events SingleEvent.only_tagged_with(params[:id])
   end
 
   private
@@ -69,21 +36,25 @@ class IcalController < ApplicationController
   end
 
   def render_events(events)
-    cal = RiCal.Calendar do |cal|
-      events.each do |single_event|
-        single_event.populate_event_for_rical(cal)
-      end
-    end
-    render text: cal
+    ri_cal = RiCal.Calendar
+    ri_cal.events.push *events.to_a.map(&:to_ri_cal_event)
+    render text: ri_cal
+  end
+
+  def render_empty
+    render_events []
   end
 
   def gabba
-    key = case params[:action]
-    when "general" then "iCal"
-    when "personalized" then "iCal-personalized"
-    when "like_welcome_page" then "iCal-not-hated"
-    end
-    Gabba::Gabba.new("UA-954244-12", "hcking.de").event("Event", key)
+    Gabba::Gabba.new("UA-954244-12", "hcking.de").event("Event", GABBA_MAPPING[params[:action].to_sym])
+  end
+
+  def time_range
+    Date.today..(Date.today + 8.weeks)
+  end
+
+  def user
+    User.find_by_guid(params[:guid]) || raise(ActiveRecord::RecordNotFound)
   end
 
 end
