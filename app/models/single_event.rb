@@ -131,10 +131,10 @@ class SingleEvent < ActiveRecord::Base
   end
 
   def is_for_user? user
-    (self.event.tag_list & user.hate_list).length > 0 && self.users.exclude?(user)
+    !((self.event.tag_list & user.hate_list).length > 0 && self.users.exclude?(user))
   end
 
   def self.for_user user
-    scoped.delete_if{ |single_event| single_event.is_for_user? user }
+    scoped.keep_if{ |single_event| single_event.is_for_user? user }
   end
 end
