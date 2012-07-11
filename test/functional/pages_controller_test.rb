@@ -11,6 +11,7 @@ class PagesControllerTest < ActionController::TestCase
   test "should get 404" do
     get :show, {page_name: "notthere"}
     assert_response :missing
+    assert_template :missing
   end
 
 end
