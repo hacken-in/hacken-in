@@ -75,7 +75,7 @@ group :development do
   gem 'rdiscount', '~> 1.6.8'
 
   # guard
-  gem 'guard', '~> 1.1.1'
+  gem 'guard', '~> 1.2.3'
   gem 'guard-test', '~> 0.5.0'
   gem 'guard-livereload', '~> 1.0.0'
   gem 'guard-pow', '~> 1.0.0'
@@ -86,7 +86,7 @@ end
 group :test do
   # Pretty printed test output
   # gem 'turn', require: false
-  gem 'factory_girl_rails', '~> 3.4.0', require: false
+  gem 'factory_girl_rails', '~> 3.5', require: false
   gem 'spork-testunit', '~> 0.0.7'
-  gem 'mocha', '~> 0.11.3', :require => false
+  gem 'mocha', '~> 0.12.0', require: false
 end
