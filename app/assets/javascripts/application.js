@@ -11,4 +11,5 @@
 //= require showdown
 //= require zero-clipboard
 //= require tipsy
+//= require leaflet
 //= require_tree .
