@@ -26,6 +26,8 @@ class SingleEvent < ActiveRecord::Base
     lambda { |delta| where(occurrence: (Time.now.to_date)..((Time.now + delta).to_date)).sort }
   scope :only_tagged_with,
     lambda { |tag| tagged_with(tag) | joins(:event).where('events.id in (?)', Event.tagged_with(tag).map(&:id)) }
+  scope :for_user,
+    lambda { |user| user ? scoped.select{ |single_event| single_event.is_for_user? user } : scoped }
   default_scope order(:occurrence)
 
   acts_as_taggable
@@ -132,9 +134,5 @@ class SingleEvent < ActiveRecord::Base
 
   def is_for_user? user
     !((self.event.tag_list & user.hate_list).length > 0 && self.users.exclude?(user))
-  end
-
-  def self.for_user user
-    scoped.keep_if{ |single_event| single_event.is_for_user? user }
   end
 end
