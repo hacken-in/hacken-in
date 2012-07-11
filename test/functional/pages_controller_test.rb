@@ -2,7 +2,7 @@ require 'test_helper'
 
 class PagesControllerTest < ActionController::TestCase
   include Devise::TestHelpers
-  test "should get index" do
+  test "should get show" do
     get :show, {page_name: 'impressum'}
     assert_response :success
     assert_template "impressum", "render impressum"
