@@ -4,8 +4,6 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-  helper_method :mobile?
-
   before_filter :set_current_user
 
   rescue_from CanCan::AccessDenied do |exception|
@@ -13,10 +11,6 @@ class ApplicationController < ActionController::Base
   end
 
   private
-
-  def mobile?
-    request.user_agent =~ /Mobile|webOS|Opera Mini|Opera Mobi/
-  end
 
   def set_current_user
     User.current = current_user
