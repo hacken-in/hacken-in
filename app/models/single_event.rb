@@ -15,15 +15,15 @@ class SingleEvent < ActiveRecord::Base
   has_and_belongs_to_many :users, uniq: true
 
   scope :in_future,
-    where("occurrence >= ?", Time.now).order(:occurrence)
+    where("occurrence >= ?", Time.now)
   scope :today_or_in_future,
-    where("occurrence >= ?", Time.now.beginning_of_day).order(:occurrence)
+    where("occurrence >= ?", Time.now.beginning_of_day)
   scope :recent,
     lambda { |limit = 3| today_or_in_future.limit(limit) }
   scope :rule_based_in_future,
     in_future.where(based_on_rule: true)
   scope :in_next,
-    lambda { |delta| where(occurrence: (Time.now.to_date)..((Time.now + delta).to_date)).sort }
+    lambda { |delta| where(occurrence: (Time.now.to_date)..((Time.now + delta).to_date)) }
   scope :only_tagged_with,
     lambda { |tag| tagged_with(tag) | joins(:event).where('events.id in (?)', Event.tagged_with(tag).map(&:id)) }
   scope :for_user,
