@@ -5,8 +5,7 @@ class SingleEventsController < ApplicationController
 
   def new
     @event = Event.find(params[:event_id])
-    @single_event = @event.single_events.new
-    @single_event.based_on_rule = false
+    @single_event = @event.single_events.new based_on_rule: false
     @single_event.occurrence = 2.days.from_now.beginning_of_day + 20.hours
     authorize! :new, @single_event
     respond_with @single_event
@@ -72,6 +71,8 @@ class SingleEventsController < ApplicationController
       :delete,
       t("single_events.unparticipate.confirmation")
   end
+
+  private
 
   def change_participation(id, how, confirmation)
     @single_event = SingleEvent.find id
