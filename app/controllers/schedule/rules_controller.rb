@@ -6,9 +6,7 @@ class Schedule::RulesController < ApplicationController
     @event = Event.find(params[:event_id])
     authorize! :update, @event
 
-    rule = {}
-    day_hashes = [:sunday, :monday, :tuesday, :wednesday, :thursday, :friday, :saturday]
-    rule[day_hashes[params[:day_of_week].to_i]] = [params[:week_number].to_i]
+    rule = {Date::DAYNAMES[params[:day_of_week].to_i].downcase.to_sym => [params[:week_number].to_i]}
     @event.schedule.add_recurrence_rule IceCube::Rule.monthly.day_of_week(rule)
 
     if !@event.save
