@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   respond_to :html, :xml
 
   def index
-    authorize! :index, Comment
+    authorize! :manage, Comment
     @comments = Comment.order("created_at desc")
     respond_with @comments
   end
