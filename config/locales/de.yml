@@ -269,7 +269,15 @@ de:
       no_description: "Keine Beschreibung vorhanden."
     edit:
       allow_ignore_view: "ignorierte Tags öffentlich zeigen"
-      
+
+  user_tags:
+    create:
+      confirmation: "Tag hinzugefügt"
+      error: "Tag konnte nicht hinzugefügt werden"
+    destroy:
+      confirmation: "Tag entfernt"
+      error: "Tag konnte nicht entfernt werden"
+
   formtastic:
     :yes: "Ja"
     :no: "Nein"
