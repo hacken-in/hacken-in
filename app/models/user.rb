@@ -92,4 +92,8 @@ class User < ActiveRecord::Base
     Thread.current[:user] = user
   end
 
+  def modify_tag_list(kind, action)
+    list = self.send :"#{kind}_list"
+    list.send action.keys.first, action.values.first
+  end
 end
