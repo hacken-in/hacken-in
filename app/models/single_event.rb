@@ -71,18 +71,15 @@ class SingleEvent < ActiveRecord::Base
   end
 
   def short_description
-    return nil if self.description.blank?
+    return event.short_description if self.description.blank?
     ActionController::Base.helpers.strip_tags(self.description).truncate 80
   end
 
   def to_opengraph
-    graph = event.to_opengraph
-    graph["og:title"] = self.name
-    graph["og:description"] = [
-      self.topic,
-      short_description
-    ].delete_if(&:blank?).join(" - ")
-    graph
+    event.to_opengraph.merge({
+      "og:title"       => name,
+      "og:description" => short_description
+    }).reject { |key, value| value.blank? }
   end
 
   # Get the attribute from the Event model unless they exist here
