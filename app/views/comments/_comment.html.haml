@@ -12,6 +12,7 @@
       %p.edit_date
         = "(zuletzt geändert am #{I18n.localize(comment.created_at, format: :long)})"
     %p
-      - if can? :destroy, comment
+      - if can? :edit, comment
         = link_to "Editieren", edit_comment_path(comment)
+      - if can? :destroy, comment
         = link_to "Löschen", comment_path(comment), confirm: "Ihren Kommentar wirklich löschen?", method: :delete
