@@ -40,19 +40,19 @@ module ApplicationHelper
   def collect_links(item)
     links = []
 
-    unless item.url.blank?
+    if item.url.present?
       links << { url: item.url,
         title: truncate(item.url, length: 40)
       }
     end
 
-    unless item.twitter.blank?
+    if item.twitter.present?
       links << { url: "http://twitter.com/#{item.twitter}",
         title: "@#{item.twitter}"
       }
     end
 
-    unless item.twitter_hashtag.blank?
+    if item.twitter_hashtag.present?
       links << { url: "https://twitter.com/search/%23#{CGI.escape item.twitter_hashtag}",
         title: "##{item.twitter_hashtag}"
       }
