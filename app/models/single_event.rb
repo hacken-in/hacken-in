@@ -132,7 +132,7 @@ class SingleEvent < ActiveRecord::Base
     end
   end
 
-  def is_for_user? user
+  def is_for_user?(user)
     !((self.event.tag_list & user.hate_list).length > 0 && self.users.exclude?(user))
   end
 end

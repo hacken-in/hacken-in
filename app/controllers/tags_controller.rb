@@ -1,7 +1,10 @@
 class TagsController < ApplicationController
 
   def index
-    @tags = params[:q].blank? ? ActsAsTaggableOn::Tag.all : ActsAsTaggableOn::Tag.all.select{|t| t.name.downcase.include?(params[:q])}
+    @tags = ActsAsTaggableOn::Tag.all
+
+    query = params[:q]
+    @tags.select! { |t| t.name.downcase.include? query } unless query.blank?
 
     respond_to do |format|
       format.js { render json: @tags.collect{|t| {name: t.name} } }

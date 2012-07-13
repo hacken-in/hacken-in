@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   rescue_from ActionView::MissingTemplate, with: :missing
 
   def show
-    @page_name = params[:page_name].to_s.gsub(/\W/,'')
+    @page_name = params[:page_name].to_s.gsub /\W/,''
   end
 
   private
