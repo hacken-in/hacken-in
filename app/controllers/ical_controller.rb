@@ -1,8 +1,14 @@
 class IcalController < ApplicationController
-  GABBA_MAPPING = { general: "iCal", personalized: "iCal-personalized", like_welcome_page: "iCal-not-hated" }
+  GABBA_MAPPING = {
+    general: "iCal",
+    personalized: "iCal-personalized",
+    like_welcome_page: "iCal-not-hated"
+  }
 
   before_filter :set_calendar_headers
-  before_filter :gabba, only: GABBA_MAPPING.keys, if: ->{ Rails.env.production? }
+  before_filter :gabba,
+    only: GABBA_MAPPING.keys,
+    if: ->{ Rails.env.production? }
   rescue_from ActiveRecord::RecordNotFound, with: :render_empty
 
   def general
@@ -46,7 +52,8 @@ class IcalController < ApplicationController
   end
 
   def gabba
-    Gabba::Gabba.new("UA-954244-12", "hcking.de").event("Event", GABBA_MAPPING[params[:action].to_sym])
+    gabba = Gabba::Gabba.new "UA-954244-12", "hcking.de"
+    gabba.event "Event", GABBA_MAPPING[params[:action].to_sym]
   end
 
   def time_range

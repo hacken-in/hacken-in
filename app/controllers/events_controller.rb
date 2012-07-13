@@ -65,16 +65,22 @@ class EventsController < ApplicationController
   private
 
   def determine_start_time_for_event(event)
-    start_time = Time.new(event["start_time(1i)"].to_i,
-                                         event["start_time(2i)"].to_i,
-                                         event["start_time(3i)"].to_i,
-                                         event["start_time(4i)"].to_i,
-                                         event["start_time(5i)"].to_i) if event["start_time(1i)"]
+    if event["start_time(1i)"]
+      start_time = Time.new event["start_time(1i)"].to_i,
+                            event["start_time(2i)"].to_i,
+                            event["start_time(3i)"].to_i,
+                            event["start_time(4i)"].to_i,
+                            event["start_time(5i)"].to_i
+    end
 
     start_time || Time.now
   end
 
   def filtered_params(params)
-    params.except "start_time(1i)", "start_time(2i)", "start_time(3i)", "start_time(4i)", "start_time(5i)"
+    params.except "start_time(1i)",
+                  "start_time(2i)",
+                  "start_time(3i)",
+                  "start_time(4i)",
+                  "start_time(5i)"
   end
 end

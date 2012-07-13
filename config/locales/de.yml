@@ -255,6 +255,10 @@ de:
     destroy:
       confirmation: "Termin gelöscht."
 
+  subscriptions:
+    index:
+      error: "Eintrag nicht gefunden"
+
   users:
     show:
       edit: Editieren

@@ -6,7 +6,7 @@ class SubscribeController < ApplicationController
       @single_event = SingleEvent.find params[:single_event_id] if params[:single_event_id]
       @tag = params[:tag_id]
     rescue ActiveRecord::RecordNotFound
-      flash[:error] = "Eintrag nicht gefunden"
+      flash[:error] = t "subscriptions.index.error"
     end
   end
 
