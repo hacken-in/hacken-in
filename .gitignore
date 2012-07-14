@@ -5,6 +5,7 @@ log/*.log
 tmp/
 .sass-cache/
 config/database.yml
+config/initializers/omniauth.rb
 .rvmrc
 public/assets
 doc/*
