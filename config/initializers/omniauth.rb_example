@@ -3,4 +3,5 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   provider :github, "GH_CLIENT_ID", "GH_CLIENT_SECRET", scope: "user"
   #provider :facebook, "FB_CONSUMER_KEY", "FB_CONSUMER_SECRET"
   provider :google_oauth2, "G_CLIENT_ID", "G_CLIENT_SECRET", {}
+  provider :linkedin, "LI_CONSUMER_KEY", "LI_CONSUMER_SECRET" 
 end

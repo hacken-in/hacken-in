@@ -46,6 +46,7 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-github'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
+gem 'omniauth-linkedin'
 
 # Other dependencies
 gem 'jquery-rails', '~> 2.0.0'
