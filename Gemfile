@@ -27,6 +27,7 @@ gem 'uglifier', '~> 1.2.0'
 gem 'haml', '~> 3.1.4'
 gem 'redcarpet', '~> 2.1.0'
 
+gem 'activeadmin', github: 'gregbell/active_admin'
 
 # Monitoring
 gem 'newrelic_rpm', '~> 3.4.0'
