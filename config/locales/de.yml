@@ -200,6 +200,7 @@ de:
       comment: Kommentar
       event: Event
       single_event: Termin
+      user: Benutzer
 
   comments:
     _form:
