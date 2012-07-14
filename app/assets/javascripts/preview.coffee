@@ -1,21 +1,48 @@
-window.registerPreviewHook = (identifier) ->
-  ($ 'a.show-preview').click (event) ->
+
+$ ->
+  $('.preview .show-comment').click (event)->
     event.preventDefault()
-    showPreview identifier
 
-showPreview = (identifier) ->
-  ($ identifier).keyup ->
-    updatePreview identifier
+    return if ($ this).hasClass('active')
 
-  if ($ '.markdown-preview').is ':hidden'
-    ($ '.markdown-preview').slideDown()
-  else
-    ($ '.markdown-preview').slideUp()
+    hide_preview(($ this).parents('form'))
+    ($ this).addClass('active')
+    ($ this).siblings('.show-preview').removeClass('active')
 
-  ($ identifier).keyup()
+  $('.preview .show-preview').click (event)->
+    event.preventDefault()
 
-updatePreview = (identifier) ->
-  comment_text = ($ identifier).val()
+    return if ($ this).hasClass('active')
+
+    transform_to_preview(($ this).parents('form'))
+    ($ this).addClass('active')
+    ($ this).siblings('.show-comment').removeClass('active')
+
+hide_preview = (base_form) ->
+  container = ($ base_form).find('.previewable')
+  container.find('.preview-display').hide()
+  container.find('.preview-base').show()
+
+
+transform_to_preview = (base_form) ->
+  container = ($ base_form).find('.previewable')
+  preview_base = container.find('.preview-base')
+  preview_display = container.find('.preview-display')
+
+  if preview_display.size() == 0
+    preview_display = ($ document.createElement('div'))
+    .addClass('preview-display')
+    .height(preview_base.height())
+    .width(preview_base.width())
+    .appendTo(container)
+
+  markdown = convert_to_markdown(preview_base.val())
+  preview_base.hide()
+  preview_display.html(markdown).show()
+
+
+convert_to_markdown = (html_text) ->
   converter = new Showdown.converter()
-  generated_html = converter.makeHtml comment_text
-  ($ '.markdown-preview').html generated_html
+  converter.makeHtml(html_text)
+
+

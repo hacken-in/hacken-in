@@ -5,8 +5,6 @@
         hintText: "Gebe einen Tag ein", noResultsText:"Kein Tag gefunden", searchingText:"Suche...",
         tokenValue: "name", prePopulate: #{ tag_list_for_taggable(single_event) }});
       $("#event_name").focus();
-
-      registerPreviewHook('#single_event_description');
     });
 
 = semantic_form_for [event, single_event] do |f|
@@ -21,8 +19,7 @@
     = f.input :duration, input_html: { type: "number", style: "width:100px" }
     = f.input :full_day
     = f.input :topic
-    .markdown-preview
-    = f.input :description
+    = f.input :description, input_html: { class: 'autogrow preview-base' }, wrapper_html: { class: 'previewable' } 
     %li
       %label
       = render "commons/markdown_info"

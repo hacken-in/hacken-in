@@ -1,7 +1,3 @@
-:javascript
-  $(function() {
-    registerPreviewHook('#user_description');
-  });
 
 %h2= t 'registrations.edit.edit_profile'
 
@@ -18,12 +14,10 @@
     %br
     = f.text_field :nickname
 
-  .markdown-preview
   %p
     = f.label :description
-    %br
-    = f.text_area :description, cols: 70, rows: 10
-    %br
+    .previewable
+      = f.text_area :description, cols: 70, rows: 10, class: 'preview-base'
     = render "commons/markdown_info"
 
   %p
