@@ -213,4 +213,12 @@ Devise.setup do |config|
   #   manager.intercept_401 = false
   #   manager.default_strategies(scope: :user).unshift :some_external_strategy
   # end
+  
+  #OmniAuth strategies
+  config.omniauth :twitter, "CLIENT_ID", "CLIENT_SECRET"
+  config.omniauth :github, "CLIENT_ID", "CLIENT_SECRET"
+  #config.omniauth :facebook, "CLIENT_ID", "CLIENT_SECRET"
+  config.omniauth :google_oauth2, "CLIENT_ID", "CLIENT_SECRET", {}
+  config.omniauth :linkedin, "CLIENT_ID", "CLIENT_SECRET" 
+  
 end
