@@ -10,7 +10,10 @@ class User < ActiveRecord::Base
 
   has_many :comments
   has_and_belongs_to_many :single_events, uniq: true
-
+  
+  #OmniAuth Authorizations
+  has_many :authorizations
+  
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :allow_ignore_view
   attr_protected :admin
@@ -96,4 +99,38 @@ class User < ActiveRecord::Base
     list = self.send :"#{kind}_list"
     list.send action.keys.first, action.values.first
   end
+  
+  # Functions for Devise & Omniauth
+  
+  # Create a user from an OmniAuth request
+  def self.from_omniauth(auth)
+    raise auth
+  end
+  
+  # Create a user with the devise session
+  def self.new_with_session(paramas, session)
+    if session["devise.user_attributes"]
+      self.new(sesion["devise.user_attributes"]) do |user|
+        user.attributes = params
+        user.valid?
+      end
+    else
+      super
+    end
+  end
+  
+  # Password is only required if no authorizations are present
+  def password_required?
+    super && authorizations.length > 0
+  end
+  
+  # Update only requires a password if we have one
+  def update_with_password(params, *options)
+    if encrypted_password.blank?
+      update_attributes(params, *options)
+    else
+      super
+    end
+  end
+  
 end
