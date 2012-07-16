@@ -19,8 +19,7 @@ Hcking::Application.routes.draw do
   resources :comments, only: [:index]
 
   resources :events do
-    resources :comments,
-      only: [:show, :create, :edit, :update, :destroy, :index]
+    resources :comments, except: [:new]
     namespace "schedule" do
       resources :exdates, only: [:destroy]
       resources :rules, only: [:create, :destroy]
@@ -31,8 +30,7 @@ Hcking::Application.routes.draw do
         put :participate
         put :unparticipate
       end
-      resources :comments,
-        only: [:show, :create, :edit, :update, :destroy, :index]
+      resources :comments, except: [:new]
     end
 
     # This is duplicate code, but the old routes with single_events must
@@ -42,8 +40,7 @@ Hcking::Application.routes.draw do
         put :participate
         put :unparticipate
       end
-      resources :comments,
-        only: [:show, :create, :edit, :update, :destroy, :index]
+      resources :comments, except: [:new]
     end
   end
 
