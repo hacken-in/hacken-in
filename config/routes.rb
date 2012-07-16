@@ -26,20 +26,13 @@ Hcking::Application.routes.draw do
     end
 
     resources :single_events, path: "dates" do
-      member do
-        put :participate
-        put :unparticipate
-      end
+      resource :participate, only: [:create, :destroy]
       resources :comments, except: [:new]
     end
 
     # This is duplicate code, but the old routes with single_events must
     # keep on working
     resources :single_events do
-      member do
-        put :participate
-        put :unparticipate
-      end
       resources :comments, except: [:new]
     end
   end
