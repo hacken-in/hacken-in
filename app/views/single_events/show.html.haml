@@ -76,9 +76,9 @@
     user_path(user)
 - if user_signed_in? && !@single_event.users.include?(current_user)
   %p
-    = button_to "Ich nehme teil", participate_event_single_event_path(@single_event.event, @single_event), {method: :put}
+    = button_to "Ich nehme teil", event_single_event_participate_path(@single_event.event, @single_event), { method: :post }
 - elsif user_signed_in?
   %p
-    = button_to "Ich nehme doch nicht teil", unparticipate_event_single_event_path(@single_event.event, @single_event), {method: :put}
+    = button_to "Ich nehme doch nicht teil", event_single_event_participate_path(@single_event.event, @single_event), { method: :delete }
 
 = render partial: "comments/comments", locals: {commentable: @single_event}
