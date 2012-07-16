@@ -32,16 +32,8 @@ Hcking::Application.routes.draw do
       end
       resources :comments, except: [:new]
     end
-
-    # This is duplicate code, but the old routes with single_events must
-    # keep on working
-    resources :single_events do
-      member do
-        put :participate
-        put :unparticipate
-      end
-      resources :comments, except: [:new]
-    end
+    # to hold old url on life
+    get "single_events/:id" => redirect { |params, request| "/events/#{params[:event_id]}/dates/#{params[:id]}" }
   end
 
   match "ical"                    => "ical#general"
