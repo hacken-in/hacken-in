@@ -3,17 +3,7 @@ require 'test_helper'
 class CommentsControllerTest < ActionController::TestCase
   include Devise::TestHelpers
 
-  test "should not get index if not admin" do
-    get :index
-    assert_redirected_to controller: 'welcome', action: 'index'
-
-    sign_in FactoryGirl.create(:user)
-    get :index
-    assert_redirected_to controller: 'welcome', action: 'index'
-  end
-
-  test "should get index if bodo" do
-    sign_in FactoryGirl.create(:bodo)
+  test "should get index" do
     get :index
     assert_response :success
   end
