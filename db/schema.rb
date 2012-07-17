@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(:version => 20120714114632) do
     t.integer  "user_id"
     t.integer  "commentable_id"
     t.string   "commentable_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(:version => 20120714114632) do
     t.text     "schedule_yaml"
     t.string   "url"
     t.string   "twitter"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.string   "location"
     t.string   "street"
     t.string   "zipcode"
@@ -61,8 +61,8 @@ ActiveRecord::Schema.define(:version => 20120714114632) do
     t.string   "topic"
     t.text     "description"
     t.integer  "event_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.datetime "occurrence"
     t.string   "url"
     t.integer  "duration"
@@ -107,26 +107,26 @@ ActiveRecord::Schema.define(:version => 20120714114632) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                 :default => "",    :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "",    :null => false
+    t.string   "email",                  :default => "",    :null => false
+    t.string   "encrypted_password",     :default => "",    :null => false
     t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                         :default => 0
+    t.integer  "sign_in_count",          :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "admin",                                 :default => false
-    t.string   "nickname",                              :default => "",    :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+    t.boolean  "admin",                  :default => false
+    t.string   "nickname",               :default => "",    :null => false
     t.text     "description"
     t.string   "github"
     t.string   "twitter"
     t.string   "homepage"
     t.string   "guid"
     t.boolean  "allow_ignore_view"
-    t.datetime "reset_password_sent_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
