@@ -104,13 +104,20 @@ class User < ActiveRecord::Base
   
   # Create a user from an OmniAuth request
   def self.from_omniauth(auth)
-    raise auth
+    auth_token = Authorization.where(auth.slice(:provider, :uid)).first
+    if auth_token
+      auth_token.user
+    else
+      user = self.create(nickname: auth.info.nickname, email: auth.info.email)
+      user.authorizations.create(auth.slice(:provider, :uid))
+      user
+    end
   end
   
   # Create a user with the devise session
-  def self.new_with_session(paramas, session)
+  def self.new_with_session(params, session)
     if session["devise.user_attributes"]
-      self.new(sesion["devise.user_attributes"]) do |user|
+      self.new(session["devise.user_attributes"]) do |user|
         user.attributes = params
         user.valid?
       end
