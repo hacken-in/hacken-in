@@ -74,6 +74,6 @@
 %p
   = t 'registrations.edit.delete_profile_text'
   %br
-  = button_to t('registrations.edit.delete_confirm'), registration_path(resource_name), confirm: t('common.confirm_delete'), method: :delete
+  = button_to t('registrations.edit.delete_confirm'), registration_path(resource_name), :"data-confirm" => t('common.confirm_delete'), method: :delete
 
 = link_to "Zurück", :back

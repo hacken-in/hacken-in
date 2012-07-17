@@ -34,7 +34,7 @@
     - if can? :update, @event
       = link_to "Editieren", edit_event_single_event_path(@event, @single_event)
     - if can? :delete, @single_event
-      = link_to "Löschen", event_single_event_path(@event, @single_event), method: :delete, confirm: "Wirklich löschen?"
+      = link_to "Löschen", event_single_event_path(@event, @single_event), method: :delete, :"data-confirm" => "Wirklich löschen?"
 
   - unless mobile?
     #twitter_like

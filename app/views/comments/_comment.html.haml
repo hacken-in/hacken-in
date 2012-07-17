@@ -15,4 +15,4 @@
       - if can? :edit, comment
         = link_to "Editieren", edit_comment_path(comment)
       - if can? :destroy, comment
-        = link_to "Löschen", comment_path(comment), confirm: "Ihren Kommentar wirklich löschen?", method: :delete
+        = link_to "Löschen", comment_path(comment), :"data-confirm" => "Ihren Kommentar wirklich löschen?", method: :delete

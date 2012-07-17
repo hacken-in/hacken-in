@@ -35,7 +35,7 @@
   = link_to t('events..show.edit'), edit_event_path(@event)
 
 - if can? :delete, @event
-  = link_to t('events.show.delete'), event_path(@event), method: :delete, confirm: t('events.show.delete_confirm')
+  = link_to t('events.show.delete'), event_path(@event), method: :delete, :"data-confirm" => t('events.show.delete_confirm')
 
 %h2= t('events.show.next_single_events')
 
@@ -47,7 +47,7 @@
         \-
         = single_event.topic
       - if can? :delete, single_event
-        = link_to t('events.show.delete'), event_single_event_path(single_event.event, single_event), method: :delete, confirm: t('events.show.delete_confirm')
+        = link_to t('events.show.delete'), event_single_event_path(single_event.event, single_event), method: :delete, :"data-confirm" => t('events.show.delete_confirm')
   %li= link_to "Neuen Termin anlegen", new_event_single_event_path(@event)
 
 %p= link_to "iCal für diese Eventserie abonnieren", url_for(action: "index", controller: "subscribe", format: "ical", only_path: false, event_id: @event.id)
@@ -60,7 +60,7 @@
       %li
         = string_for_rule(rrule)
         - if can? :destroy, @event
-          = link_to "Löschen", event_schedule_rule_path(@event, id: index), method: :delete, confirm: "Sind sie sicher?"
+          = link_to "Löschen", event_schedule_rule_path(@event, id: index), method: :delete, :"data-confirm" => "Sind sie sicher?"
 - else
   %p
     %em Keine Wiederholende Termine
@@ -80,7 +80,7 @@
     - @event.schedule.extimes.each_with_index do |exdate, index|
       %li
         = exdate.strftime("%d.%m.%Y um %H:%M")
-        = link_to "Löschen", event_schedule_exdate_path(@event, id: index), method: :delete, confirm: "Sind sie sicher?"
+        = link_to "Löschen", event_schedule_exdate_path(@event, id: index), method: :delete, :"data-confirm" => "Sind sie sicher?"
 
 %p
   %a{href: "/"}= t('events.show.back')
