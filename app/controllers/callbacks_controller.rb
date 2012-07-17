@@ -1,8 +1,10 @@
 class CallbacksController < Devise::OmniauthCallbacksController
-  def twitter
+  
+  # One method to serve them all!
+  def all
     user = User.from_omniauth(request.env["omniauth.auth"])
     if user.persisted?
-      flash.notice = "Eingeloggt via Twitter"
+      flash.notice = "Signed in via #{request.env["omniauth.auth"]["provider"].capitalize}"
       sign_in_and_redirect user
     else
       session["devise.user_attributes"] = user.attributes
@@ -10,16 +12,9 @@ class CallbacksController < Devise::OmniauthCallbacksController
     end
   end
   
-  def linkedin
-  end
-  
-  def facebook
-  end
-  
-  def google_oauth2
-  end
-  
-  def github
-  end
-  
+  alias_method :linkedin, :all
+  alias_method :twitter, :all
+  alias_method :facebook, :all
+  alias_method :google_oauth2, :all
+  alias_method :github, :all
 end
