@@ -142,7 +142,7 @@ class EventTest < ActiveSupport::TestCase
       event.future_single_events_cleanup
     end
 
-    assert_false SingleEvent.exists?(first_single_event_id), "SingleEvent with id=#{first_single_event_id} should be deleted by cleanup."
+    assert !SingleEvent.exists?(first_single_event_id), "SingleEvent with id=#{first_single_event_id} should be deleted by cleanup."
   end
 
   test "don't remove single events that match the rules" do
