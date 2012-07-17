@@ -43,7 +43,7 @@ class UserTest < ActiveSupport::TestCase
 
   test "ignore tags are not publicy viewable by default" do
     user = FactoryGirl.create(:user)
-    assert_false user.allow_ignore_view?
+    assert !user.allow_ignore_view?
   end
 
   test "user doesn't change his guid" do
