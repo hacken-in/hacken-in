@@ -26,7 +26,7 @@ Hcking::Application.routes.draw do
     end
 
     resources :single_events, path: "dates" do
-      resource :participate, only: [:create, :destroy]
+      resource :participate, only: [:update], constraints: { state: /(push|delete)/ }
       resources :comments, except: [:new]
     end
     # to hold old url on life
