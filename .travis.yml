@@ -8,6 +8,7 @@ matrix:
   allow_failures:
     - rvm: rbx-19mode
     - rvm: ruby-head
+bundler_args: --without development
 before_script:
   - "cp config/database.yml_example config/database.yml"
 script: "bundle exec rake db:drop db:create db:migrate test"
