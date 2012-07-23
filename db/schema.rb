@@ -11,14 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120714114632) do
+ActiveRecord::Schema.define(:version => 20120723212605) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
     t.string   "uid"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "token"
+    t.string   "secret"
+    t.datetime "token_expires"
+    t.string   "temp_token"
   end
 
   add_index "authorizations", ["user_id"], :name => "index_authorizations_on_user_id"
@@ -107,8 +111,8 @@ ActiveRecord::Schema.define(:version => 20120714114632) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "",    :null => false
-    t.string   "encrypted_password",     :default => "",    :null => false
+    t.string   "email"
+    t.string   "encrypted_password"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -127,6 +131,7 @@ ActiveRecord::Schema.define(:version => 20120714114632) do
     t.string   "homepage"
     t.string   "guid"
     t.boolean  "allow_ignore_view"
+    t.string   "image_url"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
