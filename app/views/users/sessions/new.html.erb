@@ -20,7 +20,7 @@
 	<li><%= link_to "Sign in with Google", user_omniauth_authorize_url(:google_oauth2) %></li>
 	<li><%= link_to "Sign in with GitHub", user_omniauth_authorize_url(:github) %></li>
 	<li><%= link_to "Sign in with Linkedin", user_omniauth_authorize_url(:linkedin) %></li>
-	<li>Sign in with Facebook</li>
+	<li><%= link_to "Sign in with Facebook", user_omniauth_authorize_url(:facebook) %></li>
 </ul>
 
 <%= render partial: "users/shared/links" %>

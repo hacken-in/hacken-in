@@ -3,7 +3,6 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable, :lockable and :timeoutable
   devise :database_authenticatable, :registerable, :omniauthable, 
          :recoverable, :rememberable, :trackable, :validatable
-
   # Tags hated by the user
   acts_as_taggable_on :hates
   acts_as_taggable_on :likes
@@ -15,8 +14,12 @@ class User < ActiveRecord::Base
   has_many :authorizations
   
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :allow_ignore_view
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :allow_ignore_view, :image_url
   attr_protected :admin
+  
+  # Temporary auth token and method to store it when we are done :)
+  attr_accessor :auth_temp_token
+  after_save :associate_auth_token_with_account
 
   validates :nickname, uniqueness: true
   validates :nickname, presence: true
@@ -105,11 +108,17 @@ class User < ActiveRecord::Base
   # Create a user from an OmniAuth request
   def self.from_omniauth(auth)
     auth_token = Authorization.where(auth.slice(:provider, :uid)).first
+    # If we have a token without an associated user (user canceled signup), we delete it and the user has to sign up
+    if (auth_token && auth_token.user.nil?)
+      auth_token.destroy
+      auth_token = nil
+    end
+   
     if auth_token
       auth_token.user
     else
-      user = self.create(nickname: auth.info.nickname, email: auth.info.email)
-      user.authorizations.create(auth.slice(:provider, :uid))
+      temp_token = create_authorization(auth)
+      user = self.create(nickname: auth.info.nickname, image_url: auth.info.image, auth_temp_token: temp_token)
       user
     end
   end
@@ -127,8 +136,15 @@ class User < ActiveRecord::Base
   end
   
   # Password is only required if no authorizations are present
+  # or if no temp token is associated with the account
   def password_required?
-    super && authorizations.length > 0
+    super && authorizations.length == 0 && !auth_temp_token
+  end
+  
+  # E-Mail is only required if no authorizations are present
+  # or if no temp token is associated with the account
+  def email_required?
+    authorizations.length == 0 && !auth_temp_token
   end
   
   # Update only requires a password if we have one
@@ -140,4 +156,28 @@ class User < ActiveRecord::Base
     end
   end
   
+private
+  def associate_auth_token_with_account
+    if auth_temp_token
+      a = Authorization.find_by_temp_token(auth_temp_token)
+      auth_temp_token = nil
+      
+      unless a.nil?
+        a.temp_token = nil
+        a.user = self
+        a.save!
+      end
+    end
+  end
+  
+  def self.create_authorization(auth)
+    a = Authorization.new(provider: auth.provider, uid: auth.uid)
+    a.token = auth.credentials.token if auth.credentials? && auth.credentials.token?
+    a.secret = auth.credentials.secret if auth.credentials? && auth.credentials.secret?
+    a.token_expires = Time.at(auth.credentials.expires_at) if auth.credentials? && auth.credentials.expires? && auth.credentials.expires == true
+    a.temp_token = SecureRandom.hex(40)
+    a.save
+    a.temp_token
+  end
+
 end
