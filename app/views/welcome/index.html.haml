@@ -36,7 +36,7 @@
             - current_user.send(:"#{kind}_list").each do |tag|
               %li
                 = link_to tag, tag_path(tag)
-                = link_to "x", user_tag_path(user_id: current_user.id, id: tag, kind: kind), confirm: "Bist du sicher?", method: :delete, class: "delete", title: "Löschen"
+                = link_to "x", user_tag_path(user_id: current_user.id, id: tag, kind: kind), :"data-confirm" => "Bist du sicher?", method: :delete, class: "delete", title: "Löschen"
     - if !user_signed_in?
       %p
         %em Melde dich an, um Events mit bestimmten Tags zu #{text}.

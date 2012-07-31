@@ -34,7 +34,7 @@
     - if can? :update, @event
       = link_to "Editieren", edit_event_single_event_path(@event, @single_event)
     - if can? :delete, @single_event
-      = link_to "Löschen", event_single_event_path(@event, @single_event), method: :delete, confirm: "Wirklich löschen?"
+      = link_to "Löschen", event_single_event_path(@event, @single_event), method: :delete, :"data-confirm" => "Wirklich löschen?"
 
   - unless mobile?
     #twitter_like
@@ -62,23 +62,7 @@
 
 .clear
 
-%h3
-  = t ".participants"
-  - if @single_event.users.length > 0
-    = "(#{@single_event.users.length})"
-
-- if @single_event.users.empty?
-  %p
-    %em
-      Keine Teilnehmer
-- @single_event.users.each do |user|
-  = link_to gravatar_image_tag(user.email, gravatar: { default: :identicon, size: 32 }, alt: user.nickname, class: "gravatar_tooltip", title: user.nickname),
-    user_path(user)
-- if user_signed_in? && !@single_event.users.include?(current_user)
-  %p
-    = button_to "Ich nehme teil", participate_event_single_event_path(@single_event.event, @single_event), {method: :put}
-- elsif user_signed_in?
-  %p
-    = button_to "Ich nehme doch nicht teil", unparticipate_event_single_event_path(@single_event.event, @single_event), {method: :put}
+#participants
+  = render "participants"
 
 = render partial: "comments/comments", locals: {commentable: @single_event}

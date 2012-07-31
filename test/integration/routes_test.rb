@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class RoutesTest < ActionDispatch::IntegrationTest
-  fixtures :all
 
   test "get root" do
     assert_routing "/", { controller: "welcome", action: "index" }

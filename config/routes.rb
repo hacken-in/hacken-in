@@ -1,6 +1,9 @@
 Hcking::Application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: "callbacks" }
-
+  
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+  
   resources :users, only: [:show] do
     resources :tags,
       controller: :user_tags,
@@ -16,32 +19,18 @@ Hcking::Application.routes.draw do
   resources :comments, only: [:index]
 
   resources :events do
-    resources :comments,
-      only: [:show, :create, :edit, :update, :destroy, :index]
+    resources :comments, except: [:new]
     namespace "schedule" do
       resources :exdates, only: [:destroy]
       resources :rules, only: [:create, :destroy]
     end
 
     resources :single_events, path: "dates" do
-      member do
-        put :participate
-        put :unparticipate
-      end
-      resources :comments,
-        only: [:show, :create, :edit, :update, :destroy, :index]
+      resource :participate, only: [:update], constraints: { state: /(push|delete)/ }
+      resources :comments, except: [:new]
     end
-
-    # This is duplicate code, but the old routes with single_events must
-    # keep on working
-    resources :single_events do
-      member do
-        put :participate
-        put :unparticipate
-      end
-      resources :comments,
-        only: [:show, :create, :edit, :update, :destroy, :index]
-    end
+    # to hold old url on life
+    get "single_events/:id" => redirect { |params, request| "/events/#{params[:event_id]}/dates/#{params[:id]}" }
   end
 
   match "ical"                    => "ical#general"

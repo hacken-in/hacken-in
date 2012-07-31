@@ -1,6 +1,6 @@
 # Welcome
 
-[![Build Status](https://secure.travis-ci.org/nerdhub/hcking.png)](http://travis-ci.org/nerdhub/hcking)
+[![Build Status](https://secure.travis-ci.org/nerdhub/hcking.png?branch=master)](http://travis-ci.org/nerdhub/hcking)
 [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/nerdhub/hcking)
 
 This is the code of [hcking.de](http://hcking.de). Hcking.de is an event
@@ -38,7 +38,7 @@ If you want to work on the Project, follow the steps described here:
 
 If you want to add Events to your local page, you need an administrator:
 
-1. Run `rake setup:admin user=USERNAME password=PASSWORD email=EMAIL`
+1. Run `rake setup:admin`
 1. Now you can log in with your new administrator ;)
 
 ### Pow

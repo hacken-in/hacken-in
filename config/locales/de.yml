@@ -2,8 +2,9 @@ de:
 
   common:
     confirm_delete: Bist du sicher?
-    markdown_info: Hier kannst du <a href="%{syntax_link}">Markdown</a> benutzen.
-    markdown_preview_link: Vorschau
+    markdown_info: Hier kannst du <a href="%{syntax_link}" target="_blank">Markdown</a> benutzen.
+    show_preview: Vorschau
+    show_comment: Kommentar
     back: Zurück
 
   errors:
@@ -200,6 +201,7 @@ de:
       comment: Kommentar
       event: Event
       single_event: Termin
+      user: Benutzer
 
   comments:
     _form:

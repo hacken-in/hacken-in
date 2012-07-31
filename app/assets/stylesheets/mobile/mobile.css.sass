@@ -199,17 +199,37 @@ form.new_comment
       margin-top: 0
       font-size: 70%
 
+.preview-display
+  background-color: #ddd
+  overflow-y: scroll
+  margin-bottom: 20px
+
+.preview 
+  float: left
+  .show-preview, .show-comment
+    text-decoration: underline
+    padding: 5px
+    height: 10px
+
+    &.active
+      text-decoration: none
+      color: $highlight_color
+
+
 .help
-  overflow: auto
   margin-bottom: 15px
-  .preview
-    float: left
   .info
     font-size: 9px
     float: right
     margin-top: 5px
 
+form.edit_user
+  .preview-display
+    margin-left: 0
+
 form.event, form.single_event
+  .previewable
+    margin-bottom: 0
   .help
     width: 95%
   fieldset

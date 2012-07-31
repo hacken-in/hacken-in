@@ -5,15 +5,12 @@
         hintText: "Gebe einen Tag ein", noResultsText:"Kein Tag gefunden", searchingText:"Suche...",
         tokenValue: "name", prePopulate: #{ tag_list_for_taggable(event) }});
       $("#event_name").focus();
-
-      registerPreviewHook('#event_description');
     });
 
 = semantic_form_for event do |form|
   = form.inputs do
     = form.input :name
-    .markdown-preview
-    = form.input :description, input_html: { class: 'autogrow', rows: 10}
+    = form.input :description, input_html: { class: 'autogrow preview-base', rows: 10 }, wrapper_html: { class: 'previewable' }
     %li
       %label
       = render "commons/markdown_info"

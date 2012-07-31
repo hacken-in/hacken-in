@@ -260,26 +260,24 @@ fieldset
 form
   .help
     color: #9f9f9f
-    margin-top: 5px
     font-size: 13px
-    overflow: auto
-    .preview
-      float: left
     .info
       float: right
 
 form.edit_user
   .help
     width: 510px
-  .markdown-preview
+  .preview-display
     margin-left: 0
 
 form.event, form.single_event
+  .previewable
+    margin-bottom: 0
   .help
     margin: 0 0 0 200px
     width: 573px
     
-  .markdown-preview
+  .preview-display
     margin-left: 201px
     padding: 10px
     width: 554px
@@ -322,4 +320,22 @@ form.event, form.single_event
     cursor: pointer
     &:hover
       color: $highlight_color
+
+.preview-display
+  background-color: #ddd
+  overflow-y: scroll
+  margin-bottom: 20px
+
+.preview 
+  float: left
+  .show-preview, .show-comment
+    text-decoration: underline
+    padding: 5px
+    height: 10px
+
+    &.active
+      text-decoration: none
+      color: $highlight_color
+
+
 

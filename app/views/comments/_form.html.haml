@@ -2,6 +2,7 @@
   / TODO: (comment.user.nil? ? current_user.email : comment.user_email) smells like ***
   = gravatar_image_tag((comment.user.nil? ? current_user.email : comment.user_email),gravatar: { default: :identicon, size: 32 }, class: 'gravatar_user_input')
   .content
-    = form.text_area :body
+    .previewable
+      = form.text_area :body, class: 'preview-base'
     = render "commons/markdown_info"
     = form.submit t('comments._form.comment_button')
