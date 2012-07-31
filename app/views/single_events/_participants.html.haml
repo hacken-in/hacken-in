@@ -8,8 +8,7 @@
     %em
       Keine Teilnehmer
 - @single_event.users.each do |user|
-  = link_to gravatar_image_tag(user.email, gravatar: { default: :identicon, size: 32 }, alt: user.nickname, class: "gravatar_tooltip", title: user.nickname),
-    user_path(user)
+  = link_to avatar_for_user(user, 32, 'gravatar_tooltip'), user_path(user)
 - if user_signed_in? && !@single_event.users.include?(current_user)
   %p
     = button_to "Ich nehme teil", event_single_event_participate_path(@single_event.event, @single_event, state: :push), { method: :put, remote: true, "data-type" => "js" }
