@@ -18,7 +18,7 @@ class EventTest < ActiveSupport::TestCase
     assert_equal test_date.to_date, event.schedule.all_occurrences.first.to_date
 
     event = Event.new(name: "Hallo")
-    event.schedule_yaml = "--- \n:start_date: #{test_date.to_s(:rfc822)}\n:rrules: []\n\n:exrules: []\n\n:rdates: \n- #{test_date.to_s(:rfc822)}\n:exdates: []\n\n:duration: \n:end_time: \n"
+    event.schedule_yaml = "--- \n:start_date: #{test_date}\n:rrules: []\n\n:exrules: []\n\n:rdates: \n- #{test_date}\n:exdates: []\n\n:duration: \n:end_time: \n"
     
     assert_equal 1, event.schedule.all_occurrences.size
     
