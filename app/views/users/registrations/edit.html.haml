@@ -52,7 +52,7 @@
     %p=t 'registrations.oauth.more'
     %ul
       - f.object.available_providers.each do |provider|
-        %li=link_to t('add_service', provider: provider.to_s.humanize), user_omniauth_authorize_url(provider)
+        %li=link_to t('registrations.oauth.add_service', provider: provider.to_s.humanize), user_omniauth_authorize_url(provider)
     
   %fieldset
     %legend

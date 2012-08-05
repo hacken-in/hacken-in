@@ -58,7 +58,19 @@ class User < ActiveRecord::Base
     end
 
   end
-
+  
+  # ToDo
+  
+  # This is required for the oauth stuff
+  def update_with_password(params, *options)
+    if encrypted_password.blank?
+      update_attributes(params.except(:current_password), *options)
+    else
+      super
+    end
+  end
+  
+  
   def allow_ignore_view?
     !!self.allow_ignore_view
   end
@@ -115,11 +127,8 @@ class User < ActiveRecord::Base
     end
         
     if auth_token
-      # If there is an OAuth token attached we refresh the one we have in the database
-      auth_token.token = auth.credentials.token if auth.credentials? && auth.credentials.token?
-      auth_token.secret = auth.credentials.secret if auth.credentials? && auth.credentials.secret?
-      auth_token.token_expires = Time.at(auth.credentials.expires_at) if auth.credentials? && auth.credentials.expires? && auth.credentials.expires == true
-      auth_token.save
+      # If there is an OAuth token attached we refresh the one we have in the database      
+      auth_token.update_attributes(token: auth.credentials.token, secret: auth.credentials.secret, token_expires: Time.at(auth.credentials.expires_at))
       auth_token.user
     else
       temp_token = Authorization.create_authorization(auth).temp_token
@@ -150,15 +159,6 @@ class User < ActiveRecord::Base
   # or if no temp token is associated with the account
   def email_required?
     authorizations.length == 0 && !auth_temp_token
-  end
-  
-  # Update only requires a password if we have one
-  def update_with_password(params, *options)
-    if encrypted_password.blank?
-      update_attributes(params.except(:current_password), *options)
-    else
-      super
-    end
   end
 
   def to_s
