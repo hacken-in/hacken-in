@@ -123,7 +123,7 @@ class User < ActiveRecord::Base
       auth_token.user
     else
       temp_token = create_authorization(auth)
-      user = self.create(nickname: auth.info.nickname, image_url: auth.info.image, auth_temp_token: temp_token)
+      user = self.create(nickname: auth.info.nickname, email: auth.info.email, image_url: auth.info.image, auth_temp_token: temp_token)
       user
     end
   end
