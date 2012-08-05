@@ -5,12 +5,14 @@ Hcking::Application.routes.draw do
   ActiveAdmin.routes(self)
   
   resources :users, only: [:show] do
+    resources :authorizations, only: [:destroy]
     resources :tags,
-      controller: :user_tags,
+
       path: ":kind",
       constraints: { id: /.*/, kind: /(like|hate)/ },
       only: [:create, :destroy]
   end
+  
 
 
   match "tags/:tagname"  => "tags#show", constraints: { tagname: /.*/ }

@@ -38,19 +38,35 @@
   %p
     = f.check_box :allow_ignore_view
     = f.label :allow_ignore_view, t('users.edit.allow_ignore_view')
-
-
+    
+  %fieldset
+    %legend= t 'registrations.oauth.title'
+    %ul
+      - f.object.authorizations.each do |auth|
+        %li
+          = "#{auth.provider.humanize} (User ID: #{auth.uid})"
+          = link_to t('registrations.oauth.delete'), user_authorization_path(f.object, auth), :"data-confirm" => t('common.confirm_delete'), method: :delete unless f.object.needs_one_authorization?
+    - if f.object.needs_one_authorization?
+      %p=t 'registrations.oauth.only_one_no_password'
+            
+    %p=t 'registrations.oauth.more'
+    %ul
+      - f.object.available_providers.each do |provider|
+        %li=link_to t('add_service', provider: provider.to_s.humanize), user_omniauth_authorize_url(provider)
+    
   %fieldset
     %legend
-      = t 'registragions.edit.danger_zone'
-    %p
-      %em
-        = t('registrations.edit.warning')
-    %p
-      = f.label :current_password
-      %br
-      = f.password_field :current_password
-
+      = t 'registragions.edit.danger_zone'  
+    - if f.object.encrypted_password?
+      %p
+        %em= t('registrations.edit.warning')
+      %p
+        = f.label :current_password
+        %br
+        = f.password_field :current_password
+    - else
+      %p
+        %em=t('registrations.oauth.email')
     %p
       = f.label :email
       %br
@@ -66,7 +82,7 @@
       = f.label :password_confirmation
       %br
       = f.password_field :password_confirmation
-
+        
   %p= f.submit t('registrations.edit.save_profile')
 
 %h3= t 'registrations.edit.delete_profile'

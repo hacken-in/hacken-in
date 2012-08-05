@@ -113,9 +113,8 @@ class User < ActiveRecord::Base
       auth_token.destroy
       auth_token = nil
     end
-   
+        
     if auth_token
-      
       # If there is an OAuth token attached we refresh the one we have in the database
       auth_token.token = auth.credentials.token if auth.credentials? && auth.credentials.token?
       auth_token.secret = auth.credentials.secret if auth.credentials? && auth.credentials.secret?
@@ -123,7 +122,7 @@ class User < ActiveRecord::Base
       auth_token.save
       auth_token.user
     else
-      temp_token = create_authorization(auth)
+      temp_token = Authorization.create_authorization(auth).temp_token
       user = self.create(nickname: auth.info.nickname, email: auth.info.email, image_url: auth.info.image, auth_temp_token: temp_token)
       user
     end
@@ -156,10 +155,19 @@ class User < ActiveRecord::Base
   # Update only requires a password if we have one
   def update_with_password(params, *options)
     if encrypted_password.blank?
-      update_attributes(params, *options)
+      update_attributes(params.except(:current_password), *options)
     else
       super
     end
+  end
+  
+  # This method checks if there is only one authorization left and the user has no password
+  def needs_one_authorization?
+    self.encrypted_password.blank? && self.authorizations.count == 1
+  end
+  
+  def available_providers
+    User.omniauth_providers - self.authorizations.map{ |a| a.provider.to_sym }
   end
   
 private
@@ -175,15 +183,4 @@ private
       end
     end
   end
-  
-  def self.create_authorization(auth)
-    a = Authorization.new(provider: auth.provider, uid: auth.uid)
-    a.token = auth.credentials.token if auth.credentials? && auth.credentials.token?
-    a.secret = auth.credentials.secret if auth.credentials? && auth.credentials.secret?
-    a.token_expires = Time.at(auth.credentials.expires_at) if auth.credentials? && auth.credentials.expires? && auth.credentials.expires == true
-    a.temp_token = SecureRandom.hex(40)
-    a.save
-    a.temp_token
-  end
-
 end
