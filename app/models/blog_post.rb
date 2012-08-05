@@ -11,6 +11,10 @@ class BlogPost < ActiveRecord::Base
 
   validates_presence_of :headline, :headline_teaser, :teaser_text, :text, :user, :category
 
+  def to_s
+    headline
+  end
+
   private
 
   def set_defaults

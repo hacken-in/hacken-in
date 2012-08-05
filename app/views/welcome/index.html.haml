@@ -18,6 +18,12 @@
 / ---- /main_content ----------
 
 - content_for :aside do
+  
+  %h2.first_head Blog
+
+  :markdown
+    Zum Blog geht es #{link_to "hier lang", blog_posts_path}.
+
   %h2.first_head Kalender
 
   :markdown
