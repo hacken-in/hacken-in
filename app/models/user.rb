@@ -115,6 +115,11 @@ class User < ActiveRecord::Base
     end
    
     if auth_token
+      # If there is an OAuth token attached we refresh the one we have in the database
+      auth_token.token = auth.credentials.token if auth.credentials? && auth.credentials.token?
+      auth_token.secret = auth.credentials.secret if auth.credentials? && auth.credentials.secret?
+      auth_token.token_expires = Time.at(auth.credentials.expires_at) if auth.credentials? && auth.credentials.expires? && auth.credentials.expires == true
+      
       auth_token.user
     else
       temp_token = create_authorization(auth)
