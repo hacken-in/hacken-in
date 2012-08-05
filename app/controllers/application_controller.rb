@@ -10,6 +10,16 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, alert: "Leider darfst du das nicht."
   end
 
+  # TODO: Dies ist notwendig, da bei ActiveAdmin noch ein
+  #       Bug existiert, der das Locale leider auf Englisch 
+  #       zurücksetzt. Siehe auch:
+  #       https://github.com/gregbell/active_admin/issues/434
+  before_filter :set_locale
+
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
+
   private
 
   def set_current_user
