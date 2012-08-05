@@ -1,6 +1,6 @@
 = form_for comment, url: comment.new_record? ? comments_path(comment) : comment_path(comment) do |form|
   / TODO: (comment.user.nil? ? current_user.email : comment.user_email) smells like ***
-  = gravatar_image_tag((comment.user.nil? ? current_user.email : comment.user_email),gravatar: { default: :identicon, size: 32 }, class: 'gravatar_user_input')
+  = avatar_for_user((comment.user.nil? ? current_user : comment.user), 32, 'gravatar_user_input')
   .content
     .previewable
       = form.text_area :body, class: 'preview-base'
