@@ -161,6 +161,10 @@ class User < ActiveRecord::Base
       super
     end
   end
+
+  def to_s
+    nickname
+  end
   
 private
   def associate_auth_token_with_account
