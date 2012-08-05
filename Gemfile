@@ -68,6 +68,9 @@ gem 'gravatar_image_tag', '~> 1.1.0'
 # Truncate HTML on SingleEvent Pages
 gem 'html_truncator', '~> 0.3.0'
 
+# Twitter Bootstrap
+gem 'bootstrap-sass-rails'
+
 # facebook style tooltip jQuery plugin
 gem 'tipsy-rails', '~> 1.0.2'
 

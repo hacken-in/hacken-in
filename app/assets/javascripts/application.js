@@ -13,3 +13,4 @@
 //= require tipsy
 //= require leaflet
 //= require_tree .
+//= require twitter/bootstrap
