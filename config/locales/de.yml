@@ -197,11 +197,29 @@ de:
         occurrence: Termin
       comment:
         body: Inhalt
+      category:
+        title: Titel
+        color: Farbe
+      blog_post:
+        user: Benutzer
+        category: Kategorie
+        headline: Überschrift
+        publishable: Anzeigen auf der Webseite
+        publishable_from: Anzeigen ab
+        use_in_newsletter: Im Newsletter verwenden?
+        headline_teaser: Teaser für die Startseite
+        teaser_text: Teaser
     models:
       comment: Kommentar
       event: Event
       single_event: Termin
       user: Benutzer
+      category:
+        one: Kategorie
+        other: Kategorieen
+      blog_post:
+        one: Blogeintrag
+        other: Blogeinträge
 
   comments:
     _form:

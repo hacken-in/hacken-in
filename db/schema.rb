@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120723212605) do
+ActiveRecord::Schema.define(:version => 20120805151621) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -59,6 +59,30 @@ ActiveRecord::Schema.define(:version => 20120723212605) do
   end
 
   add_index "authorizations", ["user_id"], :name => "index_authorizations_on_user_id"
+
+  create_table "blog_posts", :force => true do |t|
+    t.string   "headline"
+    t.text     "headline_teaser"
+    t.text     "teaser_text"
+    t.text     "text"
+    t.integer  "user_id"
+    t.boolean  "publishable"
+    t.integer  "category_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.datetime "publishable_from"
+    t.boolean  "use_in_newsletter"
+  end
+
+  add_index "blog_posts", ["category_id"], :name => "index_blog_posts_on_category_id"
+  add_index "blog_posts", ["user_id"], :name => "index_blog_posts_on_user_id"
+
+  create_table "categories", :force => true do |t|
+    t.string   "title"
+    t.string   "color"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "comments", :force => true do |t|
     t.text     "body"

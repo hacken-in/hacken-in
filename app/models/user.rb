@@ -160,6 +160,10 @@ class User < ActiveRecord::Base
       super
     end
   end
+
+  def to_s
+    nickname
+  end
   
   # This method checks if there is only one authorization left and the user has no password
   def needs_one_authorization?

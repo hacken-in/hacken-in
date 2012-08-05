@@ -1,0 +1,14 @@
+= semantic_form_for [:admin, @blog_post] do |f|
+  = f.inputs "Details" do
+    = f.input :category
+    = f.input :user
+    = f.input :headline
+    = f.input :publishable_from
+    = f.input :publishable
+    = f.input :use_in_newsletter
+  = f.inputs "Teaser" do
+    = f.input :headline_teaser, input_html: {rows: 1}
+    = f.input :teaser_text, input_html: {rows: 3}
+  = f.inputs "Inhalt" do
+    = f.input :text
+  = f.button
