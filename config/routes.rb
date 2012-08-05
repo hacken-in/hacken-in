@@ -6,8 +6,9 @@ Hcking::Application.routes.draw do
   
   resources :users, only: [:show] do
     resources :authorizations, only: [:destroy]
+    
     resources :tags,
-
+      controller: :user_tags,
       path: ":kind",
       constraints: { id: /.*/, kind: /(like|hate)/ },
       only: [:create, :destroy]
