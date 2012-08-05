@@ -79,6 +79,7 @@ group :development do
   group :darwin do
     gem 'rb-fsevent', '~> 0.9.0pre4'
     gem 'growl', '~> 1.0.3'
+#    gem 'terminal-notifier'
   end
 
   # YARD:
@@ -86,7 +87,7 @@ group :development do
   gem 'rdiscount', '~> 1.6.8'
 
   # guard
-  gem 'guard', '~> 1.2.3'
+  gem 'guard', '~> 1.3.0'
   gem 'guard-test', '~> 0.5.0'
   gem 'guard-livereload', '~> 1.0.0'
   gem 'guard-pow', '~> 1.0.0'

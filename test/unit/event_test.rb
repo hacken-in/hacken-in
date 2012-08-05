@@ -2,10 +2,10 @@
 require 'test_helper'
 
 class EventTest < ActiveSupport::TestCase
-
+  
   test "can be saved" do
-    
     test_date = 7.days.from_now
+    test_date += 2.hours if test_date.hour < 2
     
     event = Event.new(name: "Hallo")
     assert_equal 0, event.schedule.all_occurrences.size
@@ -21,6 +21,7 @@ class EventTest < ActiveSupport::TestCase
     event.schedule_yaml = "--- \n:start_date: #{test_date}\n:rrules: []\n\n:exrules: []\n\n:rdates: \n- #{test_date}\n:exdates: []\n\n:duration: \n:end_time: \n"
     
     assert_equal 1, event.schedule.all_occurrences.size
+    
     assert_equal test_date.to_date, event.schedule.all_occurrences.first.to_date
 
     event = Event.new(name: "Hallo")
@@ -160,8 +161,8 @@ class EventTest < ActiveSupport::TestCase
   test "should get single events ordered" do
     event = FactoryGirl.create(:simple)
 
-    first = (Time.now + 2.days).localtime
-    second = (Time.now + 5.days).localtime
+    first = (Time.now + 2.days + (Time.now.hour < 2 ? 2.hours : 0)).localtime
+    second = (Time.now + 5.days + (Time.now.hour < 2 ? 2.hours : 0)).localtime
 
     SingleEvent.create(event: event, occurrence: second)
     SingleEvent.create(event: event, occurrence: first)
