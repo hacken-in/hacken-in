@@ -1,0 +1,9 @@
+%h1= @blog_post.headline
+%h2= @blog_post.headline_teaser
+
+#teaser
+  %p
+    %em= @blog_post.teaser_text
+
+#blog_text
+  = convert_markdown @blog_post.text
