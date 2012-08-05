@@ -38,4 +38,8 @@ Hcking::Application.configure do
   config.active_support.deprecation = :stderr
 
   config.action_mailer.default_url_options = { host: "hcking.de" }
+  
+  # OmniAuth in testing mode
+  OmniAuth.config.test_mode = true
+ 
 end

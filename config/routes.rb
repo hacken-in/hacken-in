@@ -1,10 +1,9 @@
 Hcking::Application.routes.draw do
-  ActiveAdmin.routes(self)
-
+  devise_for :users, controllers: { omniauth_callbacks: "callbacks" }
+  
   devise_for :admin_users, ActiveAdmin::Devise.config
-
-  devise_for :users
-
+  ActiveAdmin.routes(self)
+  
   resources :users, only: [:show] do
     resources :tags,
       controller: :user_tags,
@@ -12,6 +11,7 @@ Hcking::Application.routes.draw do
       constraints: { id: /.*/, kind: /(like|hate)/ },
       only: [:create, :destroy]
   end
+
 
   match "tags/:tagname"  => "tags#show", constraints: { tagname: /.*/ }
   resources :tags, constraints: { id: /.*/ }, only: [:show, :index]
@@ -43,4 +43,5 @@ Hcking::Application.routes.draw do
   match ":page_name"              => "pages#show"
 
   root to: "welcome#index"
+  
 end

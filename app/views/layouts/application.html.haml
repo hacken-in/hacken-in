@@ -45,7 +45,7 @@
         - if user_signed_in?
           Hallo
           %a{href: user_path(current_user)}<
-            = gravatar_image_tag(current_user.email, gravatar: { default: :identicon, size: 16 })
+            = avatar_for_user(current_user, 16)
           %a{href: user_path(current_user)}<
             = current_user.nickname
           \|

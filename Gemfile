@@ -43,6 +43,14 @@ gem 'devise', '~> 2.1.1'
 # Authorisation
 gem 'cancan', '~> 1.6.7'
 
+#Omniauth 
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-github'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-linkedin'
+
 # Other dependencies
 gem 'jquery-rails', '~> 2.0.0'
 gem 'gabba', '~> 0.3.0'
