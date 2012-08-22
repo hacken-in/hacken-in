@@ -219,7 +219,7 @@ class EventTest < ActiveSupport::TestCase
     event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
     event.save
 
-    event.single_events.create(topic: "test topic")
+    event.single_events.create(name: "test name")
 
     #    existing single events should be removed
     event.schedule.remove_recurrence_rule IceCube::Rule.weekly.day(:thursday)

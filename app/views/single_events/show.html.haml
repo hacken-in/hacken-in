@@ -1,9 +1,9 @@
 .left_side
   - title @single_event.event_title
 
-  - if @single_event.topic?
+  - if @single_event.name?
     %h2
-      = @single_event.topic
+      = @single_event.name
 
   %h2
     = @single_event.full_day ? @single_event.occurrence.strftime("%d.%m.%Y") :  @single_event.occurrence.strftime("%d.%m.%Y um %H:%M")

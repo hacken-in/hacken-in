@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120805151621) do
+ActiveRecord::Schema.define(:version => 20120822201654) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -102,8 +102,8 @@ ActiveRecord::Schema.define(:version => 20120805151621) do
     t.text     "schedule_yaml"
     t.string   "url"
     t.string   "twitter"
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
     t.string   "location"
     t.string   "street"
     t.string   "zipcode"
@@ -111,19 +111,23 @@ ActiveRecord::Schema.define(:version => 20120805151621) do
     t.string   "country"
     t.float    "latitude"
     t.float    "longitude"
-    t.boolean  "full_day",        :default => false
+    t.boolean  "full_day",           :default => false
     t.string   "twitter_hashtag"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "events", ["latitude"], :name => "index_events_on_latitude"
   add_index "events", ["longitude"], :name => "index_events_on_longitude"
 
   create_table "single_events", :force => true do |t|
-    t.string   "topic"
+    t.string   "name"
     t.text     "description"
     t.integer  "event_id"
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
     t.datetime "occurrence"
     t.string   "url"
     t.integer  "duration"
@@ -136,7 +140,11 @@ ActiveRecord::Schema.define(:version => 20120805151621) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "twitter_hashtag"
-    t.boolean  "based_on_rule",   :default => false
+    t.boolean  "based_on_rule",      :default => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "single_events", ["event_id"], :name => "index_single_events_on_event_id"

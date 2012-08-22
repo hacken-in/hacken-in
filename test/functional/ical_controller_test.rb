@@ -15,7 +15,7 @@ class IcalControllerTest < ActionController::TestCase
     end
     event += "DESCRIPTION:#{description}\n"
     event += "URL:http://hcking.dev/events/#{single_event.event.id}/dates/#{single_event.id}\n"
-    event += "SUMMARY:#{single_event.title}\n"
+    event += "SUMMARY:#{single_event.full_name}\n"
 
     loc = [single_event.location, single_event.address].delete_if{|d|d.blank?}.join(", ").strip
     event += "LOCATION:#{loc.gsub(",", "\\,")}\n" unless loc.blank?
@@ -78,7 +78,7 @@ DESC
     event4.city = "cologne"
     event4.save
     se = event4.single_events.first
-    se.topic = "First Event"
+    se.name = "First Event"
     se.description = "First Event Description"
     se.save
     @vcal_event4 = generate_event_entry(event4.single_events.first, "First Event Description")
@@ -91,7 +91,7 @@ DESC
     event5.city = "cologne"
     event5.save
     se = event5.single_events.first
-    se.topic = "First Event"
+    se.name = "First Event"
     se.description = "First Event Description"
     se.full_day = true
     se.save
@@ -106,7 +106,7 @@ DESC
     event6.description = "event text"
     event6.save
     se = event6.single_events.first
-    se.topic = "First Event"
+    se.name = "First Event"
     se.description = "First Event Description"
     se.duration = 5
     se.save
