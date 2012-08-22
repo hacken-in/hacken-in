@@ -2,7 +2,15 @@
 require 'test_helper'
 
 class EventTest < ActiveSupport::TestCase
-  
+
+  test "validate presence of name" do
+    event = Event.new name: 'event'
+    assert event.valid?
+
+    event_without_name = Event.new
+    assert_equal false, event_without_name.valid?
+  end
+
   test "can be saved" do
     test_date = 7.days.from_now
     test_date += 2.hours if test_date.hour < 2
@@ -240,5 +248,6 @@ class EventTest < ActiveSupport::TestCase
     event.reload
     assert_equal 11, event.single_events.count
   end
+
 
 end
