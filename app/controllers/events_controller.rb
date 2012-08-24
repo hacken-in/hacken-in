@@ -62,6 +62,12 @@ class EventsController < ApplicationController
     respond_with @product, location: root_path
   end
 
+  def history
+    authorize! :index, Event
+    @events = SingleEvent.where("occurrence < ?", Time.now.at_beginning_of_day)
+    respond_with @events
+  end
+
   private
 
   def determine_start_time_for_event(event)

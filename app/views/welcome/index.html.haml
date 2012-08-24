@@ -11,6 +11,8 @@
 
   %p
     = link_to "Alle Events", events_path
+    |
+    = link_to "vergangene Events", history_path 
     - if can? :create, Event
       |
       = link_to "Event hinzufügen", new_event_path

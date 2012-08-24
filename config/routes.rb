@@ -44,6 +44,7 @@ Hcking::Application.routes.draw do
   match "event_ical/:id"          => "ical#for_event"
   match "tag_ical/:id"            => "ical#for_tag"
   match "abonnieren"              => "subscribe#index"
+  match "history"                 => "events#history"
   match ":page_name"              => "pages#show"
 
   root to: "welcome#index"
