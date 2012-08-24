@@ -1,0 +1,14 @@
+%h1 Alle vergangenen Events
+
+%ul
+  - @events.each do |event|
+    %li
+      = link_to event.name, event_path(event)
+      <br/>
+      = render "tags/tags", tag_list: event.tag_list
+
+- if can? :create, Event
+  %p
+    = link_to "Event hinzufügen", new_event_path
+
+= link_to t('common.back'), :back
