@@ -30,7 +30,7 @@ module ApplicationHelper
     if without_follow
       render_class = HTMLwithoutFollow
     else
-      render_class = Redcarpet::Render::HTML
+      render_class = MdEmoji::Render
     end
 
     markdown_compiler = Redcarpet::Markdown.new(render_class.new filter_html: true, no_styles: true, safe_links_only: true)
@@ -69,7 +69,7 @@ module ApplicationHelper
     end
     "An jedem #{occurrence} #{I18n.t("date.day_names")[rule.validations_for(:day_of_week).first.day]} des Monats"
   end
-  
+
   def avatar_for_user(user, size=16, class_name=nil)
     if user.image_url?
       image_tag(user.image_url, width: size, alt: user.nickname, class: class_name)

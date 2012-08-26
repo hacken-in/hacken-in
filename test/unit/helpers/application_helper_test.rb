@@ -22,6 +22,11 @@ class ApplicationHelperTest < ActionView::TestCase
     assert_no_match /<script>/, convert_markdown(text_with_arbitrary_html)
   end
 
+  def test_convert_with_emoji
+    mtext = "I am *italic* :smile:"
+    assert_equal "<p>I am <em>italic</em> <img src=\"/assets/emojis/smile.png\" class=\"emoji\" title=\":smile:\" alt=\":smile:\" height=\"20\" width=\"20\"></p>\n", convert_markdown(mtext)
+  end
+
   def test_convert_markdown_links
     markdown_formatted_text = "Let me [google](http://www.google.de) that for you"
 
