@@ -209,11 +209,16 @@ de:
         use_in_newsletter: Im Newsletter verwenden?
         headline_teaser: Teaser für die Startseite
         teaser_text: Teaser
+      picture:
+        title: Titel
+        description: Beschreibung
+        image: Datei
     models:
       comment: Kommentar
       event: Event
       single_event: Termin
       user: Benutzer
+      picture: Bild
       category:
         one: Kategorie
         other: Kategorien
