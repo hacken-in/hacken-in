@@ -102,8 +102,8 @@ ActiveRecord::Schema.define(:version => 20120822201654) do
     t.text     "schedule_yaml"
     t.string   "url"
     t.string   "twitter"
-    t.datetime "created_at",                            :null => false
-    t.datetime "updated_at",                            :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.string   "location"
     t.string   "street"
     t.string   "zipcode"
@@ -111,12 +111,8 @@ ActiveRecord::Schema.define(:version => 20120822201654) do
     t.string   "country"
     t.float    "latitude"
     t.float    "longitude"
-    t.boolean  "full_day",           :default => false
+    t.boolean  "full_day",        :default => false
     t.string   "twitter_hashtag"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
   end
 
   add_index "events", ["latitude"], :name => "index_events_on_latitude"
@@ -126,8 +122,8 @@ ActiveRecord::Schema.define(:version => 20120822201654) do
     t.string   "name"
     t.text     "description"
     t.integer  "event_id"
-    t.datetime "created_at",                            :null => false
-    t.datetime "updated_at",                            :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.datetime "occurrence"
     t.string   "url"
     t.integer  "duration"
@@ -140,11 +136,7 @@ ActiveRecord::Schema.define(:version => 20120822201654) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "twitter_hashtag"
-    t.boolean  "based_on_rule",      :default => false
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
+    t.boolean  "based_on_rule",   :default => false
   end
 
   add_index "single_events", ["event_id"], :name => "index_single_events_on_event_id"
