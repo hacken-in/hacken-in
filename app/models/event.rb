@@ -5,6 +5,8 @@ class Event < ActiveRecord::Base
   include Location
   geocoded_by :address
 
+  validates_presence_of :name
+
   after_validation :reset_geocode
   before_save :schedule_to_yaml
   after_save :generate_single_events
