@@ -13,3 +13,4 @@ doc/*
 nbproject/*
 *.swp
 rails_best_practices_output.html
+public/uploads/*

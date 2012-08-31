@@ -19,18 +19,18 @@ class SingleEventTest < ActiveSupport::TestCase
     end
   end
 
-  test "should generate title based on topic" do
-    assert_equal "SimpleEvent (SimpleSingleEventTopic)", FactoryGirl.create(:single_event).title
-    assert_equal "SimpleEvent", FactoryGirl.create(:single_event_without_topic).title
+  test "should generate title based on name" do
+    assert_equal "SimpleEvent (SimpleSingleEventName)", FactoryGirl.create(:single_event).title
+    assert_equal "SimpleEvent", FactoryGirl.create(:single_event_without_name).title
   end
 
   test "should sort events via date if they are not on the same day" do
     time_now = Time.now
-    event_beginning_in_one_day = FactoryGirl.create(:single_event, occurrence: (time_now + 1.day), topic: "A")
+    event_beginning_in_one_day = FactoryGirl.create(:single_event, occurrence: (time_now + 1.day), name: "A")
     event_beginning_in_one_day.event.full_day = false
     event_beginning_in_one_day.event.save
 
-    event_beginning_now = FactoryGirl.create(:single_event, occurrence: time_now, topic: "A")
+    event_beginning_now = FactoryGirl.create(:single_event, occurrence: time_now, name: "A")
     event_beginning_now.event.full_day = false
     event_beginning_now.event.save
 
@@ -41,11 +41,11 @@ class SingleEventTest < ActiveSupport::TestCase
 
   test "should prefer all-day events when sorting" do
     time_now = Time.now
-    all_day_event = FactoryGirl.create(:single_event, occurrence: time_now, topic: "A")
+    all_day_event = FactoryGirl.create(:single_event, occurrence: time_now, name: "A")
     all_day_event.event.full_day = true
     all_day_event.event.save
 
-    not_all_day_event = FactoryGirl.create(:single_event, occurrence: time_now, topic: "A")
+    not_all_day_event = FactoryGirl.create(:single_event, occurrence: time_now, name: "A")
     not_all_day_event.event.full_day = false
     not_all_day_event.event.save
 
@@ -56,11 +56,11 @@ class SingleEventTest < ActiveSupport::TestCase
 
   test "should sort via title when both are all-day events" do
     time_now = Time.now
-    event_beginning_with_a = FactoryGirl.create(:single_event, occurrence: time_now, topic: "A")
+    event_beginning_with_a = FactoryGirl.create(:single_event, occurrence: time_now, name: "A")
     event_beginning_with_a.event.full_day = true
     event_beginning_with_a.event.save
 
-    event_beginning_with_b = FactoryGirl.create(:single_event, occurrence: time_now, topic: "B")
+    event_beginning_with_b = FactoryGirl.create(:single_event, occurrence: time_now, name: "B")
     event_beginning_with_b.event.full_day = true
     event_beginning_with_b.event.save
 
@@ -71,11 +71,11 @@ class SingleEventTest < ActiveSupport::TestCase
 
   test "should sort via time when both are not full day" do
     time_now = Time.now
-    event_beginning_in_one_hour = FactoryGirl.create(:single_event, occurrence: (time_now + 1.hour), topic: "A")
+    event_beginning_in_one_hour = FactoryGirl.create(:single_event, occurrence: (time_now + 1.hour), name: "A")
     event_beginning_in_one_hour.event.full_day = false
     event_beginning_in_one_hour.event.save
 
-    event_beginning_now = FactoryGirl.create(:single_event, occurrence: time_now, topic: "A")
+    event_beginning_now = FactoryGirl.create(:single_event, occurrence: time_now, name: "A")
     event_beginning_now.event.full_day = false
     event_beginning_now.event.save
 
@@ -86,11 +86,11 @@ class SingleEventTest < ActiveSupport::TestCase
 
   test "should sort via title when both are at the same time" do
     time_now = Time.now
-    event_beginning_with_a = FactoryGirl.create(:single_event, occurrence: time_now, topic: "A")
+    event_beginning_with_a = FactoryGirl.create(:single_event, occurrence: time_now, name: "A")
     event_beginning_with_a.event.full_day = false
     event_beginning_with_a.event.save
 
-    event_beginning_with_b = FactoryGirl.create(:single_event, occurrence: time_now, topic: "B")
+    event_beginning_with_b = FactoryGirl.create(:single_event, occurrence: time_now, name: "B")
     event_beginning_with_b.event.full_day = false
     event_beginning_with_b.event.save
 
@@ -99,14 +99,14 @@ class SingleEventTest < ActiveSupport::TestCase
     assert_equal sorted_collection.second, event_beginning_with_b
   end
 
-  test "should generate title and name" do
-    single = FactoryGirl.create(:single_event, topic: "A")
-    assert_equal "SimpleEvent (A)", single.title
-    assert_equal "SimpleEvent (A) am #{single.occurrence.strftime("%d.%m.%Y um %H:%M")}", single.name
+  test "should generate full name and name with date" do
+    single = FactoryGirl.create(:single_event, name: "A")
+    assert_equal "SimpleEvent (A)", single.full_name
+    assert_equal "SimpleEvent (A) am #{single.occurrence.strftime("%d.%m.%Y um %H:%M")}", single.name_with_date
   end
 
   test "should delete comment when singleevent is deleted" do
-    single = FactoryGirl.create(:single_event, topic: "A")
+    single = FactoryGirl.create(:single_event, name: "A")
     comment = single.comments.build(body: "wow!")
     comment.save
     single.destroy
@@ -115,7 +115,7 @@ class SingleEventTest < ActiveSupport::TestCase
 
   test "should generate opengraph data" do
     single = FactoryGirl.create(:single_event)
-    hash = {"og:title"=>"SimpleEvent (SimpleSingleEventTopic) am #{single.occurrence.strftime("%d.%m.%Y um %H:%M")}"}
+    hash = {"og:title"=>"SimpleEvent (SimpleSingleEventName) am #{single.occurrence.strftime("%d.%m.%Y um %H:%M")}"}
     assert_equal hash, single.to_opengraph
 
     single = FactoryGirl.create(:extended_single_event)
@@ -124,7 +124,7 @@ class SingleEventTest < ActiveSupport::TestCase
        "og:locality"=>"CoWoCo, Gasmotorenfabrik, 3. Etage",
        "og:postal-code"=>"51063",
        "og:street-address"=>"Deutz-Mülheimerstraße 129",
-       "og:title"=>"SimpleEvent (SimpleSingleEventTopic) am #{single.occurrence.strftime("%d.%m.%Y um %H:%M")}"}
+       "og:title"=>"SimpleEvent (SimpleSingleEventName) am #{single.occurrence.strftime("%d.%m.%Y um %H:%M")}"}
 
     single_event_opengraph = single.to_opengraph
     hash.each_pair {|key, value| assert_equal single_event_opengraph[key], value}

@@ -51,11 +51,16 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-linkedin'
 
+# picture upload
+gem 'carrierwave', '~> 0.6.2'
+gem "mini_magick", "~> 3.4"
+
 # Other dependencies
 gem 'jquery-rails', '~> 2.0.0'
 gem 'gabba', '~> 0.3.0'
 gem 'formtastic', '~> 2.2.0'
 gem 'geocoder', '~> 1.0'
+gem "md_emoji", "~> 0.0.7"
 
 # Javascript runtime
 gem 'execjs', '~> 1.4.0'

@@ -1,4 +1,4 @@
-- title @event.name
+- title @event.title
 
 %div.right_row
   = render "map", event: @event
@@ -43,9 +43,9 @@
   - @event.single_events.today_or_in_future.each do |single_event|
     %li
       = link_to single_event.full_day? ? single_event.occurrence.strftime("%d.%m.%Y") : single_event.occurrence.strftime("%d.%m.%Y um %H:%M"), event_single_event_path(@event, single_event)
-      - if single_event.topic?
+      - if single_event.name?
         \-
-        = single_event.topic
+        = single_event.name
       - if can? :delete, single_event
         = link_to t('events.show.delete'), event_single_event_path(single_event.event, single_event), method: :delete, :"data-confirm" => t('events.show.delete_confirm')
   %li= link_to "Neuen Termin anlegen", new_event_single_event_path(@event)

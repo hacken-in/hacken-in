@@ -32,15 +32,17 @@ class SingleEvent < ActiveRecord::Base
 
   acts_as_taggable
 
-  def title
-    self.topic.blank? ? self.event.name : "#{self.event.name} (#{self.topic})"
+  def full_name
+    self.name.blank? ? self.event.name : "#{self.event.name} (#{self.name})"
   end
 
-  def name
+  alias :title :full_name
+
+  def name_with_date
     if self.full_day
-      "#{self.title} am #{self.occurrence.strftime("%d.%m.%Y")}"
+      "#{self.full_name} am #{self.occurrence.strftime("%d.%m.%Y")}"
     else
-      "#{self.title} am #{self.occurrence.strftime("%d.%m.%Y um %H:%M")}"
+      "#{self.full_name} am #{self.occurrence.strftime("%d.%m.%Y um %H:%M")}"
     end
   end
 
@@ -51,7 +53,7 @@ class SingleEvent < ActiveRecord::Base
     elsif self.full_day
       if other.full_day
         # both are all day, sort via topic
-        return self.title <=> other.title
+        return self.full_name <=> other.full_name
       else
         # self is all day, other is not
         return -1
@@ -65,7 +67,7 @@ class SingleEvent < ActiveRecord::Base
 
       if time_comparison == 0
         # they are at the same time, sort via topic
-        return self.title <=> other.title
+        return self.full_name <=> other.full_name
       else
         return time_comparison
       end
@@ -79,7 +81,7 @@ class SingleEvent < ActiveRecord::Base
 
   def to_opengraph
     event.to_opengraph.merge({
-      "og:title"       => name,
+      "og:title"       => name_with_date,
       "og:description" => short_description
     }).reject { |key, value| value.blank? }
   end
@@ -99,7 +101,7 @@ class SingleEvent < ActiveRecord::Base
 
   def to_ri_cal_event
     ri_cal_event = RiCal::Component::Event.new
-    ri_cal_event.summary = title
+    ri_cal_event.summary = full_name
     ri_cal_event.description = ActionController::Base.helpers.strip_tags("#{description}\n\n#{event.description}".strip)
 
     start_time = occurrence

@@ -43,9 +43,9 @@ class SingleEventsControllerTest < ActionController::TestCase
 
     assert_response :success
 
-    put :update, id: single_event.id, event_id: single_event.event.id, single_event: {topic: "Something new"}
+    put :update, id: single_event.id, event_id: single_event.event.id, single_event: { name: "Something new" }
     single_event.reload
-    assert_match /Something new.+/, single_event.name
+    assert_match /Something new.+/, single_event.name_with_date
   end
 
   test "should not delete if not bodo" do
@@ -89,9 +89,9 @@ class SingleEventsControllerTest < ActionController::TestCase
     assert_response :success
 
     assert_difference('SingleEvent.count') do
-      put :create, event_id: event.id, single_event: { topic: "Hallo" }
+      put :create, event_id: event.id, single_event: { name: "Hallo" }
     end
-    assert_equal "Hallo", assigns(:single_event).topic
+    assert_equal "Hallo", assigns(:single_event).name
     assert_redirected_to event_path(assigns(:event))
   end
 
