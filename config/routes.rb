@@ -17,8 +17,8 @@ Hcking::Application.routes.draw do
 
   resources :blog_posts, path: "blog"
 
-  match "tags/:tagname"  => "tags#show", constraints: { tagname: /.*/ }
-  resources :tags, constraints: { id: /.*/ }, only: [:show, :index]
+  
+  resources :tags, :path => "hashtags", only: [:show, :index]
 
   resources :comments, only: [:index]
 

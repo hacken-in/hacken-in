@@ -38,7 +38,7 @@
   - {like: "lieben", hate: "ignorieren"}.each do |kind, text|
     #user_controls
       %div{id: "#{kind}_list"}
-        %h4 Events mit diesen Tags #{text}:
+        %h4 Events mit diesen Hashtags #{text}:
         - unless !user_signed_in? || current_user.send(:"#{kind}_list").empty?
           %ul.tags{class: "#{kind}_list"}
             - current_user.send(:"#{kind}_list").each do |tag|
@@ -47,10 +47,18 @@
                 = link_to "x", user_tag_path(user_id: current_user.id, id: tag, kind: kind), :"data-confirm" => "Bist du sicher?", method: :delete, class: "delete", title: "Löschen"
     - if !user_signed_in?
       %p
-        %em Melde dich an, um Events mit bestimmten Tags zu #{text}.
-    = form_for(:"user_tags", url: user_signed_in? ? user_tags_path(user_id: current_user.id, kind: kind) : nil) do |f|
+        %em Melde dich an, um Events mit bestimmten Hashtags zu #{text}.
+    = form_for(:"user_#{kind}_tags", url: user_signed_in? ? user_tags_path(user_id: current_user.id, kind: kind) : nil) do |f|
       = f.text_field :"list", value: "", disabled: !user_signed_in?
       = f.submit "Hinzufügen", disabled: !user_signed_in?
+      = content_for :javascript do
+        :javascript
+          $(function() {
+            $("#user_#{kind}_tags_list").tokenInput("#{tags_path}", {theme: "facebook", allowNewItems: true,
+            hintText: "Gebe einen Hashtag ein", noResultsText:"Kein Tag gefunden", searchingText:"Suche...",
+            tokenValue: "name"}); 
+          });
+
 
   #social_stuff
     %p.github
