@@ -19,10 +19,10 @@ class TagsControllerTest < ActionController::TestCase
  test "search for specific tags" do
    event = FactoryGirl.create(:event_with_tags)
 
-   get :show, tagname: 'none'
+   get :show, id: 'none'
    assert_response :success
 
-   get :show, tagname: 'ruby'
+   get :show, id: 'ruby'
    assert_response :success
 
    # We look for an anchor to the ruby tag, which should be found.
