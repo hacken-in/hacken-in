@@ -297,21 +297,21 @@ de:
       no_next_events: "Keine Termine zugesagt."
       recent_comments: "Aktuellste Kommentare"
       no_recent_comments: "Keine Kommentare vorhanden."
-      ignore_tags: "Ignoriert folgende Tags"
-      no_ignore_tags: "Keine ignorierten Tags"
-      loved_tags: "Liebt folgende Tags"
-      no_loved_tags: "Keine geliebten Tags"
+      ignore_tags: "Ignoriert folgende Hashtags"
+      no_ignore_tags: "Keine ignorierten Hashtags"
+      loved_tags: "Liebt folgende Hashtags"
+      no_loved_tags: "Keine geliebten Hashtags"
       no_description: "Keine Beschreibung vorhanden."
     edit:
-      allow_ignore_view: "ignorierte Tags öffentlich zeigen"
+      allow_ignore_view: "ignorierte Hashtags öffentlich zeigen"
 
   user_tags:
     create:
-      confirmation: "Tag hinzugefügt"
-      error: "Tag konnte nicht hinzugefügt werden"
+      confirmation: "Hashtag hinzugefügt"
+      error: "Hashtag konnte nicht hinzugefügt werden"
     destroy:
-      confirmation: "Tag entfernt"
-      error: "Tag konnte nicht entfernt werden"
+      confirmation: "Hashtag entfernt"
+      error: "Hashtag konnte nicht entfernt werden"
 
   formtastic:
     :yes: "Ja"

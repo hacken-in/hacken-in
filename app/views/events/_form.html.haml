@@ -2,7 +2,7 @@
   :javascript
     $(function() {
       $("#event_tag_list").tokenInput("#{tags_path}", {theme: "facebook", allowNewItems: true,
-        hintText: "Gebe einen Tag ein", noResultsText:"Kein Tag gefunden", searchingText:"Suche...",
+        hintText: "Gebe einen Hashtag ein", noResultsText:"Kein Tag gefunden", searchingText:"Suche...",
         tokenValue: "name", prePopulate: #{ tag_list_for_taggable(event) }});
       $("#event_name").focus();
     });
