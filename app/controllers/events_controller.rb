@@ -64,7 +64,7 @@ class EventsController < ApplicationController
 
   def history
     authorize! :index, Event
-    @events = SingleEvent.where("occurrence < ?", Time.now.at_beginning_of_day)
+    @events = SingleEvent.where("occurrence < ?", Time.now.at_beginning_of_day).order :name
     respond_with @events
   end
 
