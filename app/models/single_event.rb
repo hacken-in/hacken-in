@@ -14,8 +14,6 @@ class SingleEvent < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
   has_and_belongs_to_many :users, uniq: true
 
-  validates_presence_of :name
-
   scope :in_future,
     where("occurrence >= ?", Time.now)
   scope :today_or_in_future,
