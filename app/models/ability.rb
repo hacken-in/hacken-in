@@ -14,6 +14,7 @@ class Ability
 
     can :read, Event
     can :read, SingleEvent
+    can :history, SingleEvent
     can :read, User
     can :read, Comment
   end
