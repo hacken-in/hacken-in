@@ -28,20 +28,20 @@
     = yield(:javascript)
 
   %body{:class => "#{controller.controller_name}_#{controller.action_name}" }
-    .container
-      %header
-        .navbar
-          .navbar-inner
-            = link_to image_tag('logo.png'), root_path, class: 'brand'
-            %ul.nav.pull-right
-              %li.active=link_to 'KALENDER', '#'
-              %li=link_to 'BLOG', '#'
-              %li=link_to 'PODCASTS', '#'
-              %li=link_to 'LOGIN', '#'
+    %header.container
+      .navbar
+        .navbar-inner
+          = link_to image_tag('logo.png'), root_path, class: 'brand'
+          %ul.nav.pull-right
+            %li.active=link_to 'KALENDER', '#'
+            %li=link_to 'BLOG', '#'
+            %li=link_to 'PODCASTS', '#'
+            %li=link_to 'LOGIN', '#'
       
-      = yield
+      .container
+        = yield
       
-      %footer
+      %footer.container
         .navbar
           .navbar-inner
             %ul.nav
