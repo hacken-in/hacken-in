@@ -2,14 +2,9 @@
 %html
   %head
     %title= content_for?(:title) ? yield(:title) + " – nerdhub.de" : "nerdhub.de"
-
-    - unless mobile?
-      = stylesheet_link_tag "application"
-    - else
-      = stylesheet_link_tag "mobile/mobile"
-      %meta{name: 'viewport', content: 'width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;'}
-
+    = stylesheet_link_tag "application"
     = javascript_include_tag "application"
+    = csrf_meta_tags
     = render_opengraph("og:title" => "hcking.de",
             "og:image" => "#{request.protocol}#{request.host_with_port}#{asset_path("opengraph_embed.png")}",
             "og:url" => url_for(only_path: false),
@@ -17,12 +12,6 @@
             "fb:admins" => "520869354",
             "og:type" => "website",
             "og:description" => "Der Event-Kalender für Nerds")
-    %link{rel: "shortcut icon", href: "#{asset_path "favicon.png"}"}
-    %link{href: 'http://fonts.googleapis.com/css?family=Quattrocento+Sans', rel: 'stylesheet', type: 'text/css'}
-    %link{rel: "apple-touch-icon", href:"#{asset_path("iphone/welcome_logo.png")}"}
-    %link{rel: "apple-touch-startup-image", href:"#{asset_path("iphone/startup.png")}"}
-
-    = csrf_meta_tags
     :javascript
 
       var _gaq = _gaq || [];
@@ -39,43 +28,4 @@
     = yield(:javascript)
 
   %body{:class => "#{controller.controller_name}_#{controller.action_name}" }
-    %header{class: "#{content_for?(:aside) ? 'with' : 'without'}_aside"}
-      %a{href: "/", class: "logo"} hcking.de
-      #user_login
-        - if user_signed_in?
-          Hallo
-          %a{href: user_path(current_user)}<
-            = avatar_for_user(current_user, 16)
-          %a{href: user_path(current_user)}<
-            = current_user.nickname
-          \|
-          = link_to "Abmelden", destroy_user_session_path, method: :delete
-        - else
-          %a{href: "#{new_user_session_path}"} Anmelden
-          \|
-          %a{href: "#{new_user_registration_path}"} Registrieren
-
-    %section{class: "#{content_for?(:aside) ? 'with' : 'without'}_aside"}
-      %noscript
-        = content_tag :div, "Aktiviere bitte Javascript, sonst hast du keine Karten, keine editierbaren Tags und viele weitere Features, die diese Seite erst wirklich nutzbar machen.", class: "flash_error"
-      - flash.each do |name, msg|
-        = content_tag :div, msg, class: "flash_#{name}"
-      = content_tag :h1, yield(:title) if show_title?
-
-      = yield
-      - if content_for? :aside
-        %aside= yield :aside
-
-      %br{style: "clear:both"}
-
-    %footer
-      Dieser Event-Kalender ist ein Service von
-      = link_to "Bodo \"bitboxer\" Tasche", "/users/2"
-      und
-      = link_to "Lucas \"moonglum\" Dohmen", "/users/3"
-      \-
-      = link_to "Impressum", "/impressum"
-      \-
-      = link_to "Über hcking.de", "/about"
-      \-
-      = link_to "cc-by-nc 3.0", "http://creativecommons.org/licenses/by-nc/3.0/de/"
+    = yield
