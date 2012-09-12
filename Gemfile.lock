@@ -156,7 +156,6 @@ GEM
       metaclass (~> 0.0.1)
     multi_json (1.3.6)
     multipart-post (1.1.5)
-    mysql2 (0.3.11)
     newrelic_rpm (3.4.2)
     nokogiri (1.5.5)
     oauth (0.4.7)
@@ -190,6 +189,7 @@ GEM
       omniauth-oauth (~> 1.0)
     open4 (1.3.0)
     orm_adapter (0.4.0)
+    pg (0.14.1)
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
@@ -239,7 +239,6 @@ GEM
       hike (~> 1.2)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sqlite3 (1.3.6)
     subexec (0.2.2)
     test-unit (2.5.2)
     therubyracer (0.10.2)
@@ -301,7 +300,6 @@ DEPENDENCIES
   md_emoji (~> 0.0.7)
   mini_magick (~> 3.4)
   mocha (~> 0.12.0)
-  mysql2 (~> 0.3.11)
   newrelic_rpm (~> 3.4.0)
   omniauth
   omniauth-facebook
@@ -309,6 +307,7 @@ DEPENDENCIES
   omniauth-google-oauth2
   omniauth-linkedin
   omniauth-twitter
+  pg
   rails (~> 3.2.6)
   rake (~> 0.9)
   rb-fsevent (~> 0.9.0pre4)
@@ -317,7 +316,6 @@ DEPENDENCIES
   ri_cal (~> 0.8.8)
   sass-rails (~> 3.2.3)
   spork-testunit (~> 0.0.7)
-  sqlite3 (~> 1.3.5)
   therubyracer (~> 0.10.1)
   tipsy-rails (~> 1.0.2)
   uglifier (~> 1.2.0)

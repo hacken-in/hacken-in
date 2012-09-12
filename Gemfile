@@ -4,8 +4,9 @@ gem 'rails', '~> 3.2.6'
 gem 'rake', '~> 0.9'
 
 # Databases
-gem 'sqlite3', '~> 1.3.5'
-gem 'mysql2', '~> 0.3.11'
+#gem 'sqlite3', '~> 1.3.5'
+#gem 'mysql2', '~> 0.3.11'
+gem 'pg'
 
 # Memcache Store
 # DO NOT UPGRADE THIS
