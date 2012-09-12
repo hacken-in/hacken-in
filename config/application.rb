@@ -39,6 +39,8 @@ module Hcking
 
     # Enable the asset pipeline
     config.assets.enabled = true
+    # We do not need rails when precompiling
+    config.assets.initialize_on_precompile = false
 
   end
 end
