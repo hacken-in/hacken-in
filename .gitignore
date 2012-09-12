@@ -5,7 +5,6 @@ log/*.log
 tmp/
 .sass-cache/
 config/database.yml
-config/initializers/devise.rb
 .rvmrc
 public/assets
 doc/*
@@ -14,3 +13,4 @@ nbproject/*
 *.swp
 rails_best_practices_output.html
 public/uploads/*
+.powenv
