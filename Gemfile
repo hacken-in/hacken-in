@@ -5,8 +5,8 @@ gem 'rake', '~> 0.9'
 
 # Databases
 #gem 'sqlite3', '~> 1.3.5'
-#gem 'mysql2', '~> 0.3.11'
-gem 'pg'
+gem 'mysql2', '~> 0.3.11', group: :development
+gem 'pg', group: :production
 
 # Memcache Store
 # DO NOT UPGRADE THIS
