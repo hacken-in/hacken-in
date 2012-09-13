@@ -14,15 +14,15 @@ Hcking::Application.configure do
   # Compress JavaScripts and CSS
   config.assets.compress = true
 
-  # Specify the default JavaScript compressor
-  config.assets.js_compressor  = :uglifier
+  # Don't fallback to assets pipeline if a precompiled asset is missed
+  config.assets.compile = true 
 
-  # Append digest to the paths
-  config.assets.digest=true
+  # Generate digests for assets URLs
+  config.assets.digest = true
 
   # Specifies the header that your server uses for sending files
   # (comment out if your front-end server doesn't support this)
-  config.action_dispatch.x_sendfile_header = "X-Sendfile" # Use 'X-Accel-Redirect' for nginx
+  config.action_dispatch.x_sendfile_header = nil #"X-Sendfile" # Use 'X-Accel-Redirect' for nginx
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
@@ -34,7 +34,7 @@ Hcking::Application.configure do
   # config.logger = SyslogLogger.new
 
   # Use a different cache store in production
-  config.cache_store = :dalli_store, '/home/nerdhub/memcached.sock'
+  config.cache_store = :dalli_store
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
