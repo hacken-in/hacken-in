@@ -4,7 +4,7 @@ gem 'rails', '~> 3.2.8'
 gem 'rake', '~> 0.9'
 
 # Databases
-#gem 'sqlite3', '~> 1.3.5'
+gem 'sqlite3', '~> 1.3.5', group: :test
 gem 'mysql2', '~> 0.3.11', group: :development
 gem 'pg', group: :production
 
