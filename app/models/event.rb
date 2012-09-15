@@ -22,6 +22,10 @@ class Event < ActiveRecord::Base
 
   acts_as_taggable
 
+  def self.search(search)
+    unscoped.find(:all, :conditions => ['name LIKE ? OR description LIKE ?', "%#{search}%", "%#{search}%"])
+  end
+
   def generate_single_events
     self.future_single_events_cleanup
     self.future_single_event_creation

@@ -1,4 +1,6 @@
 Hcking::Application.routes.draw do
+
+
   devise_for :users, controllers: { omniauth_callbacks: "callbacks" }
   ActiveAdmin.routes(self)
   
@@ -14,7 +16,9 @@ Hcking::Application.routes.draw do
   
 
   resources :blog_posts, path: "blog"
-  
+
+  resources :search, only: [:index]
+
   resources :tags, :path => "hashtags", only: [:show, :index]
 
   resources :comments, only: [:index]

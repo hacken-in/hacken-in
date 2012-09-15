@@ -34,6 +34,10 @@ class SingleEvent < ActiveRecord::Base
 
   acts_as_taggable
 
+  def self.search(search)
+    unscoped.find(:all, :conditions => ['name LIKE ? OR description LIKE ?', "%#{search}%", "%#{search}%"])
+  end
+
   def full_name
     self.name.blank? ? self.event.name : "#{self.event.name} (#{self.name})"
   end

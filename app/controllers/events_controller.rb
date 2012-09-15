@@ -68,6 +68,7 @@ class EventsController < ApplicationController
     respond_with @events
   end
 
+
   private
 
   def determine_start_time_for_event(event)
