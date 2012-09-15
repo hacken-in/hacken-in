@@ -1,8 +1,9 @@
 ActiveAdmin.register SingleEvent do
+  menu priority: 15
   index do
-    column :topic
+    column :name
     column :description do |single_event|
-      single_event.description.truncate 80
+      single_event.description.try :truncate, 80
     end
     column :occurrence
     column :url do |single_event|

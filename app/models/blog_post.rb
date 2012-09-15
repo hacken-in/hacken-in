@@ -3,7 +3,7 @@ class BlogPost < ActiveRecord::Base
 
   has_many :comments, as: :commentable, dependent: :destroy
   belongs_to :category
-  belongs_to :user, class_name: "AdminUser"
+  belongs_to :user
 
   acts_as_taggable
 

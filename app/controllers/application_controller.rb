@@ -11,13 +11,23 @@ class ApplicationController < ActionController::Base
   end
 
   # TODO: Dies ist notwendig, da bei ActiveAdmin noch ein
-  #       Bug existiert, der das Locale leider auf Englisch 
+  #       Bug existiert, der das Locale leider auf Englisch
   #       zurücksetzt. Siehe auch:
   #       https://github.com/gregbell/active_admin/issues/434
   before_filter :set_locale
 
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
+  end
+
+  def authenticate_admin_user! #use predefined method name
+    redirect_to '/' and return if user_signed_in? && !current_user.admin
+    authenticate_user!
+  end
+
+  def current_admin_user #use predefined method name
+    return nil if user_signed_in? && !current_user.admin
+    current_user
   end
 
   private
