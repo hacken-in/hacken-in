@@ -28,10 +28,10 @@
     = yield(:javascript)
 
   %body{:class => "#{controller.controller_name}_#{controller.action_name}" }
-    %header.container
+    %header.container.main-header
       .navbar
         .navbar-inner
-          = link_to image_tag('logo.png'), root_path, class: 'brand'
+          = link_to image_tag('logo.png'), root_path, class: 'brand', title: 'NERDHUB'
           %ul.nav.pull-right
             %li.active=link_to 'KALENDER', '#'
             %li=link_to 'BLOG', '#'
