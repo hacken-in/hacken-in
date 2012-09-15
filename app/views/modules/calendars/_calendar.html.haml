@@ -1,0 +1,10 @@
+- current_date = nil
+
+
+- events.each do |event|
+  - if current_date != event.occurrence.to_date
+    - current_date = event.occurrence.to_date
+    %h1
+      = day_output_helper(current_date)
+
+  = render partial: 'modules/calendars/entry', locals: {event: event}
