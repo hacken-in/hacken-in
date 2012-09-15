@@ -5,15 +5,15 @@
     = stylesheet_link_tag "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
-    = render_opengraph("og:title" => "hcking.de",
+    = render_opengraph("og:title" => "nerdhub.de",
             "og:image" => "#{request.protocol}#{request.host_with_port}#{asset_path("opengraph_embed.png")}",
             "og:url" => url_for(only_path: false),
-            "og:site_name"=> "hcking.de",
+            "og:site_name"=> "nerdhub.de",
             "fb:admins" => "520869354",
             "og:type" => "website",
             "og:description" => "Der Event-Kalender für Nerds")
-    :javascript
 
+    :javascript
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-954244-12']);
       _gaq.push (['_gat._anonymizeIp']);
@@ -37,31 +37,31 @@
             %li=link_to 'BLOG', '#'
             %li=link_to 'PODCASTS', '#'
             %li=link_to 'LOGIN', '#'
-      
-      .container
-        = yield
-        
-        .row
-          .span6
-            THIS IS COLOGNE
 
-        .row
-          .span2.this-is-cologne
-            PIC1
-          .span2.this-is-cologne
-            PIC2
-          .span2.this-is-cologne
-            PIC3
-      
-      %footer.container
-        .navbar
-          .navbar-inner
-            %ul.nav
-              %li=link_to 'TEAM','#'
-              %li=link_to 'KONTAKT','#'
-              %li=link_to 'NEWSLETTER','#'
-              %li=link_to 'IMPRESSUM','#'
-            %ul.nav.pull-right
-              %li=link_to 'F','http://www.facebook.com/nerdhubcgn'
-              %li=link_to 'T','http://www.twitter.com/nerdhub_cgn'
-              %li=link_to 'G','http://www.github.com/nerdhub'
+    .container
+      = yield
+
+      .row
+        .span6
+          THIS IS COLOGNE
+
+      .row
+        .span2.this-is-cologne
+          PIC1
+        .span2.this-is-cologne
+          PIC2
+        .span2.this-is-cologne
+          PIC3
+
+    %footer.container
+      .navbar
+        .navbar-inner
+          %ul.nav
+            %li=link_to 'TEAM','#'
+            %li=link_to 'KONTAKT','#'
+            %li=link_to 'NEWSLETTER','#'
+            %li=link_to 'IMPRESSUM','#'
+          %ul.nav.pull-right
+            %li=link_to 'F','http://www.facebook.com/nerdhubcgn'
+            %li=link_to 'T','http://www.twitter.com/nerdhub_cgn'
+            %li=link_to 'G','http://www.github.com/nerdhub'
