@@ -1,7 +1,7 @@
 ActiveAdmin.register Event do
+  menu priority: 14
   index do
     column :name
-    column :description
     column :location do |event|
       [
         event.location,
@@ -10,7 +10,9 @@ ActiveAdmin.register Event do
         event.city
       ].delete_if { |info| info.empty? }.join ", "
     end
-    column :url
+    column :url do |event|
+      a "Link", href: event.url
+    end
     column :twitter
     column :twitter_hashtag
     default_actions
