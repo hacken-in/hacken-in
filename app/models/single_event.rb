@@ -88,9 +88,14 @@ class SingleEvent < ActiveRecord::Base
     }).reject { |key, value| value.blank? }
   end
 
+  alias :self_category :category
+  def category
+    self.self_category || self.event.category
+  end
+
   # Get the attribute from the Event model unless they exist here
   [:url, :twitter_hashtag, :duration, :full_day, :location, :street,
-   :zipcode, :city, :country, :latitude, :longitude, :category].each do |item|
+   :zipcode, :city, :country, :latitude, :longitude].each do |item|
     define_method item.to_s do
       value = self.read_attribute(item)
       if !value.nil? && !(value.class.to_s == "String" && value.blank?)

@@ -1,0 +1,9 @@
+%table.table
+  - categories.each do |c|
+    %tr
+      %td
+        = render partial: 'modules/categories/indicator', locals: { color: c.color, size: '16px' }
+      %td
+        = c.title
+      %td
+        %input{type: 'checkbox'}

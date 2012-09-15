@@ -1,3 +1,4 @@
+#encoding: utf-8
 require 'redcarpet_extensions'
 
 module ApplicationHelper
@@ -11,11 +12,22 @@ module ApplicationHelper
   def day_output_helper(date)
       date = date.to_date
       today = Date.today
-      case
-        when date == today then "Heute"
-        when date == (today + 1) then "Morgen"
-        else I18n.localize(date, format: :long)
-      end.html_safe
+      date_ext = case
+        when date == today then " - Heute"
+        when date == (today + 1) then " - Morgen"
+        when date == (today + 2) then " - Übermorgen"
+      end
+
+      retval = <<-EOL
+        <div class='calendar-datebox-d'>
+          #{date.strftime('%d')}
+        </div>
+        <div class='calendar-datebox-box'>
+          <div class='calendar-datebox-my'>#{I18n.localize(date, format: '%b %Y')}</div>
+          <div class='calendar-datebox-wd'>#{I18n.localize(date, format: '%A')}</div>
+        </div>#{date_ext}
+      EOL
+      retval.html_safe
   end
 
   def truncate_html(html, length, opts)

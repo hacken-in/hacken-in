@@ -3,7 +3,7 @@ class AddCategoryToTags < ActiveRecord::Migration
     change_table :tags do |t|
       t.references :category
     end
-    
+
     add_index :tags, :category_id
   end
 end
