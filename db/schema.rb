@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120826125531) do
+ActiveRecord::Schema.define(:version => 20120915092029) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -113,8 +113,10 @@ ActiveRecord::Schema.define(:version => 20120826125531) do
     t.float    "longitude"
     t.boolean  "full_day",        :default => false
     t.string   "twitter_hashtag"
+    t.integer  "category_id"
   end
 
+  add_index "events", ["category_id"], :name => "index_events_on_category_id"
   add_index "events", ["latitude"], :name => "index_events_on_latitude"
   add_index "events", ["longitude"], :name => "index_events_on_longitude"
 
@@ -145,8 +147,10 @@ ActiveRecord::Schema.define(:version => 20120826125531) do
     t.float    "longitude"
     t.string   "twitter_hashtag"
     t.boolean  "based_on_rule",   :default => false
+    t.integer  "category_id"
   end
 
+  add_index "single_events", ["category_id"], :name => "index_single_events_on_category_id"
   add_index "single_events", ["event_id"], :name => "index_single_events_on_event_id"
 
   create_table "single_events_users", :id => false, :force => true do |t|
