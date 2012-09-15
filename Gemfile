@@ -29,7 +29,7 @@ gem 'haml', '~> 3.1.4'
 gem 'redcarpet', '~> 2.1.0'
 
 # Admin
-gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'activeadmin', git: "https://github.com/gregbell/active_admin.git"
 gem 'country-select', '~> 1.1.1'
 gem 'ckeditor_rails', :require => 'ckeditor-rails'
 

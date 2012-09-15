@@ -36,7 +36,10 @@
             %li.active= link_to 'KALENDER', '#', class: 'nav-link'
             %li= link_to 'BLOG', '#', class: 'nav-link'
             %li= link_to 'PODCASTS', '#', class: 'nav-link'
-            %li= link_to 'LOGIN', '#', class: 'nav-link last'
+            - unless current_user.blank?
+              %li= link_to "LOGOUT", destroy_user_session_path, method: :delete, class: 'nav-link last'
+            - else
+              %li= link_to 'LOGIN', user_session_path, class: 'nav-link last'
 
     .container
       = yield
