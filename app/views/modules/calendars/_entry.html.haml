@@ -1,0 +1,7 @@
+- color = event.category.try(:color)
+
+.calendar-entry
+  = render partial: 'modules/categories/indicator', locals: { size: "52px", color: color }
+  .calendar-line{ data: { hlcolor: color } }
+    .calendar-line-title= event.title
+    .calendar-line-time=  I18n.localize(event.occurrence, format: "%H:%M Uhr")
