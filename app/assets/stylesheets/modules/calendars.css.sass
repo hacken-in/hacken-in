@@ -50,9 +50,14 @@
     height: 52px
     color: #fff
     overflow: auto
+    cursor: pointer
+
+    &.calendar-line-highlighted
+      -webkit-box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.8)
+      box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.8)
 
     .calendar-line-title
-      padding-top: 16px
+      padding-top: 13px
       font-size: 22px
       font-weight: bold
       width: 430px
@@ -61,8 +66,8 @@
       overflow: hidden
       white-space: nowrap
       text-overflow: ellipsis
-      height: 22px
-      line-height: 22px
+      height: 26px
+      line-height: 26px
 
     .calendar-line-time
       font-size: 22px
