@@ -2,10 +2,6 @@ require 'redcarpet_extensions'
 
 module ApplicationHelper
 
-  def mobile?
-    request.user_agent =~ /Mobile|webOS|Opera Mini|Opera Mobi/
-  end
-
   def weekday_select_option
     daynames = t("date.day_names").collect.with_index {|x,i| [x,i]}
     daynames << daynames.delete_at(0)
