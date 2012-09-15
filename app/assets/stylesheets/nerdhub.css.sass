@@ -26,18 +26,29 @@ body
   position: relative
   top: 30px
 
-  .main-nav-link
-    font-family: 'Droid Sans', sans-serif
-    font-size: 16px
-    font-weight: bold
-    color: #000 !important
-
+  .nav-link
     &.last
       padding-right: 0
-    &:hover
-      text-decoration: underline !important
 
   .active
-    .main-nav-link
+    .nav-link
       text-decoration: underline !important
+
+.main-footer
+  border-top: 4px solid #000
+  margin-top: 60px
+  margin-bottom: 10px
+
+.footer-nav
+  .nav-link:first-child
+    padding-left: 0
+
+.nav-link
+  font-family: 'Droid Sans', sans-serif
+  font-size: 16px
+  font-weight: bold
+  color: #000 !important
+
+  &:hover
+    text-decoration: underline !important
 

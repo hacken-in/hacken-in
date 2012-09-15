@@ -28,15 +28,15 @@
     = yield(:javascript)
 
   %body{:class => "#{controller.controller_name}_#{controller.action_name}" }
-    %header.container.main-header
+    %header.container
       .navbar
         .navbar-inner
           = link_to image_tag('logo.png'), root_path, class: 'brand', title: 'NERDHUB'
           %ul.nav.main-nav.pull-right
-            %li.active= link_to 'KALENDER', '#', class: 'main-nav-link'
-            %li= link_to 'BLOG', '#', class: 'main-nav-link'
-            %li= link_to 'PODCASTS', '#', class: 'main-nav-link'
-            %li= link_to 'LOGIN', '#', class: 'main-nav-link last'
+            %li.active= link_to 'KALENDER', '#', class: 'nav-link'
+            %li= link_to 'BLOG', '#', class: 'nav-link'
+            %li= link_to 'PODCASTS', '#', class: 'nav-link'
+            %li= link_to 'LOGIN', '#', class: 'nav-link last'
 
     .container
       = yield
@@ -53,15 +53,16 @@
         .span2.this-is-cologne
           PIC3
 
-    %footer.container
+    %footer.container.main-footer
       .navbar
         .navbar-inner
-          %ul.nav
-            %li= link_to 'TEAM','#'
-            %li= link_to 'KONTAKT','#'
-            %li= link_to 'NEWSLETTER','#'
-            %li= link_to 'IMPRESSUM','#'
+          %ul.nav.footer-nav
+            %li= link_to 'TEAM','#', class: 'nav-link'
+            %li= link_to 'KONTAKT','#', class: 'nav-link'
+            %li= link_to 'NEWSLETTER','#', class: 'nav-link'
+            %li= link_to 'IMPRESSUM','#', class: 'nav-link'
           %ul.nav.pull-right
             %li= link_to 'F','http://www.facebook.com/nerdhubcgn'
             %li= link_to 'T','http://www.twitter.com/nerdhub_cgn'
             %li= link_to 'G','http://www.github.com/nerdhub'
+
