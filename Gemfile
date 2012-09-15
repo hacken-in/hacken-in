@@ -77,6 +77,9 @@ gem 'html_truncator', '~> 0.3.0'
 # Twitter Bootstrap
 gem 'bootstrap-sass-rails'
 
+#PJAX
+gem 'pjax_rails'
+
 # facebook style tooltip jQuery plugin
 gem 'tipsy-rails', '~> 1.0.2'
 

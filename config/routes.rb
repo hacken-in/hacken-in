@@ -16,11 +16,12 @@ Hcking::Application.routes.draw do
   
 
   resources :blog_posts, path: "blog"
-
   
   resources :tags, :path => "hashtags", only: [:show, :index]
 
   resources :comments, only: [:index]
+
+  resource :calendar
 
   resources :events do
     resources :comments, except: [:new]

@@ -12,5 +12,6 @@
 //= require zero-clipboard
 //= require tipsy
 //= require leaflet
+//= require jquery.pjax
 //= require_tree .
 //= require twitter/bootstrap
