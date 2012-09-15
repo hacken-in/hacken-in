@@ -1,3 +1,4 @@
+#encoding: utf-8
 require 'test_helper'
 
 class ApplicationHelperTest < ActionView::TestCase
@@ -5,13 +6,40 @@ class ApplicationHelperTest < ActionView::TestCase
 
   def test_day_output_helper
     today = Date.today
-    assert_equal "Heute", day_output_helper(today)
+    retval = <<-EOL
+        <div class='calendar-datebox-d'>
+          #{today.strftime('%d')}
+        </div>
+        <div class='calendar-datebox-box'>
+          <div class='calendar-datebox-my'>#{I18n.localize(today, format: '%b %Y')}</div>
+          <div class='calendar-datebox-wd'>#{I18n.localize(today, format: '%A')}</div>
+        </div> - Heute
+      EOL
+    assert_equal retval, day_output_helper(today)
 
     tomorrow = Date.today+1
-    assert_equal "Morgen", day_output_helper(tomorrow)
+    retval = <<-EOL
+        <div class='calendar-datebox-d'>
+          #{tomorrow.strftime('%d')}
+        </div>
+        <div class='calendar-datebox-box'>
+          <div class='calendar-datebox-my'>#{I18n.localize(tomorrow, format: '%b %Y')}</div>
+          <div class='calendar-datebox-wd'>#{I18n.localize(tomorrow, format: '%A')}</div>
+        </div> - Morgen
+      EOL
+    assert_equal retval, day_output_helper(tomorrow)
 
     day_after_tomorrow = Date.today+2
-    assert_equal I18n.localize(day_after_tomorrow, format: :long), day_output_helper(day_after_tomorrow)
+    retval = <<-EOL
+        <div class='calendar-datebox-d'>
+          #{day_after_tomorrow.strftime('%d')}
+        </div>
+        <div class='calendar-datebox-box'>
+          <div class='calendar-datebox-my'>#{I18n.localize(day_after_tomorrow, format: '%b %Y')}</div>
+          <div class='calendar-datebox-wd'>#{I18n.localize(day_after_tomorrow, format: '%A')}</div>
+        </div> - Übermorgen
+      EOL
+    assert_equal retval, day_output_helper(day_after_tomorrow)
   end
 
   def test_convert_markdown
