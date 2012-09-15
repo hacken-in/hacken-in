@@ -325,5 +325,3 @@ de:
     :required: "Benötigt"
     :create: "Erzeuge %{model}"
     :update: "Änderungen speichern"
-
-

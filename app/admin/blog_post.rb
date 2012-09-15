@@ -4,8 +4,8 @@ ActiveAdmin.register BlogPost do
     column :id
     column :headline
     column :headline_teaser
-    column :publishable
     column :publishable_from
+    column :publishable
     column :use_in_newsletter
     default_actions
   end
