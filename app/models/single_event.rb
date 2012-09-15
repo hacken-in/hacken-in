@@ -7,6 +7,8 @@ class SingleEvent < ActiveRecord::Base
   after_validation :reset_geocode
   after_destroy :update_event
 
+  belongs_to :category
+  
   belongs_to :event
   delegate :title, :description, to: :event, prefix: true
   delegate :twitter, to: :event
@@ -88,7 +90,7 @@ class SingleEvent < ActiveRecord::Base
 
   # Get the attribute from the Event model unless they exist here
   [:url, :twitter_hashtag, :duration, :full_day, :location, :street,
-   :zipcode, :city, :country, :latitude, :longitude].each do |item|
+   :zipcode, :city, :country, :latitude, :longitude, :category].each do |item|
     define_method item.to_s do
       value = self.read_attribute(item)
       if !value.nil? && !(value.class.to_s == "String" && value.blank?)

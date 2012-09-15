@@ -10,6 +10,8 @@ class Event < ActiveRecord::Base
   after_validation :reset_geocode
   before_save :schedule_to_yaml
   after_save :generate_single_events
+  
+  belongs_to :category
 
   has_many :single_events
   has_many :comments, as: :commentable, dependent: :destroy

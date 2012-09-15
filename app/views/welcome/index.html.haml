@@ -1,26 +1,20 @@
 .row
   .span6
     = render partial: 'modules/carousel'
-  
+
 .row
   .span6.minical
     MINICAL
-    
-.row
-  .span2.box
-    BOX1
-  .span2.box
-    BOX2
-  .span2.box
-    BOX4
 
-.row
-  .span2.box
-    BOX5
-  .span2.box
-    BOX6
-  .span2.box
-    BOX7
+.row.content-teasers
+  = render partial: 'modules/articles/preview', locals: { image: 'test-article-leute.png', color: '#f7ca18', subtitle: 'Jelly beans pudding brownie dessert', title: 'Topping chupa chups icing carrot'  }
+  = render partial: 'modules/articles/preview', locals: { image: 'test-article-coworking.png', color: '#ff22ff', subtitle: 'Cotton candy toffee chupa chups', title: 'Candy canes sugar plum dessert jelly-o biscuit'  }
+  = render partial: 'modules/ads/preview', locals: { image: 'test-werbung.png' }
+
+.row.content-teasers
+  = render partial: 'modules/articles/preview', locals: { image: 'test-article-luftschlange.png', color: '#a9cb38', subtitle: 'Macaroon icing ice cream pudding', title: 'Gummi bears halvah jelly chocolate'  }
+  = render partial: 'modules/articles/preview_podcast', locals: { image: 'test-podcast.png', subtitle: 'Podcast Nummer 16', title: '"Pudding marzipan"' }
+  = render partial: 'modules/articles/preview', locals: { image: 'test-article-dingfabrik.png', color: '#ff22ff', subtitle: 'Topping caramels gingerbread liquorice', title: 'Pudding soufflé cookie sesame snaps'  }
 
 .row
   .span6.abo-box
