@@ -1,6 +1,8 @@
 ActiveAdmin.register Event do
+  config.sort_order = "name_asc"
   menu priority: 14
   index do
+    column :id
     column :name
     column :location do |event|
       [
