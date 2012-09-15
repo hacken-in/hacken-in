@@ -11,5 +11,4 @@ matrix:
 bundler_args: --without development
 before_script:
   - "cp config/database.yml_example config/database.yml"
-  - "cp config/initializers/devise.rb_example config/initializers/devise.rb"
 script: "bundle exec rake db:drop db:create db:migrate test"

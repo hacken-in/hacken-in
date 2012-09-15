@@ -84,6 +84,9 @@ gem 'pjax_rails'
 # facebook style tooltip jQuery plugin
 gem 'tipsy-rails', '~> 1.0.2'
 
+#sample Data
+gem 'faker', '1.0.1'
+
 group :development do
   # Deployment
   gem 'vlad', '~> 2.2.3', require: false
