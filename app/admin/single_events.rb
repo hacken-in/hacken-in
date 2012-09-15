@@ -6,9 +6,6 @@ ActiveAdmin.register SingleEvent do
       single_event.description.try :truncate, 80
     end
     column :occurrence
-    column :url do |single_event|
-      link_to "URL", single_event.url unless single_event.url.blank?
-    end
     column :location do |single_event|
       [
         single_event.location,
@@ -17,8 +14,15 @@ ActiveAdmin.register SingleEvent do
         single_event.city
       ].delete_if { |info| info.empty? }.join ", "
     end
-    column :twitter
-    column :twitter_hashtag
+    column :url do |single_event|
+      a "Link", href: single_event.url
+    end
+    column :twitter do |single_event|
+      a "@#{single_event.twitter}", href: "http://twitter.com/#{single_event.twitter}" unless single_event.twitter.blank?
+    end
+    column :twitter_hashtag do |single_event|
+      a "##{single_event.twitter_hashtag}", href: "http://twitter.com/search/%23#{single_event.twitter_hashtag}" unless single_event.twitter_hashtag.blank?
+    end
     default_actions
   end
 end

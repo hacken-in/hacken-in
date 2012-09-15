@@ -37,7 +37,7 @@ class Event < ActiveRecord::Base
   # Add SingleEvents that are in the pattern, but haven't been created so far
   def future_single_event_creation
     self.schedule.next_occurrences(12).each do |occurrence|
-      # ToDo: Hot-Fix for Bug #83, unti ice_cube's issue 84 is resolved
+      # TODO: Hot-Fix for Bug #83, unti ice_cube's issue 84 is resolved
       occurrence = occurrence.without_ms
 
       if !self.schedule.extimes.map(&:to_i).include? occurrence.to_i
