@@ -1,8 +1,8 @@
+@import url(http://fonts.googleapis.com/css?family=Vollkorn)
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700)
+
 body
   padding-top: 60px
-
-.main-header
-  height: 75px
 
 .box
   min-height: 300px
@@ -20,4 +20,24 @@ body
 
 .row.content-teasers
   margin-bottom: 40px
+
+
+.main-nav
+  position: relative
+  top: 30px
+
+  .main-nav-link
+    font-family: 'Droid Sans', sans-serif
+    font-size: 16px
+    font-weight: bold
+    color: #000 !important
+
+    &.last
+      padding-right: 0
+    &:hover
+      text-decoration: underline !important
+
+  .active
+    .main-nav-link
+      text-decoration: underline !important
 
