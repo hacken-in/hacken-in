@@ -31,6 +31,7 @@ gem 'redcarpet', '~> 2.1.0'
 # Admin
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'country-select', '~> 1.1.1'
+gem 'ckeditor_rails', :require => 'ckeditor-rails'
 
 # Monitoring
 gem 'newrelic_rpm', '~> 3.4.0'

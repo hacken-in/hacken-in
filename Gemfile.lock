@@ -62,6 +62,9 @@ GEM
     carrierwave (0.6.2)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
+    ckeditor_rails (3.6.4.1)
+      railties (~> 3.0)
+      thor (~> 0.14)
     coffee-script (2.2.0)
       coffee-script-source
       execjs
@@ -278,6 +281,7 @@ DEPENDENCIES
   bootstrap-sass-rails
   cancan (~> 1.6.7)
   carrierwave (~> 0.6.2)
+  ckeditor_rails
   coffee-script (~> 2.2.0)
   country-select (~> 1.1.1)
   dalli (~> 1.1.5)
