@@ -61,8 +61,14 @@
             %li= link_to 'KONTAKT','#', class: 'nav-link'
             %li= link_to 'NEWSLETTER','#', class: 'nav-link'
             %li= link_to 'IMPRESSUM','#', class: 'nav-link'
-          %ul.nav.pull-right
-            %li= link_to 'F','http://www.facebook.com/nerdhubcgn'
-            %li= link_to 'T','http://www.twitter.com/nerdhub_cgn'
-            %li= link_to 'G','http://www.github.com/nerdhub'
+          %ul.nav.social-nav.pull-right
+            %li
+              %a.nav-link{ href: "http://www.facebook.com/nerdhubcgn", title: "Nerdhub auf Facebook" }
+                %i.icon-facebook-sign
+            %li 
+              %a.nav-link{ href: "http://www.twitter.com/nerdhub_cgn", title: "Nerdhub auf Twitter" }
+                %i.icon-twitter-sign
+            %li 
+              %a.nav-link{ href: "http://www.github.com/nerdhub", title: "Nerdhub auf Github" }
+                %i.icon-github-sign
 
