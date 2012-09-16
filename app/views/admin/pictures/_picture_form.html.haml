@@ -1,0 +1,9 @@
+= semantic_form_for [:admin, @picture] do |f|
+  = f.inputs do
+    = f.input :title
+    = f.input :description
+    %li.input
+      %label.label Vorschau
+      = image_tag @picture.image.url
+    = f.input :image
+  = f.actions
