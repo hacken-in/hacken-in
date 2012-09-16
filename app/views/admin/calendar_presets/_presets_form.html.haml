@@ -3,5 +3,5 @@
     = f.input :title
     = f.input :user, hint: "Wenn kein Benutzer angegeben wird, dann ist es ein NerdHub Preset und wird im Kalender bei KDDK angezeigt."
   = f.inputs "Kategorien" do
-    = f.input :categories, :as => :check_boxes
+    = f.input :categories, as: :check_boxes, collection: Category.order("title asc").all
   = f.button

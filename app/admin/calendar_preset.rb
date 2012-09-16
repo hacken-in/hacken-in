@@ -13,7 +13,7 @@ ActiveAdmin.register CalendarPreset do
         preset.user || 'Nerdhub Preset' 
       end
     column :categories do |preset|
-      preset.categories.map { |c| span(c.title, style: "color: #{c.color}") }.join
+      preset.categories.sort_by(&:title).map { |c| span(c.title, style: "color: #{c.color}") }
     end
     default_actions
   end
@@ -26,7 +26,9 @@ ActiveAdmin.register CalendarPreset do
         preset.user || 'Nerdhub Preset' 
       end
       row :categories do |preset|
-        preset.categories.map { |c| span(c.title, style: "color: #{c.color}") }.join
+        ul do
+          preset.categories.sort_by(&:title).map { |c| li(c.title, style: "color: #{c.color}") }
+        end
       end
     end
     active_admin_comments
