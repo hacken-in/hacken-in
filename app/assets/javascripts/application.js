@@ -8,6 +8,8 @@
 //= require jquery_ujs
 //= require jquery.balloon
 //= require jquery.tokeninput
+//= require jquery.cross-slide
+//= require thisiscologne
 //= require showdown
 //= require zero-clipboard
 //= require tipsy
