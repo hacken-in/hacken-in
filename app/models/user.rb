@@ -13,6 +13,9 @@ class User < ActiveRecord::Base
   #OmniAuth Authorizations
   has_many :authorizations
 
+  # CalendarPresets
+  has_one :calendar_preset
+
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :allow_ignore_view, :image_url
   attr_protected :admin
