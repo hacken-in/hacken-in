@@ -1,6 +1,7 @@
 ActiveAdmin.register Picture do
   menu priority: 4, label: "Bildergallerie"
   index do
+    column :id
     column :image do |p|
       image_tag p.image.url(:thumb)
     end

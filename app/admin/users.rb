@@ -1,6 +1,7 @@
 ActiveAdmin.register User do
-  menu priority: 1
+  menu priority: 2
   index do
+    column :id
     column :nickname
     column :email
     column :admin
