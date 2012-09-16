@@ -23,15 +23,4 @@ ActiveAdmin.register Picture do
     active_admin_comments
   end
   form partial: "picture_form"
-  #form do |f|
-    #f.inputs "Bild" do
-      #f.input :title
-      #f.input :description
-      #div do
-        #image_tag @post.image.url
-      #end
-      #f.input :image
-    #end
-    #f.buttons
-  #end
 end
