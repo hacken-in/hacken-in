@@ -1,4 +1,5 @@
 ActiveAdmin.register BlogPost do
+  menu priority: 3
 
   index do
     column :id

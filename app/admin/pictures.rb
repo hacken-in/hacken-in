@@ -1,5 +1,5 @@
 ActiveAdmin.register Picture do
-  menu :label => "Bildergallerie"
+  menu priority: 4, label: "Bildergallerie"
   index do
     column :image do |p|
       image_tag p.image.url(:thumb)

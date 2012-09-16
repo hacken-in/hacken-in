@@ -1,6 +1,6 @@
 ActiveAdmin.register SingleEvent do
+  menu priority: 6
   config.sort_order = "occurrence_asc"
-  menu priority: 15
   index do
     column :id
     column :name do |single_event|

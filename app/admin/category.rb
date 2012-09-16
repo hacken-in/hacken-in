@@ -1,4 +1,5 @@
 ActiveAdmin.register Category do
+  menu priority: 8
   index do
     column :title do |p|
       span p.title, style: "color: #{p.color}"
