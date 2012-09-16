@@ -3,9 +3,6 @@
 # blows up everything ;)
 ActiveAdmin.register Comment, as: "NerdhubComment" do
 
-  # TODO: hier werden Link im Preview nicht
-  # angezeigt :(
-
   index do
     column :id
     column :user do |comment|
@@ -15,13 +12,14 @@ ActiveAdmin.register Comment, as: "NerdhubComment" do
       a comment.user.nickname, href: admin_user_path(comment.user)
     end
     column :body do |comment|
-      convert_markdown(comment.body)
+      raw convert_markdown(comment.body, false)
     end
     column :commentable
     column :created_at
     column :updated_at
     default_actions
   end
+
   show do |ad|
     attributes_table do
       row :id
@@ -32,7 +30,7 @@ ActiveAdmin.register Comment, as: "NerdhubComment" do
         a comment.user.nickname, href: admin_user_path(comment.user)
       end
       row :body do |comment|
-        convert_markdown comment.body
+        convert_markdown comment.body.html_safe
       end
       row :commentable
       row :created_at
@@ -40,6 +38,7 @@ ActiveAdmin.register Comment, as: "NerdhubComment" do
     end
     active_admin_comments
   end
+
   form do |f|
     f.inputs "Kommentar" do
       f.input :user
@@ -47,4 +46,5 @@ ActiveAdmin.register Comment, as: "NerdhubComment" do
     end
     f.buttons
   end
+
 end

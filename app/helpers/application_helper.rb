@@ -41,8 +41,8 @@ module ApplicationHelper
       render_class = MdEmoji::Render
     end
 
-    markdown_compiler = Redcarpet::Markdown.new(render_class.new filter_html: true, no_styles: true, safe_links_only: true)
-    raw markdown_compiler.render(markdown_text)
+    markdown_compiler = Redcarpet::Markdown.new(render_class.new filter_html: false, no_styles: true, safe_links_only: true)
+    raw markdown_compiler.render(ActionController::Base.helpers.sanitize(markdown_text))
   end
 
   def collect_links(item)
