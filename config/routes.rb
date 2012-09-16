@@ -23,7 +23,9 @@ Hcking::Application.routes.draw do
 
   resources :comments, only: [:index]
 
-  resource :calendar
+  resource :calendar do
+    get :presets
+  end
 
   resources :events do
     resources :comments, except: [:new]

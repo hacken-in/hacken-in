@@ -12,4 +12,9 @@ class CalendarsController < ApplicationController
     @events = SingleEvent.in_next(4.weeks).for_user(current_user)
 
   end
+
+  def presets
+    @presets = CalendarPreset.presets_for_user(current_user)
+    render json: @presets
+  end
 end
