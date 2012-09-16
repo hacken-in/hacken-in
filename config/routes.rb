@@ -25,6 +25,8 @@ Hcking::Application.routes.draw do
 
   resource :calendar do
     get :presets
+    get :entries
+    post :presets, :action => :update_presets
   end
 
   resources :events do
