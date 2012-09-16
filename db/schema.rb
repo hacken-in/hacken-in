@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120916074001) do
+ActiveRecord::Schema.define(:version => 20120916100958) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -182,6 +182,17 @@ ActiveRecord::Schema.define(:version => 20120916074001) do
   end
 
   add_index "tags", ["category_id"], :name => "index_tags_on_category_id"
+
+  create_table "thisiscologne_pictures", :force => true do |t|
+    t.string   "description"
+    t.string   "image_url"
+    t.string   "link"
+    t.datetime "time"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "thisiscologne_pictures", ["image_url"], :name => "index_thisiscologne_pictures_on_image_url", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email"
