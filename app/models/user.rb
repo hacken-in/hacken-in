@@ -27,6 +27,18 @@ class User < ActiveRecord::Base
   validates :nickname, uniqueness: true
   validates :nickname, presence: true
   validates_exclusion_of :nickname, in: %w(admin, root, administrator, superuser), message: "is reserved"
+  validate :username_format 
+
+  def to_param
+      nickname
+  end 
+
+  def username_format
+    has_one_letter = nickname =~ /[a-zA-Z]/
+    all_valid_characters = nickname =~ /^[a-zA-Z0-9_]+$/
+    errors.add(:nickname, "passt nicht in die Datenbank - besser zusammen schreiben oder Unterstrich benutzen & keine Umlaute") unless (has_one_letter and all_valid_characters)
+  end
+
 
   # http://stackoverflow.com/questions/2997179/ror-devise-sign-in-with-username-or-email
   def self.find_for_database_authentication(conditions={})
