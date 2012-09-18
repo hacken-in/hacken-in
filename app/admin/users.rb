@@ -13,4 +13,9 @@ ActiveAdmin.register User do
     column :homepage
     default_actions
   end
+  
+  controller do
+    defaults finder: :find_by_nickname
+  end
+
 end
