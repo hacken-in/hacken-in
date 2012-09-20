@@ -4,9 +4,9 @@ ActiveAdmin.register_page "Dashboard" do
 
   content :title => proc{ I18n.t("active_admin.dashboard") } do
     # Here is an example of a simple dashboard with columns and panels.
-    # columns do
-      # column do
-        panel "Tags" do
+    columns do
+      column do
+        panel "Distribution of tags" do
           stats = Tagging.distribution
 
           div "class" => "pie-chart",
@@ -16,11 +16,16 @@ ActiveAdmin.register_page "Dashboard" do
           end
         end
 
-      # column do
-        # panel "Info" do
-          # para "Welcome to ActiveAdmin."
-        # end
-      # end
-    # end
-  # end
+      column do
+        panel "Number of registered Users" do
+          stats = User.over_time
+
+          div "class" => "line-chart",
+            "data-x" => stats.map { |stat| stat[0] }.join(","),
+            "data-y" => stats.map { |stat| stat[1] }.join(","),
+            "data-size" => "266"
+        end
+      end
+    end
+  end
 end

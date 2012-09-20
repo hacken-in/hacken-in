@@ -27,11 +27,11 @@ class User < ActiveRecord::Base
   validates :nickname, uniqueness: true
   validates :nickname, presence: true
   validates_exclusion_of :nickname, in: %w(admin, root, administrator, superuser), message: "is reserved"
-  validate :username_format 
+  validate :username_format
 
   def to_param
-      nickname
-  end 
+    nickname
+  end
 
   def username_format
     has_one_letter = nickname =~ /[a-zA-Z]/
@@ -187,7 +187,20 @@ class User < ActiveRecord::Base
     User.omniauth_providers - self.authorizations.map{ |a| a.provider.to_sym }
   end
 
-private
+  def User.over_time
+    sum = 0
+
+    User.all.map do |user|
+      user.created_at.strftime "%Y-%m-%d"
+    end.group_by do |day|
+      day
+    end.map do |day, occurrences|
+      [day, (sum += occurrences.length)]
+    end
+  end
+
+  private
+
   def associate_auth_token_with_account
     if auth_temp_token
       a = Authorization.find_by_temp_token(auth_temp_token)

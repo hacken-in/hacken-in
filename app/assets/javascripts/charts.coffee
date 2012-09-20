@@ -1,8 +1,9 @@
 # = require raphael.js
 # = require g.raphael.js
 # = require g.pie.js
+# = require g.line.js
 
-draw_pie = ->
+draw = ->
   $(".pie-chart").each ->
     target    = $ @
     numbers   = target.data("numbers").split(",").map (num) -> parseInt num
@@ -41,4 +42,26 @@ draw_pie = ->
       animate_sector @sector, 1, @cx, @cy
       animate_label @label, 5, "normal"
 
-$ -> draw_pie()
+  $(".line-chart").each ->
+    target = $ @
+    x = target.data("x").split(",").map (num) -> (new Date num).getTime()
+    y = target.data("y").split(",").map (num) -> parseInt num
+    width = parseInt target.data("size")
+
+    r = Raphael(
+      target[0]
+      width * 1.5
+      width
+    ).linechart(
+      20
+      0
+      300
+      220
+      x
+      y
+      shade: true
+      axis: "0 0 0 1"
+      symbol: "circle"
+    )
+
+$ -> draw()
