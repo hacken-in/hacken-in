@@ -329,3 +329,8 @@ de:
     :required: "Benötigt"
     :create: "Erzeuge %{model}"
     :update: "Änderungen speichern"
+
+  active_admin:
+    statistics:
+      tag_distribution: "Verteilung der Tags"
+      registered_users: "Anzahl registrierter Benutzer"

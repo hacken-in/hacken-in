@@ -6,7 +6,7 @@ ActiveAdmin.register_page "Dashboard" do
     # Here is an example of a simple dashboard with columns and panels.
     columns do
       column do
-        panel "Distribution of tags" do
+        panel I18n.t("active_admin.statistics.tag_distribution") do
           stats = Tagging.distribution
 
           div "class" => "pie-chart",
@@ -17,7 +17,7 @@ ActiveAdmin.register_page "Dashboard" do
         end
 
       column do
-        panel "Number of registered Users" do
+        panel I18n.t("active_admin.statistics.registered_users") do
           stats = User.over_time
 
           div "class" => "line-chart",
