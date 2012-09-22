@@ -1,3 +1,5 @@
+#coding: utf-8
+
 # This is called NerdhubComment for a technical reason:
 # If you call it Comment, there is a bug that basically
 # blows up everything ;)
@@ -6,10 +8,14 @@ ActiveAdmin.register Comment, as: "NerdhubComment" do
   index do
     column :id
     column :user do |comment|
-      span do
-        avatar_for_user(comment.user)
+      if (comment.user)
+        span do
+          avatar_for_user(comment.user)
+        end
+        a comment.user.nickname, href: admin_user_path(comment.user)
+      else
+        "Benutzer gelöscht"
       end
-      a comment.user.nickname, href: admin_user_path(comment.user)
     end
     column :body do |comment|
       raw convert_markdown(comment.body, false)
