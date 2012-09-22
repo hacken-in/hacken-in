@@ -6,6 +6,10 @@ FactoryGirl.define do
     password_confirmation "hallo123"
     guid 'bodoguid'
     admin true
+    team 'development'
+    twitter 'bitboxer'
+    github 'bitboxer'
+    homepage 'http://bitboxer.de'
   end
 
   factory :user, class: 'user' do

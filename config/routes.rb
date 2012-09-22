@@ -1,19 +1,14 @@
 Hcking::Application.routes.draw do
-
-
   devise_for :users, controllers: { omniauth_callbacks: "callbacks" }
   ActiveAdmin.routes(self)
-  
   resources :users, only: [:show] do
     resources :authorizations, only: [:destroy]
-    
     resources :tags,
       controller: :user_tags,
       path: ":kind",
       constraints: { id: /.*/, kind: /(like|hate)/ },
       only: [:create, :destroy]
   end
-  
 
   resources :blog_posts, path: "blog"
 
@@ -52,8 +47,8 @@ Hcking::Application.routes.draw do
   match "tag_ical/:id"            => "ical#for_tag"
   match "abonnieren"              => "subscribe#index"
   match "history"                 => "events#history"
+  match "humans"                  => "humans#index"
   match ":page_name"              => "pages#show"
 
   root to: "welcome#index"
-  
 end

@@ -1,0 +1,14 @@
+/* TEAM */
+
+<% @humans.each do |human| %>
+  <%= human.nickname %> (<%= human.team %>)
+  <% unless human.twitter.blank? %>
+  Twitter:  <%= human.twitter %>
+  <% end %>
+  <% unless human.github.blank? %>
+  Github:   <%= human.github %>
+  <% end %>
+  <% unless human.homepage.blank? %>
+  Homepage: <%= human.homepage %>
+  <% end %>
+<% end %>

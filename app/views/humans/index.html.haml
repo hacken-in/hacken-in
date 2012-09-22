@@ -1,0 +1,18 @@
+%h1= t "humans.team"
+
+#team
+  - @humans.each do |human|
+    .member
+      = gravatar_image_tag human.email, class: "user_gravatar", gravatar: { default: :identicon, size: 256 }
+
+      .name= human.nickname
+      .team= human.team
+
+      - unless human.twitter.blank?
+        .twitter= human.twitter
+
+      - unless human.github.blank?
+        .twitter= human.github
+
+      - unless human.homepage.blank?
+        .twitter= human.homepage

@@ -330,6 +330,9 @@ de:
     :create: "Erzeuge %{model}"
     :update: "Änderungen speichern"
 
+  humans:
+    team: Team
+
   active_admin:
     statistics:
       tag_distribution: "Verteilung der Tags"
