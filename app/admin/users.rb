@@ -14,6 +14,12 @@ ActiveAdmin.register User do
     default_actions
   end
   
+  form do
+    render partial: 'form'
+  end
+
+
+
   controller do
     defaults finder: :find_by_nickname
   end
