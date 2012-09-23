@@ -55,6 +55,8 @@ GEM
     bootstrap-sass-rails (2.1.1.0)
       railties (~> 3.1)
       sass-rails (~> 3.1)
+    bootstrap-will_paginate (0.0.8)
+      will_paginate
     bourbon (2.1.1)
       sass (>= 3.1)
     builder (3.0.3)
@@ -271,6 +273,7 @@ GEM
       vlad (>= 2.1.0)
     warden (1.2.1)
       rack (>= 1.0)
+    will_paginate (3.0.3)
     yard (0.8.2.1)
     zero-clipboard-rails (1.0.1)
       railties (~> 3.0)
@@ -283,6 +286,7 @@ DEPENDENCIES
   activeadmin!
   acts-as-taggable-on (~> 2.3.1)
   bootstrap-sass-rails
+  bootstrap-will_paginate (~> 0.0.8)
   cancan (~> 1.6.7)
   carrierwave (~> 0.6.2)
   ckeditor_rails
@@ -335,5 +339,6 @@ DEPENDENCIES
   uglifier (~> 1.2.0)
   vlad (~> 2.2.3)
   vlad-git (~> 2.2.0)
+  will_paginate (~> 3.0.3)
   yard (~> 0.8.2.1)
   zero-clipboard-rails (~> 1.0.1)

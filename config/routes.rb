@@ -53,7 +53,6 @@ Hcking::Application.routes.draw do
   # This pages are not done yet!
   match "contact"                 => "pages#todo"
   match "newsletter"              => "pages#todo"
-  match "blog"                    => "pages#todo"
   match "podcast"                 => "pages#todo"
 
   match ":page_name"              => "pages#show"

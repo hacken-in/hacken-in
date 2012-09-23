@@ -1,1 +1,8 @@
-Schaut, es ist ein Blooooog :)
+- @posts.each do |post|
+  %h1= post.headline
+  .date
+    = post.publishable_from.strftime("%Y-%m-%d %H:%M")
+  .blog_text
+    = raw post.text
+
+= will_paginate @posts

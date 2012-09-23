@@ -34,7 +34,7 @@
           = link_to image_tag('logo.png'), root_path, class: 'brand', title: 'NERDHUB'
           %ul.nav.main-nav.pull-right
             %li.active= link_to 'KALENDER', '/calendar', class: 'nav-link'
-            %li= link_to 'BLOG', blog_path, class: 'nav-link'
+            %li= link_to 'BLOG', blog_posts_path, class: 'nav-link'
             %li= link_to 'PODCASTS', podcast_path, class: 'nav-link'
             - unless current_user.blank?
               %li= link_to "LOGOUT", destroy_user_session_path, method: :delete, class: 'nav-link last'
