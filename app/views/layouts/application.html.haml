@@ -42,6 +42,19 @@
               %li= link_to 'LOGIN', user_session_path, class: 'nav-link last'
 
     .container
+      - if flash[:notice]
+        .alert.alert-block
+          %button{type:'button', class:'close', "data-dismiss" => 'alert'}x
+          = flash[:notice]
+      - if flash[:error]
+        .alert.alert-block.alert-error
+          %button{type:'button', class:'close', "data-dismiss" => 'alert'}x
+          = flash[:error]
+      - if flash[:alert]
+        .alert.alert-block.alert-error
+          %button{type:'button', class:'close', "data-dismiss" => 'alert'}x
+          = flash[:alert]
+
       = yield
 
       .row
