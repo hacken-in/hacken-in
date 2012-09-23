@@ -27,6 +27,8 @@ Hcking::Application.routes.draw do
 
   resources :comments, only: [:index]
 
+  resources :suggestions, only: [:new, :create, :show]
+
   resource :calendar do
     get :presets
     get :entries
