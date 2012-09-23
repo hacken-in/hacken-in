@@ -1,47 +1,16 @@
-.row
+- content_for :javascript do
+  :javascript
+    var calendarPresets = #{@presets_json.to_json}
+
+.row.header-sep-line
   .span4
     = render partial: 'modules/calendars/startselector', locals: { months: @months }
-    .calendar-calendar
-      = render partial: 'modules/calendars/calendar', locals: { events: @events }
+    = render partial: 'modules/calendars/calendar', locals: { single_events: @single_events }
   .span2
     .calendar-head
       = image_tag('klick-den-cal.png')
-    .calendar-categories
-      %ul.nav.nav-tabs.calendar-categories-tabs
-        %li.active
-          %a{href: '#'} DIY
-        %li
-          %a{href: '#'} GRÜNDER
-        %li
-          %a{href: '#'} NERD
-        %li
-          %a{href: '#'} ENTWICKLER
-      = render partial: 'modules/calendars/categories', locals: { categories: @categories, selected: [] }
-    .love-tags
-      .input-append
-        %input{type: 'text', placeholder: 'Was liebst du?'}
-        %span.add-on
-          %i.icon-heart
-      %ul
-        %li
-          Cupcakes
-          %i.icon-remove
-        %li
-          Chocolate
-          %i.icon-remove
-        %li
-          Cookies
-          %i.icon-remove
-        %li
-          Strawberries
-          %i.icon-remove
-        %li
-          Cream
-          %i.icon-remove
-    .hate-tags
-      .input-append
-        %input{type: 'text', placeholder: 'Was boykottierst du?'}
-        %span.add-on
-          %i.icon-thumbs-down
+
+    = render partial: 'modules/calendars/kddk'
+    = render partial: 'modules/tags/calendar_tags'
     %button.btn.btn-large.btn-primary
       Export

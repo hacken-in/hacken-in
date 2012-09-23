@@ -169,8 +169,12 @@ class EventTest < ActiveSupport::TestCase
   test "should get single events ordered" do
     event = FactoryGirl.create(:simple)
 
-    first = (Time.now + 2.days + (Time.now.hour < 2 ? 2.hours : 0)).localtime
-    second = (Time.now + 5.days + (Time.now.hour < 2 ? 2.hours : 0)).localtime
+    # Always pick 1st March of next year, 15:15pm
+    # This prevents us from falling into IceCube bug pitfalls
+    today = DateTime.new(Time.now.year + 1, 3, 1, 15, 15)
+
+    first = today + 2.days + (today.hour < 2 ? 2.hours : 0)
+    second = today + 5.days + (today.hour < 2 ? 2.hours : 0)
 
     SingleEvent.create(event: event, occurrence: second)
     SingleEvent.create(event: event, occurrence: first)

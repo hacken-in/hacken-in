@@ -9,15 +9,22 @@ class CalendarPreset < ActiveRecord::Base
   scope :user_presets, where(CalendarPreset.arel_table[:user_id].not_eq(nil))
 
   def self.presets_for_user(user = nil)
+
+    CalendarPreset.find_or_create_by_user_id(user.id) if user
+
     presets = {}
     CalendarPreset.includes(:calendar_preset_categories).where('user_id = ? or user_id is null', user.try(:id)).each do |preset|
       if (user && preset.user_id == user.id)
-        presets[:diy] = preset.calendar_preset_categories.map(&:id)
+        presets[:diy] = preset.calendar_preset_categories.map(&:category_id)
       else
-        presets[preset.id] = preset.calendar_preset_categories.map(&:id)
+        presets[preset.id] = preset.calendar_preset_categories.map(&:category_id)
       end
     end
     presets
+  end
+
+  def title
+    read_attribute(:title) || 'DIY'
   end
 
 end

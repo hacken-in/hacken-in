@@ -26,6 +26,8 @@ class SingleEvent < ActiveRecord::Base
     in_future.where(based_on_rule: true)
   scope :in_next,
     lambda { |delta| where(occurrence: (Time.now.to_date)..((Time.now + delta).to_date)) }
+  scope :recent_to_soon,
+    lambda { |delta| where(occurrence: (Time.now.to_date - delta)..((Time.now + delta).to_date)) }
   scope :only_tagged_with,
     lambda { |tag| tagged_with(tag) | joins(:event).where('events.id in (?)', Event.tagged_with(tag).map(&:id)) }
   scope :for_user,
@@ -148,4 +150,16 @@ class SingleEvent < ActiveRecord::Base
   def is_for_user?(user)
     !((self.event.tag_list & user.hate_list).length > 0 && self.users.exclude?(user))
   end
+
+  def self.catalog_by_day(events)
+    events_by_day = Hash.new { |hash, key| hash[key] = [] }
+
+    events.each do |event|
+      events_by_day[event.occurrence.to_date] << event
+    end
+
+    events_by_day
+  end
+
 end
+

@@ -1,34 +1,13 @@
 
 .minical
-  - 4.times do
-    .minical-day
-      .minical-day-header
-        %strong Mi
-        13 Juli
-      .minical-day-body
-        - 3.times do
-          .minical-cell.first-cell
-          .minical-cell
-          .minical-cell
-
-  .minical-day.active
-    .minical-day-header
-      %strong Do
-      15 Dez
-    .minical-day-body
-      - 3.times do
-        .minical-cell.first-cell
-        .minical-cell
-        .minical-cell
-
-  - 4.times do
-    .minical-day
-      .minical-day-header
-        %strong Mi
-        13 Juli
-      .minical-day-body
-        - 3.times do
-          .minical-cell.first-cell
-          .minical-cell
-          .minical-cell
+  .minical-wrapper
+    - @single_events_by_day.each do |day, events|
+      .minical-day
+        .minical-day-header
+          %strong= I18n.localize(day, format: "%a")
+          = I18n.localize(day, format: "%b %d")
+        .minical-day-body
+          - events.each_with_index do |event, index|
+            - category_color = event.category.color
+            .minical-cell{ 'class' => ("first-cell" if index % 3 == 0), 'style' => "background-color: #{category_color}" }
 
