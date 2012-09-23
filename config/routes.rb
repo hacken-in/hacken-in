@@ -48,6 +48,14 @@ Hcking::Application.routes.draw do
   match "abonnieren"              => "subscribe#index"
   match "history"                 => "events#history"
   match "humans"                  => "humans#index"
+  
+  # This pages are not done yet!
+  match "contact"                 => "pages#todo"
+  match "newsletter"              => "pages#todo"
+  match "impressum"               => "pages#todo"
+  match "blog"                    => "pages#todo"
+  match "podcast"                 => "pages#todo"
+
   match ":page_name"              => "pages#show"
 
   root to: "welcome#index"

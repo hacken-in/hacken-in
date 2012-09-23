@@ -34,8 +34,8 @@
           = link_to image_tag('logo.png'), root_path, class: 'brand', title: 'NERDHUB'
           %ul.nav.main-nav.pull-right
             %li.active= link_to 'KALENDER', '/calendar', class: 'nav-link'
-            %li= link_to 'BLOG', '#', class: 'nav-link'
-            %li= link_to 'PODCASTS', '#', class: 'nav-link'
+            %li= link_to 'BLOG', blog_path, class: 'nav-link'
+            %li= link_to 'PODCASTS', podcast_path, class: 'nav-link'
             - unless current_user.blank?
               %li= link_to "LOGOUT", destroy_user_session_path, method: :delete, class: 'nav-link last'
             - else
@@ -61,9 +61,9 @@
         .navbar-inner
           %ul.nav.footer-nav
             %li= link_to 'TEAM', humans_path, class: 'nav-link'
-            %li= link_to 'KONTAKT','#', class: 'nav-link'
-            %li= link_to 'NEWSLETTER','#', class: 'nav-link'
-            %li= link_to 'IMPRESSUM','#', class: 'nav-link'
+            %li= link_to 'KONTAKT', contact_path, class: 'nav-link'
+            %li= link_to 'NEWSLETTER', newsletter_path, class: 'nav-link'
+            %li= link_to 'IMPRESSUM', impressum_path, class: 'nav-link'
           %ul.nav.social-nav.pull-right
             %li
               %a.nav-link{ href: "http://www.facebook.com/nerdhubcgn", title: "Nerdhub auf Facebook" }
