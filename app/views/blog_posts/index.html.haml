@@ -1,5 +1,5 @@
 - @posts.each do |post|
-  = render post
+  = render post, link_headline: true
   - if post.comments.count == 0
     = link_to "Hinterlasse einen Kommentar", blog_post_path(post)
   - else

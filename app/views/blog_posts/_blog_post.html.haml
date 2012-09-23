@@ -1,4 +1,8 @@
-%h1= link_to blog_post.headline, blog_post_path(blog_post)
+%h1
+  - if defined?(link_headline) && link_headline
+    = link_to blog_post.headline, blog_post_path(blog_post)
+  - else
+    = blog_post.headline
 .date
   = blog_post.publishable_from.strftime("%Y-%m-%d %H:%M")
 .blog_text
