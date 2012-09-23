@@ -1,0 +1,5 @@
+%h1= link_to blog_post.headline, blog_post_path(blog_post)
+.date
+  = blog_post.publishable_from.strftime("%Y-%m-%d %H:%M")
+.blog_text
+  = raw blog_post.text

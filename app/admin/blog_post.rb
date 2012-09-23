@@ -16,4 +16,5 @@ ActiveAdmin.register BlogPost do
   show do
     render "post_partial"
   end
+
 end

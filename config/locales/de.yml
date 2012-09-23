@@ -1,5 +1,12 @@
 de:
 
+  views:
+    pagination:
+      first: "&lt;&lt;"
+      last: "&gt;&gt;"
+      next: "&gt;"
+      previous: "&lt;"
+
   common:
     confirm_delete: Bist du sicher?
     markdown_info: Hier kannst du <a href="%{syntax_link}" target="_blank">Markdown</a> und <a href="http://www.emoji-cheat-sheet.com/">emojis</a> benutzen.

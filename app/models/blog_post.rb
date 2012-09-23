@@ -9,7 +9,7 @@ class BlogPost < ActiveRecord::Base
 
   after_initialize :set_defaults
 
-  validates_presence_of :headline, :headline_teaser, :teaser_text, :text, :user, :category
+  validates_presence_of :headline, :headline_teaser, :teaser_text, :text, :user, :category, :publishable_from
 
   scope :for_web, lambda { where( "publishable = ? and publishable_from <= ?", true, Time.zone.now ).order("publishable_from desc") }
 
@@ -20,6 +20,10 @@ class BlogPost < ActiveRecord::Base
 
   def to_s
     headline
+  end
+
+  def to_param
+    "#{id}-#{headline.parameterize}"
   end
 
   private

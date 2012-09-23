@@ -1,6 +1,8 @@
 Hcking::Application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: "callbacks" }
+  
   ActiveAdmin.routes(self)
+
   resources :users, only: [:show] do
     resources :authorizations, only: [:destroy]
     resources :tags,
@@ -11,6 +13,8 @@ Hcking::Application.routes.draw do
   end
 
   resources :blog_posts, path: "blog"
+  match "blog/:year/:month/:day" => "blog_posts#index"
+  match "blog/:year/:month/:day/:id" => "blog_posts#show"
 
   resources :search, only: [:index]
 
