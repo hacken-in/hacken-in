@@ -1,7 +1,22 @@
 
 .minical
-  overflow: auto
-  margin-bottom: 60px
+  overflow-x: scroll
+  margin-bottom: 50px
+  width: 960px
+  height: 130px
+
+  // force OS X Lion scroll bars to appear
+  &::-webkit-scrollbar
+    -webkit-appearance: none
+    width: 11px
+    height: 11px
+  &::-webkit-scrollbar-thumb
+    border-radius: 8px
+    border: 2px solid white
+    background-color: rgba(0, 0, 0, .5)
+
+  .minical-wrapper
+    width: 9000px
 
 .minical-day
   width: 95px

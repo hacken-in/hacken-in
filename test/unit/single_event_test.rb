@@ -198,4 +198,16 @@ class SingleEventTest < ActiveSupport::TestCase
     assert_equal [single], SingleEvent.only_tagged_with("meintag")
   end
 
+  test "should catalog events by day" do
+    today, tomorrow = DateTime.new(2012, 10, 12), DateTime.new(2012, 10, 20)
+
+    first = stub(occurrence: today)
+    second = stub(occurrence: tomorrow)
+    third = stub(occurrence: tomorrow)
+
+    catalog = SingleEvent.catalog_by_day([second, first, third])
+    expected = { today => [first], tomorrow => [second, third] }
+    assert_equal expected, catalog
+  end
+
 end
