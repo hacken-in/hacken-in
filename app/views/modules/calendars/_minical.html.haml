@@ -16,4 +16,10 @@
               = link_to '', event_single_event_path(event.event, event), class: "minical-cell #{'first-cell' if index % 3 == 0}", style: "background-color: #{event.category.color}"
             - else
               .minical-cell.empty{ class: (" first-cell" if index % 3 == 0) }
+          
+          - if events.select { |e| e }.size > max_cells_per_box
+            .minical-cell.empty.see-more ...
+          - else
+            .minical-cell.empty.add-new 
+              .add-button
 
