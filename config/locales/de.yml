@@ -328,6 +328,16 @@ de:
       confirmation: "Hashtag entfernt"
       error: "Hashtag konnte nicht entfernt werden"
 
+  suggestions:
+    new:
+      title: Mache uns einen Vorschlag
+      introduction: "Bei uns im Kalender fehlt ein Event? Es gibt eine neue Usergroup? Erzähl uns mehr davon :)"
+      occurrence_hint: "zB. am 14.12.2015 oder jeden dritten Mittwoch im Monat"
+      description_hint: "zB. Themen, Besonderheiten, Anmeldung erforderlich..."
+      more_hint: "Twitter, Hashtag, Homepage, Anderes"
+    show:
+      title: Vorschlag
+
   formtastic:
     :yes: "Ja"
     :no: "Nein"
