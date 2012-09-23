@@ -1,0 +1,15 @@
+%h1= t "suggestions.new.title"
+
+= semantic_form_for @suggestion do |f|
+  %p= t "suggestions.new.introduction"
+
+  = f.inputs do
+    = f.input :name
+    = f.input :occurrence, hint: t("suggestions.new.occurrence_hint")
+    = f.input :description, hint: t("suggestions.new.description_hint")
+    = f.input :place
+    = f.input :more_as_text, as: :text, hint: t("suggestions.new.more_hint")
+
+  = f.actions do
+    = f.action :submit, as: :button
+    = f.action :cancel, as: :link
