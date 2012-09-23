@@ -48,6 +48,7 @@ Hcking::Application.routes.draw do
   match "abonnieren"              => "subscribe#index"
   match "history"                 => "events#history"
   match "humans"                  => "humans#index"
+  match "impressum"               => "pages#show", page_name: "impressum"
 
   # This pages are not done yet!
   match "contact"                 => "pages#todo"
