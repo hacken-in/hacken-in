@@ -1,12 +1,12 @@
 class CalendarsController < ApplicationController
-  
+
   def show
     @categories = Category.all
 
     # Die Presets
     @presets = CalendarPreset.nerdhub_presets.all
     @presets_json = CalendarPreset.presets_for_user(current_user)
-    
+
     # Die Monate, die angezeigt werden
     startdate = params[:start].present? ? Date.parse(params[:start]) : Date.today
 

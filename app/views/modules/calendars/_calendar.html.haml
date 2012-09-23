@@ -1,10 +1,12 @@
 - current_date = nil
+- single_events.each do |single_event|
+  - if current_date != single_event.occurrence.to_date
+    - current_date = single_event.occurrence.to_date
+    %h1
+      = day_output_helper(current_date)
 
-.calendar-calendar 
-  - single_events.each do |single_event|
-    - if current_date != single_event.occurrence.to_date
-      - current_date = single_event.occurrence.to_date
-      %h1
-        = day_output_helper(current_date)
+  = render partial: 'modules/calendars/entry', locals: {single_event: single_event}
 
-    = render partial: 'modules/calendars/entry', locals: {single_event: single_event}
+:javascript
+  var calendarScrollFrom = "#{current_date+1.day}";
+  var calendarScrollTo   = "#{current_date+1.month}"

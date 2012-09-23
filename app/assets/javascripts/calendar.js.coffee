@@ -11,6 +11,21 @@ jQuery ->
     # Laden wir mal die DIY Kategorie
     CalendarPreset.selectCategoriesFromPreset('diy');
 
+    # Und dann noch das infinite scroll
+    $(window).endlessScroll
+      fireDelay: 200
+      fireOnce: true
+      inflowPixels: 500
+      ceaseFireOnEmpty: false
+      callback: (fireSequence, pageSequence, scrollDirection)->
+        if scrollDirection == 'next'
+          $.ajax
+            url: "/calendar/entries"
+            type: 'GET'
+            data: "from=#{calendarScrollFrom}&to=#{calendarScrollTo}"
+            success: (data)->
+              $('.calendar-calendar').append(data)
+
 
 CalendarPreset =
   switchPreset: ->
@@ -24,7 +39,7 @@ CalendarPreset =
 
   selectCategoriesFromPreset: (presetId) ->
     $all_checkboxes = $('input[name=calendar_category]')
-    
+
     if presetId
       presetId = presetId.toString()
     else
