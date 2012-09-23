@@ -1,6 +1,6 @@
 $(function() {
-  images = []
-  $.get('thisiscologne.json', function(data) {
+  images = [];
+  $.get('/thisiscologne.json', function(data) {
     if (data) {
       $.each(data, function(index, item) {
         images.push({dir: (Math.random() < 0.5 ? 'up' : 'down'), src: item.image_url, href: item.link, target:"_blank" });
