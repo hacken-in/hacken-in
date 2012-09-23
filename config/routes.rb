@@ -12,7 +12,9 @@ Hcking::Application.routes.draw do
       only: [:create, :destroy]
   end
 
-  resources :blog_posts, path: "blog"
+  resources :blog_posts, path: "blog" do
+    resources :comments, except: [:new]
+  end
   match "blog/:year/:month/:day" => "blog_posts#index"
   match "blog/:year/:month/:day/:id" => "blog_posts#show"
 

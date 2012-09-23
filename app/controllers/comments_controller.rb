@@ -62,6 +62,7 @@ class CommentsController < ApplicationController
   def find_commentable
     return SingleEvent.find params[:single_event_id] unless params[:single_event_id].nil?
     return Event.find params[:event_id] unless params[:event_id].nil?
+    return BlogPost.find params[:blog_post_id] unless params[:blog_post_id].nil?
   end
 
 end

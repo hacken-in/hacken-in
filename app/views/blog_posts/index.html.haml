@@ -1,3 +1,7 @@
 - @posts.each do |post|
   = render post
+  - if post.comments.count == 0
+    = link_to "Hinterlasse einen Kommentar", blog_post_path(post)
+  - else
+    = link_to "#{post.comments.count} Kommentare", blog_post_path(post)
 = paginate @posts, theme: 'twitter-bootstrap'
