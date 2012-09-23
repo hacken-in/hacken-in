@@ -26,6 +26,11 @@ class BlogPost < ActiveRecord::Base
     "#{id}-#{headline.parameterize}"
   end
 
+  # This is needed for the comments controller
+  def name
+    headline
+  end
+
   private
 
   def set_defaults
