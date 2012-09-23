@@ -1,19 +1,13 @@
-require 'location'
-
 class SingleEvent < ActiveRecord::Base
-  include Location
-  geocoded_by :address
 
-  after_validation :reset_geocode
   after_destroy :update_event
 
   belongs_to :category
-  
+  belongs_to :venue
   belongs_to :event
   delegate :title, :description, to: :event, prefix: true
   delegate :twitter, to: :event
 
-  has_many :comments, as: :commentable, dependent: :destroy
   has_and_belongs_to_many :users, uniq: true
 
   scope :in_future,

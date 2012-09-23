@@ -10,14 +10,6 @@ ActiveAdmin.register SingleEvent do
       single_event.description.try :truncate, 80
     end
     column :occurrence
-    column :location do |single_event|
-      [
-        single_event.location,
-        single_event.street,
-        single_event.zipcode,
-        single_event.city
-      ].delete_if { |info| info.empty? }.join ", "
-    end
     column :url do |single_event|
       a "Link", href: single_event.url
     end

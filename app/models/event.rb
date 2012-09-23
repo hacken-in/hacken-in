@@ -1,17 +1,14 @@
-require 'location'
 require 'time_extensions'
 
 class Event < ActiveRecord::Base
-  include Location
-  geocoded_by :address
 
   validates_presence_of :name
 
-  after_validation :reset_geocode
   before_save :schedule_to_yaml
   after_save :generate_single_events
   
   belongs_to :category
+  belongs_to :venue
 
   has_many :single_events
   has_many :comments, as: :commentable, dependent: :destroy

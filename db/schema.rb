@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120921115254) do
+ActiveRecord::Schema.define(:version => 20120923164545) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -115,11 +115,14 @@ ActiveRecord::Schema.define(:version => 20120921115254) do
     t.boolean  "full_day",        :default => false
     t.string   "twitter_hashtag"
     t.integer  "category_id"
+    t.integer  "venue_id"
+    t.string   "venue_info"
   end
 
   add_index "events", ["category_id"], :name => "index_events_on_category_id"
   add_index "events", ["latitude"], :name => "index_events_on_latitude"
   add_index "events", ["longitude"], :name => "index_events_on_longitude"
+  add_index "events", ["venue_id"], :name => "index_events_on_venue_id"
 
   create_table "pictures", :force => true do |t|
     t.string   "title"
@@ -149,10 +152,13 @@ ActiveRecord::Schema.define(:version => 20120921115254) do
     t.string   "twitter_hashtag"
     t.boolean  "based_on_rule",   :default => false
     t.integer  "category_id"
+    t.integer  "venue_id"
+    t.string   "venue_info"
   end
 
   add_index "single_events", ["category_id"], :name => "index_single_events_on_category_id"
   add_index "single_events", ["event_id"], :name => "index_single_events_on_event_id"
+  add_index "single_events", ["venue_id"], :name => "index_single_events_on_venue_id"
 
   create_table "single_events_users", :id => false, :force => true do |t|
     t.integer "user_id"
@@ -222,5 +228,19 @@ ActiveRecord::Schema.define(:version => 20120921115254) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["nickname"], :name => "index_users_on_nickname", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "venues", :force => true do |t|
+    t.string   "location"
+    t.string   "street"
+    t.string   "zipcode"
+    t.string   "city"
+    t.string   "country"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "venues", ["latitude", "longitude"], :name => "index_venues_on_latitude_and_longitude"
 
 end

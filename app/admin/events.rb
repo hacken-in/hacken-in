@@ -4,14 +4,6 @@ ActiveAdmin.register Event do
   index do
     column :id
     column :name
-    column :location do |event|
-      [
-        event.location,
-        event.street,
-        event.zipcode,
-        event.city
-      ].delete_if { |info| info.empty? }.join ", "
-    end
     column :url do |event|
       a "Link", href: event.url
     end
@@ -24,4 +16,5 @@ ActiveAdmin.register Event do
 
     default_actions
   end
+
 end
