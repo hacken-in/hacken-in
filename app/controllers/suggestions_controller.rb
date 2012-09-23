@@ -15,7 +15,7 @@ class SuggestionsController < ApplicationController
     @suggestion = Suggestion.new params[:suggestion]
 
     if @suggestion.save
-      flash[:notice] = t "suggestion.create.confirmation"
+      flash[:notice] = t "suggestions.create.confirmation"
     end
 
     respond_with @suggestion
