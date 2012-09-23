@@ -3,11 +3,24 @@ class Suggestion < ActiveRecord::Base
     :occurrence,
     :description,
     :more,
-    :place
+    :place,
+    :more_as_text
 
   serialize :more, Hash
 
   validates_presence_of :name,
     :occurrence,
     :place
+
+  def more_as_text
+    more.map {|key, value| "#{key}: #{value}"}.join "\n"
+  end
+
+  def more_as_text=(raw)
+    write_attribute "more", Hash[*raw.gsub(": ", "\n").split("\n")]
+  end
+
+  def more_as_inline
+    more.map {|key, value| "#{key}: #{value}"}.join ", "
+  end
 end

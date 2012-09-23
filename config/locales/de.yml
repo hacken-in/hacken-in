@@ -195,6 +195,12 @@ de:
         city: Stadt
         duration: Länge (in Minuten)
         occurrence: Termin
+      suggestion:
+        name: Name
+        occurrence: Zeitpunkt
+        description: Beschreibung
+        more_as_text: Weiteres
+        place: Ort
       comment:
         body: Inhalt
       category:
