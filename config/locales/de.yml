@@ -344,6 +344,8 @@ de:
       more_hint: "Twitter, Hashtag, Homepage, Anderes"
     show:
       title: Vorschlag
+    create:
+      confirmation: "Vielen Dank für deinen Vorschlag :)"
 
   formtastic:
     :yes: "Ja"
