@@ -2,4 +2,4 @@
 
 - @comments.each do |comment|
   %h4 Kommentar für #{link_to comment.commentable_name, commentable_path(comment)}
-  = render partial: "comments/comment", locals: {comment: comment}
+  = render partial: "modules/comments/comment", locals: {comment: comment}
