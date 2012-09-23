@@ -1,0 +1,8 @@
+.calendar-categories
+  %ul.nav.nav-tabs.calendar-categories-tabs
+    %li.active
+      %a{href: '#', preset: 'diy'} DIY
+    - @presets.each do |preset|
+      %li
+        %a{href: '#', preset: preset.id}=preset.title
+  = render partial: 'modules/categories/calendar-selector', locals: { categories: @categories, selected: [] }

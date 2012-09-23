@@ -91,19 +91,14 @@
 }
 .nav-tabs > li > a,
 .nav-pills > li > a {
-  padding-right: 12px;
-  padding-left: 12px;
+  padding-right: 10px;
+  padding-left: 10px;
   margin-right: 2px;
-  line-height: 14px; // keeps the overall height an even number
 }
 
 // TABS
 // ----
 
-// Give the tabs something to sit on
-.nav-tabs {
-  border-bottom: 1px solid #ddd;
-}
 // Make the list-items overlay the bottom border
 .nav-tabs > li {
   margin-bottom: -1px;
@@ -111,11 +106,11 @@
 
 // Actual tabs (as links)
 .nav-tabs > li > a {
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
   line-height: $baseLineHeight;
   border: 1px solid transparent;
-  @include border-radius(4px 4px 0 0);
+  //@include border-radius(4px 4px 0 0);
   &:hover {
     border-color: $grayLighter $grayLighter #ddd;
   }
