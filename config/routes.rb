@@ -13,6 +13,9 @@ Hcking::Application.routes.draw do
   end
 
   resources :blog_posts, path: "blog" do
+    collection do
+      get :feed, defaults: { format: 'atom' }
+    end
     resources :comments, except: [:new]
   end
   match "blog/:year/:month/:day" => "blog_posts#index"

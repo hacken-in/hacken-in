@@ -2,6 +2,7 @@
 %html
   %head
     %title= content_for?(:title) ? yield(:title) + " – nerdhub.de" : "nerdhub.de"
+    = auto_discovery_link_tag :atom, "/blog/feed"
     = stylesheet_link_tag "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
