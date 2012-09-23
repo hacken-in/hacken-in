@@ -2,14 +2,20 @@
 .minical
   .minical-wrapper
     - @single_events_by_day.each do |day, events|
-      .minical-day
+      .minical-day{ class: (" active" if day == Date.today) }
 
         .minical-day-header
           %strong= I18n.localize(day, format: "%a")
           = I18n.localize(day, format: "%b %d")
 
         .minical-day-body
+          - max_cells_per_box = 9
           - events.each_with_index do |event, index|
-            - category_color = event.category.color
-            = link_to '', event_single_event_path(event.event, event), class: "minical-cell #{'first-cell' if index % 3 == 0}", style: "background-color: #{category_color}"
+            - break if index >= max_cells_per_box - 1
+            = link_to '', event_single_event_path(event.event, event), class: "minical-cell #{'first-cell' if index % 3 == 0}", style: "background-color: #{event.category.color}"
+
+          - # If day has empty space left: fill up with stub cells
+          - if events.size < max_cells_per_box
+            - (max_cells_per_box - events.size).times do |i|
+              .minical-cell.empty{ class: (" first-cell" if (i + events.size) % 3 == 0) }
 
