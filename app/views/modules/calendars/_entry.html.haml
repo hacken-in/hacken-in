@@ -4,5 +4,5 @@
   = render partial: 'modules/categories/indicator', locals: { size: "52px", color: color }
   .calendar-line{ data: { hlcolor: color } }
     .calendar-line-title
-      %a{href: single_event_single_single_event_path(single_event.event, single_event)}=single_event.title
+      %a{href: event_single_event_path(single_event.event, single_event)}=single_event.title
     .calendar-line-time=  I18n.localize(single_event.occurrence, format: "%H:%M Uhr")
