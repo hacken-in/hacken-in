@@ -1,11 +1,34 @@
 
 .minical
-  .minical-day
-    .minical-day-header Mi 13 Juli
+  - 4.times do
+    .minical-day
+      .minical-day-header
+        %strong Mi
+        13 Juli
+      .minical-day-body
+        - 3.times do
+          .minical-cell.first-cell
+          .minical-cell
+          .minical-cell
+
+  .minical-day.active
+    .minical-day-header
+      %strong Do
+      15 Dez
     .minical-day-body
-      .minical-cell
-      .minical-cell
-      .minical-cell
-    .minical-day-footer
-      .minical-add
+      - 3.times do
+        .minical-cell.first-cell
+        .minical-cell
+        .minical-cell
+
+  - 4.times do
+    .minical-day
+      .minical-day-header
+        %strong Mi
+        13 Juli
+      .minical-day-body
+        - 3.times do
+          .minical-cell.first-cell
+          .minical-cell
+          .minical-cell
 
