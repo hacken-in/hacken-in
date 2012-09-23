@@ -96,7 +96,7 @@ class SingleEvent < ActiveRecord::Base
 
   alias :self_category :category
   def category
-    self.self_category || self.event.category
+    self.self_category || (self.event && self.event.category)
   end
 
   # Get the attribute from the Event model unless they exist here
