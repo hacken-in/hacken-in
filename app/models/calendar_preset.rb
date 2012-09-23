@@ -12,7 +12,7 @@ class CalendarPreset < ActiveRecord::Base
 
     CalendarPreset.find_or_create_by_user_id(user.id) if user
 
-    presets = {}
+    presets = { diy: [] }
     CalendarPreset.includes(:calendar_preset_categories).where('user_id = ? or user_id is null', user.try(:id)).each do |preset|
       if (user && preset.user_id == user.id)
         presets[:diy] = preset.calendar_preset_categories.map(&:category_id)

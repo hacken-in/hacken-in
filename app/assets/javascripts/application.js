@@ -8,6 +8,7 @@
 //= require jquery_ujs
 //= require jquery.balloon
 //= require jquery.tokeninput
+//= require jquery.endless-scroll
 //= require showdown
 //= require zero-clipboard
 //= require tipsy
