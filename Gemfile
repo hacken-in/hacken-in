@@ -78,6 +78,10 @@ gem 'html_truncator', '~> 0.3.0'
 # Twitter Bootstrap
 gem 'bootstrap-sass-rails'
 
+# Pagination
+gem "will_paginate", "~> 3.0.3"
+gem "bootstrap-will_paginate", "~> 0.0.8"
+
 #PJAX
 gem 'pjax_rails'
 

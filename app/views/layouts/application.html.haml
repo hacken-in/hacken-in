@@ -34,7 +34,7 @@
           = link_to image_tag('logo.png'), root_path, class: 'brand', title: 'NERDHUB'
           %ul.nav.main-nav.pull-right
             %li.active= link_to 'KALENDER', '/calendar', class: 'nav-link'
-            %li= link_to 'BLOG', blog_path, class: 'nav-link'
+            %li= link_to 'BLOG', blog_posts_path, class: 'nav-link'
             %li= link_to 'PODCASTS', podcast_path, class: 'nav-link'
             - unless current_user.blank?
               %li= link_to "LOGOUT", destroy_user_session_path, method: :delete, class: 'nav-link last'
@@ -63,11 +63,11 @@
 
       .row
         .span2.this-is-cologne#tic1
-          PIC1
+          = this_is_cologne(0)
         .span2.this-is-cologne#tic2
-          PIC2
+          = this_is_cologne(1)
         .span2.this-is-cologne#tic3
-          PIC3
+          = this_is_cologne(2)
 
     %footer.container.main-footer
       .navbar
