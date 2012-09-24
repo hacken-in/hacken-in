@@ -151,38 +151,6 @@ class SingleEvent < ActiveRecord::Base
     !((self.event.tag_list & user.hate_list).length > 0 && self.users.exclude?(user))
   end
 
-  def self.catalog_by_day(events, first_day=Date.today, last_day=Date.today + 1.day)
-    events_by_day = Hash.new { |hash, key| hash[key] = [] }
-
-    events.each do |event|
-      events_by_day[event.occurrence.to_date] << event
-    end
-
-    max_events_per_day = 8
-
-    # Make sure that the complete catalog is represented
-    # by days. Fill up empty "appointments" with nil.
-    # Strip off additional appointments.
-    (first_day..last_day).each do |day|
-      events_for_day = events_by_day[day]
-
-      if events_for_day.size < max_events_per_day
-        (max_events_per_day + 1 - events_for_day.size).times do
-          events_by_day[day] << nil
-        end
-      end
-    end
-
-    events_by_day.sort
-  end
-
-  def to_s
-    "#{self.id}"
-  end
-
-  def inspect
-    self.to_s
-  end
 
 end
 
