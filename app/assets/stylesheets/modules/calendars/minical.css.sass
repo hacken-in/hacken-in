@@ -5,15 +5,17 @@
   width: 960px
   height: 130px
 
-  // force OS X Lion scroll bars to appear
   &::-webkit-scrollbar
-    -webkit-appearance: none
     width: 11px
     height: 11px
   &::-webkit-scrollbar-thumb
-    border-radius: 8px
-    border: 2px solid white
-    background-color: rgba(0, 0, 0, .5)
+    background-color: rgba(0, 0, 0, 0.5)
+  &::-webkit-scrollbar-button
+    width: 0
+    height: 0
+    display: none
+  &::-webkit-scrollbar-track
+    background-color: rgba(0, 0, 0, 0.1)
 
   .minical-wrapper
     width: 9000px
