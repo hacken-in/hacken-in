@@ -15,6 +15,19 @@ class Event < ActiveRecord::Base
 
   delegate :start_time, :start_time=, to: :schedule
 
+  # toggle comment foo:
+  # comment bevore rake export_Events
+  # to display w/o error on new single_event first delete delegated event db entrys
+  # uncomment to pass test
+
+  delegate :latitude, :latitude=, to: :venue
+  delegate :longitude, :longitude=, to: :venue
+  delegate :street, :street=, to: :venue
+  delegate :location, :location=, to: :venue
+  delegate :zipcode, :zipcode=, to: :venue
+  delegate :country, :country=, to: :venue
+  delegate :address, to: :venue
+
   attr_writer :schedule
 
   acts_as_taggable

@@ -1,18 +1,13 @@
 # encoding: utf-8
 FactoryGirl.define do
   factory :simple, class: 'event' do
+    association :venue, factory: :venue
     name "SimpleEvent"
   end
 
   factory :full_event, class: 'event' do
     name "SimpleEvent"
-    location "CoWoCo, Gasmotorenfabrik, 3. Etage"
-    street "Deutz-Mülheimerstraße 129"
-    zipcode "51063"
-    city "Köln"
-    country "Germany"
-    latitude 50.9491
-    longitude 6.98682
+    association :venue, factory: :venue
     description "Dragée bonbon tootsie roll icing jelly sesame snaps croissant apple pie. Sugar plum pastry tiramisu candy liquorice. Sweet roll chocolate bar macaroon fruitcake dragée faworki macaroon gingerbread. Caramels fruitcake bonbon croissant jelly beans topping caramels fruitcake danish. Jelly-o caramels cheesecake sesame snaps bonbon wafer bear claw jelly beans. Cotton candy chocolate caramels jelly beans tart tart jujubes jelly-o muffin. Tart soufflé chocolate jujubes. Tootsie roll sweet apple pie tootsie roll fruitcake marshmallow pastry. Cupcake candy canes candy canes chocolate cake pudding sweet roll. Wafer biscuit bonbon carrot cake gummi bears pie liquorice marzipan pudding. Oat cake brownie tiramisu biscuit chocolate bar wafer applicake dragée. Sweet sugar plum tart soufflé tootsie roll faworki gummi bears. Jelly dessert croissant halvah biscuit caramels. Wafer oat cake gummies jelly-o cheesecake powder."
   end
 

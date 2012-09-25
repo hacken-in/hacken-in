@@ -8,6 +8,21 @@ class SingleEvent < ActiveRecord::Base
   delegate :title, :description, to: :event, prefix: true
   delegate :twitter, to: :event
 
+  # toggle comment foo:
+  # comment bevore rake export_SingleEvents 
+  # uncomment - to display w/o error on new single_event first delete single_event db entrys
+  # uncomment to pass test
+
+  delegate :latitude, :latitude=, to: :venue
+  delegate :longitude, :longitude=, to: :venue
+  delegate :street, :street=, to: :venue
+  delegate :location, :location=, to: :venue
+  delegate :zipcode, :zipcode=, to: :venue
+  delegate :country, :country=, to: :venue
+  delegate :address, to: :venue
+
+
+  has_many :comments, as: :commentable, dependent: :destroy
   has_and_belongs_to_many :users, uniq: true
 
   scope :in_future,

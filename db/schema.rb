@@ -168,6 +168,16 @@ ActiveRecord::Schema.define(:version => 20120923164545) do
   add_index "single_events_users", ["single_event_id"], :name => "index_single_events_users_on_single_event_id"
   add_index "single_events_users", ["user_id"], :name => "index_single_events_users_on_user_id"
 
+  create_table "suggestions", :force => true do |t|
+    t.string   "name"
+    t.string   "occurrence"
+    t.text     "description"
+    t.text     "place"
+    t.text     "more"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"

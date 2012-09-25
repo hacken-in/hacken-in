@@ -56,17 +56,18 @@ class EventsControllerTest < ActionController::TestCase
     assert_redirected_to event_path(event)
   end
 
-  test "should create if bodo" do
-    sign_in FactoryGirl.create(:bodo)
-    get :new
-    assert_response :success
+#goes to admin section:
+  # test "should create if bodo" do
+  #   sign_in FactoryGirl.create(:bodo)
+  #   get :new
+  #   assert_response :success
 
-    assert_difference('Event.count') do
-      put :create, event: { name: "Hallo" }
-    end
-    assert_equal "Hallo", assigns(:event).name
-    assert_redirected_to event_path(assigns(:event))
-  end
+  #   assert_difference('Event.count') do
+  #     put :create, event: { name: "Hallo" }
+  #   end
+  #   assert_equal "Hallo", assigns(:event).name
+  #   assert_redirected_to event_path(assigns(:event))
+  # end
 
   test "should not delete if not bodo" do
     event = FactoryGirl.create(:simple)
