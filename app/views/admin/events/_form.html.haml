@@ -1,0 +1,19 @@
+= semantic_form_for [:admin, @event] do |form|
+  = form.inputs do
+    = form.input :name
+    = form.input :description, input_html: { class: 'autogrow preview-base', rows: 10 }, wrapper_html: { class: 'previewable' }
+    %li
+      %label
+      = render "commons/markdown_info"
+    = form.input :location
+    = form.input :street
+    = form.input :zipcode
+    = form.input :city
+    = form.input :url
+    = form.input :twitter
+    = form.input :twitter_hashtag
+    = form.input :start_time, as: :time_select, hint: "Bei wiederholenden Terminen gib hier die Uhrzeit an. Die Regel (z.B. 1x im Monat) kannst du nachher im Event selber anlegen."
+    = form.input :duration
+    = form.input :full_day
+    = form.input :tag_list
+  = form.actions

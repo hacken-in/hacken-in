@@ -39,50 +39,6 @@ class EventTest < ActiveSupport::TestCase
     assert_equal 1, event.schedule.all_occurrences.size
   end
 
-  test "check if adress is geocoded after save" do
-    event = Event.new(name: "Hallo")
-    event.location = "Cowoco in der Gasmotorenfabrik, 3. Etage"
-    event.street = "Deutz-Mülheimerstraße 129"
-    event.city = "Köln"
-    event.zipcode = "51063"
-    event.save
-
-    assert_not_nil event.latitude
-    assert_not_nil event.longitude
-  end
-
-  test "check if adress is not geocoded if no adress is given" do
-    event = Event.new(name: "Hallo")
-    event.latitude = 1.23132
-    event.longitude = 1.22344
-    event.save
-    assert_nil event.latitude
-    assert_nil event.longitude
-  end
-
-  test "event adress formatting" do
-    event = Event.new(name: "Hallo")
-    event.location = "Cowoco in der Gasmotorenfabrik, 3. Etage"
-    event.street = "Deutz-Mülheimerstraße 129"
-    event.city = "Köln"
-    event.zipcode = "51063"
-    assert_equal "Deutz-Mülheimerstraße 129, 51063 Köln", event.address
-
-    event = Event.new(name: "Hallo")
-    event.street = "Deutz-Mülheimerstraße 129"
-    event.city = "Köln"
-    assert_equal "Deutz-Mülheimerstraße 129, Köln", event.address
-
-    event = Event.new(name: "Hallo")
-    event.street = "Deutz-Mülheimerstraße 129"
-    assert_equal "Deutz-Mülheimerstraße 129", event.address
-
-    event = Event.new(name: "Hallo")
-    event.city = "Köln"
-    event.zipcode = "51063"
-    assert_equal "51063 Köln", event.address
-  end
-
   test "tagging" do
     event = Event.new(name: "Hallo")
     assert_equal 0, event.tags.count
@@ -199,11 +155,17 @@ class EventTest < ActiveSupport::TestCase
 
   test "should generate opengraph data" do
     event = FactoryGirl.create(:simple)
-    hash = {"og:title"=>"SimpleEvent"}
+    hash = {
+      "og:latitude"=>50.9490279,
+      "og:locality"=>"CoWoCo, Gasmotorenfabrik, 3. Etage",
+      "og:longitude"=>6.986784900000001,
+      "og:postal-code"=>"51063",
+      "og:street-address"=>"Deutz-Mülheimerstraße 129",
+      "og:title"=>"SimpleEvent"}
     assert_equal hash, event.to_opengraph
 
     event = FactoryGirl.create(:full_event)
-    hash = {"og:country-name"=>"Germany",
+    hash = {
        "og:locality"=>"CoWoCo, Gasmotorenfabrik, 3. Etage",
        "og:postal-code"=>"51063",
        "og:street-address"=>"Deutz-Mülheimerstraße 129",

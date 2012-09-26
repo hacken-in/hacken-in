@@ -1,5 +1,5 @@
 class UserEditObserver < ActiveRecord::Observer
-  observe :comment, :event, :single_event
+  observe :comment
 
   def before_save(record)
     if !record.new_record?
@@ -8,7 +8,7 @@ class UserEditObserver < ActiveRecord::Observer
   end
 
   def after_update(record)
-    changes = record.changes.except(:latitude, :longitude, :updated_at)
+    changes = record.changes.except(:updated_at)
     if changes.keys.count > 0
       begin
         ChangeMailer.mail_changes(record, changes).deliver
@@ -18,11 +18,6 @@ class UserEditObserver < ActiveRecord::Observer
   end
 
   def after_create(record)
-    if (record.kind_of?(SingleEvent) && (record.based_on_rule == false)) || !record.kind_of?(SingleEvent)
-      begin
-        ChangeMailer.mail_create(record).deliver
-      rescue
-      end
-    end
+    ChangeMailer.mail_create(record).deliver
   end
 end

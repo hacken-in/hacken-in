@@ -4,8 +4,7 @@ class EventHelperTest < ActionView::TestCase
   include EventHelper
 
   def test_tag_list_for_taggable
-    event = Event.new(name: "Hallo")
-    event.save
+    event = FactoryGirl.create(:simple)
     assert_equal "[]", tag_list_for_taggable(event)
     event.tag_list = "ruby, rails"
     assert_equal ["ruby", "rails"], event.tag_list

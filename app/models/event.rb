@@ -1,22 +1,32 @@
-require 'location'
 require 'time_extensions'
 
 class Event < ActiveRecord::Base
-  include Location
-  geocoded_by :address
 
   validates_presence_of :name
 
-  after_validation :reset_geocode
   before_save :schedule_to_yaml
   after_save :generate_single_events
   
   belongs_to :category
+  belongs_to :venue
 
   has_many :single_events
   has_many :comments, as: :commentable, dependent: :destroy
 
   delegate :start_time, :start_time=, to: :schedule
+
+  # toggle comment foo:
+  # comment bevore rake export_Events
+  # to display w/o error on new single_event first delete delegated event db entrys
+  # uncomment to pass test
+
+  delegate :latitude, :latitude=, to: :venue
+  delegate :longitude, :longitude=, to: :venue
+  delegate :street, :street=, to: :venue
+  delegate :location, :location=, to: :venue
+  delegate :zipcode, :zipcode=, to: :venue
+  delegate :country, :country=, to: :venue
+  delegate :address, to: :venue
 
   attr_writer :schedule
 

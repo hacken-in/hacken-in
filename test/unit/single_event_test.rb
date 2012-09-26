@@ -115,11 +115,17 @@ class SingleEventTest < ActiveSupport::TestCase
 
   test "should generate opengraph data" do
     single = FactoryGirl.create(:single_event)
-    hash = {"og:title"=>"SimpleEvent (SimpleSingleEventName) am #{single.occurrence.strftime("%d.%m.%Y um %H:%M")}"}
+    hash = {
+      "og:latitude"=>50.9490279,
+      "og:locality"=>"CoWoCo, Gasmotorenfabrik, 3. Etage",
+      "og:longitude"=>6.986784900000001,
+      "og:postal-code"=>"51063",
+      "og:street-address"=>"Deutz-Mülheimerstraße 129",
+      "og:title"=>"SimpleEvent (SimpleSingleEventName) am #{single.occurrence.strftime("%d.%m.%Y um %H:%M")}"}
     assert_equal hash, single.to_opengraph
 
     single = FactoryGirl.create(:extended_single_event)
-    hash = {"og:country-name"=>"Germany",
+    hash = {
        "og:description"=>"wow this is a description",
        "og:locality"=>"CoWoCo, Gasmotorenfabrik, 3. Etage",
        "og:postal-code"=>"51063",
@@ -162,18 +168,6 @@ class SingleEventTest < ActiveSupport::TestCase
     single.full_day = nil
     assert_equal "http://www.example.com", single.url
     assert single.full_day
-  end
-
-  test "check if adress is geocoded after save" do
-    single = FactoryGirl.create(:single_event)
-    single.location = "Cowoco in der Gasmotorenfabrik, 3. Etage"
-    single.street = "Deutz-Mülheimerstraße 129"
-    single.city = "Köln"
-    single.zipcode = "51063"
-    single.save
-
-    assert_not_nil single.latitude
-    assert_not_nil single.longitude
   end
 
   test "should get single event if by_tag is correct" do

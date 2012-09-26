@@ -1,17 +1,26 @@
-require 'location'
-
 class SingleEvent < ActiveRecord::Base
-  include Location
-  geocoded_by :address
 
-  after_validation :reset_geocode
   after_destroy :update_event
 
   belongs_to :category
-  
+  belongs_to :venue
   belongs_to :event
   delegate :title, :description, to: :event, prefix: true
   delegate :twitter, to: :event
+
+  # toggle comment foo:
+  # comment bevore rake export_SingleEvents 
+  # to display w/o error on new single_event first delete delegated single_event db entrys
+  # uncomment to pass test
+
+  delegate :latitude, :latitude=, to: :venue
+  delegate :longitude, :longitude=, to: :venue
+  delegate :street, :street=, to: :venue
+  delegate :location, :location=, to: :venue
+  delegate :zipcode, :zipcode=, to: :venue
+  delegate :country, :country=, to: :venue
+  delegate :address, to: :venue
+
 
   has_many :comments, as: :commentable, dependent: :destroy
   has_and_belongs_to_many :users, uniq: true
