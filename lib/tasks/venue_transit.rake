@@ -55,5 +55,26 @@ task :export_SingleEvents => :environment do
       else
         puts event.location + " Location already exists"
       end
+      #safing venue_id in rest of single_events: 
+      if event.venue_id.blank? & event.name.blank? || event.location.blank?
+        @event = SingleEvent.find(event.id)
+        @location = event.location.blank? ? event.event.name : event.location
+        if Venue.where(location: @location) == [] # to avoid german umlaut bug
+          @venue = Venue.create(
+            location: @location, 
+            street: event.street, 
+            zipcode: event.zipcode, 
+            city: event.city, 
+            country: event.country,
+            latitude: event.latitude,
+            longitude: event.longitude)
+        end
+        @venue = Venue.find_by_location(@location)
+          if @event.update_attributes(venue_id: @venue.id)
+            puts @location + " safeing venue_id in SingleEvent"
+          else
+            puts @location + " error safeing venue_id in SingleEvent"
+          end
+      end  
     end
 end
