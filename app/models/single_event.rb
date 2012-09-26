@@ -10,7 +10,7 @@ class SingleEvent < ActiveRecord::Base
 
   # toggle comment foo:
   # comment bevore rake export_SingleEvents 
-  # uncomment - to display w/o error on new single_event first delete single_event db entrys
+  # to display w/o error on new single_event first delete delegated single_event db entrys
   # uncomment to pass test
 
   delegate :latitude, :latitude=, to: :venue
