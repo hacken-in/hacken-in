@@ -3,9 +3,14 @@
     style: "background-color: #{event.category.color}" do
 
   .cell-content
-    .event-category
-      = render partial: 'modules/categories/indicator',
-        locals: { color: event.category.color, size: '14px' }
-    .event-title= event.title
-    .event-time= event.occurrence.strftime("%H:%M Uhr")
-    .event-location= event.location
+    .event.event-mini.dark
+
+      .event-header
+        .event-category
+          = render partial: 'modules/categories/indicator',
+            locals: { color: event.category.color, size: '14px' }
+        .event-title= event.title
+
+      .event-content
+        .event-time= event.occurrence.strftime("%H:%M Uhr")
+        .event-location= event.location

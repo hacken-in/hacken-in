@@ -8,7 +8,11 @@ $ ->
       css:
         opacity: 1.0
         color: '#fff'
-        backgroundColor: '#000'
+        backgroundColor: 'rgba(0, 0, 0, 0.8)'
+        padding: '15px'
+        border: 'none'
+        borderRadius: '0'
+        boxShadow: '0'
       hideDuration: 0
       minLifetime: 50
       showDuration: 50
