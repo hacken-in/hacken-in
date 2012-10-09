@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120923164545) do
+ActiveRecord::Schema.define(:version => 20121004085003) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -252,5 +252,17 @@ ActiveRecord::Schema.define(:version => 20120923164545) do
   end
 
   add_index "venues", ["latitude", "longitude"], :name => "index_venues_on_latitude_and_longitude"
+
+  create_table "welcome_contents", :force => true do |t|
+    t.text     "box_1"
+    t.text     "box_2"
+    t.text     "box_3"
+    t.text     "box_4"
+    t.text     "box_5"
+    t.text     "box_6"
+    t.text     "carousel"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end

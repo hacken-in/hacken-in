@@ -7,14 +7,12 @@
     = render partial: 'modules/calendars/minical'
 
 .row.content-teasers
-  = render partial: 'modules/articles/preview', locals: { image: 'test-article-leute.png', color: '#f7ca18', subtitle: 'Jelly beans pudding brownie dessert', title: 'Topping chupa chups icing carrot'  }
-  = render partial: 'modules/articles/preview', locals: { image: 'test-article-coworking.png', color: '#ff22ff', subtitle: 'Cotton candy toffee chupa chups', title: 'Candy canes sugar plum dessert jelly-o biscuit'  }
-  = render partial: 'modules/ads/preview', locals: { image: 'test-werbung.png' }
+  - 1.upto(3) do |i|
+    = render partial: type_of("box_#{i}"), locals: locals_for("box_#{i}")
 
 .row.content-teasers
-  = render partial: 'modules/articles/preview', locals: { image: 'test-article-luftschlange.png', color: '#a9cb38', subtitle: 'Macaroon icing ice cream pudding', title: 'Gummi bears halvah jelly chocolate'  }
-  = render partial: 'modules/articles/preview_podcast', locals: { image: 'test-podcast.png', subtitle: 'Podcast Nummer 16', title: '"Pudding marzipan"' }
-  = render partial: 'modules/articles/preview', locals: { image: 'test-article-dingfabrik.png', color: '#ff22ff', subtitle: 'Topping caramels gingerbread liquorice', title: 'Pudding soufflé cookie sesame snaps'  }
+  - 4.upto(6) do |i|
+    = render partial: type_of("box_#{i}"), locals: locals_for("box_#{i}")
 
 .row
   .span6.abo-box

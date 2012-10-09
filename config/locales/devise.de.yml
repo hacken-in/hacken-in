@@ -39,6 +39,8 @@ de:
       updated: 'Deine Daten wurden aktualisiert.'
       update_needs_confirmation: "Deine Daten wurden aktualisiert, aber Du musst Deine neue E-Mail-Adresse bestätigen. Du erhälsts in wenigen Minuten eine E-Mail, mit der Du die Änderung Deiner E-Mail-Adresse abschließen kannst."
       destroyed: 'Dein Account wurde gelöscht.'
+      exclusion: 'Name ist nicht erlaubt.'
+      format: 'passt nicht in die Datenbank - besser zusammen schreiben oder Unterstrich benutzen & keine Umlaute'
     unlocks:
       send_instructions: 'Du erhältst in wenigen Minuten eine E-Mail mit der Anleitung, wie Du Deinen Account entsperren können.'
       unlocked: 'Dein Account wurde entsperrt. Du bist jetzt angemeldet.'

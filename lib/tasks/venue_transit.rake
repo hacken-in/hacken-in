@@ -44,7 +44,7 @@ task :export_SingleEvents => :environment do
       @location = event.location.blank? ? event.name : event.location
       if Venue.where(location: @location) == []
      	  @venue = Venue.create(
-       			location: event.location, 
+       			location: @location, 
        			street: event.street, 
        			zipcode: event.zipcode, 
        			city: event.city, 

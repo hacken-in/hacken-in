@@ -1,0 +1,3 @@
+= f.input :carousel_Bpost_start, :label => "Choose BlogPost start", :as => :select, :collection => BlogPost.all.map{|u| [u.headline, u.id]}
+= f.input :carousel_image_start, :as => :select, :collection => Picture.all.map{|u| [u.title, u.id]}
+#carousels

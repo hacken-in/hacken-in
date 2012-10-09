@@ -26,8 +26,10 @@ class User < ActiveRecord::Base
 
   validates :nickname, uniqueness: true
   validates :nickname, presence: true
-  validates_exclusion_of :nickname, in: %w(admin, root, administrator, superuser), message: "is reserved"
+  validates_exclusion_of :nickname, in: %w(admin root administrator superuser), message: I18n.t('devise.registrations.exclusion')
   validate :username_format
+
+  default_scope order(:nickname)
 
   def to_param
     nickname
@@ -36,7 +38,7 @@ class User < ActiveRecord::Base
   def username_format
     has_one_letter = nickname =~ /[a-zA-Z]/
     all_valid_characters = nickname =~ /^[a-zA-Z0-9_]+$/
-    errors.add(:nickname, "passt nicht in die Datenbank - besser zusammen schreiben oder Unterstrich benutzen & keine Umlaute") unless (has_one_letter and all_valid_characters)
+    errors.add(:nickname, I18n.t('devise.registrations.format')) unless (has_one_letter and all_valid_characters)
   end
 
 
