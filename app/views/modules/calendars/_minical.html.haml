@@ -12,10 +12,12 @@
           - max_cells_per_box = 8
           - events.each_with_index do |event, index|
             - break if index >= max_cells_per_box
+            - first_cell = index % 3 == 0
             - if event
-              = link_to '', event_single_event_path(event.event, event), class: "minical-cell #{'first-cell' if index % 3 == 0}", style: "background-color: #{event.category.color}"
+              = render partial: 'modules/calendars/minical_filled_cell',
+                  locals: { event: event, first_cell: first_cell }
             - else
-              .minical-cell.empty{ class: (" first-cell" if index % 3 == 0) }
+              .minical-cell.empty{ class: (" first-cell" if first_cell) }
 
           - if events.select { |e| e }.size > max_cells_per_box
             .minical-cell.empty.see-more
