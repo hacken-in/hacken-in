@@ -16,6 +16,6 @@ class Venue < ActiveRecord::Base
   end
 
   def to_s
-  	location
+    location
   end
 end
