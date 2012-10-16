@@ -24,4 +24,6 @@
                 class: 'minical-cell empty see-more',
                 title: t('minical.see_more')
           - else
-            .minical-cell.empty.add-new
+            = link_to '', new_event_path,
+                class: 'minical-cell empty add-new',
+                title: t('minical.add_new')

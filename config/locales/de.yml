@@ -364,4 +364,5 @@ de:
       registered_users: "Anzahl registrierter Benutzer"
 
   minical:
-    see_more: 'weitere Events'
+    see_more: 'weitere Termine'
+    add_new: 'neuen Termin'
