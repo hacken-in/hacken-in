@@ -20,7 +20,7 @@
               .minical-cell.empty{ class: (" first-cell" if first_cell) }
 
           - if events.select { |e| e }.size > max_cells_per_box
-            .minical-cell.empty.see-more
+            = link_to '', calendar_path(day: day), class: 'minical-cell empty see-more', title: t('minical.see_more')
           - else
             .minical-cell.empty.add-new
               .add-button

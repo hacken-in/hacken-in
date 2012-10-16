@@ -362,3 +362,6 @@ de:
     statistics:
       tag_distribution: "Verteilung der Tags"
       registered_users: "Anzahl registrierter Benutzer"
+
+  minical:
+    see_more: 'weitere Events'
