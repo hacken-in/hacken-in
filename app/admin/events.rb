@@ -1,5 +1,5 @@
 ActiveAdmin.register Event do
-  menu priority: 5
+  menu parent: "Kalender"
   config.sort_order = "name_asc"
   index do
     column :id
@@ -17,4 +17,7 @@ ActiveAdmin.register Event do
     default_actions
   end
 
+  form do
+    render partial: 'form'
+  end
 end

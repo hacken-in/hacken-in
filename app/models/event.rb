@@ -6,7 +6,7 @@ class Event < ActiveRecord::Base
 
   before_save :schedule_to_yaml
   after_save :generate_single_events
-  
+
   belongs_to :category
   belongs_to :venue
 
@@ -14,19 +14,6 @@ class Event < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
 
   delegate :start_time, :start_time=, to: :schedule
-
-  # toggle comment foo:
-  # comment bevore rake export_Events
-  # to display w/o error on new single_event first delete delegated event db entrys
-  # uncomment to pass test
-
-  delegate :latitude, :latitude=, to: :venue
-  delegate :longitude, :longitude=, to: :venue
-  delegate :street, :street=, to: :venue
-  delegate :location, :location=, to: :venue
-  delegate :zipcode, :zipcode=, to: :venue
-  delegate :country, :country=, to: :venue
-  delegate :address, to: :venue
 
   attr_writer :schedule
 
@@ -84,16 +71,13 @@ class Event < ActiveRecord::Base
   end
 
   def to_opengraph
-    {
+    ogdata = {
       "og:title"          => name,
-      "og:description"    => short_description,
-      "og:latitude"       => latitude,
-      "og:longitude"      => longitude,
-      "og:street-address" => street,
-      "og:locality"       => location,
-      "og:postal-code"    => zipcode,
-      "og:country-name"   => country
-    }.reject { |key, value| value.blank? }
+      "og:description"    => short_description
+    }
+    ogdata = ogdata.merge venue.to_opengraph unless venue.nil?
+    ogdata = ogdata.reject { |key, value| value.blank? }
+    ogdata
   end
 
   def duration

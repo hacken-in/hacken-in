@@ -17,7 +17,7 @@ class IcalControllerTest < ActionController::TestCase
     event += "URL:http://hcking.dev/events/#{single_event.event.id}/dates/#{single_event.id}\n"
     event += "SUMMARY:#{single_event.full_name}\n"
 
-    loc = [single_event.location, single_event.address].delete_if{|d|d.blank?}.join(", ").strip
+    loc = [single_event.venue_info, single_event.venue.address].delete_if{|d|d.blank?}.join(", ").strip
     event += "LOCATION:#{loc.gsub(",", "\\,")}\n" unless loc.blank?
     event += "END:VEVENT\n"
   end
@@ -45,10 +45,6 @@ DESC
     event.description = "description"
     event.tag_list << "php"
     event.save
-    @venue = Venue.create(location: "home")
-    se = event.single_events.first
-    se.venue_id = @venue.id
-    se.save
     event.single_events.first.users << @user
     @vcal_event = generate_event_entry(event.single_events.first, "description")
 
@@ -58,15 +54,6 @@ DESC
     event2.tag_list << "php"
     event2.full_day = true
     event2.save
-    venue2 = Venue.new
-    venue2.location = "home"
-    venue2.street = "street"
-    venue2.zipcode = "zipcode"
-    venue2.city = "cologne"
-    venue2.save
-    se = event2.single_events.first
-    se.venue_id = venue2.id
-    se.save
     @vcal_event2 = generate_event_entry(event2.single_events.first)
 
     event3 = FactoryGirl.create(:simple)
@@ -74,15 +61,6 @@ DESC
     event3.schedule.add_recurrence_time(time3)
     event3.full_day = true
     event3.save
-    venue2 = Venue.new
-    venue2.location = "home"
-    venue2.street = "street"
-    venue2.zipcode = "zipcode"
-    venue2.city = "cologne"
-    venue2.save
-    se = event3.single_events.first
-    se.venue_id = venue2.id
-    se.save
     @vcal_event3 = generate_event_entry(event3.single_events.first)
 
     event4 = FactoryGirl.create(:simple)
@@ -90,14 +68,9 @@ DESC
     event4.schedule.add_recurrence_time(time4)
     event4.full_day = true
     event4.save
-    venue4 = Venue.new
-    venue4.location = "home"
-    venue4.city = "cologne"
-    venue4.save
     se = event4.single_events.first
     se.name = "First Event"
     se.description = "First Event Description"
-    se.venue_id = venue4.id
     se.save
     @vcal_event4 = generate_event_entry(event4.single_events.first, "First Event Description")
 
@@ -106,15 +79,10 @@ DESC
     event5.schedule.add_recurrence_time(time5)
     event5.full_day = false
     event5.save
-    venue5 = Venue.new
-    venue5.location = "home"
-    venue5.city = "cologne"
-    venue5.save
     se = event5.single_events.first
     se.name = "First Event"
     se.description = "First Event Description"
     se.full_day = true
-    se.venue_id = venue5.id
     se.save
     @vcal_event5 = generate_event_entry(event5.single_events.first, "First Event Description")
 
@@ -124,15 +92,10 @@ DESC
     event6.full_day = false
     event6.description = "event text"
     event6.save
-    venue6 = Venue.new
-    venue6.location = "home"
-    venue6.city = "cologne"
-    venue6.save
     se = event6.single_events.first
     se.name = "First Event"
     se.description = "First Event Description"
     se.duration = 5
-    se.venue_id = venue6.id
     se.save
     @vcal_event6 = generate_event_entry(event6.single_events.first, "First Event Description\\n\\nevent text")
   end

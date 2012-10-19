@@ -1,5 +1,5 @@
 ActiveAdmin.register Venue do
-  menu priority: 11
+  menu parent: "Kalender"
 
   index do
     column :location
@@ -7,12 +7,8 @@ ActiveAdmin.register Venue do
     column :zipcode
     column :city
     column :country
-    column :latitude
-    column :longitude
     default_actions
   end
-
-
 
   show do
     h3 venue.location
@@ -26,17 +22,16 @@ ActiveAdmin.register Venue do
         ul do
           venue.single_events.map { |s| li(link_to(s.name, edit_admin_single_event_path(s))) }
           end
-        end  
+        end
       row :events do |preset|
         ul do
           venue.events.map { |s| li(link_to(s.name, edit_admin_event_path(s))) }
           end
-        end  
+        end
       end
-
-
   end
 
-
-
+  form do
+    render partial: 'form'
+  end
 end

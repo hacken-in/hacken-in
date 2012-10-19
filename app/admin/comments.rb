@@ -4,7 +4,7 @@
 # If you call it Comment, there is a bug that basically
 # blows up everything ;)
 ActiveAdmin.register Comment, as: "NerdhubComment" do
-  menu priority: 7
+  menu parent: "Content"
   index do
     column :id
     column :user do |comment|

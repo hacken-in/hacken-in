@@ -192,6 +192,8 @@ de:
         city: Stadt
         duration: Länge (in Minuten)
         start_time: Start-Zeit für wiederholende Termine
+        venue: Ort
+        venue_info: Ort-Zusatzinfo (Raum, Gebäude, etc...)
       single_event:
         topic: Überschrift
         description: Beschreibung
@@ -202,6 +204,8 @@ de:
         city: Stadt
         duration: Länge (in Minuten)
         occurrence: Termin
+        venue: Ort
+        venue_info: Ort-Zusatzinfo (Raum, Gebäude, etc...)
       suggestion:
         name: Name
         occurrence: Zeitpunkt
@@ -230,6 +234,13 @@ de:
         title: Titel
         description: Beschreibung
         image: Datei
+      venue:
+        location: Firma/Location
+        street: Straße
+        zipcode: PLZ
+        city: Stadt
+        country: Land
+
     models:
       comment: Kommentar
       event: Veranstaltungsreihe
@@ -243,7 +254,7 @@ de:
       blog_post:
         one: Blogeintrag
         other: Blogeinträge
-
+      venue: Ort
   comments:
     _form:
       comment_button: Kommentieren

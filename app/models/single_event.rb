@@ -8,20 +8,6 @@ class SingleEvent < ActiveRecord::Base
   delegate :title, :description, to: :event, prefix: true
   delegate :twitter, to: :event
 
-  # toggle comment foo:
-  # comment bevore rake export_SingleEvents 
-  # to display w/o error on new single_event first delete delegated single_event db entrys
-  # uncomment to pass test
-
-  delegate :latitude, :latitude=, to: :venue
-  delegate :longitude, :longitude=, to: :venue
-  delegate :street, :street=, to: :venue
-  delegate :location, :location=, to: :venue
-  delegate :zipcode, :zipcode=, to: :venue
-  delegate :country, :country=, to: :venue
-  delegate :address, to: :venue
-
-
   has_many :comments, as: :commentable, dependent: :destroy
   has_and_belongs_to_many :users, uniq: true
 
@@ -97,10 +83,13 @@ class SingleEvent < ActiveRecord::Base
   end
 
   def to_opengraph
-    event.to_opengraph.merge({
+    ogdata = event.to_opengraph.merge({
       "og:title"       => name_with_date,
       "og:description" => short_description
-    }).reject { |key, value| value.blank? }
+    })
+    ogdata = ogdata.merge venue.to_opengraph unless venue.nil?
+    ogdata = ogdata.reject { |key, value| value.blank? }
+    ogdata
   end
 
   alias :self_category :category
@@ -108,9 +97,13 @@ class SingleEvent < ActiveRecord::Base
     self.self_category || (self.event && self.event.category)
   end
 
+  alias :self_venue :venue
+  def venue
+    self.self_venue || self.event.venue
+  end
+
   # Get the attribute from the Event model unless they exist here
-  [:url, :twitter_hashtag, :duration, :full_day, :location, :street,
-   :zipcode, :city, :country, :latitude, :longitude].each do |item|
+  [:url, :twitter_hashtag, :duration, :full_day].each do |item|
     define_method item.to_s do
       value = self.read_attribute(item)
       if !value.nil? && !(value.class.to_s == "String" && value.blank?)
@@ -137,7 +130,7 @@ class SingleEvent < ActiveRecord::Base
       ri_cal_event.dtend = duration.nil? ? end_time.utc : (start_time + duration.minutes).utc
     end
 
-    location = [self.location, self.address].delete_if(&:blank?).join(", ").strip
+    location = [self.venue_info, self.venue.address].delete_if(&:blank?).join(", ").strip
     ri_cal_event.location = location if location.present?
     ri_cal_event.url = Rails.application.routes.url_helpers.event_single_event_url(
               host: Rails.env.production? ? "hcking.de" : "hcking.dev",
@@ -159,7 +152,6 @@ class SingleEvent < ActiveRecord::Base
   def is_for_user?(user)
     !((self.event.tag_list & user.hate_list).length > 0 && self.users.exclude?(user))
   end
-
 
 end
 

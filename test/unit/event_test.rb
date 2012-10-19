@@ -14,7 +14,7 @@ class EventTest < ActiveSupport::TestCase
   test "can be saved" do
     test_date = 7.days.from_now
     test_date += 2.hours if test_date.hour < 2
-    
+
     event = Event.new(name: "Hallo")
     assert_equal 0, event.schedule.all_occurrences.size
     event.schedule.add_recurrence_time(test_date)
@@ -27,9 +27,9 @@ class EventTest < ActiveSupport::TestCase
 
     event = Event.new(name: "Hallo")
     event.schedule_yaml = "--- \n:start_date: #{test_date}\n:rrules: []\n\n:exrules: []\n\n:rdates: \n- #{test_date}\n:exdates: []\n\n:duration: \n:end_time: \n"
-    
+
     assert_equal 1, event.schedule.all_occurrences.size
-    
+
     assert_equal test_date.to_date, event.schedule.all_occurrences.first.to_date
 
     event = Event.new(name: "Hallo")
@@ -156,6 +156,7 @@ class EventTest < ActiveSupport::TestCase
   test "should generate opengraph data" do
     event = FactoryGirl.create(:simple)
     hash = {
+      "og:country-name"=>"DE",
       "og:latitude"=>50.9490279,
       "og:locality"=>"CoWoCo, Gasmotorenfabrik, 3. Etage",
       "og:longitude"=>6.986784900000001,
@@ -166,6 +167,7 @@ class EventTest < ActiveSupport::TestCase
 
     event = FactoryGirl.create(:full_event)
     hash = {
+       "og:country-name"=>"DE",
        "og:locality"=>"CoWoCo, Gasmotorenfabrik, 3. Etage",
        "og:postal-code"=>"51063",
        "og:street-address"=>"Deutz-Mülheimerstraße 129",

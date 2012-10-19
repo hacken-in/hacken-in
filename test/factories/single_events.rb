@@ -3,6 +3,7 @@ FactoryGirl.define do
     name "SimpleSingleEventName"
     occurrence Time.new(2011,10,1,12,00)
     association :event, factory: :simple
+    association :venue, factory: :cowoco_venue
     based_on_rule true
   end
 

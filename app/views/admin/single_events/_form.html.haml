@@ -1,4 +1,5 @@
-= semantic_form_for [:admin, @event] do |form|
+-# ToDo: Zeit bearbeiten
+= semantic_form_for [:admin, @single_event] do |form|
   = form.inputs do
     = form.input :name
     = form.input :description, input_html: { class: 'autogrow preview-base', rows: 10 }, wrapper_html: { class: 'previewable' }

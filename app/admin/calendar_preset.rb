@@ -1,5 +1,5 @@
 ActiveAdmin.register CalendarPreset do
-  menu priority: 10
+  menu parent: "Kalender"
   config.sort_order = "id_asc"
 
   scope :nerdhub_presets, default: true

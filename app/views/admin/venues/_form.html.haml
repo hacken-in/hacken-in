@@ -1,0 +1,9 @@
+-# ToDo: Karte anzeigen
+= semantic_form_for [:admin, @venue] do |f|
+  = f.inputs do
+    = f.input :location
+    = f.input :street
+    = f.input :zipcode
+    = f.input :city
+    = f.input :country, collection: {"Deutschland" => "DE", "Niederlande" => "NL"}, as: :select
+  = f.button

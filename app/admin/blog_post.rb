@@ -1,5 +1,5 @@
 ActiveAdmin.register BlogPost do
-  menu priority: 3
+  menu parent: "Content"
 
   index do
     column :id

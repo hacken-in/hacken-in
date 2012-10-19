@@ -1,5 +1,5 @@
 ActiveAdmin.register SingleEvent do
-  menu priority: 6
+  menu parent: "Kalender"
   config.sort_order = "occurrence_asc"
   index do
     column :id
@@ -20,5 +20,9 @@ ActiveAdmin.register SingleEvent do
       a "##{single_event.twitter_hashtag}", href: "http://twitter.com/search/%23#{single_event.twitter_hashtag}" unless single_event.twitter_hashtag.blank?
     end
     default_actions
+  end
+
+  form do
+    render partial: 'form'
   end
 end
