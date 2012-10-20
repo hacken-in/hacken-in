@@ -11,12 +11,14 @@ jQuery ->
     # Laden wir mal die DIY Kategorie
     CalendarPreset.selectCategoriesFromPreset('diy');
 
+    ###
     # Und dann noch das infinite scroll
     $(window).endlessScroll
       fireDelay: 200
       fireOnce: true
       inflowPixels: 500
       ceaseFireOnEmpty: false
+      loader: '<div class="loading"><div>',
       callback: (fireSequence, pageSequence, scrollDirection)->
         if scrollDirection == 'next'
           $.ajax
@@ -24,8 +26,8 @@ jQuery ->
             type: 'GET'
             data: "from=#{calendarScrollFrom}&to=#{calendarScrollTo}"
             success: (data)->
-              $('.calendar-calendar').append(data)
-
+            #  $('.calendar-calendar').append(data)
+    ###
 
 CalendarPreset =
   switchPreset: ->
