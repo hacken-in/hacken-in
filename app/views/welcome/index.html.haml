@@ -15,13 +15,8 @@
     = render partial: type_of("box_#{i}"), locals: locals_for("box_#{i}")
 
 .row
-  .span6.abo-box
-    News Letter Abo
-
-.row
-  .span6.abo-box
-    News Letter Abo
-
-.row
-  .span6.abo-box
-    News Letter Abo
+  .abo-box
+    Abonniere unseren monatlichen Newsletter!
+    %form
+      %input{type: "text", placeholder: "E-Mail-Adresse"}
+      %input{type: "submit", value: "Absenden"}

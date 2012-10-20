@@ -58,17 +58,18 @@
 
       = yield
 
-      .row
-        .span6
-          THIS IS COLOGNE
+      .this_is_cologne
+        .row
+          .span6
+            %h1 #THIS IS COLOGNE
 
-      .row
-        .span2.this-is-cologne#tic1
-          = this_is_cologne(0)
-        .span2.this-is-cologne#tic2
-          = this_is_cologne(1)
-        .span2.this-is-cologne#tic3
-          = this_is_cologne(2)
+        .row.image_row
+          .span2.this-is-cologne#tic1
+            = this_is_cologne(0)
+          .span2.this-is-cologne#tic2
+            = this_is_cologne(1)
+          .span2.this-is-cologne#tic3
+            = this_is_cologne(2)
 
     %footer.container.main-footer
       .navbar
