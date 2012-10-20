@@ -89,6 +89,9 @@ gem 'tipsy-rails', '~> 1.0.2'
 #sample Data
 gem 'faker', '1.0.1'
 
+# Navigation :)
+gem 'simple-navigation'
+
 group :development do
   # Deployment
   gem 'vlad', '~> 2.2.3', require: false
