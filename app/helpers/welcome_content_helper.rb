@@ -1,5 +1,4 @@
-module WelcomeContentHelper 
-  
+module WelcomeContentHelper
 
   def add_carousel_link(f)
     image = f.input :carousel_Bpost_id, :label => "Choose BlogPost", :as => :select, :collection => BlogPost.all.map{|u| [u.headline, u.id]}
@@ -19,41 +18,24 @@ module WelcomeContentHelper
   end
 
   def locals_for(box)
-  	type = WelcomeContent.last.send("#{box}")["type"] unless WelcomeContent.last.nil?
-  	if type == "BlogPost"
-		  { image: image_for(box).blank? ? 'test-werbung.png' : image_for(box).url(:small),
-		  color: color_for(box), 
-		  subtitle: subtitle_for(box), 
-		  title: title_for(box) }
-	  elsif type == "Podcast"
-		  { image: image_for(box).blank? ? 'test-werbung.png' : image_for(box),
-		  subtitle: subtitle_for(box),  
- 		  title: title_for(box) }
-	  else type == "ad"
+    content = WelcomeContent.last.send("#{box}")
+  	if content["type"] == "BlogPost" || content["type"] == "Podcast"
+		  post = BlogPost.find(content["type_id"])
+      {
+        image: image_for(box).blank? ? 'test-werbung.png' : image_for(box).url(:small),
+		    color: post.category.color,
+		    subtitle: post.headline_teaser,
+		    title: post.headline,
+        link: blog_post_path(post.to_link)
+      }
+	  else content["type"] == "ad"
 		  { image: image_for(box).blank? ? 'test-werbung.png' : image_for(box) } # todo: if no image -> take a random ad image...???
 	  end
   end
 
-
   def image_for(box)
     @image_id = WelcomeContent.last.send("#{box}")["image_id"] unless WelcomeContent.last.nil?
   	Picture.find(@image_id).image unless @image_id.blank?
-  end
-
-  def color_for(box)
-  	@box_id = WelcomeContent.last.send("#{box}")["type_id"]
-  	@blog_post = BlogPost.find(@box_id).category_id
-  	Category.find(@blog_post).color unless @blog_post.blank?
-  end
-
-  def subtitle_for(box)
-  	@box_id = WelcomeContent.last.send("#{box}")["type_id"]
-  	BlogPost.find(@box_id).headline_teaser unless @box_id.blank?
-  end
-
-  def title_for(box)
-  	@box_id = WelcomeContent.last.send("#{box}")["type_id"]
-  	BlogPost.find(@box_id).headline unless @box_id.blank?
   end
 
   def carousel_items
