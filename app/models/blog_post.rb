@@ -28,6 +28,10 @@ class BlogPost < ActiveRecord::Base
     "#{id}-#{headline.parameterize}"
   end
 
+  def to_link
+    "#{publishable_from.year}/#{publishable_from.month}/#{publishable_from.day}/#{id}-#{headline.parameterize}"
+  end
+
   # This is needed for the comments controller
   def name
     headline
