@@ -11,4 +11,4 @@
           = link_to "#{post.comments.count} Kommentare", blog_post_path(post)
     = paginate @posts, theme: 'twitter-bootstrap'
   .span2
-    = render partial: "modules/blog_post/sidebar", locals: {categories: @categories}
+    = render partial: "modules/blog_post/sidebar", locals: {categories: @categories, current_category: @current_category, single_events: @single_events}
