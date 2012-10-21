@@ -1,25 +1,25 @@
-.tag-box.love-tags
-  .input-append
-    %input.js-love-tag-text{type: 'text', placeholder: 'Was liebst du?'}
+- if current_user
+  .tag-box.love-tags
+    .input-append
+      %input.js-love-tag-text{type: 'text', placeholder: 'Was liebst du?'}
     %button.btn.js-love-tag-button
       %i.icon-heart
-  %ul.js-love-taglist
-    - if current_user
-      - current_user.likes.each do |tag|
-        %li{'data-tag' => tag.name, 'data-list' => 'love'}
-          = tag.name
-          %i.icon-remove.remove-tag.js-remove-tag
+        %ul.js-love-taglist
+          - current_user.likes.each do |tag|
+            %li{'data-tag' => tag.name, 'data-list' => 'love'}
+              = tag.name
+        %i.icon-remove.remove-tag.js-remove-tag
 
-.tag-box.hate-tags
-  .input-append
-    %input.js-hate-tag-text{type: 'text', placeholder: 'Was boykottierst du?'}
+          .tag-box.hate-tags
+            .input-append
+              %input.js-hate-tag-text{type: 'text', placeholder: 'Was boykottierst du?'}
     %button.btn.js-hate-tag-button
       %i.icon-thumbs-down
-  %ul.js-hate-taglist
-    - if current_user
-      - current_user.hates.each do |tag|
-        %li{'data-tag' => tag.name, 'data-list' => 'hate'}
-          = tag.name
-          %i.icon-remove.remove-tag.js-remove-tag
-
-
+        %ul.js-hate-taglist
+          - current_user.hates.each do |tag|
+            %li{'data-tag' => tag.name, 'data-list' => 'hate'}
+              = tag.name
+        %i.icon-remove.remove-tag.js-remove-tag
+-else
+  .tag-box.muted
+    Als angemeldeter Benutzer kannst du deinen Kalender hier auch noch nach bestimmten Hashtags filtern
