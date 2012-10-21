@@ -1,1 +1,37 @@
-sidebar
+.blog_sidebar
+  .blog_categories
+    %h2 Kategorieen
+    %ul
+      - categories.each do |category|
+        %li
+          .blog_category_indicator
+            = render partial: 'modules/categories/indicator', locals: { size: "14px",
+              color: current_category.nil? || current_category.id == category.id ? category.color : "#aaa" }
+          = link_to category.title, blog_categorie_path(category), 
+            class: current_category.nil? || current_category.id == category.id ? "" : "blog_category_inactive"
+
+  = link_to image_tag("blog-twitter.png"), "http://twitter.com/nerdhub_cgn", class: "blog_sidebar_twitter"
+  = link_to image_tag("blog-facebook.png"), "http://www.facebook.com/nerdhubcgn", class: "blog_sidebar_facebook"
+  = link_to image_tag("blog-rss.png"), "/blog/feed", class: "blog_sidebar_rss"
+
+  .blog_next_events
+    %h2 Die nächsten Termine
+    %ul
+    - single_events.each do |single_event|
+      %li
+        .blog_event_indicator
+          = render partial: 'modules/categories/indicator', locals: { size: "14px", color: single_event.category.color }
+        .blog_event_title
+          = link_to single_event.title, event_single_event_path(single_event.event, single_event)
+        .blog_event_date
+          = l single_event.occurrence, format: :long_without_time
+          - unless single_event.full_day
+            = "%02d" % single_event.occurrence.hour
+            \-
+            = single_event.occurrence.hour + (single_event.duration || 0) / 60
+            Uhr
+  .blog_nerdletter
+    %h2 Nerdletter
+    %form
+      %input{type: "text", placeholder: "E-Mail-Adresse"}
+      %input{type: "image", src: asset_path("blog-nerdletter.png")}

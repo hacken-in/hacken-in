@@ -21,6 +21,7 @@ class BlogPostsController < ApplicationController
 
       @posts = @posts.where("publishable_from >= ? and publishable_from <= ?", start_date, end_date)
     elsif params[:category_id]
+      @current_category = Category.find(params[:category_id])
       @posts = @posts.where(category_id: params[:category_id])
     end
 
@@ -40,6 +41,7 @@ class BlogPostsController < ApplicationController
   private
 
   def sidebar_values
-
+    @categories = Category.where("id in (select category_id from blog_posts)").uniq.order(:title)
+    @single_events = SingleEvent.where("occurrence > ?", Time.now).limit(3)
   end
 end

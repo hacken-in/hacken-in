@@ -130,7 +130,7 @@ class SingleEvent < ActiveRecord::Base
       if !value.nil? && !(value.class.to_s == "String" && value.blank?)
         value
       elsif !self.event.blank?
-        self.event.read_attribute(item)
+        self.event.send(item)
       end
     end
   end

@@ -12,7 +12,7 @@ Hcking::Application.routes.draw do
       only: [:create, :destroy]
   end
 
-  match "blog/category/:category_id" => "blog_posts#index"
+  match "blog/category/:category_id" => "blog_posts#index", as: "blog_categorie"
   match "blog/:year" => "blog_posts#index", year: /\d{4}/
   match "blog/:year/:month" => "blog_posts#index", year: /\d{4}/, month: /\d{1,2}/
   match "blog/:year/:month/:day" => "blog_posts#index", year: /\d{4}/, month: /\d{1,2}/,  day: /\d{1,2}/
