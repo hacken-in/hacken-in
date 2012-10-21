@@ -1,7 +1,14 @@
-- @posts.each do |post|
-  = render post, only_extract: true
-  - if post.comments.count == 0
-    = link_to "Hinterlasse einen Kommentar", blog_post_path(post)
-  - else
-    = link_to "#{post.comments.count} Kommentare", blog_post_path(post)
-= paginate @posts, theme: 'twitter-bootstrap'
+.row
+  .span4
+    - @posts.each do |post|
+      = render partial: "modules/blog_post/extract", locals: {blog_post: post}
+      .blog_comment_action
+        - if post.comments.count == 0
+          = link_to "Hinterlasse einen Kommentar", blog_post_path(post)
+        - elsif post.comments.count == 1
+          = link_to "1 Kommentar", blog_post_path(post)
+        - else
+          = link_to "#{post.comments.count} Kommentare", blog_post_path(post)
+    = paginate @posts, theme: 'twitter-bootstrap'
+  .span2
+    = render partial: "modules/blog_post/sidebar", locals: {categories: @categories}

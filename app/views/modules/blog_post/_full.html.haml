@@ -1,0 +1,20 @@
+.row.blog_full
+  .span4
+    .blog_headline_indicator
+      = render partial: 'modules/categories/indicator', locals: { size: "75px", color: blog_post.category.color }
+    .blog_headline_black
+      .blog_headline_date
+        = blog_post.publishable_from.strftime("%Y-%m-%d %H:%M")
+        ,
+        = blog_post.user.nickname
+      %h1.blog_headline_text
+        = link_to blog_post.headline, blog_post_path(blog_post.to_link)
+    .clear
+
+  .span4.blog_full_text
+    = link_to image_tag(blog_post.picture.box_image.url), blog_post_path(blog_post.to_link), class: "blog_image"
+
+    %p
+      = raw blog_post.teaser_text
+    = raw blog_post.text
+

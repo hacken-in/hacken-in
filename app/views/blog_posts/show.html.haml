@@ -1,2 +1,6 @@
-= render @post
-= render partial: "modules/comments/comments", locals: {commentable: @post}
+.row
+  .span4
+    = render partial: "modules/blog_post/full", locals: {blog_post: @post}
+    = render partial: "modules/comments/comments", locals: {commentable: @post}
+  .span2
+    sidebar

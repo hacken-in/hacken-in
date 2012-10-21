@@ -20,4 +20,5 @@ ActiveAdmin.register Event do
   form do
     render partial: 'form'
   end
+
 end

@@ -1,5 +1,7 @@
 class BlogPostsController < ApplicationController
 
+  before_filter :sidebar_values
+
   def index
     @posts = BlogPost.for_web.page(params[:page]).per(10)
 
@@ -18,7 +20,10 @@ class BlogPostsController < ApplicationController
       end
 
       @posts = @posts.where("publishable_from >= ? and publishable_from <= ?", start_date, end_date)
+    elsif params[:category_id]
+      @posts = @posts.where(category_id: params[:category_id])
     end
+
   end
 
   def show
@@ -32,4 +37,9 @@ class BlogPostsController < ApplicationController
     end
   end
 
+  private
+
+  def sidebar_values
+
+  end
 end
