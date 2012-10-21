@@ -1,30 +1,25 @@
 .tag-box.love-tags
   .input-append
-    %input{type: 'text', placeholder: 'Was liebst du?'}
-    %span.add-on
+    %input.js-love-tag-text{type: 'text', placeholder: 'Was liebst du?'}
+    %button.btn.js-love-tag-button
       %i.icon-heart
-  %ul.js-loved-taglist
-    %li
-      Cupcakes
-      %i.icon-remove
-    %li
-      Chocolate
-      %i.icon-remove
-    %li
-      Cookies
-      %i.icon-remove
-    %li
-      Strawberries
-      %i.icon-remove
-    %li
-      Cream
-      %i.icon-remove
+  %ul.js-love-taglist
+    - if current_user
+      - current_user.likes.each do |tag|
+        %li{'data-tag' => tag.name, 'data-list' => 'love'}
+          = tag.name
+          %i.icon-remove.remove-tag.js-remove-tag
+
 .tag-box.hate-tags
   .input-append
-    %input{type: 'text', placeholder: 'Was boykottierst du?'}
-    %span.add-on
+    %input.js-hate-tag-text{type: 'text', placeholder: 'Was boykottierst du?'}
+    %button.btn.js-hate-tag-button
       %i.icon-thumbs-down
-  %ul.js-hated-taglist
-    %li
-      Blub
-      %i.icon-remove
+  %ul.js-hate-taglist
+    - if current_user
+      - current_user.hates.each do |tag|
+        %li{'data-tag' => tag.name, 'data-list' => 'hate'}
+          = tag.name
+          %i.icon-remove.remove-tag.js-remove-tag
+
+
