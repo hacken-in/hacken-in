@@ -29,8 +29,16 @@ class SingleEvent < ActiveRecord::Base
     lambda { |delta| where(occurrence: (Time.now.to_date - delta)..((Time.now + delta).to_date)) }
   scope :only_tagged_with,
     lambda { |tag| tagged_with(tag) | joins(:event).where('events.id in (?)', Event.tagged_with(tag).map(&:id)) }
-  scope :for_user,
-    lambda { |user| user ? scoped.select{ |single_event| single_event.is_for_user? user } : scoped }
+  #scope :for_user,
+  #  lambda { |user| user ? scoped.select{ |single_event| single_event.is_for_user? user } : scoped }
+  
+  # Categories as an array of ids
+  scope :in_categories,
+    lambda { |categories| joins(:event).where('single_events.category_id IN (?) OR (single_events.category_id IS NULL AND events.category_id IN (?))', categories, categories) }
+
+  # Tags (hated tags are ignored unless a loved tag is present)
+  # TODO: Implement
+
   default_scope order(:occurrence)
 
   acts_as_taggable
@@ -101,6 +109,10 @@ class SingleEvent < ActiveRecord::Base
     self.self_category || (self.event && self.event.category)
   end
 
+  def category_overwritten?
+    read_attribute(:category_id) != nil
+  end
+
   alias :self_venue :venue
   def venue
     self.self_venue || self.event.venue
@@ -112,7 +124,7 @@ class SingleEvent < ActiveRecord::Base
   end
 
   # Get the attribute from the Event model unless they exist here
-  [:url, :twitter_hashtag, :duration, :full_day].each do |item|
+  [:url, :twitter_hashtag, :duration, :full_day, :category_id].each do |item|
     define_method item.to_s do
       value = self.read_attribute(item)
       if !value.nil? && !(value.class.to_s == "String" && value.blank?)
