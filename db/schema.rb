@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121004085003) do
+ActiveRecord::Schema.define(:version => 20121021065158) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20121004085003) do
     t.datetime "updated_at",        :null => false
     t.datetime "publishable_from"
     t.boolean  "use_in_newsletter"
+    t.integer  "picture_id"
   end
 
   add_index "blog_posts", ["category_id"], :name => "index_blog_posts_on_category_id"
@@ -117,6 +118,7 @@ ActiveRecord::Schema.define(:version => 20121004085003) do
     t.integer  "category_id"
     t.integer  "venue_id"
     t.string   "venue_info"
+    t.integer  "picture_id"
   end
 
   add_index "events", ["category_id"], :name => "index_events_on_category_id"
@@ -127,9 +129,10 @@ ActiveRecord::Schema.define(:version => 20121004085003) do
   create_table "pictures", :force => true do |t|
     t.string   "title"
     t.text     "description"
-    t.string   "image"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string   "box_image"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "carousel_image"
   end
 
   create_table "single_events", :force => true do |t|
@@ -154,6 +157,7 @@ ActiveRecord::Schema.define(:version => 20121004085003) do
     t.integer  "category_id"
     t.integer  "venue_id"
     t.string   "venue_info"
+    t.integer  "picture_id"
   end
 
   add_index "single_events", ["category_id"], :name => "index_single_events_on_category_id"
