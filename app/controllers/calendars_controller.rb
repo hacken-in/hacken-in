@@ -1,3 +1,4 @@
+#encoding: utf-8
 class CalendarsController < ApplicationController
 
   def show
@@ -8,12 +9,17 @@ class CalendarsController < ApplicationController
     @presets_json = CalendarPreset.presets_for_user(current_user)
 
     # Die Monate, die angezeigt werden
-    startdate = params[:start].present? ? Date.parse(params[:start]) : Date.today
+    begin
+      startdate = params[:start].present? ? Date.parse(params[:start]) : Date.today
+    rescue ArgumentError => e
+      startdate = Date.today
+      flash.now[:error] = 'Das war kein gültiges Datum... Wir zeigen dir mal den Kalender ab heute' 
+    end 
 
     @months = []
     13.times { |i| @months << (startdate + i.months) }
 
-    @single_events = SingleEvent.in_next(4.weeks) #.for_user(current_user)
+    @single_events = SingleEvent.in_next_from(4.weeks, startdate) #.for_user(current_user)
 
   end
 

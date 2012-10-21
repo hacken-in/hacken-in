@@ -8,6 +8,9 @@ class CalendarPreset < ActiveRecord::Base
   scope :nerdhub_presets, where(CalendarPreset.arel_table[:user_id].eq(nil))
   scope :user_presets, where(CalendarPreset.arel_table[:user_id].not_eq(nil))
 
+  # Diese Funktion sammelt alle für den Benutzer relevanten CalendarPresets ein,
+  # dazu gehören Nerdhub Presets (user id = nil) sowie das Preset für den Benutzer
+  # Wenn es für den Benutzer kein Preset gibt, wird für ihn ein neues Preset angelegt
   def self.presets_for_user(user = nil)
 
     CalendarPreset.find_or_create_by_user_id(user.id) if user
