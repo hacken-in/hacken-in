@@ -1,15 +1,15 @@
 jQuery ->
   if $('.calendars_show').length > 0
-    $('.calendar-line').on 'mouseenter', ->
+    $(document).on 'mouseenter', '.calendar-line', ->
       $(this).css('background-color', $(this).data('hlcolor')).addClass('calendar-line-highlighted')
 
-    $('.calendar-line').on 'mouseleave', ->
+    $(document).on 'mouseleave', '.calendar-line', ->
       $(this).css('background-color', '#000').removeClass('calendar-line-highlighted')
 
-    $('.calendar-categories-tabs li a').on 'click', CalendarPreset.switchPreset ;
+    $('.calendar-categories-tabs li a').on 'click', CalendarPreset.switchPreset
 
     # Laden wir mal die DIY Kategorie
-    CalendarPreset.selectCategoriesFromPreset('diy');
+    CalendarPreset.selectCategoriesFromPreset('diy')
 
     ###
     # Und dann noch das infinite scroll
