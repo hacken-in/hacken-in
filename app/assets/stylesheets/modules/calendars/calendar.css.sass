@@ -79,17 +79,48 @@
       font-family: Vollkorn, serif
 
 
-.calendar-categories-tabs
+.kddk
+  margin-top: 20px
   width: 304px
-  li
-    display: inline-block
-    font-size: 12px
-    background-color: #d2d2d2
-    color: #fff
+  .kddk-categories
+    border: 2px solid #000
+    .table
+      margin-bottom: 0px
+  .kddk-menu
+    width: 304px
+    margin: 0px
+    li
+      cursor: pointer
+      display: inline-block
+      padding: 3px 8px 3px 8px
+      font-size: 14px
+      background-color: #d2d2d2
+      color: #fff
+      font-weight: bold
     
-    .active
-      background-color: #000
+      &.active
+        background-color: #000
+      a
+        color: #fff
 
+
+.tag-box
+  width: 304px
+  margin-top: 30px
+  .input-append
+    input
+      width: 263px
+  ul
+    margin: 0px
+    li
+      display: inline-block
+      list-style-type: none
+      padding-right: 15px
+      i
+        font-size: 11px
+
+.calendar-export
+  margin-top: 30px
 
 .calendar-datebox-d
   display: inline-block

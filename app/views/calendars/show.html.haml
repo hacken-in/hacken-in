@@ -11,7 +11,8 @@
     .calendar-head
       = image_tag('klick-den-cal.png')
 
-    = render partial: 'modules/calendars/kddk'
+    = render partial: 'modules/calendars/kddk', locals: { presets: @presets, categories: @categories }
     = render partial: 'modules/tags/calendar_tags'
-    %button.btn.btn-large.btn-primary
-      Export
+    .calendar-export
+      %button.btn.btn-inverse.js-calendar-export.pull-right
+        Export

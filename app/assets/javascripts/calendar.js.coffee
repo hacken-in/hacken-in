@@ -1,12 +1,12 @@
 jQuery ->
-  if $('.calendars_show').length > 0
+  if $('body').hasClass('calendars_show')
     $(document).on 'mouseenter', '.calendar-line', ->
       $(this).css('background-color', $(this).data('hlcolor')).addClass('calendar-line-highlighted')
 
     $(document).on 'mouseleave', '.calendar-line', ->
       $(this).css('background-color', '#000').removeClass('calendar-line-highlighted')
 
-    $('.calendar-categories-tabs li a').on 'click', CalendarPreset.switchPreset
+    $('.js-kddk-preset').on 'click', CalendarPreset.switchPreset
 
     # Laden wir mal die DIY Kategorie
     CalendarPreset.selectCategoriesFromPreset('diy')
@@ -31,13 +31,14 @@ jQuery ->
 
 CalendarPreset =
   switchPreset: ->
-    presetId = $(this).attr('preset')
+    presetId = $(this).data('preset')
 
     # Reset active tab
-    $('.calendar-categories-tabs li').removeClass('active')
-    $(this).parent().addClass('active')
+    $('.js-kddk-preset').removeClass('active')
+    $(this).addClass('active')
 
     CalendarPreset.selectCategoriesFromPreset(presetId)
+    # TODO: Save the the user preset
 
   selectCategoriesFromPreset: (presetId) ->
     $all_checkboxes = $('input[name=calendar_category]')

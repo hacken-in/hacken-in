@@ -1,8 +1,10 @@
 .calendar-categories
-  %ul.nav.nav-tabs.calendar-categories-tabs
-    %li.active
-      %a{href: '#', preset: 'diy'} DIY
-    - @presets.each do |preset|
-      %li
-        %a{href: '#', preset: preset.id}=preset.title
-  = render partial: 'modules/categories/calendar-selector', locals: { categories: @categories, selected: [] }
+  .kddk
+    %ul.kddk-menu
+      %li.active.js-kddk-preset{'data-preset' => 'diy'}
+        DIY
+      - presets.each do |preset|
+        %li.js-kddk-preset{'data-preset' => preset.id}
+          = preset.title.upcase
+    .kddk-categories
+      = render partial: 'modules/categories/calendar-selector', locals: { categories: categories, selected: [] }
