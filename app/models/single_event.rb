@@ -5,6 +5,8 @@ class SingleEvent < ActiveRecord::Base
   belongs_to :category
   belongs_to :venue
   belongs_to :event
+  belongs_to :picture
+
   delegate :title, :description, to: :event, prefix: true
   delegate :twitter, to: :event
 
@@ -100,6 +102,11 @@ class SingleEvent < ActiveRecord::Base
   alias :self_venue :venue
   def venue
     self.self_venue || self.event.venue
+  end
+
+  alias :self_picture :picture
+  def picture
+    self.self_picture || self.event.picture
   end
 
   # Get the attribute from the Event model unless they exist here

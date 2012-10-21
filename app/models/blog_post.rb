@@ -4,6 +4,7 @@ class BlogPost < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
   belongs_to :category
   belongs_to :user
+  belongs_to :picture
 
   acts_as_taggable
 

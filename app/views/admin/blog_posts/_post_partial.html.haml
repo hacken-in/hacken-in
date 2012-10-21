@@ -1,5 +1,9 @@
+= image_tag @blog_post.picture.try(:carousel_image).try(:url)
+
 %h1= @blog_post.headline
 %h2= @blog_post.headline_teaser
+
+= image_tag @blog_post.picture.try(:box_image).try(:url)
 
 #teaser
   %p
