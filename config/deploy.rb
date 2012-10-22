@@ -15,7 +15,7 @@ namespace :vlad do
     config_files.each do |filename|
       run "cp #{shared_path}/config/#{filename} #{release_path}/config/#{filename}"
     end
-    run "ln -s #{release_path}/public/uploads #{shared_path}/uploads"
+    run "ln -s #{shared_path}/uploads #{release_path}/public/uploads"
   end
 
   desc "Make a call to the passenger to create a running instance"
