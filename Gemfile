@@ -10,7 +10,7 @@ gem 'mysql2', '~> 0.3.11'
 # Memcache Store
 # DO NOT UPGRADE THIS
 # We need exactly this version, because
-# never versions cant' connect to unix
+# newer versions cant' connect to unix
 # sockets. See here:
 #
 #  https://github.com/mperham/dalli/issues/229
