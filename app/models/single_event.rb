@@ -29,8 +29,8 @@ class SingleEvent < ActiveRecord::Base
     lambda { |delta| where(occurrence: (Time.now.to_date - delta)..((Time.now + delta).to_date)) }
   scope :only_tagged_with,
     lambda { |tag| tagged_with(tag) | joins(:event).where('events.id in (?)', Event.tagged_with(tag).map(&:id)) }
-  #scope :for_user,
-  #  lambda { |user| user ? scoped.select{ |single_event| single_event.is_for_user? user } : scoped }
+  scope :for_user,
+    lambda { |user| user ? scoped.select{ |single_event| single_event.is_for_user? user } : scoped }
   
   # Categories as an array of ids
   scope :in_categories,
