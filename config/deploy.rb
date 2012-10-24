@@ -1,9 +1,9 @@
 require "bundler/vlad"
 
-set :application, "nerdhub"
-set :deploy_to, "/home/nerdhub/nerdhub"
-set :user, "nerdhub"
-set :domain, "#{user}@cygnus.uberspace.de"
+set :application, "droidboy"
+set :deploy_to, "/home/droidboy/nerdhub"
+set :user, "droidboy"
+set :domain, "#{user}@corvus.uberspace.de"
 set :repository, 'git://github.com/nerdhub/hcking.git'
 
 set :config_files, ['database.yml', 'newrelic.yml', 'initializers/secret_token.rb']
@@ -15,6 +15,7 @@ namespace :vlad do
     config_files.each do |filename|
       run "cp #{shared_path}/config/#{filename} #{release_path}/config/#{filename}"
     end
+    run "ln -s #{shared_path}/uploads #{release_path}/public/uploads"
   end
 
   desc "Make a call to the passenger to create a running instance"

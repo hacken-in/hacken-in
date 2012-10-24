@@ -5,13 +5,12 @@ gem 'rake', '~> 0.9'
 
 # Databases
 gem 'sqlite3', '~> 1.3.5', group: :test
-gem 'mysql2', '~> 0.3.11', group: :development
-gem 'pg', group: :production
+gem 'mysql2', '~> 0.3.11'
 
 # Memcache Store
 # DO NOT UPGRADE THIS
 # We need exactly this version, because
-# never versions cant' connect to unix
+# newer versions cant' connect to unix
 # sockets. See here:
 #
 #  https://github.com/mperham/dalli/issues/229
