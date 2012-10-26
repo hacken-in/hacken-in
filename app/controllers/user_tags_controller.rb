@@ -1,57 +1,37 @@
 # encoding: utf-8
-
 class UserTagsController < ApplicationController
   def create
-    @user = User.find params[:user_id]
+    return render(:nothing => true, :status => :unauthorized) unless current_user
 
-
-    if modify_tag_list @user, params[:kind], chosen_list(params[:kind])
-      flash[:notice] = t "user_tags.create.confirmation"
+    if modify_tag_list params[:kind], params[:tags]
+      render json: { :status => :success, :message => t("user_tags.create.confirmation") }, :status => :created
     else
-      flash[:error] = t "user_tags.create.error"
+      render json: { :status => :error, :message => t("user_tags.create.error") }, :status => 422 #TODO: Eventuell besseren Code verwenden ;)
     end
-
-    redirect_to :root
   end
 
   def destroy
-    @user = User.find params[:user_id]
-
-    if remove_tag_from_list @user, params[:kind], remove: params[:id]
-      flash[:notice] = t "user_tags.destroy.confirmation"
+    return render(:nothing => true, :status => :unauthorized) unless current_user
+    
+    if remove_tag_from_list params[:kind], remove: params[:id]
+      render json: { :status => :success, :message => t("user_tags.destroy.confirmation") }, :status => :ok
     else
-      flash[:error] = t "user_tags.destroy.error"
+      render json: { :status => :error, :message => t("user_tags.destroy.error") }, :Status => 422 #TODO s.o.
     end
-
-    redirect_to :root
   end
 
   private
 
-  def chosen_list(kind)
-    if kind == "like"
-      params[:user_like_tags][:list]
-    else
-      params[:user_hate_tags][:list]
-    end
-  end
-
-  def modify_tag_list(user, kind, action)
-    # Only change the currently signed in user
+  def modify_tag_list(kind, action)
     actions = action.split(",")
     actions.each do |a|
-      if current_user == user
-        user.modify_tag_list kind, push: a
-        user.save
-      end
+      current_user.modify_tag_list kind, push: a
+      current_user.save
     end
   end
 
-  def remove_tag_from_list(user, kind, action)
-    # Only change the currently signed in user
-    if current_user == user
-      user.modify_tag_list kind, action
-      user.save
-    end
+  def remove_tag_from_list(kind, action)
+    current_user.modify_tag_list kind, action
+    current_user.save
   end
 end

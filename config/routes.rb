@@ -5,13 +5,12 @@ Hcking::Application.routes.draw do
 
   resources :users, only: [:show] do
     resources :authorizations, only: [:destroy]
-    resources :tags,
-      controller: :user_tags,
-      path: ":kind",
-      constraints: { id: /.*/, kind: /(like|hate)/ },
-      only: [:create, :destroy]
   end
-
+  
+  resources :user_tags, 
+    :path => "/user/:kind",
+    :constraints => { id: /.*/, kind: /(like|hate)/ },
+    :only => [:create, :destroy]
   match "blog/category/:category_id" => "blog_posts#index", as: "blog_categorie"
   match "blog/:year" => "blog_posts#index", year: /\d{4}/
   match "blog/:year/:month" => "blog_posts#index", year: /\d{4}/, month: /\d{1,2}/
