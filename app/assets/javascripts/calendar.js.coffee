@@ -87,16 +87,14 @@ CalendarPreset =
     categories = $('input[name=calendar_category]:checked').map (idx, el) ->
       $(el).val()
     
+    # TODO: Eventuell abfangen, ob der User überhaupt eingeloggt ist (JS Variable
+    # oder so) und nur dann abschicken, spart uns ein paar 401er im Log ... If somebody
+    # cares: Patch is welcome :)
     $.ajax
      type: 'POST'
      url: "/calendar/presets"
      data:
        category_ids: categories.get().join(',')
-     success: (data) ->
-       if data.status is 'error'
-         # TODO: Eventuell ein schöneres Alert
-         alert "Da ging wat schief: #{data.message}"
-
 
   switchPreset: ->
     presetId = $(this).data('preset')
