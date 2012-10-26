@@ -9,31 +9,20 @@ class UserTagsControllerTest < ActionController::TestCase
       sign_in user
 
       assert_difference("user.#{kind}_list.length") do
-        post :create, user_id: user.id, "user_#{kind}_tags" => {"list" => 'tag'}, kind: kind
+        post :create, kind: kind, tags: ['tag']
         user.reload
       end
-      assert_redirected_to root_path
+      assert_response :created
     end
 
     test "should not create #{kind} tag if not logged in" do
       user = FactoryGirl.create(:bodo)
 
       assert_no_difference("user.#{kind}_list.length") do
-        post :create, user_id: user.id, "user_#{kind}_tags" => {"list" => 'tag'}, kind: kind
+        post :create, kind: kind, tags: ['tag']
         user.reload
       end
-      assert_redirected_to root_path
-    end
-
-    test "should not create #{kind} tag if wrong user" do
-      user = FactoryGirl.create(:user)
-      sign_in FactoryGirl.create(:bodo)
-
-      assert_no_difference("user.#{kind}_list.length") do
-        post :create, user_id: user.id, "user_#{kind}_tags" => {"list" => 'tag'}, kind: kind
-        user.reload
-      end
-      assert_redirected_to root_path
+      assert_response :unauthorized
     end
 
     test "remove #{kind} tag" do
@@ -43,10 +32,10 @@ class UserTagsControllerTest < ActionController::TestCase
       sign_in user
 
       assert_difference("user.#{kind}_list.length", -1) do
-        delete :destroy, user_id: user.id, id: 'tag', kind: kind
+        delete :destroy, id: 'tag', kind: kind
         user.reload
       end
-      assert_redirected_to root_path
+      assert_response :ok
     end
 
     test "remove #{kind} tag .net" do
@@ -56,10 +45,10 @@ class UserTagsControllerTest < ActionController::TestCase
       sign_in user
 
       assert_difference("user.#{kind}_list.length", -1) do
-        delete :destroy, user_id: user.id, id: '.net', kind: kind
+        delete :destroy, id: '.net', kind: kind
         user.reload
       end
-      assert_redirected_to root_path
+      assert_response :ok
     end
 
     test "should not remove #{kind} tag if not logged in" do
@@ -68,24 +57,10 @@ class UserTagsControllerTest < ActionController::TestCase
       user.save
 
       assert_no_difference("user.#{kind}_list.length") do
-        delete :destroy, user_id: user.id, id: '.net', kind: kind
+        delete :destroy, id: '.net', kind: kind
         user.reload
       end
-      assert_redirected_to root_path
-    end
-
-    test "should not remove #{kind} tag if wrong user" do
-      user = FactoryGirl.create(:bodo)
-      user.send(:"#{kind}_list") << "tag"
-      user.save
-
-      sign_in FactoryGirl.create(:user)
-
-      assert_no_difference("user.#{kind}_list.length") do
-        delete :destroy, user_id: user.id, id: 'tag', kind: kind
-        user.reload
-      end
-      assert_redirected_to root_path
+      assert_response :unauthorized
     end
   end
 
