@@ -4,6 +4,7 @@
       %td
         = render partial: 'modules/categories/indicator', locals: { color: c.color, size: '16px' }
       %td
-        = c.title
+        %label{for: "cat-#{c.id}"}
+          = c.title
       %td
-        %input{type: 'checkbox', name: 'calendar_category', value: c.id }
+        %input{id: "cat-#{c.id}", type: 'checkbox', name: 'calendar_category', value: c.id }

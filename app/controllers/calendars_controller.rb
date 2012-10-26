@@ -59,9 +59,9 @@ class CalendarsController < ApplicationController
       end
 
       if preset.save
-        render json: { diy: preset.category_ids }
+        render json: { status: 'success', diy: preset.category_ids }, :status => :ok
       else
-        render json: { error: 'Could not save' }
+        render json: { status: 'error', message: 'Could not save' }, :status => 422
       end
     end
   end

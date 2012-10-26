@@ -20,6 +20,8 @@ jQuery ->
     $('.js-hate-tag-text').on 'keyup', (event) ->
       CalendarTaggings.addTag('hate') if event.keyCode is 13 or event.which is 13
     
+    $('input[name=calendar_category]').on 'change', ->
+      CalendarPreset.changeDiyPreset()
 
     $(document).on 'click', '.js-remove-tag', ->
       data = $(this).parent().data()
@@ -81,6 +83,21 @@ CalendarTaggings =
     # TODO: Kalender filtern
   
 CalendarPreset =
+  changeDiyPreset: ->
+    categories = $('input[name=calendar_category]:checked').map (idx, el) ->
+      $(el).val()
+    
+    $.ajax
+     type: 'POST'
+     url: "/calendar/presets"
+     data:
+       category_ids: categories.get().join(',')
+     success: (data) ->
+       if data.status is 'error'
+         # TODO: Eventuell ein schöneres Alert
+         alert "Da ging wat schief: #{data.message}"
+
+
   switchPreset: ->
     presetId = $(this).data('preset')
 
@@ -89,7 +106,6 @@ CalendarPreset =
     $(this).addClass('active')
 
     CalendarPreset.selectCategoriesFromPreset(presetId)
-    # TODO: Save the the user preset
 
   selectCategoriesFromPreset: (presetId) ->
     $all_checkboxes = $('input[name=calendar_category]')
