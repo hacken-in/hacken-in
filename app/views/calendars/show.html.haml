@@ -14,5 +14,6 @@
     = render partial: 'modules/calendars/kddk', locals: { presets: @presets, categories: @categories }
     = render partial: 'modules/tags/calendar_tags'
     .calendar-export
-      %button.btn.btn-inverse.js-calendar-export.pull-right
-        Export
+      %button.btn.btn-large.btn-inverse.js-calendar-export
+        %i.icon-calendar
+        In meinen Kalender

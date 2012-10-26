@@ -8,11 +8,11 @@ jQuery ->
 
     $('.js-kddk-preset').on 'click', CalendarPreset.switchPreset
 
-    $('.js-love-tag-button').on 'click', ->
-      CalendarTaggings.addTag('love')
+    $('.js-like-tag-button').on 'click', ->
+      CalendarTaggings.addTag('like')
 
-    $('.js-love-tag-text').on 'keyup', (event) ->
-      CalendarTaggings.addTag('love') if event.keyCode is 13 or event.which is 13
+    $('.js-like-tag-text').on 'keyup', (event) ->
+      CalendarTaggings.addTag('like') if event.keyCode is 13 or event.which is 13
     
     $('.js-hate-tag-button').on 'click', ->
       CalendarTaggings.addTag('hate')
@@ -24,7 +24,7 @@ jQuery ->
     $(document).on 'click', '.js-remove-tag', ->
       data = $(this).parent().data()
       $(this).parent().remove()
-      removeTag(data.list, data.tag)
+      CalendarTaggings.removeTag(data.list, data.tag)
 
     # Laden wir mal die DIY Kategorie
     CalendarPreset.selectCategoriesFromPreset('diy')
@@ -54,13 +54,30 @@ CalendarTaggings =
     $(".js-#{list}-taglist").append "<li data-tag=\"#{tag}\" data-list=\"#{list}\">#{tag} <i class=\"icon-remove remove-tag js-remove-tag\"></li>"
     $(".js-#{list}-tag-text").val('')
 
-    # TODO: Persistieren
-    # TODO: Kalender filtern
+    $.ajax
+       type: 'POST'
+       url: "/user/#{list}"
+       data:
+         tags: [tag]
+       success: (data) ->
+         if data.status is 'error'
+           # TODO: Eventuell ein schöneres Alert
+           alert "Da ging wat schief: #{data.message}"
+  
+   # TODO: Kalender filtern
 
   removeTag: (list, tag) ->
     console.log "I no longer #{list} #{tag}"
     
-    # TODO: Persisiteren, wenn eingeloggt
+    $.ajax
+       type: 'DELETE'
+       url: "/user/#{list}/#{tag}"
+       success: (data) ->
+         if data.status is 'error'
+           # TODO: Eventuell ein schöneres Alert
+           alert "Da ging wat schief: #{data.message}"
+  
+
     # TODO: Kalender filtern
   
 CalendarPreset =

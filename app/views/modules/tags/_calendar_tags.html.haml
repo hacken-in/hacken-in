@@ -6,7 +6,7 @@
         %i.icon-heart
     %ul.js-love-taglist
       - current_user.likes.each do |tag|
-        %li{'data-tag' => tag.name, 'data-list' => 'love'}
+        %li{'data-tag' => tag.name, 'data-list' => 'like'}
           = tag.name
           %i.icon-remove.remove-tag.js-remove-tag
 
