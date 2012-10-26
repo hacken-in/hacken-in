@@ -1,9 +1,11 @@
+$minical_day_width: 95px
+$minical_day_margin: 10px
 
 .minical
   overflow-x: scroll
   margin-bottom: 50px
   width: 960px
-  height: 130px
+  height: 140px
 
   &::-webkit-scrollbar
     width: 11px
@@ -18,14 +20,14 @@
     background-color: rgba(0, 0, 0, 0.1)
 
   .minical-wrapper
-    width: 9000px
+    width: ($minical_day_width + $minical_day_margin) * 57
 
 .minical-day
-  width: 95px
+  width: $minical_day_width
   height: 115px
   overflow: hidden
   float: left
-  margin-left: 10px
+  margin-left: $minical_day_margin
 
   &.active
     .minical-day-header
