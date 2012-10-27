@@ -95,7 +95,7 @@ group :development do
   # Deployment
   gem 'vlad', '~> 2.2.3', require: false
   gem 'vlad-git', '~> 2.2.0', require: false
-  gem 'vlad-unicorn'
+  gem 'vlad-unicorn', require: false
 
   group :darwin do
     gem 'rb-fsevent', '~> 0.9.0pre4'
