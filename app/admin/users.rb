@@ -19,6 +19,7 @@ ActiveAdmin.register User do
   end
 
   controller do
+    with_role :admin
     defaults finder: :find_by_nickname
   end
 
