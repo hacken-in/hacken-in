@@ -7,7 +7,7 @@ class Box < ActiveRecord::Base
 
   validates_uniqueness_of :position, allow_nil: true
   validate :content_has_picture
-  validates :position, inclusion: {in: 1..6}
+  validates :position, inclusion: {in: [1,2,3,4,5,6,nil]}
 
   delegate :picture, to: :content
   delegate :category, to: :content

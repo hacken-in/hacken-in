@@ -4,6 +4,7 @@ FactoryGirl.define do
     occurrence Time.new(2011,10,1,12,00)
     association :event, factory: :simple
     association :venue, factory: :cowoco_venue
+    association :picture, factory: :picture
     based_on_rule true
   end
 
@@ -12,6 +13,7 @@ FactoryGirl.define do
     description "wow this is <strong>a</strong> description"
     occurrence Time.new(2011,10,1,12,00)
     association :event, factory: :full_event
+    association :picture, factory: :picture
     based_on_rule true
   end
 
@@ -24,6 +26,7 @@ FactoryGirl.define do
     description "wow this is <strong>a</strong> description"
     occurrence Time.new(2011,10,1,12,00)
     association :event, factory: :full_event
+    association :picture, factory: :picture
     based_on_rule false
   end
 
