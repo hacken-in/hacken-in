@@ -18,6 +18,7 @@ namespace :vlad do
       run "cp #{shared_path}/config/#{filename} #{release_path}/config/#{filename}"
     end
     run "ln -s #{shared_path}/uploads #{release_path}/public/uploads"
+    run "rm #{release_path}/public/thisiscologne.json;ln -s #{shared_path}/thisiscologne.json #{release_path}/public/thisiscologne.json"
   end
 
   desc "Make a call to the passenger to create a running instance"

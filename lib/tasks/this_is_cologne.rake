@@ -17,7 +17,8 @@ namespace :this_is_cologne do
 
   desc "Fetches the stream and saves it as a JSON"
   task :save_json => :fetch_images do
-    File.open File.join(Rails.root, 'public', 'thisiscologne.json'), 'w' do |file|
+    json_file = ENV["JSON_FILE"] || File.join(Rails.root, 'public', 'thisiscologne.json')
+    File.open json_file, 'w' do |file|
       file.puts ThisiscolognePicture.order('id DESC').all.to_json
     end
   end
