@@ -51,7 +51,17 @@
       %p.pull-right
         Social Kram
 
+      .event-participators
+        %h3.event-participators-title Teilnehmer
+        - if @single_event.users
+          %ul.event-participators-list
+            - @single_event.users.each_with_index do |user, index|
+              - class_ = (index == 0 || index % 6 == 0) ? 'cuddle-to-left' : ''
+              %li{ class: "participator #{class_}"}
+                = link_to user_path(user) do
+                  = gravatar_image_tag(user.email, class: "user_gravatar", gravatar: { default: :identicon, size: 85 })
 
+        .btn.btn-inverse.pull-right.participate-button Und ich!
 
   .span2
     %p whoa this is my side box
