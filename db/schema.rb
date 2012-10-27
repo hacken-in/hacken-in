@@ -61,6 +61,14 @@ ActiveRecord::Schema.define(:version => 20121027163815) do
   add_index "blog_posts", ["category_id"], :name => "index_blog_posts_on_category_id"
   add_index "blog_posts", ["user_id"], :name => "index_blog_posts_on_user_id"
 
+  create_table "boxes", :force => true do |t|
+    t.integer  "content_id"
+    t.string   "content_type"
+    t.integer  "position"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
   create_table "calendar_preset_categories", :force => true do |t|
     t.integer  "category_id"
     t.integer  "calendar_preset_id"

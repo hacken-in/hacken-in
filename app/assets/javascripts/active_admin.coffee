@@ -2,4 +2,5 @@
 # = require charts
 # = require ckeditor-jquery
 # = require admin/blog_post/edit
+# = require admin/boxes/form
 # = require mediaelement_rails
