@@ -18,11 +18,11 @@ class BoxTest < ActiveSupport::TestCase
   end
 
   test "every position only exists once" do
-    assert_false FactoryGirl.build(:box, position: 1).valid?
+    assert_equal false, FactoryGirl.build(:box, position: 1).valid?
   end
 
   test "there may be as many boxes without position as you want" do
-    assert_true FactoryGirl.build(:box, position: nil).valid?
+    assert FactoryGirl.build(:box, position: nil).valid?
   end
 
   test "first line should be the teaser text for blog posts" do
@@ -58,19 +58,19 @@ class BoxTest < ActiveSupport::TestCase
   test "presence of first line known" do
     [:full_blog_post, :single_event].each do |type|
       content = FactoryGirl.build type
-      assert_true FactoryGirl.build(:box, content: content).first_line?
+      assert FactoryGirl.build(:box, content: content).first_line?
     end
 
     [:full_event].each do |type|
       content = FactoryGirl.build type
-      assert_false FactoryGirl.build(:box, content: content).first_line?
+      assert_equal false, FactoryGirl.build(:box, content: content).first_line?
     end
   end
 
   test "presence of second line known" do
     [:full_blog_post, :single_event, :full_event].each do |type|
       content = FactoryGirl.build type
-      assert_true FactoryGirl.build(:box, content: content).second_line?
+      assert FactoryGirl.build(:box, content: content).second_line?
     end
   end
 end
