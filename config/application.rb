@@ -41,6 +41,7 @@ module Hcking
     config.assets.enabled = true
     # We do not need rails when precompiling
     config.assets.initialize_on_precompile = false
+    config.assets.precompile += ['active_admin.css', 'active_admin.js', 'active_admin/print.css']
     config.assets.version = '1.0'
   end
 end
