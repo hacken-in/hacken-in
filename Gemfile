@@ -23,7 +23,9 @@ gem 'acts-as-taggable-on', '~> 2.3.1'
 # Asset template engines
 gem 'sass-rails', '~> 3.2.3'
 gem 'coffee-script', '~> 2.2.0'
+gem 'leaflet-rails', github: 'axyjo/leaflet-rails'
 gem 'uglifier', '~> 1.2.0'
+
 gem 'haml', '~> 3.1.4'
 gem 'redcarpet', '~> 2.1.0'
 
