@@ -1,7 +1,5 @@
 # encoding: utf-8
 FactoryGirl.define do
-
-
   factory :full_blog_post, class: 'blog_post' do
     headline "SimpleBlogPost"
     headline_teaser "Simple Headline Teaser"
@@ -10,5 +8,4 @@ FactoryGirl.define do
     association :user, factory: :user
     association :category, factory: :a_category
   end
-
 end
