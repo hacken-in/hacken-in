@@ -33,11 +33,14 @@ header
     &.last
       padding-right: 0
 
-  .active
-    text-decoration: underline !important
+  li.active
+    a
+      border-bottom: 2px solid black
 
   li
     a
+      padding: 2px !important
+      margin: 8px
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif
       font-size: 16px
       font-weight: bold
@@ -45,7 +48,7 @@ header
       color: #000 !important
 
       &:hover
-        text-decoration: underline !important
+        border-bottom: 2px solid black
 
 .main-footer
   border-top: 4px solid #000
@@ -72,6 +75,9 @@ header
   h1
     text-align: center
     font-size: 32px
+    a
+      color: black
+      text-decoration: none
   .image_row
     height: 178px
     overflow: hidden

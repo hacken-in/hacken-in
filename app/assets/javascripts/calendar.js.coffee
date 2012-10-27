@@ -2,7 +2,6 @@ jQuery ->
   if $('body').hasClass('calendars_show')
     # Damit wir nicht mehrfach das neuladen aufrufen ... :D
     window.currentlyReloading = false
-    
 
     # Normale click, etc handler ... Sollte selbsterklärend sein ;)
     $('.js-calendar-export').on 'click', ->
@@ -21,13 +20,13 @@ jQuery ->
 
     $('.js-like-tag-text').on 'keyup', (event) ->
       CalendarTaggings.addTag('like') if event.keyCode is 13 or event.which is 13
-    
+
     $('.js-hate-tag-button').on 'click', ->
       CalendarTaggings.addTag('hate')
 
     $('.js-hate-tag-text').on 'keyup', (event) ->
       CalendarTaggings.addTag('hate') if event.keyCode is 13 or event.which is 13
-    
+
     $('input[name=calendar_category]').on 'change', ->
       CalendarPreset.changeDiyPreset()
 
@@ -103,7 +102,7 @@ CalendarTaggings =
          if data.status is 'error'
            # TODO: Eventuell ein schöneres Alert
            alert "Da ging wat schief: #{data.message}"
-    
+
     # Reload the calendar with the new data
     Calendar.getEntries(Calendar.replaceEntries)
 
@@ -129,7 +128,7 @@ CalendarPreset =
   changeDiyPreset: ->
     categories = $('input[name=calendar_category]:checked').map (idx, el) ->
       $(el).val()
-    
+
     # TODO: Eventuell abfangen, ob der User überhaupt eingeloggt ist (JS Variable
     # oder so) und nur dann abschicken, spart uns ein paar 401er im Log ... If somebody
     # cares: Patch is welcome :)
@@ -138,7 +137,7 @@ CalendarPreset =
      url: "/calendar/presets"
      data:
        category_ids: categories.get().join(',')
-    
+
     # Reload the calendar with the new data
     Calendar.replaceEntries()
 

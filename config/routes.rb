@@ -6,17 +6,30 @@ Hcking::Application.routes.draw do
   resources :users, only: [:show] do
     resources :authorizations, only: [:destroy]
   end
-  
-  resources :user_tags, 
+
+  resources :user_tags,
     :path => "/user/:kind",
     :constraints => { id: /.*/, kind: /(like|hate)/ },
     :only => [:create, :destroy]
+
+  match "podcasts/category/:category_id" => "podcasts#index", as: "podcast_categorie"
+  match "podcasts/:year" => "podcasts#index", year: /\d{4}/
+  match "podcasts/:year/:month" => "podcasts#index", year: /\d{4}/, month: /\d{1,2}/
+  match "podcasts/:year/:month/:day" => "podcasts#index", year: /\d{4}/, month: /\d{1,2}/,  day: /\d{1,2}/
+  match "podcasts/:year/:month/:day/:id" => "podcasts#show"
+  resources :podcasts, path: "podcast", except: ["show"] do
+    collection do
+      get :feed, defaults: { format: 'atom' }
+    end
+    resources :comments, except: [:new]
+  end
+
   match "blog/category/:category_id" => "blog_posts#index", as: "blog_categorie"
   match "blog/:year" => "blog_posts#index", year: /\d{4}/
   match "blog/:year/:month" => "blog_posts#index", year: /\d{4}/, month: /\d{1,2}/
   match "blog/:year/:month/:day" => "blog_posts#index", year: /\d{4}/, month: /\d{1,2}/,  day: /\d{1,2}/
   match "blog/:year/:month/:day/:id" => "blog_posts#show"
-  resources :blog_posts, path: "blog", without: ["show"] do
+  resources :blog_posts, path: "blog", except: ["show"] do
     collection do
       get :feed, defaults: { format: 'atom' }
     end
@@ -66,7 +79,6 @@ Hcking::Application.routes.draw do
   # This pages are not done yet!
   match "contact"                 => "pages#todo"
   match "newsletter"              => "pages#todo"
-  match "podcast"                 => "pages#todo"
 
   match ":page_name"              => "pages#show"
 
