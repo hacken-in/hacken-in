@@ -35,12 +35,12 @@ $minical_day_margin: 10px
       background: url(cal-star.png) no-repeat 75px center
 
 .minical-cell
+  // inherit category indicator shadow
+  @extend .category-indicator
+
   display: block
   width: 31px
   height: 31px
-
-  -webkit-box-shadow: inset 10px 10px 20px 0px rgba(0, 0, 0, 0.4)
-  box-shadow: inset 10px 10px 20px 0px rgba(0, 0, 0, 0.4)
 
   float: left
   margin-bottom: 2px
