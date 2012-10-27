@@ -1,14 +1,14 @@
 require "bundler/vlad"
 
 set :application, "droidboy"
-set :deploy_to, "/home/droidboy/nerdhub"
+set :deploy_to, "/var/www/virtual/droidboy/nerdhub"
 set :user, "droidboy"
 set :domain, "#{user}@corvus.uberspace.de"
 set :repository, 'git://github.com/nerdhub/hcking.git'
 
 set :config_files, ['database.yml', 'newrelic.yml', 'initializers/secret_token.rb']
 
-set :unicorn_pid, '/home/droidboy/nerdhub/shared/pids/unicorn.pid'
+set :unicorn_pid, '/var/www/virtual/droidboy/nerdhub/shared/pids/unicorn.pid'
 
 namespace :vlad do
 

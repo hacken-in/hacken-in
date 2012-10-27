@@ -1,4 +1,4 @@
-root = "/home/droidboy/nerdhub"
+root = "/var/www/virtual/droidboy/nerdhub"
 working_directory "#{root}/current/"
 pid "#{root}/shared/pids/unicorn.pid"
 stderr_path "#{root}/shared/log/unicorn.log"
