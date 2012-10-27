@@ -7,6 +7,11 @@
     = f.input :publishable
     = f.input :use_in_newsletter
     = f.input :picture
+    = f.input :mp3file
+    - if @blog_post.mp3file.present?
+      %audio{src: @blog_post.mp3file.url, preload: "none"}
+        %script
+          $('audio').mediaelementplayer();
   = f.inputs "Teaser" do
     = f.input :headline_teaser, input_html: {rows: 1}
     = f.input :teaser_text, input_html: {rows: 3}

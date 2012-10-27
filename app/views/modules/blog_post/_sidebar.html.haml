@@ -1,18 +1,24 @@
 .blog_sidebar
   .blog_categories
-    %h2 Kategorieen
+    - if controller.class == BlogPostsController
+      %h2 Kategorieen
+    - else
+      %h2 Podcasts
     %ul
       - categories.each do |category|
         %li
           .blog_category_indicator
             = render partial: 'modules/categories/indicator', locals: { size: "14px",
               color: current_category.nil? || current_category.id == category.id ? category.color : "#aaa" }
-          = link_to category.title, blog_categorie_path(category), 
+          = link_to category.title, post_categorie_path(controller, category),
             class: current_category.nil? || current_category.id == category.id ? "" : "blog_category_inactive"
 
   = link_to image_tag("blog-twitter.png"), "http://twitter.com/nerdhub_cgn", class: "blog_sidebar_twitter"
   = link_to image_tag("blog-facebook.png"), "http://www.facebook.com/nerdhubcgn", class: "blog_sidebar_facebook"
-  = link_to image_tag("blog-rss.png"), "/blog/feed", class: "blog_sidebar_rss"
+  - if controller.class == BlogPostsController
+    = link_to image_tag("blog-rss.png"), "/blog/feed", class: "blog_sidebar_rss"
+  - else
+    = link_to image_tag("blog-podcast-rss.png"), "/podcast/feed", class: "blog_sidebar_rss"
 
   .blog_next_events
     %h2 Die nächsten Termine

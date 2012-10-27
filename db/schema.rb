@@ -11,8 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121027091823) do
-
+ActiveRecord::Schema.define(:version => 20121027163815) do
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
     t.string   "resource_type", :null => false
@@ -55,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20121027091823) do
     t.datetime "publishable_from"
     t.boolean  "use_in_newsletter"
     t.integer  "picture_id"
+    t.string   "mp3file"
   end
 
   add_index "blog_posts", ["category_id"], :name => "index_blog_posts_on_category_id"
@@ -90,8 +90,9 @@ ActiveRecord::Schema.define(:version => 20121027091823) do
   create_table "categories", :force => true do |t|
     t.string   "title"
     t.string   "color"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+    t.boolean  "podcast_category", :default => false
   end
 
   create_table "comments", :force => true do |t|

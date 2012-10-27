@@ -57,6 +57,9 @@ gem 'omniauth-linkedin'
 gem 'carrierwave', '~> 0.6.2'
 gem "mini_magick", "~> 3.4"
 
+# MP3 Player
+gem "mediaelement_rails"
+
 # Other dependencies
 gem 'jquery-rails', '~> 2.0.0'
 gem 'gabba', '~> 0.3.0'
