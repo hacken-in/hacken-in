@@ -11,3 +11,5 @@ $ ->
   type.change (e) ->
     selectors.each -> ($ this).detach()
     selects[e.target.value].appendTo ($ target)
+
+  type.change()

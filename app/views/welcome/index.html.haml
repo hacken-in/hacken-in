@@ -7,12 +7,10 @@
     = render partial: 'modules/calendars/minical'
 
 .row.content-teasers
-  - 1.upto(3) do |i|
-    = render partial: type_of("box_#{i}"), locals: locals_for("box_#{i}")
+  = render @first_row
 
 .row.content-teasers
-  - 4.upto(6) do |i|
-    = render partial: type_of("box_#{i}"), locals: locals_for("box_#{i}")
+  = render @second_row
 
 .row
   .abo-box
