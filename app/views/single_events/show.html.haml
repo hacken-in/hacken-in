@@ -1,30 +1,72 @@
 - color = @single_event.category.try(:color)
 
-.row
+.row.event.single-event
   .span4
     .black-bar.black-bar-wide
       = render partial: 'modules/categories/indicator', locals: { size: '75px', color: color }
-      .black-bar-content{ data: { hlcolor: color } }
-        .black-bar-title
-          = @single_event.title
-        .black-bar-time= I18n.localize(@single_event.occurrence, format: "%H:%M Uhr")
+      .black-bar-content.black-bar-with-date{ data: { hlcolor: color } }
+        .black-bar-top-part
+          .black-bar-date
+            = I18n.localize @single_event.occurrence, format: "%a, %d. %b %Y"
+        .black-bar-center-part
+          %h1.black-bar-title= @single_event.event.name
+          .black-bar-time= I18n.localize(@single_event.occurrence, format: "%H:%M Uhr")
+
+    .event-info
+      - if @single_event.name?
+        %h2= @single_event.name
+
+      .event-description
+        .event-content-field
+          .content-field-icon
+            %i.icon-info-sign
+          .content-field-text
+            = @single_event.description
+
+      - if @single_event.url.present?
+        .event-homepage
+          .event-content-field
+            .content-field-icon
+              %i.icon-home
+            .content-field-text
+              %a.hidden-link{ href: @single_event.url }= @single_event.url
+
+      - if @single_event.twitter.present?
+        .event-twitter-handle
+          .event-content-field
+            .content-field-icon
+              %i.icon-twitter
+            .content-field-text
+              %a.hidden-link{ href: "http://twitter.com/#{@single_event.twitter}" }
+                = "@#{@single_event.twitter}"
+
+      = render "events/map", event: @single_event
+      .map
+
+      %address.event-venue
+        anderScore GmbH<br>
+        Frankenwerft 54<br>
+        50123 Köln
+
+      %p.pull-right
+        Social Kram
+
+
+
   .span2
     %p whoa this is my side box
 
 
 
+
 .left_side
   - title @single_event.event_title
-
   - if @single_event.name?
     %h2
       = @single_event.name
-
   %h2
     = @single_event.full_day ? @single_event.occurrence.strftime("%d.%m.%Y") :  @single_event.occurrence.strftime("%d.%m.%Y um %H:%M")
-
   -#= render "tags/tags", tag_list: @single_event.event.tag_list + @single_event.tag_list
-
   - unless @single_event.description?
     %p
       %em
@@ -40,8 +82,8 @@
 
   %h3 Adresse
 
-  = render "events/map", event: @single_event
-  %div.map
+  -#= render "events/map", event: @single_event
+  -#%div.map
 
   = render "events/address",address: @single_event
 

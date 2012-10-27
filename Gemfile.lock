@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/axyjo/leaflet-rails.git
+  revision: b2fd1f95dbad7ef5625d0415d008c2ca46a18821
+  specs:
+    leaflet-rails (0.4.4)
+
+GIT
   remote: https://github.com/gregbell/active_admin.git
   revision: 3d6976ccf8a4dd7089f3033590905c84500c2a4f
   specs:
@@ -313,6 +319,7 @@ DEPENDENCIES
   html_truncator (~> 0.3.0)
   ice_cube (~> 0.8.0)
   jquery-rails (~> 2.0.0)
+  leaflet-rails!
   md_emoji (~> 0.0.7)
   mini_magick (~> 3.4)
   mocha (~> 0.12.0)

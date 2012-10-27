@@ -1,29 +1,20 @@
 - unless event.latitude.blank? or event.longitude.blank?
-  - content_for :javascript do
-    = stylesheet_link_tag "leaflet/leaflet.css"
-    <!--[if lte IE 8]>
-    = stylesheet_link_tag "leaflet/leaflet.ie.css"
-    <![endif]-->
+  :javascript
+    function initialize() {
+      var map = new L.Map('map_canvas');
+      var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/785896de12ad4cf892e32b9ec16b5cde/997/256/{z}/{x}/{y}.png',
+        cloudmadeAttribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery &copy; <a href="http://cloudmade.com">CloudMade</a>',
+        cloudmade = new L.TileLayer(cloudmadeUrl, {maxZoom: 18, attribution: cloudmadeAttribution});
+      var london = new L.LatLng(#{event.latitude}, #{event.longitude});
+      map.setView(london, 13).addLayer(cloudmade);
 
-    = javascript_include_tag "leaflet/leaflet.js"
-    :javascript
-      function initialize() {
-        var map = new L.Map('map_canvas');
-        var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/785896de12ad4cf892e32b9ec16b5cde/997/256/{z}/{x}/{y}.png',
-          cloudmadeAttribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery &copy; <a href="http://cloudmade.com">CloudMade</a>',
-          cloudmade = new L.TileLayer(cloudmadeUrl, {maxZoom: 18, attribution: cloudmadeAttribution});
-        var london = new L.LatLng(#{event.latitude}, #{event.longitude});
-        map.setView(london, 13).addLayer(cloudmade);
+      var markerLocation = new L.LatLng(#{event.latitude}, #{event.longitude});
 
-        var markerLocation = new L.LatLng(#{event.latitude}, #{event.longitude});
+      var marker = new L.Marker(markerLocation);
+      map.addLayer(marker);
+    }
 
-        var marker = new L.Marker(markerLocation);
-        map.addLayer(marker);
-      }
-
-      $(function() {
-        $('.map').append('<div id="map_canvas"></div>');
-        initialize();
-      });
-
-
+    $(function() {
+      $('.map').append('<div id="map_canvas"></div>');
+      initialize();
+    });
