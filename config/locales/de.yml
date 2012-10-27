@@ -218,6 +218,7 @@ de:
       category:
         title: Titel
         color: Farbe
+        podcast_category: Podcast Kategorie
       blog_post:
         user: Benutzer
         category: Kategorie
@@ -227,6 +228,7 @@ de:
         use_in_newsletter: Im Newsletter verwenden?
         headline_teaser: Teaser für die Startseite
         teaser_text: Teaser
+        mp3file: MP3 Datei
       calendar_preset:
         title: Titel
         categories: Kategorien

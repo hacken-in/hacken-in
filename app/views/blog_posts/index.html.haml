@@ -4,11 +4,11 @@
       = render partial: "modules/blog_post/extract", locals: {blog_post: post}
       .blog_comment_action
         - if post.comments.count == 0
-          = link_to "Hinterlasse einen Kommentar", blog_post_path(post.to_link)
+          = link_to "Hinterlasse einen Kommentar", post_path(controller, post.to_link)
         - elsif post.comments.count == 1
-          = link_to "1 Kommentar", blog_post_path(post.to_link)
+          = link_to "1 Kommentar", post_path(controller, post.to_link)
         - else
-          = link_to "#{post.comments.count} Kommentare", blog_post_path(post.to_link)
+          = link_to "#{post.comments.count} Kommentare", post_path(controller, post.to_link)
     = paginate @posts, theme: 'twitter-bootstrap'
   .span2
     = render partial: "modules/blog_post/sidebar", locals: {categories: @categories, current_category: @current_category, single_events: @single_events}

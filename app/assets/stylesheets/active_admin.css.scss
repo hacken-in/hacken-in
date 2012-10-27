@@ -6,8 +6,10 @@
 //
 // For example, to change the sidebar width:
 // $sidebar-width: 242px;
-
-// Active Admin's got SASS!
+/*
+ *= require mediaelement_rails
+ */
+ // Active Admin's got SASS!
 @import "active_admin/mixins";
 @import "active_admin/base";
 

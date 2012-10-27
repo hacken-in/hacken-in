@@ -12,12 +12,12 @@ Hcking::Application.routes.draw do
     :constraints => { id: /.*/, kind: /(like|hate)/ },
     :only => [:create, :destroy]
 
-  match "podcasts/category/:category_id" => "podcasts#index", as: "podcast_categorie"
-  match "podcasts/:year" => "podcasts#index", year: /\d{4}/
-  match "podcasts/:year/:month" => "podcasts#index", year: /\d{4}/, month: /\d{1,2}/
-  match "podcasts/:year/:month/:day" => "podcasts#index", year: /\d{4}/, month: /\d{1,2}/,  day: /\d{1,2}/
-  match "podcasts/:year/:month/:day/:id" => "podcasts#show"
-  resources :podcasts, path: "podcast", except: ["show"] do
+  match "podcast/category/:category_id" => "podcasts#index", as: "podcast_categorie"
+  match "podcast/:year" => "podcasts#index", year: /\d{4}/
+  match "podcast/:year/:month" => "podcasts#index", year: /\d{4}/, month: /\d{1,2}/
+  match "podcast/:year/:month/:day" => "podcasts#index", year: /\d{4}/, month: /\d{1,2}/,  day: /\d{1,2}/
+  match "podcast/:year/:month/:day/:id" => "podcasts#show"
+  resources :podcasts, path: "podcast" do
     collection do
       get :feed, defaults: { format: 'atom' }
     end
@@ -29,7 +29,7 @@ Hcking::Application.routes.draw do
   match "blog/:year/:month" => "blog_posts#index", year: /\d{4}/, month: /\d{1,2}/
   match "blog/:year/:month/:day" => "blog_posts#index", year: /\d{4}/, month: /\d{1,2}/,  day: /\d{1,2}/
   match "blog/:year/:month/:day/:id" => "blog_posts#show"
-  resources :blog_posts, path: "blog", except: ["show"] do
+  resources :blog_posts, path: "blog" do
     collection do
       get :feed, defaults: { format: 'atom' }
     end
