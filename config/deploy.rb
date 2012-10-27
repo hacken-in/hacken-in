@@ -6,7 +6,7 @@ set :user, "droidboy"
 set :domain, "#{user}@corvus.uberspace.de"
 set :repository, 'git://github.com/nerdhub/hcking.git'
 
-set :config_files, ['database.yml', 'newrelic.yml', 'initializers/secret_token.rb', 'omniauth.yaml']
+set :config_files, ['database.yml', 'newrelic.yml', 'initializers/secret_token.rb', 'omniauth.yml']
 
 set :unicorn_pid, '/var/www/virtual/droidboy/nerdhub/shared/pids/unicorn.pid'
 
