@@ -1,7 +1,9 @@
 jQuery ->
   if $('body').hasClass('calendars_show')
+    # Damit wir nicht mehrfach das neuladen aufrufen ... :D
     window.currentlyReloading = false
 
+    # Normale click, etc handler ... Sollte selbsterklärend sein ;)
     $('.js-calendar-export').on 'click', ->
       alert('Hier würde nun dein Kalender exportiert ... :D')
 
@@ -32,31 +34,43 @@ jQuery ->
       data = $(this).parent().data()
       $(this).parent().remove()
       CalendarTaggings.removeTag(data.list, data.tag)
-
-    # Laden wir mal die DIY Kategorie
+    
+    # Alle handler sind gesetzt ... Initialisieren wir die DIY-Kategorie
+    # Dadurch wird ein Neuladen des Kalenders getriggert. So hat jemand der JS aus hat den gesamten Kalender,
+    # und mit JS wird die Kategorie ersetzt ... Ich weiß nicht, ob man das so lassen kann oder sollte, da es ein komisches
+    # neuladen ist
     CalendarPreset.selectCategoriesFromPreset('diy')
 
-    # Und dann noch das infinite scroll
+    # Selbstgebautes Infinite Scroll ... Ernsthaft, da is net viel dabei ... Ich weiß nicht, warum ich eine Lib verwenden sollte
     $(window).scroll ->
-      if $(window).scrollTop() > $(document).height() - $(window).height() - 200 && !window.currentlyReloading && !window.endOfTheWorld
+      if $(window).scrollTop() > $(document).height() - $(window).height() - 200 and  not window.currentlyReloading and not window.endOfTheWorld
         window.currentlyReloading = true
         Calendar.appendEntries()
         # TODO: Der kann noch ein wenig schöner gestyled werden
-        $('.calendar-calendar').append('<div class="well js-append-indicator">Ich lade weitere Einträge, hab Geduld :-)</div>');
+        $('.calendar-calendar').append('<div class="well js-append-indicator">Ich lade weitere Einträge, hab Geduld :-)</div>')
 
+
+# Gesammelte Funktionen um den gesamten Kalender aufzurufen ... Object wird hier als Namespace mißbraucht ... Ich hoffe
+# das Object verzeihts mir ... Aufrufen muss man eigentlich nur die ersten beiden Funktionen.
 Calendar =
+  # Lade die Einträge und hänge sie an die Liste UNTEN dran
+  # calendarScrollFrom und calendarScrollTo werden von dem nachgeladenen Content gesetzt
   appendEntries: ->
     Calendar.getEntries calendarScrollFrom, calendarScrollTo, (data) ->
-      $('.js-append-indicator').remove();
-      $('.calendar-calendar').append(data);
+      $('.js-append-indicator').remove()
+      $('.calendar-calendar').append(data)
       window.currentlyReloading = false
+
+  # Hier werden die Einträge geladen und der Kalender wird komplett ersetzt
+  # Das wird benutzt, wenn der Benutzer sein Preset verändert
+  #
+  # Die Zeiten sind der Anfang des Kalenders (heute oder explizites Anfangsdatum) bis zum letzten sichtbaren Tag
   replaceEntries: ->
     Calendar.getEntries beginningOfTime, calendarScrollFrom, (data) ->
       $('.calendar-calendar').html(data)
-
+  
+  # Interne Funktion für den AJAX Call ;)
   getEntries: (from, to, callback) ->
-    #TODO: Irgendeine Form von Indikator, dass wir gerade umsortieren ... Das dauert
-    #      teilweise nämlich ungewöhnlich lange ....
     $.ajax
       type: 'GET'
       url: '/calendar/entries'
