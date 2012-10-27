@@ -308,9 +308,9 @@ de:
   single_events:
     show:
       participants: Teilnehmer
-    participate:
+    push:
       confirmation: "Du nimmst an dem Event teil."
-    unparticipate:
+    delete:
       confirmation: "Du nimmst nicht mehr an dem Event teil."
     update:
       confirmation: "Termin wurde bearbeitet."
