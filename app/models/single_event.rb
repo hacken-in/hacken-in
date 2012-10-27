@@ -171,7 +171,30 @@ class SingleEvent < ActiveRecord::Base
   end
 
   def is_for_user?(user)
-    !((self.event.tag_list & user.hate_list).length > 0 && self.users.exclude?(user))
+    # Let us be a little more verbose than the old code
+    # !((self.event.tag_list & user.hate_list).length > 0 && self.users.exclude?(user))
+    hated_tags_event = (self.event.tag_list & user.hate_list)
+    hated_tags_self  = (self.tag_list & user.hate_list)
+
+    loved_tags_event = (self.event.tag_list & user.like_list)
+    loved_tags_self  = (self.tag_list & user.like_list)
+    
+    # Wenn der Event oder der Single Event einen Tag haben, den der Benutzer hasst...
+    if hated_tags_event.size + hated_tags_self.size > 0
+      # ... muss der Benutzer mindestens einen der anderen Tags des Events lieben
+      if loved_tags_event.size + loved_tags_self.size > 0
+        # ... damit er angezeigt wird
+        true
+      # ... oder er muss an dem Event teilnehmen
+      elsif self.users.include? user
+        true
+      else
+        false
+      end
+    else
+      true
+    end
+    
   end
 
 end

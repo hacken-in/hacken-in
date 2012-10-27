@@ -25,6 +25,7 @@ class IcalControllerTest < ActionController::TestCase
   def setup
     @user = FactoryGirl.create(:user)
     @user.hate_list << "php"
+    @user.like_list << "ruby"
     @user.save
 
     @vcal_start =<<DESC
@@ -98,6 +99,16 @@ DESC
     se.duration = 5
     se.save
     @vcal_event6 = generate_event_entry(event6.single_events.first, "First Event Description\\n\\nevent text")
+
+    event7 = FactoryGirl.create(:simple)
+    time7 = (Date.today + 3.days).to_time
+    event7.schedule.add_recurrence_time(time7)
+    event7.tag_list << "php"
+    event7.tag_list << "ruby"
+    event7.full_day = true
+    event7.save
+    @vcal_event7 = generate_event_entry(event7.single_events.first)
+
   end
 
   test "should get general ical calendar" do
@@ -113,6 +124,7 @@ DESC
     assert @response.body.include? @vcal_event4
     assert @response.body.include? @vcal_event5
     assert @response.body.include? @vcal_event6
+    assert @response.body.include? @vcal_event7
   end
 
   test "should get empty personalized ical calendar if no or wrong guid given" do
@@ -140,6 +152,8 @@ DESC
     assert @response.body.exclude? @vcal_event4
     assert @response.body.exclude? @vcal_event5
     assert @response.body.exclude? @vcal_event6
+    assert @response.body.exclude? @vcal_event7
+
   end
 
   test "should get empty like welcome page ical calendar if no or wrong guid given" do
@@ -158,7 +172,7 @@ DESC
     get :like_welcome_page, {guid: "userguid"}
     assert_response :success
     assert_equal "text/calendar; charset=UTF-8", @response.headers["Content-Type"]
-
+    
     assert @response.body.start_with? @vcal_start
     assert @response.body.end_with? @vcal_end
     assert @response.body.include? @vcal_event
@@ -167,5 +181,6 @@ DESC
     assert @response.body.include? @vcal_event4
     assert @response.body.include? @vcal_event5
     assert @response.body.include? @vcal_event6
+    assert @response.body.include? @vcal_event7
   end
 end
