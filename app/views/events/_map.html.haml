@@ -1,20 +1,21 @@
 - unless event.latitude.blank? or event.longitude.blank?
   :javascript
     function initialize() {
-      var map = new L.Map('map_canvas');
-      var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/785896de12ad4cf892e32b9ec16b5cde/997/256/{z}/{x}/{y}.png',
-        cloudmadeAttribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery &copy; <a href="http://cloudmade.com">CloudMade</a>',
-        cloudmade = new L.TileLayer(cloudmadeUrl, {maxZoom: 18, attribution: cloudmadeAttribution});
-      var london = new L.LatLng(#{event.latitude}, #{event.longitude});
-      map.setView(london, 13).addLayer(cloudmade);
+      var eventLocation = new L.LatLng(#{event.latitude}, #{event.longitude});
 
-      var markerLocation = new L.LatLng(#{event.latitude}, #{event.longitude});
+      var map = new L.Map('mapCanvas', { center: eventLocation, zoom: 13 });
 
-      var marker = new L.Marker(markerLocation);
+      var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/785896de12ad4cf892e32b9ec16b5cde/997/256/{z}/{x}/{y}.png';
+      var cloudmade = new L.TileLayer(cloudmadeUrl);
+      map.addLayer(cloudmade);
+
+      var markerLocation = eventLocation;
+
+      var marker = new L.Marker(eventLocation);
       map.addLayer(marker);
     }
 
     $(function() {
-      $('.map').append('<div id="map_canvas"></div>');
+      $('.event-map').append('<div id="mapCanvas"></div>');
       initialize();
     });
