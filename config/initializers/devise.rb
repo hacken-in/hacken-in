@@ -213,12 +213,14 @@ Devise.setup do |config|
   #   manager.intercept_401 = false
   #   manager.default_strategies(scope: :user).unshift :some_external_strategy
   # end
-  
-  #OmniAuth strategies
-  config.omniauth :twitter, ENV['TWITTER_CLIENT_ID'], ENV['TWITTER_SECRET']
-  config.omniauth :github, ENV['GITHUB_CLIENT_ID'], ENV['GITHUB_SECRET']
-  config.omniauth :facebook, ENV['FACEBOOK_CLIENT_ID'], ENV['FACEBOOK_SECRET']
-  config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_SECRET']
-  config.omniauth :linkedin, ENV['LINKEDIN_CLIENT_ID'], ENV['LINKEDIN_SECRET']
-  
+
+  # OmniAuth strategies
+  omniauth_yaml = File.expand_path("../../omniauth.yml", __FILE__)
+  if File.exist?(omniauth_yaml)
+    yaml = YAML.load_file omniauth_yaml
+    yaml["auth"].keys.each do |key|
+      config.omniauth key.to_sym, yaml["auth"][key]["key"], yaml["auth"][key]["secret"]
+    end
+  end
+
 end
