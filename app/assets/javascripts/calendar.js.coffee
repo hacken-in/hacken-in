@@ -1,5 +1,10 @@
 jQuery ->
   if $('body').hasClass('calendars_show')
+    window.currentlyReloading = false;
+
+    $('.js-calendar-export').on 'click', ->
+      alert('Hier würde nun dein Kalender exportiert ... :D')
+
     $(document).on 'mouseenter', '.calendar-line', ->
       $(this).css('background-color', $(this).data('hlcolor')).addClass('calendar-line-highlighted')
 
@@ -31,26 +36,44 @@ jQuery ->
     # Laden wir mal die DIY Kategorie
     CalendarPreset.selectCategoriesFromPreset('diy')
 
-    ###
     # Und dann noch das infinite scroll
-    $(window).endlessScroll
-      fireDelay: 200
-      fireOnce: true
-      inflowPixels: 500
-      ceaseFireOnEmpty: false
-      loader: '<div class="loading"><div>',
-      callback: (fireSequence, pageSequence, scrollDirection)->
-        if scrollDirection == 'next'
-          $.ajax
-            url: "/calendar/entries"
-            type: 'GET'
-            data: "from=#{calendarScrollFrom}&to=#{calendarScrollTo}"
-            success: (data)->
-            #  $('.calendar-calendar').append(data)
-    ###
+    $(window).scroll ->
+      if $(window).scrollTop() > $(document).height() - $(window).height() - 200 && !window.currentlyReloading && !window.endOfTheWorld
+        window.currentlyReloading = true
+        Calendar.appendEntries()
+        # TODO: Der kann noch ein wenig schöner gestyled werden
+        $('.calendar-calendar').append('<div class="well js-append-indicator">Ich lade weitere Einträge, hab Geduld :-)</div>');
 
+Calendar =
+  appendEntries: ->
+    Calendar.getEntries calendarScrollFrom, calendarScrollTo, (data) ->
+      $('.js-append-indicator').remove();
+      $('.calendar-calendar').append(data);
+      window.currentlyReloading = false
+  replaceEntries: ->
+    Calendar.getEntries beginningOfTime, calendarScrollFrom, (data) ->
+      $('.calendar-calendar').html(data)
 
+  getEntries: (from, to, callback) ->
+    #TODO: Irgendeine Form von Indikator, dass wir gerade umsortieren ... Das dauert
+    #      teilweise nämlich ungewöhnlich lange ....
+    $.ajax
+      type: 'GET'
+      url: '/calendar/entries'
+      data:
+        from: from
+        to: to
+        categories: CalendarPreset.getCategories().join()
+      success: (data) ->
+        callback(data)
+
+# Methods that are used for the taggings in the calendar
+# Values for list are:
+#    like -> liked/loved tags
+#    hate -> hated tags
+#
 CalendarTaggings =
+  # Adds the tag from the input to the list and saves it on the server
   addTag: (list) ->
     tag = $(".js-#{list}-tag-text").val()
     $(".js-#{list}-taglist").append "<li data-tag=\"#{tag}\" data-list=\"#{list}\">#{tag} <i class=\"icon-remove remove-tag js-remove-tag\"></li>"
@@ -65,12 +88,11 @@ CalendarTaggings =
          if data.status is 'error'
            # TODO: Eventuell ein schöneres Alert
            alert "Da ging wat schief: #{data.message}"
-  
-   # TODO: Kalender filtern
+    
+    # Reload the calendar with the new data
+    Calendar.getEntries(Calendar.replaceEntries)
 
   removeTag: (list, tag) ->
-    console.log "I no longer #{list} #{tag}"
-    
     $.ajax
        type: 'DELETE'
        url: "/user/#{list}/#{tag}"
@@ -78,11 +100,17 @@ CalendarTaggings =
          if data.status is 'error'
            # TODO: Eventuell ein schöneres Alert
            alert "Da ging wat schief: #{data.message}"
-  
 
-    # TODO: Kalender filtern
-  
+    # Reload the calendar with the new data
+    Calendar.replaceEntries()
+
+
 CalendarPreset =
+  getCategories: ->
+    categories = $('input[name=calendar_category]:checked').map (idx, el) ->
+      $(el).val()
+    categories.get()
+
   changeDiyPreset: ->
     categories = $('input[name=calendar_category]:checked').map (idx, el) ->
       $(el).val()
@@ -95,6 +123,9 @@ CalendarPreset =
      url: "/calendar/presets"
      data:
        category_ids: categories.get().join(',')
+    
+    # Reload the calendar with the new data
+    Calendar.replaceEntries()
 
   switchPreset: ->
     presetId = $(this).data('preset')
@@ -122,3 +153,7 @@ CalendarPreset =
 
       $.each calendarPresets[presetId], (id, categoryId)->
         $('input[name=calendar_category][value=' + categoryId + ']').attr('checked', true)
+
+    # Reload the calendar with the new data
+    Calendar.replaceEntries()
+

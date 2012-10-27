@@ -1,6 +1,7 @@
 - content_for :javascript do
   :javascript
-    var calendarPresets = #{@presets_json.to_json}
+    var beginningOfTime = '#{@start_date}';
+    var calendarPresets = #{@presets_json.to_json};
 
 .row.header-sep-line
   .span4
