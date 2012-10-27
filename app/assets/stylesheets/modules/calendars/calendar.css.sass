@@ -35,48 +35,11 @@
 
 
 .calendar-entry
-  padding-bottom: 10px
-  width: 624px
-  overflow: auto
-
-  a
-    color: #fff
-
-  .category-indicator
-    float: left
+  @extend .black-bar
 
   .calendar-line
-    float: left
-    background-color: #000
-    margin-left: 2px
-    width: 570px
-    height: 52px
-    color: #fff
-    overflow: auto
-    cursor: pointer
-
     &.calendar-line-highlighted
-      -webkit-box-shadow: inset 10px 10px 20px 0px rgba(0, 0, 0, 0.4)
-      box-shadow: inset 10px 10px 20px 0px rgba(0, 0, 0, 0.4)
-
-    .calendar-line-title
-      padding-top: 13px
-      font-size: 22px
-      font-weight: bold
-      width: 430px
-      padding-left: 15px
-      float: left
-      overflow: hidden
-      white-space: nowrap
-      text-overflow: ellipsis
-      height: 26px
-      line-height: 26px
-
-    .calendar-line-time
-      font-size: 22px
-      padding-top: 16px
-      float: left
-      font-family: Vollkorn, serif
+      box-shadow: inset 5px 5px 20px 0px rgba(0, 0, 0, 0.4)
 
 
 .kddk
@@ -97,7 +60,7 @@
       background-color: #d2d2d2
       color: #fff
       font-weight: bold
-    
+
       &.active
         background-color: #000
       a
