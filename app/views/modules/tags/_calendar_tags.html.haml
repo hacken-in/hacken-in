@@ -1,10 +1,10 @@
 - if current_user
   .tag-box.love-tags
     .input-append
-      %input.js-love-tag-text{type: 'text', placeholder: 'Was liebst du?'}
-      %button.btn.js-love-tag-button
+      %input.js-like-tag-text{type: 'text', placeholder: 'Was liebst du?'}
+      %button.btn.js-like-tag-button
         %i.icon-heart
-    %ul.js-love-taglist
+    %ul.js-like-taglist
       - current_user.likes.each do |tag|
         %li{'data-tag' => tag.name, 'data-list' => 'like'}
           = tag.name
@@ -20,6 +20,6 @@
         %li{'data-tag' => tag.name, 'data-list' => 'hate'}
           = tag.name
           %i.icon-remove.remove-tag.js-remove-tag
--else
+  -else
   .tag-box.muted
     Als angemeldeter Benutzer kannst du deinen Kalender hier auch noch nach bestimmten Hashtags filtern
