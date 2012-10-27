@@ -149,6 +149,7 @@ class SingleEvent < ActiveRecord::Base
     location = [self.venue_info, self.venue.address].delete_if(&:blank?).join(", ").strip
     ri_cal_event.location = location if location.present?
     ri_cal_event.url = Rails.application.routes.url_helpers.event_single_event_url(
+              # TODO: Hier ist die Domain hart verdrahtet ... Vor dem release unbedingt noch ändern!
               host: Rails.env.production? ? "hcking.de" : "hcking.dev",
               event_id: event.id,
               id: id)
