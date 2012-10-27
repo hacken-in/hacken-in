@@ -31,13 +31,8 @@ class SingleEvent < ActiveRecord::Base
     lambda { |tag| tagged_with(tag) | joins(:event).where('events.id in (?)', Event.tagged_with(tag).map(&:id)) }
   scope :for_user,
     lambda { |user| user ? scoped.select{ |single_event| single_event.is_for_user? user } : scoped }
-  
-  # Categories as an array of ids
   scope :in_categories,
     lambda { |categories| joins(:event).where('single_events.category_id IN (?) OR (single_events.category_id IS NULL AND events.category_id IN (?))', categories, categories) }
-
-  # Tags (hated tags are ignored unless a loved tag is present)
-  # TODO: Implement
 
   default_scope order(:occurrence)
 
@@ -171,6 +166,7 @@ class SingleEvent < ActiveRecord::Base
   end
 
   def is_for_user?(user)
+    return true unless user
     # Let us be a little more verbose than the old code
     # !((self.event.tag_list & user.hate_list).length > 0 && self.users.exclude?(user))
     hated_tags_event = (self.event.tag_list & user.hate_list)
