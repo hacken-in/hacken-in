@@ -1,7 +1,8 @@
 .help
   .preview
-    %a{href: '#', class: 'show-comment active'}= t('common.show_comment')
-    %a{href: '#', class: 'show-preview'}= t('common.show_preview')
+    %a{href: '#', class: 'show-comment btn btn-mini disabled'}= t('common.show_comment')
+    %a{href: '#', class: 'show-preview btn btn-mini'}= t('common.show_preview')
   .info
-    %em= raw t('common.markdown_info', syntax_link: "http://daringfireball.net/projects/markdown/syntax")
+    %small
+      %em= raw t('common.markdown_info', syntax_link: "http://daringfireball.net/projects/markdown/syntax")
   .clear

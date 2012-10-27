@@ -3,20 +3,20 @@ $ ->
   $('.preview .show-comment').click (event)->
     event.preventDefault()
 
-    return if ($ this).hasClass('active')
+    return if ($ this).hasClass('disabled')
 
     new HckingPreview().hide_preview(($ this).parents('form'))
-    ($ this).addClass('active')
-    ($ this).siblings('.show-preview').removeClass('active')
+    ($ this).addClass('disabled')
+    ($ this).siblings('.show-preview').removeClass('disabled')
 
   $('.preview .show-preview').click (event)->
     event.preventDefault()
 
-    return if ($ this).hasClass('active')
+    return if ($ this).hasClass('disabled')
 
     new HckingPreview().transform_to_preview(($ this).parents('form'))
-    ($ this).addClass('active')
-    ($ this).siblings('.show-comment').removeClass('active')
+    ($ this).addClass('disabled')
+    ($ this).siblings('.show-comment').removeClass('disabled')
 
 HckingPreview = ->
   hide_preview: (base_form) ->
