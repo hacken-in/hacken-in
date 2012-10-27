@@ -1,0 +1,59 @@
+.black-bar
+  padding-bottom: 10px
+  width: 624px
+  overflow: auto
+
+  &.black-bar-wide
+    width: 630px
+
+  .category-indicator
+    float: left
+
+  .black-bar-content
+    float: left
+    background-color: #000
+    margin-left: 2px
+    width: 550px
+    height: 52px
+    color: #fff
+    overflow: auto
+
+  &.black-bar-wide
+    .black-bar-content
+      height: 75px
+
+  &.black-bar-highlighted
+    -webkit-box-shadow: inset 10px 10px 20px 0px rgba(0, 0, 0, 0.4)
+    box-shadow: inset 10px 10px 20px 0px rgba(0, 0, 0, 0.4)
+
+  .black-bar-title
+    padding-top: 13px
+    font-size: 22px
+    font-weight: bold
+    width: 430px
+    padding-left: 15px
+    float: left
+    overflow: hidden
+    white-space: nowrap
+    text-overflow: ellipsis
+    height: 26px
+    line-height: 26px
+
+    .title-link
+      color: #fff
+
+  &.black-bar-wide
+    .black-bar-title
+      font-size: 20px
+      padding-top: 21px
+
+  .black-bar-time
+    font-size: 22px
+    padding-top: 16px
+    float: left
+    font-family: Vollkorn, serif
+
+  &.black-bar-wide
+    .black-bar-time
+      font-size: 20px
+      padding-top: 24px

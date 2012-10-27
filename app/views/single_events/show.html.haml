@@ -1,3 +1,18 @@
+- color = @single_event.category.try(:color)
+
+.row
+  .span4
+    .black-bar.black-bar-wide
+      = render partial: 'modules/categories/indicator', locals: { size: '75px', color: color }
+      .black-bar-content{ data: { hlcolor: color } }
+        .black-bar-title
+          = @single_event.title
+        .black-bar-time= I18n.localize(@single_event.occurrence, format: "%H:%M Uhr")
+  .span2
+    %p whoa this is my side box
+
+
+
 .left_side
   - title @single_event.event_title
 
@@ -8,7 +23,7 @@
   %h2
     = @single_event.full_day ? @single_event.occurrence.strftime("%d.%m.%Y") :  @single_event.occurrence.strftime("%d.%m.%Y um %H:%M")
 
-  = render "tags/tags", tag_list: @single_event.event.tag_list + @single_event.tag_list
+  -#= render "tags/tags", tag_list: @single_event.event.tag_list + @single_event.tag_list
 
   - unless @single_event.description?
     %p
