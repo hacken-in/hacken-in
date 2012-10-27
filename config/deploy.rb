@@ -8,7 +8,7 @@ set :repository, 'git://github.com/nerdhub/hcking.git'
 
 set :config_files, ['database.yml', 'newrelic.yml', 'initializers/secret_token.rb']
 
-set :unicorn_pid, 12341
+set :unicorn_pid, '/home/droidboy/nerdhub/shared/pids/unicorn.pid'
 
 namespace :vlad do
 
