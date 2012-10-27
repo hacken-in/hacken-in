@@ -61,7 +61,7 @@
                 = link_to user_path(user) do
                   = gravatar_image_tag(user.email, class: "user_gravatar", gravatar: { default: :identicon, size: 85 })
 
-        .btn.btn-inverse.pull-right.participate-button Und ich!
+        = button_to 'Und ich!', event_single_event_participate_path(@single_event.event, @single_event, state: 'push'), { method: :put, class: 'btn btn-inverse pull-right participate-button' }
 
   .span2
     %p whoa this is my side box
