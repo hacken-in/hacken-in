@@ -26,6 +26,29 @@ ActiveAdmin.register SingleEvent do
     default_actions
   end
 
+  show do |ad|
+    attributes_table do
+      row :id
+      row :event
+      row :name
+      row :occurrence
+      row :duration
+      row :full_day
+      row :description
+      row :venue
+      row :venue_info
+      row :twitter
+      row :twitter_hashtag
+      row :url
+      row :picture
+      row :tags do |p|
+        p.tags.join(", ")
+
+      end
+    end
+    active_admin_comments
+  end
+
   form do
     render partial: 'form'
   end

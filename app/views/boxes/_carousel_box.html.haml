@@ -10,7 +10,7 @@
     .carousel-caption
       %h4= carousel_box.second_line
       %p
-        - if carousel_box.first_line.respond_to? :time
-          = I18n.l carousel_box.first_line, format: :short
+        - if carousel_box.first_line_for_carousel.respond_to? :time
+          = I18n.l carousel_box.first_line_for_carousel, format: :short
         - else
-          = carousel_box.first_line
+          = carousel_box.first_line_for_carousel
