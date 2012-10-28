@@ -16,8 +16,6 @@ class BlogPost < ActiveRecord::Base
   scope :for_web, lambda { where( "publishable = ? and publishable_from <= ?", true, Time.zone.now ).order("publishable_from desc") }
   scope :most_recent, where("publishable_from <= ?", Time.zone.now).order("publishable_from ASC").limit(10)
 
-  default_scope order(:headline)
-
   def self.search(search)
     find(:all, :conditions => ['headline LIKE ? OR headline_teaser LIKE ? OR teaser_text
       LIKE ? OR text LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%"])

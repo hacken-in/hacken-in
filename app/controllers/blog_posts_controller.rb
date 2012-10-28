@@ -3,7 +3,7 @@ class BlogPostsController < ApplicationController
   before_filter :sidebar_values
 
   def index
-    @posts = BlogPost.for_web.where("mp3file is null").page(params[:page]).per(10)
+    @posts = BlogPost.for_web.where("mp3file is null").order("publishable_from desc").page(params[:page]).per(10)
     find_post_by_params
   end
 
@@ -12,7 +12,7 @@ class BlogPostsController < ApplicationController
   end
 
   def feed
-    @posts = BlogPost.for_web.limit(10)
+    @posts = BlogPost.for_web.where("mp3file is null").limit(10)
     respond_to do |format|
       format.atom { render :layout => false }
     end
