@@ -16,14 +16,13 @@
       - if @single_event.name?
         %h2= @single_event.name
 
-      = render "events/description", event: @event
+      = render "events/description", event: @single_event
       = render "events/map", event: @single_event
       .event-map
 
       = render "events/venue", event: @single_event
-
-      %p.pull-right
-        Social Kram
+      = render 'modules/single_events/social'
+      .clearfix
 
       = render 'single_events/participants'
     = render partial: 'modules/comments/comments', locals: { commentable: @single_event }
