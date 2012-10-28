@@ -1,6 +1,7 @@
+- color = @single_event.category.try(:color)
 .single-event-sidebar
   .single-event-event-teaser
-    .event.event-preview{ style: "border-top: 3px solid #{@single_event.event.category.color}"}
+    .event.event-preview{ style: "border-top: 3px solid #{color}"}
       - if @single_event.event.picture.present?
         = link_to @single_event.event do
           = image_tag(@single_event.event.picture.box_image.url, class: 'event-image')

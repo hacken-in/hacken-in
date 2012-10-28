@@ -1,24 +1,24 @@
-- if @single_event.description.present?
+- if event.description.present?
   .event-description
     .event-content-field
       .content-field-icon
         %i.icon-info-sign
       .content-field-text
-        = @single_event.description
+        = event.description
 
-- if @single_event.url.present?
+- if event.url.present?
   .event-homepage
     .event-content-field
       .content-field-icon
         %i.icon-home
       .content-field-text
-        %a.hidden-link{ href: @single_event.url }= @single_event.url
+        %a.hidden-link{ href: event.url }= event.url
 
-- if @single_event.twitter.present?
+- if event.twitter.present?
   .event-twitter-handle
     .event-content-field
       .content-field-icon
         %i.icon-twitter
       .content-field-text
-        %a.hidden-link{ href: "http://twitter.com/#{@single_event.twitter}" }
-          = "@#{@single_event.twitter}"
+        %a.hidden-link{ href: "http://twitter.com/#{event.twitter}" }
+          = "@#{event.twitter}"

@@ -16,14 +16,11 @@
       - if @single_event.name?
         %h2= @single_event.name
 
-      = render "single_events/description"
+      = render "events/description", event: @event
       = render "events/map", event: @single_event
       .event-map
 
-      %address.event-venue
-        anderScore GmbH<br>
-        Frankenwerft 54<br>
-        50123 Köln
+      = render "events/venue", event: @single_event
 
       %p.pull-right
         Social Kram
