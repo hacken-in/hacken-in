@@ -2,7 +2,6 @@
 class CalendarsController < ApplicationController
 
   def show
-    @advertisement = Advertisement.single_event
     @categories = Category.calendar.all
 
     # Die Presets

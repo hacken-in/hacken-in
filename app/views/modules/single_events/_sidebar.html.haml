@@ -10,7 +10,7 @@
             = convert_markdown @single_event.event.description, true
           %p= link_to "Weiterlesen", @single_event.event
 
-  .blog_advertisement
+  .single_event_advertisement
     Werbung
     = link_to(image_tag(@advertisement.picture.advertisement_image.rectangle.url), @advertisement.link)
 
