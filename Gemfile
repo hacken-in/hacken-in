@@ -108,17 +108,11 @@ group :development do
 #    gem 'terminal-notifier'
   end
 
-  # YARD:
-  gem 'yard', '~> 0.8.2.1'
-  gem 'rdiscount', '~> 1.6.8'
-
   # guard
   gem 'guard', '~> 1.3.0'
   gem 'guard-test', '~> 0.5.0'
-  gem 'guard-livereload', '~> 1.0.0'
   gem 'guard-pow', '~> 1.0.0'
   gem 'guard-bundler', '~> 1.0.0'
-  gem 'guard-yard', '~> 2.0.0'
 end
 
 group :test do
