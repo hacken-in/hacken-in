@@ -11,9 +11,6 @@ class WelcomeControllerTest < ActionController::TestCase
 
   test "should find box with blog_post title & subtitle" do
     sign_in FactoryGirl.create(:bodo)
-    FactoryGirl.create(:full_blog_post)
-    FactoryGirl.create(:welcome_content)
-
     post = FactoryGirl.create(:full_blog_post,
                               teaser_text: "Simple Headline Teaser",
                               headline: "SimpleBlogPost")
@@ -26,8 +23,11 @@ class WelcomeControllerTest < ActionController::TestCase
 
   test "should find carousel with blog_post title & subtitle" do
     sign_in FactoryGirl.create(:bodo)
-    FactoryGirl.create(:full_blog_post)
-    FactoryGirl.create(:welcome_content)
+    post = FactoryGirl.create(:full_blog_post,
+                              teaser_text: "Simple Headline Teaser",
+                              headline: "SimpleBlogPost")
+    FactoryGirl.create(:box, content: post)
+
     get :index
     assert_select '.carousel-caption h4', "SimpleBlogPost"
     assert_select '.carousel-caption p', "Simple Headline Teaser"
