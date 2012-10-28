@@ -30,10 +30,12 @@ gem 'haml', '~> 3.1.4'
 gem 'jquery-rails', '~> 2.0.0'
 gem 'md_emoji', '~> 0.0.7'
 gem 'redcarpet', '~> 2.1.0'
+gem 'pjax_rails', '~> 0.3.3'
 
 # Admin
 # TODO: Investigate if we can take version instead of Repo
 gem 'activeadmin', git: 'https://github.com/gregbell/active_admin.git'
+# TODO: Investigate if this is used in the Admin area
 gem 'ckeditor_rails', '~> 3.6.4.1', require: 'ckeditor-rails'
 
 # Monitoring
@@ -65,6 +67,8 @@ gem 'mini_magick', '~> 3.4'
 gem 'mediaelement_rails', '~> 0.4.0'
 
 # Form Handling
+# TODO: Throw away formtastic when we do not use it in the frontend anymore
+# (if we only use it in the admin area, the dependency is handled by AA)
 gem 'formtastic', '~> 2.2.0'
 gem 'simple_form', '~> 2.0.4'
 
@@ -78,6 +82,7 @@ gem 'zero-clipboard-rails', '~> 1.0.1'
 # User Picture using Gravatar
 gem 'gravatar_image_tag', '~> 1.1.0'
 # Truncate HTML on SingleEvent Pages
+# TODO: Where exactly? I only see Active Support truncate usage
 gem 'html_truncator', '~> 0.3.0'
 
 # Frontend
@@ -86,9 +91,6 @@ gem 'smurfville', '~> 0.0.6'
 
 # Pagination
 gem 'bootstrap-kaminari-views', '~> 0.0.2'
-
-# PJAX
-gem 'pjax_rails', '~> 0.3.3'
 
 # Facebook style tooltip jQuery plugin
 gem 'tipsy-rails', '~> 1.0.2'
