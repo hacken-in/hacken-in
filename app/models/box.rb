@@ -42,7 +42,7 @@ class Box < ActiveRecord::Base
   end
 
   def first_line
-    [:teaser_text, :occurrence].each do |method_name|
+    [:headline_teaser, :occurrence].each do |method_name|
       return content.send method_name if content.respond_to? method_name
     end
 
