@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121021065158) do
+ActiveRecord::Schema.define(:version => 20121027160209) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -27,6 +27,20 @@ ActiveRecord::Schema.define(:version => 20121021065158) do
   add_index "active_admin_comments", ["author_type", "author_id"], :name => "index_active_admin_comments_on_author_type_and_author_id"
   add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
+
+  create_table "advertisements", :force => true do |t|
+    t.string   "picture_id"
+    t.string   "link"
+    t.text     "description"
+    t.string   "calendar_week"
+    t.datetime "from"
+    t.datetime "to"
+    t.boolean  "active"
+    t.integer  "duration"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "context"
+  end
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -130,9 +144,10 @@ ActiveRecord::Schema.define(:version => 20121021065158) do
     t.string   "title"
     t.text     "description"
     t.string   "box_image"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.string   "carousel_image"
+    t.string   "advertisement_image"
   end
 
   create_table "single_events", :force => true do |t|
