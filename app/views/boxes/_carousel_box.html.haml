@@ -1,0 +1,10 @@
+.item{class: "#{'active' if carousel_box.carousel_position == 1}"}
+  = image_tag carousel_box.picture.carousel_image
+  .carousel-caption
+    %h4= carousel_box.second_line
+    %p
+      - if carousel_box.first_line.respond_to? :time
+        = I18n.l carousel_box.first_line, format: :short
+      - else
+        = carousel_box.first_line
+
