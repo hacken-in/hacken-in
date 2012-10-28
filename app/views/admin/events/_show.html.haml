@@ -11,6 +11,9 @@
           %th Beschreibung
           %td= convert_markdown @event.description
         %tr
+          %th Kategory
+          %td= @event.category.title
+        %tr
           %th URL
           %td= link_to @event.url, @event.url
         %tr

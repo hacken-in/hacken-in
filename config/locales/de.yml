@@ -195,7 +195,10 @@ de:
         start_time: Start-Zeit für wiederholende Termine
         venue: Ort
         venue_info: Ort-Zusatzinfo (Raum, Gebäude, etc...)
+        category: Kategorie
+        picture: Bild
       single_event:
+        category: Kategorie
         topic: Überschrift
         description: Beschreibung
         full_day: Ganzer Tag
@@ -206,6 +209,7 @@ de:
         duration: Länge (in Minuten)
         occurrence: Termin
         venue: Ort
+        picture: Bild
         venue_info: Ort-Zusatzinfo (Raum, Gebäude, etc...)
       suggestion:
         name: Name
