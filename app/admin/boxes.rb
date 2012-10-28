@@ -3,7 +3,7 @@ ActiveAdmin.register Box do
 
   form do |f|
     types = {}
-    [SingleEvent, BlogPost, Event].each do |model|
+    [SingleEvent, BlogPost, Event, Advertisement].each do |model|
       types[model.model_name.human] = model
     end
 

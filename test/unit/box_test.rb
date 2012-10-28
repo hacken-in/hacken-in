@@ -75,13 +75,19 @@ class BoxTest < ActiveSupport::TestCase
     assert_equal event.title, FactoryGirl.build(:box, content: event).second_line
   end
 
+  test "first and second line should be nil for advertisement" do
+    ad = FactoryGirl.build :advertisement
+    assert_nil FactoryGirl.build(:box, content: ad).first_line
+    assert_nil FactoryGirl.build(:box, content: ad).second_line
+  end
+
   test "presence of first line known" do
     [:full_blog_post, :single_event].each do |type|
       content = FactoryGirl.build type
       assert FactoryGirl.build(:box, content: content).first_line?
     end
 
-    [:full_event].each do |type|
+    [:full_event, :advertisement].each do |type|
       content = FactoryGirl.build type
       assert_equal false, FactoryGirl.build(:box, content: content).first_line?
     end
@@ -92,5 +98,29 @@ class BoxTest < ActiveSupport::TestCase
       content = FactoryGirl.build type
       assert FactoryGirl.build(:box, content: content).second_line?
     end
+
+    [:advertisement].each do |type|
+      content = FactoryGirl.build type
+      assert_equal false, FactoryGirl.build(:box, content: content).second_line?
+    end
+  end
+
+  test "should know that an event is not an ad" do
+    event = FactoryGirl.build :full_event
+    assert_equal false, FactoryGirl.build(:box, content: event).is_ad?
+  end
+
+  test "should know that an ad is not an ad (yep)" do
+    ad = FactoryGirl.build :advertisement
+    assert FactoryGirl.build(:box, content: ad).is_ad?
+  end
+
+  test "an advertisement should never be placed in the carousel" do
+    ad = FactoryGirl.build :advertisement
+    assert_equal false, FactoryGirl.build(:box,
+      content: ad,
+      grid_position: 2,
+      carousel_position: 3
+    ).valid?
   end
 end
