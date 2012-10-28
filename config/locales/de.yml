@@ -277,7 +277,9 @@ de:
       danger_zone: Danger Zone
       warning: "Für Felder in der Danger-Zone brauchen wir dein Passwort, um die Änderungen zu machen."
       edit_profile: Konto bearbeiten
-      change_gravatar: Profilbild ändern auf gravatar.com
+      gravatar: Profilbild
+      change_gravatar: ändern auf gravatar.com
+      profile: Profildaten
       password_label: Passwort ändern
       password_hint: "(leer lassen, wenn kein neues Passwort gewünscht ist)"
       save_profile: Speichern
@@ -286,7 +288,7 @@ de:
       delete_confirm: "Ja, bitte mein Konto löschen"
     oauth:
       title: OAuth Verknüpfungen
-      more: Mit weiteren Accounts verbinden
+      more: Mit Accounts verbinden
       delete: entfernen
       deleted: "Die Authorisierung für %{provider} wurde entfernt."
       added: "Die Authorisierung für %{provider} wude hinzugefügt."
