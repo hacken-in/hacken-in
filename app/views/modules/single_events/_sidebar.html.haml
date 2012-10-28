@@ -1,7 +1,8 @@
 .blog_sidebar
-  .blog_advertisement
-    Werbung
-    = image_tag(@advertisement.picture.advertisement_image.rectangle.url)
+  - if @advertisment.present?
+    .blog_advertisement
+      Werbung
+      = image_tag(@advertisement.picture.advertisement_image.rectangle.url)
   .blog_nerdletter
     %h2 Nerdletter
     %form

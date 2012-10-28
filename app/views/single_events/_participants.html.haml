@@ -1,7 +1,7 @@
 .event-participators
   %h3.black-bar-small-title.event-participators-title Teilnehmer
   - if @single_event.users.empty?
-    %p
+    %p.no-participators
       %em keine Teilnehmer
   - else
     %ul.event-participators-list
