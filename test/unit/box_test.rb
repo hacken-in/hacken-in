@@ -2,27 +2,27 @@ require 'test_helper'
 
 class BoxTest < ActiveSupport::TestCase
   setup do
-    FactoryGirl.create :box, position: 4
-    FactoryGirl.create :box, position: 1
-    FactoryGirl.create :box, position: nil
+    FactoryGirl.create :box, grid_position: 4
+    FactoryGirl.create :box, grid_position: 1
+    FactoryGirl.create :box, grid_position: nil
   end
 
   test "list all active boxes" do
-    active_boxes = Box.active
+    active_boxes = Box.in_grid
     assert_equal 2, active_boxes.length
   end
 
   test "sort the active boxes" do
-    active_boxes = Box.active
-    assert_equal 1, active_boxes.first.position
+    active_boxes = Box.in_grid
+    assert_equal 1, active_boxes.first.grid_position
   end
 
-  test "every position only exists once" do
-    assert_equal false, FactoryGirl.build(:box, position: 1).valid?
+  test "every grid_position only exists once" do
+    assert_equal false, FactoryGirl.build(:box, grid_position: 1).valid?
   end
 
-  test "there may be as many boxes without position as you want" do
-    assert FactoryGirl.build(:box, position: nil).valid?
+  test "there may be as many boxes without grid_position as you want" do
+    assert FactoryGirl.build(:box, grid_position: nil).valid?
   end
 
   test "first line should be the teaser text for blog posts" do
