@@ -24,6 +24,7 @@ class SingleEventsController < ApplicationController
   end
 
   def show
+    @advertisement = Advertisement.first
     @single_event = SingleEvent.find params[:id]
     opengraph_data @single_event.to_opengraph
     @event = @single_event.event
