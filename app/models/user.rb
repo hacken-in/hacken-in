@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
     self.where("email = ?", conditions[:email]).limit(1).first
   end
 
-  def update_with_password(params={})
+  def update_with_password_pass(params={})
 
     if params[:password].blank? and params[:email] == self.email
       params.delete(:current_password)
@@ -81,7 +81,7 @@ class User < ActiveRecord::Base
     if encrypted_password.blank?
       update_attributes(params.except(:current_password), *options)
     else
-      super
+     update_with_password_pass(params) 
     end
   end
 

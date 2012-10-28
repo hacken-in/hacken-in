@@ -1,20 +1,18 @@
 class BlogPostsController < ApplicationController
 
   before_filter :sidebar_values
+  before_filter :advertisement, :only => [:index, :show, :feed]
 
   def index
-    @advertisement = Advertisement.first
     @posts = BlogPost.for_web.where("mp3file is null").order("publishable_from desc").page(params[:page]).per(10)
     find_post_by_params
   end
 
   def show
-    @advertisement = Advertisement.first
     @post = BlogPost.find(params[:id])
   end
 
   def feed
-    @advertisement = Advertisement.first
     @posts = BlogPost.for_web.where("mp3file is null").limit(10)
     respond_to do |format|
       format.atom { render :layout => false }
@@ -22,6 +20,15 @@ class BlogPostsController < ApplicationController
   end
 
   private
+
+  def advertisement
+    case params[:action]
+    when 'show', 'index'
+      @advertisement = Advertisement.blog_post
+    when 'feed'
+      @advertisement = Advertisement.rss
+    end
+  end
 
   def find_post_by_params
     if params[:year]

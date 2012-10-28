@@ -302,16 +302,16 @@ de:
       edit: Bearbeiten
       delete: Löschen
       delete_confirm: Wirklich löschen?
-      subscribe_ical: iCal für diese Eventserie abonnieren
+      subscribe_ical: iCal für diese Veranstaltungssreihe abonnieren
       no_single_events: Keine Termine geplant
       next_single_events: "Die nächsten Termine:"
       back: Zurück zur Übersicht
     create:
-      confirmation: "Event angelegt."
+      confirmation: "Veranstaltungsreihe angelegt."
     update:
-      confirmation: "Event aktualisiert."
+      confirmation: "Veranstaltungsreihe aktualisiert."
     destroy:
-      confirmation: "Event gelöscht."
+      confirmation: "Veranstaltungsreihe gelöscht."
 
   single_events:
     show:
@@ -319,9 +319,9 @@ de:
       participate: Und ich!
       unparticipate: Doch nich
     push:
-      confirmation: "Du nimmst an dem Event teil."
+      confirmation: "Du nimmst an dem Termin teil."
     delete:
-      confirmation: "Du nimmst nicht mehr an dem Event teil."
+      confirmation: "Du nimmst nicht mehr an dem Termin teil."
     update:
       confirmation: "Termin wurde bearbeitet."
       error: "Beim Speichern ist ein Fehler aufgetreten"
@@ -360,7 +360,7 @@ de:
   suggestions:
     new:
       title: Mache uns einen Vorschlag
-      introduction: "Bei uns im Kalender fehlt ein Event? Es gibt eine neue Usergroup? Erzähl uns mehr davon :)"
+      introduction: "Bei uns im Kalender fehlt ein Termin? Es gibt eine neue Usergroup? Erzähl uns mehr davon :)"
       occurrence_hint: "zB. am 14.12.2015 oder jeden dritten Mittwoch im Monat"
       description_hint: "zB. Themen, Besonderheiten, Anmeldung erforderlich..."
       more_hint: "Twitter, Hashtag, Homepage, Anderes"

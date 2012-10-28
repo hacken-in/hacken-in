@@ -22,19 +22,19 @@
   .blog_next_events
     %h2 Die nächsten Termine
     %ul
-    - single_events.each do |single_event|
-      %li
-        .blog_event_indicator
-          = render partial: 'modules/categories/indicator', locals: { size: "14px", color: single_event.category.color }
-        .blog_event_title
-          = link_to single_event.title, event_single_event_path(single_event.event, single_event)
-        .blog_event_date
-          = l single_event.occurrence, format: :long_without_time
-          - unless single_event.full_day
-            = "%02d" % single_event.occurrence.hour
-            \-
-            = single_event.occurrence.hour + (single_event.duration || 0) / 60
-            Uhr
+      - single_events.each do |single_event|
+        %li
+          .blog_event_indicator
+            = render partial: 'modules/categories/indicator', locals: { size: "14px", color: single_event.category.color }
+          .blog_event_title
+            = link_to single_event.title, event_single_event_path(single_event.event, single_event)
+          .blog_event_date
+            = l single_event.occurrence, format: :long_without_time
+            - unless single_event.full_day
+              = "%02d" % single_event.occurrence.hour
+              \-
+              = single_event.occurrence.hour + (single_event.duration || 0) / 60
+              Uhr
   .blog_advertisement
     Werbung
     = image_tag(@advertisement.picture.advertisement_image.rectangle.url)
