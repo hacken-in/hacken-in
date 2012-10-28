@@ -34,8 +34,7 @@ gem 'redcarpet', '~> 2.1.0'
 # Admin
 # TODO: Investigate if we can take version instead of Repo
 gem 'activeadmin', git: 'https://github.com/gregbell/active_admin.git'
-# TODO: Add Version here
-gem 'ckeditor_rails', require: 'ckeditor-rails'
+gem 'ckeditor_rails', '~> 3.6.4.1', require: 'ckeditor-rails'
 
 # Monitoring
 gem 'newrelic_rpm', '~> 3.4.0'
@@ -51,21 +50,19 @@ gem 'devise', '~> 2.1.1'
 gem 'cancan', '~> 1.6.7'
 
 # Omniauth
-# TODO: Add Versions here
-gem 'omniauth'
-gem 'omniauth-google-oauth2'
-gem 'omniauth-github'
-gem 'omniauth-twitter'
-gem 'omniauth-facebook'
-gem 'omniauth-linkedin'
+gem 'omniauth', '~> 1.1.1'
+gem 'omniauth-google-oauth2', '~> 0.1.13'
+gem 'omniauth-github', '~> 1.0.3'
+gem 'omniauth-twitter', '~> 0.0.13'
+gem 'omniauth-facebook', '~> 1.4.1'
+gem 'omniauth-linkedin', '~> 0.0.8'
 
 # Picture Upload
 gem 'carrierwave', '~> 0.6.2'
 gem 'mini_magick', '~> 3.4'
 
 # MP3 Player
-# TODO: Add Version here
-gem 'mediaelement_rails'
+gem 'mediaelement_rails', '~> 0.4.0'
 
 # Form Handling
 gem 'formtastic', '~> 2.2.0'
@@ -84,17 +81,14 @@ gem 'gravatar_image_tag', '~> 1.1.0'
 gem 'html_truncator', '~> 0.3.0'
 
 # Frontend
-# TODO: Add Version here
-gem 'bootstrap-sass-rails'
-gem 'smurfville'
+gem 'bootstrap-sass-rails', '~> 2.1.1.0'
+gem 'smurfville', '~> 0.0.6'
 
 # Pagination
-# TODO: Add Version here
-gem 'bootstrap-kaminari-views'
+gem 'bootstrap-kaminari-views', '~> 0.0.2'
 
 # PJAX
-# TODO: Add Version here
-gem 'pjax_rails'
+gem 'pjax_rails', '~> 0.3.3'
 
 # Facebook style tooltip jQuery plugin
 gem 'tipsy-rails', '~> 1.0.2'
@@ -106,8 +100,7 @@ gem 'faker', '1.0.1'
 # Other dependencies
 gem 'gabba', '~> 0.3.0'
 gem 'geocoder', '~> 1.0'
-# TODO: Add Version here
-gem 'simple-navigation'
+gem 'simple-navigation', '~> 3.9.0'
 
 group :development do
   # Deployment
