@@ -1,5 +1,5 @@
 ActiveAdmin.register Box do
-  menu parent: "Welcome"
+  menu label: "Welcome Page", priority: 1
 
   form do |f|
     types = {}

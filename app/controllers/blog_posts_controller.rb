@@ -4,7 +4,7 @@ class BlogPostsController < ApplicationController
 
   def index
     @advertisement = Advertisement.first
-    @posts = BlogPost.for_web.where("mp3file is null").page(params[:page]).per(10)
+    @posts = BlogPost.for_web.where("mp3file is null").order("publishable_from desc").page(params[:page]).per(10)
     find_post_by_params
   end
 
@@ -15,7 +15,7 @@ class BlogPostsController < ApplicationController
 
   def feed
     @advertisement = Advertisement.first
-    @posts = BlogPost.for_web.limit(10)
+    @posts = BlogPost.for_web.where("mp3file is null").limit(10)
     respond_to do |format|
       format.atom { render :layout => false }
     end

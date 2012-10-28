@@ -17,10 +17,8 @@ Hcking::Application.routes.draw do
   match "podcast/:year/:month" => "podcasts#index", year: /\d{4}/, month: /\d{1,2}/
   match "podcast/:year/:month/:day" => "podcasts#index", year: /\d{4}/, month: /\d{1,2}/,  day: /\d{1,2}/
   match "podcast/:year/:month/:day/:id" => "podcasts#show"
+  match "podcast/feed/:category_id" => "podcasts#feed", as: "podcast_feed"
   resources :podcasts, path: "podcast" do
-    collection do
-      get :feed, defaults: { format: 'atom' }
-    end
     resources :comments, except: [:new]
   end
 

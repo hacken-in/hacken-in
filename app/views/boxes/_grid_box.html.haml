@@ -1,0 +1,17 @@
+- if grid_box.content.respond_to? :event
+  - url = url_for [grid_box.content.event, grid_box.content]
+- else
+  - url = url_for [grid_box.content]
+
+= link_to url, {class: "span2"} do
+  %article.article.article-preview{ style: "border-top: 3px solid #{grid_box.category.color};" }
+    = image_tag(grid_box.picture.box_image.url, class: 'article-image')
+    - if grid_box.first_line?
+      %h2.article-subtitle
+        - if grid_box.first_line.respond_to? :time
+          = I18n.l grid_box.first_line, format: :short
+        - else
+          = grid_box.first_line
+
+    - if grid_box.second_line?
+      %h1.article-title= grid_box.second_line
