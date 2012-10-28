@@ -2,9 +2,9 @@ require 'test_helper'
 
 class BoxTest < ActiveSupport::TestCase
   setup do
-    FactoryGirl.create :box, grid_position: 4
-    FactoryGirl.create :box, grid_position: 1
-    FactoryGirl.create :box, grid_position: nil
+    FactoryGirl.create :box, grid_position: 4,   carousel_position: 2
+    FactoryGirl.create :box, grid_position: 1,   carousel_position: nil
+    FactoryGirl.create :box, grid_position: nil, carousel_position: 1
   end
 
   test "list all active boxes" do
@@ -17,12 +17,32 @@ class BoxTest < ActiveSupport::TestCase
     assert_equal 1, active_boxes.first.grid_position
   end
 
-  test "every grid_position only exists once" do
-    assert_equal false, FactoryGirl.build(:box, grid_position: 1).valid?
+  test "every grid position only exists once" do
+    assert_equal false, FactoryGirl.build(:box,
+      grid_position: 1,
+      carousel_position: 3
+    ).valid?
   end
 
-  test "there may be as many boxes without grid_position as you want" do
-    assert FactoryGirl.build(:box, grid_position: nil).valid?
+  test "there may be as many boxes without grid position as you want" do
+    assert FactoryGirl.build(:box,
+      grid_position: nil,
+      carousel_position: 3
+    ).valid?
+  end
+
+  test "there may be as many boxes without carousel position as you want" do
+    assert FactoryGirl.build(:box,
+      grid_position: 5,
+      carousel_position: nil
+    ).valid?
+  end
+
+  test "every carousel position only exists once" do
+    assert_equal false, FactoryGirl.build(:box,
+      grid_position: 5,
+      carousel_position: 1
+    ).valid?
   end
 
   test "first line should be the teaser text for blog posts" do

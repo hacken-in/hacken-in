@@ -1,13 +1,15 @@
 class Box < ActiveRecord::Base
-  attr_accessible :content_id, :content_type, :grid_position
+  attr_accessible :content_id, :content_type, :grid_position, :carousel_position
 
   belongs_to :content, polymorphic: true
 
   scope :in_grid, where("grid_position is not null").order("grid_position ASC")
   scope :first_grid_row, in_grid.where("grid_position <= 3")
   scope :second_grid_row, in_grid.where("grid_position > 3")
+  scope :in_carousel, where("carousel_position is not null").order("carousel_position ASC")
 
   validates_uniqueness_of :grid_position, allow_nil: true
+  validates_uniqueness_of :carousel_position, allow_nil: true
   validate :content_has_picture
   validates :grid_position, inclusion: {in: [1,2,3,4,5,6,nil]}
 
