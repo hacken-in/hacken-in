@@ -1,6 +1,6 @@
 %h2 Anmelden
 
-%h3 Mit Benutzername und Passwort
+%h3 Mit Benutzerdaten
 
 = semantic_form_for resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-horizontal' } do |f|
   = f.input :email, label: 'E-Mail oder Nickname'
