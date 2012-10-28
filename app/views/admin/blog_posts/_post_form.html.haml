@@ -8,7 +8,7 @@
     = f.input :use_in_newsletter
     = f.input :picture
     = f.input :mp3file
-    - if @blog_post.mp3file.present?
+    - if @blog_post.mp3file?
       %audio{src: @blog_post.mp3file.url, preload: "none"}
         %script
           $('audio').mediaelementplayer();
