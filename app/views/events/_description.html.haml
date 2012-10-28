@@ -4,7 +4,7 @@
       .content-field-icon
         %i.icon-info-sign
       .content-field-text
-        = event.description
+        = convert_markdown event.description, true
 
 - if event.url.present?
   .event-homepage
