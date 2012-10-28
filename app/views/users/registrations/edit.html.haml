@@ -1,95 +1,69 @@
-
 %h2= t 'registrations.edit.edit_profile'
 
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = devise_error_messages!
-
-  %p
-    = link_to gravatar_image_tag(current_user.email_was || current_user.email, alt: 'Change on Gravatar', gravatar: { default: :identicon, size: 128 }, class: 'gravatar'),"http://www.gravatar.com"
-    %br
-    = link_to t('registrations.edit.change_gravatar'), "http://gravatar.com", target: '_blank'
-
-  %p
-    = f.label :nickname
-    %br
-    = f.text_field :nickname
-
-  %p
-    = f.label :description
-    .previewable
-      = f.text_area :description, cols: 70, rows: 10, class: 'preview-base'
-    = render "commons/markdown_info"
-
-  %p
-    = f.label :twitter
-    %br
-    = f.text_field :twitter
-
-  %p
-    = f.label :github
-    %br
-    = f.text_field :github
-
-  %p
-    = f.label :homepage
-    %br
-    = f.text_field :homepage
-
-  %p
-    = f.check_box :allow_ignore_view
-    = f.label :allow_ignore_view, t('users.edit.allow_ignore_view')
-    
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal' }) do |f|
+  
   %fieldset
-    %legend= t 'registrations.oauth.title'
-    %ul
-      - f.object.authorizations.each do |auth|
+    %legend= t('registrations.edit.profile')
+  .row
+    .span3
+      = f.input :nickname
+      .control-group.text.optional
+        = f.label :description
+        .controls.previewable
+          = f.text_area :description, cols: 70, rows: 10, class: 'preview-base'
+          = render 'commons/markdown_info'
+      = f.input :twitter
+      = f.input :github
+      = f.input :homepage
+      = f.input :allow_ignore_view, :as => :boolean, :label => t('users.edit.allow_ignore_view')
+        
+      %fieldset
+        %legend= t 'registrations.oauth.title'
+        %ul
+          - f.object.authorizations.each do |auth|
+            %li
+              = "#{auth.provider.humanize} (User ID: #{auth.uid})"
+              = link_to t('registrations.oauth.delete'), user_authorization_path(f.object, auth), :"data-confirm" => t('common.confirm_delete'), method: :delete unless f.object.needs_one_authorization?
+        - if f.object.needs_one_authorization?
+          %p=t 'registrations.oauth.only_one_no_password'
+              
+        .control-group
+          %label= t('registrations.oauth.more')
+          .controls
+            - f.object.available_providers.each do |provider|
+              = link_to image_tag("oauth/#{provider.to_s}.png"), user_omniauth_authorize_url(provider)
+    .span3
+      %ul.thumbnails.pull-right
         %li
-          = "#{auth.provider.humanize} (User ID: #{auth.uid})"
-          = link_to t('registrations.oauth.delete'), user_authorization_path(f.object, auth), :"data-confirm" => t('common.confirm_delete'), method: :delete unless f.object.needs_one_authorization?
-    - if f.object.needs_one_authorization?
-      %p=t 'registrations.oauth.only_one_no_password'
-            
-    %p=t 'registrations.oauth.more'
-    %ul
-      - f.object.available_providers.each do |provider|
-        %li=link_to t('registrations.oauth.add_service', provider: provider.to_s.humanize), user_omniauth_authorize_url(provider)
-    
+          .thumbnail
+            = gravatar_image_tag(current_user.email_was || current_user.email, alt: 'Change on Gravatar', gravatar: { default: :identicon, size: 256 }, class: 'gravatar')
+            %h3=t('registrations.edit.gravatar')
+            %p{style: 'text-align: right'}
+              = link_to t('registrations.edit.change_gravatar'), "http://gravatar.com", target: '_blank'
+
   %fieldset
     %legend
       = t 'registragions.edit.danger_zone'  
     - if f.object.encrypted_password?
-      %p
-        %em= t('registrations.edit.warning')
-      %p
-        = f.label :current_password
-        %br
-        = f.password_field :current_password
+      .alert.alert-error 
+        %strong=t('registrations.edit.warning')
+      = f.input :current_password, :as => :password
+      %br
     - else
-      %p
-        %em=t('registrations.oauth.email')
-    %p
-      = f.label :email
-      %br
-      = f.text_field :email
-
-    %p
-      = f.label :password, t('registrations.edit.password_label')
-      %em= t 'registrations.edit.password_hint'
-      %br
-      = f.password_field :password
-
-    %p
-      = f.label :password_confirmation
-      %br
-      = f.password_field :password_confirmation
+      .alert.alert-info
+        %strong=t('registrations.oauth.email')
+    = f.input :email
+    = f.input :password, :as => :password, :label => t('registrations.edit.password_label'), :hint =>  t('registrations.edit.password_hint')
+    = f.input :password_confirmation, :as => :password
         
-  %p= f.submit t('registrations.edit.save_profile')
+  .controls
+    =f.submit t('registrations.edit.save_profile'), class: 'btn btn-inverse'
 
-%h3= t 'registrations.edit.delete_profile'
-
-%p
-  = t 'registrations.edit.delete_profile_text'
+  %fieldset
+    %legend= t 'registrations.edit.delete_profile'
+  %p=t 'registrations.edit.delete_profile_text'
   %br
-  = button_to t('registrations.edit.delete_confirm'), registration_path(resource_name), :"data-confirm" => t('common.confirm_delete'), method: :delete
+  .controls
+    = link_to t('registrations.edit.delete_confirm'), registration_path(resource_name), :confirm => t('common.confirm_delete'), :method => :delete, :class => 'btn btn-danger'
 
 = link_to "Zurück", :back
