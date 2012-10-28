@@ -101,7 +101,9 @@ gem 'faker', '1.0.1'
 
 # Other dependencies
 gem 'gabba', '~> 0.3.0'
-gem 'geocoder', '~> 1.0'
+# Attention: If you want to change to 1.1.3, you need to adjust our Code
+# (Geocoder, Y U NO Semantic Versioning?)
+gem 'geocoder', '= 1.1.2'
 gem 'simple-navigation', '~> 3.9.0'
 
 group :development do
