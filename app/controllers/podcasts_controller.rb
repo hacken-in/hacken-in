@@ -1,5 +1,4 @@
 class PodcastsController < BlogPostsController
-
   before_filter :sidebar_values
 
   def index
@@ -9,7 +8,7 @@ class PodcastsController < BlogPostsController
   end
 
   def show
-    @advertisement = Advertisement.first    
+    @advertisement = Advertisement.first
     @post = BlogPost.find(params[:id])
   end
 

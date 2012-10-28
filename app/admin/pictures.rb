@@ -10,7 +10,7 @@ ActiveAdmin.register Picture do
     end
     column :carousel_image do |p|
       image_tag p.carousel_image.url
-    end    
+    end
     column :title
     column :description
     default_actions

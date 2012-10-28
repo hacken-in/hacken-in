@@ -21,7 +21,7 @@
     - @events.each do |event|
       %li
         = link_to event.name, event_path(event)
-  
+
   - unless @blog_posts.blank?
     %div Blogs:
     - @blog_posts.each do |blog_post|

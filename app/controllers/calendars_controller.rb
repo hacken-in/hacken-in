@@ -1,8 +1,7 @@
 #encoding: utf-8
 class CalendarsController < ApplicationController
-
   def show
-    @advertisement = Advertisement.first    
+    @advertisement = Advertisement.first
     @categories = Category.calendar.all
 
     # Die Presets
@@ -14,8 +13,8 @@ class CalendarsController < ApplicationController
       @start_date = params[:start].present? ? Date.parse(params[:start]) : Date.today
     rescue ArgumentError => e
       @start_date = Date.today
-      flash.now[:error] = 'Das war kein gültiges Datum... Wir zeigen dir mal den Kalender ab heute' 
-    end 
+      flash.now[:error] = 'Das war kein gültiges Datum... Wir zeigen dir mal den Kalender ab heute'
+    end
 
     @months = []
     13.times { |i| @months << (@start_date + i.months) }
@@ -41,15 +40,15 @@ class CalendarsController < ApplicationController
     end
 
     @single_events = SingleEvent.where('? <= occurrence AND occurrence <= ?', from, to)
-    @single_events = @single_events.in_categories(params[:categories].split(',').map(&:to_i)) if params[:categories]   
-    
+    @single_events = @single_events.in_categories(params[:categories].split(',').map(&:to_i)) if params[:categories]
+
     # TODO: An dieser Stelle sollten eigentlich noch die Events nach den Tags rausgefilter werden
     # sowohl mit der alten Methode, wie auch mit der neuen (siehe SingleEvent#is_for_user?) dauert
     # das ca 6 Sekunden um 4 Wochen voller Termine zu filtern ... ähm ... da stimmt was nicht ...
     # Da solltet ihr auf jeden Fall mal drüber gucken ... Solange bleibt die Funktion mal auskommentiert
     #
     # Das Gleiche gilt auch in der show Methode ...
-    
+
     #@single_events = @single_events.for_user(current_user)
     render :entries, layout: false
   end

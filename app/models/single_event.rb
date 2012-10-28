@@ -175,7 +175,7 @@ class SingleEvent < ActiveRecord::Base
 
     loved_tags_event = (self.event.tag_list & user.like_list)
     loved_tags_self  = (self.tag_list & user.like_list)
-    
+
     # Wenn der Event oder der Single Event einen Tag haben, den der Benutzer hasst...
     if hated_tags_event.size + hated_tags_self.size > 0
       # ... muss der Benutzer mindestens einen der anderen Tags des Events lieben
@@ -191,8 +191,6 @@ class SingleEvent < ActiveRecord::Base
     else
       true
     end
-    
   end
-
 end
 
