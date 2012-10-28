@@ -17,6 +17,9 @@ ActiveAdmin.register Event do
     default_actions
   end
 
+  show do
+    render partial: 'show'
+  end
   form do
     render partial: 'form'
   end

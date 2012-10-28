@@ -11,7 +11,7 @@ class Event < ActiveRecord::Base
   belongs_to :venue
   belongs_to :picture
 
-  has_many :single_events
+  has_many :single_events, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
 
   attr_writer :schedule

@@ -1,6 +1,10 @@
 ActiveAdmin.register SingleEvent do
-  menu parent: "Kalender"
   config.sort_order = "occurrence_asc"
+  menu false
+  controller do
+    nested_belongs_to :event
+  end
+
   index do
     column :id
     column :name do |single_event|

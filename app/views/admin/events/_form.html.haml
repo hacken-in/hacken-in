@@ -13,4 +13,20 @@
     = form.input :duration
     = form.input :full_day
     = form.input :tag_list
+    = form.input :schedule_yaml
+    %li
+      %label.label Termine
+      .termine
+        %p
+          - if @event.single_events.count > 0
+            %a{href:admin_event_single_events_path(@event)}
+              = "#{@event.single_events.count}"
+              - if @event.single_events.count == 1
+                Termine anzeigen
+              - else
+                Termin anzeigen
+          |
+          %a{href:new_admin_event_single_event_path(@event)}
+            Neuen Termin anlegen
   = form.actions
+  %h3 Termine
