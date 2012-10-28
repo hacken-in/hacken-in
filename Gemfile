@@ -78,8 +78,9 @@ gem 'gravatar_image_tag', '~> 1.1.0'
 # Truncate HTML on SingleEvent Pages
 gem 'html_truncator', '~> 0.3.0'
 
-# Twitter Bootstrap
+# frontend
 gem 'bootstrap-sass-rails'
+gem 'smurfville'
 
 # Pagination
 gem 'bootstrap-kaminari-views'

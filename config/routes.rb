@@ -3,6 +3,10 @@ Hcking::Application.routes.draw do
 
   ActiveAdmin.routes(self)
 
+  if defined?(Smurfville) != nil
+    mount Smurfville::Engine => "/smurfville"
+  end
+
   resources :users, only: [:show] do
     resources :authorizations, only: [:destroy]
   end
