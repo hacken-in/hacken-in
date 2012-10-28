@@ -14,9 +14,7 @@ class PodcastsController < BlogPostsController
   def feed
     @category = Category.find(params[:category_id])
     @posts = BlogPost.for_web.where("mp3file is not null and category_id=?", params[:category_id]).limit(10)
-    respond_to do |format|
-      format.rss { render 'podcasts/feed', :layout => false }
-    end
+    render 'podcasts/feed.rss', :layout => false
   end
 
   private
