@@ -3,6 +3,12 @@ Hcking::Application.routes.draw do
 
   ActiveAdmin.routes(self)
 
+  namespace :admin do
+    resources :events do
+      resources :single_events
+    end
+  end
+
   if defined?(Smurfville) != nil
     mount Smurfville::Engine => "/smurfville"
   end
