@@ -14,11 +14,17 @@ class Event < ActiveRecord::Base
   has_many :single_events
   has_many :comments, as: :commentable, dependent: :destroy
 
-  delegate :start_time, :start_time=, to: :schedule
-
   attr_writer :schedule
 
   acts_as_taggable
+
+  # Workaround that makes it possible
+  # to edit start times in active admin
+  composed_of :start_time,
+              :class_name => 'DateTime',
+              :mapping => %w(DateTime to_s),
+              :constructor => Proc.new{ |item| item },
+              :converter => Proc.new{ |item| item }
 
   def self.search(search)
     unscoped.find(:all, :conditions => ['name LIKE ? OR description LIKE ?', "%#{search}%", "%#{search}%"])
@@ -48,6 +54,14 @@ class Event < ActiveRecord::Base
           based_on_rule: true).first_or_create
       end
     end
+  end
+
+  def start_time
+    schedule.start_time
+  end
+
+  def start_time=(value)
+    schedule.start_time = value.to_time
   end
 
   def schedule
