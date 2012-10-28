@@ -8,7 +8,7 @@ xml.rss :version => "2.0",
     xml.description "Nerdhub Podcasts"
     xml.language "de"
 
-    xml.atom :link, href: podcast_feed_path(category_id: @category.id),
+    xml.atom :link, href: podcast_feed_url(category_id: @category.id),
        rel: "self", type: "application/rss+xml"
 
     xml.itunes :author, @posts.first.user.nickname
@@ -17,9 +17,9 @@ xml.rss :version => "2.0",
       xml.itunes :email, @posts.first.user.email
     end
     xml.itunes :explicit, "no"
-    xml.itunes :category, "Gadgets"
-    xml.itunes :category, "Tech News"
-    xml.itunes :category, "Podcasting"
+    xml.itunes :category, text: "Gadgets"
+    xml.itunes :category, text: "Tech News"
+    xml.itunes :category, text: "Podcasting"
     @posts.each do |article|
       xml.item do
         xml.title article.headline
