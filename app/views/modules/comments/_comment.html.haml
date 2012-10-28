@@ -1,15 +1,15 @@
 .comment
   %a{name: "comment_#{comment.id}", class: "comment_anchor"}
-  %a{href: user_path(comment.user)}= avatar_for_user(comment.user, 32, 'gravatar_image')
-  .content
-    %p.name
-      %strong= link_to comment.user_nickname, user_path(comment.user)
-      sagte:
-    %p.date
-      = "#{I18n.localize(comment.created_at, format: :long)}"
+  %a{class: 'comment-avatar', href: user_path(comment.user)}= avatar_for_user(comment.user, 87, 'gravatar_image')
+  .comment-content
+    %p.comment-name
+      = link_to comment.user_nickname, user_path(comment.user), class: 'hidden-link'
+      sagte
+    %p.comment-date
+      = I18n.localize(comment.created_at, format: :long)
     = convert_markdown comment.body, true
     - if comment.created_at != comment.updated_at
-      %p.edit_date
+      %p.comment-edit-date
         = "(zuletzt geändert am #{I18n.localize(comment.created_at, format: :long)})"
     %p
       - if can? :edit, comment

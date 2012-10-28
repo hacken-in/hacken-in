@@ -7,7 +7,7 @@
     display: block
     float: left
     margin-right: 1px
-    background-color: #d2d2d2
+    background-color: $light_background_color
     list-style-type: none
     width: 47px
     text-align: center
@@ -21,7 +21,7 @@
     display: block
     float: left
     margin-right: 1px
-    background-color: #d2d2d2
+    background-color: $light_background_color
     list-style-type: none
     width: 19.129032258064516px
     padding: 0
@@ -39,14 +39,14 @@
 
   .calendar-line
     &.calendar-line-highlighted
-      box-shadow: inset 5px 5px 20px 0px rgba(0, 0, 0, 0.4)
+      box-shadow: inset 5px 5px 20px 0px $transparent_color
 
 
 .kddk
   margin-top: 20px
   width: 304px
   .kddk-categories
-    border: 2px solid #000
+    border: 2px solid $dark_border_color
     .table
       margin-bottom: 0px
   .kddk-menu
@@ -57,14 +57,14 @@
       display: inline-block
       padding: 3px 8px 3px 8px
       font-size: 14px
-      background-color: #d2d2d2
-      color: #fff
+      background-color: $light_background_color
+      color: $lightest_text_color
       font-weight: bold
 
       &.active
-        background-color: #000
+        background-color: $dark_background_color
       a
-        color: #fff
+        color: $lightest_text_color
 
 
 .tag-box
@@ -95,7 +95,7 @@
     font-size: 24px
     height: 25px
     line-height: 25px
-    border-bottom: 1px solid #000
+    border-bottom: 1px solid $dark_border_color
     margin: 0
     padding: 0
 
@@ -108,3 +108,11 @@
     margin: 0
     text-transform: uppercase
     letter-spacing: 1px
+.calendar_advertisement
+  margin-top: 30px
+  padding: 0px 5px
+  font-size: 10px
+  background-color: $light_background_color
+  color: $lightest_text_color
+  height: 195px
+  width: 294px

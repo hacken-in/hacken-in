@@ -1,7 +1,7 @@
 .event-participators
-  %h3.event-participators-title Teilnehmer
+  %h3.black-bar-small-title.event-participators-title Teilnehmer
   - if @single_event.users.empty?
-    %p
+    %p.no-participators
       %em keine Teilnehmer
   - else
     %ul.event-participators-list
@@ -15,4 +15,3 @@
     = button_to t('single_events.show.participate'), event_single_event_participate_path(@single_event.event, @single_event, state: :push), { method: :put, class: 'btn btn-inverse pull-right participate-button' }
   - elsif user_signed_in?
     = button_to t('single_events.show.unparticipate'), event_single_event_participate_path(@single_event.event, @single_event, state: :delete), { method: :put, class: 'btn btn-inverse pull-right participate-button' }
-

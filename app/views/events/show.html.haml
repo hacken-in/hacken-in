@@ -1,89 +1,22 @@
+- color = @event.category.try(:color)
 - title @event.title
 
-%div.right_row
-  = render "map", event: @event
-  %div.map
+.row.event
+  .span4
+    .black-bar.black-bar-wide
+      = render partial: 'modules/categories/indicator', locals: { size: '75px', color: color }
+      .black-bar-content{ data: { hlcolor: color } }
+        .black-bar-center-part
+          %h1.black-bar-title= @event.name
 
-= render "tags/tags", tag_list: @event.tag_list
+    .event-info
+      = render "events/description", event: @event
+      = render "events/map", event: @event
+      .event-map
 
-- if @event.description?
-  = convert_markdown @event.description
-- else
-  %p
-    %em
-      Keine Beschreibung vorhanden.
-      - if !user_signed_in?
-        Du könntest das ändern, wenn du dich #{link_to "anmeldest", new_user_session_path}.
-      - else
-        Du könntest das #{link_to "ändern", edit_event_path(@event)}!
+      = render "events/venue", event: @event
 
-= render "address",address: @event
+      %p.pull-right
+        Social Kram
 
-= render "links", item: @event
-
-#twitter_like
-  <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="hackcologne">Tweet</a>
-  <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-
-#fb_like
-  #fb-root
-    <script src="http://connect.facebook.net/en_US/all.js#appId=213379535367603&amp;xfbml=1"></script>
-    <fb:like href="#{event_url(@event)}" send="true" width="450" show_faces="false" font="" layout="button_count"></fb:like>
-
-
-- if can? :update, @event
-  = link_to t('events..show.edit'), edit_event_path(@event)
-
-- if can? :delete, @event
-  = link_to t('events.show.delete'), event_path(@event), method: :delete, :"data-confirm" => t('events.show.delete_confirm')
-
-%h2= t('events.show.next_single_events')
-
-%ul.event_date_list
-  - @event.single_events.today_or_in_future.each do |single_event|
-    %li
-      = link_to single_event.full_day? ? single_event.occurrence.strftime("%d.%m.%Y") : single_event.occurrence.strftime("%d.%m.%Y um %H:%M"), event_single_event_path(@event, single_event)
-      - if single_event.name?
-        \-
-        = single_event.name
-      - if can? :delete, single_event
-        = link_to t('events.show.delete'), event_single_event_path(single_event.event, single_event), method: :delete, :"data-confirm" => t('events.show.delete_confirm')
-  %li= link_to "Neuen Termin anlegen", new_event_single_event_path(@event)
-
-%p= link_to "iCal für diese Eventserie abonnieren", url_for(action: "index", controller: "subscribe", format: "ical", only_path: false, event_id: @event.id)
-
-%h3 Wiederholende Termine
-
-- if @event.schedule.rrules.count > 0
-  %ul
-    - @event.schedule.rrules.each_with_index do |rrule, index|
-      %li
-        = string_for_rule(rrule)
-        - if can? :destroy, @event
-          = link_to "Löschen", event_schedule_rule_path(@event, id: index), method: :delete, :"data-confirm" => "Sind sie sicher?"
-- else
-  %p
-    %em Keine Wiederholende Termine
-
-- if can? :update, @event
-  = form_tag(event_schedule_rules_path(@event), method: :create) do
-    Neue Regel für den
-    = select_tag "week_number", options_for_select([["ersten", "1"], ["zweiten", "2"], ["dritten", "3"], ["vierten", "4"], ["fünften", "5"], ["letzten", "-1"]])
-    = select_tag "day_of_week", weekday_select_option
-    des Monats
-    = submit_tag "anlegen"
-    \.
-
-- if @event.schedule.extimes.count > 0 && can?(:destroy, @event)
-  %h4 Diese Daten sind im Regelwerk ausgeschlossen worden:
-  %ul
-    - @event.schedule.extimes.each_with_index do |exdate, index|
-      %li
-        = exdate.strftime("%d.%m.%Y um %H:%M")
-        = link_to "Löschen", event_schedule_exdate_path(@event, id: index), method: :delete, :"data-confirm" => "Sind sie sicher?"
-
-%p
-  %a{href: "/"}= t('events.show.back')
-
-= render partial: "modules/comments/comments", locals: {commentable: @event}
-
+    = render partial: 'modules/comments/comments', locals: { commentable: @event }

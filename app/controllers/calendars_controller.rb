@@ -2,6 +2,7 @@
 class CalendarsController < ApplicationController
 
   def show
+    @advertisement = Advertisement.first    
     @categories = Category.calendar.all
 
     # Die Presets
@@ -24,6 +25,7 @@ class CalendarsController < ApplicationController
   end
 
   def entries
+    @advertisement = Advertisement.first
     begin
       from = Date.parse(params[:from])
     rescue ArgumentError

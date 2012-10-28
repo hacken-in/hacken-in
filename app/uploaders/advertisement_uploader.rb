@@ -13,7 +13,7 @@ class AdvertisementUploader < CarrierWave::Uploader::Base
   end
 
   version :rectangle do
-    process :resize_to_fill => [304, 178]
+    process :resize_to_fill => [299, 173]
   end
 
   version :wide_rectangle do

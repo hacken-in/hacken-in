@@ -1,16 +1,14 @@
 @import url(http://fonts.googleapis.com/css?family=Vollkorn)
 
-$text_color: #333
-
 body
   padding-top: 60px
 
 .box
   min-height: 300px
-  background-color: red
+  background-color: $red
 
 .abo-box
-  border: 2px solid #000
+  border: 2px solid $dark_border_color
 
 .this-is-cologne
   width: 304px
@@ -22,7 +20,7 @@ header
   .navbar
     .navbar-inner
       height: 73px
-    border-bottom: 4px solid #000
+    border-bottom: 4px solid $dark_border_color
 
 .header-sep-line
   padding-top: 15px
@@ -37,7 +35,7 @@ header
 
   li.active
     a
-      border-bottom: 2px solid black
+      border-bottom: 2px solid $dark_border_color
 
   li
     a
@@ -47,13 +45,13 @@ header
       font-size: 16px
       font-weight: bold
       text-transform: uppercase
-      color: #000 !important
+      color: $dark_text_color !important
 
       &:hover
-        border-bottom: 2px solid black
+        border-bottom: 2px solid $dark_border_color
 
 .main-footer
-  border-top: 4px solid #000
+  border-top: 4px solid $dark_border_color
   margin-top: 60px
   margin-bottom: 10px
 
@@ -70,7 +68,7 @@ header
 
     &:hover
       text-decoration: none !important
-      color: #888 !important
+      color: $medium-grey !important
 
 .this_is_cologne
   margin-top: 15px
