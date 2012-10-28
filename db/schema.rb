@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121028143110) do
+ActiveRecord::Schema.define(:version => 20121028173936) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(:version => 20121028143110) do
     t.datetime "updated_at",    :null => false
     t.string   "context"
   end
+
+  add_index "advertisements", ["picture_id"], :name => "index_advertisements_on_picture_id"
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -73,6 +75,7 @@ ActiveRecord::Schema.define(:version => 20121028143110) do
   end
 
   add_index "blog_posts", ["category_id"], :name => "index_blog_posts_on_category_id"
+  add_index "blog_posts", ["picture_id"], :name => "index_blog_posts_on_picture_id"
   add_index "blog_posts", ["user_id"], :name => "index_blog_posts_on_user_id"
 
   create_table "boxes", :force => true do |t|
@@ -83,6 +86,8 @@ ActiveRecord::Schema.define(:version => 20121028143110) do
     t.datetime "updated_at",        :null => false
     t.integer  "carousel_position"
   end
+
+  add_index "boxes", ["content_id", "content_type"], :name => "index_boxes_on_content_id_and_content_type"
 
   create_table "calendar_preset_categories", :force => true do |t|
     t.integer  "category_id"
@@ -149,6 +154,7 @@ ActiveRecord::Schema.define(:version => 20121028143110) do
   add_index "events", ["category_id"], :name => "index_events_on_category_id"
   add_index "events", ["latitude"], :name => "index_events_on_latitude"
   add_index "events", ["longitude"], :name => "index_events_on_longitude"
+  add_index "events", ["picture_id"], :name => "index_events_on_picture_id"
   add_index "events", ["venue_id"], :name => "index_events_on_venue_id"
 
   create_table "pictures", :force => true do |t|
@@ -189,6 +195,7 @@ ActiveRecord::Schema.define(:version => 20121028143110) do
 
   add_index "single_events", ["category_id"], :name => "index_single_events_on_category_id"
   add_index "single_events", ["event_id"], :name => "index_single_events_on_event_id"
+  add_index "single_events", ["picture_id"], :name => "index_single_events_on_picture_id"
   add_index "single_events", ["venue_id"], :name => "index_single_events_on_venue_id"
 
   create_table "single_events_users", :id => false, :force => true do |t|

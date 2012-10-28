@@ -195,6 +195,5 @@ class SingleEvent < ActiveRecord::Base
     end
 
   end
-
 end
 

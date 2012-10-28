@@ -38,8 +38,8 @@ def make_blog_posts
     headline_teaser = Faker::Lorem.sentence(4)
     teaser_text = Faker::Lorem.sentence(5)
     text = Faker::Lorem.sentence(18)
-    BlogPost.create!(headline: headline, 
-                     headline_teaser: headline_teaser, 
+    BlogPost.create!(headline: headline,
+                     headline_teaser: headline_teaser,
                      teaser_text: teaser_text,
                      text: text,
                      user: admin,

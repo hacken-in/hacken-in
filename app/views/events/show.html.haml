@@ -1,7 +1,7 @@
 - color = @event.category.try(:color)
 - title @event.title
 
-.row.event
+.row.event.event-detail
   .span4
     .black-bar.black-bar-wide
       = render partial: 'modules/categories/indicator', locals: { size: '75px', color: color }
@@ -20,3 +20,6 @@
         Social Kram
 
     = render partial: 'modules/comments/comments', locals: { commentable: @event }
+
+  .span2
+    = render 'events/sidebar'

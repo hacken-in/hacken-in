@@ -1,5 +1,5 @@
 xml.instruct! :xml, :version => "1.0"
-xml.rss :version => "2.0", 
+xml.rss :version => "2.0",
   "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.0.dtd",
   "xmlns:atom" => "http://www.w3.org/2005/Atom" do
   xml.channel do

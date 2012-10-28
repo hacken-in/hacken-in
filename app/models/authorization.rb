@@ -6,7 +6,7 @@ class Authorization < ActiveRecord::Base
   validates_uniqueness_of :uid, :scope => :provider
 
   def self.create_authorization(auth, user = nil)
-    auth_data = Auhtorization.extract_auth_data(auth)
+    auth_data = Authorization.extract_auth_data(auth)
 
     a = Authorization.new(auth_data)
     a.temp_token = SecureRandom.hex(40) if user.nil?

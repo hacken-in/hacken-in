@@ -1,8 +1,7 @@
 class CallbacksController < Devise::OmniauthCallbacksController
-  
   # One method to serve them all!
   def all
-    
+
     # If there is no token, but we are currently logged in
     if current_user
       @auth = Authorization.create_authorization(request.env["omniauth.auth"], current_user)
@@ -13,7 +12,7 @@ class CallbacksController < Devise::OmniauthCallbacksController
       end
     else
       user = User.from_omniauth(request.env["omniauth.auth"])
-    
+
       if user.persisted?
         flash.notice = "Signed in via #{request.env["omniauth.auth"]["provider"].capitalize}"
         sign_in_and_redirect user
@@ -24,12 +23,10 @@ class CallbacksController < Devise::OmniauthCallbacksController
       end
     end
   end
-  
+
   alias_method :linkedin, :all
   alias_method :twitter, :all
   alias_method :facebook, :all
   alias_method :google_oauth2, :all
   alias_method :github, :all
-
-  
 end

@@ -10,7 +10,7 @@ ActiveAdmin.register CalendarPreset do
     column :id
     column :title
     column :user do |preset|
-        preset.user || 'Nerdhub Preset' 
+        preset.user || 'Nerdhub Preset'
       end
     column :categories do |preset|
       preset.categories.sort_by(&:title).map { |c| span(c.title, style: "color: #{c.color}") }
@@ -23,7 +23,7 @@ ActiveAdmin.register CalendarPreset do
       row :id
       row :title
       row :user do |preset|
-        preset.user || 'Nerdhub Preset' 
+        preset.user || 'Nerdhub Preset'
       end
       row :categories do |preset|
         ul do

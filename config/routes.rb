@@ -28,7 +28,8 @@ Hcking::Application.routes.draw do
   match "podcast/:year/:month/:day" => "podcasts#index", year: /\d{4}/, month: /\d{1,2}/,  day: /\d{1,2}/
   match "podcast/:year/:month/:day/:id" => "podcasts#show"
   match "podcast/feed/:category_id" => "podcasts#feed", as: "podcast_feed"
-  resources :podcasts, path: "podcast" do
+
+  resources :podcasts, path: "podcast", only: [:show, :index] do
     resources :comments, except: [:new]
   end
 
@@ -37,7 +38,8 @@ Hcking::Application.routes.draw do
   match "blog/:year/:month" => "blog_posts#index", year: /\d{4}/, month: /\d{1,2}/
   match "blog/:year/:month/:day" => "blog_posts#index", year: /\d{4}/, month: /\d{1,2}/,  day: /\d{1,2}/
   match "blog/:year/:month/:day/:id" => "blog_posts#show"
-  resources :blog_posts, path: "blog" do
+
+  resources :blog_posts, path: "blog", only: [:show, :index] do
     collection do
       get :feed, defaults: { format: 'atom' }
     end
@@ -52,27 +54,20 @@ Hcking::Application.routes.draw do
 
   resources :suggestions, only: [:new, :create, :show]
 
-  resource :calendar do
+  resource :calendar, only: [:show] do
     get :presets
     get :entries
-    get :rss_feed, defaults: { format: 'atom' }
 
     post :presets, :action => :update_presets
   end
 
-  resources :events do
+  resources :events, only: [:index, :show] do
     resources :comments, except: [:new]
-    namespace "schedule" do
-      resources :exdates, only: [:destroy]
-      resources :rules, only: [:create, :destroy]
-    end
 
-    resources :single_events, path: "dates" do
+    resources :single_events, path: "dates", only: [:show] do
       resource :participate, only: [:update], constraints: { state: /(push|delete)/ }
       resources :comments, except: [:new]
     end
-    # to hold old url on life
-    get "single_events/:id" => redirect { |params, request| "/events/#{params[:event_id]}/dates/#{params[:id]}" }
   end
 
   match "ical"                    => "ical#general"

@@ -1,11 +1,3 @@
-guard 'livereload' do
-  watch(%r{app/assets/.+\.(scss|css|js)})
-  watch(%r{app/.+\.(erb|haml)})
-  watch(%r{app/helpers/.+\.rb})
-  watch(%r{public/.+\.(css|js|html)})
-  watch(%r{config/locales/.+\.yml})
-end
-
 guard 'pow' do
   watch('.powrc')
   watch('.powenv')
@@ -20,12 +12,6 @@ end
 
 guard 'bundler' do
   watch('Gemfile')
-end
-
-guard 'yard' do
-  watch(%r{app/.+\.rb})
-  watch(%r{lib/.+\.rb})
-  watch(%r{ext/.+\.c})
 end
 
 guard 'test', drb: false do

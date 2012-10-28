@@ -12,7 +12,7 @@ class UserTagsController < ApplicationController
 
   def destroy
     return render(:nothing => true, :status => :unauthorized) unless current_user
-    
+
     if remove_tag_from_list params[:kind], remove: params[:id]
       render json: { :status => :success, :message => t("user_tags.destroy.confirmation") }, :status => :ok
     else
