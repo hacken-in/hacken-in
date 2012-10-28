@@ -11,6 +11,11 @@
           %th Beschreibung
           %td= convert_markdown @event.description
         %tr
+          %th Bild
+          %td
+            - if @event.picture.present?
+              = image_tag @event.picture.box_image.url
+        %tr
           %th Kategory
           %td= @event.category.title
         %tr
@@ -20,9 +25,14 @@
           %th Twitter
           %td= link_to @event.twitter, "http://twitter.com/#{@event.twitter}"
         %tr
-          %th Venue
+          %th Ort
           %td= "#{@event.venue.try :location} (#{@event.venue.try :id})"
-
+        %tr
+          %th Ort Zusatzinfo
+          %td= @event.venue_info
+        %tr
+          %th Tags
+          %td= @event.tags.join(", ")
   %h3 Regeln
 
   .attributes_table
