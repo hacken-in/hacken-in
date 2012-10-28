@@ -64,7 +64,7 @@ gem "mediaelement_rails"
 gem 'jquery-rails', '~> 2.0.0'
 gem 'gabba', '~> 0.3.0'
 gem 'formtastic', '~> 2.2.0'
-gem 'formtastic-bootstrap'
+gem "simple_form", "~> 2.0.4"
 gem 'geocoder', '~> 1.0'
 gem "md_emoji", "~> 0.0.7"
 
