@@ -1,4 +1,4 @@
-%h3 Kommentare
+%h3.black-bar-small-title Kommentare
 
 %a{name: "comments", class: "comment_anchor"}
 
@@ -9,8 +9,9 @@
   - commentable.comments.each do |comment|
     = render partial: "modules/comments/comment", locals: {comment: comment}
 
-- if can? :create, Comment
-  = render partial: "modules/comments/form", locals: {comment: commentable.comments.new(body: params[:body])}
-- else
-  %p
-    %em Sie müssen angemeldet sein, um Kommentare abgeben zu können.
+  .comment-event-form
+    - if can? :create, Comment
+      = render partial: "modules/comments/form", locals: { comment: commentable.comments.new(body: params[:body]), avatar_size: 87 }
+    - else
+      %p
+        %em Sie müssen angemeldet sein, um Kommentare abgeben zu können.
