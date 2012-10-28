@@ -51,7 +51,6 @@ Hcking::Application.routes.draw do
   resource :calendar, only: [:show] do
     get :presets
     get :entries
-    get :rss_feed, defaults: { format: 'atom' }
 
     post :presets, :action => :update_presets
   end
