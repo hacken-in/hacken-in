@@ -3,7 +3,7 @@ class Authorization < ActiveRecord::Base
   belongs_to :user
   attr_accessible :provider, :uid, :user_id, :token, :secret, :token_expires, :temp_token
 
-  validates_uniqueness_of [:provider, :uid]
+  validates_uniqueness_of :uid, :scope => :provider
 
   def self.create_authorization(auth, user = nil)
     auth_data = {
