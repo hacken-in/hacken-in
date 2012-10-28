@@ -7,5 +7,6 @@ stdout_path "#{root}/shared/log/unicorn.log"
 listen "12341"
 worker_processes 2
 
-# nuke workers after 30 seconds instead of 60 seconds (the default)
-timeout 30
+# Lieber 90 Sekunden machen damit die Uploads nicht
+# kaputt gehen
+timeout 90
