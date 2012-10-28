@@ -3,15 +3,18 @@ class BlogPostsController < ApplicationController
   before_filter :sidebar_values
 
   def index
+    @advertisement = Advertisement.first
     @posts = BlogPost.for_web.where("mp3file is null").page(params[:page]).per(10)
     find_post_by_params
   end
 
   def show
+    @advertisement = Advertisement.first
     @post = BlogPost.find(params[:id])
   end
 
   def feed
+    @advertisement = Advertisement.first
     @posts = BlogPost.for_web.limit(10)
     respond_to do |format|
       format.atom { render :layout => false }
