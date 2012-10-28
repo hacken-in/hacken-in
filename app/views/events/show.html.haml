@@ -15,9 +15,8 @@
       .event-map
 
       = render "events/venue", event: @event
-
-      %p.pull-right
-        Social Kram
+      = render 'modules/single_events/social'
+      .clearfix
 
     = render partial: 'modules/comments/comments', locals: { commentable: @event }
 
