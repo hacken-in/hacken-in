@@ -43,6 +43,6 @@ class BlogPost < ActiveRecord::Base
   private
 
   def set_defaults
-    self.publishable_from = Time.now
+    self.publishable_from = Time.now if self.publishable_from.blank?
   end
 end
