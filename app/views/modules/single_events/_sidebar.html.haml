@@ -10,10 +10,9 @@
         = @single_event.event.description
         %p= link_to "(weiterlesen)", @single_event.event
 
-  - if @advertisment.present?
-    .blog_advertisement
-      Werbung
-      = image_tag(@advertisement.picture.advertisement_image.rectangle.url)
+  .blog_advertisement
+    Werbung
+    = link_to(image_tag(@advertisement.picture.advertisement_image.rectangle.url), @advertisement.link)
 
   .event-external-links
     = link_to image_tag("blog-twitter.png"), "http://twitter.com/nerdhub_cgn", class: "blog_sidebar_twitter"

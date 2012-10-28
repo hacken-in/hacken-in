@@ -26,8 +26,11 @@ class Box < ActiveRecord::Base
   end
 
   def picture
-    return Advertisement.homepage.picture if content_type == "Advertisement"
-    content.picture
+    if content_type == "Advertisement" 
+      Advertisement.homepage.picture
+    else
+      content.picture
+    end
   end
 
   def first_line
