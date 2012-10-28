@@ -310,6 +310,8 @@ de:
   single_events:
     show:
       participants: Teilnehmer
+      participate: Und ich!
+      unparticipate: Doch nich
     push:
       confirmation: "Du nimmst an dem Event teil."
     delete:

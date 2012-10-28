@@ -15,7 +15,8 @@ ActiveAdmin.register Box do
     end
 
     f.inputs do
-      f.input :position
+      f.input :carousel_position
+      f.input :grid_position
     end
 
     f.actions

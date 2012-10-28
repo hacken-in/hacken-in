@@ -12,4 +12,9 @@
         %label.label Vorschau Carousel
         = image_tag @picture.carousel_image.url
     = f.input :carousel_image
+    - unless @picture.advertisement_image.try(:url).nil?
+      %li.input
+        %label.label Vorschau Advertisement
+        = image_tag @picture.advertisement_image.square.url
+    = f.input :advertisement_image
   = f.actions
