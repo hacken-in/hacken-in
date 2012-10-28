@@ -3,6 +3,12 @@ Hcking::Application.routes.draw do
 
   ActiveAdmin.routes(self)
 
+  namespace :admin do
+    resources :events do
+      resources :single_events
+    end
+  end
+
   if defined?(Smurfville) != nil
     mount Smurfville::Engine => "/smurfville"
   end
@@ -23,7 +29,7 @@ Hcking::Application.routes.draw do
   match "podcast/:year/:month/:day/:id" => "podcasts#show"
   match "podcast/feed/:category_id" => "podcasts#feed", as: "podcast_feed"
 
-  resources :podcasts, path: "podcast" do
+  resources :podcasts, path: "podcast", only: [:show, :index] do
     resources :comments, except: [:new]
   end
 
@@ -33,7 +39,7 @@ Hcking::Application.routes.draw do
   match "blog/:year/:month/:day" => "blog_posts#index", year: /\d{4}/, month: /\d{1,2}/,  day: /\d{1,2}/
   match "blog/:year/:month/:day/:id" => "blog_posts#show"
 
-  resources :blog_posts, path: "blog" do
+  resources :blog_posts, path: "blog", only: [:show, :index] do
     collection do
       get :feed, defaults: { format: 'atom' }
     end
@@ -48,10 +54,9 @@ Hcking::Application.routes.draw do
 
   resources :suggestions, only: [:new, :create, :show]
 
-  resource :calendar do
+  resource :calendar, only: [:show] do
     get :presets
     get :entries
-    get :rss_feed, defaults: { format: 'atom' }
 
     post :presets, :action => :update_presets
   end

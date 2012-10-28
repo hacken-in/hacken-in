@@ -14,7 +14,7 @@
     = link_to image_tag(blog_post.picture.box_image.url), post_path(controller, blog_post.to_link)
 
   .blog_text_span
-    - if blog_post.mp3file.present?
+    - if blog_post.mp3file?
       %audio{src: blog_post.mp3file.url, preload: "none"}
         %script
           $('audio').mediaelementplayer({audioWidth: 420});

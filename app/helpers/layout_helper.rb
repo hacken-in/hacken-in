@@ -9,10 +9,6 @@ module LayoutHelper
     @show_title = show_title
   end
 
-  def show_title?
-    @show_title
-  end
-
   def this_is_cologne(number)
     link_to image_tag(cologne_json[number]["image_url"]), cologne_json[number]["link"]
   end

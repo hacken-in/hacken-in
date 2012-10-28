@@ -1,7 +1,5 @@
 %h2= t 'registrations.edit.edit_profile'
-
 = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal' }) do |f|
-  
   %fieldset
     %legend= t('registrations.edit.profile')
   .row
@@ -40,10 +38,9 @@
             %h3=t('registrations.edit.gravatar')
             %p{style: 'text-align: right'}
               = link_to t('registrations.edit.change_gravatar'), "http://gravatar.com", target: '_blank'
-
   %fieldset
     %legend
-      = t 'registragions.edit.danger_zone'  
+      = t 'registragions.edit.danger_zone'
     - if f.object.encrypted_password?
       .alert.alert-error 
         %strong=t('registrations.edit.warning')

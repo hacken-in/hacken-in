@@ -1,0 +1,51 @@
+.panel
+  %h3 Veranstaltungsreihe
+
+  .attributes_table
+    %table{cellspacing:0, cellpadding: 0}
+      %tbody
+        %tr
+          %th Name
+          %td= @event.name
+        %tr
+          %th Beschreibung
+          %td= convert_markdown @event.description
+        %tr
+          %th URL
+          %td= link_to @event.url, @event.url
+        %tr
+          %th Twitter
+          %td= link_to @event.twitter, "http://twitter.com/#{@event.twitter}"
+        %tr
+          %th Venue
+          %td= "#{@event.venue.try :location} (#{@event.venue.try :id})"
+
+  %h3 Regeln
+
+  .attributes_table
+    %table{cellspacing:0, cellpadding: 0}
+      %tbody
+        - if @event.schedule.rrules.count > 0
+          - @event.schedule.rrules.each do |rule|
+            %tr
+              %td
+                = string_for_rule rule
+        - else
+          %tr
+            %td
+              Keine Regeln definiert
+
+  %h3 Termine
+
+  .single_event_link
+    - if @event.single_events.count > 0
+      %a{href:admin_event_single_events_path(@event)}
+        = "#{@event.single_events.count}"
+        - if @event.single_events.count == 1
+          Termin anzeigen
+        - else
+          Termine anzeigen
+
+  .single_event_new
+    %a{href:new_admin_event_single_event_path(@event)}
+      Neuen Termin anlegen

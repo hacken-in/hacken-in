@@ -11,7 +11,7 @@ class CreateVenues < ActiveRecord::Migration
 
       t.timestamps
     end
-    
+
     add_index :venues, [:latitude, :longitude]
   end
 end
