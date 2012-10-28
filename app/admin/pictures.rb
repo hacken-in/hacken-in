@@ -17,6 +17,9 @@ ActiveAdmin.register Picture do
       row :box_image do |p|
         image_tag p.box_image.url
       end
+      row :carousel_image do |p|
+        image_tag p.carousel_image.url
+      end
       row :created_at
       row :updated_at
     end
