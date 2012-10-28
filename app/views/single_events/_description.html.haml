@@ -1,9 +1,10 @@
-.event-description
-  .event-content-field
-    .content-field-icon
-      %i.icon-info-sign
-    .content-field-text
-      = @single_event.description
+- if @single_event.description.present?
+  .event-description
+    .event-content-field
+      .content-field-icon
+        %i.icon-info-sign
+      .content-field-text
+        = @single_event.description
 
 - if @single_event.url.present?
   .event-homepage

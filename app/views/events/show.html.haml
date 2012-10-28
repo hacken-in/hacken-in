@@ -85,5 +85,5 @@
 %p
   %a{href: "/"}= t('events.show.back')
 
-= render partial: "modules/comments/comments", locals: {commentable: @event}
+= render partial: "modules/comments/comments", locals: { commentable: @event, avatar_size: 32 }
 

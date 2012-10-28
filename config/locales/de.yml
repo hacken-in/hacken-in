@@ -260,7 +260,7 @@ de:
       venue: Ort
   comments:
     _form:
-      comment_button: Kommentieren
+      comment_button: Und ab!
     create:
       confirmation: "Kommentar angelegt."
     update:
