@@ -47,7 +47,7 @@ class BoxTest < ActiveSupport::TestCase
 
   test "first line should be the teaser text for blog posts" do
     post = FactoryGirl.build :full_blog_post
-    assert_equal post.teaser_text, FactoryGirl.build(:box, content: post).first_line
+    assert_equal post.headline_teaser, FactoryGirl.build(:box, content: post).first_line
   end
 
   test "second line should be the headline for blog posts" do
