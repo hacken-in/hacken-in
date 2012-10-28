@@ -3,9 +3,6 @@
   = form.inputs do
     = form.input :name
     = form.input :description, input_html: { class: 'autogrow preview-base', rows: 10 }, wrapper_html: { class: 'previewable' }
-    %li
-      %label
-      = render "commons/markdown_info"
     = form.input :venue
     = form.input :venue_info
     = form.input :picture

@@ -1,19 +1,25 @@
 -# ToDo: Zeit bearbeiten
 = semantic_form_for [:admin, @single_event] do |form|
   = form.inputs do
-    = form.input :name
-    = form.input :description, input_html: { class: 'autogrow preview-base', rows: 10 }, wrapper_html: { class: 'previewable' }
     %li
-      %label
-      = render "commons/markdown_info"
+      = form.label "Basis-Event", class: "label"
+      = link_to @single_event.event.name, admin_event_path(@single_event.event)
+    = form.input :name, placeholder: @single_event.event.name
+    = form.input :description, input_html: { class: 'autogrow preview-base', rows: 10 }, wrapper_html: { class: 'previewable' }
+    - if @single_event.based_on_rule
+      %li
+        = form.label "Startzeit", class: "label"
+        = l @single_event.occurrence
+        = " - basiert auf einer Regel der Veranstaltungsreihe"
+    - else
+      = form.input :occurrence
     = form.input :venue
-    = form.input :venue_info
+    = form.input :venue_info, placeholder: @single_event.event.venue_info
     = form.input :picture
-    = form.input :url
-    = form.input :twitter
-    = form.input :twitter_hashtag
-    = form.input :start_time, as: :time_select, hint: "Bei wiederholenden Terminen gib hier die Uhrzeit an. Die Regel (z.B. 1x im Monat) kannst du nachher im Event selber anlegen."
-    = form.input :duration
+    = form.input :url, placeholder: @single_event.event.url
+    = form.input :twitter, placeholder: @single_event.event.twitter
+    = form.input :twitter_hashtag, placeholder: @single_event.event.twitter_hashtag
+    = form.input :duration, placeholder: @single_event.event.duration
     = form.input :full_day
-    = form.input :tag_list
+    = form.input :tag_list, placeholder: @single_event.event.tag_list
   = form.actions
