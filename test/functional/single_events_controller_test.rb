@@ -4,6 +4,9 @@ require 'test_helper'
 
 class SingleEventsControllerTest < ActionController::TestCase
   include Devise::TestHelpers
+  setup do
+    FactoryGirl.create :advertisement, context: "single_event"
+  end
 
   test "should be successful" do
     single_event = FactoryGirl.create(:single_event)
