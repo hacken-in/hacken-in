@@ -6,14 +6,8 @@ class Authorization < ActiveRecord::Base
   validates_uniqueness_of :uid, :scope => :provider
 
   def self.create_authorization(auth, user = nil)
-    auth_data = {
-      provider: auth.provider,
-      uid: auth.uid,
-      token: auth.credentials.token,
-      secret: auth.credentials.secret
-    }
-    auth_data[:token_expires] = Time.at(auth.credentials.expires_at) if auth.credentials.expires_at
-    
+    auth_data = Auhtorization.extract_auth_data(auth)
+
     a = Authorization.new(auth_data)
     a.temp_token = SecureRandom.hex(40) if user.nil?
     a.user_id = user.id unless user.nil?
@@ -21,5 +15,15 @@ class Authorization < ActiveRecord::Base
     a.save
 
     return a
+  end
+
+  def self.extract_auth_data(auth)
+    auth_data = {
+      provider: auth.provider,
+      uid: auth.uid,
+      token: auth.credentials.token,
+      secret: auth.credentials.secret
+    }
+    auth_data[:token_expires] = Time.at(auth.credentials.expires_at) if auth.credentials.expires_at
   end
 end
