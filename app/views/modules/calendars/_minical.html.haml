@@ -1,4 +1,3 @@
-
 .minical
   .minical-wrapper
     - @mini_calendar_events.each do |day, events|
@@ -24,6 +23,6 @@
                 class: 'minical-cell empty see-more',
                 title: t('minical.see_more')
           - else
-            = link_to '', new_event_path,
+            = link_to '', new_suggestion_path,
                 class: 'minical-cell empty add-new',
                 title: t('minical.add_new')
