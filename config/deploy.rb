@@ -8,8 +8,6 @@ set :repository, 'git://github.com/nerdhub/hcking.git'
 
 set :config_files, ['database.yml', 'newrelic.yml', 'initializers/secret_token.rb', 'omniauth.yml']
 
-set :unicorn_pid, '/var/www/virtual/droidboy/nerdhub/shared/pids/unicorn.pid'
-
 namespace :vlad do
 
   desc "Copy config files from shared/config to release dir"

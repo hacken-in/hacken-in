@@ -281,8 +281,6 @@ GEM
       rake-remote_task (~> 2.0)
     vlad-git (2.2.0)
       vlad (>= 2.1.0)
-    vlad-unicorn (2.1.1)
-      vlad (~> 2.0)
     warden (1.2.1)
       rack (>= 1.0)
     yard (0.8.2.1)
@@ -351,6 +349,5 @@ DEPENDENCIES
   uglifier (~> 1.2.0)
   vlad (~> 2.2.3)
   vlad-git (~> 2.2.0)
-  vlad-unicorn
   yard (~> 0.8.2.1)
   zero-clipboard-rails (~> 1.0.1)
