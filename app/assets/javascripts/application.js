@@ -6,6 +6,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require leaflet
 //= require jquery.balloon
 //= require jquery.tokeninput
 //= require jquery.endless-scroll
@@ -13,7 +14,6 @@
 //= require showdown
 //= require zero-clipboard
 //= require tipsy
-//= require leaflet
 //= require jquery.pjax
 //= require_tree .
 //= require twitter/bootstrap

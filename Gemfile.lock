@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/axyjo/leaflet-rails.git
+  revision: b2fd1f95dbad7ef5625d0415d008c2ca46a18821
+  specs:
+    leaflet-rails (0.4.4)
+
+GIT
   remote: https://github.com/gregbell/active_admin.git
   revision: 3d6976ccf8a4dd7089f3033590905c84500c2a4f
   specs:
@@ -150,6 +156,9 @@ GEM
     md_emoji (0.0.7)
       railties (>= 3.1.0)
       redcarpet (>= 2.0)
+    mediaelement_rails (0.4.0)
+      jquery-rails (>= 1.0)
+      railties (>= 3.1)
     meta_search (1.1.3)
       actionpack (~> 3.1)
       activerecord (~> 3.1)
@@ -272,8 +281,6 @@ GEM
       rake-remote_task (~> 2.0)
     vlad-git (2.2.0)
       vlad (>= 2.1.0)
-    vlad-unicorn (2.1.1)
-      vlad (~> 2.0)
     warden (1.2.1)
       rack (>= 1.0)
     yard (0.8.2.1)
@@ -313,7 +320,9 @@ DEPENDENCIES
   html_truncator (~> 0.3.0)
   ice_cube (~> 0.8.0)
   jquery-rails (~> 2.0.0)
+  leaflet-rails!
   md_emoji (~> 0.0.7)
+  mediaelement_rails
   mini_magick (~> 3.4)
   mocha (~> 0.12.0)
   mysql2 (~> 0.3.11)
@@ -340,6 +349,5 @@ DEPENDENCIES
   uglifier (~> 1.2.0)
   vlad (~> 2.2.3)
   vlad-git (~> 2.2.0)
-  vlad-unicorn
   yard (~> 0.8.2.1)
   zero-clipboard-rails (~> 1.0.1)

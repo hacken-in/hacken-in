@@ -23,7 +23,9 @@ gem 'acts-as-taggable-on', '~> 2.3.1'
 # Asset template engines
 gem 'sass-rails', '~> 3.2.3'
 gem 'coffee-script', '~> 2.2.0'
+gem 'leaflet-rails', github: 'axyjo/leaflet-rails'
 gem 'uglifier', '~> 1.2.0'
+
 gem 'haml', '~> 3.1.4'
 gem 'redcarpet', '~> 2.1.0'
 
@@ -54,6 +56,9 @@ gem 'omniauth-linkedin'
 # picture upload
 gem 'carrierwave', '~> 0.6.2'
 gem "mini_magick", "~> 3.4"
+
+# MP3 Player
+gem "mediaelement_rails"
 
 # Other dependencies
 gem 'jquery-rails', '~> 2.0.0'
@@ -95,7 +100,6 @@ group :development do
   # Deployment
   gem 'vlad', '~> 2.2.3', require: false
   gem 'vlad-git', '~> 2.2.0', require: false
-  gem 'vlad-unicorn'
 
   group :darwin do
     gem 'rb-fsevent', '~> 0.9.0pre4'

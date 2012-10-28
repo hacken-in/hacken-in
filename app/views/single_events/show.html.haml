@@ -1,82 +1,35 @@
 - color = @single_event.category.try(:color)
 
-.row
+.row.event.single-event
   .span4
     .black-bar.black-bar-wide
       = render partial: 'modules/categories/indicator', locals: { size: '75px', color: color }
-      .black-bar-content{ data: { hlcolor: color } }
-        .black-bar-title
-          = @single_event.title
-        .black-bar-time= I18n.localize(@single_event.occurrence, format: "%H:%M Uhr")
+      .black-bar-content.black-bar-with-date{ data: { hlcolor: color } }
+        .black-bar-top-part
+          .black-bar-date
+            = I18n.localize @single_event.occurrence, format: "%a, %d. %b %Y"
+        .black-bar-center-part
+          %h1.black-bar-title= @single_event.event.name
+          .black-bar-time= I18n.localize(@single_event.occurrence, format: "%H:%M Uhr")
+
+    .event-info
+      - if @single_event.name?
+        %h2= @single_event.name
+
+      = render "single_events/description"
+      = render "events/map", event: @single_event
+      .event-map
+
+      %address.event-venue
+        anderScore GmbH<br>
+        Frankenwerft 54<br>
+        50123 Köln
+
+      %p.pull-right
+        Social Kram
+
+      = render 'single_events/participants'
+      = render partial: 'modules/comments/comments', locals: { commentable: @single_event }
+
   .span2
     %p whoa this is my side box
-
-
-
-.left_side
-  - title @single_event.event_title
-
-  - if @single_event.name?
-    %h2
-      = @single_event.name
-
-  %h2
-    = @single_event.full_day ? @single_event.occurrence.strftime("%d.%m.%Y") :  @single_event.occurrence.strftime("%d.%m.%Y um %H:%M")
-
-  -#= render "tags/tags", tag_list: @single_event.event.tag_list + @single_event.tag_list
-
-  - unless @single_event.description?
-    %p
-      %em
-        Keine Beschreibung vorhanden.
-        - if !user_signed_in?
-          Du könntest das ändern, wenn du dich #{link_to "anmeldest", new_user_session_path}.
-        - else
-          Du könntest das #{link_to "ändern", edit_event_single_event_path(@event, @single_event)}!
-    - else
-      = convert_markdown @single_event.description
-
-  = render "events/links", item: @single_event
-
-  %h3 Adresse
-
-  = render "events/map", event: @single_event
-  %div.map
-
-  = render "events/address",address: @single_event
-
-  %p
-    - if can? :update, @event
-      = link_to "Editieren", edit_event_single_event_path(@event, @single_event)
-    - if can? :delete, @single_event
-      = link_to "Löschen", event_single_event_path(@event, @single_event), method: :delete, :"data-confirm" => "Wirklich löschen?"
-
-  #twitter_like
-    <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="hackcologne">Tweet</a>
-    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-
-  #fb_like
-    #fb-root
-      <script src="http://connect.facebook.net/en_US/all.js#appId=213379535367603&amp;xfbml=1"></script>
-      <fb:like href="#{event_url(@event)}" send="true" width="450" show_faces="false" font="" layout="button_count"></fb:like>
-
-.right_side
-  %h3
-    Über #{link_to @event.name, @event}
-
-  - if @single_event.event_description.blank?
-    %p
-      %em
-        Keine Beschreibung vorhanden
-  - else
-    = truncate_html(convert_markdown(@single_event.event_description), 30, ellipsis: " ...")
-  #{link_to("Mehr Details &raquo;".html_safe, @event)}
-
-  %p= link_to "iCal für diesen Termin abonnieren", url_for(action: "index", controller: "subscribe", format: "ical", only_path: false, single_event_id: @single_event.id)
-
-.clear
-
-#participants
-  = render "participants"
-
-= render partial: "modules/comments/comments", locals: {commentable: @single_event}

@@ -1,0 +1,17 @@
+- if box.content.respond_to? :event
+  - url = url_for [box.content.event, box.content]
+- else
+  - url = url_for [box.content]
+
+= link_to url, {class: "span2"} do
+  %article.article.article-preview{ style: "border-top: 3px solid #{box.category.color};" }
+    = image_tag(box.picture.box_image.url, class: 'article-image')
+    - if box.first_line?
+      %h2.article-subtitle
+        - if box.first_line.respond_to? :time
+          = I18n.l box.first_line, format: :short
+        - else
+          = box.first_line
+
+    - if box.second_line?
+      %h1.article-title= box.second_line

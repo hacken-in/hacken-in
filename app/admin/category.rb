@@ -9,6 +9,7 @@ ActiveAdmin.register Category do
     column :color do |p|
       span p.color, style: "color: #{p.color}"
     end
+    column :podcast_category
     default_actions
   end
 end

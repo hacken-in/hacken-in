@@ -2,7 +2,7 @@
 class CalendarsController < ApplicationController
 
   def show
-    @categories = Category.all
+    @categories = Category.calendar.all
 
     # Die Presets
     @presets = CalendarPreset.nerdhub_presets.all

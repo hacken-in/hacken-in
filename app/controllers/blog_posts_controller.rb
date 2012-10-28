@@ -3,8 +3,24 @@ class BlogPostsController < ApplicationController
   before_filter :sidebar_values
 
   def index
-    @posts = BlogPost.for_web.page(params[:page]).per(10)
+    @posts = BlogPost.for_web.where("mp3file is null").page(params[:page]).per(10)
+    find_post_by_params
+  end
 
+  def show
+    @post = BlogPost.find(params[:id])
+  end
+
+  def feed
+    @posts = BlogPost.for_web.limit(10)
+    respond_to do |format|
+      format.atom { render :layout => false }
+    end
+  end
+
+  private
+
+  def find_post_by_params
     if params[:year]
       start_date = DateTime.new
       end_date = start_date
@@ -24,24 +40,10 @@ class BlogPostsController < ApplicationController
       @current_category = Category.find(params[:category_id])
       @posts = @posts.where(category_id: params[:category_id])
     end
-
   end
-
-  def show
-    @post = BlogPost.find(params[:id])
-  end
-
-  def feed
-    @posts = BlogPost.for_web.limit(10)
-    respond_to do |format|
-      format.atom { render :layout => false }
-    end
-  end
-
-  private
 
   def sidebar_values
-    @categories = Category.where("id in (select category_id from blog_posts)").uniq.order(:title)
+    @categories = Category.where("id in (select category_id from blog_posts where mp3file is null)").uniq.order(:title)
     @single_events = SingleEvent.where("occurrence > ?", Time.now).limit(3)
   end
 end

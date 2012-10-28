@@ -218,6 +218,7 @@ de:
       category:
         title: Titel
         color: Farbe
+        podcast_category: Podcast Kategorie
       blog_post:
         user: Benutzer
         category: Kategorie
@@ -227,6 +228,7 @@ de:
         use_in_newsletter: Im Newsletter verwenden?
         headline_teaser: Teaser für die Startseite
         teaser_text: Teaser
+        mp3file: MP3 Datei
       calendar_preset:
         title: Titel
         categories: Kategorien
@@ -308,9 +310,11 @@ de:
   single_events:
     show:
       participants: Teilnehmer
-    participate:
+      participate: Und ich!
+      unparticipate: Doch nich
+    push:
       confirmation: "Du nimmst an dem Event teil."
-    unparticipate:
+    delete:
       confirmation: "Du nimmst nicht mehr an dem Event teil."
     update:
       confirmation: "Termin wurde bearbeitet."

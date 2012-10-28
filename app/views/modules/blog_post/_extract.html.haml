@@ -8,12 +8,16 @@
         ,
         = blog_post.user.nickname
       %h1.blog_headline_text
-        = link_to blog_post.headline, blog_post_path(blog_post.to_link)
+        = link_to blog_post.headline, post_path(controller, blog_post.to_link)
     .clear
   .blog_image_span
-    = link_to image_tag(blog_post.picture.box_image.url), blog_post_path(blog_post.to_link)
+    = link_to image_tag(blog_post.picture.box_image.url), post_path(controller, blog_post.to_link)
 
   .blog_text_span
+    - if blog_post.mp3file.present?
+      %audio{src: blog_post.mp3file.url, preload: "none"}
+        %script
+          $('audio').mediaelementplayer({audioWidth: 420});
     %p
       = raw blog_post.teaser_text
-    = link_to "Weiterlesen", blog_post_path(blog_post.to_link), class: "blog_continue_link"
+    = link_to "Weiterlesen", post_path(controller, blog_post.to_link), class: "blog_continue_link"

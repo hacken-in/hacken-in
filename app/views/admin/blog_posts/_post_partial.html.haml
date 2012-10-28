@@ -1,5 +1,10 @@
 = image_tag @blog_post.picture.try(:carousel_image).try(:url)
 
+- if @blog_post.mp3file.present?
+  %audio{src: @blog_post.mp3file.url, preload: "none"}
+    %script
+      $('audio').mediaelementplayer(/* Options */);
+
 %h1= @blog_post.headline
 %h2= @blog_post.headline_teaser
 

@@ -1,5 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Vollkorn)
 
+$text_color: #333
+
 body
   padding-top: 60px
 
@@ -84,3 +86,10 @@ header
     img
       width: 308px
       margin-top: -80px
+
+a.hidden-link
+  color: $text_color
+  text-decoration: none
+  &:hover
+    text-decoration: underline
+    color: $text_color
