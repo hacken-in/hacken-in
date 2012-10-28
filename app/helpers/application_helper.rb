@@ -3,12 +3,6 @@ require 'redcarpet_extensions'
 
 module ApplicationHelper
 
-  def weekday_select_option
-    daynames = t("date.day_names").collect.with_index {|x,i| [x,i]}
-    daynames << daynames.delete_at(0)
-    options_for_select(daynames)
-  end
-
   def day_output_helper(date)
       date = date.to_date
       today = Date.today
@@ -28,10 +22,6 @@ module ApplicationHelper
         </div>#{date_ext}
       EOL
       retval.html_safe
-  end
-
-  def truncate_html(html, length, opts)
-    HTML_Truncator.truncate(html, length, opts).html_safe
   end
 
   def convert_markdown(markdown_text, without_follow = false)
@@ -67,15 +57,6 @@ module ApplicationHelper
     end
 
     links
-  end
-
-  def string_for_rule(rule)
-    if rule.validations_for(:day_of_week).first.occ == -1
-      occurrence = "letzten"
-    else
-      occurrence = "#{rule.validations_for(:day_of_week).first.occ}."
-    end
-    "An jedem #{occurrence} #{I18n.t("date.day_names")[rule.validations_for(:day_of_week).first.day]} des Monats"
   end
 
   def avatar_for_user(user, size=16, class_name=nil)

@@ -104,10 +104,6 @@ class SingleEvent < ActiveRecord::Base
     self.self_category || (self.event && self.event.category)
   end
 
-  def category_overwritten?
-    read_attribute(:category_id) != nil
-  end
-
   alias :self_venue :venue
   def venue
     self.self_venue || self.event.venue
