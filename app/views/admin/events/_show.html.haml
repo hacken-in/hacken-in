@@ -25,10 +25,15 @@
   .attributes_table
     %table{cellspacing:0, cellpadding: 0}
       %tbody
-        %tr
-          %td
-            - @event.schedule.rrules.each do |rule|
-              = string_for_rule rule
+        - if @event.schedule.rrules.count > 0
+          - @event.schedule.rrules.each do |rule|
+            %tr
+              %td
+                = string_for_rule rule
+        - else
+          %tr
+            %td
+              Keine Regeln definiert
 
   %h3 Termine
 
@@ -37,9 +42,9 @@
       %a{href:admin_event_single_events_path(@event)}
         = "#{@event.single_events.count}"
         - if @event.single_events.count == 1
-          Termine anzeigen
-        - else
           Termin anzeigen
+        - else
+          Termine anzeigen
 
   .single_event_new
     %a{href:new_admin_event_single_event_path(@event)}
