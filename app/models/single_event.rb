@@ -13,6 +13,8 @@ class SingleEvent < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
   has_and_belongs_to_many :users, uniq: true
 
+  validates_presence_of :event_id
+
   scope :in_future,
     where("occurrence >= ?", Time.now)
   scope :today_or_in_future,
@@ -104,10 +106,6 @@ class SingleEvent < ActiveRecord::Base
     self.self_category || (self.event && self.event.category)
   end
 
-  def category_overwritten?
-    read_attribute(:category_id) != nil
-  end
-
   alias :self_venue :venue
   def venue
     self.self_venue || self.event.venue
@@ -149,8 +147,7 @@ class SingleEvent < ActiveRecord::Base
     location = [self.venue_info, self.venue.address].delete_if(&:blank?).join(", ").strip
     ri_cal_event.location = location if location.present?
     ri_cal_event.url = Rails.application.routes.url_helpers.event_single_event_url(
-              # TODO: Hier ist die Domain hart verdrahtet ... Vor dem release unbedingt noch ändern!
-              host: Rails.env.production? ? "hcking.de" : "hcking.dev",
+              host: Rails.env.production? ? "nerdhub.de" : "hcking.dev",
               event_id: event.id,
               id: id)
     ri_cal_event
@@ -191,6 +188,7 @@ class SingleEvent < ActiveRecord::Base
     else
       true
     end
+
   end
 end
 

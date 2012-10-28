@@ -1,6 +1,10 @@
 ActiveAdmin.register SingleEvent do
-  menu parent: "Kalender"
   config.sort_order = "occurrence_asc"
+  menu false
+  controller do
+    nested_belongs_to :event
+  end
+
   index do
     column :id
     column :name do |single_event|
@@ -20,6 +24,29 @@ ActiveAdmin.register SingleEvent do
       a "##{single_event.twitter_hashtag}", href: "http://twitter.com/search/%23#{single_event.twitter_hashtag}" unless single_event.twitter_hashtag.blank?
     end
     default_actions
+  end
+
+  show do |ad|
+    attributes_table do
+      row :id
+      row :event
+      row :name
+      row :occurrence
+      row :duration
+      row :full_day
+      row :description
+      row :venue
+      row :venue_info
+      row :twitter
+      row :twitter_hashtag
+      row :url
+      row :picture
+      row :tags do |p|
+        p.tags.join(", ")
+
+      end
+    end
+    active_admin_comments
   end
 
   form do

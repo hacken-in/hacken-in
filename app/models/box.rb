@@ -33,6 +33,14 @@ class Box < ActiveRecord::Base
     end
   end
 
+  def first_line_for_carousel
+    [:headline_teaser, :occurrence].each do |method_name|
+      return content.send method_name if content.respond_to? method_name
+    end
+
+    return nil
+  end
+
   def first_line
     [:teaser_text, :occurrence].each do |method_name|
       return content.send method_name if content.respond_to? method_name

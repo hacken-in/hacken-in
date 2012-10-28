@@ -77,11 +77,4 @@ class CalendarsController < ApplicationController
     end
   end
 
-  def rss_feed
-    @single_events = SingleEvent.in_future.limit(10)
-
-    respond_to do |format|
-      format.atom { render :layout => false }
-    end
-  end
 end

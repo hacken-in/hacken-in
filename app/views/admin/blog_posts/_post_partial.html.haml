@@ -1,6 +1,6 @@
 = image_tag @blog_post.picture.try(:carousel_image).try(:url)
 
-- if @blog_post.mp3file.present?
+- if @blog_post.mp3file?
   %audio{src: @blog_post.mp3file.url, preload: "none"}
     %script
       $('audio').mediaelementplayer(/* Options */);

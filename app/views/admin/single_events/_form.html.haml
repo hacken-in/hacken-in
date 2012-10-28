@@ -13,13 +13,25 @@
         = " - basiert auf einer Regel der Veranstaltungsreihe"
     - else
       = form.input :occurrence
+    = form.input :duration, placeholder: @single_event.event.duration
+    = form.input :full_day
     = form.input :venue
+    %li
+      %label.label &nbsp;
+      Ort der Veranstaltungsreihe:
+      = @single_event.event.venue.location
     = form.input :venue_info, placeholder: @single_event.event.venue_info
+    = form.input :category
     = form.input :picture
+    %li
+      %label.label &nbsp;
+      Bild der Veranstaltungsreihe:
+      - if @single_event.event.picture.nil?
+        Kein Bild verknüpft
+      - else
+        = @single_event.event.picture.try :name
     = form.input :url, placeholder: @single_event.event.url
     = form.input :twitter, placeholder: @single_event.event.twitter
     = form.input :twitter_hashtag, placeholder: @single_event.event.twitter_hashtag
-    = form.input :duration, placeholder: @single_event.event.duration
-    = form.input :full_day
     = form.input :tag_list, placeholder: @single_event.event.tag_list
   = form.actions
