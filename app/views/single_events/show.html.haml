@@ -16,7 +16,7 @@
       - if @single_event.name?
         %h2= @single_event.name
 
-      = render partial: "single_events/description"
+      = render "single_events/description"
       = render "events/map", event: @single_event
       .event-map
 
@@ -29,7 +29,7 @@
         Social Kram
 
       = render 'single_events/participants'
-
+      = render partial: 'modules/comments/comments', locals: { commentable: @single_event }
 
   .span2
     %p whoa this is my side box
