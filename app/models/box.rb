@@ -4,6 +4,8 @@ class Box < ActiveRecord::Base
   belongs_to :content, polymorphic: true
 
   scope :in_grid, where("grid_position is not null").order("grid_position ASC")
+  scope :first_grid_row, in_grid.where("grid_position <= 3")
+  scope :second_grid_row, in_grid.where("grid_position > 3")
 
   validates_uniqueness_of :grid_position, allow_nil: true
   validate :content_has_picture
