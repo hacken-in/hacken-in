@@ -1,19 +1,22 @@
 .comment
-  border-top: 1px solid #efefef
-  img
+  padding-top: 18px
+  border-bottom: 1px solid #000
+  overflow: auto
+  .comment-content
+    margin-left: 18px
     float: left
-    margin-top: 15px
-    margin-left: 10px
-  .content
-    margin-left: 60px
-    p.name
-      margin-top: 15px
+    .comment-name
       margin-bottom: 5px
-    p.date, p.edit_date
-      color: #9f9f9f
-      font-size: 13px
+      font-size: 20px
+      font-weight: bold
+    .comment-date, .comment-edit-date
+      font-size: 16px
+      font-weight: bold
       margin-top: 5px
-      margin-bottom: 5px
+      margin-bottom: 15px
+
+.comment-avatar
+  float: left
 
 .preview-display
   margin-top: 15px
@@ -26,14 +29,9 @@
   width: 486px
 
 .new_comment, .edit_comment
-  border-top: 1px solid #efefef
-  img
-    float: left
-    margin-top: 15px
-    margin-left: 10px
   .content
     margin-left: 60px
-    #comment_body
+    .preview-base
       margin-top: 16px
       width: 500px
       height: 120px
@@ -43,3 +41,17 @@
       width: 500px
       .info
         margin-top: 10px
+
+.comment-event-form
+  padding-top: 18px
+  overflow: auto
+  .new_comment, .edit_comment
+    .content
+      width: 525px
+      margin-left: 18px
+      float: left
+      .preview-base
+        margin-top: 0
+  .comment-submit-button
+    text-transform: uppercase
+    margin-right: 10px
