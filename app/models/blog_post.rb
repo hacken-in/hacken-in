@@ -11,7 +11,7 @@ class BlogPost < ActiveRecord::Base
 
   after_initialize :set_defaults
 
-  validates_presence_of :headline, :headline_teaser, :teaser_text, :text, :user, :category, :publishable_from
+  validates_presence_of :headline, :headline_teaser, :teaser_text, :text, :user, :category, :publishable_from, :picture_id
 
   scope :for_web, lambda { where( "publishable = ? and publishable_from <= ?", true, Time.zone.now ).order("publishable_from desc") }
   scope :most_recent, where("publishable_from <= ?", Time.zone.now).order("publishable_from ASC").limit(10)
