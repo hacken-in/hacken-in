@@ -1,0 +1,19 @@
+%h2 Anmelden
+
+%h3 Mit Benutzerdaten
+
+= semantic_form_for resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-horizontal' } do |f|
+  = f.input :email, label: 'E-Mail oder Nickname'
+  = f.input :password
+  - if devise_mapping.rememberable?
+    = f.input :remember_me, :as => :boolean
+  
+  .controls
+    = f.submit "Anmelden", class: 'btn btn-inverse'
+    = render partial: 'users/shared/links'
+
+%h2 ... oder mit einem dieser Services
+%ul
+  - User.omniauth_providers.each do |provider|
+    = link_to image_tag("oauth/#{provider.to_s}.png"), user_omniauth_authorize_url(provider)
+

@@ -1,0 +1,7 @@
+%h2 Passwort vergessen?
+
+= semantic_form_for resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'form-horizontal' } do |f|
+  = f.input :email
+  .controls
+    = f.submit "Passwort zusenden", class: 'btn btn-inverse'
+    = render partial: "users/shared/links"
