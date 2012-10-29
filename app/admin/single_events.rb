@@ -10,6 +10,7 @@ ActiveAdmin.register SingleEvent do
     column :name do |single_event|
       single_event.name || single_event.event.name
     end
+    column :category
     column :description do |single_event|
       single_event.description.try :truncate, 80
     end
