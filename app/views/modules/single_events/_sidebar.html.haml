@@ -5,10 +5,10 @@
       - if @single_event.event.picture.present?
         = image_tag(@single_event.event.picture.box_image.url, class: 'event-image')
 
-        .event-text
-          - if @single_event.event.description.present?
-            = convert_markdown @single_event.event.description, true
-          %p= link_to "Weiterlesen", @single_event.event
+      .event-text
+        - if @single_event.event.description.present?
+          = convert_markdown @single_event.event.description, true
+        %p= link_to "Weiterlesen", @single_event.event
 
   - if @advertisement.present?
     .single_event_advertisement
