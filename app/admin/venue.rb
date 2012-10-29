@@ -21,7 +21,7 @@ ActiveAdmin.register Venue do
       attributes_table do
       row :single_events do |preset|
         ul do
-          venue.single_events.map { |s| li(link_to(s.full_name, edit_admin_single_event_path(s))) }
+          venue.single_events.map { |s| li(link_to(s.full_name, edit_admin_event_single_event_path(s.event, s))) }
           end
         end
       row :events do |preset|
