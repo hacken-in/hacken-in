@@ -8,6 +8,7 @@
       .black-bar-content{ data: { hlcolor: color } }
         .black-bar-center-part
           %h1.black-bar-title= @event.name
+          .clearfix
 
     .event-info
       = render "events/description", event: @event

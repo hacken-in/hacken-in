@@ -11,6 +11,7 @@
         .black-bar-center-part
           %h1.black-bar-title= @single_event.event.name
           .black-bar-time= I18n.localize(@single_event.occurrence, format: "%H:%M Uhr")
+          .clearfix
 
     .event-info
       - if @single_event.name?
