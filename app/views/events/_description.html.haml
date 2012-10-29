@@ -1,12 +1,11 @@
-- if event.description?
-  .event-description
-    .event-content-field
-      .content-field-icon
-        %i.icon-info-sign
-      .content-field-text
-        = convert_markdown event.description, true
+.event-description
+  .event-content-field
+    .content-field-icon
+      %i.icon-info-sign
+    .content-field-text
+      = convert_markdown event.description, true
 
-- if event.url?
+- if event.url.present?
   .event-homepage
     .event-content-field
       .content-field-icon
@@ -14,7 +13,7 @@
       .content-field-text
         %a.hidden-link{ href: event.url }= event.url
 
-- if event.twitter?
+- if event.twitter.present?
   .event-twitter-handle
     .event-content-field
       .content-field-icon
