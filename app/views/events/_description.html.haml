@@ -1,9 +1,10 @@
-.event-description
-  .event-content-field
-    .content-field-icon
-      %i.icon-info-sign
-    .content-field-text
-      = convert_markdown event.description, true
+- if event.description.present?
+  .event-description
+    .event-content-field
+      .content-field-icon
+        %i.icon-info-sign
+      .content-field-text
+        = convert_markdown event.description, true
 
 - if event.url.present?
   .event-homepage
