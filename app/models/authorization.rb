@@ -25,5 +25,7 @@ class Authorization < ActiveRecord::Base
       secret: auth.credentials.secret
     }
     auth_data[:token_expires] = Time.at(auth.credentials.expires_at) if auth.credentials.expires_at
+
+    auth
   end
 end
