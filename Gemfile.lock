@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: https://github.com/gregbell/active_admin.git
-  revision: 3d6976ccf8a4dd7089f3033590905c84500c2a4f
+  revision: 4e870e06e35145eab6a04b8e3591d2b67621583d
   specs:
     activeadmin (0.5.0)
       arbre (>= 1.0.1)
@@ -60,12 +60,12 @@ GEM
     bootstrap-kaminari-views (0.0.2)
       kaminari (>= 0.13)
       rails (>= 3.1)
-    bootstrap-sass-rails (2.1.1.0)
+    bootstrap-sass-rails (2.1.1.1)
       railties (~> 3.1)
       sass-rails (~> 3.1)
     bourbon (2.1.1)
       sass (>= 3.1)
-    builder (3.0.3)
+    builder (3.0.4)
     cancan (1.6.8)
     carrierwave (0.6.2)
       activemodel (>= 3.2.0)
@@ -76,7 +76,7 @@ GEM
     coffee-script (2.2.0)
       coffee-script-source
       execjs
-    coffee-script-source (1.3.3)
+    coffee-script-source (1.4.0)
     color (1.4.1)
     dalli (1.1.5)
     devise (2.1.2)
@@ -87,7 +87,7 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    factory_girl (3.6.1)
+    factory_girl (3.6.2)
       activesupport (>= 3.0.0)
     factory_girl_rails (3.6.0)
       factory_girl (~> 3.6.0)
@@ -100,10 +100,10 @@ GEM
     formtastic (2.2.1)
       actionpack (>= 3.0)
     gabba (0.3.0)
-    geocoder (1.1.3)
+    geocoder (1.1.2)
     gravatar_image_tag (1.1.3)
     growl (1.0.3)
-    guard (1.3.2)
+    guard (1.3.3)
       listen (>= 0.4.2)
       thor (>= 0.14.6)
     guard-bundler (1.0.0)
@@ -120,9 +120,9 @@ GEM
     hike (1.2.1)
     html_truncator (0.3.0)
       nokogiri (~> 1.4)
-    httpauth (0.1)
+    httpauth (0.2.0)
     i18n (0.6.1)
-    ice_cube (0.8.0)
+    ice_cube (0.8.1)
     inherited_resources (1.3.1)
       has_scope (~> 0.5.0)
       responders (~> 0.6)
@@ -137,12 +137,12 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     libv8 (3.3.10.4)
-    listen (0.5.0)
+    listen (0.5.3)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    md_emoji (0.0.7)
+    md_emoji (0.0.8)
       railties (>= 3.1.0)
       redcarpet (>= 2.0)
     mediaelement_rails (0.4.0)
@@ -157,12 +157,12 @@ GEM
     mime-types (1.19)
     mini_magick (3.4)
       subexec (~> 0.2.1)
-    mocha (0.12.4)
+    mocha (0.12.7)
       metaclass (~> 0.0.1)
     multi_json (1.3.6)
     multipart-post (1.1.5)
     mysql2 (0.3.11)
-    newrelic_rpm (3.4.2)
+    newrelic_rpm (3.4.2.1)
     nokogiri (1.5.5)
     oauth (0.4.7)
     oauth2 (0.8.0)
@@ -187,7 +187,7 @@ GEM
     omniauth-oauth (1.0.1)
       oauth
       omniauth (~> 1.0)
-    omniauth-oauth2 (1.1.0)
+    omniauth-oauth2 (1.1.1)
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
     omniauth-twitter (0.0.13)
@@ -195,7 +195,7 @@ GEM
       omniauth-oauth (~> 1.0)
     open4 (1.3.0)
     orm_adapter (0.4.0)
-    pjax_rails (0.3.3)
+    pjax_rails (0.3.4)
       jquery-rails
     polyamorous (0.5.0)
       activerecord (~> 3.0)
@@ -205,7 +205,7 @@ GEM
       rack (>= 0.4)
     rack-ssl (1.3.2)
       rack
-    rack-test (0.6.1)
+    rack-test (0.6.2)
       rack (>= 1.0)
     rails (3.2.8)
       actionmailer (= 3.2.8)
@@ -226,11 +226,11 @@ GEM
     rake-remote_task (2.0.6)
       open4 (~> 1.0)
       rake (~> 0.8)
-    rb-fsevent (0.9.1)
+    rb-fsevent (0.9.2)
     rdoc (3.12)
       json (~> 1.4)
     redcarpet (2.1.1)
-    responders (0.9.2)
+    responders (0.9.3)
       railties (~> 3.1)
     ri_cal (0.8.8)
     sass (3.2.1)
@@ -265,10 +265,10 @@ GEM
     tipsy-rails (1.0.3)
       railties (~> 3.0)
       sass-rails
-    treetop (1.4.10)
+    treetop (1.4.11)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (0.3.33)
+    tzinfo (0.3.34)
     uglifier (1.2.7)
       execjs (>= 0.3.0)
       multi_json (~> 1.3)
@@ -289,11 +289,11 @@ PLATFORMS
 DEPENDENCIES
   activeadmin!
   acts-as-taggable-on (~> 2.3.1)
-  bootstrap-kaminari-views
-  bootstrap-sass-rails
+  bootstrap-kaminari-views (~> 0.0.2)
+  bootstrap-sass-rails (~> 2.1.1.0)
   cancan (~> 1.6.7)
   carrierwave (~> 0.6.2)
-  ckeditor_rails
+  ckeditor_rails (~> 3.6.4.1)
   coffee-script (~> 2.2.0)
   dalli (~> 1.1.5)
   devise (~> 2.1.1)
@@ -302,7 +302,7 @@ DEPENDENCIES
   faker (= 1.0.1)
   formtastic (~> 2.2.0)
   gabba (~> 0.3.0)
-  geocoder (~> 1.0)
+  geocoder (= 1.1.2)
   gravatar_image_tag (~> 1.1.0)
   growl (~> 1.0.3)
   guard (~> 1.3.0)
@@ -315,27 +315,27 @@ DEPENDENCIES
   jquery-rails (~> 2.0.0)
   leaflet-rails!
   md_emoji (~> 0.0.7)
-  mediaelement_rails
+  mediaelement_rails (~> 0.4.0)
   mini_magick (~> 3.4)
   mocha (~> 0.12.0)
   mysql2 (~> 0.3.11)
   newrelic_rpm (~> 3.4.0)
-  omniauth
-  omniauth-facebook
-  omniauth-github
-  omniauth-google-oauth2
-  omniauth-linkedin
-  omniauth-twitter
-  pjax_rails
+  omniauth (~> 1.1.1)
+  omniauth-facebook (~> 1.4.1)
+  omniauth-github (~> 1.0.3)
+  omniauth-google-oauth2 (~> 0.1.13)
+  omniauth-linkedin (~> 0.0.8)
+  omniauth-twitter (~> 0.0.13)
+  pjax_rails (~> 0.3.3)
   rails (~> 3.2.8)
   rake (~> 0.9)
   rb-fsevent (~> 0.9.0pre4)
   redcarpet (~> 2.1.0)
   ri_cal (~> 0.8.8)
   sass-rails (~> 3.2.3)
-  simple-navigation
+  simple-navigation (~> 3.9.0)
   simple_form (~> 2.0.4)
-  smurfville
+  smurfville (~> 0.0.6)
   spork-testunit (~> 0.0.7)
   sqlite3 (~> 1.3.5)
   therubyracer (~> 0.10.1)
