@@ -27,7 +27,8 @@
               - else
                 Termin anzeigen
           |
-          %a{href:new_admin_event_single_event_path(@event)}
-            Neuen Termin anlegen
+          - if @event.persisted?
+            %a{href:new_admin_event_single_event_path(@event)}
+              Neuen Termin anlegen
   = form.actions
   %h3 Termine
