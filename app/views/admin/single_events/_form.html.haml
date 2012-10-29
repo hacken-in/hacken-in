@@ -16,10 +16,11 @@
     = form.input :duration, placeholder: @single_event.event.duration
     = form.input :full_day
     = form.input :venue
-    %li
-      %label.label &nbsp;
-      Ort der Veranstaltungsreihe:
-      = @single_event.event.venue.location
+    - if @single_event.event.venue.present?
+      %li
+        %label.label &nbsp;
+        Ort der Veranstaltungsreihe:
+        = @single_event.event.venue.location
     = form.input :venue_info, placeholder: @single_event.event.venue_info
     = form.input :category
     = form.input :picture
