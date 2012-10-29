@@ -10,9 +10,10 @@
             = convert_markdown @single_event.event.description, true
           %p= link_to "Weiterlesen", @single_event.event
 
-  .single_event_advertisement
-    Werbung
-    = link_to(image_tag(@advertisement.picture.advertisement_image.rectangle.url), @advertisement.link)
+  - if @advertisement.present?
+    .single_event_advertisement
+      Werbung
+      = link_to(image_tag(@advertisement.picture.advertisement_image.rectangle.url), @advertisement.link)
 
   .event-external-links
     = link_to image_tag("blog-twitter.png"), "http://twitter.com/nerdhub_cgn", class: 'external-link'
