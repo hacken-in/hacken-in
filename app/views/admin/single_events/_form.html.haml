@@ -32,6 +32,7 @@
       - else
         = @single_event.event.picture.try :name
     = form.input :url, placeholder: @single_event.event.url
+    = form.input :twitter, placeholder: @single_event.event.twitter
     = form.input :twitter_hashtag, placeholder: @single_event.event.twitter_hashtag
     = form.input :tag_list, placeholder: @single_event.event.tag_list
   = form.actions
