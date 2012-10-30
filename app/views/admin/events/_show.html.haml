@@ -23,7 +23,10 @@
           %td= link_to @event.url, @event.url
         %tr
           %th Twitter
-          %td= link_to @event.twitter, "http://twitter.com/#{@event.twitter}"
+          %td= link_to "@#{@event.twitter}", "http://twitter.com/#{@event.twitter}"
+        %tr
+          %th Twitter Hashtag
+          %td= link_to "##{@event.twitter_hashtag}", "http://twitter.com/search/?q=##{@event.twitter_hashtag}"
         %tr
           %th Ort
           %td= "#{@event.venue.try :location} (#{@event.venue.try :id})"
