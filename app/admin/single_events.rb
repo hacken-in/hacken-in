@@ -35,7 +35,9 @@ ActiveAdmin.register SingleEvent do
       row :occurrence
       row :duration
       row :full_day
-      row :description
+      row :description do |p|
+        convert_markdown p.description
+      end
       row :venue
       row :venue_info
       row :twitter

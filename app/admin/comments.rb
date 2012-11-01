@@ -20,7 +20,13 @@ ActiveAdmin.register Comment, as: "NerdhubComment" do
     column :body do |comment|
       raw convert_markdown(comment.body, false)
     end
-    column :commentable
+    column :commentable do |comment|
+      if comment.commentable.class == SingleEvent
+        link_to comment.commentable.to_s, admin_event_single_event_path(comment.commentable.event, comment.commentable)
+      else
+        auto_link comment.commentable
+      end
+    end
     column :created_at
     column :updated_at
     default_actions

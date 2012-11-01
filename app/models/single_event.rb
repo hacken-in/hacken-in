@@ -48,6 +48,7 @@ class SingleEvent < ActiveRecord::Base
     self.name.blank? ? self.event.name : "#{self.event.name} (#{self.name})"
   end
 
+  alias :to_s :full_name
   alias :title :full_name
 
   def name_with_date

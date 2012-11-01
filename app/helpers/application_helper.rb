@@ -25,6 +25,7 @@ module ApplicationHelper
   end
 
   def convert_markdown(markdown_text, without_follow = false)
+    return "" if markdown_text.nil?
     if without_follow
       render_class = HTMLwithoutFollow
     else
