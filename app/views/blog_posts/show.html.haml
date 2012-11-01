@@ -1,6 +1,9 @@
 .row
   .span4
     = render partial: "modules/blog_post/full", locals: {blog_post: @post}
+    - if current_user.admin
+      = link_to "Bearbeiten", edit_admin_blog_post_path(@post)
+
     = render partial: "modules/comments/comments", locals: {commentable: @post}
   .span2
     = render partial: "modules/blog_post/sidebar", locals: {categories: @categories, current_category: @current_category, single_events: @single_events}

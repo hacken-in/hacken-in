@@ -19,6 +19,10 @@
       = render 'modules/single_events/social'
       .clearfix
 
+      - if current_user.admin
+        .admin_edit_link
+          = link_to "Bearbeiten", edit_admin_event_path(@event)
+
     = render partial: 'modules/comments/comments', locals: { commentable: @event }
 
   .span2
