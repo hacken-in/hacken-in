@@ -118,7 +118,7 @@ class SingleEvent < ActiveRecord::Base
   end
 
   # Get the attribute from the Event model unless they exist here
-  [:url, :twitter_hashtag, :duration, :full_day, :category_id].each do |item|
+  [:url, :twitter_hashtag, :duration, :full_day, :category_id, :venue_info].each do |item|
     define_method item.to_s do
       value = self.read_attribute(item)
       if !value.nil? && !(value.class.to_s == "String" && value.blank?)

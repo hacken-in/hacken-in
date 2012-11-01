@@ -2,6 +2,9 @@
   %address.event-venue
     = event.venue.location
     %br
+    - if event.venue_info.present?
+      = event.venue_info
+      %br
     = event.venue.street
     %br
     = event.venue.zipcode
