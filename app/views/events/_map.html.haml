@@ -1,7 +1,7 @@
-- unless event.latitude.blank? or event.longitude.blank?
+- unless event.venue.nil? or event.venue.latitude.blank? or event.venue.longitude.blank?
   :javascript
     function initialize() {
-      var eventLocation = new L.LatLng(#{event.latitude}, #{event.longitude});
+      var eventLocation = new L.LatLng(#{event.venue.latitude}, #{event.venue.longitude});
 
       var map = new L.Map('mapCanvas', { center: eventLocation, zoom: 13 });
 

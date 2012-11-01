@@ -13,4 +13,4 @@
 
       .event-content
         .event-time= event.occurrence.strftime("%H:%M Uhr")
-        .event-location= event.location
+        .event-location= event.venue.try(:location)

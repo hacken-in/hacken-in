@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121028173936) do
+ActiveRecord::Schema.define(:version => 20121101081556) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -136,13 +136,6 @@ ActiveRecord::Schema.define(:version => 20121028173936) do
     t.string   "twitter"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "location"
-    t.string   "street"
-    t.string   "zipcode"
-    t.string   "city"
-    t.string   "country"
-    t.float    "latitude"
-    t.float    "longitude"
     t.boolean  "full_day",        :default => false
     t.string   "twitter_hashtag"
     t.integer  "category_id"
@@ -152,8 +145,6 @@ ActiveRecord::Schema.define(:version => 20121028173936) do
   end
 
   add_index "events", ["category_id"], :name => "index_events_on_category_id"
-  add_index "events", ["latitude"], :name => "index_events_on_latitude"
-  add_index "events", ["longitude"], :name => "index_events_on_longitude"
   add_index "events", ["picture_id"], :name => "index_events_on_picture_id"
   add_index "events", ["venue_id"], :name => "index_events_on_venue_id"
 
@@ -177,13 +168,6 @@ ActiveRecord::Schema.define(:version => 20121028173936) do
     t.string   "url"
     t.integer  "duration"
     t.boolean  "full_day"
-    t.string   "location"
-    t.string   "street"
-    t.string   "zipcode"
-    t.string   "city"
-    t.string   "country"
-    t.float    "latitude"
-    t.float    "longitude"
     t.string   "twitter_hashtag"
     t.boolean  "based_on_rule",   :default => false
     t.integer  "category_id"

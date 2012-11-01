@@ -1,7 +1,8 @@
-%address.event-venue
-  = event.location
-  %br
-  = event.street
-  %br
-  = event.zipcode
-  = event.city
+- unless event.venue.nil?
+  %address.event-venue
+    = event.venue.location
+    %br
+    = event.venue.street
+    %br
+    = event.venue.zipcode
+    = event.venue.city
