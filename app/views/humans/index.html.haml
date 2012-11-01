@@ -1,18 +1,28 @@
 %h1= t "humans.team"
 
-#team
+%ul.thumbnails
   - @humans.each do |human|
-    .member
-      = gravatar_image_tag human.email, class: "user_gravatar", gravatar: { default: :identicon, size: 256 }
+    %li.span2
+      .thumbnail
+        = gravatar_image_tag human.email, class: "user_gravatar", gravatar: { default: :identicon, size: 256 }
 
-      .name= human.nickname
-      .team= human.team
+        %h3= human.nickname
+        %p
+          %strong
+            = human.team
+          %br
 
-      - unless human.twitter.blank?
-        .twitter= human.twitter
+          - unless human.twitter.blank?
+            %i.icon-twitter
+            %a{href: "http://twitter.com/#{human.twitter}"}= human.twitter
+            %br
 
-      - unless human.github.blank?
-        .twitter= human.github
+          - unless human.github.blank?
+            %i.icon-github
+            %a{href: "https://www.github.com/#{human.github}"}= human.github
+            %br
 
-      - unless human.homepage.blank?
-        .twitter= human.homepage
+          - unless human.homepage.blank?
+            %i.icon-home
+            %a{href: human.homepage}= human.homepage
+            %br
