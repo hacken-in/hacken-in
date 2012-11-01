@@ -22,3 +22,12 @@
       .content-field-text
         %a.hidden-link{ href: "http://twitter.com/#{event.twitter}" }
           = "@#{event.twitter}"
+
+- if event.twitter_hashtag.present?
+  .event-twitter-handle
+    .event-content-field
+      .content-field-icon
+        \#
+      .content-field-text
+        %a.hidden-link{ href: "http://twitter.com/search/?q=%23#{event.twitter_hashtag}" }
+          = "##{event.twitter_hashtag}"
