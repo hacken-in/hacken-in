@@ -25,7 +25,7 @@
       = render 'modules/single_events/social'
       .clearfix
 
-      - if current_user.admin
+      - if current_admin_user
         .admin_edit_link
           = link_to "Bearbeiten", edit_admin_event_single_event_path(@single_event.event, @single_event)
 

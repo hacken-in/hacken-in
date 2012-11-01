@@ -1,8 +1,9 @@
 .row
   .span4
     = render partial: "modules/blog_post/full", locals: {blog_post: @post}
-    - if current_user.admin
-      = link_to "Bearbeiten", edit_admin_blog_post_path(@post)
+    - if current_admin_user
+      .admin_edit_link
+        = link_to "Bearbeiten", edit_admin_blog_post_path(@post)
 
     = render partial: "modules/comments/comments", locals: {commentable: @post}
   .span2
