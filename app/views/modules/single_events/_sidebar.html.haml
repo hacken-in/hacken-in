@@ -7,7 +7,7 @@
 
       .event-text
         - if @single_event.event.description.present?
-          = convert_markdown @single_event.event.description, true
+          = truncate_html convert_markdown(@single_event.event.description, true), 30
         %p= link_to "Weiterlesen", @single_event.event
 
   - if @advertisement.present?

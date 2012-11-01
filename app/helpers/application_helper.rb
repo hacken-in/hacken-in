@@ -24,6 +24,10 @@ module ApplicationHelper
       retval.html_safe
   end
 
+  def truncate_html(html, length=30, opts={})
+    HTML_Truncator.truncate(html, length, opts).html_safe
+  end
+
   def convert_markdown(markdown_text, without_follow = false)
     return "" if markdown_text.nil?
     if without_follow
