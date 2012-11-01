@@ -2,8 +2,8 @@
 
 %ul.thumbnails
   - @humans.each do |human|
-    %li.span2.team-box
-      .thumbnail
+    %li.span2
+      .thumbnail.team-box
         = gravatar_image_tag human.email, class: "user_gravatar", gravatar: { default: :identicon, size: 256 }
 
         %h3= human.nickname
