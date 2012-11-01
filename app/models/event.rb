@@ -103,6 +103,46 @@ class Event < ActiveRecord::Base
     schedule.duration = duration.to_i * 60
   end
 
+  # This returns a simplified view of the icecube system
+  # An example result would be:
+  # [{"type" => 'monthly', "interval" => -1, "days" => ["monday"]}]
+  # interval = -1 means last monday of the month, 2 means second monday
+  def schedule_rules
+    schedule.recurrence_rules.map do |rule|
+      hash = {}
+      hash["type"] = 'monthly' if rule.class == IceCube::MonthlyRule
+      hash["interval"] = rule.validations_for(:day_of_week).first.occ
+      hash["days"] = rule.validations_for(:day_of_week).map{|d| Date::DAYNAMES[d.day].downcase}
+      hash
+    end
+  end
+
+  def schedule_rules=(rules)
+    schedule.recurrence_rules.each do |rule|
+      schedule.remove_recurrence_rule rule
+    end
+    rules.each do |rule|
+      week_hash = {}
+      rule["days"].each do |d|
+        week_hash[d.to_sym] = [rule["interval"]]
+      end
+      schedule.add_recurrence_rule IceCube::Rule.monthly.day_of_week(week_hash)
+    end
+  end
+
+  def excluded_times
+    schedule.extimes
+  end
+
+  def excluded_times=(times)
+    schedule.extimes.each do |time|
+      schedule.remove_extime(time)
+    end
+    times.each do |time|
+      schedule.extime(time)
+    end
+  end
+
   private
 
   def schedule_to_yaml

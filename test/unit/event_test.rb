@@ -217,5 +217,36 @@ class EventTest < ActiveSupport::TestCase
     assert_equal 11, event.single_events.count
   end
 
+  test "simplify exdates" do
+    event = FactoryGirl.create(:simple)
+    event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
+    exclude = event.schedule.first
+    event.schedule.add_exception_time exclude
+    assert_equal [exclude], event.excluded_times
+  end
+
+  test "update exdates" do
+    event = FactoryGirl.create(:simple)
+    event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
+    exclude = event.schedule.first
+    event.excluded_times = [exclude]
+    assert_equal [exclude], event.excluded_times
+  end
+
+  test "simplify rrules" do
+    event = FactoryGirl.create(:simple)
+    event.schedule.add_recurrence_rule IceCube::Rule.monthly.day_of_week({1 => [-1]})
+    assert_equal [{"type" => 'monthly', "interval" => -1, "days" => ["monday"]}], event.schedule_rules
+  end
+
+  test "update rrules" do
+    event = FactoryGirl.create(:simple)
+    event.start_time = Time.new(2012,10,10,20,15)
+    event.schedule_rules = [{"type" => 'monthly', "interval" => -1, "days" => ["monday"]}]
+    event.save
+    assert_equal 1, event.single_events.first.occurrence.wday
+    assert_equal 20, event.single_events.first.occurrence.hour
+    assert_equal 15, event.single_events.first.occurrence.min
+  end
 
 end
