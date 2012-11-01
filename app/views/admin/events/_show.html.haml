@@ -26,10 +26,14 @@
           %td= link_to "@#{@event.twitter}", "http://twitter.com/#{@event.twitter}"
         %tr
           %th Twitter Hashtag
-          %td= link_to "##{@event.twitter_hashtag}", "http://twitter.com/search/?q=##{@event.twitter_hashtag}"
+          %td
+            - if @event.twitter_hashtag.present?
+              = link_to "##{@event.twitter_hashtag}", "http://twitter.com/search/?q=##{@event.twitter_hashtag}"
         %tr
           %th Ort
-          %td= "#{@event.venue.try :location} (#{@event.venue.try :id})"
+          %td
+            - if @event.venue.present?
+              = "#{@event.venue.location} (#{@event.venue.id})"
         %tr
           %th Ort Zusatzinfo
           %td= @event.venue_info
