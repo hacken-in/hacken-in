@@ -36,7 +36,7 @@ class SingleEvent < ActiveRecord::Base
   scope :in_categories,
     lambda { |categories| joins(:event).where('single_events.category_id IN (?) OR (single_events.category_id IS NULL AND events.category_id IN (?))', categories, categories) }
 
-  default_scope order(:occurrence)
+  default_scope includes(:event).order([:occurrence, 'single_events.name ASC', 'events.name ASC'])
 
   acts_as_taggable
 
