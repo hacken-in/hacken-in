@@ -8,6 +8,17 @@ Hcking::Application.routes.draw do
       resources :single_events
     end
   end
+  
+  namespace :api do
+    resource :calendar, only: [:show] do
+      get :presets
+      get :entries
+
+      post :presets, :action => :update_presets
+    end
+
+    resources :user_tags, :path => "/user/:kind", :constraints => { id: /.*/, kind: /(like|hate)/ }, :only => [:create, :destroy]
+  end
 
   if defined?(Smurfville) != nil
     mount Smurfville::Engine => "/smurfville"
@@ -17,11 +28,7 @@ Hcking::Application.routes.draw do
     resources :authorizations, only: [:destroy]
   end
 
-  resources :user_tags,
-    :path => "/user/:kind",
-    :constraints => { id: /.*/, kind: /(like|hate)/ },
-    :only => [:create, :destroy]
-
+  
   match "podcast/category/:category_id" => "podcasts#index", as: "podcast_categorie"
   match "podcast/:year" => "podcasts#index", year: /\d{4}/
   match "podcast/:year/:month" => "podcasts#index", year: /\d{4}/, month: /\d{1,2}/
@@ -54,13 +61,7 @@ Hcking::Application.routes.draw do
 
   resources :suggestions, only: [:new, :create, :show]
 
-  resource :calendar, only: [:show] do
-    get :presets
-    get :entries
-
-    post :presets, :action => :update_presets
-  end
-
+  resource :calendar, only: [:show] 
   resources :events, only: [:index, :show] do
     resources :comments, except: [:new]
 
