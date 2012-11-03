@@ -1,12 +1,7 @@
-- if carousel_box.content.respond_to? :event
-  - url = url_for [carousel_box.content.event, carousel_box.content]
-- else
-  - url = url_for [carousel_box.content]
-
 .item{class: "#{'active' if carousel_box.carousel_position == 1}"}
-  = link_to url do
+  = link_to target_url(carousel_box) do
     = image_tag carousel_box.picture.carousel_image
-  = link_to url do
+  = link_to target_url(carousel_box) do
     .carousel-caption
       %h4= carousel_box.second_line
       %p
