@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class UserTagsControllerTest < ActionController::TestCase
+class Api::UserTagsControllerTest < ActionController::TestCase
   include Devise::TestHelpers
 
   [:hate, :like].each do |kind|
