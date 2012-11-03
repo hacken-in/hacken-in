@@ -4,6 +4,7 @@
   width: 624px
   margin-bottom: 1px
   li
+    cursor: pointer
     display: block
     float: left
     margin-right: 1px
@@ -11,6 +12,9 @@
     list-style-type: none
     width: 47px
     text-align: center
+    &.current
+      background-color: $dark_background_color
+      color: $light_text_color
 
 .calendar-startselector-days
   margin-left: 0px
@@ -18,6 +22,7 @@
   width: 624px
   font-size: 12px
   li
+    cursor: pointer
     display: block
     float: left
     margin-right: 1px
@@ -26,7 +31,9 @@
     width: 19.129032258064516px
     padding: 0
     text-align: center
-
+    &.current
+      background-color: $dark_background_color
+      color: $light_text_color
 
 .calendar-calendar
   h1
