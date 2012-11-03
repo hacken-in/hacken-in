@@ -73,7 +73,7 @@ Calendar =
   getEntries: (from, to, callback) ->
     $.ajax
       type: 'GET'
-      url: '/calendar/entries'
+      url: '/api/calendar/'
       data:
         from: from
         to: to
@@ -95,7 +95,7 @@ CalendarTaggings =
 
     $.ajax
        type: 'POST'
-       url: "/user/#{list}"
+       url: "/api/user/#{list}"
        data:
          tags: [tag]
        success: (data) ->
@@ -109,7 +109,7 @@ CalendarTaggings =
   removeTag: (list, tag) ->
     $.ajax
        type: 'DELETE'
-       url: "/user/#{list}/#{tag}"
+       url: "/api/user/#{list}/#{tag}"
        success: (data) ->
          if data.status is 'error'
            # TODO: Eventuell ein schöneres Alert
@@ -134,7 +134,7 @@ CalendarPreset =
     # cares: Patch is welcome :)
     $.ajax
      type: 'POST'
-     url: "/calendar/presets"
+     url: "/api/calendar/presets"
      data:
        category_ids: categories.get().join(',')
 

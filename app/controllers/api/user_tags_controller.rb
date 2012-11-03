@@ -1,12 +1,12 @@
 # encoding: utf-8
-class UserTagsController < ApplicationController
+class Api::UserTagsController < ApplicationController
   def create
     return render(:nothing => true, :status => :unauthorized) unless current_user
 
     if modify_tag_list params[:kind], params[:tags]
       render json: { :status => :success, :message => t("user_tags.create.confirmation") }, :status => :created
     else
-      render json: { :status => :error, :message => t("user_tags.create.error") }, :status => 422 #TODO: Eventuell besseren Code verwenden ;)
+      render json: { :status => :error, :message => t("user_tags.create.error") }, :status => 422
     end
   end
 
@@ -16,7 +16,7 @@ class UserTagsController < ApplicationController
     if remove_tag_from_list params[:kind], remove: params[:id]
       render json: { :status => :success, :message => t("user_tags.destroy.confirmation") }, :status => :ok
     else
-      render json: { :status => :error, :message => t("user_tags.destroy.error") }, :Status => 422 #TODO s.o.
+      render json: { :status => :error, :message => t("user_tags.destroy.error") }, :Status => 422
     end
   end
 
