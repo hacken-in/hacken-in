@@ -18,9 +18,6 @@
 .comment-avatar
   float: left
 
-.preview-display
-  margin-top: 15px
-
 .markdown-preview
   display: none
   box-shadow: 0 0 5px 1px $red
@@ -31,6 +28,11 @@
 .new_comment, .edit_comment
   .content
     margin-left: 60px
+
+    .previewable
+      .preview-display
+        min-height: 120px
+
     .preview-base
       margin-top: 16px
       width: 500px

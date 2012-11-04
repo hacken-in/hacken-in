@@ -32,7 +32,6 @@ HckingPreview = ->
     if preview_display.size() == 0
       preview_display = ($ document.createElement('div'))
       .addClass('preview-display')
-      .height(preview_base.height())
       .width(preview_base.width())
       .appendTo(container)
 
