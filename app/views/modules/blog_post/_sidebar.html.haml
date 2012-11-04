@@ -35,9 +35,12 @@
               \-
               = single_event.occurrence.hour + (single_event.duration || 0) / 60
               Uhr
-  .blog_advertisement
-    Werbung
-    = image_tag(@advertisement.picture.advertisement_image.rectangle.url)
+
+  - unless @advertisement.nil?
+    .blog_advertisement
+      Werbung
+      = image_tag(@advertisement.picture.advertisement_image.rectangle.url)
+
   .blog_nerdletter
     %h2 Nerdletter
 
