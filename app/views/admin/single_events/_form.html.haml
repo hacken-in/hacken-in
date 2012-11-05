@@ -30,7 +30,7 @@
       - if @single_event.event.picture.nil?
         Kein Bild verknüpft
       - else
-        = @single_event.event.picture.try :name
+        = @single_event.event.picture.try :title
     = form.input :url, placeholder: @single_event.event.url
     = form.input :twitter, placeholder: @single_event.event.twitter
     = form.input :twitter_hashtag, placeholder: @single_event.event.twitter_hashtag
