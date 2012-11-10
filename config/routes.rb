@@ -8,7 +8,7 @@ Hcking::Application.routes.draw do
       resources :single_events
     end
   end
-  
+
   namespace :api do
     resource :calendar, only: [:show] do
       get :presets
@@ -28,7 +28,6 @@ Hcking::Application.routes.draw do
     resources :authorizations, only: [:destroy]
   end
 
-  
   match "podcast/category/:category_id" => "podcasts#index", as: "podcast_categorie"
   match "podcast/:year" => "podcasts#index", year: /\d{4}/
   match "podcast/:year/:month" => "podcasts#index", year: /\d{4}/, month: /\d{1,2}/
@@ -61,7 +60,7 @@ Hcking::Application.routes.draw do
 
   resources :suggestions, only: [:new, :create, :show]
 
-  resource :calendar, only: [:show] 
+  resource :calendar, only: [:show]
   resources :events, only: [:index, :show] do
     resources :comments, except: [:new]
 
@@ -81,11 +80,8 @@ Hcking::Application.routes.draw do
   match "history"                 => "events#history"
   match "humans"                  => "humans#index"
   match "impressum"               => "pages#show", page_name: "impressum"
-
-  # This pages are not done yet!
   match "contact"                 => "pages#todo"
   match "newsletter"              => "pages#todo"
-
   match ":page_name"              => "pages#show"
 
   root to: "welcome#index"

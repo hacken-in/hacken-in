@@ -14,7 +14,7 @@
       = f.input :github
       = f.input :homepage
       = f.input :allow_ignore_view, :as => :boolean, :label => t('users.edit.allow_ignore_view')
-        
+
       %fieldset
         %legend= t 'registrations.oauth.title'
         %ul
@@ -24,7 +24,7 @@
               = link_to t('registrations.oauth.delete'), user_authorization_path(f.object, auth), :"data-confirm" => t('common.confirm_delete'), method: :delete unless f.object.needs_one_authorization?
         - if f.object.needs_one_authorization?
           %p=t 'registrations.oauth.only_one_no_password'
-              
+
         .control-group
           %label= t('registrations.oauth.more')
           .controls
@@ -42,7 +42,7 @@
     %legend
       = t 'registragions.edit.danger_zone'
     - if f.object.encrypted_password?
-      .alert.alert-error 
+      .alert.alert-error
         %strong=t('registrations.edit.warning')
       = f.input :current_password, :as => :password
       %br
@@ -52,7 +52,7 @@
     = f.input :email
     = f.input :password, :as => :password, :label => t('registrations.edit.password_label'), :hint =>  t('registrations.edit.password_hint')
     = f.input :password_confirmation, :as => :password
-        
+
   .controls
     =f.submit t('registrations.edit.save_profile'), class: 'btn btn-inverse'
 

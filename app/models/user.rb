@@ -81,7 +81,7 @@ class User < ActiveRecord::Base
     if encrypted_password.blank?
       update_attributes(params.except(:current_password), *options)
     else
-     update_with_password_pass(params) 
+     update_with_password_pass(params)
     end
   end
 

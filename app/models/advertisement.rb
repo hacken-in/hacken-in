@@ -6,9 +6,9 @@ class Advertisement < ActiveRecord::Base
 
   scope :for_actual_week, where(calendar_week: DateTime.now.iso_cweek)
   scope :context, lambda { |ctx| where(context: ctx) }
-  
+
   class << self
-  
+
     %w(homepage event blog_post rss podcast single_event newsletter).each do |context|
       define_method("#{context}") do
         self.for_actual_week.context(context).first || Advertisement.default

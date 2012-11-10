@@ -26,7 +26,7 @@ class Box < ActiveRecord::Base
   end
 
   def picture
-    if content_type == "Advertisement" 
+    if content_type == "Advertisement"
       Advertisement.homepage.picture
     else
       content.picture
