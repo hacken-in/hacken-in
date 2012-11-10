@@ -3,7 +3,7 @@
     function initialize() {
       var eventLocation = new L.LatLng(#{event.venue.latitude}, #{event.venue.longitude});
 
-      var map = new L.Map('mapCanvas', { center: eventLocation, zoom: 13 });
+      var map = new L.Map('mapCanvas', { center: eventLocation, zoom: 13, scrollWheelZoom: false });
 
       var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/785896de12ad4cf892e32b9ec16b5cde/997/256/{z}/{x}/{y}.png';
       var cloudmade = new L.TileLayer(cloudmadeUrl);
