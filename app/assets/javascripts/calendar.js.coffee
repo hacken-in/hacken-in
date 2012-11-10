@@ -35,47 +35,42 @@ jQuery ->
       $(this).parent().remove()
       CalendarTaggings.removeTag(data.list, data.tag)
 
-    ($ ".calendar-startselector-months li").each ->
-      ($ this).click ->
-        current_date = new Date(window.beginningOfTime)
-        current_date.setMonth (($ this).data("month") - 1 % 12)
-        current_date.setYear  ($ this).data("year")
-        window.beginningOfTime = current_date.toISOString().substring(0, 10)
-        switch_to_current_date()
+    $(document).on 'click', '.calendar-startselector-months li', ->
+      current_date = new Date(window.beginningOfTime)
+      current_date.setMonth ($(this).data("month") - 1 % 12)
+      current_date.setYear  $(this).data("year")
+      window.beginningOfTime = current_date.toISOString().substring(0, 10)
+      switch_to_current_date()
+      Calendar.replaceEntries()
 
-    ($ ".calendar-startselector-days li").each ->
-      ($ this).click ->
-        current_date = new Date(window.beginningOfTime)
-        current_date.setDate ($ this).data("day")
-        window.beginningOfTime = current_date.toISOString().substring(0, 10)
-        switch_to_current_date()
+    $(document).on 'click', '.calendar-startselector-days li', ->
+      current_date = new Date(window.beginningOfTime)
+      current_date.setDate $(this).data("day")
+      window.beginningOfTime = current_date.toISOString().substring(0, 10)
+      switch_to_current_date()
+      Calendar.replaceEntries()
 
     switch_to_current_date = ->
       current_date = new Date(window.beginningOfTime)
 
-      ($ ".calendar-startselector-months li").each ->
-        ($ this).removeClass "current"
-        if (current_date.getMonth() + 1 is ($ this).data "month") and (current_date.getFullYear() is ($ this).data "year")
-          ($ this).addClass "current"
+      $(".calendar-startselector-months li").each ->
+        $(this).removeClass "current"
+        if (current_date.getMonth() + 1 is $(this).data "month") and (current_date.getFullYear() is $(this).data "year")
+          $(this).addClass "current"
 
-      ($ ".calendar-startselector-days li").each ->
-        ($ this).removeClass "current"
-        if current_date.getDate() is ($ this).data "day"
-          ($ this).addClass "current"
-
-      Calendar.replaceEntries()
+      $(".calendar-startselector-days li").each ->
+        $(this).removeClass "current"
+        if current_date.getDate() is $(this).data "day"
+          $(this).addClass "current"
 
     switch_to_current_date()
 
     # Alle handler sind gesetzt ... Initialisieren wir die DIY-Kategorie
-    # Dadurch wird ein Neuladen des Kalenders getriggert. So hat jemand der JS aus hat den gesamten Kalender,
-    # und mit JS wird die Kategorie ersetzt ... Ich weiß nicht, ob man das so lassen kann oder sollte, da es ein komisches
-    # neuladen ist
-    CalendarPreset.selectCategoriesFromPreset('diy')
+    CalendarPreset.selectCategoriesFromPreset('diy', false)
 
     # Selbstgebautes Infinite Scroll ... Ernsthaft, da is net viel dabei ... Ich weiß nicht, warum ich eine Lib verwenden sollte
     $(window).scroll ->
-      if $(window).scrollTop() > $(document).height() - $(window).height() - 200 and  not window.currentlyReloading and not window.endOfTheWorld
+      if $(window).scrollTop() > $(document).height() - $(window).height() - 200 and not window.currentlyReloading and not window.endOfTheWorld
         window.currentlyReloading = true
         Calendar.appendEntries()
         # TODO: Der kann noch ein wenig schöner gestyled werden
@@ -182,7 +177,7 @@ CalendarPreset =
 
     CalendarPreset.selectCategoriesFromPreset(presetId)
 
-  selectCategoriesFromPreset: (presetId) ->
+  selectCategoriesFromPreset: (presetId, shouldReload = true) ->
     $all_checkboxes = $('input[name=calendar_category]')
 
     if presetId
@@ -201,5 +196,5 @@ CalendarPreset =
         $('input[name=calendar_category][value=' + categoryId + ']').attr('checked', true)
 
     # Reload the calendar with the new data
-    Calendar.replaceEntries()
+    Calendar.replaceEntries() if shouldReload
 
