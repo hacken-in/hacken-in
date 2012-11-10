@@ -1,7 +1,31 @@
 .welcome_index
+  header
+    .navbar
+      border-bottom: none
+
+  .carousel
+    border-bottom: 2px solid black
+
+    .carousel-control
+      border: 0
+      opacity: 1
+      border-radius: 0
+      background-repeat: no-repeat
+      width: 28px
+      height: 61px
+
+    .left
+      background-image: image-url("header-back.png")
+      left: 0px
+
+    .right
+      background-image: image-url("header-forward.png")
+      right: 0px
+
   a.span2
     text-decoration: none
     color: $dark_text_color
+
   .abo-box
     margin-left: 24px
     width: 940px
@@ -20,7 +44,4 @@
         border: none
         margin-top: -10px
         padding: 5px
-  header
-    .navbar
-      border-bottom: none
 
