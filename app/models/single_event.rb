@@ -32,7 +32,7 @@ class SingleEvent < ActiveRecord::Base
   scope :only_tagged_with,
     lambda { |tag| tagged_with(tag) | joins(:event).where('events.id in (?)', Event.tagged_with(tag).map(&:id)) }
   scope :in_categories,
-    lambda { |categories| joins(:event).where('single_events.category_id IN (?) OR (single_events.category_id IS NULL AND events.category_id IN (?))', categories, categories) }
+    lambda { |categories| categories.blank? ? scoped : scoped.joins(:event).where('single_events.category_id IN (?) OR (single_events.category_id IS NULL AND events.category_id IN (?))', categories, categories) }
 
   default_scope includes(:event).order([:occurrence, 'single_events.name ASC', 'events.name ASC'])
 
