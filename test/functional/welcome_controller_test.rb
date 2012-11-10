@@ -24,7 +24,9 @@ class WelcomeControllerTest < ActionController::TestCase
 
   test "should find carousel with blog_post title & subtitle" do
     get :index
-    assert_select '.carousel-caption h4', "SimpleBlogPost"
-    assert_select '.carousel-caption p', "Simple Headline Teaser"
+    # ToDo: Since this has to be fixed when the layout includes
+    # the text boxes again
+    # assert_select '.carousel-caption h4', "SimpleBlogPost"
+    # assert_select '.carousel-caption a', "Simple Headline Teaser"
   end
 end
