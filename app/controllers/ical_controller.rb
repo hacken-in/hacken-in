@@ -20,7 +20,7 @@ class IcalController < ApplicationController
   end
 
   def like_welcome_page
-    render_events SingleEvent.where(occurrence: time_range).for_user(user)
+    render_events SingleEvent.where(occurrence: time_range).select! { |se| se.is_for_user? user }
   end
 
   def for_single_event
