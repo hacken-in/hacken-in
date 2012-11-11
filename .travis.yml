@@ -14,7 +14,7 @@ before_script:
 script: "bundle exec rake db:drop db:create db:migrate test"
 notifications:
   campfire:
-    on_success: change
+    on_success: always
     on_failure: always
     rooms:
-      - secure: "Cn8e6vXt4MXjJpFIHZAYk7M8sE1gUvzjqfh4kW5JgEaP67xQIcMYAtd9c727\nJfglnl6L8ffAYt9Uzg0v7jcOYQ4ssvNQ+h4lrpPSj7KnD43GVEHA1e7oU3kz\nAyqA+sHoeaDrF9fvppVdGEMyUhM1IaO8/yumKB+RR8uHPj4a4F8="
+      - secure: "ABH+J04wCqCyId4A0y5j/0h8NU537l/PcAcV84cT3Rc9hV3osTLtsVGfLS/P\n2QcgeDEN2l42mk6YehjRXQlDzjGzf/kBrXmE+ZBeCn48+abPOl5yLILESo2Q\nzMzB8Ey/h+9OfnXnmbXe/GMvhWegsu5KeNZ5kpDVPARo2+eougE=" 
