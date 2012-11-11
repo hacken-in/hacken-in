@@ -241,12 +241,13 @@ class EventTest < ActiveSupport::TestCase
 
   test "update rrules" do
     event = FactoryGirl.create(:simple)
-    event.start_time = Time.new(2012,10,10,20,15, 0, 0).utc
+    time = Time.local(2012, 10, 10, 20, 15)
+    event.start_time = time
     event.schedule_rules = [{"type" => 'monthly', "interval" => -1, "days" => ["monday"]}]
     event.save
     assert_equal 1, event.single_events.first.occurrence.wday
-    assert_equal 21, event.single_events.first.occurrence.utc.hour
-    assert_equal 15, event.single_events.first.occurrence.min
+    assert_equal time.hour, event.single_events.first.occurrence.hour
+    assert_equal time.min, event.single_events.first.occurrence.min
   end
 
 end
