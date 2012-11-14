@@ -12,3 +12,9 @@ bundler_args: --without development
 before_script:
   - "cp config/database.yml_example config/database.yml"
 script: "bundle exec rake db:drop db:create db:migrate test"
+notifications:
+  campfire:
+    on_success: always
+    on_failure: always
+    rooms:
+      - secure: "ABH+J04wCqCyId4A0y5j/0h8NU537l/PcAcV84cT3Rc9hV3osTLtsVGfLS/P\n2QcgeDEN2l42mk6YehjRXQlDzjGzf/kBrXmE+ZBeCn48+abPOl5yLILESo2Q\nzMzB8Ey/h+9OfnXnmbXe/GMvhWegsu5KeNZ5kpDVPARo2+eougE=" 

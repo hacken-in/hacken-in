@@ -1,4 +1,4 @@
-- if event.description?
+- if event.description.present?
   .event-description
     .event-content-field
       .content-field-icon
@@ -6,7 +6,7 @@
       .content-field-text
         = convert_markdown event.description, true
 
-- if event.url?
+- if event.url.present?
   .event-homepage
     .event-content-field
       .content-field-icon
@@ -14,7 +14,7 @@
       .content-field-text
         %a.hidden-link{ href: event.url }= event.url
 
-- if event.twitter?
+- if event.twitter.present?
   .event-twitter-handle
     .event-content-field
       .content-field-icon
@@ -23,7 +23,7 @@
         %a.hidden-link{ href: "http://twitter.com/#{event.twitter}" }
           = "@#{event.twitter}"
 
-- if event.twitter_hashtag?
+- if event.twitter_hashtag.present?
   .event-twitter-handle
     .event-content-field
       .content-field-icon

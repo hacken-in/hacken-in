@@ -12,7 +12,7 @@ ActiveAdmin.register Event do
       a "@#{event.twitter}", href: "http://twitter.com/#{event.twitter}" unless event.twitter.blank?
     end
     column :twitter_hashtag do |event|
-      if event.twitter_hashtag?
+      if event.twitter_hashtag.present?
         a "##{event.twitter_hashtag}", href: "http://twitter.com/search/%23#{event.twitter_hashtag}" unless event.twitter_hashtag.blank?
       else
         nil

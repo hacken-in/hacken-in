@@ -1,8 +1,8 @@
-- if event.venue.present?
+- unless event.venue.nil?
   %address.event-venue
     = event.venue.location
     %br
-    - if event.venue_info?
+    - if event.venue_info.present?
       = event.venue_info
       %br
     = event.venue.street
