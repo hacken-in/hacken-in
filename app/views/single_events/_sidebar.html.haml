@@ -10,6 +10,8 @@
           = truncate_html convert_markdown(@single_event.event.description, true), 30
         %p= link_to "Weiterlesen", @single_event.event
 
+  = render "events/next_events"
+
   - if @advertisement.present?
     .single_event_advertisement
       Werbung
