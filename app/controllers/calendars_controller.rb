@@ -40,15 +40,7 @@ class CalendarsController < ApplicationController
 
     @single_events = SingleEvent.where('? <= occurrence AND occurrence <= ?', from, to)
     @single_events = @single_events.in_categories(params[:categories].split(',').map(&:to_i)) if params[:categories]
-
-    # TODO: An dieser Stelle sollten eigentlich noch die Events nach den Tags rausgefilter werden
-    # sowohl mit der alten Methode, wie auch mit der neuen (siehe SingleEvent#is_for_user?) dauert
-    # das ca 6 Sekunden um 4 Wochen voller Termine zu filtern ... ähm ... da stimmt was nicht ...
-    # Da solltet ihr auf jeden Fall mal drüber gucken ... Solange bleibt die Funktion mal auskommentiert
-    #
-    # Das Gleiche gilt auch in der show Methode ...
-
-    #@single_events = @single_events.for_user(current_user)
+    @single_events.select! { |single_event| single_event.is_for_user? current_user } if current_user
     render :entries, layout: false
   end
 
