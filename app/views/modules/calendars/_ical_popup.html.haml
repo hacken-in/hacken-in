@@ -7,10 +7,9 @@
     %p
       Hier kannst du den NERDHUB Kalender in deine bevorzugte Kalender-Applikation importieren
 
-      - my_cal_url = url_for(action: "like_welcome_page", protocol: 'webcal', controller: "ical", format: "ical", only_path: false, guid: current_user.guid)
+      - my_cal_url = url_for(action: "personalized", protocol: 'webcal', controller: "ical", format: "ical", only_path: false, guid: current_user.guid)
       - my_cal_url_http = my_cal_url.gsub(/\Awebcal/, 'http')
-
-      - no_ignore_url = url_for(action: "personalized", protocol: 'webcal', controller: "ical", format: "ical", only_path: false, guid: current_user.guid)
+      - no_ignore_url = url_for(action: "like_welcome_page", protocol: 'webcal', controller: "ical", format: "ical", only_path: false, guid: current_user.guid)
       - no_ignore_url_http = no_ignore_url.gsub(/\Awebcal/, 'http')
 
       .control.group
