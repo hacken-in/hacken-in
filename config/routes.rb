@@ -80,7 +80,7 @@ Hcking::Application.routes.draw do
   match "history"                 => "events#history"
   match "humans"                  => "humans#index"
   match "impressum"               => "pages#show", page_name: "impressum"
-  match "newsletter"              => "pages#todo"
+  match "newsletter"              => "pages#show", page_name: "newsletter"
   match ":page_name"              => "pages#show"
 
   root to: "welcome#index"
