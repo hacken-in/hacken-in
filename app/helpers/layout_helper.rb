@@ -11,7 +11,7 @@ module LayoutHelper
 
   def this_is_cologne(number)
     pic = ThisiscolognePicture.order("id desc").offset(number).limit(1).first
-    link_to image_tag(pic.image_url), pic.link
+    link_to image_tag(pic.image_url), pic.link if pic
   end
 
 end
