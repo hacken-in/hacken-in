@@ -17,7 +17,11 @@
 
     = render partial: 'modules/calendars/kddk', locals: { presets: @presets, categories: @categories }
     = render partial: 'modules/tags/calendar_tags'
-    .calendar-export
-      %button.btn.btn-large.btn-inverse.js-calendar-export
-        %i.icon-calendar
-        In meinen Kalender
+
+    - if user_signed_in?
+      = render 'modules/calendars/ical_popup'
+      .calendar-export
+        %button.btn.btn-large.btn-inverse.js-calendar-export
+          %i.icon-calendar
+          In meinen Kalender
+

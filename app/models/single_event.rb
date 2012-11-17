@@ -154,7 +154,10 @@ class SingleEvent < ActiveRecord::Base
       ri_cal_event.dtend = duration.nil? ? end_time.utc : (start_time + duration.minutes).utc
     end
 
-    location = [self.venue_info, self.venue.address].delete_if(&:blank?).join(", ").strip
+    if self.venue.present?
+      location = [self.venue_info, self.venue.address].delete_if(&:blank?).join(", ").strip
+    end
+
     ri_cal_event.location = location if location.present?
     ri_cal_event.url = Rails.application.routes.url_helpers.event_single_event_url(
               host: Rails.env.production? ? "nerdhub.de" : "hcking.dev",

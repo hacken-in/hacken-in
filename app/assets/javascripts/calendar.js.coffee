@@ -5,7 +5,7 @@ jQuery ->
 
     # Normale click, etc handler ... Sollte selbsterklärend sein ;)
     $('.js-calendar-export').on 'click', ->
-      alert('Hier würde nun dein Kalender exportiert ... :D')
+      $('#calendarExportModal').modal()
 
     $(document).on 'mouseenter', '.calendar-line', ->
       $(this).css('background-color', $(this).data('hlcolor')).addClass('calendar-line-highlighted')
