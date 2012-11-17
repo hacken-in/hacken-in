@@ -53,14 +53,11 @@ Hcking::Application.routes.draw do
   end
 
   resources :search, only: [:index]
-
   resources :tags, :path => "hashtags", only: [:show, :index]
-
   resources :comments, only: [:index]
-
   resources :suggestions, only: [:new, :create, :show]
-
   resource :calendar, only: [:show]
+
   resources :events, only: [:index, :show] do
     resources :comments, except: [:new]
 
@@ -77,7 +74,6 @@ Hcking::Application.routes.draw do
   match "event_ical/:id"          => "ical#for_event"
   match "tag_ical/:id"            => "ical#for_tag"
   match "abonnieren"              => "subscribe#index"
-  match "history"                 => "events#history"
   match "humans"                  => "humans#index"
   match "impressum"               => "pages#show", page_name: "impressum"
   match "newsletter"              => "pages#show", page_name: "newsletter"

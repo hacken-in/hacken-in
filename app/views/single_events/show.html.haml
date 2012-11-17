@@ -22,7 +22,7 @@
       .event-map
 
       = render "events/venue", event: @single_event
-      = render 'modules/single_events/social'
+      = render 'modules/events/social'
       .clearfix
 
       - if current_admin_user
@@ -34,4 +34,4 @@
     = render partial: 'modules/comments/comments', locals: { commentable: @single_event }
 
   .span2
-    = render "modules/single_events/sidebar"
+    = render "single_events/sidebar"

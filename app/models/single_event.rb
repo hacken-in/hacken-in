@@ -19,6 +19,8 @@ class SingleEvent < ActiveRecord::Base
     where("occurrence >= ?", Time.now)
   scope :today_or_in_future,
     where("occurrence >= ?", Time.now.beginning_of_day)
+  scope :most_current_for_event,
+    order("occurrence DESC")
   scope :recent,
     lambda { |limit = 3| today_or_in_future.limit(limit) }
   scope :rule_based_in_future,

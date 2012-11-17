@@ -7,8 +7,9 @@
 
       .event-text
         - if @single_event.event.description.present?
-          = truncate_html convert_markdown(@single_event.event.description, true), 30
-        %p= link_to "Weiterlesen", @single_event.event
+          = convert_markdown(@single_event.event.description, true)
+
+  = render partial: "events/next_events", locals: { event: @single_event.event }
 
   - if @advertisement.present?
     .single_event_advertisement
