@@ -1,0 +1,13 @@
+- color = single_event.category.try(:color)
+
+.calendar-entry.black-bar.black-bar-wide
+  = render partial: 'modules/categories/indicator', locals: { size: "75px", color: color }
+  .calendar-line.black-bar-content{ data: { hlcolor: color } }
+    .black-bar-content.black-bar-with-date{ data: { hlcolor: color } }
+      .black-bar-top-part
+        .black-bar-date
+          = I18n.localize single_event.occurrence, format: "%a, %d. %b %Y"
+      .black-bar-center-part
+        %h1.black-bar-title= link_to single_event.event.name, event_single_event_path(single_event.event, single_event), class: "title-link"
+        .black-bar-time= I18n.localize(single_event.occurrence, format: "%H:%M Uhr")
+        .clearfix

@@ -16,9 +16,10 @@
   - @humans.each do |human|
     %li.span2
       .thumbnail.team-box
-        = gravatar_image_tag human.email, class: "user_gravatar", gravatar: { default: :identicon, size: 256 }
+        .thumb_link
+          = link_to gravatar_image_tag(human.email, class: "user_gravatar", gravatar: { default: :identicon, size: 256 }), user_path(human)
 
-        %h3= human.nickname
+        %h3= link_to human.nickname, user_path(human)
         %p
           %strong
             = human.team

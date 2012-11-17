@@ -1,5 +1,5 @@
 .row
-  .span3
+  .span4
     %h2
       = @user.nickname
 
@@ -8,45 +8,33 @@
     - else
       = t 'users.show.no_description'
 
-    %ul
-    - if @user.twitter?
-      %li
-        = "#{t('activerecord.attributes.user.twitter')}:"
-        = link_to "@" + @user.twitter, "https://twitter.com/#{@user.twitter}"
+    %ul.link_list
+      - if @user.twitter?
+        %li
+          .content-field-icon
+            %i.icon-twitter
+          .content-field-text
+            %a{ href: "https://twitter.com/#{@user.twitter}" }= "@#{@user.twitter}"
 
-    - if @user.github?
-      %li
-        = "#{t('activerecord.attributes.user.github')}:"
-        = link_to @user.github, "https://github.com/#{@user.github}"
+      - if @user.github?
+        %li
+          .content-field-icon
+            %i.icon-github
+          .content-field-text
+            = link_to @user.github, "https://github.com/#{@user.github}"
 
-    - if @user.homepage?
-      %li
-        = "#{t('activerecord.attributes.user.homepage')}:"
-        = link_to @user.homepage, @user.homepage
-
-    .ignore_tags
-      %h3= t 'users.show.loved_tags'
-      - unless @user.like_list.empty?
-        = render "tags/tags", tag_list: @user.like_list
-      - else
-        %p= t 'users.show.no_loved_tags'
-
-    - if @user.allow_ignore_view? || @user == current_user
-      .ignore_tags
-        %h3= t 'users.show.ignore_tags'
-        - unless @user.hate_list.empty?
-          = render "tags/tags", tag_list: @user.hate_list
-        - else
-          %p= t 'users.show.no_ignore_tags'
+      - if @user.homepage?
+        %li
+          .content-field-icon
+            %i.icon-home
+          .content-field-text
+            = link_to @user.homepage, @user.homepage
 
     .recent_events
       %h3= t 'users.show.next_events'
       - unless @next_events.empty?
-        %ul
-          - @next_events.each do |single_event|
-            %li
-              = link_to single_event.title, event_single_event_path(single_event.event, single_event)
-              = day_output_helper single_event.occurrence
+        - @next_events.each do |single_event|
+          = render partial: "modules/calendars/event_link", locals: {single_event: single_event}
       - else
         %p= t 'users.show.no_next_events'
 
@@ -54,14 +42,12 @@
       %h3= t 'users.show.recent_comments'
 
       - @recent_comments.each do |comment|
-        %blockquote
-          %h4.user_profile Kommentar für #{link_to comment.commentable_name, commentable_path(comment)}
-          = render partial: "modules/comments/comment", locals: { comment: comment }
+        %h4.user_profile.comment_headline Kommentar für #{link_to comment.commentable, commentable_path(comment)}
+        = render partial: "modules/comments/comment", locals: { comment: comment }
       - if @recent_comments.empty?
-        %blockquote
-          %p= t 'users.show.no_recent_comments'
+        %p= t 'users.show.no_recent_comments'
 
-  .span3
+  .span2
     .pull-right
       %ul.thumbnails
       .thumbnail
