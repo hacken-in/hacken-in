@@ -14,7 +14,36 @@
     = form.input :duration
     = form.input :full_day
     = form.input :tag_list
-    = form.input :schedule_yaml
+    = form.input :schedule_rules_json, as: :hidden, input_html: {value: @event.schedule_rules.to_json}
+    = form.input :excluded_times_json, as: :hidden, input_html: {value: @event.excluded_times.to_json}
+
+    %li.string.input.optional.stringish
+      %label.label Terminregeln
+      .rule_editor
+        %h4 Regeln
+        %ul.rules
+        .rule_entry
+          An jedem 
+          %select{id:"week_number", name:"week_number"}
+            %option{value: "1"} ersten
+            %option{value: "2"} zweiten
+            %option{value: "3"} dritten
+            %option{value: "4"} vierten
+            %option{value: "5"} fünften
+            %option{value: "-1"} letzten
+          %select{id:"day_of_week", name:"day_of_week"}
+            %option{value: "monday"} Montag
+            %option{value: "tuesday"} Dienstag
+            %option{value: "wednesday"} Mittwoch
+            %option{value: "thursday"} Donnerstag
+            %option{value: "friday"} Freitag
+            %option{value: "saturday"} Samstag
+            %option{value: "sunday"} Sonntag
+          des Monats
+          %button{id:"add_rule"} hinzufügen
+        %h4 Ausgeschlossene Termine
+        %ul.excludes
+
     %li
       %label.label Termine
       .termine
@@ -31,4 +60,3 @@
             %a{href:new_admin_event_single_event_path(@event)}
               Neuen Termin anlegen
   = form.actions
-  %h3 Termine

@@ -38,7 +38,7 @@ class Event < ActiveRecord::Base
   # Delete SingleEvents that don't match the pattern
   def future_single_events_cleanup
     self.single_events.rule_based_in_future.each do |single_event|
-      single_event.delete unless schedule.occurs_at? single_event.occurrence
+      single_event.delete unless schedule.occurs_at?(single_event.occurrence)
     end
   end
 
@@ -121,10 +121,11 @@ class Event < ActiveRecord::Base
     schedule.recurrence_rules.each do |rule|
       schedule.remove_recurrence_rule rule
     end
+    rules = JSON.load(rules) if rules.kind_of? String
     rules.each do |rule|
       week_hash = {}
       rule["days"].each do |d|
-        week_hash[d.to_sym] = [rule["interval"]]
+        week_hash[d.to_sym] = [rule["interval"].to_i]
       end
       schedule.add_recurrence_rule IceCube::Rule.monthly.day_of_week(week_hash)
     end
@@ -138,8 +139,10 @@ class Event < ActiveRecord::Base
     schedule.extimes.each do |time|
       schedule.remove_extime(time)
     end
+    times = JSON.load(times) if times.kind_of? String
     times.each do |time|
-      schedule.extime(time)
+      time = Time.parse(time) if time.kind_of? String
+      schedule.extime(time.localtime)
     end
   end
 

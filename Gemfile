@@ -106,6 +106,9 @@ gem 'gabba', '~> 0.3.0'
 gem 'geocoder', '= 1.1.2'
 gem 'simple-navigation', '~> 3.9.0'
 
+# Date parsing in Javascript
+gem 'momentjs-rails', '~> 1.7.0'
+
 group :development do
   # Deployment
   gem 'vlad', '~> 2.2.3', require: false

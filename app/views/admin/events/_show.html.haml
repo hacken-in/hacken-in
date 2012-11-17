@@ -55,6 +55,13 @@
             %td
               Keine Regeln definiert
 
+  %h3 Ausgeschlossene Termine
+
+  .attributes_table
+    %ul
+      - @event.excluded_times.each do |time|
+        %li=l time
+
   %h3 Termine
 
   .single_event_link

@@ -29,4 +29,18 @@ ActiveAdmin.register Event do
     render partial: 'form'
   end
 
+  controller do
+    def update
+      [[:schedule_rules_json, :schedule_rules], [:excluded_times_json, :excluded_times]].each do |item|
+        if params[:event][item[0]]
+          params[:event][item[1]] = JSON.parse(params[:event][item[0]])
+          params[:event].delete item[0]
+        end
+      end
+      update! do |format|
+        format.html { redirect_to admin_event_path(@event) }
+      end
+    end
+  end
+
 end
