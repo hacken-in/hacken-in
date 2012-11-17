@@ -14,7 +14,7 @@ class CallbacksController < Devise::OmniauthCallbacksController
       user = User.from_omniauth(request.env["omniauth.auth"])
 
       if user.persisted?
-        flash.notice = "Signed in via #{request.env["omniauth.auth"]["provider"].capitalize}"
+        flash.notice = "Angemeldet mit #{request.env["omniauth.auth"]["provider"].capitalize}"
         sign_in_and_redirect user
       else
         # Merge in the temp token manually, since it's not in the attributes
