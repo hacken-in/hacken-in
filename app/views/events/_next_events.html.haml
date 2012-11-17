@@ -1,12 +1,9 @@
-.next-events-container
-  %h3.black-bar-small-title nächste Termine
+- next_events = event.single_events.in_future.limit(5)
+- unless next_events.empty?
+  .next-events-container
+    %h3.black-bar-small-title nächste Termine
 
-  .next-events
-    - next_events = event.single_events.in_future.limit(5)
-    - if next_events.empty?
-      %p
-        %em aktuell keine Termine
-    - else
+    .next-events
       %ul.next-events-list
         - event.single_events.recent.each do |next_event|
           %li.next-event
