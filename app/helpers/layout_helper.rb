@@ -10,16 +10,8 @@ module LayoutHelper
   end
 
   def this_is_cologne(number)
-    link_to image_tag(cologne_json[number]["image_url"]), cologne_json[number]["link"]
+    pic = ThisiscolognePicture.order("id desc").offset(number).limit(1).first
+    link_to image_tag(pic.image_url), pic.link
   end
 
-  private
-
-  def cologne_json
-    @cologne_json || load_cologne_json
-  end
-
-  def load_cologne_json
-    JSON.load(open("public/thisiscologne.json"))
-  end
 end
