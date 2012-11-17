@@ -8,6 +8,7 @@
       .admin_edit_link
         = link_to "Bearbeiten", edit_admin_blog_post_path(@post)
 
+    = render 'modules/social/share'
     = render partial: "modules/comments/comments", locals: {commentable: @post}
   .span2
     = render partial: "modules/blog_post/sidebar", locals: {categories: @categories, current_category: @current_category, single_events: @single_events}
