@@ -9,7 +9,7 @@
         - if @single_event.event.description.present?
           = convert_markdown(@single_event.event.description, true)
 
-  = render "events/next_events"
+  = render partial: "events/next_events", locals: { event: @single_event.event }
 
   - if @advertisement.present?
     .single_event_advertisement
