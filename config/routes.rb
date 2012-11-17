@@ -76,7 +76,6 @@ Hcking::Application.routes.draw do
   match "abonnieren"              => "subscribe#index"
   match "humans"                  => "humans#index"
   match "impressum"               => "pages#show", page_name: "impressum"
-  match "contact"                 => "pages#todo"
   match "newsletter"              => "pages#todo"
   match ":page_name"              => "pages#show"
 
