@@ -7,18 +7,18 @@
             - if user_signed_in?
 
               - if current_user.like_list.include? tag
-                = form_for :user_like_tags, method: :delete, url: user_tag_path(kind: 'like', id: tag) do |f|
+                = form_for :user_like_tags, method: :delete, url: api_user_tag_path(kind: 'like', id: tag) do |f|
                   = f.submit 'nicht mehr lieben'
               - else
-                = form_for :user_like_tags, url: user_tags_path(kind: 'like') do |f|
+                = form_for :user_like_tags, url: api_user_tags_path(kind: 'like') do |f|
                   = f.hidden_field :list, value: tag, id: nil
                   = f.submit 'lieben'
 
               - if current_user.hate_list.include? tag
-                = form_for :user_hate_tags, method: :delete, url: user_tag_path(kind: 'hate', id: tag) do |f|
+                = form_for :user_hate_tags, method: :delete, url: api_user_tag_path(kind: 'hate', id: tag) do |f|
                   = f.submit 'nicht mehr ignorieren'
               - else
-                = form_for :user_hate_tags, url: user_tags_path(kind: 'hate') do |f|
+                = form_for :user_hate_tags, url: api_user_tags_path(kind: 'hate') do |f|
                   = f.hidden_field :list, value: tag, id: nil
                   = f.submit 'ignorieren'
 
