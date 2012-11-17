@@ -1,3 +1,6 @@
+- content_for :title do
+  Neuer Vorschlag
+
 %h2= t "suggestions.new.title"
 
 = simple_form_for @suggestion, html: { class: 'form-horizontal' } do |f|

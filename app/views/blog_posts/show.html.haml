@@ -1,3 +1,6 @@
+- content_for :title do
+  = @post.headline
+
 .row
   .span4
     = render partial: "modules/blog_post/full", locals: {blog_post: @post}

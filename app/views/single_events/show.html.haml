@@ -1,3 +1,6 @@
+- content_for :title do
+  - @single_event.event.name
+
 - color = @single_event.category.try(:color)
 
 .row.event.single-event
