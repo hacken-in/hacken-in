@@ -2,9 +2,7 @@ class EventsController < ApplicationController
   respond_to :html, :xml
 
   def index
-    authorize! :index, Event
-    @events = Event.order :name
-    respond_with @events
+    redirect_to :calendar
   end
 
   def show
