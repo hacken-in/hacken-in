@@ -2,11 +2,11 @@
 .single-event-sidebar
   .single-event-event-teaser
     .event.event-preview{ style: "border-top: 3px solid #{color}"}
-      - if @single_event.event.picture.present?
-        = image_tag(@single_event.event.picture.box_image.url, class: 'event-image')
+      - if @single_event.picture.present?
+        = image_tag(@single_event.picture.box_image.url, class: 'event-image')
 
-      .event-text
-        - if @single_event.event.description.present?
+      - if @single_event.event.description.present?
+        .event-text
           = convert_markdown(@single_event.event.description, true)
 
   = render partial: "events/next_events", locals: { event: @single_event.event, current_single_event: @single_event }
