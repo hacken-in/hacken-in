@@ -1,6 +1,6 @@
 class Category < ActiveRecord::Base
 
-  scope :calendar, where(podcast_category: false)
+  scope :calendar, where(calendar_category: true)
 
   has_many :blog_posts
 

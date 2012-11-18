@@ -1,6 +1,6 @@
 = semantic_form_for [:admin, @blog_post] do |f|
   = f.inputs "Details" do
-    = f.input :category
+    = f.input :category, collection: Category.where(blog_category: true).order("title")
     = f.input :user, collection: User.where(admin: true)
     = f.input :headline
     = f.input :publishable_from

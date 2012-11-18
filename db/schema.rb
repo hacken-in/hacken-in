@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121101081556) do
+ActiveRecord::Schema.define(:version => 20121118100252) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -111,9 +111,11 @@ ActiveRecord::Schema.define(:version => 20121101081556) do
   create_table "categories", :force => true do |t|
     t.string   "title"
     t.string   "color"
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
-    t.boolean  "podcast_category", :default => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+    t.boolean  "podcast_category",  :default => false
+    t.boolean  "blog_category",     :default => true
+    t.boolean  "calendar_category", :default => true
   end
 
   create_table "comments", :force => true do |t|
