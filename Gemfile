@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 3.2.8'
+gem 'rails', '~> 3.2.9'
 gem 'rake', '~> 0.9'
 
 # Databases
@@ -10,7 +10,7 @@ gem 'mysql2', '~> 0.3.11'
 # Memcache Store
 # DO NOT UPGRADE THIS
 # We need exactly this version, because
-# newer versions cant' connect to unix
+# newer versions can't connect to unix
 # sockets. See here:
 #
 #  https://github.com/mperham/dalli/issues/229
