@@ -3,6 +3,7 @@ require 'time_extensions'
 class Event < ActiveRecord::Base
 
   validates_presence_of :name
+  validates_presence_of :category
 
   before_save :schedule_to_yaml
   after_save :generate_single_events
