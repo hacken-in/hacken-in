@@ -4,10 +4,11 @@ require 'test_helper'
 class EventTest < ActiveSupport::TestCase
 
   test "validate presence of name" do
-    event = Event.new name: 'event'
+    category = Factory(:a_category)
+    event = Event.new name: 'event', category: category
     assert event.valid?
 
-    event_without_name = Event.new
+    event_without_name = Event.new category: category
     assert_equal false, event_without_name.valid?
   end
 
@@ -15,7 +16,8 @@ class EventTest < ActiveSupport::TestCase
     test_date = 7.days.from_now
     test_date += 2.hours if test_date.hour < 2
 
-    event = Event.new(name: "Hallo")
+    category = Factory(:a_category)
+    event = Event.new(name: "Hallo", category: category)
     assert_equal 0, event.schedule.all_occurrences.size
     event.schedule.add_recurrence_time(test_date)
     assert_equal 1, event.schedule.all_occurrences.size
@@ -25,14 +27,14 @@ class EventTest < ActiveSupport::TestCase
     assert_equal 1, event.schedule.all_occurrences.size
     assert_equal test_date.to_date, event.schedule.all_occurrences.first.to_date
 
-    event = Event.new(name: "Hallo")
+    event = Event.new(name: "Hallo", category: category)
     event.schedule_yaml = "--- \n:start_date: #{test_date}\n:rrules: []\n\n:exrules: []\n\n:rdates: \n- #{test_date}\n:exdates: []\n\n:duration: \n:end_time: \n"
 
     assert_equal 1, event.schedule.all_occurrences.size
 
     assert_equal test_date.to_date, event.schedule.all_occurrences.first.to_date
 
-    event = Event.new(name: "Hallo")
+    event = Event.new(name: "Hallo", category: category)
     schedule = IceCube::Schedule.new(1.year.ago)
     schedule.add_recurrence_time(7.days.from_now)
     event.schedule = schedule
@@ -40,7 +42,8 @@ class EventTest < ActiveSupport::TestCase
   end
 
   test "tagging" do
-    event = Event.new(name: "Hallo")
+    category = Factory(:a_category)
+    event = Event.new(name: "Hallo", category: category)
     assert_equal 0, event.tags.count
 
     event.tag_list = "ruby, rails"
