@@ -17,7 +17,7 @@
               = image_tag @event.picture.box_image.url
         %tr
           %th Kategory
-          %td= @event.category.title
+          %td= @event.category.try(:title)
         %tr
           %th URL
           %td= link_to @event.url, @event.url

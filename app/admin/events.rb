@@ -30,6 +30,17 @@ ActiveAdmin.register Event do
   end
 
   controller do
+    def create
+      [[:schedule_rules_json, :schedule_rules], [:excluded_times_json, :excluded_times]].each do |item|
+        if params[:event][item[0]]
+          params[:event][item[1]] = JSON.parse(params[:event][item[0]])
+          params[:event].delete item[0]
+        end
+      end
+      create! do |format|
+        format.html { redirect_to admin_event_path(@event) }
+      end
+    end
     def update
       [[:schedule_rules_json, :schedule_rules], [:excluded_times_json, :excluded_times]].each do |item|
         if params[:event][item[0]]

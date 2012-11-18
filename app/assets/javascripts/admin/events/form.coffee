@@ -1,5 +1,6 @@
 $ ->
-  if $(".admin_events.edit").length > 0
+  if $(".admin_events.edit,.admin_events.new").length > 0
+    console.log "penis"
     @rules = []
     @exdates = []
 

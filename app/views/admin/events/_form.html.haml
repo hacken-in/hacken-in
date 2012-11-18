@@ -44,19 +44,19 @@
         %h4 Ausgeschlossene Termine
         %ul.excludes
 
-    %li
-      %label.label Termine
-      .termine
-        %p
-          - if @event.single_events.count > 0
-            %a{href:admin_event_single_events_path(@event)}
-              = "#{@event.single_events.count}"
-              - if @event.single_events.count == 1
-                Termine anzeigen
-              - else
-                Termin anzeigen
-          |
-          - if @event.persisted?
-            %a{href:new_admin_event_single_event_path(@event)}
-              Neuen Termin anlegen
+    - if @event.persisted?
+      %li
+        %label.label Termine
+        .termine
+          %p
+            - if @event.single_events.count > 0
+              %a{href:admin_event_single_events_path(@event)}
+                = "#{@event.single_events.count}"
+                - if @event.single_events.count == 1
+                  Termine anzeigen
+                - else
+                  Termin anzeigen
+              |
+              %a{href:new_admin_event_single_event_path(@event)}
+                Neuen Termin anlegen
   = form.actions
