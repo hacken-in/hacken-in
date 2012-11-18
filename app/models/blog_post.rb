@@ -1,5 +1,4 @@
 class BlogPost < ActiveRecord::Base
-  # attr_accessible :title, :body
 
   has_many :comments, as: :commentable, dependent: :destroy
   belongs_to :category
@@ -21,16 +20,20 @@ class BlogPost < ActiveRecord::Base
       LIKE ? OR text LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%"])
   end
 
-  def to_s
-    headline
-  end
-
   def to_param
     "#{id}-#{headline.parameterize}"
   end
 
   def to_link
     "#{publishable_from.year}/#{publishable_from.month}/#{publishable_from.day}/#{id}-#{headline.parameterize}"
+  end
+
+  def to_s
+    headline
+  end
+
+  def title
+    headline
   end
 
   # This is needed for the comments controller

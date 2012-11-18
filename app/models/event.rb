@@ -73,6 +73,10 @@ class Event < ActiveRecord::Base
     end
   end
 
+  def to_s
+    self.name
+  end
+
   def title
     self.name
   end
