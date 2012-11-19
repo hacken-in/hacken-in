@@ -39,6 +39,9 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_to_www
+    # abort for local machines or the test suite:
+    return unless Rails.env.production?
+
     redirect_to "#{request.protocol}www.#{request.host_with_port}#{request.fullpath}" if !/^www/.match(request.host)
   end
 
