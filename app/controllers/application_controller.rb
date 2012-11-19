@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :set_current_user
+  before_filter :redirect_to_www
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, alert: "Leider darfst du das nicht."
@@ -35,6 +36,10 @@ class ApplicationController < ActionController::Base
 
   def set_current_user
     User.current = current_user
+  end
+
+  def redirect_to_www
+    redirect_to "#{request.protocol}www.#{request.host_with_port}#{request.fullpath}" if !/^www/.match(request.host)
   end
 
 end
