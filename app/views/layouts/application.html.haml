@@ -1,15 +1,15 @@
 !!! 5
 %html
   %head
-    %title= content_for?(:title) ? yield(:title) + " – nerdhub.de" : "nerdhub.de"
+    %title= content_for?(:title) ? yield(:title) + " – NERDHUB" : "NERDHUB"
     = auto_discovery_link_tag :atom, "/blog/feed"
     = stylesheet_link_tag "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
-    = render_opengraph("og:title" => "nerdhub.de",
+    = render_opengraph("og:title" => content_for?(:title) ? yield(:title) + " – NERDHUB" : "NERDHUB",
             "og:image" => "#{request.protocol}#{request.host_with_port}#{asset_path("opengraph_embed.png")}",
             "og:url" => url_for(only_path: false),
-            "og:site_name"=> "nerdhub.de",
+            "og:site_name"=> "www.NERDHUB.de",
             "fb:admins" => "520869354",
             "og:type" => "website",
             "og:description" => "Der Event-Kalender für Nerds")
