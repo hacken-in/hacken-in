@@ -117,6 +117,7 @@ CalendarTaggings =
   # Adds the tag from the input to the list and saves it on the server
   addTag: (list) ->
     tag = $(".js-#{list}-tag-text").val()
+    return false if tag is ""
     $(".js-#{list}-taglist").append "<li data-tag=\"#{tag}\" data-list=\"#{list}\">#{tag} <i class=\"icon-remove remove-tag js-remove-tag\"></li>"
     $(".js-#{list}-tag-text").val('')
 
