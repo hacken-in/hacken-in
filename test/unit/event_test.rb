@@ -258,4 +258,39 @@ class EventTest < ActiveSupport::TestCase
     assert_equal time.min, event.single_events.first.occurrence.min
   end
 
+  test "finds coming up single event as closest one" do
+    today = Date.new(2012, 2, 2)
+    tomorrow = Date.new(2012, 2, 3)
+    future = Date.new(2012, 12, 1)
+    way_before = Date.new(2011, 8, 2)
+
+    single_event_tomorrow = stub(:occurrence => tomorrow)
+
+    single_events = [stub(:occurrence => way_before), single_event_tomorrow, stub(:occurrence => future)]
+    event = Event.new
+    event.stubs(:single_events => single_events)
+
+    assert_equal single_event_tomorrow, event.closest_single_event(today)
+  end
+
+  test "finds most recent single event as closest one" do
+    today = Date.new(2012, 2, 2)
+    yesterday = Date.new(2012, 2, 1)
+
+    single_events = [stub(:occurrence => yesterday)]
+    event = Event.new
+    event.stubs(:single_events => single_events)
+
+    assert_equal single_events.first, event.closest_single_event(today)
+  end
+
+  test "returns nil if there is no closest single event" do
+    single_events = []
+
+    event = Event.new
+    event.stubs(:single_events => single_events)
+
+    assert_nil event.closest_single_event
+  end
+
 end
