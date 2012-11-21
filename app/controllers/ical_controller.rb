@@ -61,7 +61,7 @@ class IcalController < ApplicationController
   end
 
   def gabba
-    gabba = Gabba::Gabba.new "UA-954244-12", "hcking.de"
+    gabba = Gabba::Gabba.new "UA-35910989-1", "nerdhub.de"
     gabba.event "Event", GABBA_MAPPING[params[:action].to_sym]
   end
 
