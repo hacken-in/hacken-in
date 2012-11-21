@@ -14,7 +14,7 @@ class EventsControllerTest < ActionController::TestCase
     single_event = FactoryGirl.create(:single_event, event: event)
 
     Event.expects(:find).with(event.id.to_s).returns(event)
-    event.expects(:closest_single_event).with(Date.new).returns(single_event)
+    event.expects(:closest_single_event).returns(single_event)
 
     get :show, id: event.id
     assert_redirected_to event_single_event_path(event, single_event)
