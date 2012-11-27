@@ -28,8 +28,9 @@ module ApplicationHelper
     HTML_Truncator.truncate(html, length, opts).html_safe
   end
 
-  def convert_markdown(markdown_text, without_follow = false)
+  def html_unsafe_convert_markdown(markdown_text, without_follow=false)
     return "" if markdown_text.nil?
+
     if without_follow
       render_class = HTMLwithoutFollow
     else
@@ -37,8 +38,14 @@ module ApplicationHelper
     end
 
     markdown_compiler = Redcarpet::Markdown.new(render_class.new filter_html: false, no_styles: true, safe_links_only: true, no_intra_emphasis: true)
-    raw markdown_compiler.render(ActionController::Base.helpers.sanitize(markdown_text))
+    markdown_compiler.render(ActionController::Base.helpers.sanitize(markdown_text))
   end
+
+  def convert_markdown(markdown_text, without_follow=false)
+    raw html_unsafe_convert_markdown(markdown_text, without_follow)
+  end
+
+  alias :html_safe_convert_markdown :convert_markdown
 
   def collect_links(item)
     links = []

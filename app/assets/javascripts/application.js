@@ -11,7 +11,6 @@
 //= require jquery.tokeninput
 //= require jquery.endless-scroll
 //= require jquery.scrollTo
-//= require showdown
 //= require zero-clipboard
 //= require tipsy
 //= require jquery.pjax

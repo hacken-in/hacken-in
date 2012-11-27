@@ -18,6 +18,7 @@ Hcking::Application.routes.draw do
     end
 
     resources :user_tags, :path => "/user/:kind", :constraints => { id: /.*/, kind: /(like|hate)/ }, :only => [:create, :destroy]
+    match "markdown_converter" => "markdown_converter#convert"
   end
 
   if defined?(Smurfville) != nil
