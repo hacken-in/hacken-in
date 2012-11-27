@@ -36,7 +36,7 @@ module ApplicationHelper
       render_class = MdEmoji::Render
     end
 
-    markdown_compiler = Redcarpet::Markdown.new(render_class.new filter_html: false, no_styles: true, safe_links_only: true)
+    markdown_compiler = Redcarpet::Markdown.new(render_class.new filter_html: false, no_styles: true, safe_links_only: true, no_intra_emphasis: true)
     raw markdown_compiler.render(ActionController::Base.helpers.sanitize(markdown_text))
   end
 

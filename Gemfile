@@ -28,7 +28,7 @@ gem 'leaflet-rails', github: 'axyjo/leaflet-rails'
 gem 'uglifier', '~> 1.2.0'
 gem 'haml', '~> 3.1.4'
 gem 'jquery-rails', '~> 2.0.0'
-gem 'md_emoji', '~> 0.0.7'
+gem 'md_emoji', '~> 1.0.0'
 gem 'redcarpet', '~> 2.1.0'
 gem 'pjax_rails', '~> 0.3.3'
 
