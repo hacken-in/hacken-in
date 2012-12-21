@@ -9,7 +9,7 @@ ActiveAdmin.register Box do
 
     f.inputs do
       f.input :content_type, as: :select, collection: types
-      f.input :content, as: :select, collection: SingleEvent.in_next(2.weeks), wrapper_html: { id: "SingleEvent" }
+      f.input :content, as: :select, collection: SingleEvent.in_next(6.weeks), wrapper_html: { id: "SingleEvent" }
       f.input :content, as: :select, collection: BlogPost.most_recent, wrapper_html: { id: "BlogPost" }
       f.input :content, as: :select, collection: Event.all, wrapper_html: { id: "Event" }
     end
