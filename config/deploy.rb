@@ -3,8 +3,9 @@ require "bundler/capistrano"
 
 # Settings
 set :application, "droidboy"
-set :deploy_to, "/var/www/virtual/droidboy/nerdhub"
+set :deploy_to, "/var/www/virtual/droidboy/nerdhub_test"
 set :user, "droidboy"
+set :config_files, ['database.yml', 'newrelic.yml', 'initializers/secret_token.rb', 'omniauth.yml']
 
 # Git Repo
 set :repository,  "git://github.com/nerdhub/hcking.git"
@@ -22,17 +23,33 @@ role :db,  "corvus.uberspace.de", :primary => true
 
 after "deploy:restart", "deploy:cleanup"
 
-# If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
   task :start do ; end
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
-    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
+    run "touch #{File.join(current_path,'tmp','restart.txt')}"
+    run "wget -O /dev/null http://www.nerdhub.de"
   end
 
   task :symlink_config, roles: :app do
-    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
-    #ToDo: Bodo, hier müssen alle Configs rein, die sonst noch gesymlinkt werden müssen
+    run "ln -s #{shared_path}/uploads #{release_path}/public/uploads"
+    config_files.each do |filename|
+      run "cp #{shared_path}/config/#{filename} #{release_path}/config/#{filename}"
+    end
   end
   after "deploy:finalize_update", "deploy:symlink_config"
+
+  namespace :assets do
+
+    # Check for changes in assets dir and only precompile if there are any
+    task :precompile, :roles => :web, :except => { :no_release => true } do
+      from = source.next_revision(current_revision)
+      if capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ app/assets/ | wc -l").to_i > 0
+        run %Q{cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} #{asset_env} assets:precompile}
+      else
+        logger.info "Skipping asset pre-compilation because there were no asset changes"
+      end
+    end
+
+  end
 end
