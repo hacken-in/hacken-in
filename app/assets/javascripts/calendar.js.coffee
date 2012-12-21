@@ -137,7 +137,7 @@ CalendarTaggings =
   removeTag: (list, tag) ->
     $.ajax
        type: 'DELETE'
-       url: "/api/user/#{list}/#{tag}"
+       url: "/api/user/#{list}/#{encodeURIComponent(tag)}"
        success: (data) ->
          if data.status is 'error'
            # TODO: Eventuell ein schöneres Alert
