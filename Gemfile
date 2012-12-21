@@ -111,8 +111,7 @@ gem 'momentjs-rails', '~> 1.7.0'
 
 group :development do
   # Deployment
-  gem 'vlad', '~> 2.2.3', require: false
-  gem 'vlad-git', '~> 2.2.0', require: false
+  gem 'capistrano', '~> 2.13.0'
 
   group :darwin do
     gem 'rb-fsevent', '~> 0.9.0pre4'
