@@ -12,6 +12,8 @@ set :repository,  "git://github.com/nerdhub/hcking.git"
 set :scm, :git
 set :branch, "master"
 
+set :use_sudo, false
+
 # SSH Options
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
