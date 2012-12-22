@@ -53,7 +53,7 @@ class BlogPostsController < ApplicationController
   end
 
   def sidebar_values
-    @categories = Category.where("id in (select category_id from blog_posts where mp3file is null)").uniq.order(:title)
+    @categories = Category.where("id in (select category_id from blog_posts where mp3file is null and publishable = 1)").uniq.order(:title)
     @single_events = SingleEvent.where("occurrence > ?", Time.now).limit(3)
   end
 end
