@@ -198,8 +198,8 @@ class SingleEventTest < ActiveSupport::TestCase
     single = FactoryGirl.create(:single_event)
     ical = <<ical
 BEGIN:VEVENT
-DTEND;VALUE=DATE-TIME:20111001T110000Z
-DTSTART;VALUE=DATE-TIME:20111001T100000Z
+DTEND;VALUE=DATE-TIME:#{(single.occurrence + single.duration * 60).utc.strftime("%Y%m%dT%H%M%SZ")}
+DTSTART;VALUE=DATE-TIME:#{single.occurrence.utc.strftime("%Y%m%dT%H%M%SZ")}
 DESCRIPTION:
 URL:http://hcking.dev/events/1/dates/1
 SUMMARY:SimpleEvent (SimpleSingleEventName)
@@ -213,8 +213,8 @@ ical
     single = FactoryGirl.create :single_event
     ical = <<ical
 BEGIN:VEVENT
-DTEND;VALUE=DATE-TIME:20111001T110000Z
-DTSTART;VALUE=DATE-TIME:20111001T100000Z
+DTEND;VALUE=DATE-TIME:#{(single.occurrence + single.duration * 60).utc.strftime("%Y%m%dT%H%M%SZ")}
+DTSTART;VALUE=DATE-TIME:#{single.occurrence.utc.strftime("%Y%m%dT%H%M%SZ")}
 DESCRIPTION:http://hcking.dev/events/1/dates/1
 SUMMARY:SimpleEvent (SimpleSingleEventName)
 LOCATION:Deutz-Mülheimerstraße 129\\, 51063 Köln
