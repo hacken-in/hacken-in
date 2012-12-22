@@ -32,6 +32,10 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_admin_user
 
+  def is_google_bot
+    !request.env["HTTP_USER_AGENT"].match(/googlebot/i).nil?
+  end
+
   private
 
   def set_current_user

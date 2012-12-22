@@ -194,4 +194,32 @@ class SingleEventTest < ActiveSupport::TestCase
     assert_equal [single], SingleEvent.only_tagged_with("meintag")
   end
 
+  test "should generate ri_cal_event" do
+    single = FactoryGirl.create(:single_event)
+    ical = <<ical
+BEGIN:VEVENT
+DTEND;VALUE=DATE-TIME:20111001T110000Z
+DTSTART;VALUE=DATE-TIME:20111001T100000Z
+DESCRIPTION:
+URL:http://hcking.dev/events/1/dates/1
+SUMMARY:SimpleEvent (SimpleSingleEventName)
+LOCATION:Deutz-Mülheimerstraße 129\\, 51063 Köln
+END:VEVENT
+ical
+    assert_equal ical.strip, single.to_ri_cal_event.to_s.strip
+  end
+
+  test "should add link to description in ri_cal_event" do
+    single = FactoryGirl.create :single_event
+    ical = <<ical
+BEGIN:VEVENT
+DTEND;VALUE=DATE-TIME:20111001T110000Z
+DTSTART;VALUE=DATE-TIME:20111001T100000Z
+DESCRIPTION:http://hcking.dev/events/1/dates/1
+SUMMARY:SimpleEvent (SimpleSingleEventName)
+LOCATION:Deutz-Mülheimerstraße 129\\, 51063 Köln
+END:VEVENT
+ical
+    assert_equal ical.strip, single.to_ri_cal_event(true).to_s.strip
+  end
 end

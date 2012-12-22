@@ -137,7 +137,7 @@ class SingleEvent < ActiveRecord::Base
     end
   end
 
-  def to_ri_cal_event
+  def to_ri_cal_event(links_in_description = false)
     ri_cal_event = RiCal::Component::Event.new
     ri_cal_event.summary = full_name
     ri_cal_event.description = ActionController::Base.helpers.strip_tags("#{description}\n\n#{event.description}".strip)
@@ -158,10 +158,15 @@ class SingleEvent < ActiveRecord::Base
     end
 
     ri_cal_event.location = location if location.present?
-    ri_cal_event.url = Rails.application.routes.url_helpers.event_single_event_url(
+    url = Rails.application.routes.url_helpers.event_single_event_url(
               host: Rails.env.production? ? "nerdhub.de" : "hcking.dev",
               event_id: event.id,
               id: id)
+    if links_in_description
+      ri_cal_event.description = (ri_cal_event.description + "\n\n#{url}").strip
+    else
+      ri_cal_event.url = url
+    end
     ri_cal_event
   end
 

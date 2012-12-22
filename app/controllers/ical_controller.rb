@@ -46,13 +46,15 @@ class IcalController < ApplicationController
 
   def render_event(event)
     ri_cal = RiCal.Calendar
-    ri_cal.events.push event.to_ri_cal_event
+    ri_cal.events.push event.to_ri_cal_event(is_google_bot)
     render text: ri_cal
   end
 
   def render_events(events)
     ri_cal = RiCal.Calendar
-    ri_cal.events.push *events.to_a.map(&:to_ri_cal_event)
+    ri_cal.events.push(*events.to_a.map do |e| 
+      e.to_ri_cal_event(is_google_bot)
+    end)
     render text: ri_cal
   end
 
