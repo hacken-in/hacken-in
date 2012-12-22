@@ -48,6 +48,9 @@ de:
     omniauth_callbacks:
       success: 'Du hast Dich erfolgreich mit Deinem %{kind}-Account angemeldet.'
       failure: 'Du konntest nicht Deinem %{kind}-Account angemeldet werden, weil "%{reason}".'
+    callbacks:
+      user:
+        failure: 'Du konntest nicht Deinem %{kind}-Account angemeldet werden, weil "%{reason}".'
     mailer:
       confirmation_instructions:
         subject: 'Anleitung zur Bestätigung Deines Accounts'

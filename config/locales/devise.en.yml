@@ -51,6 +51,9 @@ en:
     omniauth_callbacks:
       success: 'Successfully authenticated from %{kind} account.'
       failure: 'Could not authenticate you from %{kind} because "%{reason}".'
+    callbacks:
+      user:
+        failure: 'Du konntest nicht Deinem %{kind}-Account angemeldet werden, weil "%{reason}".'
     mailer:
       confirmation_instructions:
         subject: 'Confirmation instructions'
