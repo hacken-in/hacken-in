@@ -1,5 +1,7 @@
 Hcking::Application.routes.draw do
-  devise_for :users, controllers: { omniauth_callbacks: "callbacks" }
+  devise_for :users, controllers: { omniauth_callbacks: "callbacks" } do
+    get 'users', :to => 'users#show', :as => :user_root # Rails 3
+  end
 
   ActiveAdmin.routes(self)
 
