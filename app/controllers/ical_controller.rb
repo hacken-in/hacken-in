@@ -68,7 +68,7 @@ class IcalController < ApplicationController
   end
 
   def time_range
-    Date.today..(Date.today + 8.weeks)
+    (Date.today - 3.months)..(Date.today + 3.months)
   end
 
   def user
