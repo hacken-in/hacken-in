@@ -49,7 +49,7 @@ Hcking::Application.configure do
         location:  '/usr/sbin/sendmail',
         arguments: '-i -t'
   }
-  config.action_mailer.default_url_options = { host: "hcking.de" }
+  config.action_mailer.default_url_options = { host: "nerdhub.de" }
 
   # Enable threaded mode
   # config.threadsafe!
