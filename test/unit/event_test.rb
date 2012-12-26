@@ -4,7 +4,7 @@ require 'test_helper'
 class EventTest < ActiveSupport::TestCase
 
   test "validate presence of name" do
-    category = Factory(:a_category)
+    category = FactoryGirl.create(:a_category)
     event = Event.new name: 'event', category: category
     assert event.valid?
 
@@ -16,7 +16,7 @@ class EventTest < ActiveSupport::TestCase
     test_date = 7.days.from_now
     test_date += 2.hours if test_date.hour < 2
 
-    category = Factory(:a_category)
+    category = FactoryGirl.create(:a_category)
     event = Event.new(name: "Hallo", category: category)
     assert_equal 0, event.schedule.all_occurrences.size
     event.schedule.add_recurrence_time(test_date)
@@ -42,7 +42,7 @@ class EventTest < ActiveSupport::TestCase
   end
 
   test "tagging" do
-    category = Factory(:a_category)
+    category = FactoryGirl.create(:a_category)
     event = Event.new(name: "Hallo", category: category)
     assert_equal 0, event.tags.count
 
