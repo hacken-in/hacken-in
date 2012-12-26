@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121118100252) do
+ActiveRecord::Schema.define(:version => 20121226152149) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -32,9 +32,7 @@ ActiveRecord::Schema.define(:version => 20121118100252) do
     t.string   "picture_id"
     t.string   "link"
     t.text     "description"
-    t.string   "calendar_week"
-    t.datetime "from"
-    t.datetime "to"
+    t.integer  "calendar_week"
     t.boolean  "active"
     t.integer  "duration"
     t.datetime "created_at",    :null => false

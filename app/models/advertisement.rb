@@ -4,7 +4,7 @@ class Advertisement < ActiveRecord::Base
   attr_accessible :calendar_week, :description, :duration, :file, :link, :context, :picture_id
   belongs_to :picture
 
-  scope :for_actual_week, where(calendar_week: DateTime.now.iso_cweek)
+  scope :for_actual_week, where("? >= calendar_week and ? <= calendar_week + duration",DateTime.now.iso_cweek, DateTime.now.iso_cweek)
   scope :context, lambda { |ctx| where(context: ctx) }
 
   class << self
