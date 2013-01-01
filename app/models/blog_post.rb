@@ -10,10 +10,12 @@ class BlogPost < ActiveRecord::Base
 
   after_initialize :set_defaults
 
-  validates_presence_of :headline, :headline_teaser, :teaser_text, :text, :user, :category, :publishable_from, :picture_id
+  validates_presence_of :headline, :headline_teaser, :teaser_text, :text, :user, :category, :publishable_from, :picture_id, :blog_type
 
   scope :for_web, lambda { where( "publishable = ? and publishable_from <= ?", true, Time.zone.now ).order("publishable_from desc") }
   scope :most_recent, where("publishable = 1 and publishable_from <= ?", Time.zone.now).order("publishable_from DESC").limit(30)
+  scope :blog, where("blog_type = 'blog'")
+  scope :podcast, where("blog_type = 'podcast'")
 
   def self.search(search)
     find(:all, :conditions => ['headline LIKE ? OR headline_teaser LIKE ? OR teaser_text

@@ -15,3 +15,14 @@ $ ->
           { name: 'tools', items : [ 'Source', 'Maximize','-','About' ] }
         ]
     } )
+
+  updateBlogType = ->
+    if $("#blog_post_blog_type").val() == "podcast"
+      $("#blog_post_mp3file_input").show()
+    else
+      $("#blog_post_mp3file_input").hide()
+
+  $("#blog_post_blog_type").change( ->
+    updateBlogType()
+  )
+  updateBlogType()

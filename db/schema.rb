@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121226152149) do
+ActiveRecord::Schema.define(:version => 20130101161243) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -64,12 +64,13 @@ ActiveRecord::Schema.define(:version => 20121226152149) do
     t.integer  "user_id"
     t.boolean  "publishable"
     t.integer  "category_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
     t.datetime "publishable_from"
     t.boolean  "use_in_newsletter"
     t.integer  "picture_id"
     t.string   "mp3file"
+    t.string   "blog_type",         :default => "blog"
   end
 
   add_index "blog_posts", ["category_id"], :name => "index_blog_posts_on_category_id"

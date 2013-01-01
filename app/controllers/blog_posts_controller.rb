@@ -4,7 +4,7 @@ class BlogPostsController < ApplicationController
   before_filter :advertisement, :only => [:index, :show, :feed]
 
   def index
-    @posts = BlogPost.for_web.where("mp3file is null").order("publishable_from desc").page(params[:page]).per(10)
+    @posts = BlogPost.for_web.blog.order("publishable_from desc").page(params[:page]).per(10)
     find_post_by_params
   end
 
@@ -13,7 +13,7 @@ class BlogPostsController < ApplicationController
   end
 
   def feed
-    @posts = BlogPost.for_web.where("mp3file is null").limit(10)
+    @posts = BlogPost.for_web.blog.limit(10)
     respond_to do |format|
       format.atom { render :layout => false }
     end
@@ -53,7 +53,7 @@ class BlogPostsController < ApplicationController
   end
 
   def sidebar_values
-    @categories = Category.where("id in (select category_id from blog_posts where mp3file is null and publishable = 1)").uniq.order(:title)
+    @categories = Category.where("id in (select category_id from blog_posts where blog_type = 'blog' and publishable = 1)").uniq.order(:title)
     @single_events = SingleEvent.where("occurrence > ?", Time.now).limit(3)
   end
 end

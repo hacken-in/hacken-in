@@ -9,7 +9,7 @@ ActiveAdmin.register BlogPost do
     column :publishable
     column :use_in_newsletter
     column :podcast do |post|
-      post.mp3file.blank? ? "Nein" : "Ja"
+      post.blog_type == "podcast" ? "Ja" : "Nein"
     end
     default_actions
   end

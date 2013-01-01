@@ -3,7 +3,7 @@ class PodcastsController < BlogPostsController
   before_filter :advertisement, :only => [:index, :show]
 
   def index
-    @posts = BlogPost.for_web.where("mp3file is not null").order("publishable_from desc").page(params[:page]).per(10)
+    @posts = BlogPost.for_web.podcast.order("publishable_from desc").page(params[:page]).per(10)
     find_post_by_params
   end
 
@@ -13,7 +13,7 @@ class PodcastsController < BlogPostsController
 
   def feed
     @category = Category.find(params[:category_id])
-    @posts = BlogPost.for_web.where("mp3file is not null and category_id=?", params[:category_id]).limit(10)
+    @posts = BlogPost.for_web.podcast.where("category_id=?", params[:category_id]).limit(10)
     render 'podcasts/feed.rss', :layout => false
   end
 
@@ -24,7 +24,7 @@ class PodcastsController < BlogPostsController
   end
 
   def sidebar_values
-    @categories = Category.unscoped.where("id in (select category_id from blog_posts where mp3file is not null)").uniq.order(:title)
+    @categories = Category.unscoped.where("id in (select category_id from blog_posts where blog_type='podcast' and publishable = 1)").uniq.order(:title)
     @single_events = SingleEvent.where("occurrence > ?", Time.now).limit(3)
   end
 end
