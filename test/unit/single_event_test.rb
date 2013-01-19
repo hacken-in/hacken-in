@@ -154,7 +154,6 @@ class SingleEventTest < ActiveSupport::TestCase
 
   test "get data from event if not defined in model" do
     single = FactoryGirl.create(:single_event)
-    user = FactoryGirl.create(:user)
 
     single.event.url = "http://www.example.com"
     single.event.full_day = true
@@ -221,5 +220,18 @@ LOCATION:Deutz-Mülheimerstraße 129\\, 51063 Köln
 END:VEVENT
 ical
     assert_equal ical.strip, single.to_ri_cal_event(true).to_s.strip
+  end
+
+  test "should respect venue_info of event only if boolean is set" do
+    single = FactoryGirl.create :single_event
+    single.event.venue_info = "VenueInfos"
+    single.venue_info = nil
+    assert_equal "VenueInfos", single_event.venue_info
+    single.use_venue_info_of_event = false
+    assert_nil single_event.venue_info
+    single.venue_info = "Single Venue Info"
+    assert_equal "Single Venue Info", single_event.venue_info
+    single.use_venue_info_of_event = true
+    assert_equal "Single Venue Info", single_event.venue_info
   end
 end

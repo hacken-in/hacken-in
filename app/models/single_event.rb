@@ -125,8 +125,16 @@ class SingleEvent < ActiveRecord::Base
     self.self_picture || self.event.picture
   end
 
+  def venue_info
+    venue_info = self.read_attribute(:venue_info)
+    if use_venue_info_of_event && venue_info.blank?
+      venue_info = self.event.venue_info
+    end
+    venue_info
+  end
+
   # Get the attribute from the Event model unless they exist here
-  [:url, :twitter, :twitter_hashtag, :duration, :full_day, :category_id, :venue_info].each do |item|
+  [:url, :twitter, :twitter_hashtag, :duration, :full_day, :category_id].each do |item|
     define_method item.to_s do
       value = self.read_attribute(item)
       if !value.nil? && !(value.class.to_s == "String" && value.blank?)

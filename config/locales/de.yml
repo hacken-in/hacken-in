@@ -211,6 +211,7 @@ de:
         venue: Ort
         picture: Bild
         venue_info: Ort-Zusatzinfo (Raum, Gebäude, etc...)
+        use_venue_info_of_event: "Venue Info vom Event benutzen"
       suggestion:
         name: Name
         occurrence: Zeitpunkt

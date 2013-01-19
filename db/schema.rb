@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130101161243) do
+ActiveRecord::Schema.define(:version => 20130119130343) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -170,12 +170,13 @@ ActiveRecord::Schema.define(:version => 20130101161243) do
     t.integer  "duration"
     t.boolean  "full_day"
     t.string   "twitter_hashtag"
-    t.boolean  "based_on_rule",   :default => false
+    t.boolean  "based_on_rule",           :default => false
     t.integer  "category_id"
     t.integer  "venue_id"
     t.string   "venue_info"
     t.integer  "picture_id"
     t.string   "twitter"
+    t.boolean  "use_venue_info_of_event", :default => true
   end
 
   add_index "single_events", ["category_id"], :name => "index_single_events_on_category_id"
