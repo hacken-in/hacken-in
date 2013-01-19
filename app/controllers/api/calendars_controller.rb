@@ -18,20 +18,19 @@ class Api::CalendarsController < ApplicationController
       render text: 'Die Endzeit ist kein valides Datum', status: 400
       return
     end
-    
+
     # Falls ein Datum angegeben wurde, dass vor dem Anfangsdatum liegt
     if to < from
       to = from + 4.weeks
     end
-        
+
     @single_events = SingleEvent.where('? <= occurrence AND occurrence <= ?', from, to)
     @single_events = @single_events.in_categories(params[:categories].split(',').map(&:to_i)) unless params[:categories].blank?
-    
+
     @single_events.select! { |single_event| single_event.is_for_user? current_user } if current_user
 
     render :entries
   end
-
 
   def presets
     @presets = CalendarPreset.presets_for_user(current_user)

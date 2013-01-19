@@ -226,12 +226,12 @@ ical
     single = FactoryGirl.create :single_event
     single.event.venue_info = "VenueInfos"
     single.venue_info = nil
-    assert_equal "VenueInfos", single_event.venue_info
+    assert_equal "VenueInfos", single.venue_info
     single.use_venue_info_of_event = false
-    assert_nil single_event.venue_info
+    assert_nil single.venue_info
     single.venue_info = "Single Venue Info"
-    assert_equal "Single Venue Info", single_event.venue_info
+    assert_equal "Single Venue Info", single.venue_info
     single.use_venue_info_of_event = true
-    assert_equal "Single Venue Info", single_event.venue_info
+    assert_equal "Single Venue Info", single.venue_info
   end
 end
