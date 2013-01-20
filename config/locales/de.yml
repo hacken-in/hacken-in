@@ -337,7 +337,7 @@ de:
 
   users:
     show:
-      edit: Editieren
+      edit: Profil bearbeiten
       next_events: "Zugesagt für diese Termine"
       no_next_events: "Keine Termine zugesagt."
       recent_comments: "Aktuellste Kommentare"

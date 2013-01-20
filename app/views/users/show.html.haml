@@ -2,59 +2,58 @@
   = @user.nickname
 
 .row
-  .span4
-    %h2
-      = @user.nickname
+  .span2.left_side
+    .black_sidebar
+      .big_gravatar
+        = gravatar_image_tag(@user.email, class: "user_gravatar", gravatar: { default: :identicon, size: 256 })
+      .inner_text
+        %h3
+          = @user.nickname
 
-    - if @user.description?
-      = convert_markdown @user.description
-    - else
-      = t 'users.show.no_description'
+        - if @user.description?
+          = convert_markdown @user.description
+        - else
+          = t 'users.show.no_description'
 
-    %ul.link_list
+    .link-list
       - if @user.twitter?
-        %li
-          .content-field-icon
-            %i.icon-twitter
-          .content-field-text
-            %a{ href: "https://twitter.com/#{@user.twitter}" }= "@#{@user.twitter}"
+        %a{ href: "https://twitter.com/#{@user.twitter}" }
+          = image_tag "twitter_large.png"
 
       - if @user.github?
-        %li
-          .content-field-icon
-            %i.icon-github
-          .content-field-text
-            = link_to @user.github, "https://github.com/#{@user.github}"
+        %a{ href: "https://github.com/#{@user.github}" }
+          = image_tag "github_large.png"
 
       - if @user.homepage?
-        %li
-          .content-field-icon
-            %i.icon-home
-          .content-field-text
-            = link_to @user.homepage, @user.homepage
+        %a{ href: @user.homepage}
+          = image_tag "home_large.png"
 
+    - if current_user == @user
+      .edit_profile
+        = link_to t('users.show.edit'), edit_user_registration_path
+
+  .span4.no_gap
+    .row.love_hate_row
+      .span2
+        %h3
+          Ich liebe 
+          %i.icon-heart
+        - if @user.likes.length > 0
+          - @user.likes.each do |like|
+            .tag= like.name
+        - else
+          Nichts
+
+      .span2
+        %h3
+          ich hasse
+          %i.icon-thumbs-down
+        - if @user.hates.length > 0
+          - @user.hates.each do |hate|
+            .tag= hate.name
+        - else
+          Nichts
     .recent_events
-      %h3= t 'users.show.next_events'
       - unless @next_events.empty?
-        - @next_events.each do |single_event|
-          = render partial: "modules/calendars/event_link", locals: {single_event: single_event}
-      - else
-        %p= t 'users.show.no_next_events'
-
-    .recent_comments
-      %h3= t 'users.show.recent_comments'
-
-      - @recent_comments.each do |comment|
-        %h4.user_profile.comment_headline Kommentar für #{link_to comment.commentable.title, commentable_path(comment)}
-        = render partial: "modules/comments/comment", locals: { comment: comment }
-      - if @recent_comments.empty?
-        %p= t 'users.show.no_recent_comments'
-
-  .span2
-    .pull-right
-      %ul.thumbnails
-      .thumbnail
-        = gravatar_image_tag(@user.email, class: "user_gravatar", gravatar: { default: :identicon, size: 256 })
-      %br
-      - if current_user == @user
-        = link_to t('users.show.edit'), edit_user_registration_path, class: "btn"
+        .calendar-calendar
+          = render partial: 'modules/calendars/single_event_list', locals: {single_events: @next_events}

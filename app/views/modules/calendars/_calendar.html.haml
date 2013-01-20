@@ -1,17 +1,6 @@
 - if single_events.size > 0
-  - current_date = nil
-  - single_events.each do |single_event|
-    - if current_date != single_event.occurrence.to_date
-      - current_date = single_event.occurrence.to_date
-      %h1
-        = day_output_helper(current_date)
+  = render partial: 'modules/calendars/single_event_list', locals: {single_events: single_events}
 
-    = render partial: 'modules/calendars/entry', locals: {single_event: single_event}
-
-  :javascript
-    var calendarScrollFrom = "#{current_date+1.day}";
-    var calendarScrollTo   = "#{current_date+1.month}";
-    var endOfTheWorld      = false;
 - else
   .well
     Herzlichen Glückwunsch, du hast das Ende unseres Kalenders erreicht :-)
