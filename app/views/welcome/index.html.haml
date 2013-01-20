@@ -1,6 +1,12 @@
 - content_for :title do
   Startseite
 
+- content_for :javascript do
+  :javascript
+    $(function(){
+      $('.carousel').carousel({interval: 8000})
+    });
+
 .row
   #head-carousel.carousel.slide.span6
     .carousel-inner
