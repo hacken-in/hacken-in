@@ -6,7 +6,8 @@
 .row.event.single-event
   .span4
     .black-bar.black-bar-wide
-      = render partial: 'modules/categories/indicator', locals: { size: '75px', color: color }
+      .black-bar--category-indicator
+        = render partial: 'modules/categories/indicator', locals: { submodule: 'big', color: color }
       .black-bar-content.black-bar-with-date{ data: { hlcolor: color } }
         .black-bar-top-part
           .black-bar-date

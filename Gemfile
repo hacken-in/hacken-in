@@ -31,6 +31,7 @@ gem 'jquery-rails', '~> 2.0.0'
 gem 'md_emoji', '~> 1.0.0'
 gem 'redcarpet', '~> 2.1.0'
 gem 'pjax_rails', '~> 0.3.3'
+gem 'compass-rails'
 
 # Admin
 # TODO: Investigate if we can take version instead of Repo

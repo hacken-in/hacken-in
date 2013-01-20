@@ -7,8 +7,7 @@
 
       .event-header
         .event-category
-          = render partial: 'modules/categories/indicator',
-            locals: { color: event.category.color, size: '14px' }
+          = render partial: 'modules/categories/indicator', locals: { submodule: 'small', color: event.category.color }
         .event-title= event.title
 
       .event-content

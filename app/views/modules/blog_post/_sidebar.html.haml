@@ -8,7 +8,7 @@
       - categories.each do |category|
         %li
           .blog_category_indicator
-            = render partial: 'modules/categories/indicator', locals: { size: "14px",
+            = render partial: 'modules/categories/indicator', locals: { submodule: 'small',
               color: current_category.nil? || current_category.id == category.id ? category.color : "#aaa" }
           = link_to category.title, post_categorie_path(controller, category),
             class: current_category.nil? || current_category.id == category.id ? "" : "blog_category_inactive"
@@ -25,7 +25,7 @@
       - single_events.each do |single_event|
         %li
           .blog_event_indicator
-            = render partial: 'modules/categories/indicator', locals: { size: "14px", color: single_event.category.color }
+            = render partial: 'modules/categories/indicator', locals: { size: "small", color: single_event.category.color }
           .blog_event_title
             = link_to single_event.title, event_single_event_path(single_event.event, single_event)
           .blog_event_date
