@@ -1,0 +1,16 @@
+auth:
+  twitter:
+    key: ""
+    secret: ""
+
+  github:
+    key: ""
+    secret: ""
+
+  facebook:
+    key: ""
+    secret: ""
+
+  google_oauth2:
+    key: ""
+    secret: ""
