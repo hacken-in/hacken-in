@@ -128,5 +128,5 @@ end
 group :test do
   gem 'factory_girl_rails', '~> 3.5', require: false
   gem 'spork-testunit', '~> 0.0.7'
-  gem 'mocha', '~> 0.12.0', require: false
+  gem 'mocha', '~> 0.13.1'
 end
