@@ -1,6 +1,9 @@
 - unless event.venue.nil?
   %address.event-venue
-    = event.venue.location
+    - if event.venue.url.blank?
+      = event.venue.location
+    - else
+      = link_to event.venue.location, event.venue.url
     %br
     - if event.venue_info.present?
       = event.venue_info

@@ -8,6 +8,7 @@ ActiveAdmin.register Venue do
     column :zipcode
     column :city
     column :country
+    column :url
     default_actions
   end
 
@@ -17,6 +18,7 @@ ActiveAdmin.register Venue do
         simple_format venue.street
         simple_format venue.zipcode
         simple_format venue.city
+        simple_format venue.url
       end
       attributes_table do
       row :single_events do |preset|
