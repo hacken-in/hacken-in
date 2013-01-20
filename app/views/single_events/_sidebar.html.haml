@@ -16,10 +16,6 @@
       Werbung
       = link_to(image_tag(@advertisement.picture.advertisement_image.rectangle.url), @advertisement.link)
 
-  .event-external-links
-    = link_to image_tag("blog-twitter.png"), "http://twitter.com/nerdhub_cgn", class: 'external-link'
-    = link_to image_tag("blog-facebook.png"), "http://www.facebook.com/nerdhubcgn", class: 'external-link'
-
   .blog_nerdletter
     %h2 Nerdletter
     %form{action:"http://nerdhub.us5.list-manage.com/subscribe/post?u=748434db1c6d583cbe804429c&amp;id=0ea62d267d", method:"post", id:"mc-embedded-subscribe-form", name:"mc-embedded-subscribe-form", target:"_blank"}
