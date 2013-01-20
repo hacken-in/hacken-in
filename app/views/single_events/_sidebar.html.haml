@@ -9,6 +9,14 @@
         .event-text
           = convert_markdown(@single_event.event.description, true)
 
+  .single-event-tags
+    - tags = (@single_event.tags | @single_event.event.tags).sort_by(&:name)
+    - unless tags.empty?
+      %h4
+        Lieben oder Boykottieren
+      - tags.each do |tag|
+        = render partial: "modules/tags/tag", locals: { tag: tag }
+
   = render partial: "events/next_events", locals: { event: @single_event.event, current_single_event: @single_event }
 
   - if @advertisement.present?

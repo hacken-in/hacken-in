@@ -40,7 +40,7 @@
           %i.icon-heart
         - if @user.likes.length > 0
           - @user.likes.each do |like|
-            .tag= like.name
+            = render partial: "modules/tags/tag", locals: { tag: like }
         - else
           Nichts
 
@@ -50,7 +50,7 @@
           %i.icon-thumbs-down
         - if @user.hates.length > 0
           - @user.hates.each do |hate|
-            .tag= hate.name
+            = render partial: "modules/tags/tag", locals: { tag: hate }
         - else
           Nichts
     .recent_events
