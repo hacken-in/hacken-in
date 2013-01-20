@@ -6,7 +6,7 @@
       .blog_headline_date
         = blog_post.publishable_from.strftime("%Y-%m-%d %H:%M")
         ,
-        = blog_post.user.nickname
+        = link_to blog_post.user.nickname, user_path(blog_post.user)
       %h1.blog_headline_text
         = link_to blog_post.headline, post_path(controller, blog_post.to_link)
     .clear
