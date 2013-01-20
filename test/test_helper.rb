@@ -1,7 +1,6 @@
 ENV["RAILS_ENV"] = "test"
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
-require "mocha"
 
 require 'spork'
 Spork.prefork do
@@ -10,6 +9,7 @@ Spork.prefork do
   Spork.trap_method(Rails::Application::RoutesReloader, :reload!)
   require 'rails/test_help'
 end
+
 
 Spork.each_run do
   require 'factory_girl_rails'
@@ -45,3 +45,6 @@ module Geocoder
     end
   end
 end
+
+# Mocha muss als letztes geladen werden
+require 'mocha/setup'

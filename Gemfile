@@ -31,6 +31,7 @@ gem 'jquery-rails', '~> 2.0.0'
 gem 'md_emoji', '~> 1.0.0'
 gem 'redcarpet', '~> 2.1.0'
 gem 'pjax_rails', '~> 0.3.3'
+gem 'compass-rails'
 
 # Admin
 # TODO: Investigate if we can take version instead of Repo
@@ -128,5 +129,5 @@ end
 group :test do
   gem 'factory_girl_rails', '~> 3.5', require: false
   gem 'spork-testunit', '~> 0.0.7'
-  gem 'mocha', '~> 0.12.0', require: false
+  gem 'mocha', '~> 0.13.1'
 end

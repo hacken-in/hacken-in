@@ -1,5 +1,6 @@
 # encoding: utf-8
 require 'test_helper'
+require 'ostruct'
 
 class EventTest < ActiveSupport::TestCase
 
@@ -264,9 +265,12 @@ class EventTest < ActiveSupport::TestCase
     future = Date.new(2012, 12, 1)
     way_before = Date.new(2011, 8, 2)
 
-    single_event_tomorrow = stub(:occurrence => tomorrow)
+    single_event_tomorrow = OpenStruct.new(:occurrence => tomorrow)
 
-    single_events = [stub(:occurrence => way_before), single_event_tomorrow, stub(:occurrence => future)]
+    single_events = [OpenStruct.new(:occurrence => way_before),
+                     single_event_tomorrow,
+                     OpenStruct.new(:occurrence => future)]
+
     event = Event.new
     event.stubs(:single_events => single_events)
 
@@ -277,7 +281,7 @@ class EventTest < ActiveSupport::TestCase
     today = Date.new(2012, 2, 2)
     yesterday = Date.new(2012, 2, 1)
 
-    single_events = [stub(:occurrence => yesterday)]
+    single_events = [OpenStruct.new(:occurrence => yesterday)]
     event = Event.new
     event.stubs(:single_events => single_events)
 

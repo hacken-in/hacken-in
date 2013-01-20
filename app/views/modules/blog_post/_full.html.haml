@@ -1,7 +1,7 @@
 %article.row.blog_full
   .span4
     .blog_headline_indicator
-      = render partial: 'modules/categories/indicator', locals: { size: "75px", color: blog_post.category.color }
+      = render partial: 'modules/categories/indicator', locals: { submodule: "big", color: blog_post.category.color }
     .blog_headline_black
       .blog_headline_date
         = blog_post.publishable_from.strftime("%Y-%m-%d %H:%M")

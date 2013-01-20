@@ -3,14 +3,16 @@ $LOAD_PATH.unshift(File.dirname(__FILE__))
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '../..', 'test'))
 
 require 'test_helper'
+require 'ostruct'
 
 class CalendarTest < ActiveSupport::TestCase
 
   test "should catalog events by day" do
     today, tomorrow = Date.new(2012, 10, 12), Date.new(2012, 10, 13)
 
-    first = stub(occurrence: today)
-    second, third = stub(occurrence: tomorrow), stub(occurrence: tomorrow)
+    first  = OpenStruct.new(occurrence: today)
+    second = OpenStruct.new(occurrence: tomorrow)
+    third  = OpenStruct.new(occurrence: tomorrow)
 
     days = Calendar.events_by_day [second, first, third]
 
@@ -25,7 +27,7 @@ class CalendarTest < ActiveSupport::TestCase
   test "should fill up missing events and sort" do
     today, tomorrow, day_after_tomorrow = Date.new(2012, 10, 12), Date.new(2012, 10, 13), Date.new(2012, 10, 14)
 
-    some_day = stub
+    some_day = OpenStruct.new
 
     days = {
       day_after_tomorrow => [some_day, some_day],
