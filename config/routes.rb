@@ -44,12 +44,6 @@ Hcking::Application.routes.draw do
     resources :comments, except: [:new]
   end
 
-  match "blog/category/:category_id" => "blog_posts#index", as: "blog_categorie"
-  match "blog/:year" => "blog_posts#index", year: /\d{4}/
-  match "blog/:year/:month" => "blog_posts#index", year: /\d{4}/, month: /\d{1,2}/
-  match "blog/:year/:month/:day" => "blog_posts#index", year: /\d{4}/, month: /\d{1,2}/,  day: /\d{1,2}/
-  match "blog/:year/:month/:day/:id" => "blog_posts#show"
-
   resources :blog_posts, path: "blog", only: [:show, :index] do
     collection do
       get :feed, defaults: { format: 'atom' }
@@ -57,9 +51,14 @@ Hcking::Application.routes.draw do
     resources :comments, except: [:new]
   end
 
+  match "blog/category/:category_id" => "blog_posts#index", as: "blog_categorie"
+  match "blog/:year" => "blog_posts#index", year: /\d{4}/
+  match "blog/:year/:month" => "blog_posts#index", year: /\d{4}/, month: /\d{1,2}/
+  match "blog/:year/:month/:day" => "blog_posts#index", year: /\d{4}/, month: /\d{1,2}/,  day: /\d{1,2}/
+  match "blog/:year/:month/:day/:id" => "blog_posts#show"
+
   resources :search, only: [:index]
-  resources :tags, :path => "hashtags", only: [:show, :index]
-  resources :comments, only: [:index]
+  resources :comments, only: [:create, :edit, :show]
   resources :suggestions, only: [:new, :create, :show]
   resource :calendar, only: [:show]
 

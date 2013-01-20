@@ -2,12 +2,6 @@
 class CommentsController < ApplicationController
   respond_to :html, :xml
 
-  def index
-    authorize! :index, Comment
-    @comments = Comment.order "created_at desc"
-    respond_with @comments
-  end
-
   def create
     @comment = find_commentable.comments.build params[:comment]
     @comment.user = current_user
@@ -19,11 +13,6 @@ class CommentsController < ApplicationController
 
     respond_with @comment,
       location: commentable_path(@comment, anchor: "comment_#{@comment.id}")
-  end
-
-  def show
-    @comment = Comment.find params[:id]
-    respond_with @comment
   end
 
   def edit
