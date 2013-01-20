@@ -25,7 +25,7 @@
       - single_events.each do |single_event|
         %li
           .blog_event_indicator
-            = render partial: 'modules/categories/indicator', locals: { size: "small", color: single_event.category.color }
+            = render partial: 'modules/categories/indicator', locals: { submodule: "small", color: single_event.category.color }
           .blog_event_title
             = link_to single_event.title, event_single_event_path(single_event.event, single_event)
           .blog_event_date
