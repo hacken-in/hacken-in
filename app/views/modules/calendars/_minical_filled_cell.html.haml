@@ -1,15 +1,3 @@
-= link_to event_single_event_path(event.event, event),
-    class: "minical-cell non-empty #{'first-cell' if first_cell}",
-    style: "background-color: #{event.category.color}" do
+= link_to "", event_single_event_path(event.event, event), class: "minical-cell #{'first-cell' if first_cell}", style: "background-color: #{event.category.color}", data: { behavior: 'event-tooltip--trigger', event_id: event.id }
 
-  .cell-content
-    .event.event-mini.dark
-
-      .event-header
-        .event-category
-          = render partial: 'modules/categories/indicator', locals: { submodule: 'small', color: event.category.color }
-        .event-title= event.title
-
-      .event-content
-        .event-time= event.occurrence.strftime("%H:%M Uhr")
-        .event-location= event.venue.try(:location)
+= render 'events/m_tooltip', { event: event }

@@ -1,1 +1,7 @@
+- if @smurfville
+  - if defined?(submodule).nil?
+    - submodule = 'big'
+  - if defined?(color).nil?
+    - color = '#ff0'
+
 %div{class: "m-category-indicator_#{submodule}", style: "background-color: #{color};"}

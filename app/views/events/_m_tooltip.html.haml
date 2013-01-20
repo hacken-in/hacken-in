@@ -1,0 +1,19 @@
+- if @smurfville
+  - event = SingleEvent.last
+  :css
+    .m-event-tooltip{ display: block }
+
+.m-event-tooltip{data: { behavior: 'event-tooltip--content', event_id: event.id }}
+  .m-event-tooltip--title
+    .m-event-tooltip--title--category
+      = render partial: 'modules/categories/indicator', locals: { submodule: 'small', color: event.category.color }
+    = link_to event.title, event_single_event_path(event.event, event), class: 'm-event-tooltip--title'
+
+  .m-event-tooltip--content
+    .m-event-tooltip--time
+      = event.occurrence.strftime("%H:%M Uhr")
+
+    - if event.venue.present?
+      .m-event-tooltip--location
+        %span= event.venue.location
+        %span= event.venue.city
