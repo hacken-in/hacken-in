@@ -120,8 +120,8 @@ group :development do
   end
 
   # Guard
-  gem 'guard', '~> 1.3.0'
-  gem 'guard-test', '~> 0.5.0'
+  gem 'guard', '~> 1.6.0'
+  gem 'guard-test', '~> 0.7.0'
   gem 'guard-pow', '~> 1.0.0'
   gem 'guard-bundler', '~> 1.0.0'
 end
