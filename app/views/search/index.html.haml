@@ -17,7 +17,9 @@
       %li
         = link_to single_event.name + " - " + single_event.event.name, event_single_event_path(single_event.event, single_event)
         <br/>
-        = render "tags/tags", tag_list: single_event.tag_list
+        - tags = (single_event.tags | single_event.event.tags).sort_by(&:name)
+        - tags.each do |tag|
+          = render partial: "modules/tags/tag", locals: { tag: tag }
 
   - unless @events.blank?
     %div Events:

@@ -3,11 +3,6 @@ require 'test_helper'
 class CommentsControllerTest < ActionController::TestCase
   include Devise::TestHelpers
 
-  test "should get index" do
-    get :index
-    assert_response :success
-  end
-
   test "do not create comment for event if not logged in" do
     simple = FactoryGirl.create(:simple)
     put :create, event_id: simple.id, comment: { body: "hallo" }
@@ -46,20 +41,6 @@ class CommentsControllerTest < ActionController::TestCase
     simple.reload
     assert_equal "hallo", simple.comments.last.body
     assert_equal user, simple.comments.last.user
-  end
-
-  test "show singleevent comment" do
-    comment = FactoryGirl.create(:single_event_comment)
-    get :show, single_event_id: comment.commentable.event.id,
-               event_id: comment.commentable.id,
-               id: comment.id
-    assert_response :success
-  end
-
-  test "show event comment" do
-    comment = FactoryGirl.create(:event_comment)
-    get :show, event_id: comment.commentable.id, id: comment.id
-    assert_response :success
   end
 
   test "not edit single event comment if not logged in" do
