@@ -129,5 +129,9 @@ end
 group :test do
   gem 'factory_girl_rails', '~> 3.5', require: false
   gem 'spork-testunit', '~> 0.0.7'
-  gem 'mocha', '~> 0.13.1'
+  gem 'test-unit'
+  # Use this version because mocha head needs
+  # changes that are in the rails 3.2 head branch
+  # that are not released in 3.2.11
+  gem 'mocha', '0.12.8'
 end

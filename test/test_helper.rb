@@ -47,4 +47,4 @@ module Geocoder
 end
 
 # Mocha muss als letztes geladen werden
-require 'mocha/setup'
+require 'mocha'
