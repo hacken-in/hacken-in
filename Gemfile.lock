@@ -68,6 +68,10 @@ GEM
       activesupport (>= 3.0.0)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
+    better_errors (0.3.2)
+      coderay (>= 1.0.0)
+      erubis (>= 2.7.0)
+    binding_of_caller (0.6.8)
     bootstrap-kaminari-views (0.0.2)
       kaminari (>= 0.13)
       rails (>= 3.1)
@@ -322,6 +326,8 @@ PLATFORMS
 DEPENDENCIES
   activeadmin!
   acts-as-taggable-on (~> 2.3.1)
+  better_errors
+  binding_of_caller
   bootstrap-kaminari-views (~> 0.0.2)
   bootstrap-sass-rails (~> 2.1.1.0)
   cancan (~> 1.6.7)

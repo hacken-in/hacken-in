@@ -1,5 +1,5 @@
-source 'http://rubygems.org'
 
+source 'http://rubygems.org'
 gem 'rails', '~> 3.2.11'
 gem 'rake', '~> 0.9'
 
@@ -118,6 +118,9 @@ group :development do
     gem 'rb-fsevent', '~> 0.9.0pre4'
     gem 'growl', '~> 1.0.3'
   end
+
+  gem 'better_errors'
+  gem 'binding_of_caller'
 
   # Guard
   gem 'guard', '~> 1.6.0'
