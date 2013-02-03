@@ -6,6 +6,8 @@ class Api::UserTagsControllerTest < ActionController::TestCase
   [:hate, :like].each do |kind|
     test "should create new #{kind} tag" do
       user = FactoryGirl.create(:bodo)
+      user.send(:"#{kind}_list") << ".net"
+      user.save
       sign_in user
 
       assert_difference("user.#{kind}_list.length") do
@@ -41,6 +43,7 @@ class Api::UserTagsControllerTest < ActionController::TestCase
     test "remove #{kind} tag .net" do
       user = FactoryGirl.create(:bodo)
       user.send(:"#{kind}_list") << ".net"
+      user.send(:"#{kind}_list") << "java"
       user.save
       sign_in user
 
