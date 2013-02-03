@@ -67,4 +67,27 @@ class Api::UserTagsControllerTest < ActionController::TestCase
     end
   end
 
+  test "should remove tag from hate if added to like" do
+    user = FactoryGirl.create(:bodo)
+    user.hate_list << "tag"
+    user.save
+    sign_in user
+
+    post :create, kind: "like", tags: ['tag']
+    user.reload
+    assert_equal ["tag"], user.like_list
+    assert_equal [], user.hate_list
+  end
+
+  test "should remove tag from love if added to hate" do
+    user = FactoryGirl.create(:bodo)
+    user.like_list << "tag"
+    user.save
+    sign_in user
+
+    post :create, kind: "hate", tags: ['tag']
+    user.reload
+    assert_equal ["tag"], user.hate_list
+    assert_equal [], user.like_list
+  end
 end

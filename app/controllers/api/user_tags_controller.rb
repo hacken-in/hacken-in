@@ -13,7 +13,7 @@ class Api::UserTagsController < ApplicationController
   def destroy
     return render(:nothing => true, :status => :unauthorized) unless current_user
 
-    if remove_tag_from_list params[:kind], remove: params[:id]
+    if remove_tag_from_list params[:kind], params[:id]
       render json: { :status => :success, :message => t("user_tags.destroy.confirmation") }, :status => :ok
     else
       render json: { :status => :error, :message => t("user_tags.destroy.error") }, :Status => 422
@@ -22,16 +22,26 @@ class Api::UserTagsController < ApplicationController
 
   private
 
-  def modify_tag_list(kind, action)
-    actions = action.split(",")
-    actions.each do |a|
-      current_user.modify_tag_list kind, push: a
+  def modify_tag_list(kind, tags)
+    tags.split(",").each do |tag|
+      if (kind == "hate")
+        current_user.like_list.remove tag
+        current_user.hate_list << tag
+      else
+        current_user.hate_list.remove tag
+        current_user.like_list << tag
+      end
       current_user.save
     end
   end
 
-  def remove_tag_from_list(kind, action)
-    current_user.modify_tag_list kind, action
+  def remove_tag_from_list(kind, tag)
+    if (kind == "hate")
+      current_user.hate_list.remove tag
+    else
+      current_user.like_list.remove tag
+    end
     current_user.save
   end
+
 end
