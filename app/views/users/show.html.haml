@@ -39,7 +39,7 @@
           Ich liebe 
           %i.icon-heart
         - if @user.likes.length > 0
-          - @user.likes.each do |like|
+          - @user.likes.sort.each do |like|
             = render partial: "modules/tags/tag", locals: { tag: like }
         - else
           Nichts
@@ -49,7 +49,7 @@
           Ich boykottiere
           %i.icon-thumbs-down
         - if @user.hates.length > 0
-          - @user.hates.each do |hate|
+          - @user.hates.sort.each do |hate|
             = render partial: "modules/tags/tag", locals: { tag: hate }
         - else
           Nichts
