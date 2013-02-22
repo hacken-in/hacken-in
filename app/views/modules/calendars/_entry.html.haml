@@ -3,9 +3,8 @@
 .calendar-entry.black-bar
   .black-bar--category-indicator
     = render partial: 'modules/categories/indicator', locals: { submodule: "medium", color: color }
-  .calendar-line.black-bar-content{ data: { hlcolor: color } }
+  %a.calendar-line.black-bar-content.title-link{ data: { hlcolor: color }, href: event_single_event_path(single_event.event, single_event)}
     .calendar-line-title.black-bar-title
-      %a.title-link{href: event_single_event_path(single_event.event, single_event)}
-        = single_event.title
+      = single_event.title
     .calendar-line-time.black-bar-time
       = I18n.localize(single_event.occurrence, format: "%H:%M Uhr")
