@@ -6,7 +6,7 @@
       = add_carousel_link(f)
       :javascript
         $(function(){
-          $('.add_task').live('click', function(e){
+          $('.add_task').on('click', function(e){
             e.preventDefault();
             time = new Date().getTime()
             regexp = new RegExp("id", 'g')
