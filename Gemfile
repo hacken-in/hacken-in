@@ -94,10 +94,6 @@ gem 'bootstrap-kaminari-views', '~> 0.0.2'
 # Facebook style tooltip jQuery plugin
 gem 'tipsy-rails', '~> 1.0.3'
 
-# Sample Data
-# TODO: Investigate if this belongs to the test group
-gem 'faker', '~> 1.1.2'
-
 # Other dependencies
 gem 'gabba', '~> 0.3.0'
 # TODO: gem 'gabba', '~> 1.0.1'
@@ -133,6 +129,7 @@ end
 group :test do
   gem 'factory_girl_rails', '~> 3.5', require: false
   gem 'spork-testunit', '~> 0.0.7'
+  gem 'faker', '~> 1.1.2'
 
   # Something is inherently wrong with mocha
   # I can smell it
