@@ -29,7 +29,7 @@ class SingleEvent < ActiveRecord::Base
   scope :in_next_from,
     lambda { |delta, start_date| where(occurrence: (start_date)..((start_date + delta).to_date)) }
   scope :recent_to_soon,
-    lambda { |delta| where(occurrence: (Time.now.to_date - delta)..((Time.now + delta).to_date)) }
+    lambda { |delta| where(occurrence: (Time.now.to_date - delta)..((Time.now + delta).to_date + 1.day)) }
   scope :only_tagged_with,
     lambda { |tag| tagged_with(tag) | joins(:event).where('events.id in (?)', Event.tagged_with(tag).map(&:id)) }
   scope :in_categories,

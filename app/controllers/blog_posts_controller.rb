@@ -32,8 +32,6 @@ class BlogPostsController < ApplicationController
 
   def find_post_by_params
     if params[:year]
-      start_date = DateTime.new
-      end_date = start_date
       if params[:day]
         start_date = DateTime.new(params[:year].to_i, params[:month].to_i, params[:day].to_i)
         end_date = start_date

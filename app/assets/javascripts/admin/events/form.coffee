@@ -48,14 +48,14 @@ $ ->
 
     self = this
 
-    $(".delete-rule").live 'click', ->
+    $(".delete-rule").on 'click', ->
       if (confirm("Wirklich löschen?"))
         self.rules.splice $(this).attr("data-no"), 1
       repaint()
       reserialize()
       false
 
-    $(".delete-exclude").live 'click', ->
+    $(".delete-exclude").on 'click', ->
       if (confirm("Wirklich löschen?"))
         self.exdates.splice $(this).attr("data-no"), 1
       repaint()

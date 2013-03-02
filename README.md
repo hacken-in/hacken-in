@@ -71,4 +71,4 @@ misbehaviour. Even better: Fix it afterwards ;)
 
 ## Note on Patches/Pull Requests
 
-See CONTRIBUTING.md for details
+See [CONTRIBUTING.md](CONTRIBUTING.md) for details

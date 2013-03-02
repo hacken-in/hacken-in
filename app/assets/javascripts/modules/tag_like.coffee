@@ -11,12 +11,12 @@ $(->
            # TODO: Eventuell ein schöneres Alert
            alert "Da ging wat schief: #{data.message}"
 
-  $(".m-tag-love-click").live "click", ->
+  $(".m-tag-love-click").on "click", ->
     addTag("like", $(this).attr("data-tag-name"))
     $(this).parent().hide()
     return false
 
-  $(".m-tag-hate-click").live "click", ->
+  $(".m-tag-hate-click").on "click", ->
     addTag("hate", $(this).attr("data-tag-name"))
     $(this).parent().hide()
     return false
