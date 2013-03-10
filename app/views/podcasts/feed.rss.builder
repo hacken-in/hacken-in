@@ -3,7 +3,7 @@ xml.rss :version => "2.0",
   "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.0.dtd",
   "xmlns:atom" => "http://www.w3.org/2005/Atom" do
   xml.channel do
-    xml.title "Nerdhub Podcast #{@category.title}"
+    xml.title "#{@category.title}"
     xml.link podcast_categorie_url(@category)
     xml.description "Nerdhub Podcasts"
     xml.language "de"
