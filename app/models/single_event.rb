@@ -1,4 +1,5 @@
 class SingleEvent < ActiveRecord::Base
+  include TwitterHashTagFixer
 
   after_destroy :update_event
 

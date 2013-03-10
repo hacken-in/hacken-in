@@ -1,6 +1,7 @@
 require 'time_extensions'
 
 class Event < ActiveRecord::Base
+  include TwitterHashTagFixer
 
   validates_presence_of :name
   validates_presence_of :category

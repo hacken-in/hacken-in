@@ -234,4 +234,26 @@ ical
     single.use_venue_info_of_event = true
     assert_equal "Single Venue Info", single.venue_info
   end
+
+  test "should fix twitter values if entered with @ in string" do
+    single = FactoryGirl.create :single_event
+    single.twitter = "@wrong"
+    single.save
+    assert_equal "wrong", single.twitter
+  end
+
+  test "should fix twitter values if entered with url instead of handle" do
+    single = FactoryGirl.create :single_event
+    single.twitter = "https://twitter.com/wrong"
+    single.save
+    assert_equal "wrong", single.twitter
+  end
+
+  test "should fix twitter hashtag if entered with # in string" do
+    single = FactoryGirl.create :single_event
+    single.twitter_hashtag = "#wrong"
+    single.save
+    assert_equal "wrong", single.twitter_hashtag
+  end
+
 end
