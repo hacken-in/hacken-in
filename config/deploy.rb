@@ -58,7 +58,7 @@ namespace :deploy do
       end
       if changed_asset_count > 0 || force_compile
         logger.info "#{changed_asset_count} assets have changed. Pre-compiling"
-        run %Q{cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} #{asset_env} assets:precompile}
+        run %Q{cd #{latest_release} && bundle exec rake RAILS_ENV=#{rails_env} #{asset_env} assets:precompile}
       else
         logger.info "#{changed_asset_count} assets have changed. Skipping asset pre-compilation"
       end
