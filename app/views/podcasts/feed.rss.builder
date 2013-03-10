@@ -11,9 +11,9 @@ xml.rss :version => "2.0",
     xml.atom :link, href: podcast_feed_url(category_id: @category.id),
        rel: "self", type: "application/rss+xml"
 
-    xml.itunes :author, @posts.first.user.nickname
+    xml.itunes :author, (@posts.first.user.name || @posts.first.user.nickname)
     xml.itunes :owner do
-      xml.itunes :name, @posts.first.user.nickname
+      xml.itunes :name, (@posts.first.user.name || @posts.first.user.nickname)
       xml.itunes :email, @posts.first.user.email
     end
     xml.itunes :explicit, "no"

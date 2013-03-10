@@ -10,6 +10,10 @@
         %h3
           = @user.nickname
 
+        - if @user.name.present?
+          %h4
+            = @user.name
+
         - if @user.description?
           = convert_markdown @user.description
         - else
