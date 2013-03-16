@@ -40,8 +40,7 @@ gem 'activeadmin', '~> 0.5.1'
 gem 'ckeditor_rails', '~> 3.6.4.1', require: 'ckeditor-rails'
 
 # Monitoring
-gem 'newrelic_rpm', '~> 3.4.0'
-# TODO: gem 'newrelic_rpm', '~> 3.5.8.70'
+gem 'newrelic_rpm', '~> 3.5.8.70'
 
 # Date Handling
 gem 'ice_cube', '~> 0.8.0'
