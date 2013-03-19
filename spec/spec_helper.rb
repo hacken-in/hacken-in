@@ -15,3 +15,29 @@ RSpec.configure do |config|
   config.order = "random"
   config.include FactoryGirl::Syntax::Methods
 end
+
+
+# Mock GeoCoder
+# inspired by https://github.com/alexreisner/geocoder/blob/5d769cb343bc7559320649f4c329b11270990754/test/test_helper.rb#L45
+
+require "geocoder"
+require "geocoder/lookups/google"
+
+module Geocoder
+  module Lookup
+    class Google < Base
+      private
+      def fetch_raw_data(query, reverse = false)
+        file = File.join("spec", "fixtures", "#{self.class.name.parameterize}_#{query.parameterize}.json")
+        unless File.exists? file
+          result = super rescue "FAIL"
+          File.new(file, "w+").puts result.force_encoding("utf-8")
+          result
+        else
+          File.read(file).strip.gsub(/\n\s*/, "")
+        end
+      end
+    end
+  end
+end
+
