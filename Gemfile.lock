@@ -340,7 +340,7 @@ DEPENDENCIES
   dalli (~> 1.1.5)
   devise (~> 2.2.3)
   execjs (~> 1.4.0)
-  factory_girl_rails (~> 4.2.1)
+  factory_girl_rails (~> 4.2)
   faker (~> 1.1.2)
   formtastic (~> 2.2.0)
   gabba (~> 0.3.0)

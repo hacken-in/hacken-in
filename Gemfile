@@ -125,9 +125,9 @@ group :development do
   gem 'guard-bundler', '~> 1.0.0'
 end
 
-group :test do
-  gem 'factory_girl_rails', '~> 4.2.1', require: false
+group :test, :development do
+  gem 'rspec-rails',  '~> 2.0'
+  gem 'factory_girl_rails', '~> 4.2'
   gem 'faker', '~> 1.1.2'
 
-  gem 'rspec-rails',  '~> 2.0'
 end
