@@ -126,7 +126,7 @@ group :development do
 end
 
 group :test do
-  gem 'factory_girl_rails', '~> 3.5', require: false
+  gem 'factory_girl_rails', '~> 4.2.1', require: false
   gem 'faker', '~> 1.1.2'
 
   gem 'rspec-rails',  '~> 2.0'
