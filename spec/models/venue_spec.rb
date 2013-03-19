@@ -1,50 +1,46 @@
 #encoding: utf-8
-require 'test_helper'
+require "spec_helper"
 
-class VenueTest < ActiveSupport::TestCase
-
-
-  test "check if adress is geocoded after save" do
+describe Venue do
+  it "check if adress is geocoded after save" do
     venue = Venue.new
     venue.location = "Cowoco in der Gasmotorenfabrik, 3. Etage"
     venue.street = "Deutz-Mülheimerstraße 129"
     venue.city = "Köln"
     venue.zipcode = "51063"
     venue.save
-
-    assert_not_nil venue.latitude
-    assert_not_nil venue.longitude
+    venue.latitude.should eq 50.9490279
+    venue.longitude.should eq 6.986784900000001
   end
 
-  test "check if adress is not geocoded if no adress is given" do
+  it "check if adress is not geocoded if no adress is given" do
     venue = Venue.new
     venue.location = "Cowoco in der Gasmotorenfabrik, 3. Etage"
     venue.save
-    assert_nil venue.latitude
-    assert_nil venue.longitude
+    venue.latitude.should be_nil
+    venue.longitude.should be_nil
   end
 
-  test "venue adress formatting" do
+  it "venue adress formatting" do
     venue = Venue.new
     venue.location = "Cowoco in der Gasmotorenfabrik, 3. Etage"
     venue.street = "Deutz-Mülheimerstraße 129"
     venue.city = "Köln"
     venue.zipcode = "51063"
-    assert_equal "Deutz-Mülheimerstraße 129, 51063 Köln", venue.address
+    venue.address.should eq "Deutz-Mülheimerstraße 129, 51063 Köln"
 
     venue = Venue.new
     venue.street = "Deutz-Mülheimerstraße 129"
     venue.city = "Köln"
-    assert_equal "Deutz-Mülheimerstraße 129, Köln", venue.address
+    venue.address.should eq "Deutz-Mülheimerstraße 129, Köln"
 
     venue = Venue.new
     venue.street = "Deutz-Mülheimerstraße 129"
-    assert_equal "Deutz-Mülheimerstraße 129", venue.address
+    venue.address.should eq "Deutz-Mülheimerstraße 129"
 
     venue = Venue.new
     venue.city = "Köln"
     venue.zipcode = "51063"
-    assert_equal "51063 Köln", venue.address
+    venue.address.should eq "51063 Köln"
   end
-
 end
