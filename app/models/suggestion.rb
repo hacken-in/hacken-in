@@ -12,8 +12,8 @@ class Suggestion < ActiveRecord::Base
     :occurrence,
     :place
 
-  def more_as_text
-    more.map {|key, value| "#{key}: #{value}"}.join "\n"
+  def more_as_text spacer = "\n"
+    more.map {|key, value| "#{key}: #{value}"}.join spacer
   end
 
   def more_as_text=(raw)
@@ -21,6 +21,6 @@ class Suggestion < ActiveRecord::Base
   end
 
   def more_as_inline
-    more.map {|key, value| "#{key}: #{value}"}.join ", "
+    more_as_text ", "
   end
 end
