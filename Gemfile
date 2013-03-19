@@ -127,13 +127,7 @@ end
 
 group :test do
   gem 'factory_girl_rails', '~> 3.5', require: false
-  gem 'spork-testunit', '~> 0.0.7'
   gem 'faker', '~> 1.1.2'
 
-  # Something is inherently wrong with mocha
-  # I can smell it
-  # Keep this versions locked unless you know what
-  # you're doing
-  gem 'test-unit', '2.5.3'
-  gem 'mocha', '0.12.8'
+  gem 'rspec-rails',  '~> 2.0'
 end
