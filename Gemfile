@@ -1,8 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 3.2.13'
-gem 'rake', '~> 0.9'
-# TODO: gem 'rake', '~> 10.0.3'
+gem 'rake', '~> 10.0.3'
 
 # Databases
 gem 'sqlite3', '~> 1.3.7', group: :test
