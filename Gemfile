@@ -67,7 +67,6 @@ gem 'mediaelement_rails', '~> 0.5.0'
 gem 'simple_form', '~> 2.0.4'
 
 # JavaScript runtime
-# TODO: Please investigate why both are here
 gem 'execjs', '~> 1.4.0'
 gem 'therubyracer', '~> 0.10.1'
 
