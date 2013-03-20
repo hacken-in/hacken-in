@@ -2,7 +2,7 @@
 require "bundler/capistrano"
 
 # Settings
-set :application, "droidboy"
+set :application, "nerdhub"
 set :deploy_to, "/var/www/virtual/droidboy/nerdhub"
 set :user, "droidboy"
 set :config_files, ['database.yml', 'newrelic.yml', 'initializers/secret_token.rb', 'omniauth.yml']
