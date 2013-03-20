@@ -74,9 +74,6 @@ gem 'therubyracer', '~> 0.10.1'
 gem 'zero-clipboard-rails', '~> 1.0.1'
 # User Picture using Gravatar
 gem 'gravatar_image_tag', '~> 1.1.3'
-# Truncate HTML on SingleEvent Pages
-# TODO: Where exactly? I only see Active Support truncate usage
-gem 'html_truncator', '~> 0.3.0'
 
 # Frontend
 gem 'bootstrap-sass-rails', '~> 2.3.0.0'
