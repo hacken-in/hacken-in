@@ -89,8 +89,7 @@ gem 'bootstrap-kaminari-views', '~> 0.0.2'
 gem 'tipsy-rails', '~> 1.0.3'
 
 # Other dependencies
-gem 'gabba', '~> 0.3.0'
-# TODO: gem 'gabba', '~> 1.0.1'
+gem 'gabba', '~> 1.0.1'
 
 # TODO: Update geocoder
 # *Attention:* If you want to change to 1.1.3, you need to adjust our Code
