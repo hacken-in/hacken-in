@@ -64,9 +64,6 @@ gem 'mini_magick', '~> 3.5.0'
 gem 'mediaelement_rails', '~> 0.5.0'
 
 # Form Handling
-# TODO: Throw away formtastic when we do not use it in the frontend anymore
-# (if we only use it in the admin area, the dependency is handled by AA)
-gem 'formtastic', '~> 2.2.0'
 gem 'simple_form', '~> 2.0.4'
 
 # JavaScript runtime

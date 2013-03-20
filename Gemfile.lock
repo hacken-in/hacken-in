@@ -336,7 +336,6 @@ DEPENDENCIES
   execjs (~> 1.4.0)
   factory_girl_rails (~> 3.5)
   faker (~> 1.1.2)
-  formtastic (~> 2.2.0)
   gabba (~> 0.3.0)
   geocoder (= 1.1.2)
   gravatar_image_tag (~> 1.1.3)
