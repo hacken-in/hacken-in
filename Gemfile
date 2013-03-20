@@ -85,7 +85,7 @@ gem 'html_truncator', '~> 0.3.0'
 
 # Frontend
 gem 'bootstrap-sass-rails', '~> 2.3.0.0'
-gem 'smurfville', git: 'git://github.com/railslove/smurfville.git', branch: 'nerdhub'
+gem 'smurfville', github: 'railslove/smurfville', branch: 'nerdhub'
 
 # Pagination
 gem 'bootstrap-kaminari-views', '~> 0.0.2'
