@@ -2,7 +2,7 @@
 require "bundler/capistrano"
 
 # Settings
-set :application, "droidboy"
+set :application, "nerdhub"
 set :deploy_to, "/var/www/virtual/droidboy/nerdhub"
 set :user, "droidboy"
 set :config_files, ['database.yml', 'newrelic.yml', 'initializers/secret_token.rb', 'omniauth.yml']
@@ -28,7 +28,7 @@ after "deploy:restart", "deploy:cleanup"
 namespace :deploy do
   task :start do ; end
   task :stop do ; end
-  task :restart, :roles => :app, :except => { :no_release => true } do
+  task :restart, roles: :app, except: { no_release: true } do
     run "touch #{File.join(current_path,'tmp','restart.txt')}"
     run "wget -O /dev/null http://www.nerdhub.de"
   end
@@ -44,7 +44,7 @@ namespace :deploy do
   namespace :assets do
 
     # Check for changes in assets dir and only precompile if there are any
-    task :precompile, :roles => :web, :except => { :no_release => true } do
+    task :precompile, roles: :app, except: { no_release: true } do
       # Check if assets have changed. If not, don't run the precompile task - it takes a long time.
       force_compile = false
       changed_asset_count = 0

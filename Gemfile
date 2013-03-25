@@ -1,8 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 3.2.13'
-gem 'rake', '~> 0.9'
-# TODO: gem 'rake', '~> 10.0.3'
+gem 'rake', '~> 10.0.3'
 
 # Databases
 gem 'sqlite3', '~> 1.3.7', group: :test
@@ -65,13 +64,9 @@ gem 'mini_magick', '~> 3.5.0'
 gem 'mediaelement_rails', '~> 0.5.0'
 
 # Form Handling
-# TODO: Throw away formtastic when we do not use it in the frontend anymore
-# (if we only use it in the admin area, the dependency is handled by AA)
-gem 'formtastic', '~> 2.2.0'
 gem 'simple_form', '~> 2.0.4'
 
 # JavaScript runtime
-# TODO: Please investigate why both are here
 gem 'execjs', '~> 1.4.0'
 gem 'therubyracer', '~> 0.10.1'
 
@@ -79,13 +74,10 @@ gem 'therubyracer', '~> 0.10.1'
 gem 'zero-clipboard-rails', '~> 1.0.1'
 # User Picture using Gravatar
 gem 'gravatar_image_tag', '~> 1.1.3'
-# Truncate HTML on SingleEvent Pages
-# TODO: Where exactly? I only see Active Support truncate usage
-gem 'html_truncator', '~> 0.3.0'
 
 # Frontend
 gem 'bootstrap-sass-rails', '~> 2.3.0.0'
-gem 'smurfville', git: 'git://github.com/railslove/smurfville.git', branch: 'nerdhub'
+gem 'smurfville', github: 'railslove/smurfville', branch: 'nerdhub'
 
 # Pagination
 gem 'bootstrap-kaminari-views', '~> 0.0.2'
@@ -94,8 +86,7 @@ gem 'bootstrap-kaminari-views', '~> 0.0.2'
 gem 'tipsy-rails', '~> 1.0.3'
 
 # Other dependencies
-gem 'gabba', '~> 0.3.0'
-# TODO: gem 'gabba', '~> 1.0.1'
+gem 'gabba', '~> 1.0.1'
 
 # TODO: Update geocoder
 # *Attention:* If you want to change to 1.1.3, you need to adjust our Code
