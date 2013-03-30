@@ -1,15 +1,11 @@
+require "spec_helper"
 
-$LOAD_PATH.unshift(File.dirname(__FILE__))
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '../..', 'test'))
+describe Calendar do
+  let(:today) { Date.new(2012, 10, 12) }
+  let(:tomorrow) { Date.new(2012, 10, 13) }
+  let(:day_after_tomorrow) { Date.new(2012, 10, 14) }
 
-require 'test_helper'
-require 'ostruct'
-
-class CalendarTest < ActiveSupport::TestCase
-
-  test "should catalog events by day" do
-    today, tomorrow = Date.new(2012, 10, 12), Date.new(2012, 10, 13)
-
+  it "should catalog events by day" do
     first  = OpenStruct.new(occurrence: today)
     second = OpenStruct.new(occurrence: tomorrow)
     third  = OpenStruct.new(occurrence: tomorrow)
@@ -21,12 +17,10 @@ class CalendarTest < ActiveSupport::TestCase
       tomorrow => [second, third]
     }
 
-    assert_equal expected, days
+    days.should eq expected
   end
 
-  test "should fill up missing events and sort" do
-    today, tomorrow, day_after_tomorrow = Date.new(2012, 10, 12), Date.new(2012, 10, 13), Date.new(2012, 10, 14)
-
+  it "should fill up missing events and sort" do
     some_day = OpenStruct.new
 
     days = {
@@ -42,8 +36,6 @@ class CalendarTest < ActiveSupport::TestCase
       [day_after_tomorrow, [some_day, some_day, nil]]
     ]
 
-    assert_equal expected, filled_and_sorted_days
+    filled_and_sorted_days.should eq expected
   end
-
 end
-

@@ -144,6 +144,7 @@ class SingleEvent < ActiveRecord::Base
         self.event.send(item)
       end
     end
+    alias_method :"#{item}?", item
   end
 
   def to_ri_cal_event(links_in_description = false)

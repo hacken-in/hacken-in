@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :advertisement, class: Advertisement do
+  factory :advertisement do
     calendar_week Time.now.iso_cweek
     description "This is the best box ever"
     duration 2

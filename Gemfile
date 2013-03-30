@@ -111,20 +111,14 @@ group :development do
 
   # Guard
   gem 'guard', '~> 1.6.2'
-  gem 'guard-test', '~> 0.7.0'
+  gem 'guard-rspec'
   gem 'guard-pow', '~> 1.0.0'
   gem 'guard-bundler', '~> 1.0.0'
 end
 
-group :test do
-  gem 'factory_girl_rails', '~> 3.5', require: false
-  gem 'spork-testunit', '~> 0.0.7'
+group :test, :development do
+  gem 'rspec-rails',  '~> 2.0'
+  gem 'factory_girl_rails', '~> 4.2'
   gem 'faker', '~> 1.1.2'
 
-  # Something is inherently wrong with mocha
-  # I can smell it
-  # Keep this versions locked unless you know what
-  # you're doing
-  gem 'test-unit', '2.5.3'
-  gem 'mocha', '0.12.8'
 end
