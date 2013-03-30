@@ -1,19 +1,17 @@
 # encoding: utf-8
-require 'test_helper'
-require 'ostruct'
+require 'spec_helper'
 
-class EventTest < ActiveSupport::TestCase
-
-  test "validate presence of name" do
+describe Event do
+  it "should validate presence of name" do
     category = FactoryGirl.create(:a_category)
     event = Event.new name: 'event', category: category
-    assert event.valid?
+    event.valid?.should be_true
 
     event_without_name = Event.new category: category
-    assert_equal false, event_without_name.valid?
+    event_without_name.valid?.should be_false
   end
 
-  test "can be saved" do
+  it "should be saved" do
     test_date = 7.days.from_now
     test_date += 2.hours if test_date.hour < 2
 
@@ -21,62 +19,58 @@ class EventTest < ActiveSupport::TestCase
     event = Event.new(name: "Hallo", category: category)
     assert_equal 0, event.schedule.all_occurrences.size
     event.schedule.add_recurrence_time(test_date)
-    assert_equal 1, event.schedule.all_occurrences.size
-    assert event.save
+    event.schedule.all_occurrences.size.should == 1
+    event.save.should be_true
 
     event = Event.find_by_id(event.id)
-    assert_equal 1, event.schedule.all_occurrences.size
-    assert_equal test_date.to_date, event.schedule.all_occurrences.first.to_date
+    event.schedule.all_occurrences.size.should == 1
+    event.schedule.all_occurrences.first.to_date.should == test_date.to_date
 
     event = Event.new(name: "Hallo", category: category)
     event.schedule_yaml = "--- \n:start_date: #{test_date}\n:rrules: []\n\n:exrules: []\n\n:rdates: \n- #{test_date}\n:exdates: []\n\n:duration: \n:end_time: \n"
 
-    assert_equal 1, event.schedule.all_occurrences.size
+    event.schedule.all_occurrences.size.should == 1
 
-    assert_equal test_date.to_date, event.schedule.all_occurrences.first.to_date
+    event.schedule.all_occurrences.first.to_date.should == test_date.to_date
 
     event = Event.new(name: "Hallo", category: category)
     schedule = IceCube::Schedule.new(1.year.ago)
     schedule.add_recurrence_time(7.days.from_now)
     event.schedule = schedule
-    assert_equal 1, event.schedule.all_occurrences.size
+    event.schedule.all_occurrences.size.should == 1
   end
 
-  test "tagging" do
+  it "should provide tagging" do
     category = FactoryGirl.create(:a_category)
     event = Event.new(name: "Hallo", category: category)
-    assert_equal 0, event.tags.count
+    event.tags.count.should == 0
 
     event.tag_list = "ruby, rails"
-    assert_equal ["ruby", "rails"], event.tag_list
+    event.tag_list.should == ["ruby", "rails"]
 
     event.tag_list << "jquery"
-    assert_equal  ["ruby", "rails", "jquery"], event.tag_list
+    event.tag_list.should == ["ruby", "rails", "jquery"]
     event.save
     event.reload
-    assert_equal ["ruby", "rails", "jquery"], event.tags.map {|e| e.name}
+    event.tags.map {|e| e.name}.should == ["ruby", "rails", "jquery"]
   end
 
-  test "generate single events for a new event" do
+  it "should generate single events for a new event" do
     event = FactoryGirl.create(:simple)
     event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
-    assert_difference 'SingleEvent.count', 12 do
-      event.save
-    end
+    expect { event.save }.to change { SingleEvent.count }.by 12
   end
 
-  test "generate single events if pattern changed" do
+  it "should generate single events if pattern changed" do
     event = FactoryGirl.create(:simple)
     event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
     event.save
     #    existing single events should be removed
     event.schedule.remove_recurrence_rule IceCube::Rule.weekly.day(:thursday)
-    assert_difference "SingleEvent.count", -12 do
-      event.save
-    end
+    expect { event.save }.to change { SingleEvent.count }.by(-12)
   end
 
-  test "no single_event regeneration if schedule not changed" do
+  it "should not regenerate single_event if schedule hasn't changed" do
     event = FactoryGirl.create(:simple)
     event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
     event.save
@@ -88,33 +82,30 @@ class EventTest < ActiveSupport::TestCase
 
     se = event.single_events.to_a
 
-    assert_equal 12, se.length
-    assert_equal old_single_events, event.single_events.map{|e| e.id}
+    se.length.should == 12
+    event.single_events.map { |e| e.id }.should == old_single_events
   end
 
-  test "future_single_event_creation" do
+  it "should create future single events" do
     event = FactoryGirl.create(:simple)
     event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
-    assert_difference "SingleEvent.count", 12 do
-      event.future_single_event_creation
-    end
+    expect { event.future_single_event_creation }.to change { SingleEvent.count}.by 12
   end
 
-  test "future_single_events_cleanup" do
+  it "should clean up future single events" do
     event = FactoryGirl.create(:simple)
     event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:monday)
     event.save
     first_single_event_id = event.single_events.first.id
 
     event.schedule.remove_recurrence_rule IceCube::Rule.weekly.day(:monday)
-    assert_difference "SingleEvent.count", -12 do
-      event.future_single_events_cleanup
-    end
+    expect { event.future_single_events_cleanup }.to change { SingleEvent.count }.by(-12)
 
-    assert !SingleEvent.exists?(first_single_event_id), "SingleEvent with id=#{first_single_event_id} should be deleted by cleanup."
+    # "SingleEvent with id=#{first_single_event_id} should be deleted by cleanup."
+    SingleEvent.exists?(first_single_event_id).should be_false
   end
 
-  test "don't remove single events that match the rules" do
+  it "should not remove single events that match the rules" do
     event = FactoryGirl.create(:simple)
     event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
     event.save
@@ -123,10 +114,10 @@ class EventTest < ActiveSupport::TestCase
 
     event.future_single_events_cleanup
 
-    assert_equal single_event_ids, event.single_events.map {|e| e.id}
+    event.single_events.map { |e| e.id }.should == single_event_ids
   end
 
-  test "should get single events ordered" do
+  it "should get single events ordered" do
     event = FactoryGirl.create(:simple)
 
     # Always pick 1st March of next year, 15:15pm
@@ -139,25 +130,25 @@ class EventTest < ActiveSupport::TestCase
     SingleEvent.create(event: event, occurrence: second)
     SingleEvent.create(event: event, occurrence: first)
 
-    assert_equal 2, event.single_events.count
-    assert_equal first, event.single_events[0].occurrence
-    assert_equal second, event.single_events[1].occurrence
+    event.single_events.count.should == 2
+    event.single_events[0].occurrence.should == first
+    event.single_events[1].occurrence.should == second
   end
 
-  test "should get title" do
+  it "should return the title" do
     event = FactoryGirl.create(:simple)
-    assert_equal "SimpleEvent", event.title
+    event.title.should == "SimpleEvent"
   end
 
-  test "should delete comment when event is deleted" do
+  it "should delete comment when it is deleted" do
     event = FactoryGirl.create(:simple)
     comment = event.comments.build(body: "wow!")
     comment.save
     event.destroy
-    assert_equal 0, Comment.where(id: comment.id).count
+    Comment.where(id: comment.id).count.should == 0
   end
 
-  test "should generate opengraph data" do
+  it "should generate opengraph data" do
     event = FactoryGirl.create(:simple)
     hash = {
       "og:country-name"=>"DE",
@@ -167,7 +158,7 @@ class EventTest < ActiveSupport::TestCase
       "og:postal-code"=>"51063",
       "og:street-address"=>"Deutz-Mülheimerstraße 129",
       "og:title"=>"SimpleEvent"}
-    assert_equal hash, event.to_opengraph
+    event.to_opengraph.should == hash
 
     event = FactoryGirl.create(:full_event)
     hash = {
@@ -176,17 +167,18 @@ class EventTest < ActiveSupport::TestCase
        "og:postal-code"=>"51063",
        "og:street-address"=>"Deutz-Mülheimerstraße 129",
        "og:title"=>"SimpleEvent",
-       "og:description" => "Dragée bonbon tootsie roll icing jelly sesame snaps croissant apple pie. Suga..."}
+       "og:description" => "Dragée bonbon tootsie roll icing jelly sesame snaps croissant apple pie. Suga..."
+    }
 
     event_opengraph = event.to_opengraph
     hash.each_pair {|key, value| assert_equal event_opengraph[key], value}
 
     # The coordinates change, therefore we only check a few digits:
-    assert_equal event_opengraph["og:latitude"].to_s[0,5], "50.94"
-    assert_equal event_opengraph["og:longitude"].to_s[0,4], "6.98"
+    event_opengraph["og:latitude"].to_s[0,5].should == "50.94"
+    event_opengraph["og:longitude"].to_s[0,4].should == "6.98"
   end
 
-  test "do not delete single events that are not based_on_rule" do
+  it "should not delete single events that are not based_on_rule" do
     event = FactoryGirl.create(:simple)
     event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
     event.save
@@ -195,74 +187,70 @@ class EventTest < ActiveSupport::TestCase
 
     #    existing single events should be removed
     event.schedule.remove_recurrence_rule IceCube::Rule.weekly.day(:thursday)
-    assert_difference "SingleEvent.count", -12 do
-      event.save
-    end
-    assert_equal 1, event.single_events.count
+    expect { event.save }.to change { SingleEvent.count }.by(-12)
+    event.single_events.count.should == 1
   end
 
-  test "check ice_cube abstraction" do
+  it "should check ice_cube abstraction" do
     event = FactoryGirl.create(:simple)
     event.duration = 60
     event.save
-    assert_equal 60 * 60, event.schedule.duration
+    event.schedule.duration.should == 60 * 60
   end
 
-  test "if single event is deleted, add a exception rule and don't recreate it - bug #83" do
+  it "should add a exception rule and don't recreate it - bug #83 if single event is deleted" do
     event = FactoryGirl.create(:simple)
     event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
-    assert_difference 'SingleEvent.count', 12 do
-      event.save
-    end
+    expect { event.save }.to change { SingleEvent.count }.by 12
 
-    assert_equal 12, event.single_events.count
+    event.single_events.count.should == 12
     event.single_events.first.destroy
     event.reload
-    assert_equal 11, event.single_events.count
+    event.single_events.count.should == 11
   end
 
-  test "simplify exdates" do
+  it "should simplify exdates" do
     event = FactoryGirl.create(:simple)
     event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
     exclude = event.schedule.first
     event.schedule.add_exception_time exclude
-    assert_equal [exclude], event.excluded_times
+    event.excluded_times.should == [exclude]
   end
 
-  test "update exdates" do
+  it "should update exdates" do
     event = FactoryGirl.create(:simple)
     event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
     exclude = event.schedule.first
     event.excluded_times = [exclude]
-    assert_equal [exclude], event.excluded_times
+    event.excluded_times.should == [exclude]
   end
 
-  test "simplify rrules" do
+  it "should simplify rrules" do
     event = FactoryGirl.create(:simple)
     event.schedule.add_recurrence_rule IceCube::Rule.monthly.day_of_week({1 => [-1]})
-    assert_equal [{"type" => 'monthly', "interval" => -1, "days" => ["monday"]}], event.schedule_rules
+    event.schedule_rules.should == [{"type" => 'monthly', "interval" => -1, "days" => ["monday"]}]
   end
 
-  test "update rrules" do
+  it "should update rules" do
     event = FactoryGirl.create(:simple)
     time = Time.new(2012, 10, 10, 20, 15, 0)
     event.start_time = time
     event.schedule_rules = [{"type" => 'monthly', "interval" => -1, "days" => ["monday"]}]
     event.save
-    # ToDo: wait till this is fixed in ice_cube
+    # TODO: wait till this is fixed in ice_cube
     # hopefully it has no real issues in our system, only
     # in the weird time setup on the travis systems
     #
     # https://github.com/seejohnrun/ice_cube/issues/115
-    assert_equal 1, event.single_events.first.occurrence.wday
-    # assert_equal time.hour, event.single_events.first.occurrence.hour
-    assert_equal time.min, event.single_events.first.occurrence.min
+    event.single_events.first.occurrence.wday.should == 1
+    event.single_events.first.occurrence.hour.should == time.hour
+    event.single_events.first.occurrence.min.should == time.min
   end
 
-  test "finds coming up single event as closest one" do
-    today = Date.new(2012, 2, 2)
-    tomorrow = Date.new(2012, 2, 3)
-    future = Date.new(2012, 12, 1)
+  it "should find a coming-up single event as the closest one" do
+    today      = Date.new(2012, 2, 2)
+    tomorrow   = Date.new(2012, 2, 3)
+    future     = Date.new(2012, 12, 1)
     way_before = Date.new(2011, 8, 2)
 
     single_event_tomorrow = OpenStruct.new(:occurrence => tomorrow)
@@ -272,29 +260,28 @@ class EventTest < ActiveSupport::TestCase
                      OpenStruct.new(:occurrence => future)]
 
     event = Event.new
-    event.stubs(:single_events => single_events)
+    event.stub(:single_events) { single_events }
 
-    assert_equal single_event_tomorrow, event.closest_single_event(today)
+    event.closest_single_event(today).should == single_event_tomorrow
   end
 
-  test "finds most recent single event as closest one" do
+  it "should find most recent single event as closest one" do
     today = Date.new(2012, 2, 2)
     yesterday = Date.new(2012, 2, 1)
 
     single_events = [OpenStruct.new(:occurrence => yesterday)]
     event = Event.new
-    event.stubs(:single_events => single_events)
+    event.stub(:single_events) { single_events }
 
-    assert_equal single_events.first, event.closest_single_event(today)
+    event.closest_single_event(today).should == single_events.first
   end
 
-  test "returns nil if there is no closest single event" do
+  it "should return nil if there is no closest single event" do
     single_events = []
 
     event = Event.new
-    event.stubs(:single_events => single_events)
+    event.stub(:single_events) { single_events }
 
-    assert_nil event.closest_single_event
+    event.closest_single_event.should be_nil
   end
-
 end

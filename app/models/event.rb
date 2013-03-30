@@ -161,11 +161,6 @@ class Event < ActiveRecord::Base
 
     coming_up = single_events.select { |s| s.occurrence.to_date >= date }.sort_by { |s| s.occurrence }
 
-    # TODO: Is this only for debug? Can it be removed?
-    coming_up.each do |e|
-      puts "#{date}:: #{e.occurrence}:: #{e.occurrence.to_date >= date}"
-    end
-
     if coming_up.empty?
       single_events.last
     else
