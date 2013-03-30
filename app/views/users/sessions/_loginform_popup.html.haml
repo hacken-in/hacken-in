@@ -9,3 +9,7 @@
         .remember-me-wrapper
           = f.check_box :remember_me, :as => :boolean, class: 'remember-me-checkbox'
           = f.label :remember_me, "Angemeldet bleiben", class: 'remember-me-label'
+
+    .external-providers
+      - User.omniauth_providers.each do |provider|
+        = link_to image_tag("oauth/#{provider.to_s}.png"), user_omniauth_authorize_url(provider)
