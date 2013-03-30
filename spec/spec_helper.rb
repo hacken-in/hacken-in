@@ -16,9 +16,6 @@ RSpec.configure do |config|
   config.order = "random"
 end
 
-# TODO: Spork!
-
-
 # Mock GeoCoder
 # inspired by https://github.com/alexreisner/geocoder/blob/5d769cb343bc7559320649f4c329b11270990754/test/test_helper.rb#L45
 
