@@ -1,8 +1,11 @@
 .loginform.loginform-popup
-  = simple_form_for resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-horizontal' } do |f|
-    = f.input :email, placeholder: 'E-Mail / Nickname'
-    = f.input :password, placeholder: 'Passwort'
-    - if devise_mapping.rememberable?
-      = f.input :remember_me, :as => :boolean
+  = form_for resource, as: resource_name, url: session_path(resource_name), class: 'form-horizontal' do |f|
+    = f.text_field :email, placeholder: 'E-Mail / Nickname'
+    = f.password_field :password, placeholder: 'Passwort'
 
-    = f.submit "Anmelden", class: 'btn btn-inverse'
+    .lower-row-wrapper
+      = f.submit "Anmelden", class: 'btn login-button'
+      - if devise_mapping.rememberable?
+        .remember-me-wrapper
+          = f.check_box :remember_me, :as => :boolean, class: 'remember-me-checkbox'
+          = f.label :remember_me, "Angemeldet bleiben", class: 'remember-me-label'
