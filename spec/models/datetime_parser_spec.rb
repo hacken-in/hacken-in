@@ -1,9 +1,9 @@
-require 'test_helper'
+require "spec_helper"
 
-class DatetimeParserTest < ActiveSupport::TestCase
+describe DatetimeParser do
   include DatetimeParser
 
-  test "parse dates" do
+  it "should parse a date as numbers" do
     params = {
       "prefix(1i)" => 1980,
       "prefix(2i)" => 5,
@@ -11,10 +11,10 @@ class DatetimeParserTest < ActiveSupport::TestCase
       "prefix(4i)" => 12,
       "prefix(5i)" => 30
     }
-    assert_equal Time.new(1980,5,1,12,30), parse_datetime_select(params, "prefix")
+    parse_datetime_select(params, "prefix").should == Time.new(1980,5,1,12,30)
   end
 
-  test "parse dates when they are strings" do
+  it "should parse dates when they are strings" do
     params = {
       "prefix(1i)" => "1980",
       "prefix(2i)" => "5",
@@ -22,8 +22,6 @@ class DatetimeParserTest < ActiveSupport::TestCase
       "prefix(4i)" => "12",
       "prefix(5i)" => "30"
     }
-    assert_equal Time.new(1980,5,1,12,30), parse_datetime_select(params, "prefix")
+    parse_datetime_select(params, "prefix").should == Time.new(1980,5,1,12,30)
   end
-
 end
-

@@ -1,23 +1,25 @@
 # encoding: utf-8
-require 'test_helper'
+require 'spec_helper'
 
-class UserEditObserverTest < ActiveSupport::TestCase
-  def setup
+describe UserEditObserver do
+  before(:each) do
     ActionMailer::Base.deliveries.clear
   end
 
-  test "Send mail for new comment" do
+  it "should send mail for new comment" do
     simple = FactoryGirl.create(:simple)
     ActionMailer::Base.deliveries.clear
     simple.comments.create(body: "ein test body")
-    assert !ActionMailer::Base.deliveries.empty?
+
+    ActionMailer::Base.deliveries.should_not be_empty
   end
 
-  test "Send mail for updated comment" do
+  it "should send mail for updated comment" do
     comment = FactoryGirl.create(:single_event_comment)
     comment.body = "new body"
     comment.save
-    assert !ActionMailer::Base.deliveries.empty?
+
+    ActionMailer::Base.deliveries.should_not be_empty
   end
 
 end
