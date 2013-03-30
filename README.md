@@ -56,14 +56,12 @@ This will offer you the following comfortable features:
 * **Bundler:** Bundler will run, when the Gemfile changes
 * **Yard:** On http://localhost:8808 you will have a documentation
   server running
-* **Spork:** A Spork instance will run in the background, which makes
-  your tests faster
 * **Test:** If you make changes to a test or a application file, the
   according tests will run and you will get feedback.
 
 ## Testing
 
-Hcking is developed in a test-driven way using Test::Unit and
+Hcking is developed in a test-driven way using Rspec and
 FactoryGirl. If you want to contribute to the project always add
 tests for your added functionality. If you find a bug it would be
 really helpful if you add a regression test that displays this
