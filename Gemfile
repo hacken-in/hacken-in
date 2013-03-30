@@ -120,7 +120,4 @@ group :test, :development do
   gem 'rspec-rails',  '~> 2.0'
   gem 'factory_girl_rails', '~> 4.2'
   gem 'faker', '~> 1.1.2'
-
-  gem "test-unit", "2.5.3"
-  gem 'mocha', '0.13.3', require: false
 end
