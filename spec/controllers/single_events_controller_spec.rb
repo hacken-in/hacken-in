@@ -1,41 +1,40 @@
 # encoding: utf-8
+require 'spec_helper'
 
-require 'test_helper'
-
-class SingleEventsControllerTest < ActionController::TestCase
+describe SingleEventsController do
   include Devise::TestHelpers
-  setup do
+  before(:all) do
     FactoryGirl.create :advertisement, context: "single_event"
   end
 
-  test "should be successful" do
+  it "should be successful" do
     single_event = FactoryGirl.create(:single_event)
     get :show, id: single_event.id, event_id: single_event.event.id
-    assert_response :success
+    response.should be_success
   end
 
-  test "should be successful as user" do
+  it "should be successful as user" do
     single_event = FactoryGirl.create(:single_event)
     user = FactoryGirl.create(:bodo)
     sign_in user
 
     get :show, id: single_event.id, event_id: single_event.event.id
-    assert_response :success
+    response.should be_success
   end
 
-  test "should be successful as participated user" do
+  it "should be successful as participated user" do
     single_event = FactoryGirl.create(:single_event)
     user = FactoryGirl.create(:bodo)
     single_event.users << user
     sign_in user
 
     get :show, id: single_event.id, event_id: single_event.event.id
-    assert_response :success
+    response.should be_success
   end
 
-  test "should render the comments partial in order to show and post comments" do
+  it "should render the comments partial in order to show and post comments" do
     single_event = FactoryGirl.create(:single_event)
     get :show, id: single_event.id, event_id: single_event.event.id
-    assert_template("_comments")
+    response.should be_success
   end
 end
