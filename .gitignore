@@ -16,3 +16,4 @@ public/uploads/*
 .powenv
 public/thisiscologne.json
 config/omniauth.yml
+config/initializers/devise.rb
