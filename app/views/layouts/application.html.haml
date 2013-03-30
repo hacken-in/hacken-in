@@ -35,7 +35,7 @@
         .navbar-inner
           = link_to image_tag('logo.png', width:"325px", height:"53px"), root_path, class: 'brand', title: 'NERDHUB'
           = render_navigation
-          = render 'users/sessions/loginform'
+          = render 'users/sessions/loginform_popup'
 
     .container
       - if flash[:notice]
