@@ -15,14 +15,13 @@ guard 'bundler' do
 end
 
 # TODO: migrate all test watchers to spec watchers
-# guard 'test', drb: false do
-#   watch('test/test_helper.rb') { "test" }
-#
-#   watch(%r{app/controllers/(.*)\.rb})                { |m| "test/functional/#{m[1]}_test.rb" }
-#   watch(%r{app/views/.*\.rb})                        { "test/integration" }
-#   watch('app/controllers/application_controller.rb') { ["test/functional", "test/integration"] }
-#   watch('config/routes.rb')                          { "test/integration/routes_test.rb" }
-# end
+guard 'test', drb: false do
+  watch('test/test_helper.rb') { "test" }
+  watch(%r{app/controllers/(.*)\.rb})                { |m| "test/functional/#{m[1]}_test.rb" }
+  watch(%r{app/views/.*\.rb})                        { "test/integration" }
+  watch('app/controllers/application_controller.rb') { ["test/functional", "test/integration"] }
+  watch('config/routes.rb')                          { "test/integration/routes_test.rb" }
+end
 
 guard 'rspec' do
   watch(%r{spec/.*_spec\.rb})

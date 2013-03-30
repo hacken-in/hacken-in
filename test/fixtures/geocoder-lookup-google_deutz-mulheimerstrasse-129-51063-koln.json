@@ -1,0 +1,68 @@
+{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "129",
+               "short_name" : "129",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "Deutz-Mülheimer Straße",
+               "short_name" : "Deutz-Mülheimer Straße",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "Köln",
+               "short_name" : "Köln",
+               "types" : [ "sublocality", "political" ]
+            },
+            {
+               "long_name" : "Cologne",
+               "short_name" : "Cologne",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Cologne",
+               "short_name" : "K",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Nordrhein-Westfalen",
+               "short_name" : "NRW",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Germany",
+               "short_name" : "DE",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "51063",
+               "short_name" : "51063",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "Deutz-Mülheimer Straße 129, 51063 Cologne, Germany",
+         "geometry" : {
+            "location" : {
+               "lat" : 50.94902790,
+               "lng" : 6.986784900000001
+            },
+            "location_type" : "ROOFTOP",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 50.95037688029150,
+                  "lng" : 6.988133880291503
+               },
+               "southwest" : {
+                  "lat" : 50.94767891970850,
+                  "lng" : 6.985435919708499
+               }
+            }
+         },
+         "types" : [ "street_address" ]
+      }
+   ],
+   "status" : "OK"
+}
