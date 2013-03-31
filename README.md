@@ -3,16 +3,16 @@
 [![Build Status](https://secure.travis-ci.org/nerdhub/hcking.png?branch=master)](http://travis-ci.org/nerdhub/hcking)
 [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/nerdhub/hcking)
 
-This is the code of [hcking.de](http://hcking.de). Hcking.de is an event
+This is the code of [nerdhub.de](http://nerdhub.de), an event
 calendar for geeks in and around Cologne.
 
-We discuss features and problems in our [google group](http://groups.google.com/group/hcking).
+We discuss features and problems in our [Google Group](http://groups.google.com/group/hcking).
 
 ## Scope of Hcking.de
 
-When you want to add an event to hcking.de please check with the following guidelines:
+When you want to add an event to [nerdhub.de](http://nerdhub.de) please check with the following guidelines:
 
-* Currently we only feature events in Ruhr area plus BIG events in europe
+* Currently we only feature events in Ruhr area plus BIG events in Europe
 * The following topics are allowed:
   * Programming (in any language)
   * Nerd-Culture (like Star Wars, Ponies, Gaming, Comics...)
@@ -44,20 +44,18 @@ If you want to add Events to your local page, you need an administrator:
 ### Pow
 
 Pow is a really comfortable way to run the application on your machine.
-You can learn everything about it [here](http://pow.cx/).
+You can learn everything about it [here](http://pow.cx).
 
 ### Guard
 
 If you are in the project directory, you can start Guard with `guard`.
 This will offer you the following comfortable features:
 
-* **LiveReload:** If you are on Mac OS X and you have [livereload](http://livereload.com/) installed, your browser will automatically load changed CSS, JS and HTML data.
 * **Pow:** Pow will get restarted automatically when necessary.
 * **Bundler:** Bundler will run, when the Gemfile changes
-* **Yard:** On http://localhost:8808 you will have a documentation
   server running
-* **Test:** If you make changes to a test or a application file, the
-  according tests will run and you will get feedback.
+* **Specs:** If you make changes to a spec or an application file, the
+  according spec will be run and you will get feedback.
 
 ## Testing
 
