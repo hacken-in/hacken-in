@@ -6,7 +6,7 @@ describe Api::UserTagsController do
   [:hate, :like].each do |kind|
     it "should should create new #{kind} tag" do
       user = FactoryGirl.create(:bodo)
-      user.send(:"#{kind}_list") << ".net"
+      user.public_send(:"#{kind}_list") << ".net"
       user.save
       sign_in user
 
@@ -29,7 +29,7 @@ describe Api::UserTagsController do
 
     it "should remove #{kind} tag" do
       user = FactoryGirl.create(:bodo)
-      user.send(:"#{kind}_list") << "tag"
+      user.public_send(:"#{kind}_list") << "tag"
       user.save
       sign_in user
 
@@ -42,8 +42,8 @@ describe Api::UserTagsController do
 
     it "should remove #{kind} tag .net" do
       user = FactoryGirl.create(:bodo)
-      user.send(:"#{kind}_list") << ".net"
-      user.send(:"#{kind}_list") << "java"
+      user.public_send(:"#{kind}_list") << ".net"
+      user.public_send(:"#{kind}_list") << "java"
       user.save
       sign_in user
 
@@ -56,7 +56,7 @@ describe Api::UserTagsController do
 
     it "should should not remove #{kind} tag if not logged in" do
       user = FactoryGirl.create(:bodo)
-      user.send(:"#{kind}_list") << "tag"
+      user.public_send(:"#{kind}_list") << "tag"
       user.save
 
       expect {
