@@ -12,4 +12,6 @@
 
     .external-providers
       - User.omniauth_providers.each do |provider|
-        = link_to image_tag("oauth/#{provider.to_s}.png"), user_omniauth_authorize_url(provider)
+        = link_to image_tag("oauth/#{provider.to_s}.png"), user_omniauth_authorize_url(provider), title: provider
+
+    = link_to "oder registrieren", new_registration_path(resource_name), class: 'btn register-btn'
