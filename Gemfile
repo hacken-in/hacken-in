@@ -26,11 +26,7 @@ group :assets do
   gem 'coffee-script', '~> 2.2.0'
   gem 'leaflet-rails', '~> 0.5.0'
   gem 'uglifier', '~> 1.3.0'
-  gem 'haml', '~> 3.1.8'
-  # TODO: gem 'haml', '~> 4.0.0'
   gem 'jquery-rails', '~> 2.2.1'
-  gem 'md_emoji', '~> 1.0.0'
-  gem 'redcarpet', '~> 2.2.2'
   gem 'pjax_rails', '~> 0.3.4'
   gem 'compass-rails', '~> 1.0.3'
   gem 'bootstrap-sass-rails', '~> 2.3.0.0'
@@ -40,6 +36,11 @@ group :assets do
   gem 'ckeditor_rails', '~> 3.6.4.1', require: 'ckeditor-rails' # For the admin area
   gem 'tipsy-rails', '~> 1.0.3'                                 # Facebook style tooltip jQuery plugin
 end
+
+gem 'haml', '~> 3.1.8'
+# TODO: gem 'haml', '~> 4.0.0'
+gem 'md_emoji', '~> 1.0.0'
+gem 'redcarpet', '~> 2.2.2'
 
 # Admin
 gem 'coffee-script-source', '~> 1.4.0' # See https://github.com/gregbell/active_admin/issues/1773
