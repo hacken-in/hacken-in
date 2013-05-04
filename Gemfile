@@ -45,9 +45,6 @@ gem 'redcarpet', '~> 2.2.2'
 gem 'coffee-script-source', '~> 1.4.0' # See https://github.com/gregbell/active_admin/issues/1773
 gem 'activeadmin', '~> 0.5.1'
 
-# Monitoring
-gem 'newrelic_rpm', '~> 3.5.8.70'
-
 # Date Handling
 # TODO: gem 'ice_cube', '~> 0.10.0'
 gem 'ice_cube', '~> 0.8.0'
