@@ -5,6 +5,5 @@
 # = require admin/boxes/form
 # = require admin/events/form
 # = require admin/categories/form
-# = require mediaelement_rails
 # = require moment
 # = require moment/de.js
