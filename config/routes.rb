@@ -1,6 +1,6 @@
 Hcking::Application.routes.draw do
-  devise_for :users, controllers: { omniauth_callbacks: "callbacks" } 
-  
+  devise_for :users, controllers: { omniauth_callbacks: "callbacks" }
+
   devise_scope :users do
     get 'users', :to => 'users#show', :as => :user_root # Rails 3
   end
@@ -25,37 +25,9 @@ Hcking::Application.routes.draw do
     match "markdown_converter" => "markdown_converter#convert"
   end
 
-  if defined?(Smurfville) != nil
-    mount Smurfville::Engine => "/smurfville"
-  end
-
   resources :users, only: [:show] do
     resources :authorizations, only: [:destroy]
   end
-
-  match "podcast/category/:category_id" => "podcasts#index", as: "podcast_categorie"
-  match "podcast/:year" => "podcasts#index", year: /\d{4}/
-  match "podcast/:year/:month" => "podcasts#index", year: /\d{4}/, month: /\d{1,2}/
-  match "podcast/:year/:month/:day" => "podcasts#index", year: /\d{4}/, month: /\d{1,2}/,  day: /\d{1,2}/
-  match "podcast/:year/:month/:day/:id" => "podcasts#show"
-  match "podcast/feed/:category_id" => "podcasts#feed", as: "podcast_feed"
-
-  resources :podcasts, path: "podcast", only: [:show, :index] do
-    resources :comments, except: [:new]
-  end
-
-  resources :blog_posts, path: "blog", only: [:show, :index] do
-    collection do
-      get :feed, defaults: { format: 'atom' }
-    end
-    resources :comments, except: [:new]
-  end
-
-  match "blog/category/:category_id" => "blog_posts#index", as: "blog_categorie"
-  match "blog/:year" => "blog_posts#index", year: /\d{4}/
-  match "blog/:year/:month" => "blog_posts#index", year: /\d{4}/, month: /\d{1,2}/
-  match "blog/:year/:month/:day" => "blog_posts#index", year: /\d{4}/, month: /\d{1,2}/,  day: /\d{1,2}/
-  match "blog/:year/:month/:day/:id" => "blog_posts#show"
 
   resources :search, only: [:index]
   resources :comments, only: [:create, :edit, :show]
@@ -83,5 +55,5 @@ Hcking::Application.routes.draw do
   match "newsletter"              => "pages#show", page_name: "newsletter"
   match ":page_name"              => "pages#show"
 
-  root to: "welcome#index"
+  root to: "calendars#show"
 end
