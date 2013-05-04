@@ -1,23 +1,14 @@
 !!! 5
 %html
   %head
-    %title= content_for?(:title) ? yield(:title) + " – NERDHUB" : "NERDHUB"
-    = auto_discovery_link_tag :atom, "/blog/feed"
+    %title= content_for?(:title) ? yield(:title) + " – hacken.in/koeln" : "hacken.in/koeln"
     = stylesheet_link_tag "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
-    = render_opengraph("og:title" => content_for?(:title) ? yield(:title) + " – NERDHUB" : "NERDHUB",
-            "og:image" => "#{request.protocol}#{request.host_with_port}#{asset_path("opengraph_embed.png")}",
-            "og:url" => url_for(only_path: false),
-            "og:site_name"=> "www.NERDHUB.de",
-            "fb:admins" => "520869354",
-            "og:type" => "website",
-            "og:description" => "Der Event-Kalender für Nerds")
 
     :javascript
       var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-35910989-1']);
-      _gaq.push(['_setDomainName', 'nerdhub.de']);
+      _gaq.push(['_setAccount', 'UA-40669307-1']);
       _gaq.push(['_trackPageview']);
       (function() {
         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
@@ -28,13 +19,12 @@
     = yield(:javascript)
 
     %link{ href: 'http://fonts.googleapis.com/css?family=Vollkorn:400italic,400,700', rel:'stylesheet', type:'text/css'}
-    %link{ rel: "publisher", href: "https://plus.google.com/100242723635611423369" }
 
   %body{:class => "#{controller.controller_name}_#{controller.action_name}" }
     %header.container
       .navbar
         .navbar-inner
-          = link_to image_tag('logo.png', width:"325px", height:"53px"), root_path, class: 'brand', title: 'NERDHUB'
+          = link_to image_tag('logo.png', width:"325px", height:"53px"), root_path, class: 'brand', title: 'hacken.in/koeln'
           = render_navigation
           = render 'users/sessions/loginform_popup'
 
@@ -78,17 +68,10 @@
       .navbar
         .navbar-inner
           %ul.nav.footer-nav
-            %li= link_to 'ABOUT + TEAM', humans_path, class: 'nav-link'
-            %li= link_to 'NERDLETTER', newsletter_path, class: 'nav-link'
+            %li= link_to 'TEAM', humans_path, class: 'nav-link'
             %li= link_to 'IMPRESSUM', impressum_path, class: 'nav-link'
           %ul.nav.social-nav.pull-right
             %li
-              %a.nav-link{ href: "http://www.facebook.com/nerdhubcgn", title: "Nerdhub auf Facebook" }
-                %i.icon-facebook-sign
-            %li
-              %a.nav-link{ href: "http://www.twitter.com/nerdhub_cgn", title: "Nerdhub auf Twitter" }
-                %i.icon-twitter-sign
-            %li
-              %a.nav-link{ href: "http://www.github.com/nerdhub", title: "Nerdhub auf Github" }
+              %a.nav-link{ href: "http://www.github.com/hcking", title: "hcking auf Github" }
                 %i.icon-github-sign
 
