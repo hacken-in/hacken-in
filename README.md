@@ -1,16 +1,18 @@
 # Welcome
 
-[![Build Status](https://secure.travis-ci.org/nerdhub/hcking.png?branch=master)](http://travis-ci.org/nerdhub/hcking)
-[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/nerdhub/hcking)
+[![Build
+Status](https://secure.travis-ci.org/hcking/hcking.png?branch=master)](http://travis-ci.org/hcking/hcking)
+[![Code
+Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/hcking/hcking)
 
-This is the code of [nerdhub.de](http://nerdhub.de), an event
+This is the code of [hacken.in/koeln](http://hacken.in/koeln), an event
 calendar for geeks in and around Cologne.
 
 We discuss features and problems in our [Google Group](http://groups.google.com/group/hcking).
 
 ## Scope of Hcking.de
 
-When you want to add an event to [nerdhub.de](http://nerdhub.de) please check with the following guidelines:
+When you want to add an event to [hacken.in/koeln](http://hacken.in/koeln) please check with the following guidelines:
 
 * Currently we only feature events in Ruhr area plus BIG events in Europe
 * The following topics are allowed:
