@@ -1,4 +1,4 @@
-class DeleteAllTheThings < ActiveRecord::Migration
+class Reboot < ActiveRecord::Migration
   def change
     create_table "active_admin_comments", :force => true do |t|
       t.string   "resource_id",   :null => false
