@@ -34,7 +34,7 @@ Hcking::Application.configure do
   # config.logger = SyslogLogger.new
 
   # Use a different cache store in production
-  config.cache_store = :dalli_store
+  config.cache_store = :dalli_store, '/home/hacking/memcached.sock'
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
@@ -49,7 +49,7 @@ Hcking::Application.configure do
         location:  '/usr/sbin/sendmail',
         arguments: '-i -t'
   }
-  config.action_mailer.default_url_options = { host: "nerdhub.de" }
+  config.action_mailer.default_url_options = { host: "hacking.in" }
 
   # Enable threaded mode
   # config.threadsafe!
