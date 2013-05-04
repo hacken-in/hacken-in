@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130310140953) do
+ActiveRecord::Schema.define(:version => 20130504154543) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -28,20 +28,6 @@ ActiveRecord::Schema.define(:version => 20130310140953) do
   add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
 
-  create_table "advertisements", :force => true do |t|
-    t.string   "picture_id"
-    t.string   "link"
-    t.text     "description"
-    t.integer  "calendar_week"
-    t.boolean  "active"
-    t.integer  "duration"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.string   "context"
-  end
-
-  add_index "advertisements", ["picture_id"], :name => "index_advertisements_on_picture_id"
-
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
     t.string   "uid"
@@ -55,38 +41,6 @@ ActiveRecord::Schema.define(:version => 20130310140953) do
   end
 
   add_index "authorizations", ["user_id"], :name => "index_authorizations_on_user_id"
-
-  create_table "blog_posts", :force => true do |t|
-    t.string   "headline"
-    t.text     "headline_teaser"
-    t.text     "teaser_text"
-    t.text     "text"
-    t.integer  "user_id"
-    t.boolean  "publishable"
-    t.integer  "category_id"
-    t.datetime "created_at",                            :null => false
-    t.datetime "updated_at",                            :null => false
-    t.datetime "publishable_from"
-    t.boolean  "use_in_newsletter"
-    t.integer  "picture_id"
-    t.string   "mp3file"
-    t.string   "blog_type",         :default => "blog"
-  end
-
-  add_index "blog_posts", ["category_id"], :name => "index_blog_posts_on_category_id"
-  add_index "blog_posts", ["picture_id"], :name => "index_blog_posts_on_picture_id"
-  add_index "blog_posts", ["user_id"], :name => "index_blog_posts_on_user_id"
-
-  create_table "boxes", :force => true do |t|
-    t.integer  "content_id"
-    t.string   "content_type"
-    t.integer  "grid_position"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
-    t.integer  "carousel_position"
-  end
-
-  add_index "boxes", ["content_id", "content_type"], :name => "index_boxes_on_content_id_and_content_type"
 
   create_table "calendar_preset_categories", :force => true do |t|
     t.integer  "category_id"
@@ -279,17 +233,5 @@ ActiveRecord::Schema.define(:version => 20130310140953) do
   end
 
   add_index "venues", ["latitude", "longitude"], :name => "index_venues_on_latitude_and_longitude"
-
-  create_table "welcome_contents", :force => true do |t|
-    t.text     "box_1"
-    t.text     "box_2"
-    t.text     "box_3"
-    t.text     "box_4"
-    t.text     "box_5"
-    t.text     "box_6"
-    t.text     "carousel"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
 end
