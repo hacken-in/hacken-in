@@ -2,15 +2,15 @@
 require "bundler/capistrano"
 
 # Settings
-set :application, "nerdhub"
-set :deploy_to, "/var/www/virtual/droidboy/nerdhub"
-set :user, "droidboy"
-set :config_files, ['database.yml', 'newrelic.yml',
+set :application, "hcking"
+set :deploy_to, "/var/www/virtual/hacken/hcking"
+set :user, "hacken"
+set :config_files, ['database.yml',
   'initializers/secret_token.rb', 'initializers/devise.rb',
   'omniauth.yml']
 
 # Git Repo
-set :repository,  "git://github.com/nerdhub/hcking.git"
+set :repository,  "git://github.com/hcking/hcking.git"
 set :scm, :git
 set :branch, "master"
 
@@ -21,9 +21,9 @@ default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 
 # Servers
-role :web, "corvus.uberspace.de"
-role :app, "corvus.uberspace.de"
-role :db,  "corvus.uberspace.de", :primary => true
+role :web, "crux.uberspace.de"
+role :app, "crux.uberspace.de"
+role :db,  "crux.uberspace.de", :primary => true
 
 after "deploy:restart", "deploy:cleanup"
 
@@ -32,7 +32,7 @@ namespace :deploy do
   task :stop do ; end
   task :restart, roles: :app, except: { no_release: true } do
     run "touch #{File.join(current_path,'tmp','restart.txt')}"
-    run "wget -O /dev/null http://www.nerdhub.de"
+    run "wget -O /dev/null http://www.hacken.in"
   end
 
   task :symlink_config, roles: :app do
