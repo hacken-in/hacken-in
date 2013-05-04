@@ -9,6 +9,8 @@ matrix:
   allow_failures:
     - rvm: rbx-19mode
     - rvm: ruby-head
+notifications:
+  webhooks: https://www.buildheroes.com/api/projects/e27637d59452f18b5c97dec76d9b9f4a2e4cfcf4/builds
 bundler_args: --without development
 before_script:
   - "cp config/database.yml_example config/database.yml"
