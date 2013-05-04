@@ -55,7 +55,6 @@ Hcking::Application.routes.draw do
     match "abonnieren"              => "subscribe#index"
     match "humans"                  => "humans#index"
     match "impressum"               => "pages#show", page_name: "impressum"
-    match "newsletter"              => "pages#show", page_name: "newsletter"
     match ":page_name"              => "pages#show"
 
     root to: "calendars#show"

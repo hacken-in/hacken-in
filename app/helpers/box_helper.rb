@@ -11,11 +11,7 @@ module BoxHelper
   end
 
   def image_for(box)
-    if box.is_ad?
-      box.picture.present? ? box.picture.advertisement_image.square.url : image_path('advertisement_placeholder.jpg')
-    else
-      box.picture.box_image.url
-    end
+    box.picture.box_image.url
   end
 
 end

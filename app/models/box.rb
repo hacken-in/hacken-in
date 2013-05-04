@@ -12,25 +12,11 @@ class Box < ActiveRecord::Base
   validates_uniqueness_of :carousel_position, allow_nil: true
   validate :content_has_picture
   validates :grid_position, inclusion: {in: [1,2,3,4,5,6,nil]}
-  validate :no_ad_in_the_carousel
 
   delegate :category, to: :content
 
-  def is_ad?
-    content_type == "Advertisement"
-  end
-
-  def ad
-    throw "This is not an ad" unless is_ad?
-    return Advertisement.homepage
-  end
-
   def picture
-    if is_ad?
-      Advertisement.homepage.picture
-    else
-      content.picture
-    end
+    content.picture
   end
 
   def first_line
@@ -63,9 +49,4 @@ class Box < ActiveRecord::Base
     end
   end
 
-  def no_ad_in_the_carousel
-    if is_ad? and carousel_position.present?
-      errors.add(:carousel_position, "Sorry, you can't put advertisement into the carousel")
-    end
-  end
 end
