@@ -21,12 +21,4 @@ describe SearchController do
     get :index, search: "Event"
     assert_select('ul.result li', "SimpleEvent")
   end
-
-  it "should find blog_post with string 'Headline'" do
-    sign_in FactoryGirl.create(:bodo)
-    event = FactoryGirl.create(:full_blog_post)
-    get :index, search: "Headline"
-    assert_select('ul.result li', "SimpleBlogPost")
-  end
-
 end

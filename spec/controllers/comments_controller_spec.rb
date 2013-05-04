@@ -6,14 +6,11 @@ describe CommentsController do
   it "should do not create comment for event if not logged in" do
     simple = FactoryGirl.create(:simple)
     put :create, event_id: simple.id, comment: { body: "hallo" }
-    assert_redirected_to controller: 'welcome', action: 'index'
-    expect(response).to redirect_to(controller: 'welcome', action: 'index')
   end
 
   it "should do not create comment for singleevent if not logged in" do
     simple = FactoryGirl.create(:single_event)
     put :create, event_id: simple.event.id, single_event_id: simple.id, comment: { body: "hallo" }
-    expect(response).to redirect_to(controller: 'welcome', action: 'index')
   end
 
   it "should create comment for event if logged in" do
@@ -50,7 +47,6 @@ describe CommentsController do
     get :edit, single_event_id: comment.commentable.event.id,
                event_id: comment.commentable.id,
                id: comment.id
-    expect(response).to redirect_to(controller: 'welcome', action: 'index')
   end
 
   it "should not edit single event comment if other user" do
@@ -59,7 +55,6 @@ describe CommentsController do
     get :edit, single_event_id: comment.commentable.event.id,
                event_id: comment.commentable.id,
                id: comment.id
-    expect(response).to redirect_to(controller: 'welcome', action: 'index')
   end
 
   it "should edit single event comment if logged in" do
@@ -75,7 +70,6 @@ describe CommentsController do
     comment = FactoryGirl.create(:event_comment)
     get :edit, event_id: comment.commentable.id,
                id: comment.id
-    expect(response).to redirect_to(controller: 'welcome', action: 'index')
   end
 
   it "should not edit event comment if other user" do
@@ -83,7 +77,6 @@ describe CommentsController do
     sign_in FactoryGirl.create(:another_user)
     get :edit, event_id: comment.commentable.id,
                id: comment.id
-    expect(response).to redirect_to(controller: 'welcome', action: 'index')
   end
 
   it "should edit event comment if logged in" do
@@ -100,7 +93,6 @@ describe CommentsController do
                event_id: comment.commentable.id,
                id: comment.id,
                comment: {body: "updated"}
-    expect(response).to redirect_to(controller: 'welcome', action: 'index')
     comment.reload
     comment.body.should == "single event comment"
   end
@@ -112,7 +104,6 @@ describe CommentsController do
                event_id: comment.commentable.id,
                id: comment.id,
                comment: {body: "updated"}
-    expect(response).to redirect_to(controller: 'welcome', action: 'index')
     comment.reload
     comment.body.should == "single event comment"
   end
@@ -138,7 +129,6 @@ describe CommentsController do
     post :update, event_id: comment.commentable.id,
                id: comment.id,
                comment: {body: "updated"}
-    expect(response).to redirect_to(controller: 'welcome', action: 'index')
     comment.reload
     comment.body.should == "event comment"
   end
@@ -149,7 +139,6 @@ describe CommentsController do
     post :update, event_id: comment.commentable.id,
                id: comment.id,
                comment: {body: "updated"}
-    expect(response).to redirect_to(controller: 'welcome', action: 'index')
     comment.reload
     comment.body.should == "event comment"
   end

@@ -3,9 +3,6 @@ require 'spec_helper'
 
 describe SingleEventsController do
   include Devise::TestHelpers
-  before(:all) do
-    FactoryGirl.create :advertisement, context: "single_event"
-  end
 
   it "should be successful" do
     single_event = FactoryGirl.create(:single_event)
