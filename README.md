@@ -10,7 +10,7 @@ calendar for geeks in and around Cologne.
 
 We discuss features and problems in our [Google Group](http://groups.google.com/group/hcking).
 
-## Scope of Hcking.de
+## Scope of hacken.in
 
 When you want to add an event to [hacken.in/koeln](http://hacken.in/koeln) please check with the following guidelines:
 
