@@ -11,7 +11,7 @@ def generate_event_entry(single_event, description = "")
     event += "DTSTART;VALUE=DATE-TIME:#{single_event.occurrence.utc.strftime("%Y%m%dT%H%M%SZ")}\n"
   end
   event += "DESCRIPTION:#{description}\n"
-  event += "URL:http://hcking.dev/events/#{single_event.event.id}/dates/#{single_event.id}\n"
+  event += "URL:http://hcking.dev/koeln/events/#{single_event.event.id}/dates/#{single_event.id}\n"
   event += "SUMMARY:#{single_event.full_name}\n"
 
   loc = [single_event.venue_info, single_event.venue.address].delete_if{|d|d.blank?}.join(", ").strip

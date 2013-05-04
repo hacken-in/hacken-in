@@ -195,7 +195,7 @@ BEGIN:VEVENT
 DTEND;VALUE=DATE-TIME:#{(single_event.occurrence + single_event.duration * 60).utc.strftime("%Y%m%dT%H%M%SZ")}
 DTSTART;VALUE=DATE-TIME:#{single_event.occurrence.utc.strftime("%Y%m%dT%H%M%SZ")}
 DESCRIPTION:
-URL:http://hcking.dev/events/1/dates/1
+URL:http://hcking.dev/koeln/events/1/dates/1
 SUMMARY:SimpleEvent (SimpleSingleEventName)
 LOCATION:Deutz-Mülheimerstraße 129\\, 51063 Köln
 END:VEVENT
@@ -208,7 +208,7 @@ ical
 BEGIN:VEVENT
 DTEND;VALUE=DATE-TIME:#{(single_event.occurrence + single_event.duration * 60).utc.strftime("%Y%m%dT%H%M%SZ")}
 DTSTART;VALUE=DATE-TIME:#{single_event.occurrence.utc.strftime("%Y%m%dT%H%M%SZ")}
-DESCRIPTION:http://hcking.dev/events/1/dates/1
+DESCRIPTION:http://hcking.dev/koeln/events/1/dates/1
 SUMMARY:SimpleEvent (SimpleSingleEventName)
 LOCATION:Deutz-Mülheimerstraße 129\\, 51063 Köln
 END:VEVENT
