@@ -30,7 +30,6 @@ group :assets do
   gem 'pjax_rails', '~> 0.3.4'
   gem 'compass-rails', '~> 1.0.3'
   gem 'bootstrap-sass-rails', '~> 2.3.0.0'
-  gem 'mediaelement_rails', '~> 0.5.0'                          # MP3 Player
   gem 'zero-clipboard-rails', '~> 1.0.1'                        # Clipboard-Button on iCal Page
   gem 'momentjs-rails', '~> 1.7.2'                              # Date parsing in Javascript
   gem 'ckeditor_rails', '~> 3.6.4.1', require: 'ckeditor-rails' # For the admin area
