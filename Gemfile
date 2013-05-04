@@ -77,9 +77,6 @@ gem 'therubyracer', '~> 0.10.1'
 # User Picture using Gravatar
 gem 'gravatar_image_tag', '~> 1.1.3'
 
-# Smurfville
-gem 'smurfville', github: 'railslove/smurfville', branch: 'nerdhub'
-
 # Pagination
 gem 'bootstrap-kaminari-views', '~> 0.0.2'
 

@@ -1,14 +1,3 @@
-GIT
-  remote: git://github.com/railslove/smurfville.git
-  revision: 7798cf12419f7f1725be74db0d98e5c76d604753
-  branch: nerdhub
-  specs:
-    smurfville (0.0.6)
-      color
-      haml
-      rails (~> 3.1)
-      sass (~> 3.2)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -91,7 +80,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.4.0)
-    color (1.4.1)
     compass (0.12.2)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
@@ -372,7 +360,6 @@ DEPENDENCIES
   sass-rails (~> 3.2.6)
   simple-navigation (~> 3.10.0)
   simple_form (~> 2.0.4)
-  smurfville!
   sqlite3 (~> 1.3.7)
   therubyracer (~> 0.10.1)
   tipsy-rails (~> 1.0.3)
