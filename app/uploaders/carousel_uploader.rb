@@ -1,2 +1,0 @@
-class CarouselUploader < PictureUploader
-end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130504154543) do
+ActiveRecord::Schema.define(:version => 20130505064229) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -41,6 +41,27 @@ ActiveRecord::Schema.define(:version => 20130504154543) do
   end
 
   add_index "authorizations", ["user_id"], :name => "index_authorizations_on_user_id"
+
+  create_table "blog_posts", :force => true do |t|
+    t.string   "headline"
+    t.text     "headline_teaser"
+    t.text     "teaser_text"
+    t.text     "text"
+    t.integer  "user_id"
+    t.boolean  "publishable"
+    t.integer  "category_id"
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
+    t.datetime "publishable_from"
+    t.boolean  "use_in_newsletter"
+    t.integer  "picture_id"
+    t.string   "mp3file"
+    t.string   "blog_type",         :default => "blog"
+  end
+
+  add_index "blog_posts", ["category_id"], :name => "index_blog_posts_on_category_id"
+  add_index "blog_posts", ["picture_id"], :name => "index_blog_posts_on_picture_id"
+  add_index "blog_posts", ["user_id"], :name => "index_blog_posts_on_user_id"
 
   create_table "calendar_preset_categories", :force => true do |t|
     t.integer  "category_id"
@@ -108,10 +129,8 @@ ActiveRecord::Schema.define(:version => 20130504154543) do
     t.string   "title"
     t.text     "description"
     t.string   "box_image"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
-    t.string   "carousel_image"
-    t.string   "advertisement_image"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "single_events", :force => true do |t|
