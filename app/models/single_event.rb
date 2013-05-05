@@ -169,7 +169,7 @@ class SingleEvent < ActiveRecord::Base
 
     ri_cal_event.location = location if location.present?
     url = Rails.application.routes.url_helpers.event_single_event_url(
-              host: Rails.env.production? ? "nerdhub.de" : "hcking.dev",
+              host: Rails.env.production? ? "hacken.in" : "hcking.dev",
               event_id: event.id,
               id: id)
     if links_in_description

@@ -1,7 +1,7 @@
 module OpengraphHelper
 
   def opengraph_data(data)
-    data["og:title"] = "#{data["og:title"]} - nerdhub.de" unless data["og:title"].blank?
+    data["og:title"] = "#{data["og:title"]} - hacken.in" unless data["og:title"].blank?
     @opengraph_page_data = (@opengraph_page_data || {}).merge(data)
   end
 

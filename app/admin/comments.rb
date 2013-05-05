@@ -1,9 +1,9 @@
 #coding: utf-8
 
-# This is called NerdhubComment for a technical reason:
+# This is called HackenComment for a technical reason:
 # If you call it Comment, there is a bug that basically
 # blows up everything ;)
-ActiveAdmin.register Comment, as: "NerdhubComment" do
+ActiveAdmin.register Comment, as: "HackenComment" do
   menu parent: "Content", label: "Kommentare"
   index do
     column :id

@@ -5,11 +5,11 @@ class CalendarPreset < ActiveRecord::Base
   has_many :calendar_preset_categories
   has_many :categories, :through => :calendar_preset_categories
 
-  scope :nerdhub_presets, where(CalendarPreset.arel_table[:user_id].eq(nil))
+  scope :hacken_presets, where(CalendarPreset.arel_table[:user_id].eq(nil))
   scope :user_presets, where(CalendarPreset.arel_table[:user_id].not_eq(nil))
 
   # Diese Funktion sammelt alle für den Benutzer relevanten CalendarPresets ein,
-  # dazu gehören Nerdhub Presets (user id = nil) sowie das Preset für den Benutzer
+  # dazu gehören Hacken.in Presets (user id = nil) sowie das Preset für den Benutzer
   # Wenn es für den Benutzer kein Preset gibt, wird für ihn ein neues Preset angelegt
   def self.presets_for_user(user = nil)
 

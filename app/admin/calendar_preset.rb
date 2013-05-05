@@ -2,7 +2,7 @@ ActiveAdmin.register CalendarPreset do
   menu parent: "Kalender"
   config.sort_order = "id_asc"
 
-  scope :nerdhub_presets, default: true
+  scope :hacken_presets, default: true
   scope :user_presets
   scope :all, :unscoped
 
@@ -10,7 +10,7 @@ ActiveAdmin.register CalendarPreset do
     column :id
     column :title
     column :user do |preset|
-        preset.user || 'Nerdhub Preset'
+        preset.user || 'Hacken Preset'
       end
     column :categories do |preset|
       preset.categories.sort_by(&:title).map { |c| span(c.title, style: "color: #{c.color}") }
@@ -23,7 +23,7 @@ ActiveAdmin.register CalendarPreset do
       row :id
       row :title
       row :user do |preset|
-        preset.user || 'Nerdhub Preset'
+        preset.user || 'Hacken Preset'
       end
       row :categories do |preset|
         ul do

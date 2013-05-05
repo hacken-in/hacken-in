@@ -5,7 +5,7 @@
     %h3.black-bar-small-title Kalender importieren
   .modal-body
     %p
-      Hier kannst du den NERDHUB Kalender in deine bevorzugte Kalender-Applikation importieren
+      Hier kannst du den Hacken.in Kalender in deine bevorzugte Kalender-Applikation importieren
 
       - my_cal_url = url_for(action: "personalized", protocol: 'webcal', controller: "ical", format: "ical", only_path: false, guid: current_user.guid)
       - my_cal_url_http = my_cal_url.gsub(/\Awebcal/, 'http')
