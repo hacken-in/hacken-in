@@ -49,7 +49,7 @@ Hcking::Application.configure do
         location:  '/usr/sbin/sendmail',
         arguments: '-i -t'
   }
-  config.action_mailer.default_url_options = { host: "hacking.in" }
+  config.action_mailer.default_url_options = { host: "hacken.in" }
 
   # Enable threaded mode
   # config.threadsafe!
