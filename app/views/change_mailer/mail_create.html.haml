@@ -5,7 +5,7 @@
       Neuer #{@record.class.to_s} # #{@record.id}
       - if @record.respond_to? (:title)
         \: #{@record.title}
-    %p Angelegt von #{User.current.nil? ? "Anonym" : link_to(User.current.nickname, user_path(User.current))}.
+    %p Angelegt von #{User.current.nil? ? "Anonym" : link_to(User.current.nickname, user_url(User.current))}.
     %table
       - @record.attributes.keys.each do |key|
         %tr
