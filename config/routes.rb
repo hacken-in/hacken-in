@@ -57,5 +57,5 @@ Hcking::Application.routes.draw do
 
   match ":page_name"              => "pages#show"
 
-  root to: redirect("/koeln")
+  root to: redirect { |p, req| req.flash.keep; "/koeln" }
 end

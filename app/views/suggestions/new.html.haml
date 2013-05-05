@@ -10,8 +10,6 @@
   = f.input :occurrence, hint: t("suggestions.new.occurrence_hint")
   = f.input :description, hint: t("suggestions.new.description_hint")
   = f.input :place
-  = f.input :more_as_text, as: :text, hint: t("suggestions.new.more_hint")
 
   .form-actions
-    = f.submit class: 'btn btn-inverse'
-    = link_to 'Zurück', root_path, class: 'btn'
+    = f.submit 'Absenden', class: 'btn btn-inverse'

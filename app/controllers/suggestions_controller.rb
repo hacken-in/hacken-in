@@ -15,9 +15,10 @@ class SuggestionsController < ApplicationController
     @suggestion = Suggestion.new params[:suggestion]
 
     if @suggestion.save
-      flash[:notice] = t "suggestions.create.confirmation"
+      redirect_to :root, flash: {notice: t("suggestions.create.confirmation")}
+    else
+      render :new
     end
 
-    respond_with @suggestion
   end
 end
