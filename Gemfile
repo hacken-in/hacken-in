@@ -69,7 +69,7 @@ gem 'simple_form', '~> 2.0.4'
 
 # JavaScript runtime
 gem 'execjs', '~> 1.4.0'
-gem 'therubyracer', '~> 0.10.1'
+gem 'therubyracer', '~> 0.11.4'
 
 # User Picture using Gravatar
 gem 'gravatar_image_tag', '~> 1.1.3'
@@ -84,6 +84,8 @@ gem 'simple-navigation', '~> 3.10.0'
 # *Attention:* If you want to change to 1.1.3, you need to adjust our Code
 # (Geocoder, Y U NO Semantic Versioning?)
 gem 'geocoder', '= 1.1.2'
+
+gem 'nokogiri', '~> 1.5.9'
 
 group :development do
   # Deployment

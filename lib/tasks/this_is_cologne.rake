@@ -1,4 +1,5 @@
 require 'open-uri'
+require 'nokogiri'
 
 namespace :this_is_cologne do
 
