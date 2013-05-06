@@ -182,7 +182,7 @@ de:
         password: Passwort
         password_confirmation: Passwort bestätigen
         current_password: Aktuelles Passwort
-        remember_me: Angemeldet bleiben
+        remember_me: Eingeloggt bleiben
       event:
         address: Adresse
         description: Beschreibung
@@ -293,7 +293,7 @@ de:
       deleted: "Die Authorisierung für %{provider} wurde entfernt."
       added: "Die Authorisierung für %{provider} wude hinzugefügt."
       only_one_no_password: "Du hast zur Zeit kein Passwort gesetzt, daher kannst du die letzte Authorisierung nicht entfernen."
-      sign_in_with: "Anmelden mit %{provider}"
+      sign_in_with: "Einloggen mit %{provider}"
       add_service: "%{provider} hinzufügen"
       in_use: "Dein %{provider}-Account (User-Id: %{uid}) wird bereits von einem anderen Account verwendet. Wenn du dich mit einem anderen Account anmelden willst, geh auf die Seite von %{provider} und melde dich dort ab."
       email: "Hier kannst du eine E-Mail Adresse und ein Passwort hinzufügen. Damit kannst du dich auch anmelden, wenn deine Authorisierungsdienste mal pleite gehen oder so."
