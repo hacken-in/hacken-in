@@ -4,11 +4,11 @@
     = f.password_field :password, placeholder: 'Passwort'
 
     .lower-row-wrapper
-      = f.submit "Anmelden", class: 'btn login-button'
+      = f.submit "Einloggen", class: 'btn login-button'
       - if devise_mapping.rememberable?
         .remember-me-wrapper
           = f.check_box :remember_me, :as => :boolean, class: 'remember-me-checkbox'
-          = f.label :remember_me, "Angemeldet bleiben", class: 'remember-me-label'
+          = f.label :remember_me, "Eingeloggt bleiben", class: 'remember-me-label'
 
     .external-providers
       - User.omniauth_providers.each do |provider|
