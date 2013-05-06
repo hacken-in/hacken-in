@@ -1,7 +1,7 @@
 - content_for :title do
-  Anmelden
+  Einloggen
 
-%h2 Anmelden
+%h2 Einloggen
 
 %h3 Mit Benutzerdaten
 
@@ -12,7 +12,7 @@
     = f.input :remember_me, :as => :boolean
 
   .controls
-    = f.submit "Anmelden", class: 'btn btn-inverse'
+    = f.submit "Einloggen", class: 'btn btn-inverse'
     = render partial: 'users/shared/links'
 
 %h2 ... oder mit einem dieser Services
