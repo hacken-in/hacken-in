@@ -16,14 +16,14 @@
   eingereicht werden.  Das ganze läuft mit OpenSource Kalender-Content
   Management Systems [hcking](http://hcking.de).
 
-%h3.teamheadline Das einzigartige, unnerreichte, großartige, wunderschöne und weltbeste hacken.in Team:
+%h3.teamheadline Das einzigartige, unerreichte, großartige, wunderschöne und weltbeste hacken.in Team:
 
 %ul.thumbnails
   - @humans.each do |human|
     %li.span2
       .thumbnail.team-box
         .thumb_link
-          = link_to gravatar_image_tag(human.email, class: "user_gravatar", gravatar: { default: :identicon, size: 256 }), user_path(human)
+          = link_to gravatar_image_tag(human.email, class: "user_gravatar", gravatar: { default: :identicon, size: 304 }), user_path(human)
 
         .thumb_desc
           %h3= link_to human.nickname, user_path(human)
