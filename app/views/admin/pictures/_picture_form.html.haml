@@ -7,9 +7,4 @@
         %label.label Vorschau Box
         = image_tag @picture.box_image.url
     = f.input :box_image
-    - unless @picture.carousel_image.try(:url).nil?
-      %li.input
-        %label.label Vorschau Carousel
-        = image_tag @picture.carousel_image.url
-    = f.input :carousel_image
   = f.actions
