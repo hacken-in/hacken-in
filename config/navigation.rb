@@ -36,7 +36,7 @@ SimpleNavigation::Configuration.run do |navigation|
     if current_user.blank?
       primary.item :login, 'Login', user_session_path, class: "login-nav-link"
     else
-      primary.item :login, current_user.try(:nickname), user_path(current_user), method: :delete, class: "profile-nav-link"
+      primary.item :login, current_user.try(:nickname), user_path(current_user), class: "profile-nav-link"
     end
 
 

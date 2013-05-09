@@ -14,8 +14,14 @@
         .controls.previewable
           = f.text_area :description, cols: 70, rows: 10, class: 'preview-base'
           = render 'commons/markdown_info'
-      = f.input :twitter
-      = f.input :github
+      = f.input :twitter do
+        .link_prefix
+          http://twitter.com/
+        = f.input_field(:twitter, class: "link_input")
+      = f.input :github do
+        .link_prefix
+          http://github.com/
+        = f.input_field(:github, class: "link_input")
       = f.input :homepage
       = f.input :allow_ignore_view, :as => :boolean, :label => t('users.edit.allow_ignore_view')
 

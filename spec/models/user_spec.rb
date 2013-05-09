@@ -66,5 +66,47 @@ describe User do
     user.reload
     user.email.should == "newexample2@example.com"
   end
+
+  it "should try to fix twitter handle if it starts with twitter.com/" do
+    user = FactoryGirl.create(:user)
+    user.twitter = "twitter.com/twitterhandle"
+    user.save
+    user.twitter.should == "twitterhandle"
+  end
+
+  it "should try to fix twitter handle if it starts with http://twitter.com/" do
+    user = FactoryGirl.create(:user)
+    user.twitter = "http://twitter.com/twitterhandle"
+    user.save
+    user.twitter.should == "twitterhandle"
+  end
+
+  it "should try to fix twitter handle if it starts with httpS://twitter.com/" do
+    user = FactoryGirl.create(:user)
+    user.twitter = "https://twitter.com/twitterhandle"
+    user.save
+    user.twitter.should == "twitterhandle"
+  end
+
+  it "should try to fix github handle if it starts with github.com/" do
+    user = FactoryGirl.create(:user)
+    user.github = "github.com/githubhandle"
+    user.save
+    user.github.should == "githubhandle"
+  end
+
+  it "should try to fix github handle if it starts with http://github.com/" do
+    user = FactoryGirl.create(:user)
+    user.github = "http://github.com/githubhandle"
+    user.save
+    user.github.should == "githubhandle"
+  end
+
+  it "should try to fix github handle if it starts with httpS://github.com/" do
+    user = FactoryGirl.create(:user)
+    user.github = "https://github.com/githubhandle"
+    user.save
+    user.github.should == "githubhandle"
+  end
 end
 

@@ -29,6 +29,8 @@ class User < ActiveRecord::Base
   validates_exclusion_of :nickname, in: %w(admin root administrator superuser), message: I18n.t('devise.registrations.exclusion')
   validate :username_format
 
+  before_save :try_to_fix_urls
+
   default_scope order(:nickname)
 
   def to_param
@@ -197,6 +199,15 @@ class User < ActiveRecord::Base
   end
 
   private
+
+  def try_to_fix_urls
+    if twitter && m = twitter.match(/(?:http:\/\/)?twitter.com\/(.*)/)
+      self.twitter = m[1]
+    end
+    if github && m = github.match(/(?:http:\/\/)?github.com\/(.*)/)
+      self.github = m[1]
+    end
+  end
 
   def associate_auth_token_with_account
     if auth_temp_token
