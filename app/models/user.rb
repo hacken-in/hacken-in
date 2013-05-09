@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
   has_many :comments
   has_and_belongs_to_many :single_events, uniq: true
 
+  has_many :event_curations
+  has_many :curated_events, :through => :event_curations, :source => :event
+
   #OmniAuth Authorizations
   has_many :authorizations
 

@@ -16,6 +16,10 @@ class Event < ActiveRecord::Base
   has_many :single_events, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
 
+  has_many :event_curations
+  has_many :curators, :through => :event_curations, :source => :user
+
+
   attr_writer :schedule
 
   acts_as_taggable
