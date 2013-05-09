@@ -75,7 +75,7 @@ class SingleEvent < ActiveRecord::Base
     elsif self.full_day
       if other.full_day
         # both are all day, sort via topic
-        return self.full_name <=> other.full_name
+        return self.full_name.downcase <=> other.full_name.downcase
       else
         # self is all day, other is not
         return -1
