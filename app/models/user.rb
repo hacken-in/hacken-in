@@ -13,6 +13,9 @@ class User < ActiveRecord::Base
   has_many :event_curations
   has_many :curated_events, :through => :event_curations, :source => :event
 
+  has_many :region_organizers
+  has_many :organized_regions, :through => :region_organizers, :source => :region
+
   #OmniAuth Authorizations
   has_many :authorizations
 

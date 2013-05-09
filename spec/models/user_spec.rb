@@ -75,5 +75,14 @@ describe User do
     user.reload
     user.email.should == "newexample2@example.com"
   end
+
+  it "lets users organize regions" do
+    user = FactoryGirl.create(:user)
+    region = FactoryGirl.create(:koeln_region)
+
+    user.organized_regions << region
+
+    region.organizers.should =~ [user]
+  end
 end
 
