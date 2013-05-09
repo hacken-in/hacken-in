@@ -1,6 +1,6 @@
 # encoding: utf-8
 FactoryGirl.define do
-  factory :cowoco_venue, class: 'venue' do 
+  factory :cowoco_venue, class: 'venue' do
     location "CoWoCo, Gasmotorenfabrik, 3. Etage"
     street "Deutz-Mülheimerstraße 129"
     zipcode "51063"
@@ -8,5 +8,6 @@ FactoryGirl.define do
     country "DE"
     latitude 50.9490279
     longitude 6.986784900000001
+    region FactoryGirl.create(:koeln_region)
   end
 end

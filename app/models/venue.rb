@@ -1,7 +1,7 @@
 # encoding: utf-8
 class Venue < ActiveRecord::Base
   attr_accessible :url, :city, :country, :latitude, :location, :longitude, :street, :zipcode
-  validates_presence_of :location, :city, :country, :street, :zipcode
+  validates_presence_of :location, :city, :country, :street, :zipcode, :region_id
 
   has_many :events
   has_many :single_events
