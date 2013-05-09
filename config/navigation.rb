@@ -33,8 +33,11 @@ SimpleNavigation::Configuration.run do |navigation|
   # Define the primary navigation
   navigation.items do |primary|
     primary.dom_class = "nav main-nav pull-right"
-    primary.item :login, 'Login', user_session_path, :if => Proc.new { current_user.blank? }, class: "login-nav-link"
-    primary.item :login, 'Logout', destroy_user_session_path, method: :delete, :if => Proc.new { !current_user.blank? }
+    if current_user.blank?
+      primary.item :login, 'Login', user_session_path, class: "login-nav-link"
+    else
+      primary.item :login, current_user.try(:nickname), user_path(current_user), method: :delete, class: "profile-nav-link"
+    end
 
 
     # Add an item to the primary navigation. The following params apply:

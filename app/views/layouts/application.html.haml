@@ -41,6 +41,7 @@
           = link_to image_tag('logo.png', width:"325px", height:"53px"), root_path, class: 'brand', title: 'hacken.in/koeln'
           = render_navigation
           = render 'users/sessions/loginform_popup'
+          = render 'users/sessions/logoutform_popup'
 
     .container
       - if flash[:notice]
