@@ -106,6 +106,9 @@ class SingleEvent < ActiveRecord::Base
       "og:title"       => name_with_date,
       "og:description" => short_description
     })
+    if picture.present?
+      ogdata["og:image"] = "http://hacken.in#{picture.box_image.url}"
+    end
     ogdata = ogdata.merge venue.to_opengraph unless venue.nil?
     ogdata = ogdata.reject { |key, value| value.blank? }
     ogdata
