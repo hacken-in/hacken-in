@@ -18,15 +18,17 @@
     = render partial: 'modules/calendars/kddk', locals: { presets: @presets, categories: @categories }
     = render partial: 'modules/tags/calendar_tags'
 
-    - if user_signed_in?
-      = render 'modules/calendars/ical_popup'
-      .calendar-export
-        %button.btn.btn-large.btn-inverse.js-calendar-export
-          %i.icon-calendar
-          In meinen Kalender
-    - else
+    - unless user_signed_in?
       %p.not_logged_in_warning.muted
-        Als angemeldeter Benutzer kannst du deinen Kalender hier auch noch nach bestimmten Hashtags filtern oder in deinen Desktop-Kalendar importieren.
+        Als
+        = link_to "angemeldeter User", new_user_session_path
+        kannst du deinen Kalender hier auch noch nach bestimmten Hashtags filtern
+
+    = render 'modules/calendars/ical_popup'
+    .calendar-export
+      %button.btn.btn-large.btn-inverse.js-calendar-export
+        %i.icon-calendar
+          In meinen Kalender
 
     %p.suggest_link
       Fehlt ein Event? Dann 
