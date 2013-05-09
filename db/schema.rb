@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130509122135) do
+ActiveRecord::Schema.define(:version => 20130509124729) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -124,6 +124,16 @@ ActiveRecord::Schema.define(:version => 20130509122135) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "region_organizers", :force => true do |t|
+    t.integer  "region_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "region_organizers", ["region_id"], :name => "index_regions_users_on_region_id"
+  add_index "region_organizers", ["user_id"], :name => "index_regions_users_on_user_id"
+
   create_table "regions", :force => true do |t|
     t.string   "name"
     t.string   "slug"
@@ -135,16 +145,6 @@ ActiveRecord::Schema.define(:version => 20130509122135) do
   end
 
   add_index "regions", ["slug"], :name => "index_regions_on_slug"
-
-  create_table "regions_users", :force => true do |t|
-    t.integer  "region_id"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "regions_users", ["region_id"], :name => "index_regions_users_on_region_id"
-  add_index "regions_users", ["user_id"], :name => "index_regions_users_on_user_id"
 
   create_table "single_events", :force => true do |t|
     t.string   "name"
