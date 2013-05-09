@@ -34,6 +34,7 @@ group :assets do
   gem 'momentjs-rails', '~> 1.7.2'                              # Date parsing in Javascript
   gem 'ckeditor_rails', '~> 3.6.4.1', require: 'ckeditor-rails' # For the admin area
   gem 'tipsy-rails', '~> 1.0.3'                                 # Facebook style tooltip jQuery plugin
+  gem "font-awesome-rails", '~> 3.0.2'
 end
 
 gem 'haml', '~> 3.1.8'
