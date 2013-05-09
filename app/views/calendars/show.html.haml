@@ -11,7 +11,7 @@
     = render partial: 'modules/calendars/startselector', locals: { months: @months }
     .calendar-calendar
       = render partial: 'modules/calendars/calendar', locals: { single_events: @single_events }
-  .span2
+  .span2.calendar-settings
     .calendar-head
       = image_tag('klick-den-cal.png')
 

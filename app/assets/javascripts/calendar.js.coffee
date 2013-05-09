@@ -1,5 +1,9 @@
 jQuery ->
   if $('body').hasClass('calendars_show')
+    # Move the footer to the sidebar
+    $('.main-footer').appendTo $('.calendar-settings')
+    $('.main-footer').removeClass 'container'
+
     # Damit wir nicht mehrfach das neuladen aufrufen ... :D
     window.currentlyReloading = false
 
