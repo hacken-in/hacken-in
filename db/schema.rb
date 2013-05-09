@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130509110650) do
+ActiveRecord::Schema.define(:version => 20130509120404) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(:version => 20130509110650) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
+    t.integer  "region_id"
     t.text     "description"
     t.text     "schedule_yaml"
     t.string   "url"
@@ -102,6 +103,7 @@ ActiveRecord::Schema.define(:version => 20130509110650) do
 
   add_index "events", ["category_id"], :name => "index_events_on_category_id"
   add_index "events", ["picture_id"], :name => "index_events_on_picture_id"
+  add_index "events", ["region_id"], :name => "index_events_on_region_id"
   add_index "events", ["venue_id"], :name => "index_events_on_venue_id"
 
   create_table "pictures", :force => true do |t|
@@ -111,6 +113,28 @@ ActiveRecord::Schema.define(:version => 20130509110650) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "regions", :force => true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.float    "perimeter"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "regions", ["slug"], :name => "index_regions_on_slug"
+
+  create_table "regions_users", :force => true do |t|
+    t.integer  "region_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "regions_users", ["region_id"], :name => "index_regions_users_on_region_id"
+  add_index "regions_users", ["user_id"], :name => "index_regions_users_on_user_id"
 
   create_table "single_events", :force => true do |t|
     t.string   "name"
@@ -208,6 +232,7 @@ ActiveRecord::Schema.define(:version => 20130509110650) do
 
   create_table "venues", :force => true do |t|
     t.string   "location"
+    t.integer  "region_id"
     t.string   "street"
     t.string   "zipcode"
     t.string   "city"
@@ -220,5 +245,6 @@ ActiveRecord::Schema.define(:version => 20130509110650) do
   end
 
   add_index "venues", ["latitude", "longitude"], :name => "index_venues_on_latitude_and_longitude"
+  add_index "venues", ["region_id"], :name => "index_venues_on_region_id"
 
 end
