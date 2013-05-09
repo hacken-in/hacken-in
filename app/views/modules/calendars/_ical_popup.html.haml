@@ -4,21 +4,33 @@
       %i.icon-remove
     %h3.black-bar-small-title Kalender importieren
   .modal-body
-    %p
-      Hier kannst du den Hacken.in Kalender in deine bevorzugte Kalender-Applikation importieren
+    - if user_signed_in?
+      %p
+        Hier kannst du den Hacken.in Kalender in deine bevorzugte Kalender-Applikation importieren
 
-      - my_cal_url = url_for(action: "personalized", protocol: 'webcal', controller: "ical", format: "ical", only_path: false, guid: current_user.guid)
-      - my_cal_url_http = my_cal_url.gsub(/\Awebcal/, 'http')
-      - no_ignore_url = url_for(action: "like_welcome_page", protocol: 'webcal', controller: "ical", format: "ical", only_path: false, guid: current_user.guid)
-      - no_ignore_url_http = no_ignore_url.gsub(/\Awebcal/, 'http')
+        - default_url = my_cal_url = url_for(action: "personalized", protocol: 'webcal', controller: "ical", format: "ical", only_path: false, guid: current_user.guid)
+        - my_cal_url_http = my_cal_url.gsub(/\Awebcal/, 'http')
+        - no_ignore_url = url_for(action: "like_welcome_page", protocol: 'webcal', controller: "ical", format: "ical", only_path: false, guid: current_user.guid)
+        - no_ignore_url_http = no_ignore_url.gsub(/\Awebcal/, 'http')
 
-      .control.group
-        %label.radio
-          %input.calendar-import-setting{ type: 'radio', name: 'ical-radios', checked: 'checked', 'data-webcal-url' => no_ignore_url, 'data-http-url' => no_ignore_url_http }
-            meinen Kalender (meine Einstellungen berücksichtigen)
-        %label.radio
-          %input.calendar-import-setting{ type: 'radio', name: 'ical-radios', 'data-webcal-url' => my_cal_url, 'data-http-url' => my_cal_url_http }
-            nur Termine an denen ich teilnehme
+        .control.group
+          %label.radio
+            %input.calendar-import-setting{ type: 'radio', name: 'ical-radios', checked: 'checked', 'data-webcal-url' => no_ignore_url, 'data-http-url' => no_ignore_url_http }
+              meinen Kalender (meine Einstellungen berücksichtigen)
+          %label.radio
+            %input.calendar-import-setting{ type: 'radio', name: 'ical-radios', 'data-webcal-url' => my_cal_url, 'data-http-url' => my_cal_url_http }
+              nur Termine an denen ich teilnehme
+    - else
+      - default_url = ical_url(protocol: 'webcal')
+  
+      %p
+        Leider hast du dich nicht 
+        = link_to "angemeldetet", new_user_session_path
+        , somit kannst du nur nur einen ungefilterten Kalender abonnieren:
+        .control.group
+          %label.radio
+            %input.calendar-import-setting{ type: 'radio', name: 'ical-radios', checked: 'checked', 'data-webcal-url' => default_url, 'data-http-url' => default_url }
+              Alle Termine, ungefiltert
 
     %ul.nav.nav-tabs
       %li.active= link_to 'iCal', '#ical', { 'data-toggle' => 'tab' }
@@ -29,7 +41,7 @@
       #ical.tab-pane.active
         .calendar-import.by-button
           %p Einfach auf den Knopf drücken, um den Kalender zu importieren
-          = link_to 'In meinen iCal', my_cal_url, class: 'btn btn-inverse calendar-import-url calendar-import-button'
+          = link_to 'In meinen iCal', default_url, class: 'btn btn-inverse calendar-import-url calendar-import-button'
 
         .calendar-import.by-link
           %p Alternativ kannst du den Import auch über den folgenden Link durchführen:
@@ -50,7 +62,7 @@
       #outlook.tab-pane
         .calendar-import.by-button
           %p Einfach auf den Knopf drücken, um den Kalender zu importieren
-          = link_to 'In meinen Outlook-Kalender', my_cal_url, class: 'btn btn-inverse calendar-import-button'
+          = link_to 'In meinen Outlook-Kalender', default_url, class: 'btn btn-inverse calendar-import-button'
 
         .calendar-import.by-link
           %p Alternativ kannst du den Import auch über den folgenden Link durchführen:

@@ -48,7 +48,7 @@ Hcking::Application.routes.draw do
   match "ical"                    => "ical#general"
   match "personalized_ical/:guid" => "ical#personalized"
   match "user_ical/:guid"         => "ical#like_welcome_page"
-  match "single_event_ical/:id"   => "ical#for_single_event"
+  match "single_event_ical/:id"   => "ical#for_single_event", as: "single_event_ical"
   match "event_ical/:id"          => "ical#for_event"
   match "tag_ical/:id"            => "ical#for_tag"
   match "abonnieren"              => "subscribe#index"
