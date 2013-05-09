@@ -27,6 +27,9 @@
       .event-map
 
       = render "events/venue", event: @single_event
+      .single_event_ical
+        %i{class:"icon-calendar"}
+        %a{href:single_event_ical_path(@single_event)} iCal Download
       = render 'modules/social/share'
       .clearfix
 
