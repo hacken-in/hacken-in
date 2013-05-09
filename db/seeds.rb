@@ -52,40 +52,6 @@ post = BlogPost.create(
   publishable_from: Date.yesterday
 )
 
-# ---- pictures ----
-
-ThisiscolognePicture.create(
-  description: '<img src=\"http://24.media.tumblr.com/tumblr_mc6kfjkfL91qk5i72o1_500.jpg\"/><br/><br/><p>stephih shared on Instagram: Good morning ',
-  image_url: 'http://24.media.tumblr.com/tumblr_mc6kfjkfL91qk5i72o1_500.jpg',
-  link: 'http://thisiscologne.tumblr.com/post/33946164095',
-  time: '2012-10-20 07:21:18'
-)
-ThisiscolognePicture.create(
-  description: '<img src=\"http://25.media.tumblr.com/tumblr_mc6a1qcAO91qk5i72o1_500.jpg\"/><br/><br/><p>cerbifc shared on Instagram: Köln am Rhein! good morning #instagram <a href=\"http://instagr.am/p/Q_RNePI_6J/\">http://instagr.am/p/Q_RNePI_6J/</a></p>',
-  image_url: 'http://25.media.tumblr.com/tumblr_mc6a1qcAO91qk5i72o1_500.jpg',
-  link: 'http://thisiscologne.tumblr.com/post/33937045513',
-  time: '2012-10-20 03:37:02'
-)
-ThisiscolognePicture.create(
-  description: '<img src=\"http://24.media.tumblr.com/tumblr_mc5swnnQCg1qk5i72o1_500.jpg\"/><br/><br/><p>stefan04 shared on Instagram: #cologne #thisiscologne #fall <a href=\"http://instagr.am/p/Q-o-2dAF26/\">http://instagr.am/p/Q-o-2dAF26/</a></p>',
-  image_url: 'http://24.media.tumblr.com/tumblr_mc5swnnQCg1qk5i72o1_500.jpg',
-  link: 'http://thisiscologne.tumblr.com/post/33913930738',
-  time: '2012-10-19 21:26:47'
-)
-ThisiscolognePicture.create(
-  description: '<img src=\"http://24.media.tumblr.com/tumblr_mc5s3uQ1Hx1qk5i72o1_500.jpg\"/><br/><br/><p>mrsberryde shared on Instagram: Decksteiner Weiher <a href=\"http://instagr.am/p/Q-nf4REoY_/\">http://instagr.am/p/Q-nf4REoY_/</a></p>',
-  image_url: 'http://24.media.tumblr.com/tumblr_mc5s3uQ1Hx1qk5i72o1_500.jpg',
-  link: 'http://thisiscologne.tumblr.com/post/33912836664',
-  time: '2012-10-19 21:09:30'
-)
-ThisiscolognePicture.create(
-  description: '<img src=\"http://24.media.tumblr.com/tumblr_mc5s3otjr41qk5i72o1_500.jpg\"/><br/><br/><p>mrsberryde shared on Instagram: Herbstspaziergang <a href=\"http://instagr.am/p/Q-nMJVEoYy/\">http://instagr.am/p/Q-nMJVEoYy/</a></p>',
-  image_url: 'http://24.media.tumblr.com/tumblr_mc5s3otjr41qk5i72o1_500.jpg',
-  link: 'http://thisiscologne.tumblr.com/post/33912829629',
-  time: '2012-10-19 21:09:23'
-)
-
-
 # ---- venues -----
 
 cowoco = Venue.create(
