@@ -1,7 +1,5 @@
 # = require active_admin/base
 # = require charts
-# = require ckeditor-jquery
-# = require admin/blog_post/edit
 # = require admin/boxes/form
 # = require admin/events/form
 # = require admin/categories/form
