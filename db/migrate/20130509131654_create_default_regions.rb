@@ -1,3 +1,4 @@
+#encoding: utf-8
 class CreateDefaultRegions < ActiveRecord::Migration
   def up
     Region.create(name: 'Global', slug: 'global', perimeter: nil) { |region| region.id = 1 }
