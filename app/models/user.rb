@@ -207,6 +207,9 @@ class User < ActiveRecord::Base
     if github && m = github.match(/(?:http:\/\/)?github.com\/(.*)/)
       self.github = m[1]
     end
+    if homepage && !homepage.match(/\Ahttp(s)?:\/\//)
+      self.homepage = "http://#{homepage}"
+    end
   end
 
   def associate_auth_token_with_account

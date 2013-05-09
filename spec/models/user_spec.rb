@@ -67,6 +67,13 @@ describe User do
     user.email.should == "newexample2@example.com"
   end
 
+  it "should not fix twitter handle if it okay" do
+    user = FactoryGirl.create(:user)
+    user.twitter = "twitterhandle"
+    user.save
+    user.twitter.should == "twitterhandle"
+  end
+
   it "should try to fix twitter handle if it starts with twitter.com/" do
     user = FactoryGirl.create(:user)
     user.twitter = "twitter.com/twitterhandle"
@@ -88,6 +95,13 @@ describe User do
     user.twitter.should == "twitterhandle"
   end
 
+  it "should not try to fix github handle if it is okay" do
+    user = FactoryGirl.create(:user)
+    user.github = "githubhandle"
+    user.save
+    user.github.should == "githubhandle"
+  end
+
   it "should try to fix github handle if it starts with github.com/" do
     user = FactoryGirl.create(:user)
     user.github = "github.com/githubhandle"
@@ -107,6 +121,27 @@ describe User do
     user.github = "https://github.com/githubhandle"
     user.save
     user.github.should == "githubhandle"
+  end
+
+  it "should add http:// if it is missing" do
+    user = FactoryGirl.create(:user)
+    user.homepage = "heise.de"
+    user.save
+    user.homepage.should == "http://heise.de"
+  end
+
+  it "should not add http:// if it is not missing" do
+    user = FactoryGirl.create(:user)
+    user.homepage = "http://heise.de"
+    user.save
+    user.homepage.should == "http://heise.de"
+  end
+
+  it "should not add http:// if it is a https link" do
+    user = FactoryGirl.create(:user)
+    user.homepage = "https://heise.de"
+    user.save
+    user.homepage.should == "https://heise.de"
   end
 end
 
