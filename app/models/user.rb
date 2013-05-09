@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   has_many :region_organizers
   has_many :organized_regions, :through => :region_organizers, :source => :region
 
+  belongs_to :current_region, class_name: "Region"
+
   #OmniAuth Authorizations
   has_many :authorizations
 
