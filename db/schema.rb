@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130509124729) do
+ActiveRecord::Schema.define(:version => 20130509131657) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -139,9 +139,9 @@ ActiveRecord::Schema.define(:version => 20130509124729) do
     t.string   "slug"
     t.float    "latitude"
     t.float    "longitude"
-    t.float    "perimeter"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.float    "perimeter",  :default => 20.0
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   add_index "regions", ["slug"], :name => "index_regions_on_slug"
@@ -224,6 +224,7 @@ ActiveRecord::Schema.define(:version => 20130509124729) do
     t.datetime "updated_at"
     t.boolean  "admin",                  :default => false
     t.string   "nickname",               :default => "",    :null => false
+    t.integer  "current_region_id",      :default => 2
     t.text     "description"
     t.string   "github"
     t.string   "twitter"

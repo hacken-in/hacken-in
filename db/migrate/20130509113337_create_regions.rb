@@ -5,7 +5,7 @@ class CreateRegions < ActiveRecord::Migration
       t.string :slug
       t.float :latitude
       t.float :longitude
-      t.float :perimeter
+      t.float :perimeter, default: 20
 
       t.timestamps
     end
