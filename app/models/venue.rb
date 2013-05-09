@@ -6,6 +6,8 @@ class Venue < ActiveRecord::Base
   has_many :events
   has_many :single_events
 
+  belongs_to :region
+
   after_validation :geocode
 
   geocoded_by :address
