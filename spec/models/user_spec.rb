@@ -10,7 +10,7 @@ describe User do
     u = User.create(nickname: "bitboxer2", email: "bodo2@example.com", password: "mylongpassword")
     u.should be_valid
     u2 = User.create(nickname: "bitboxer2", email: "bodo3@example.com", password: "mylongpassword")
-    u2.should have(1).error_on(:nickname) 
+    u2.should have(1).error_on(:nickname)
   end
 
   it "validates uniqueness of email" do
@@ -30,7 +30,7 @@ describe User do
     User.find_for_database_authentication(email: "bodo6@example.com").should == u
   end
 
-  it "let's users participate in single event" do
+  it "lets users participate in single event" do
     single = FactoryGirl.create(:single_event)
     user = FactoryGirl.create(:user)
     user.single_events << single
@@ -38,6 +38,15 @@ describe User do
 
     user.single_events.first.should == single
     user.single_events.length.should == 1
+  end
+
+  it "lets users curate events" do
+    event = FactoryGirl.create(:simple)
+    user = FactoryGirl.create(:user)
+
+    user.curated_events << event
+
+    event.curators.should =~ [user]
   end
 
   it "ignores tags that are not publicy viewable by default" do
