@@ -89,7 +89,7 @@ class SingleEvent < ActiveRecord::Base
 
       if time_comparison == 0
         # they are at the same time, sort via topic
-        return self.full_name <=> other.full_name
+        return self.full_name.downcase <=> other.full_name.downcase
       else
         return time_comparison
       end
