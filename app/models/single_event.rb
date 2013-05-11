@@ -41,6 +41,7 @@ class SingleEvent < ActiveRecord::Base
   acts_as_taggable
 
   def self.search(search)
+    search.strip!
     # Name + Description in Single Event
     sevents = unscoped.today_or_in_future.find(:all, :conditions => ['name LIKE ? OR description LIKE ?', "%#{search}%", "%#{search}%"])
 
