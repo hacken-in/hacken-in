@@ -3,9 +3,7 @@ class SearchController < ApplicationController
 
   def index
     unless params[:search].blank?
-      @single_events = SingleEvent.search(params[:search])
-      @events = Event.search(params[:search])
-      respond_with @events, @blog_posts, @single_events
+      @single_events = SingleEvent.search(params[:search]).paginate(:page => params[:page])
     end
   end
 end

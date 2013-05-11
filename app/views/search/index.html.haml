@@ -1,38 +1,25 @@
 - content_for :title do
   Suche
 
-%h1 Suche in Events und im Blog
+%h1 Suche
 
 = form_tag search_index_path, :method => 'get' do
-  %div.field
-    = text_field_tag :search, params[:search]
-  %div.action
-    = submit_tag "Search", :name => nil
+  .input-append
+    = text_field_tag :search, params[:search], placeholder: "Suche..."
+    %button.btn
+      %i.icon-search
 
-
-%ul.result
+- unless params[:search].blank?
+  %h1 Ergebniss 
   - unless @single_events.blank?
-    %div Termine:
+    - current_date = nil
     - @single_events.each do |single_event|
-      %li
-        = link_to single_event.name + " - " + single_event.event.name, event_single_event_path(single_event.event, single_event)
-        <br/>
-        - tags = (single_event.tags | single_event.event.tags).sort_by(&:name)
-        - tags.each do |tag|
-          = render partial: "modules/tags/tag", locals: { tag: tag }
+      - if current_date != single_event.occurrence.to_date
+        - current_date = single_event.occurrence.to_date
+        %h1
+          = day_output_helper(current_date)
+      = render partial: 'modules/calendars/entry', locals: {single_event: single_event}
 
-  - unless @events.blank?
-    %div Events:
-    - @events.each do |event|
-      %li
-        = link_to event.name, event_path(event)
-
-  - unless @blog_posts.blank?
-    %div Blogs:
-    - @blog_posts.each do |blog_post|
-      %li
-        = link_to blog_post.headline, blog_post_path(blog_post)
-
-
-
-= link_to t('common.back'), :back
+    = will_paginate @single_events, :renderer => BootstrapPagination::Rails
+  - else
+    Keine Termine gefunden

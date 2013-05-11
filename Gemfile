@@ -87,6 +87,10 @@ gem 'geocoder', '= 1.1.2'
 
 gem 'nokogiri', '~> 1.5.9'
 
+# Paginating - for search
+gem 'will_paginate', '~> 3.0.4'
+gem "will_paginate-bootstrap", "~> 0.2.2"
+
 group :development do
   # Deployment
   gem 'capistrano', '~> 2.13.0'
