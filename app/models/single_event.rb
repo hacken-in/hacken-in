@@ -62,7 +62,7 @@ class SingleEvent < ActiveRecord::Base
       end
     end
 
-    sevents.sort
+    sevents.uniq.sort
   end
 
   # This is a little workaround. Rails optimizes .exists? queries and
