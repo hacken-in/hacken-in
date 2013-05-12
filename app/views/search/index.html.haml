@@ -20,6 +20,6 @@
           = day_output_helper(current_date)
       = render partial: 'modules/calendars/entry', locals: {single_event: single_event}
 
-    = will_paginate @single_events, :renderer => BootstrapPagination::Rails
+    = paginate @single_events, :theme => 'twitter-bootstrap'
   - else
     Keine Termine gefunden
