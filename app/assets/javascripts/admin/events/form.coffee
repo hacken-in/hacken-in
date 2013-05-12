@@ -1,6 +1,5 @@
 $ ->
   if $(".admin_events.edit,.admin_events.new").length > 0
-    console.log "penis"
     @rules = []
     @exdates = []
 
@@ -26,13 +25,13 @@ $ ->
     repaint = =>
       $("ul.rules").empty()
       for rule, i in @rules
-        rHtml = "<li>Jeden #{dayRules[rule.interval]} #{weekdays[rule.days[0]]} <a href='#' class='delete-rule icon-trash' data-no='#{i}'></a></li>"
+        rHtml = "<li>Jeden #{dayRules[rule.interval]} #{weekdays[rule.days[0]]} <a href='#' class='delete-rule' data-no='#{i}'><i class='icon-trash'></i></a></li>"
         $("ul.rules").append(rHtml)
 
       $("ul.excludes").empty()
       for date, i in @exdates
         display = moment(date).format("DD.MM.YYYY, H:mm:ss")
-        $("ul.excludes").append("<li>#{display} <a href='#' class='delete-exclude icon-trash' data-no='#{i}'></a></li>")
+        $("ul.excludes").append("<li>#{display} <a href='#' class='delete-exclude' data-no='#{i}'><i class='icon-trash'></i></a></li>")
 
     init = =>
       @rules = JSON.parse($("#event_schedule_rules_json").val())
@@ -48,14 +47,14 @@ $ ->
 
     self = this
 
-    $(".delete-rule").on 'click', ->
+    $(document).on 'click', ".delete-rule", ->
       if (confirm("Wirklich löschen?"))
         self.rules.splice $(this).attr("data-no"), 1
       repaint()
       reserialize()
       false
 
-    $(".delete-exclude").on 'click', ->
+    $(document).on 'click', ".delete-exclude", ->
       if (confirm("Wirklich löschen?"))
         self.exdates.splice $(this).attr("data-no"), 1
       repaint()
