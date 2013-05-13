@@ -9,5 +9,10 @@ FactoryGirl.define do
     name 'Köln'
     slug 'koeln'
   end
+
+  factory :berlin_region, class: 'region' do
+    name 'Berlin'
+    slug 'berlin'
+  end
 end
 

@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   has_many :curated_events, :through => :event_curations, :source => :event
 
   has_many :region_organizers
-  has_many :organized_regions, :through => :region_organizers, :source => :region
+  has_many :assigned_regions, :through => :region_organizers, :source => :region
 
   belongs_to :current_region, class_name: "Region"
 
@@ -40,6 +40,14 @@ class User < ActiveRecord::Base
   before_save :try_to_fix_urls
 
   default_scope order(:nickname)
+
+  def organized_regions
+    if self.admin
+      Region.all
+    else
+      assigned_regions
+    end
+  end
 
   def to_param
     nickname
