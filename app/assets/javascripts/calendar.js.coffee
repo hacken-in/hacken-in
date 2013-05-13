@@ -193,12 +193,12 @@ CalendarPreset =
     $all_checkboxes.attr 'disabled', (presetId != 'diy')
 
     if presetId == 'diy' and calendarPresets[presetId].length == 0
-      $all_checkboxes.attr('checked', true)
+      $all_checkboxes.prop('checked', true)
     else
-      $all_checkboxes.attr('checked', false)
+      $all_checkboxes.prop('checked', false)
 
       $.each calendarPresets[presetId], (id, categoryId)->
-        $('input[name=calendar_category][value=' + categoryId + ']').attr('checked', true)
+        $('input[name=calendar_category][value=' + categoryId + ']').prop('checked', true)
 
     # Reload the calendar with the new data
     Calendar.replaceEntries() if shouldReload

@@ -28,6 +28,7 @@ class Api::CalendarsController < ApplicationController
     @single_events = @single_events.in_categories(params[:categories].split(',').map(&:to_i)) unless params[:categories].blank?
 
     @single_events.select! { |single_event| single_event.is_for_user? current_user } if current_user
+    @single_events.sort!
 
     render :entries
   end

@@ -12,13 +12,10 @@ describe SearchController do
 
   it "should find single event with string 'Simple'" do
     single_event = FactoryGirl.create(:single_event)
+    single_event.occurrence = 1.week.from_now
+    single_event.save
     get :index, search: "Simple"
-    assert_select('ul.result li', "SimpleSingleEventName - SimpleEvent")
+    assert_select('div.calendar-line-title', "SimpleEvent (SimpleSingleEventName)")
   end
 
-  it "should find event with string 'Event'" do
-    event = FactoryGirl.create(:simple)
-    get :index, search: "Event"
-    assert_select('ul.result li', "SimpleEvent")
-  end
 end

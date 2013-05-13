@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
     if @user
       # Collect recent activity of this user:
-      @next_events = @user.single_events.today_or_in_future.limit 3
+      @next_events = @user.single_events.today_or_in_future.limit 6
       @recent_comments = @user.comments.recent
 
       respond_with @user

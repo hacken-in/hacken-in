@@ -21,6 +21,7 @@ class CalendarsController < ApplicationController
 
     @single_events = SingleEvent.in_next_from(4.weeks, @start_date).in_categories(@presets_json[:diy])
     @single_events.select! { |single_event| single_event.is_for_user? current_user } if current_user
+    @single_events.sort!
   end
 
   def entries

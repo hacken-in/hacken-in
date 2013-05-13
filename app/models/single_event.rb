@@ -41,7 +41,29 @@ class SingleEvent < ActiveRecord::Base
   acts_as_taggable
 
   def self.search(search)
-    unscoped.find(:all, :conditions => ['name LIKE ? OR description LIKE ?', "%#{search}%", "%#{search}%"])
+    search.strip!
+    # Name + Description in Single Event
+    sevents = unscoped.today_or_in_future.find(:all, :conditions => ['name LIKE ? OR description LIKE ?', "%#{search}%", "%#{search}%"])
+
+    Event.search(search).each do |e|
+      sevents.concat(e.single_events.today_or_in_future)
+    end
+
+    Tag.where("name like ?", "%#{search}%").each do |t|
+      sevents.concat(SingleEvent.tagged_with(t.name).today_or_in_future)
+      Event.tagged_with(t.name).each do |e|
+        sevents.concat(e.single_events.today_or_in_future)
+      end
+    end
+
+    Venue.where("location like ?", "%#{search}%").each do |v|
+      sevents.concat(v.single_events.today_or_in_future)
+      v.events.each do |e|
+        sevents.concat(e.single_events.today_or_in_future)
+      end
+    end
+
+    sevents.uniq.sort
   end
 
   # This is a little workaround. Rails optimizes .exists? queries and
@@ -75,7 +97,7 @@ class SingleEvent < ActiveRecord::Base
     elsif self.full_day
       if other.full_day
         # both are all day, sort via topic
-        return self.full_name <=> other.full_name
+        return self.full_name.downcase <=> other.full_name.downcase
       else
         # self is all day, other is not
         return -1
@@ -89,7 +111,7 @@ class SingleEvent < ActiveRecord::Base
 
       if time_comparison == 0
         # they are at the same time, sort via topic
-        return self.full_name <=> other.full_name
+        return self.full_name.downcase <=> other.full_name.downcase
       else
         return time_comparison
       end
