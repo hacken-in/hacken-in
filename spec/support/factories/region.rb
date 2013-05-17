@@ -1,18 +1,18 @@
 # encoding: utf-8
 FactoryGirl.define do
   factory :global_region, class: 'region' do
-    name 'Global'
-    slug 'global'
+    name { Faker::Address.city }
+    slug { Faker::Internet.domain_word }
   end
 
   factory :koeln_region, class: 'region' do
-    name 'Köln'
-    slug 'koeln'
+    name { Faker::Address.city }
+    slug { Faker::Internet.domain_word }
   end
 
   factory :berlin_region, class: 'region' do
-    name 'Berlin'
-    slug 'berlin'
+    name { Faker::Address.city }
+    slug { Faker::Internet.domain_word }
   end
 end
 
