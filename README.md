@@ -1,9 +1,8 @@
 # Welcome
 
-[![Build
-Status](https://secure.travis-ci.org/hcking/hcking.png?branch=master)](http://travis-ci.org/hcking/hcking)
-[![Code
-Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/hcking/hcking)
+[![Build Status](https://secure.travis-ci.org/hcking/hcking.png?branch=master)](http://travis-ci.org/hcking/hcking)
+[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/hcking/hcking)
+[![Coverage Status](https://coveralls.io/repos/hcking/hcking/badge.png)](https://coveralls.io/r/hcking/hcking)
 
 This is the code of [hacken.in/koeln](http://hacken.in/koeln), an event
 calendar for geeks in and around Cologne.

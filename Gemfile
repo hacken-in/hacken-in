@@ -111,4 +111,5 @@ group :test, :development do
   gem 'rspec-rails',  '~> 2.0'
   gem 'factory_girl_rails', '~> 4.2'
   gem 'faker', '~> 1.1.2'
+  gem 'coveralls', '~> 0.6.7'
 end
