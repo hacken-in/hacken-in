@@ -193,7 +193,7 @@ class User < ActiveRecord::Base
       user.created_at.strftime "%Y-%m-%d"
     end.group_by do |day|
       day
-    end.map do |day, occurrences|
+    end.sort.map do |day, occurrences|
       [day, (sum += occurrences.length)]
     end
   end

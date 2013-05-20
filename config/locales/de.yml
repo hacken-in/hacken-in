@@ -386,8 +386,11 @@ de:
 
   active_admin:
     statistics:
-      tag_distribution: "Verteilung der Tags"
-      registered_users: "Anzahl registrierter Benutzer"
+      events_by_category: "Veranstaltungsreihen insgesamt nach Kategorien"
+      users_over_time: "Registrierte Benutzer"
+      single_events_this_week_by_day: "Veranstaltungen dieses Woche nach Wochentag"
+      single_events_this_week_by_category: "Veranstaltungen diese Woche nach Kategorie"
+
 
   minical:
     see_more: 'weitere Termine'

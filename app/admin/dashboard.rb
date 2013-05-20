@@ -6,24 +6,28 @@ ActiveAdmin.register_page "Dashboard" do
     # Here is an example of a simple dashboard with columns and panels.
     columns do
       column do
-        panel I18n.t("active_admin.statistics.tag_distribution") do
-          stats = Tagging.distribution
-
-          div "class" => "pie-chart",
-            "data-numbers" => stats.map { |stat| stat[1] }.join(","),
-            "data-labels"  => stats.map { |stat| stat[0] }.join(","),
-            "data-size"    => "400"
-          end
+        panel I18n.t("active_admin.statistics.events_by_category") do
+          pie_chart Event.group_by_category
         end
+      end
 
       column do
-        panel I18n.t("active_admin.statistics.registered_users") do
-          stats = User.over_time
+        panel I18n.t("active_admin.statistics.users_over_time") do
+          line_chart User.over_time
+        end
+      end
+    end
 
-          div "class" => "line-chart",
-            "data-x" => stats.map { |stat| stat[0] }.join(","),
-            "data-y" => stats.map { |stat| stat[1] }.join(","),
-            "data-size" => "266"
+    columns do
+      column do
+        panel I18n.t("active_admin.statistics.single_events_this_week_by_day") do
+          column_chart SingleEvent.this_week_by_day
+        end
+      end
+
+      column do
+        panel I18n.t("active_admin.statistics.single_events_this_week_by_category") do
+          pie_chart SingleEvent.this_week_by_category
         end
       end
     end

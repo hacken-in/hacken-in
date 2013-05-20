@@ -20,6 +20,9 @@ gem 'dalli', '~> 1.1.5'
 # Tags
 gem 'acts-as-taggable-on', '~> 2.3.3'
 
+# Statistics
+gem 'chartkick', '~> 1.0.0'
+
 # Asset template engines
 group :assets do
   gem 'sass-rails', '~> 3.2.6'
