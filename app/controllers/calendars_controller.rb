@@ -2,7 +2,7 @@
 class CalendarsController < ApplicationController
 
   def show
-    @categories = Category.calendar.all
+    @categories = Category.all
 
     # Die Presets
     @presets = CalendarPreset.hacken_presets.all

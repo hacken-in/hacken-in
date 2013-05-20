@@ -23,7 +23,7 @@
         = @single_event.event.venue.location
     = form.input :venue_info, placeholder: @single_event.event.venue_info
     = form.input :use_venue_info_of_event
-    = form.input :category, collection: Category.where(calendar_category: true).order("title")
+    = form.input :category, collection: Category.order("title")
     = form.input :picture
     %li
       %label.label &nbsp;
