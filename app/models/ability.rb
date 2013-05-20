@@ -8,6 +8,14 @@ class Ability
 
     if user.present?
       can [:create, :update, :destroy], Comment, user_id: user.id
+
+      can [:manage], Event do |event|
+        event.curators.include? user
+      end
+
+      can [:manage], SingleEvent do |sevent|
+        sevent.event.curators.include? user
+      end
     end
 
     can :read, Event
