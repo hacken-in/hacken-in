@@ -17,3 +17,5 @@ public/uploads/*
 public/thisiscologne.json
 config/omniauth.yml
 config/initializers/devise.rb
+cert_file
+coverage
