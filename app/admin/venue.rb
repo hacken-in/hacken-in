@@ -1,6 +1,4 @@
 ActiveAdmin.register Venue do
-  menu parent: "Kalender"
-
   index do
     column :id
     column :location
