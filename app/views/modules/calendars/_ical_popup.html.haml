@@ -21,7 +21,7 @@
             %input.calendar-import-setting{ type: 'radio', name: 'ical-radios', 'data-webcal-url' => my_cal_url, 'data-http-url' => my_cal_url_http }
               nur Termine an denen ich teilnehme
     - else
-      - default_url = ical_url(protocol: 'webcal')
+      - default_url = ical_url(protocol: 'webcal', format: "ical")
   
       %p
         Leider hast du dich nicht 
