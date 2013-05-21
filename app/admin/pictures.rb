@@ -1,5 +1,4 @@
 ActiveAdmin.register Picture do
-  menu parent: "Content", label: "Bildergallerie"
   index do
     column :id
     column :box_image do |p|

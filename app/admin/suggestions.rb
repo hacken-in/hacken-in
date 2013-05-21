@@ -1,5 +1,4 @@
 ActiveAdmin.register Suggestion do
-  menu parent: "Kalender"
   index do
     column :id
     column :name
