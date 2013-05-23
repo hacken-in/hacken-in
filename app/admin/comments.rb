@@ -4,7 +4,6 @@
 # If you call it Comment, there is a bug that basically
 # blows up everything ;)
 ActiveAdmin.register Comment, as: "HackenComment" do
-  menu parent: "Content", label: "Kommentare"
   index do
     column :id
     column :user do |comment|

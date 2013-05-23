@@ -20,6 +20,9 @@ gem 'dalli', '~> 1.1.5'
 # Tags
 gem 'acts-as-taggable-on', '~> 2.3.3'
 
+# Statistics
+gem 'chartkick', '~> 1.0.0'
+
 # Asset template engines
 group :assets do
   gem 'sass-rails', '~> 3.2.6'
@@ -112,5 +115,6 @@ group :test, :development do
   gem 'factory_girl_rails', '~> 4.2'
   gem 'faker', '~> 1.1.2'
   gem 'coveralls', '~> 0.6.7'
+  gem 'simplecov', '~> 0.7.1'
   gem 'brakeman', '~> 1.9.5'
 end
