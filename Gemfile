@@ -114,5 +114,6 @@ group :test, :development do
   gem 'factory_girl_rails', '~> 4.2'
   gem 'faker', '~> 1.1.2'
   gem 'coveralls', '~> 0.6.7'
+  gem 'simplecov', '~> 0.7.1'
   gem 'brakeman', '~> 1.9.5'
 end
