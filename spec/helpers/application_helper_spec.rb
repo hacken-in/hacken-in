@@ -121,6 +121,7 @@ describe ApplicationHelper do
 
   it "should generate an image for a user with a separate gravatar image email" do
     user = User.create(nickname: "hansdampf", email: "mail@example.com", 
+                       image_url: "http://example.com/logo.png",
                        gravatar_email: "gravatar@example.com")
     avatar_for_user(user, 20, "userimage").should == 
       "<img alt=\"Gravatar\" class=\"userimage\" height=\"20\" src=\"http://gravatar.com/avatar/0cef130e32e054dd516c99e5181d30c4?default=identicon&amp;size=20\" width=\"20\" />"
