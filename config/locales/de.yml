@@ -187,6 +187,7 @@ de:
         password_confirmation: Passwort bestätigen
         current_password: Aktuelles Passwort
         remember_me: Eingeloggt bleiben
+        gravatar_email: Email für Profilbild
       event:
         address: Adresse
         description: Beschreibung

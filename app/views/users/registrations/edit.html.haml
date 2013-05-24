@@ -23,6 +23,7 @@
           http://github.com/
         = f.input_field(:github, class: "link_input")
       = f.input :homepage
+      = f.input :gravatar_email
       = f.input :allow_ignore_view, :as => :boolean, :label => t('users.edit.allow_ignore_view')
 
       %fieldset
@@ -44,7 +45,7 @@
       %ul.thumbnails.pull-right
         %li
           .thumbnail
-            = avatar_for_user(user, 256, 'gravatar')
+            = avatar_for_user(current_user, 256, 'gravatar')
             %h3=t('registrations.edit.gravatar')
             %p{style: 'text-align: right'}
               = link_to t('registrations.edit.change_gravatar'), "http://gravatar.com", target: '_blank'

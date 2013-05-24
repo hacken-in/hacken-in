@@ -83,6 +83,8 @@ module ApplicationHelper
   def avatar_for_user(user, size=16, class_name=nil)
     if user.image_url?
       image_tag(user.image_url, width: size, alt: user.nickname, class: class_name)
+    elsif user.gravatar_email.present?
+      gravatar_image_tag(user.gravatar_email, class: class_name, gravatar: { default: :identicon, size: size })
     else
       gravatar_image_tag(user.email, class: class_name, gravatar: { default: :identicon, size: size })
     end
