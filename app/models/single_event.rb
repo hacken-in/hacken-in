@@ -35,6 +35,12 @@ class SingleEvent < ActiveRecord::Base
     lambda { |tag| tagged_with(tag) | joins(:event).where('events.id in (?)', Event.tagged_with(tag).map(&:id)) }
   scope :in_categories,
     lambda { |categories| categories.blank? ? scoped : scoped.joins(:event).where('single_events.category_id IN (?) OR (single_events.category_id IS NULL AND events.category_id IN (?))', categories, categories) }
+  scope :this_week,
+    where(occurrence: (Date.today.beginning_of_week)..(Date.today.end_of_week))
+  scope :group_by_day,
+    group("DAY(occurrence)")
+  scope :group_by_category,
+    joins(:event).group("events.category_id")
 
   default_scope includes(:event).order([:occurrence, 'single_events.name ASC', 'events.name ASC'])
 
@@ -241,6 +247,17 @@ class SingleEvent < ActiveRecord::Base
       true
     end
 
+  end
+
+  def self.this_week_by_day
+    week_stats = self.this_week.group_by_day.count
+    Hash[(Date.today.beginning_of_week .. Date.today.end_of_week).map do |day|
+      [day.strftime("%a"), week_stats[day.day] || 0]
+    end]
+  end
+
+  def self.this_week_by_category
+    Hash[self.this_week.group_by_category.count.map { |category_id, count| [ Category.title_for(category_id), count ] }]
   end
 end
 

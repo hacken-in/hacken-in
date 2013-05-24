@@ -5,4 +5,4 @@
         Mein Profil
     .logout
       = link_to "Abmelden", destroy_user_session_path, method: :delete
-    = link_to gravatar_image_tag(current_user.email, class: "user_gravatar", gravatar: { default: :identicon, size: 48 }), user_path(current_user)
+    = link_to avatar_for_user(current_user, 48, "user_gravatar"), user_path(current_user)

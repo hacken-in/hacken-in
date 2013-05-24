@@ -4,6 +4,6 @@ class Tag < ActiveRecord::Base
   attr_accessible :name, :category_id
 
   def to_param
-    name
+    name.parameterize
   end
 end

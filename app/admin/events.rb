@@ -1,5 +1,4 @@
 ActiveAdmin.register Event do
-  menu parent: "Kalender"
   config.sort_order = "name_asc"
   index do
     column :id

@@ -23,7 +23,7 @@
     %li.span2
       .thumbnail.team-box
         .thumb_link
-          = link_to gravatar_image_tag(human.email, class: "user_gravatar", gravatar: { default: :identicon, size: 304 }), user_path(human)
+          = link_to avatar_for_user(human, 304, "user_gravatar"), user_path(human)
 
         .thumb_desc
           %h3= link_to human.nickname, user_path(human)

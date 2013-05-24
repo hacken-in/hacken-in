@@ -21,15 +21,15 @@
             %input.calendar-import-setting{ type: 'radio', name: 'ical-radios', 'data-webcal-url' => my_cal_url, 'data-http-url' => my_cal_url_http }
               nur Termine an denen ich teilnehme
     - else
-      - default_url = ical_url(protocol: 'webcal')
-  
+      - default_url = my_cal_url = url_for(action: "general", protocol: 'webcal', controller: "ical", format: "ical", only_path: false)
+      - my_cal_url_http = my_cal_url.gsub(/\Awebcal/, 'http')
       %p
         Leider hast du dich nicht 
         = link_to "angemeldetet", new_user_session_path
         , somit kannst du nur nur einen ungefilterten Kalender abonnieren:
         .control.group
           %label.radio
-            %input.calendar-import-setting{ type: 'radio', name: 'ical-radios', checked: 'checked', 'data-webcal-url' => default_url, 'data-http-url' => ical_url }
+            %input.calendar-import-setting{ type: 'radio', name: 'ical-radios', checked: 'checked', 'data-webcal-url' => default_url, 'data-http-url' => my_cal_url_http }
               Alle Termine, ungefiltert
 
     %ul.nav.nav-tabs
