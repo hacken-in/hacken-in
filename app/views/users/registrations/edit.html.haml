@@ -44,7 +44,7 @@
       %ul.thumbnails.pull-right
         %li
           .thumbnail
-            = gravatar_image_tag(current_user.email_was || current_user.email, alt: 'Change on Gravatar', gravatar: { default: :identicon, size: 256 }, class: 'gravatar')
+            = avatar_for_user(user, 256, 'gravatar')
             %h3=t('registrations.edit.gravatar')
             %p{style: 'text-align: right'}
               = link_to t('registrations.edit.change_gravatar'), "http://gravatar.com", target: '_blank'

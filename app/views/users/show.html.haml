@@ -5,7 +5,7 @@
   .span2.left_side
     .black_sidebar
       .big_gravatar
-        = gravatar_image_tag(@user.email, class: "user_gravatar", gravatar: { default: :identicon, size: 256 })
+        = avatar_for_user(@user, 256, "user_gravatar")
       .inner_text
         %h3
           = @user.nickname

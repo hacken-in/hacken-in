@@ -9,7 +9,7 @@
         - class_ = (index == 0 || index % 6 == 0) ? 'cuddle-to-left' : ''
         %li{ class: "participator #{class_}"}
           = link_to user_path(user) do
-            = gravatar_image_tag(user.email, class: "user_gravatar", gravatar: { default: :identicon, size: 85 })
+            = avatar_for_user(user, 85, "user_gravatar")
 
   - if user_signed_in? && !@single_event.users.include?(current_user)
     = button_to t('single_events.show.participate'), event_single_event_participate_path(@single_event.event, @single_event, state: :push), { method: :put, class: 'btn btn-inverse pull-right participate-button' }
