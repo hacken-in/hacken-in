@@ -43,4 +43,24 @@ describe Venue do
     venue.zipcode = "51063"
     venue.address.should eq "51063 Köln"
   end
+
+  it "should generate string with location" do
+    venue = Venue.new
+    venue.location = "Cowoco in der Gasmotorenfabrik, 3. Etage"
+    venue.to_s.should == "Cowoco in der Gasmotorenfabrik, 3. Etage"
+  end
+
+  it "should generate opengraph data for a venue" do
+    venue = Venue.new
+    venue.location = "Cowoco in der Gasmotorenfabrik, 3. Etage"
+    venue.street = "Deutz-Mülheimerstraße 129"
+    venue.city = "Köln"
+    venue.zipcode = "51063"
+    venue.latitude = 50.9490279
+    venue.longitude =  6.986784900000001
+    venue.country = "Deutschland"
+    venue.to_opengraph.should == {"og:latitude"=>50.9490279, "og:longitude"=>6.986784900000001,
+      "og:locality"=>"Cowoco in der Gasmotorenfabrik, 3. Etage", "og:postal-code"=>"51063",
+      "og:street-address"=>"Deutz-Mülheimerstraße 129", "og:country-name"=>"Deutschland"}
+  end
 end
