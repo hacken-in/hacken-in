@@ -179,5 +179,32 @@ describe User do
       user.homepage.should == "https://heise.de"
     end
   end
+
+  it "should generate a guid if it is not present yet" do
+    user = User.create
+    user.guid.length.should == 17
+  end
+
+  it "should not generate a new guid if one is present" do
+    user = User.create
+    guid = user.guid
+    user.guid.should == guid
+  end
+
+  it "should return nickname as string" do
+    user = User.create(nickname: "hansdampf")
+    user.to_s.should == "hansdampf"
+  end
+
+  it "should return nickname for param" do
+    user = User.create(nickname: "hansdampf")
+    user.to_param.should == "hansdampf"
+  end
+
+  it "should return the current user that is attached to the thread" do
+    user = User.create
+    User.current = user
+    User.current.should == user
+  end
 end
 
