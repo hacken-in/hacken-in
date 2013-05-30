@@ -211,16 +211,9 @@ GEM
     omniauth (1.1.3)
       hashie (~> 1.2)
       rack
-    omniauth-facebook (1.4.1)
-      omniauth-oauth2 (~> 1.1.0)
     omniauth-github (1.1.0)
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.1)
-    omniauth-google-oauth2 (0.1.13)
-      omniauth (~> 1.0)
-      omniauth-oauth2
-    omniauth-linkedin (0.1.0)
-      omniauth-oauth (~> 1.0)
     omniauth-oauth (1.0.1)
       oauth
       omniauth (~> 1.0)
@@ -385,10 +378,7 @@ DEPENDENCIES
   mysql2 (~> 0.3.11)
   nokogiri (~> 1.5.9)
   omniauth (~> 1.1.3)
-  omniauth-facebook (~> 1.4.1)
   omniauth-github (~> 1.1.0)
-  omniauth-google-oauth2 (~> 0.1.13)
-  omniauth-linkedin (~> 0.1.0)
   omniauth-twitter (~> 0.0.14)
   pjax_rails (~> 0.3.4)
   rails (~> 3.2.13)
