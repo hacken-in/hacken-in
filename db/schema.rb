@@ -11,22 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130524191654) do
-
-  create_table "active_admin_comments", :force => true do |t|
-    t.string   "resource_id",   :null => false
-    t.string   "resource_type", :null => false
-    t.integer  "author_id"
-    t.string   "author_type"
-    t.text     "body"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.string   "namespace"
-  end
-
-  add_index "active_admin_comments", ["author_type", "author_id"], :name => "index_active_admin_comments_on_author_type_and_author_id"
-  add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
-  add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
+ActiveRecord::Schema.define(:version => 20130530132853) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -80,8 +65,19 @@ ActiveRecord::Schema.define(:version => 20130524191654) do
   add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
+  create_table "event_curations", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "event_curations", ["event_id"], :name => "index_events_users_on_event_id"
+  add_index "event_curations", ["user_id"], :name => "index_events_users_on_user_id"
+
   create_table "events", :force => true do |t|
     t.string   "name"
+    t.integer  "region_id"
     t.text     "description"
     t.text     "schedule_yaml"
     t.string   "url"
@@ -98,6 +94,7 @@ ActiveRecord::Schema.define(:version => 20130524191654) do
 
   add_index "events", ["category_id"], :name => "index_events_on_category_id"
   add_index "events", ["picture_id"], :name => "index_events_on_picture_id"
+  add_index "events", ["region_id"], :name => "index_events_on_region_id"
   add_index "events", ["venue_id"], :name => "index_events_on_venue_id"
 
   create_table "pictures", :force => true do |t|
@@ -107,6 +104,28 @@ ActiveRecord::Schema.define(:version => 20130524191654) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "region_organizers", :force => true do |t|
+    t.integer  "region_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "region_organizers", ["region_id"], :name => "index_regions_users_on_region_id"
+  add_index "region_organizers", ["user_id"], :name => "index_regions_users_on_user_id"
+
+  create_table "regions", :force => true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.float    "perimeter",  :default => 20.0
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+  end
+
+  add_index "regions", ["slug"], :name => "index_regions_on_slug"
 
   create_table "single_events", :force => true do |t|
     t.string   "name"
@@ -186,6 +205,7 @@ ActiveRecord::Schema.define(:version => 20130524191654) do
     t.datetime "updated_at"
     t.boolean  "admin",                  :default => false
     t.string   "nickname",               :default => "",    :null => false
+    t.integer  "current_region_id",      :default => 2
     t.text     "description"
     t.string   "github"
     t.string   "twitter"
@@ -205,17 +225,19 @@ ActiveRecord::Schema.define(:version => 20130524191654) do
 
   create_table "venues", :force => true do |t|
     t.string   "location"
+    t.integer  "region_id",  :default => 2
     t.string   "street"
     t.string   "zipcode"
     t.string   "city"
     t.string   "country"
     t.float    "latitude"
     t.float    "longitude"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.string   "url"
   end
 
   add_index "venues", ["latitude", "longitude"], :name => "index_venues_on_latitude_and_longitude"
+  add_index "venues", ["region_id"], :name => "index_venues_on_region_id"
 
 end
