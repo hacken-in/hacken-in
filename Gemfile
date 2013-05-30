@@ -45,8 +45,7 @@ gem 'md_emoji', '~> 1.0.0'
 gem 'redcarpet', '~> 2.2.2'
 
 # Admin
-gem 'coffee-script-source', '~> 1.4.0' # See https://github.com/gregbell/active_admin/issues/1773
-gem 'activeadmin', '~> 0.5.1'
+gem 'activeadmin', '~> 0.6.0'
 
 # Date Handling
 # TODO: gem 'ice_cube', '~> 0.10.0'
