@@ -359,7 +359,7 @@ DEPENDENCIES
   bootstrap-kaminari-views (~> 0.0.2)
   bootstrap-sass-rails (~> 2.3.0.0)
   brakeman (~> 1.9.5)
-  cancan (~> 1.6.7)
+  cancan (~> 1.6.10)
   capistrano (~> 2.13.0)
   carrierwave (~> 0.8.0)
   chartkick (~> 1.0.0)

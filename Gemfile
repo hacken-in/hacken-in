@@ -57,7 +57,7 @@ gem 'ri_cal', '~> 0.8.8'
 
 # Authentication and Authorization
 gem 'devise', '~> 2.2.3'
-gem 'cancan', '~> 1.6.7'
+gem 'cancan', '~> 1.6.10'
 gem 'omniauth', '~> 1.1.3'
 gem 'omniauth-github', '~> 1.1.0'
 gem 'omniauth-twitter', '~> 0.0.14'
