@@ -1,4 +1,5 @@
 ActiveAdmin.register Suggestion do
+  menu priority: 1
   index do
     column :id
     column :name
