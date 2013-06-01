@@ -1,22 +1,12 @@
-class Ability
+# Hier wollen wir auch alle Models anzeigen, und nicht nur
+# die, die bearbeitet werden dürfen durch den Nutzer
+# Die anderen Rechte zum Bearbeiten finden sich in der
+# ActiveAdminAbility Klasse
+class Ability < ActiveAdminAbility
   include CanCan::Ability
 
   def initialize(user)
-    if user.present? && user.admin?
-      can :manage, :all
-    end
-
-    if user.present?
-      can [:create, :update, :destroy], Comment, user_id: user.id
-
-      can [:manage], Event do |event|
-        event.curators.include? user
-      end
-
-      can [:manage], SingleEvent do |sevent|
-        sevent.event.curators.include? user
-      end
-    end
+    super
 
     can :read, Event
     can :read, SingleEvent
