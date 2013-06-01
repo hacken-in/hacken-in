@@ -45,8 +45,7 @@ gem 'md_emoji', '~> 1.0.0'
 gem 'redcarpet', '~> 2.2.2'
 
 # Admin
-gem 'coffee-script-source', '~> 1.4.0' # See https://github.com/gregbell/active_admin/issues/1773
-gem 'activeadmin', '~> 0.5.1'
+gem 'activeadmin', '~> 0.6.0'
 
 # Date Handling
 # TODO: gem 'ice_cube', '~> 0.10.0'
@@ -57,11 +56,8 @@ gem 'ri_cal', '~> 0.8.8'
 gem 'devise', '~> 2.2.3'
 gem 'cancan', '~> 1.6.7'
 gem 'omniauth', '~> 1.1.3'
-gem 'omniauth-google-oauth2', '~> 0.1.13'
 gem 'omniauth-github', '~> 1.1.0'
 gem 'omniauth-twitter', '~> 0.0.14'
-gem 'omniauth-facebook', '~> 1.4.1'
-gem 'omniauth-linkedin', '~> 0.1.0'
 
 # Picture Upload
 gem 'carrierwave', '~> 0.8.0'
