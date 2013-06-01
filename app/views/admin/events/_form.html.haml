@@ -10,10 +10,11 @@
     = form.input :url
     = form.input :twitter
     = form.input :twitter_hashtag
-    = form.input :start_time, as: :time_select, hint: "Bei wiederholenden Terminen gib hier die Uhrzeit an. Die Regel (z.B. 1x im Monat) kannst du nachher im Event selber anlegen."
+    = form.input :tag_list
+  = form.inputs name: "Terminregeln" do
+    = form.input :start_time, as: :time_select, hint: "Bei wiederholenden Terminen gib hier die Uhrzeit an."
     = form.input :duration
     = form.input :full_day
-    = form.input :tag_list
     = form.input :schedule_rules_json, as: :hidden, input_html: {value: @event.schedule_rules.to_json}
     = form.input :excluded_times_json, as: :hidden, input_html: {value: @event.excluded_times.to_json}
 
@@ -44,7 +45,8 @@
         %h4 Ausgeschlossene Termine
         %ul.excludes
 
-    - if @event.persisted?
+  - if @event.persisted?
+    = form.inputs name: "Termine:" do
       %li
         %label.label Termine
         .termine
