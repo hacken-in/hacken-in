@@ -45,7 +45,7 @@ gem 'md_emoji', '~> 1.0.0'
 gem 'redcarpet', '~> 2.2.2'
 
 # Admin
-gem 'activeadmin', '~> 0.6.0'
+gem 'activeadmin', git: "https://github.com/gregbell/active_admin.git"
 
 # Date Handling
 # TODO: gem 'ice_cube', '~> 0.10.0'
