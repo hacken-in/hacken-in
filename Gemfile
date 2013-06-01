@@ -45,6 +45,9 @@ gem 'md_emoji', '~> 1.0.0'
 gem 'redcarpet', '~> 2.2.2'
 
 # Admin
+# Attention: 0.6.0 has namespacing issues
+# The "/" root tries to open a non existend
+# dashboard controller
 gem 'activeadmin', git: "https://github.com/gregbell/active_admin.git"
 
 # Date Handling
