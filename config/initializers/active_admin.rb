@@ -65,7 +65,7 @@ ActiveAdmin.setup do |config|
   #
   # This setting changes the method which Active Admin calls
   # to return the currently logged in user.
-  config.current_user_method = :current_admin_user
+  config.current_user_method = :active_admin_user
 
 
   # == Logging Out
@@ -139,4 +139,8 @@ ActiveAdmin.setup do |config|
   #
   # To load a javascript file:
   #   config.register_javascript 'my_javascript.js'
+
+  config.authorization_adapter = ActiveAdmin::CanCanAdapter
+  config.cancan_ability_class = "ActiveAdminAbility"
+
 end
