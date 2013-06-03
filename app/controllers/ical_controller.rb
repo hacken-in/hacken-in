@@ -67,10 +67,6 @@ class IcalController < ApplicationController
     gabba.event "Event", GABBA_MAPPING[params[:action].to_sym]
   end
 
-  def time_range
-    (Date.today - 3.months)..(Date.today + 3.months)
-  end
-
   def user
     User.find_by_guid(params[:guid]) || raise(ActiveRecord::RecordNotFound)
   end
