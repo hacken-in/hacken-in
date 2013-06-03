@@ -12,16 +12,16 @@ class IcalController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_empty
 
   def general
-    render_events SingleEvent.where(occurrence: time_range)
+    render_events SingleEvent.recent_to_soon(3.months)
   end
 
   def personalized
-    render_events user.single_events.where(occurrence: time_range)
+    render_events user.single_events.recent_to_soon(3.months)
   end
 
   def like_welcome_page
     @presets_json = CalendarPreset.presets_for_user(user)
-    @single_events = SingleEvent.where(occurrence: time_range).in_categories(@presets_json[:diy])
+    @single_events = SingleEvent.recent_to_soon(3.months).in_categories(@presets_json[:diy])
     @single_events.select! { |single_event| single_event.is_for_user? user }
     render_events @single_events
   end
