@@ -27,7 +27,7 @@ class IcalController < ApplicationController
   end
 
   def for_single_event
-    render_event SingleEvent.find(params[:id])
+    render_events SingleEvent.find(params[:id])
   end
 
   def for_event
@@ -42,12 +42,6 @@ class IcalController < ApplicationController
 
   def set_calendar_headers
     response.headers["Content-Type"] = "text/calendar; charset=UTF-8"
-  end
-
-  def render_event(event)
-    ri_cal = RiCal.Calendar
-    ri_cal.events.push event.to_ri_cal_event(is_google_bot)
-    render text: ri_cal
   end
 
   def render_events(events)
