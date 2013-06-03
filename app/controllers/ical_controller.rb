@@ -6,9 +6,7 @@ class IcalController < ApplicationController
   }
 
   before_filter :set_calendar_headers
-  before_filter :gabba,
-    only: GABBA_MAPPING.keys,
-    if: ->{ Rails.env.production? }
+  before_filter :gabba, only: GABBA_MAPPING.keys if Rails.env.production?
   rescue_from ActiveRecord::RecordNotFound, with: :render_empty
 
   def general
