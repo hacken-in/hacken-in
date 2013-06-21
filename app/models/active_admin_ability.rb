@@ -17,17 +17,13 @@ class ActiveAdminAbility
       # Alle eigenen Kommetare bearbeiten dürfen
       can [:create, :update, :destroy], Comment, user_id: user.id
 
-      # Alle Events, die einem zugewiesen wurden
-      can :manage, Event, event_curations: {user_id: user.id}
-      can :manage, SingleEvent, event: {event_curations: {user_id: user.id}}
-
       # Alle Regionen, die einem zugewiesen wurden
-      if user.region_organizers.length > 0
+      if user.region_organizers.present?
         can :manage, Event, region_id: user.region_organizers.pluck(:region_id)
         can :manage, SingleEvent, event: {region_id: user.region_organizers.pluck(:region_id)}
       end
 
-      if user.event_curations.length > 0
+      if user.event_curations.present?
         can :manage, Event, id: user.event_curations.pluck(:event_id)
         can :manage, SingleEvent, event_id: user.event_curations.pluck(:event_id)
       end
