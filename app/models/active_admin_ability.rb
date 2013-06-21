@@ -1,4 +1,4 @@
-# Im ActiveAdmin wollen wir nur 
+# Im ActiveAdmin wollen wir nur
 # sachen anzeigen, die der Nutzer auch wirklich
 # bearbeiten kann, sonst verwirrt das zu viel.
 #
@@ -11,7 +11,7 @@ class ActiveAdminAbility
     if user.present? && user.admin?
       can :manage, :all
     elsif user.present?
-      # Achtung! Keine Blocks benutzen, sondern immer die 
+      # Achtung! Keine Blocks benutzen, sondern immer die
       # Hash Syntax. Nur so kann CanCan SQL-Queries draus basteln
 
       # Alle eigenen Kommetare bearbeiten dürfen
@@ -23,8 +23,13 @@ class ActiveAdminAbility
 
       # Alle Regionen, die einem zugewiesen wurden
       if user.region_organizers.length > 0
-        can :manage, Event, region_id: user.region_organizers.map(&:region_id)
-        can :manage, SingleEvent, event: {region_id: user.region_organizers.map(&:region_id)}
+        can :manage, Event, region_id: user.region_organizers.pluck(:region_id)
+        can :manage, SingleEvent, event: {region_id: user.region_organizers.pluck(:region_id)}
+      end
+
+      if user.event_curations.length > 0
+        can :manage, Event, id: user.event_curations.pluck(:event_id)
+        can :manage, SingleEvent, event_id: user.event_curations.pluck(:event_id)
       end
 
       # Wenn man Events hat, darf man auch das Dashboard anzeigen und somit
