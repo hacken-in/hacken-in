@@ -284,4 +284,13 @@ describe Event do
 
     event.closest_single_event.should be_nil
   end
+
+  it "should assign users as curators" do
+    event = FactoryGirl.create(:simple)
+    user = FactoryGirl.create(:user)
+
+    event.curators << user
+
+    user.curated_events.should =~ [event]
+  end
 end

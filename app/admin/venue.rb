@@ -1,4 +1,5 @@
 ActiveAdmin.register Venue do
+  menu priority: 3
   index do
     column :id
     column :location

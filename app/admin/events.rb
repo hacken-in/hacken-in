@@ -1,5 +1,7 @@
 ActiveAdmin.register Event do
   config.sort_order = "name_asc"
+  menu priority: 2
+
   index do
     column :id
     column :name

@@ -267,6 +267,7 @@ de:
         one: Blogeintrag
         other: Blogeinträge
       venue: Ort
+      suggestion: Vorschlag
   comments:
     _form:
       comment_button: Und ab!
@@ -391,7 +392,8 @@ de:
       users_over_time: "Registrierte Benutzer"
       single_events_this_week_by_day: "Veranstaltungen dieses Woche nach Wochentag"
       single_events_this_week_by_category: "Veranstaltungen diese Woche nach Kategorie"
-
+    access_denied:
+      message: "I'm sorry, Dave. I'm afraid I can't do that."
 
   minical:
     see_more: 'weitere Termine'

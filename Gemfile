@@ -45,6 +45,9 @@ gem 'md_emoji', '~> 1.0.0'
 gem 'redcarpet', '~> 2.2.2'
 
 # Admin
+# Attention: 0.6.0 has namespacing issues
+# The "/" root tries to open a non existend
+# dashboard controller
 gem 'activeadmin', git: "https://github.com/gregbell/active_admin.git"
 
 # Date Handling
@@ -54,7 +57,7 @@ gem 'ri_cal', '~> 0.8.8'
 
 # Authentication and Authorization
 gem 'devise', '~> 2.2.3'
-gem 'cancan', '~> 1.6.7'
+gem 'cancan', '~> 1.6.10'
 gem 'omniauth', '~> 1.1.3'
 gem 'omniauth-github', '~> 1.1.0'
 gem 'omniauth-twitter', '~> 0.0.14'
@@ -106,6 +109,7 @@ group :development do
 end
 
 group :test, :development do
+  gem 'database_cleaner'
   gem 'rspec-rails',  '~> 2.0'
   gem 'factory_girl_rails', '~> 4.2'
   gem 'faker', '~> 1.1.2'

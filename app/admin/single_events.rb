@@ -49,7 +49,6 @@ ActiveAdmin.register SingleEvent do
 
       end
     end
-    active_admin_comments
   end
 
   form do
