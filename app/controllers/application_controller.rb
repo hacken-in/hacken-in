@@ -20,16 +20,21 @@ class ApplicationController < ActionController::Base
     I18n.locale = params[:locale] || I18n.default_locale
   end
 
-  def authenticate_admin_user! #use predefined method name
-    redirect_to '/' and return if user_signed_in? && !current_user.admin
+  def authenticate_admin_user!
+    # Rais error if not signed in or user not allowed to see the dashboard
+    raise SecurityError and return if active_admin_user.nil? 
     authenticate_user!
   end
 
-  def current_admin_user #use predefined method name
-    return nil if user_signed_in? && !current_user.admin
+  def active_admin_user #use predefined method name
+    return nil if !user_signed_in? || !can?(:read, ActiveAdmin::Page, :name => "Dashboard")
     current_user
   end
-  helper_method :current_admin_user
+  helper_method :active_admin_user
+
+  rescue_from SecurityError do |exception|
+    redirect_to root_url, alert: "Leider darfst du das nicht :("
+  end
 
   def is_google_bot
     !request.env["HTTP_USER_AGENT"].match(/googlebot/i).nil?

@@ -6,5 +6,7 @@
     = f.input :street
     = f.input :zipcode
     = f.input :city
+    = f.input :region, :as => :select
     = f.input :country, collection: {"Deutschland" => "DE", "Niederlande" => "NL"}, as: :select
+
   = f.button

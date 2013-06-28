@@ -10,7 +10,7 @@ describe User do
     u = User.create(nickname: "bitboxer2", email: "bodo2@example.com", password: "mylongpassword")
     u.should be_valid
     u2 = User.create(nickname: "bitboxer2", email: "bodo3@example.com", password: "mylongpassword")
-    u2.should have(1).error_on(:nickname) 
+    u2.should have(1).error_on(:nickname)
   end
 
   it "validates uniqueness of email" do
@@ -30,7 +30,7 @@ describe User do
     User.find_for_database_authentication(email: "bodo6@example.com").should == u
   end
 
-  it "let's users participate in single event" do
+  it "lets users participate in single event" do
     single = FactoryGirl.create(:single_event)
     user = FactoryGirl.create(:user)
     user.single_events << single
@@ -38,6 +38,15 @@ describe User do
 
     user.single_events.first.should == single
     user.single_events.length.should == 1
+  end
+
+  it "lets users curate events" do
+    event = FactoryGirl.create(:simple)
+    user = FactoryGirl.create(:user)
+
+    user.curated_events << event
+
+    event.curators.should =~ [user]
   end
 
   it "ignores tags that are not publicy viewable by default" do
@@ -67,81 +76,108 @@ describe User do
     user.email.should == "newexample2@example.com"
   end
 
-  it "should not fix twitter handle if it okay" do
-    user = FactoryGirl.create(:user)
-    user.twitter = "twitterhandle"
-    user.save
-    user.twitter.should == "twitterhandle"
+  context "organizing regions" do
+    let!(:user) { FactoryGirl.create(:user) }
+    let!(:admin) { FactoryGirl.create(:bodo) }
+    let!(:koeln_region) { FactoryGirl.create(:koeln_region) }
+    let!(:berlin_region) { FactoryGirl.create(:berlin_region) }
+
+    it "lets users organize regions" do
+      user.assigned_regions << koeln_region
+
+      koeln_region.organizers.should =~ [user]
+    end
+
+    it "should list all regions as organized by an admin" do
+      admin.organized_regions.should =~ [koeln_region, berlin_region]
+    end
+
+    it "should only list assigned regions for a normal user" do
+      user.organized_regions.should == []
+
+      user.assigned_regions << berlin_region
+
+      user.organized_regions.should =~ [berlin_region]
+    end
   end
 
-  it "should try to fix twitter handle if it starts with twitter.com/" do
-    user = FactoryGirl.create(:user)
-    user.twitter = "twitter.com/twitterhandle"
-    user.save
-    user.twitter.should == "twitterhandle"
-  end
+  context "fixes user input URLs" do
+    it "should not fix twitter handle if it okay" do
+      user = FactoryGirl.create(:user)
+      user.twitter = "twitterhandle"
+      user.save
+      user.twitter.should == "twitterhandle"
+    end
 
-  it "should try to fix twitter handle if it starts with http://twitter.com/" do
-    user = FactoryGirl.create(:user)
-    user.twitter = "http://twitter.com/twitterhandle"
-    user.save
-    user.twitter.should == "twitterhandle"
-  end
+    it "should try to fix twitter handle if it starts with twitter.com/" do
+      user = FactoryGirl.create(:user)
+      user.twitter = "twitter.com/twitterhandle"
+      user.save
+      user.twitter.should == "twitterhandle"
+    end
 
-  it "should try to fix twitter handle if it starts with httpS://twitter.com/" do
-    user = FactoryGirl.create(:user)
-    user.twitter = "https://twitter.com/twitterhandle"
-    user.save
-    user.twitter.should == "twitterhandle"
-  end
+    it "should try to fix twitter handle if it starts with http://twitter.com/" do
+      user = FactoryGirl.create(:user)
+      user.twitter = "http://twitter.com/twitterhandle"
+      user.save
+      user.twitter.should == "twitterhandle"
+    end
 
-  it "should not try to fix github handle if it is okay" do
-    user = FactoryGirl.create(:user)
-    user.github = "githubhandle"
-    user.save
-    user.github.should == "githubhandle"
-  end
+    it "should try to fix twitter handle if it starts with httpS://twitter.com/" do
+      user = FactoryGirl.create(:user)
+      user.twitter = "https://twitter.com/twitterhandle"
+      user.save
+      user.twitter.should == "twitterhandle"
+    end
 
-  it "should try to fix github handle if it starts with github.com/" do
-    user = FactoryGirl.create(:user)
-    user.github = "github.com/githubhandle"
-    user.save
-    user.github.should == "githubhandle"
-  end
+    it "should not try to fix github handle if it is okay" do
+      user = FactoryGirl.create(:user)
+      user.github = "githubhandle"
+      user.save
+      user.github.should == "githubhandle"
+    end
 
-  it "should try to fix github handle if it starts with http://github.com/" do
-    user = FactoryGirl.create(:user)
-    user.github = "http://github.com/githubhandle"
-    user.save
-    user.github.should == "githubhandle"
-  end
+    it "should try to fix github handle if it starts with github.com/" do
+      user = FactoryGirl.create(:user)
+      user.github = "github.com/githubhandle"
+      user.save
+      user.github.should == "githubhandle"
+    end
 
-  it "should try to fix github handle if it starts with httpS://github.com/" do
-    user = FactoryGirl.create(:user)
-    user.github = "https://github.com/githubhandle"
-    user.save
-    user.github.should == "githubhandle"
-  end
+    it "should try to fix github handle if it starts with http://github.com/" do
+      user = FactoryGirl.create(:user)
+      user.github = "http://github.com/githubhandle"
+      user.save
+      user.github.should == "githubhandle"
+    end
 
-  it "should add http:// if it is missing" do
-    user = FactoryGirl.create(:user)
-    user.homepage = "heise.de"
-    user.save
-    user.homepage.should == "http://heise.de"
-  end
+    it "should try to fix github handle if it starts with httpS://github.com/" do
+      user = FactoryGirl.create(:user)
+      user.github = "https://github.com/githubhandle"
+      user.save
+      user.github.should == "githubhandle"
+    end
 
-  it "should not add http:// if it is not missing" do
-    user = FactoryGirl.create(:user)
-    user.homepage = "http://heise.de"
-    user.save
-    user.homepage.should == "http://heise.de"
-  end
+    it "should add http:// if it is missing" do
+      user = FactoryGirl.create(:user)
+      user.homepage = "heise.de"
+      user.save
+      user.homepage.should == "http://heise.de"
+    end
 
-  it "should not add http:// if it is a https link" do
-    user = FactoryGirl.create(:user)
-    user.homepage = "https://heise.de"
-    user.save
-    user.homepage.should == "https://heise.de"
+    it "should not add http:// if it is not missing" do
+      user = FactoryGirl.create(:user)
+      user.homepage = "http://heise.de"
+      user.save
+      user.homepage.should == "http://heise.de"
+    end
+
+    it "should not add http:// if it is a https link" do
+      user = FactoryGirl.create(:user)
+      user.homepage = "https://heise.de"
+      user.save
+      user.homepage.should == "https://heise.de"
+    end
   end
 
   it "should generate a guid if it is not present yet" do

@@ -8,7 +8,11 @@
     = f.input :github
     = f.input :twitter
     = f.input :homepage
-  = f.inputs "Hacken" do
+  = f.inputs "hacken.in Admin" do
     = f.input :admin
     = f.input :team
+  = f.inputs "Regions Organisatoren" do
+    = f.input :assigned_regions, :as => :check_boxes
+  = f.inputs "Event Kuratoren" do
+    = f.input :curated_events, :as => :check_boxes, collection: Event.unscoped.order(:name)
   = f.button

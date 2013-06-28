@@ -109,6 +109,7 @@ GEM
       simplecov (>= 0.7)
       thor
     dalli (1.1.5)
+    database_cleaner (0.9.1)
     debug_inspector (0.0.2)
     devise (2.2.4)
       bcrypt-ruby (~> 3.0)
@@ -358,7 +359,7 @@ DEPENDENCIES
   bootstrap-kaminari-views (~> 0.0.2)
   bootstrap-sass-rails (~> 2.3.0.0)
   brakeman (~> 1.9.5)
-  cancan (~> 1.6.7)
+  cancan (~> 1.6.10)
   capistrano (~> 2.13.0)
   carrierwave (~> 0.8.0)
   chartkick (~> 1.0.0)
@@ -366,6 +367,7 @@ DEPENDENCIES
   compass-rails (~> 1.0.3)
   coveralls (~> 0.6.7)
   dalli (~> 1.1.5)
+  database_cleaner
   devise (~> 2.2.3)
   execjs (~> 1.4.0)
   factory_girl_rails (~> 4.2)
