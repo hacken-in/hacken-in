@@ -1,6 +1,4 @@
 class Region < ActiveRecord::Base
-  attr_accessible :latitude, :longitude, :name, :perimeter, :slug
-
   validates_uniqueness_of :slug
   validates_uniqueness_of :name
 
