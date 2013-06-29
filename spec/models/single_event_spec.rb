@@ -245,4 +245,24 @@ ical
     single_event.save
     single_event.twitter_hashtag.should eq "wrong"
   end
+
+  it "should only find the single events in cologne region" do
+    SingleEvent.in_region(single_event.event.region).count.should == 1
+  end
+
+  it "should not find single events for wrong region" do
+    region = Region.where(slug: "berlin") || FactoryGirl.create(:berlin_region)
+    SingleEvent.in_region(region).count.should == 0
+  end
+
+  it "should find single events that are in global region, no matter what region you give to it" do
+    gevent = FactoryGirl.create(:global_single_event)
+    bregion = Region.where(slug: "berlin") || FactoryGirl.create(:berlin_region)
+    kregion = Region.where(slug: "koeln")  || FactoryGirl.create(:koeln_region)
+
+    SingleEvent.in_region(bregion).count.should == 1
+    SingleEvent.in_region(kregion).count.should == 1
+
+    gevent.destroy
+  end
 end

@@ -17,6 +17,15 @@ FactoryGirl.define do
     based_on_rule true
   end
 
+  factory :global_single_event, class: SingleEvent do
+    name "SimpleGlobalSingleEventName"
+    description "wow this is <strong>a</strong> description"
+    occurrence Time.new(2011,10,1,12,00)
+    association :event, factory: :global_event
+    association :picture, factory: :picture
+    based_on_rule true
+  end
+
   factory :single_event_without_name, class: SingleEvent do
     association :event, factory: :simple
   end
