@@ -44,7 +44,6 @@ Hcking::Application.routes.draw do
     end
   end
 
-  match "koeln"                   => "calendars#show"
   match "abonnieren"              => "subscribe#index"
   match "humans"                  => "humans#index"
   match "impressum"               => "pages#show", page_name: "impressum"
@@ -66,7 +65,9 @@ Hcking::Application.routes.draw do
   match "export/ical/event/:id"             => "ical#for_event"
   match "export/ical/single_event/:id"      => "ical#for_single_event", as: "single_event_ical"
 
-  match ":page_name"              => "pages#show"
+  match "pages/:page_name"              => "pages#show"
+
+  match ":region" => "calendars#show"
 
   root to: redirect { |p, req| req.flash.keep; "/koeln" }
 end

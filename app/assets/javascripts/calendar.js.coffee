@@ -109,6 +109,7 @@ Calendar =
         from: from
         to: to
         categories: CalendarPreset.getCategories().join()
+        region: regionSlug
       success: (data) ->
         callback(data)
 

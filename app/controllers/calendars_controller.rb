@@ -19,7 +19,13 @@ class CalendarsController < ApplicationController
     @months = []
     13.times { |i| @months << (@start_date + i.months) }
 
-    @single_events = SingleEvent.in_next_from(4.weeks, @start_date).in_categories(@presets_json[:diy])
+    @region = Region.find_by_slug(params[:region])
+
+    if @region.nil?
+      raise ActionController::RoutingError.new('Not Found')
+    end
+
+    @single_events = SingleEvent.in_next_from(4.weeks, @start_date).in_region(@region).in_categories(@presets_json[:diy])
     @single_events.select! { |single_event| single_event.is_for_user? current_user } if current_user
     @single_events.sort!
   end

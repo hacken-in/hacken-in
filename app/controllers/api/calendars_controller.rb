@@ -24,7 +24,14 @@ class Api::CalendarsController < ApplicationController
       to = from + 4.weeks
     end
 
-    @single_events = SingleEvent.where('? <= occurrence AND occurrence <= ?', from, to)
+    @region = Region.find_by_slug(params[:region])
+
+    if @region.nil?
+      render text: 'Die Region wurde nicht gefunden', status: 404
+      return
+    end
+
+    @single_events = SingleEvent.where('? <= occurrence AND occurrence <= ?', from, to).in_region(@region)
     @single_events = @single_events.in_categories(params[:categories].split(',').map(&:to_i)) unless params[:categories].blank?
 
     @single_events.select! { |single_event| single_event.is_for_user? current_user } if current_user
