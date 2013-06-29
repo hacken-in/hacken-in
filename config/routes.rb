@@ -45,15 +45,26 @@ Hcking::Application.routes.draw do
   end
 
   match "koeln"                   => "calendars#show"
-  match "ical"                    => "ical#general"
-  match "personalized_ical/:guid" => "ical#personalized"
-  match "user_ical/:guid"         => "ical#like_welcome_page"
-  match "single_event_ical/:id"   => "ical#for_single_event", as: "single_event_ical"
-  match "event_ical/:id"          => "ical#for_event"
-  match "tag_ical/:id"            => "ical#for_tag"
   match "abonnieren"              => "subscribe#index"
   match "humans"                  => "humans#index"
   match "impressum"               => "pages#show", page_name: "impressum"
+
+  # Calendar Links
+  # These are the old links, without a region, redirect them to koeln
+  match "ical",                    to: redirect('/export/ical/koeln/all')
+  match "personalized_ical/:guid", to: redirect('/export/ical/koeln/mylikes/%{guid}')
+  match "user_ical/:guid",         to: redirect('/export/ical/koeln/mine/%{guid}')
+  match "single_event_ical/:id",   to: redirect('/export/ical/single_event/%{id}')
+  match "event_ical/:id",          to: redirect('/export/ical/event/%{id}')
+  match "tag_ical/:id",            to: redirect('/export/ical/koeln/tag/%{id}')
+
+  # These are the new ones with a region in it
+  match "export/ical/:region/all"           => "ical#general"
+  match "export/ical/:region/mylikes/:guid" => "ical#personalized"
+  match "export/ical/:region/mine/:guid"    => "ical#like_welcome_page"
+  match "export/ical/:region/tag/:id"       => "ical#for_tag"
+  match "export/ical/event/:id"             => "ical#for_event"
+  match "export/ical/single_event/:id"      => "ical#for_single_event", as: "single_event_ical"
 
   match ":page_name"              => "pages#show"
 

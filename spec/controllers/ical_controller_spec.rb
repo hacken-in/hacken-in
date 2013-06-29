@@ -108,10 +108,19 @@ DESC
     event7.full_day = true
     event7.save
     @vcal_event7 = generate_event_entry(event7.single_events.first)
+
+    event8 = FactoryGirl.create(:berlin_event)
+    time8 = (Date.today + 3.days).to_time
+    event8.schedule.add_recurrence_time(time8)
+    event8.tag_list << "php"
+    event8.tag_list << "ruby"
+    event8.full_day = true
+    event8.save
+    @vcal_event8 = generate_event_entry(event8.single_events.first)
   end
 
-  it "should get general ical calendar" do
-    get :general
+  it "should get general ical calendar for koeln" do
+    get :general, region: "koeln"
     expect(response.code).to eq("200")
     @response.headers["Content-Type"].should == "text/calendar; charset=UTF-8"
 
@@ -124,24 +133,42 @@ DESC
     @response.body.should include @vcal_event5
     @response.body.should include @vcal_event6
     @response.body.should include @vcal_event7
+    @response.body.should_not include @vcal_event8
+  end
+
+  it "should get general ical calendar for berlin" do
+    get :general, region: "berlin"
+    expect(response.code).to eq("200")
+    @response.headers["Content-Type"].should == "text/calendar; charset=UTF-8"
+
+    @response.body.should start_with @vcal_start
+    @response.body.should end_with @vcal_end
+    @response.body.should_not include @vcal_event
+    @response.body.should_not include @vcal_event2
+    @response.body.should_not include @vcal_event3
+    @response.body.should_not include @vcal_event4
+    @response.body.should_not include @vcal_event5
+    @response.body.should_not include @vcal_event6
+    @response.body.should_not include @vcal_event7
+    @response.body.should include @vcal_event8
   end
 
   it "should get empty personalized ical calendar if no guid given" do
-    get :personalized, guid: ""
+    get :personalized, guid: "", region: "koeln"
     expect(response.code).to eq("200")
     @response.headers["Content-Type"].should == "text/calendar; charset=UTF-8"
     @response.body.should == "#{@vcal_start}#{@vcal_end}"
   end
 
   it "should get empty personalized ical calendar if wrong guid given" do
-    get :personalized, guid: "wrongguid"
+    get :personalized, guid: "wrongguid", region: "koeln"
     expect(response.code).to eq("200")
     @response.headers["Content-Type"].should == "text/calendar; charset=UTF-8"
     @response.body.should == "#{@vcal_start}#{@vcal_end}"
   end
 
   it "should get personalized ical calendar" do
-    get :personalized, guid: "userguid"
+    get :personalized, guid: "userguid", region: "koeln"
     expect(response.code).to eq("200")
     @response.headers["Content-Type"].should == "text/calendar; charset=UTF-8"
 
@@ -154,24 +181,25 @@ DESC
     @response.body.should_not include @vcal_event5
     @response.body.should_not include @vcal_event6
     @response.body.should_not include @vcal_event7
+    @response.body.should_not include @vcal_event8
   end
 
   it "should get empty like welcome page ical calendar if no guid given" do
-    get :like_welcome_page, guid: ""
+    get :like_welcome_page, guid: "", region: "koeln"
     expect(response.code).to eq("200")
     @response.headers["Content-Type"].should == "text/calendar; charset=UTF-8"
     @response.body.should == "#{@vcal_start}#{@vcal_end}"
   end
 
   it "should get empty like welcome page ical calendar if wrong guid given" do
-    get :like_welcome_page, guid: "wrongguid"
+    get :like_welcome_page, guid: "wrongguid", region: "koeln"
     expect(response.code).to eq("200")
     @response.headers["Content-Type"].should == "text/calendar; charset=UTF-8"
     @response.body.should == "#{@vcal_start}#{@vcal_end}"
   end
 
-  it "should get like welcome page ical calendar" do
-    get :like_welcome_page, {guid: "userguid"}
+  it "should get like welcome page ical calendar for koeln" do
+    get :like_welcome_page, guid: "userguid", region: "koeln"
     expect(response.code).to eq("200")
     @response.headers["Content-Type"].should == "text/calendar; charset=UTF-8"
 
@@ -184,5 +212,23 @@ DESC
     @response.body.should include @vcal_event5
     @response.body.should include @vcal_event6
     @response.body.should include @vcal_event7
+    @response.body.should_not include @vcal_event8
+  end
+
+  it "should get like welcome page ical calendar for berlin" do
+    get :like_welcome_page, guid: "userguid", region: "berlin"
+    expect(response.code).to eq("200")
+    @response.headers["Content-Type"].should == "text/calendar; charset=UTF-8"
+
+    @response.body.should start_with @vcal_start
+    @response.body.should end_with @vcal_end
+    @response.body.should_not include @vcal_event
+    @response.body.should_not include @vcal_event2
+    @response.body.should_not include @vcal_event3
+    @response.body.should_not include @vcal_event4
+    @response.body.should_not include @vcal_event5
+    @response.body.should_not include @vcal_event6
+    @response.body.should_not include @vcal_event7
+    @response.body.should include @vcal_event8
   end
 end

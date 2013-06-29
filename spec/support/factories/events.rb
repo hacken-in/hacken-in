@@ -27,6 +27,7 @@ FactoryGirl.define do
 
   factory :berlin_event, class: 'event' do
     name "Berlin Event"
+    association :venue, factory: :berlin_venue
     association :category, factory: :a_category
     region { Region.find_by_slug("berlin") || FactoryGirl.create(:berlin_region) }
   end

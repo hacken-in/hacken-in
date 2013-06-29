@@ -1,0 +1,68 @@
+{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "58",
+               "short_name" : "58",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "Richard-Sorge-Straße",
+               "short_name" : "Richard-Sorge-Straße",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "Friedrichshain",
+               "short_name" : "Friedrichshain",
+               "types" : [ "sublocality", "political" ]
+            },
+            {
+               "long_name" : "Friedrichshain-Kreuzberg",
+               "short_name" : "Friedrichshain-Kreuzberg",
+               "types" : [ "sublocality", "political" ]
+            },
+            {
+               "long_name" : "Berlin",
+               "short_name" : "Berlin",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Berlin",
+               "short_name" : "Berlin",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Germany",
+               "short_name" : "DE",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "10249",
+               "short_name" : "10249",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "Richard-Sorge-Straße 58, 10249 Berlin, Germany",
+         "geometry" : {
+            "location" : {
+               "lat" : 52.522490,
+               "lng" : 13.445790
+            },
+            "location_type" : "ROOFTOP",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 52.52383898029151,
+                  "lng" : 13.44713898029150
+               },
+               "southwest" : {
+                  "lat" : 52.52114101970851,
+                  "lng" : 13.44444101970850
+               }
+            }
+         },
+         "types" : [ "street_address" ]
+      }
+   ],
+   "status" : "OK"
+}

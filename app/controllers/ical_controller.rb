@@ -10,16 +10,19 @@ class IcalController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_empty
 
   def general
-    render_events SingleEvent.recent_to_soon(3.months)
+    region = Region.where(slug: params[:region])
+    render_events SingleEvent.in_region(region).recent_to_soon(3.months)
   end
 
   def personalized
-    render_events user.single_events.recent_to_soon(3.months)
+    region = Region.where(slug: params[:region])
+    render_events user.single_events.in_region(region).recent_to_soon(3.months)
   end
 
   def like_welcome_page
+    region = Region.where(slug: params[:region])
     @presets_json = CalendarPreset.presets_for_user(user)
-    @single_events = SingleEvent.recent_to_soon(3.months).in_categories(@presets_json[:diy])
+    @single_events = SingleEvent.recent_to_soon(3.months).in_region(region).in_categories(@presets_json[:diy])
     @single_events.select! { |single_event| single_event.is_for_user? user }
     render_events @single_events
   end
@@ -33,7 +36,8 @@ class IcalController < ApplicationController
   end
 
   def for_tag
-    render_events SingleEvent.only_tagged_with(params[:id])
+    region = Region.where(slug: params[:region])
+    render_events SingleEvent.only_tagged_with(params[:id]).in_region(region)
   end
 
   private
