@@ -68,4 +68,14 @@ describe Ability do
     Ability.new(user).should be_able_to :update, single
     Ability.new(user2).should_not be_able_to :update, single
   end
+
+  it "lets organizers edit venue in their region" do
+    user = FactoryGirl.create(:user)
+    user2 = FactoryGirl.create(:user)
+    venue = FactoryGirl.create(:berlin_venue)
+    venue.region.organizers << user
+
+    Ability.new(user).should be_able_to :update, venue
+    Ability.new(user2).should_not be_able_to :update, venue
+  end
 end
