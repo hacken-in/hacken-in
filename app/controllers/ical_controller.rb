@@ -15,8 +15,7 @@ class IcalController < ApplicationController
   end
 
   def personalized
-    region = Region.where(slug: params[:region])
-    render_events user.single_events.in_region(region).recent_to_soon(3.months)
+    render_events user.single_events.recent_to_soon(3.months)
   end
 
   def like_welcome_page

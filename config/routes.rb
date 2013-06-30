@@ -59,9 +59,9 @@ Hcking::Application.routes.draw do
 
   # These are the new ones with a region in it
   match "export/ical/:region/all"           => "ical#general"
-  match "export/ical/:region/mylikes/:guid" => "ical#personalized"
   match "export/ical/:region/mine/:guid"    => "ical#like_welcome_page"
   match "export/ical/:region/tag/:id"       => "ical#for_tag"
+  match "export/ical/attending/:guid"       => "ical#personalized"
   match "export/ical/event/:id"             => "ical#for_event"
   match "export/ical/single_event/:id"      => "ical#for_single_event", as: "single_event_ical"
 
