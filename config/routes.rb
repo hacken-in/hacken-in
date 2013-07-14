@@ -67,7 +67,9 @@ Hcking::Application.routes.draw do
 
   match "pages/:page_name"              => "pages#show"
 
-  match ":region" => "calendars#show"
+  match "deutschland" => "welcome#deutschland"
+  match "move_to/:region" => "welcome#move_to", as: "move_region"
+  match ":region" => "calendars#show", as: "region"
 
-  root to: redirect { |p, req| req.flash.keep; "/koeln" }
+  root to: "welcome#index"
 end
