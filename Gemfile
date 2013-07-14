@@ -36,7 +36,7 @@ group :assets do
   gem 'zero-clipboard-rails', '~> 1.0.1'                        # Clipboard-Button on iCal Page
   gem 'momentjs-rails', '~> 1.7.2'                              # Date parsing in Javascript
   gem 'tipsy-rails', '~> 1.0.3'                                 # Facebook style tooltip jQuery plugin
-  gem "font-awesome-rails", '~> 3.0.2'
+  gem "font-awesome-rails", "~> 3.2.1.2"
 end
 
 gem 'haml', '~> 3.1.8'
