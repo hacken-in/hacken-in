@@ -2,6 +2,8 @@
 // Navbars (Redux)
 // --------------------------------------------------
 
+$navbarBrandColor: black;
+$navbarBrandSlugColor: gray;
 $navbarLinkColor: black;
 
 // COMMON STYLES
@@ -40,17 +42,28 @@ $navbarLinkColor: black;
 // Brand: website or project name
 // -------------------------
 .navbar .brand {
-  float: left;
-  display: block;
+  position: absolute;
+  bottom: 25px;
+  font-size: 38px;
+  font-weight: bold;
+
   // Vertically center the text given $navbarHeight
-  padding: (($navbarHeight - $baseLineHeight) / 2) 20px (($navbarHeight - $baseLineHeight) / 2);
-  margin-left: -20px; // negative indent to left-align the text down the page
-  font-size: 20px;
-  font-weight: 200;
   color: $navbarBrandColor;
   text-shadow: 0 1px 0 $navbarBackgroundHighlight;
-  &:hover {
-    text-decoration: none;
+
+  a {
+    color: $navbarBrandColor;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .navbar-slug {
+    color: $navbarBrandSlugColor;
+  }
+
+  .germany {
+    margin-top: -10px;
   }
 }
 

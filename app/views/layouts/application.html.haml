@@ -38,7 +38,12 @@
     %header.container
       .navbar
         .navbar-inner
-          = link_to image_tag('logo.png', width:"325px", height:"53px"), root_path, class: 'brand', title: 'hacken.in/koeln'
+          .brand
+            = link_to image_tag("germany-outline.png", class:"germany"), "/deutschland"
+            - if @region
+              = link_to "hacken.in/<span class='navbar-slug'>#{@region.slug}</span>".html_safe, region_path(@region.slug)
+            - else
+              = link_to "hacken.in".html_safe, root_path
           = render_navigation
           = render 'users/sessions/loginform_popup'
           = render 'users/sessions/logoutform_popup'
