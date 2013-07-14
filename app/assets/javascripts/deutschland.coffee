@@ -1,7 +1,7 @@
 $ ->
   if $(".welcome_deutschland").length > 0
     # create a map in the "map" div, set the view to a given place and zoom
-    map = L.map('german_map').setView([51.72,10.165], 7)
+    map = L.map('german_map', {closePopupOnClick: false}).setView([51.72,10.165], 7)
 
     # add an OpenStreetMap tile layer
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
