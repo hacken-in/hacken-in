@@ -33,7 +33,7 @@
       = render 'modules/social/share'
       .clearfix
 
-      - if current_admin_user
+      - if @current_user.admin?
         .admin_edit_link
           = link_to "Bearbeiten", edit_admin_event_single_event_path(@single_event.event, @single_event)
 
