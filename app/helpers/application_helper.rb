@@ -3,6 +3,14 @@ require 'redcarpet_extensions'
 
 module ApplicationHelper
 
+  def sitename
+    if @region
+      "hacken.in/#{@region.slug}"
+    else
+      "hacken.in"
+    end
+  end
+
   def day_output_helper(date)
       date = date.to_date
       today = Date.today

@@ -1,7 +1,8 @@
 !!! 5
 %html
   %head
-    %title= content_for?(:title) ? yield(:title) + " – hacken.in/koeln" : "hacken.in/koeln"
+
+    %title= content_for?(:title) ? yield(:title) + " – " + sitename : sitename
     = stylesheet_link_tag "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
