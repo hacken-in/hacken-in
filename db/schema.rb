@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130715192011) do
+ActiveRecord::Schema.define(:version => 20130715194507) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -130,6 +130,7 @@ ActiveRecord::Schema.define(:version => 20130715192011) do
   create_table "single_event_external_users", :force => true do |t|
     t.integer  "single_event_id"
     t.string   "email"
+    t.string   "session_token"
     t.string   "name"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
