@@ -20,7 +20,6 @@ ActiveAdmin.register Picture do
       row :created_at
       row :updated_at
     end
-    active_admin_comments
   end
   form partial: "picture_form"
 end
