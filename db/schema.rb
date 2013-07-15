@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130530132853) do
+ActiveRecord::Schema.define(:version => 20130715192011) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -126,6 +126,16 @@ ActiveRecord::Schema.define(:version => 20130530132853) do
   end
 
   add_index "regions", ["slug"], :name => "index_regions_on_slug"
+
+  create_table "single_event_external_users", :force => true do |t|
+    t.integer  "single_event_id"
+    t.string   "email"
+    t.string   "name"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "single_event_external_users", ["single_event_id"], :name => "index_single_event_external_users_on_single_event_id"
 
   create_table "single_events", :force => true do |t|
     t.string   "name"
