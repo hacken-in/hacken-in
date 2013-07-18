@@ -1,7 +1,0 @@
-= semantic_form_for [:admin, @calendar_preset] do |f|
-  = f.inputs "Allgemeine Infos" do
-    = f.input :title
-    = f.input :user, hint: "Wenn kein Benutzer angegeben wird, dann ist es ein Hacken.in Preset und wird im Kalender bei KDDK angezeigt."
-  = f.inputs "Kategorien" do
-    = f.input :categories, as: :check_boxes, collection: Category.calendar.order("title asc").all
-  = f.button

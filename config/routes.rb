@@ -16,10 +16,7 @@ Hcking::Application.routes.draw do
 
   namespace :api do
     resource :calendar, only: [:show] do
-      get :presets
       get :entries
-
-      post :presets, :action => :update_presets
     end
 
     resources :user_tags, :path => "/user/:kind", :constraints => { id: /.*/, kind: /(like|hate)/ }, :only => [:create, :destroy]

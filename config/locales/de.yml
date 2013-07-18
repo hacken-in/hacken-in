@@ -238,10 +238,6 @@ de:
         headline_teaser: Teaser für die Startseite
         teaser_text: Teaser
         mp3file: MP3 Datei
-      calendar_preset:
-        title: Titel
-        categories: Kategorien
-        user: Benutzer
       picture:
         title: Titel
         description: Beschreibung
@@ -257,7 +253,6 @@ de:
       comment: Kommentar
       event: Veranstaltungsreihe
       single_event: Termin
-      calendar_preset: Kalender Preset
       user: Benutzer
       picture: Bild
       category:

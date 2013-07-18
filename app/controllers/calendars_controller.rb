@@ -4,10 +4,6 @@ class CalendarsController < ApplicationController
   def show
     @categories = Category.all
 
-    # Die Presets
-    @presets = CalendarPreset.hacken_presets.all
-    @presets_json = CalendarPreset.presets_for_user(current_user)
-
     # Die Monate, die angezeigt werden
     begin
       @start_date = params[:start].present? ? Date.parse(params[:start]) : Date.today
@@ -25,7 +21,7 @@ class CalendarsController < ApplicationController
       raise ActionController::RoutingError.new('Not Found')
     end
 
-    @single_events = SingleEvent.in_next_from(4.weeks, @start_date).in_region(@region).in_categories(@presets_json[:diy])
+    @single_events = SingleEvent.in_next_from(4.weeks, @start_date).in_region(@region)
     @single_events.select! { |single_event| single_event.is_for_user? current_user } if current_user
     @single_events.sort!
   end

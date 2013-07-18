@@ -40,27 +40,4 @@ class Api::CalendarsController < ApplicationController
     render :entries
   end
 
-  def presets
-    @presets = CalendarPreset.presets_for_user(current_user)
-    render json: @presets
-  end
-
-  def update_presets
-    return render(:nothing => true, :status => :unauthorized) unless current_user
-
-    preset = CalendarPreset.find_or_create_by_user_id(current_user.id)
-    begin
-      preset.category_ids = params[:category_ids].split(',').map(&:to_i)
-    rescue ActiveRecord::RecordNotFound
-      render json: { error: 'Du willst eine Kategorie in deinen Kalender aufnehmen, die es nicht gibt ...' }
-      return
-    end
-
-    if preset.save
-      render json: { status: 'success', diy: preset.category_ids }, :status => :ok
-    else
-      render json: { status: 'error', message: 'Could not save' }, :status => 422
-    end
-  end
-
 end

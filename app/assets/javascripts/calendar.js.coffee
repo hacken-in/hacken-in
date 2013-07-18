@@ -17,8 +17,6 @@ jQuery ->
     $(document).on 'mouseleave', '.calendar-line', ->
       $(this).css('background-color', '#000').removeClass('calendar-line-highlighted')
 
-    $('.js-kddk-preset').on 'click', CalendarPreset.switchPreset
-
     $('.js-like-tag-button').on 'click', ->
       CalendarTaggings.addTag('like')
 
@@ -30,9 +28,6 @@ jQuery ->
 
     $('.js-hate-tag-text').on 'keyup', (event) ->
       CalendarTaggings.addTag('hate') if event.keyCode is 13 or event.which is 13
-
-    $('input[name=calendar_category]').on 'change', ->
-      CalendarPreset.changeDiyPreset()
 
     $(document).on 'click', '.js-remove-tag', ->
       data = $(this).parent().data()
@@ -69,9 +64,6 @@ jQuery ->
 
     switch_to_current_date()
 
-    # Alle handler sind gesetzt ... Initialisieren wir die DIY-Kategorie
-    CalendarPreset.selectCategoriesFromPreset('diy', false)
-
     # Selbstgebautes Infinite Scroll ... Ernsthaft, da is net viel dabei ... Ich weiß nicht, warum ich eine Lib verwenden sollte
     $(window).scroll ->
       if $(window).scrollTop() > $(document).height() - $(window).height() - 200 and not window.currentlyReloading and not window.endOfTheWorld
@@ -93,7 +85,6 @@ Calendar =
       window.currentlyReloading = false
 
   # Hier werden die Einträge geladen und der Kalender wird komplett ersetzt
-  # Das wird benutzt, wenn der Benutzer sein Preset verändert
   #
   # Die Zeiten sind der Anfang des Kalenders (heute oder explizites Anfangsdatum) bis zum letzten sichtbaren Tag
   replaceEntries: ->
@@ -108,7 +99,6 @@ Calendar =
       data:
         from: from
         to: to
-        categories: CalendarPreset.getCategories().join()
         region: regionSlug
       success: (data) ->
         callback(data)
@@ -151,56 +141,4 @@ CalendarTaggings =
     # Reload the calendar with the new data
     Calendar.replaceEntries()
 
-
-CalendarPreset =
-  getCategories: ->
-    categories = $('input[name=calendar_category]:checked').map (idx, el) ->
-      $(el).val()
-    categories.get()
-
-  changeDiyPreset: ->
-    categories = $('input[name=calendar_category]:checked').map (idx, el) ->
-      $(el).val()
-
-    # TODO: Eventuell abfangen, ob der User überhaupt eingeloggt ist (JS Variable
-    # oder so) und nur dann abschicken, spart uns ein paar 401er im Log ... If somebody
-    # cares: Patch is welcome :)
-    $.ajax
-     type: 'POST'
-     url: "/api/calendar/presets"
-     data:
-       category_ids: categories.get().join(',')
-
-    # Reload the calendar with the new data
-    Calendar.replaceEntries()
-
-  switchPreset: ->
-    presetId = $(this).data('preset')
-
-    # Reset active tab
-    $('.js-kddk-preset').removeClass('active')
-    $(this).addClass('active')
-
-    CalendarPreset.selectCategoriesFromPreset(presetId)
-
-  selectCategoriesFromPreset: (presetId, shouldReload = true) ->
-    $all_checkboxes = $('input[name=calendar_category]')
-
-    if presetId
-      presetId = presetId.toString()
-    else
-      presetId = 'diy'
-
-    $all_checkboxes.attr 'disabled', (presetId != 'diy')
-
-    if presetId == 'diy' and calendarPresets[presetId].length == 0
-      $all_checkboxes.prop('checked', true)
-    else
-      $all_checkboxes.prop('checked', false)
-
-      $.each calendarPresets[presetId], (id, categoryId)->
-        $('input[name=calendar_category][value=' + categoryId + ']').prop('checked', true)
-
-    # Reload the calendar with the new data
-    Calendar.replaceEntries() if shouldReload
 
