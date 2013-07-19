@@ -1,6 +1,6 @@
 # encoding: utf-8
 class NewSuggestionMailer < ActionMailer::Base
-  default from: "bodo@hcking.de"
+  default from: "bodo@wannawork.de"
 
   RECIPIENTS = ["bodo@wannawork.de", "lucas.dohmen@koeln.de"]
 
