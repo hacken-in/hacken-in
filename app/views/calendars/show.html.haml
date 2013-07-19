@@ -4,7 +4,6 @@
 - content_for :javascript do
   :javascript
     var beginningOfTime = '#{@start_date}';
-    var calendarPresets = #{@presets_json.to_json};
     var regionSlug = '#{@region.slug}';
 
 .row.header-sep-line
@@ -19,10 +18,6 @@
         %button.btn
           %i.icon-search
 
-    .calendar-head
-      = image_tag('klick-den-cal.png')
-
-    = render partial: 'modules/calendars/kddk', locals: { presets: @presets, categories: @categories }
     = render partial: 'modules/tags/calendar_tags'
 
     - unless user_signed_in?

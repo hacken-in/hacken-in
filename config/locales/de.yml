@@ -178,7 +178,7 @@ de:
         record_invalid: "Gültigkeitsprüfung ist fehlgeschlagen: %{errors}"
     attributes:
       user:
-        email: E-Mail
+        email: E-Mailadresse
         description: Beschreibung
         twitter: Twitter Account
         github: Github Account
@@ -187,7 +187,7 @@ de:
         password_confirmation: Passwort bestätigen
         current_password: Aktuelles Passwort
         remember_me: Eingeloggt bleiben
-        gravatar_email: Email für Profilbild
+        gravatar_email: Alternative E-mailadresse für Gravatar
       event:
         address: Adresse
         description: Beschreibung
@@ -238,10 +238,6 @@ de:
         headline_teaser: Teaser für die Startseite
         teaser_text: Teaser
         mp3file: MP3 Datei
-      calendar_preset:
-        title: Titel
-        categories: Kategorien
-        user: Benutzer
       picture:
         title: Titel
         description: Beschreibung
@@ -257,7 +253,6 @@ de:
       comment: Kommentar
       event: Veranstaltungsreihe
       single_event: Termin
-      calendar_preset: Kalender Preset
       user: Benutzer
       picture: Bild
       category:
@@ -353,7 +348,7 @@ de:
       no_loved_tags: "Keine geliebten Hashtags"
       no_description: "Keine Beschreibung vorhanden."
     edit:
-      allow_ignore_view: "ignorierte Hashtags öffentlich zeigen"
+      allow_ignore_view: "Ignorierte Hashtags öffentlich zeigen"
 
   user_tags:
     create:

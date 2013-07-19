@@ -21,9 +21,6 @@ class User < ActiveRecord::Base
   #OmniAuth Authorizations
   has_many :authorizations
 
-  # CalendarPresets
-  has_one :calendar_preset
-
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :allow_ignore_view, :image_url
   attr_protected :admin
@@ -223,7 +220,7 @@ class User < ActiveRecord::Base
     if github && m = github.match(/(?:http:\/\/)?github.com\/(.*)/)
       self.github = m[1]
     end
-    if homepage && !homepage.match(/\Ahttp(s)?:\/\//)
+    if homepage.present? && !homepage.match(/\Ahttp(s)?:\/\//)
       self.homepage = "http://#{homepage}"
     end
   end

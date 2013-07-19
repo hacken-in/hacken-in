@@ -20,8 +20,7 @@ class IcalController < ApplicationController
 
   def like_welcome_page
     region = Region.where(slug: params[:region])
-    @presets_json = CalendarPreset.presets_for_user(user)
-    @single_events = SingleEvent.recent_to_soon(3.months).in_region(region).in_categories(@presets_json[:diy])
+    @single_events = SingleEvent.recent_to_soon(3.months).in_region(region)
     @single_events.select! { |single_event| single_event.is_for_user? user }
     render_events @single_events
   end
