@@ -10,8 +10,7 @@ class IcalController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_empty
 
   def general
-    region = Region.where(slug: params[:region])
-    render_events SingleEvent.in_region(region).recent_to_soon(3.months)
+    render_events SingleEvent.in_region(current_region).recent_to_soon(3.months)
   end
 
   def personalized
@@ -19,8 +18,7 @@ class IcalController < ApplicationController
   end
 
   def like_welcome_page
-    region = Region.where(slug: params[:region])
-    @single_events = SingleEvent.recent_to_soon(3.months).in_region(region)
+    @single_events = SingleEvent.recent_to_soon(3.months).in_region(current_region)
     @single_events.select! { |single_event| single_event.is_for_user? user }
     render_events @single_events
   end
@@ -34,8 +32,7 @@ class IcalController < ApplicationController
   end
 
   def for_tag
-    region = Region.where(slug: params[:region])
-    render_events SingleEvent.only_tagged_with(params[:id]).in_region(region)
+    render_events SingleEvent.only_tagged_with(params[:id]).in_region(current_region)
   end
 
   private
@@ -46,7 +43,7 @@ class IcalController < ApplicationController
 
   def render_events(events)
     ri_cal = RiCal.Calendar
-    ri_cal.events.push(*events.to_a.map do |e| 
+    ri_cal.events.push(*events.to_a.map do |e|
       e.to_ri_cal_event(is_google_bot)
     end)
     render text: ri_cal
