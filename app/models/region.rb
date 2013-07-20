@@ -4,4 +4,8 @@ class Region < ActiveRecord::Base
 
   has_many :region_organizers
   has_many :organizers, :through => :region_organizers, :source => :user
+
+  def to_param
+    self.slug
+  end
 end
