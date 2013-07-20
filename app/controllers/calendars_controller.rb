@@ -7,7 +7,7 @@ class CalendarsController < ApplicationController
     # Die Monate, die angezeigt werden
     begin
       @start_date = params[:start].present? ? Date.parse(params[:start]) : Date.today
-    rescue ArgumentError => e
+    rescue ArgumentError
       @start_date = Date.today
       flash.now[:error] = 'Das war kein gültiges Datum... Wir zeigen dir mal den Kalender ab heute'
     end
@@ -15,9 +15,7 @@ class CalendarsController < ApplicationController
     @months = []
     13.times { |i| @months << (@start_date + i.months) }
 
-    @region = Region.find_by_slug(params[:region])
-
-    if @region.nil?
+    if current_region.nil?
       raise ActionController::RoutingError.new('Not Found')
     end
 

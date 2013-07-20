@@ -27,7 +27,6 @@ Hcking::Application.routes.draw do
     resources :authorizations, only: [:destroy]
   end
 
-  resources :search, only: [:index]
   resources :comments, only: [:create, :edit, :show]
   resources :suggestions, only: [:new, :create, :show]
   resource :calendar, only: [:show]
@@ -67,6 +66,7 @@ Hcking::Application.routes.draw do
   match "deutschland" => "welcome#deutschland"
   match "move_to/:region" => "welcome#move_to", as: "move_region"
   match ":region" => "calendars#show", as: "region"
+  match ":region/search" => "search#index", as: "search"
 
   root to: "welcome#index"
 end

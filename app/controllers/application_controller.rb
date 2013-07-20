@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_admin_user!
     # Rais error if not signed in or user not allowed to see the dashboard
-    raise SecurityError and return if active_admin_user.nil? 
+    raise SecurityError and return if active_admin_user.nil?
     authenticate_user!
   end
 
@@ -39,6 +39,11 @@ class ApplicationController < ActionController::Base
   def is_google_bot
     !request.env["HTTP_USER_AGENT"].match(/googlebot/i).nil?
   end
+
+  def current_region
+    @region ||= Region.find_by_slug(params[:region])
+  end
+  helper_method :current_region
 
   private
 
