@@ -250,7 +250,14 @@ class SingleEvent < ActiveRecord::Base
     else
       true
     end
+  end
 
+  def attended_by_user?(user)
+    users.include? user
+  end
+
+  def attended_by_external_user?(session_uuid)
+    session_uuid.present? && external_users.find_by_session_token(session_uuid).present?
   end
 
   def self.this_week_by_day
