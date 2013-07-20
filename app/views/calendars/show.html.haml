@@ -12,7 +12,7 @@
     .calendar-calendar
       = render partial: 'modules/calendars/calendar', locals: { single_events: @single_events }
   .span2.calendar-settings
-    = form_tag search_index_path, :method => 'get' do
+    = form_tag search_path(region: current_region), :method => 'get' do
       .input-append
         = text_field_tag :search, params[:search], placeholder: "Suche..."
         %button.btn

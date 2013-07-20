@@ -51,7 +51,7 @@ class SingleEvent < ActiveRecord::Base
   def self.search(search)
     search.strip!
     # Name + Description in Single Event
-    sevents = unscoped.today_or_in_future.find(:all, :conditions => ['name LIKE ? OR description LIKE ?', "%#{search}%", "%#{search}%"])
+    sevents = today_or_in_future.find(:all, :conditions => ['single_events.name LIKE ? OR single_events.description LIKE ?', "%#{search}%", "%#{search}%"])
 
     Event.search(search).each do |e|
       sevents.concat(e.single_events.today_or_in_future)
