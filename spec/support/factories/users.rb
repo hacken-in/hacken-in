@@ -13,7 +13,7 @@ FactoryGirl.define do
   end
 
   factory :user, class: 'user' do
-    nickname { Faker::Internet.user_name.gsub ".", "_" }
+    nickname { "hacken_in_user_#{Faker::Internet.user_name.gsub(".", "_")}" }
     email { Faker::Internet.email }
     password "hallo123"
     password_confirmation "hallo123"
@@ -21,7 +21,7 @@ FactoryGirl.define do
   end
 
   factory :another_user, class: 'user' do
-    nickname 'tester_two'
+    nickname { "hacken_in_user_#{Faker::Internet.user_name.gsub(".", "_")}" }
     email 'tester_two@example.com'
     password "hallo123"
     password_confirmation "hallo123"
