@@ -1,6 +1,7 @@
 class Suggestion < ActiveRecord::Base
   attr_accessible :name,
     :occurrence,
+    :email_address,
     :description,
     :more,
     :place,
