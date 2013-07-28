@@ -231,4 +231,21 @@ DESC
     @response.body.should_not include @vcal_event7
     @response.body.should include @vcal_event8
   end
+
+  it "should get ical calendar for everything" do
+    get :everything
+    expect(response.code).to eq("200")
+    @response.headers["Content-Type"].should == "text/calendar; charset=UTF-8"
+
+    @response.body.should start_with @vcal_start
+    @response.body.should end_with @vcal_end
+    @response.body.should include @vcal_event
+    @response.body.should include @vcal_event2
+    @response.body.should include @vcal_event3
+    @response.body.should include @vcal_event4
+    @response.body.should include @vcal_event5
+    @response.body.should include @vcal_event6
+    @response.body.should include @vcal_event7
+    @response.body.should include @vcal_event8
+  end
 end
