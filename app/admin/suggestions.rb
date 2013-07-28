@@ -3,6 +3,7 @@ ActiveAdmin.register Suggestion do
   index do
     column :id
     column :name
+    column :email_address
     column :occurrence
     column :description
     column :more_as_inline
@@ -14,6 +15,7 @@ ActiveAdmin.register Suggestion do
     attributes_table do
       row :id
       row :name
+      row :email_address
       row :occurrence
       row :description
       row :more_as_inline
@@ -25,6 +27,7 @@ ActiveAdmin.register Suggestion do
     f.inputs "Suggestion" do
       f.input :id
       f.input :name
+      f.input :email_address
       f.input :occurrence
       f.input :description
       f.input :more_as_text, as: "text"
