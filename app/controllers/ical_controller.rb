@@ -35,6 +35,11 @@ class IcalController < ApplicationController
     render_events SingleEvent.only_tagged_with(params[:id]).in_region(current_region)
   end
 
+  def everything
+    # no kitchen sink though
+    render_events SingleEvent.recent_to_soon(3.months)
+  end
+
   private
 
   def set_calendar_headers

@@ -60,6 +60,7 @@ Hcking::Application.routes.draw do
   match "export/ical/attending/:guid"       => "ical#personalized"
   match "export/ical/event/:id"             => "ical#for_event"
   match "export/ical/single_event/:id"      => "ical#for_single_event", as: "single_event_ical"
+  match "export/ical"                       => "ical#everything"
 
   match "pages/:page_name"              => "pages#show"
 
