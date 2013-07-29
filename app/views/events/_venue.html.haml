@@ -1,14 +1,18 @@
 - unless event.venue.nil?
-  %address.event-venue
+  %address.event-venue{ itemscope: true, itemprop: 'location', itemtype: 'http://schema.org/Place' }
     - if event.venue.url.blank?
       = event.venue.location
     - else
-      = link_to event.venue.location, event.venue.url
+      = link_to event.venue.location, event.venue.url, itemprop: 'url'
     %br
     - if event.venue_info.present?
       = event.venue_info
       %br
-    = event.venue.street
-    %br
-    = event.venue.zipcode
-    = event.venue.city
+    %span{ itemscope: true, itemprop: 'address', itemtype: 'http://schema.org/PostalAddress' }
+      %span{ itemprop: 'streetAddress' }
+        = event.venue.street
+      %br
+      %span{ itemprop: 'postalCode' }
+        = event.venue.zipcode
+      %span{ itemprop: 'addressLocality' }
+        = event.venue.city

@@ -3,7 +3,7 @@
 
 - color = @single_event.category.try(:color)
 
-.row.event.single-event
+.row.event.single-event{ itemscope: true, itemtype: 'http://schema.org/Event' }
   .span4
     .black-bar.black-bar-wide
       .black-bar--category-indicator
@@ -11,9 +11,11 @@
       .black-bar-content.black-bar-with-date{ data: { hlcolor: color } }
         .black-bar-top-part
           .black-bar-date
+            %meta{ itemprop: 'startDate', content: I18n.localize(@single_event.occurrence, format: "%FT%R%:z") }
             = I18n.localize @single_event.occurrence, format: "%a, %d. %b %Y"
         .black-bar-center-part
-          %h1.black-bar-title= @single_event.event.name
+          %h1.black-bar-title{ itemprop: "name" }
+            = @single_event.event.name
           - if !@single_event.full_day
             .black-bar-time= I18n.localize(@single_event.occurrence, format: "%H:%M Uhr")
           .clearfix

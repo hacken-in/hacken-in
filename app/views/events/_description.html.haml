@@ -3,7 +3,7 @@
     .event-content-field
       .content-field-icon
         %i.icon-info-sign
-      .content-field-text
+      .content-field-text{ itemprop: 'description' }
         = convert_markdown event.description, true
 
 - if event.url.present?
