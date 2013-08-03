@@ -74,7 +74,7 @@ describe ApplicationHelper do
     collect_links(event).length.should == 0
   end
 
-  it "should return the example url" do 
+  it "should return the example url" do
     event = Event.new(name: "Hallo")
     event.url = "http://example.com"
     collect_links(event).should == [{title: "http://example.com", url: "http://example.com"}]
@@ -109,21 +109,21 @@ describe ApplicationHelper do
 
   it "should generate an image tag for user with an image url attached" do
     user = User.create(nickname: "hansdampf", image_url: "http://example.com/logo.png")
-    avatar_for_user(user, 20, "userimage").should == 
-      "<img alt=\"hansdampf\" class=\"userimage\" src=\"http://example.com/logo.png\" width=\"20\" />"
+    avatar_for_user(user, 20, "userimage").should ==
+      "<img alt=\"hansdampf\" class=\"userimage\" src=\"http://example.com/logo.png\" title=\"hansdampf\" width=\"20\" />"
   end
 
   it "should generate an image for a user with the default gravatar image" do
     user = User.create(nickname: "hansdampf", email: "mail@example.com")
-    avatar_for_user(user, 20, "userimage").should == 
-      "<img alt=\"Gravatar\" class=\"userimage\" height=\"20\" src=\"http://gravatar.com/avatar/7daf6c79d4802916d83f6266e24850af?default=identicon&amp;size=20\" width=\"20\" />"
+    avatar_for_user(user, 20, "userimage").should ==
+      "<img alt=\"hansdampf\" class=\"userimage\" height=\"20\" src=\"http://gravatar.com/avatar/7daf6c79d4802916d83f6266e24850af?default=identicon&amp;size=20\" title=\"hansdampf\" width=\"20\" />"
   end
 
   it "should generate an image for a user with a separate gravatar image email" do
-    user = User.create(nickname: "hansdampf", email: "mail@example.com", 
+    user = User.create(nickname: "hansdampf", email: "mail@example.com",
                        image_url: "http://example.com/logo.png",
                        gravatar_email: "gravatar@example.com")
-    avatar_for_user(user, 20, "userimage").should == 
-      "<img alt=\"Gravatar\" class=\"userimage\" height=\"20\" src=\"http://gravatar.com/avatar/0cef130e32e054dd516c99e5181d30c4?default=identicon&amp;size=20\" width=\"20\" />"
+    avatar_for_user(user, 20, "userimage").should ==
+      "<img alt=\"hansdampf\" class=\"userimage\" height=\"20\" src=\"http://gravatar.com/avatar/0cef130e32e054dd516c99e5181d30c4?default=identicon&amp;size=20\" title=\"hansdampf\" width=\"20\" />"
   end
 end

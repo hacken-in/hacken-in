@@ -1,6 +1,7 @@
 class Suggestion < ActiveRecord::Base
   attr_accessible :name,
     :occurrence,
+    :email_address,
     :description,
     :more,
     :place,
@@ -11,6 +12,12 @@ class Suggestion < ActiveRecord::Base
   validates_presence_of :name,
     :occurrence,
     :place
+
+  after_initialize :set_default_email_address
+
+  def set_default_email_address
+    self.email_address = User.current.email if self.new_record? and User.current.present? and User.current.email.present?
+  end
 
   def more_as_text spacer = "\n"
     more.map {|key, value| "#{key}: #{value}"}.join spacer

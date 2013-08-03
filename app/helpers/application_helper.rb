@@ -90,12 +90,16 @@ module ApplicationHelper
 
   def avatar_for_user(user, size=16, class_name=nil)
     if user.gravatar_email.present?
-      gravatar_image_tag(user.gravatar_email, class: class_name, gravatar: { default: :identicon, size: size })
+      gravatar_image_tag(user.gravatar_email, title: user.nickname, alt: user.nickname, class: class_name, gravatar: { default: :identicon, size: size })
     elsif user.email.present?
-      gravatar_image_tag(user.email, class: class_name, gravatar: { default: :identicon, size: size })
+      gravatar_image_tag(user.email, title: user.nickname, alt: user.nickname, class: class_name, gravatar: { default: :identicon, size: size })
     else
-      image_tag(user.image_url, width: size, alt: user.nickname, class: class_name)
+      image_tag(user.image_url, width: size, title: user.nickname, alt: user.nickname, class: class_name)
     end
+  end
+
+  def avatar_for_external_user(external_user, size=16, class_name=nil)
+    gravatar_image_tag(external_user.email, title: external_user.name, alt: external_user.name, class: class_name, gravatar: { default: :identicon, size: size })
   end
 
   # -----------------------------------------------------------
