@@ -43,5 +43,8 @@ module Hcking
     config.assets.initialize_on_precompile = false
     config.assets.precompile += ['active_admin.css', 'active_admin.js', 'active_admin/print.css']
     config.assets.version = '1.0'
+
+    # Disable Feature "allow external guestes!
+    config.allow_external_guests = false
   end
 end

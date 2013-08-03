@@ -17,17 +17,18 @@
     - else
       = button_to t('single_events.show.participate'), event_single_event_participate_path(@single_event.event, @single_event, state: :push), { method: :put, class: 'btn btn-inverse pull-right participate-button' }
 
-.event-participators
-  %h3.black-bar-small-title.event-participators-title externe Teilnehmer
-  - if @single_event.external_users.empty?
-    %p.no-participators
-      %em keine externen Teilnehmer
-  - else
-    %ul.event-participators-list
-      - @single_event.external_users.each_with_index do |extuser, index|
-        - class_ = (index == 0 || index % 6 == 0) ? 'cuddle-to-left' : ''
-        %li{ class: "participator #{class_}"}
-          = avatar_for_external_user(extuser, 85, "user_gravatar")
+- if Rails.application.config.allow_external_guests
+  .event-participators
+    %h3.black-bar-small-title.event-participators-title externe Teilnehmer
+    - if @single_event.external_users.empty?
+      %p.no-participators
+        %em keine externen Teilnehmer
+    - else
+      %ul.event-participators-list
+        - @single_event.external_users.each_with_index do |extuser, index|
+          - class_ = (index == 0 || index % 6 == 0) ? 'cuddle-to-left' : ''
+          %li{ class: "participator #{class_}"}
+            = avatar_for_external_user(extuser, 85, "user_gravatar")
 
   - unless user_signed_in?
     - if @single_event.attended_by_external_user?(cookies[:hacken_uuid])
