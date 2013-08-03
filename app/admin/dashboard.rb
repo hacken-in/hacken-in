@@ -31,5 +31,13 @@ ActiveAdmin.register_page "Dashboard" do
         end
       end
     end
+
+    columns do
+      column do
+        panel I18n.t("active_admin.statistics.single_events_this_week_by_city") do
+          pie_chart SingleEvent.this_week_by_city
+        end
+      end
+    end
   end
 end

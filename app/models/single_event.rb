@@ -261,5 +261,15 @@ class SingleEvent < ActiveRecord::Base
   def self.this_week_by_category
     Hash[self.this_week.group_by_category.count.map { |category_id, count| [ Category.title_for(category_id), count ] }]
   end
+
+  def self.this_week_by_city
+    by_cities = Hash.new(0)
+    self.this_week.each do |se|
+      if se.venue
+        by_cities[se.venue.city] += 1
+      end
+    end
+    by_cities
+  end
 end
 

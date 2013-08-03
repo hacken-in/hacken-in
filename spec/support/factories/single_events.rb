@@ -8,6 +8,15 @@ FactoryGirl.define do
     based_on_rule true
   end
 
+  factory :single_event_berlin, class: SingleEvent do
+    name "SimpleSingleEventNameInHipsterCity"
+    occurrence Time.new(2011,10,1,12,00)
+    association :event, factory: :simple
+    association :venue, factory: :berlin_venue
+    association :picture, factory: :picture
+    based_on_rule true
+  end
+
   factory :extended_single_event, class: SingleEvent do
     name "SimpleSingleEventName"
     description "wow this is <strong>a</strong> description"
