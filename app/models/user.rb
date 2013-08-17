@@ -211,6 +211,12 @@ class User < ActiveRecord::Base
     end
   end
 
+  def set_external_nickname(ext_nick, force = false)
+    ext_nick = ext_nick.select {|ext,nick| [:github, :twitter].include?(ext)}
+    ext_nick = ext_nick.select {|ext,nick| self.send(ext).blank?} unless force
+    self.update_attributes(ext_nick)
+  end
+
   private
 
   def try_to_fix_urls

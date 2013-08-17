@@ -7,10 +7,15 @@ class Authorization < ActiveRecord::Base
 
   def self.create_authorization(auth, user = nil)
     auth_data = Authorization.extract_auth_data(auth)
+    nick_data = Authorization.extract_nick_data(auth)
 
     a = Authorization.new(auth_data)
-    a.temp_token = SecureRandom.hex(40) if user.nil?
-    a.user_id = user.id unless user.nil?
+    if user.nil?
+      a.temp_token = SecureRandom.hex(40)
+    else
+      a.user_id = user.id
+      user.set_external_nickname(nick_data)
+    end
 
     a.save
 
@@ -26,6 +31,12 @@ class Authorization < ActiveRecord::Base
     }
     auth_data[:token_expires] = Time.at(auth.credentials.expires_at) if auth.credentials.expires_at
 
-    auth
+    auth_data
+  end
+
+  def self.extract_nick_data(auth)
+    {
+      auth.provider.to_sym => auth.info.nickname
+    }
   end
 end
