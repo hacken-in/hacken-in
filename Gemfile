@@ -91,6 +91,9 @@ gem 'geocoder', '= 1.1.2'
 gem 'nokogiri', '~> 1.5.9'
 
 group :development do
+  # Manage locales, see http://www.localeapp.com/projects/5442
+  gem 'localeapp'
+
   # Deployment
   gem 'capistrano', '~> 2.13.0'
 

@@ -1,8 +1,0 @@
-de:
-  devise:
-    registrations:
-      exclusion: 'Name ist nicht erlaubt.'
-      format: 'passt nicht in die Datenbank - besser zusammen schreiben oder Unterstrich benutzen & keine Umlaute'
-    callbacks:
-      user:
-        failure: 'Du konntest nicht Deinem %{kind}-Account angemeldet werden, weil "%{reason}".'

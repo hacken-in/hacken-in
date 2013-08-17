@@ -19,3 +19,5 @@ config/omniauth.yml
 config/initializers/devise.rb
 cert_file
 coverage
+config/initializers/localeapp.rb
+log/localeapp.yml
