@@ -31,7 +31,7 @@ class Authorization < ActiveRecord::Base
     }
     auth_data[:token_expires] = Time.at(auth.credentials.expires_at) if auth.credentials.expires_at
 
-    auth
+    auth_data
   end
 
   def self.extract_nick_data(auth)
