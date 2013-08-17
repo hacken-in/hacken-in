@@ -1,0 +1,51 @@
+{
+    "credentials": {
+        "expires": false, 
+        "token": "SOMETOKENTHATDOESNOTINTERESTYOU"
+    }, 
+    "extra": {
+        "raw_info": {
+            "avatar_url": "https://secure.gravatar.com/avatar/53e6c4e436bb05c5a7dddee6834636ae?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png", 
+            "bio": null, 
+            "blog": "www.klauszanders.de", 
+            "company": "TVRL GmbH & Co KG (putpat.tv)", 
+            "created_at": "2010-12-14T11:18:39Z", 
+            "email": "klaus@klauszanders.de", 
+            "events_url": "https://api.github.com/users/klaustopher/events{/privacy}", 
+            "followers": 15, 
+            "followers_url": "https://api.github.com/users/klaustopher/followers", 
+            "following": 53, 
+            "following_url": "https://api.github.com/users/klaustopher/following{/other_user}", 
+            "gists_url": "https://api.github.com/users/klaustopher/gists{/gist_id}", 
+            "gravatar_id": "53e6c4e436bb05c5a7dddee6834636ae", 
+            "hireable": false, 
+            "html_url": "https://github.com/klaustopher", 
+            "id": 522537, 
+            "location": "K\u00f6ln", 
+            "login": "klaustopher", 
+            "name": "Klaus Zanders", 
+            "organizations_url": "https://api.github.com/users/klaustopher/orgs", 
+            "public_gists": 1, 
+            "public_repos": 13, 
+            "received_events_url": "https://api.github.com/users/klaustopher/received_events", 
+            "repos_url": "https://api.github.com/users/klaustopher/repos", 
+            "starred_url": "https://api.github.com/users/klaustopher/starred{/owner}{/repo}", 
+            "subscriptions_url": "https://api.github.com/users/klaustopher/subscriptions", 
+            "type": "User", 
+            "updated_at": "2013-07-29T12:00:24Z", 
+            "url": "https://api.github.com/users/klaustopher"
+        }
+    }, 
+    "info": {
+        "email": "klaus@klauszanders.de", 
+        "image": "https://secure.gravatar.com/avatar/53e6c4e436bb05c5a7dddee6834636ae?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png", 
+        "name": "Klaus Zanders", 
+        "nickname": "klaustopher", 
+        "urls": {
+            "Blog": "www.klauszanders.de", 
+            "GitHub": "https://github.com/klaustopher"
+        }
+    }, 
+    "provider": "github", 
+    "uid": "522537"
+}
