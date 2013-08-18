@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
 
   before_save :try_to_fix_urls
 
-  default_scope order(:nickname)
+  default_scope -> { order(:nickname) }
 
   def organized_regions
     if self.admin

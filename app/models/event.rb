@@ -35,7 +35,7 @@ class Event < ActiveRecord::Base
               :converter => Proc.new{ |item| item }
 
   # Search for region, but also check for region_id = 1, that is the global region
-  scope :in_region, lambda { |region| where('region_id = ? or region_id = 1', region)}
+  scope :in_region, ->(region) { where('region_id = ? or region_id = 1', region)}
 
   def self.search(search)
     unscoped.find(:all, :conditions => ['name LIKE ? OR description LIKE ?', "%#{search}%", "%#{search}%"])
