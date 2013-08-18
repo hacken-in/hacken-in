@@ -7,5 +7,5 @@ class Comment < ActiveRecord::Base
   belongs_to :user
   delegate :nickname, :email, to: :user, prefix: true
 
-  scope :recent, lambda { |limit = 3| order('created_at desc').limit(limit) }
+  scope :recent, ->(limit=3) { order('created_at desc').limit(limit) }
 end
