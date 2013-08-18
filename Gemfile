@@ -7,6 +7,11 @@ gem 'rake', '~> 10.0.3'
 gem 'sqlite3', '~> 1.3.7', group: :test
 gem 'mysql2', '~> 0.3.11'
 
+# TODO: Remove Transition stuff --------------------------------------------
+gem 'protected_attributes'
+# --------------------------------------------------------------------------
+
+
 # Memcache Store
 # DO NOT UPGRADE THIS
 # We need exactly this version, because
