@@ -234,7 +234,7 @@ class User < ActiveRecord::Base
   def associate_auth_token_with_account
     if auth_temp_token
       a = Authorization.find_by_temp_token(auth_temp_token)
-      auth_temp_token = nil
+      self.auth_temp_token = nil
 
       unless a.nil?
         a.temp_token = nil
