@@ -4,11 +4,12 @@ gem 'rails', '~> 4.0.0'
 gem 'rake', '~> 10.0.3'
 
 # Databases
-gem 'sqlite3', '~> 1.3.7', group: :test
-gem 'mysql2', '~> 0.3.11'
+gem 'sqlite3', '~> 1.3.8', group: :test
+gem 'mysql2', '~> 0.3.13'
 
 # TODO: Remove Transition stuff --------------------------------------------
 gem 'protected_attributes'
+gem 'rails-observers' # Let's see if we can upgrade to callbacks ;)
 # --------------------------------------------------------------------------
 
 
@@ -35,7 +36,7 @@ gem 'leaflet-rails', '~> 0.6.2'
 gem 'uglifier', '~> 1.3.0'
 gem 'jquery-rails', '~> 3.0.0'
 gem 'pjax_rails', '~> 0.3.4'
-gem 'compass-rails', '~> 1.0.3'
+gem "compass-rails", "~> 2.0.alpha.0"
 gem 'bootstrap-sass-rails', '~> 2.3.0.0'
 
 # TODO: Fix the version
@@ -114,7 +115,8 @@ group :development do
 end
 
 group :test, :development do
-  gem 'database_cleaner'
+  # Using an old version of db cleaner for now ... see: https://github.com/bmabey/database_cleaner/issues/224
+  gem 'database_cleaner', '1.0.1'
   gem 'rspec-rails',  '~> 2.0'
   gem 'factory_girl_rails', '~> 4.2'
   gem 'faker', '~> 1.1.2'

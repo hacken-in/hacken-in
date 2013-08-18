@@ -1,9 +1,6 @@
 class AbstractUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
-  include Sprockets::Helpers::RailsHelper
-  include Sprockets::Helpers::IsolatedHelper
-
   storage :file
 
   def store_dir
