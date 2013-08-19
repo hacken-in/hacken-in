@@ -57,6 +57,7 @@ gem 'ri_cal', '~> 0.8.8'
 
 # Authentication and Authorization
 gem 'devise', '~> 2.2.3'
+gem 'devise-i18n'
 gem 'cancan', '~> 1.6.10'
 gem 'omniauth', '~> 1.1.3'
 gem 'omniauth-github', '~> 1.1.0'
@@ -90,6 +91,9 @@ gem 'geocoder', '= 1.1.2'
 gem 'nokogiri', '~> 1.5.9'
 
 group :development do
+  # Manage locales, see http://www.localeapp.com/projects/5442
+  gem 'localeapp'
+
   # Deployment
   gem 'capistrano', '~> 2.13.0'
 
