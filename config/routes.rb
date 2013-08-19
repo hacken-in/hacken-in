@@ -27,7 +27,7 @@ Hcking::Application.routes.draw do
     resources :authorizations, only: [:destroy]
   end
 
-  resources :comments, only: [:create, :edit, :show]
+  resources :comments, only: [:create, :edit, :update]
   resources :suggestions, only: [:new, :create, :show]
   resource :calendar, only: [:show]
 
