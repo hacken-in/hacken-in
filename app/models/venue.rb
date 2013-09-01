@@ -12,7 +12,7 @@ class Venue < ActiveRecord::Base
 
   geocoded_by :address
 
-  default_scope order(:location)
+  default_scope -> { order(:location) }
 
   def address
     [self.street, "#{self.zipcode} #{self.city}"].delete_if {|d| d.blank?}.collect{|d|d.strip}.join(", ")

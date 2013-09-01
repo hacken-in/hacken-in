@@ -20,7 +20,7 @@ Hcking::Application.routes.draw do
     end
 
     resources :user_tags, :path => "/user/:kind", :constraints => { id: /.*/, kind: /(like|hate)/ }, :only => [:create, :destroy]
-    match "markdown_converter" => "markdown_converter#convert"
+    match "markdown_converter" => "markdown_converter#convert", via: [:get, :post]
   end
 
   resources :users, only: [:show] do
@@ -40,34 +40,34 @@ Hcking::Application.routes.draw do
     end
   end
 
-  match "abonnieren"              => "subscribe#index"
-  match "humans"                  => "humans#index"
-  match "impressum"               => "pages#show", page_name: "impressum"
+  get "abonnieren"              => "subscribe#index"
+  get "humans"                  => "humans#index"
+  get "impressum"               => "pages#show", page_name: "impressum"
 
   # Calendar Links
   # These are the old links, without a region, redirect them to koeln
-  match "ical",                    to: redirect('/export/ical/koeln/all')
-  match "personalized_ical/:guid", to: redirect('/export/ical/koeln/mylikes/%{guid}')
-  match "user_ical/:guid",         to: redirect('/export/ical/koeln/mine/%{guid}')
-  match "single_event_ical/:id",   to: redirect('/export/ical/single_event/%{id}')
-  match "event_ical/:id",          to: redirect('/export/ical/event/%{id}')
-  match "tag_ical/:id",            to: redirect('/export/ical/koeln/tag/%{id}')
+  get "ical",                    to: redirect('/export/ical/koeln/all')
+  get "personalized_ical/:guid", to: redirect('/export/ical/koeln/mylikes/%{guid}')
+  get "user_ical/:guid",         to: redirect('/export/ical/koeln/mine/%{guid}')
+  get "single_event_ical/:id",   to: redirect('/export/ical/single_event/%{id}')
+  get "event_ical/:id",          to: redirect('/export/ical/event/%{id}')
+  get "tag_ical/:id",            to: redirect('/export/ical/koeln/tag/%{id}')
 
   # These are the new ones with a region in it
-  match "export/ical/:region/all"           => "ical#general"
-  match "export/ical/:region/mine/:guid"    => "ical#like_welcome_page"
-  match "export/ical/:region/tag/:id"       => "ical#for_tag"
-  match "export/ical/attending/:guid"       => "ical#personalized"
-  match "export/ical/event/:id"             => "ical#for_event"
-  match "export/ical/single_event/:id"      => "ical#for_single_event", as: "single_event_ical"
-  match "export/ical"                       => "ical#everything"
+  get "export/ical/:region/all"           => "ical#general"
+  get "export/ical/:region/mine/:guid"    => "ical#like_welcome_page"
+  get "export/ical/:region/tag/:id"       => "ical#for_tag"
+  get "export/ical/attending/:guid"       => "ical#personalized"
+  get "export/ical/event/:id"             => "ical#for_event"
+  get "export/ical/single_event/:id"      => "ical#for_single_event", as: "single_event_ical"
+  get "export/ical"                       => "ical#everything"
 
-  match "pages/:page_name"              => "pages#show"
+  get "pages/:page_name"              => "pages#show"
 
-  match "deutschland" => "welcome#deutschland"
-  match "move_to/:region" => "welcome#move_to", as: "move_region"
-  match ":region" => "calendars#show", as: "region"
-  match ":region/search" => "search#index", as: "search"
+  get "deutschland" => "welcome#deutschland"
+  get "move_to/:region" => "welcome#move_to", as: "move_region"
+  get ":region" => "calendars#show", as: "region"
+  match ":region/search" => "search#index", as: "search", via: [:get, :post]
 
   root to: "welcome#index"
 end

@@ -11,42 +11,29 @@ class SingleEvent < ActiveRecord::Base
   delegate :title, :description, to: :event, prefix: true
 
   has_many :comments, as: :commentable, dependent: :destroy
-  has_and_belongs_to_many :users, uniq: true
+  has_and_belongs_to_many :users, -> { uniq }
 
   has_many :external_users, :class_name => 'SingleEventExternalUser', :dependent => :destroy
 
   validates_presence_of :event_id
 
-  scope :in_future,
-    where("occurrence >= ?", Time.now)
-  scope :today_or_in_future,
-    where("occurrence >= ?", Time.now.beginning_of_day)
-  scope :most_current_for_event,
-    order("occurrence DESC")
-  scope :recent,
-    lambda { |limit = 3| today_or_in_future.limit(limit) }
-  scope :rule_based_in_future,
-    in_future.where(based_on_rule: true)
-  scope :in_next,
-    lambda { |delta| where(occurrence: (Time.now.to_date)..((Time.now + delta).to_date)) }
-  scope :in_next_from,
-    lambda { |delta, start_date| where(occurrence: (start_date)..((start_date + delta).to_date)) }
-  scope :recent_to_soon,
-    lambda { |delta| where(occurrence: (Time.now.to_date - delta)..((Time.now + delta).to_date + 1.day)) }
-  scope :only_tagged_with,
-    lambda { |tag| tagged_with(tag) | joins(:event).where('events.id in (?)', Event.tagged_with(tag).map(&:id)) }
-  scope :in_categories,
-    lambda { |categories| categories.blank? ? scoped : scoped.joins(:event).where('single_events.category_id IN (?) OR (single_events.category_id IS NULL AND events.category_id IN (?))', categories, categories) }
-  scope :this_week,
-    where(occurrence: (Date.today.beginning_of_week)..(Date.today.end_of_week))
-  scope :group_by_day,
-    group("DAY(occurrence)")
-  scope :group_by_category,
-    joins(:event).group("events.category_id")
+  scope :in_future, -> { where("occurrence >= ?", Time.now) }
+  scope :today_or_in_future, -> { where("occurrence >= ?", Time.now.beginning_of_day)}
+  scope :most_current_for_event, -> { order("occurrence DESC") }
+  scope :recent, ->(limit=3) { today_or_in_future.limit(limit) }
+  scope :rule_based_in_future, -> { in_future.where(based_on_rule: true) }
+  scope :in_next, ->(delta) { where(occurrence: (Time.now.to_date)..((Time.now + delta).to_date)) }
+  scope :in_next_from, ->(delta, start_date) { where(occurrence: (start_date)..((start_date + delta).to_date)) }
+  scope :recent_to_soon, ->(delta) { where(occurrence: (Time.now.to_date - delta)..((Time.now + delta).to_date + 1.day)) }
+  scope :only_tagged_with, ->(tag) { tagged_with(tag) | joins(:event).where('events.id in (?)', Event.tagged_with(tag).map(&:id)) }
+  scope :in_categories, ->(categories) { categories.blank? ? scoped : scoped.joins(:event).where('single_events.category_id IN (?) OR (single_events.category_id IS NULL AND events.category_id IN (?))', categories, categories) }
+  scope :this_week, -> { where(occurrence: (Date.today.beginning_of_week)..(Date.today.end_of_week)) }
+  scope :group_by_day, -> { group("DAY(occurrence)") }
+  scope :group_by_category, -> { joins(:event).group("events.category_id") }
   # Search for region, but also check for region_id = 1, that is the global region
-  scope :in_region, lambda { |region| joins(:event).where('events.region_id = ? or events.region_id = 1', region)}
+  scope :in_region, ->(region) { joins(:event).where('events.region_id = ? or events.region_id = 1', region) }
 
-  default_scope includes(:event).order([:occurrence, 'single_events.name ASC', 'events.name ASC'])
+  default_scope -> { includes(:event).order([:occurrence, 'single_events.name ASC', 'events.name ASC']) }
 
   acts_as_taggable
 

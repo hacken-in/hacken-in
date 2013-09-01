@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   acts_as_taggable_on :likes
 
   has_many :comments
-  has_and_belongs_to_many :single_events, uniq: true
+  has_and_belongs_to_many :single_events, -> { uniq }
 
   has_many :event_curations
   has_many :curated_events, :through => :event_curations, :source => :event
@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
 
   before_save :try_to_fix_urls
 
-  default_scope order(:nickname)
+  default_scope -> { order(:nickname) }
 
   def organized_regions
     if self.admin

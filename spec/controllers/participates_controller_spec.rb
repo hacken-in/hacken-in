@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 def assert_response_for single_event, format, query_params={}
-  assert_template ["single_events/_participants", "participates/update"] if format == :js
+  assert_template(/single_events\/_participants|participates\/update/) if format == :js
   assert_redirected_to event_single_event_path(single_event.event, single_event, query_params) if format == :html
 end
 
