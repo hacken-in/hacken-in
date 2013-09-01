@@ -11,7 +11,7 @@ class SingleEvent < ActiveRecord::Base
   delegate :title, :description, to: :event, prefix: true
 
   has_many :comments, as: :commentable, dependent: :destroy
-  has_and_belongs_to_many :users, uniq: true
+  has_and_belongs_to_many :users, -> { uniq }
 
   has_many :external_users, :class_name => 'SingleEventExternalUser', :dependent => :destroy
 
@@ -33,7 +33,7 @@ class SingleEvent < ActiveRecord::Base
   # Search for region, but also check for region_id = 1, that is the global region
   scope :in_region, ->(region) { joins(:event).where('events.region_id = ? or events.region_id = 1', region) }
 
-  default_scope includes(:event).order([:occurrence, 'single_events.name ASC', 'events.name ASC'])
+  default_scope -> { includes(:event).order([:occurrence, 'single_events.name ASC', 'events.name ASC']) }
 
   acts_as_taggable
 
