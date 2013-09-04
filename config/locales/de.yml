@@ -365,6 +365,7 @@ de:
       title: Vorschlag
     create:
       confirmation: "Vielen Dank für deinen Vorschlag :)"
+      wrong_recaptcha: "Leider ist der reCaptcha falsch eingegeben worden."
 
   formtastic:
     :yes: "Ja"

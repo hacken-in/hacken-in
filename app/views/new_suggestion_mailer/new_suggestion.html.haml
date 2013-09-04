@@ -4,8 +4,5 @@
     %h1
       Neuer Vorschlag # #{@record.id}
     %p Angelegt von #{User.current.nil? ? "Anonym" : link_to(User.current.nickname, user_url(User.current))}.
-
-    %p
-      = @record.name
     %p
       = @record.description

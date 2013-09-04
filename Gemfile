@@ -117,3 +117,5 @@ group :test, :development do
   gem 'simplecov', '~> 0.7.1'
   gem 'brakeman', '~> 1.9.5'
 end
+
+gem 'recaptcha', '0.3.5'

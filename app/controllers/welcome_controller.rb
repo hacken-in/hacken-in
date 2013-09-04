@@ -1,6 +1,7 @@
 class WelcomeController < ApplicationController
 
   def index
+    flash.keep
     if session[:region]
       redirect_to region_url(region: session[:region])
     else
