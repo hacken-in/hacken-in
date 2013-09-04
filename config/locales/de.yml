@@ -360,7 +360,7 @@ de:
       title: Mache uns einen Vorschlag
       introduction: "Bei uns im Kalender fehlt ein Termin? Es gibt eine neue Usergroup? Erzähl uns mehr davon :)"
       email_address_hint: "Deine E-Mailadresse wird nur für eventuelle Rückfragen genutzt"
-      description_hint: "zB. Themen, Besonderheiten, Terminrythmus, Anmeldung erforderlich..."
+      description_hint: "z.B. Themen, Besonderheiten, Terminrythmus, Anmeldung erforderlich..."
     show:
       title: Vorschlag
     create:
