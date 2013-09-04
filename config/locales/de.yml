@@ -218,12 +218,8 @@ de:
         venue_info: Ort-Zusatzinfo (Raum, Gebäude, etc...)
         use_venue_info_of_event: "Venue Info vom Event benutzen"
       suggestion:
-        name: Name
-        occurrence: Zeitpunkt
         email_address: E-Mailadresse
         description: Beschreibung
-        more_as_text: Weiteres
-        place: Ort
       comment:
         body: Inhalt
       category:
@@ -363,10 +359,8 @@ de:
     new:
       title: Mache uns einen Vorschlag
       introduction: "Bei uns im Kalender fehlt ein Termin? Es gibt eine neue Usergroup? Erzähl uns mehr davon :)"
-      occurrence_hint: "zB. am 14.12.2015 oder jeden dritten Mittwoch im Monat"
       email_address_hint: "Deine E-Mailadresse wird nur für eventuelle Rückfragen genutzt"
-      description_hint: "zB. Themen, Besonderheiten, Anmeldung erforderlich..."
-      more_hint: "Twitter, Hashtag, Homepage, Anderes"
+      description_hint: "zB. Themen, Besonderheiten, Terminrythmus, Anmeldung erforderlich..."
     show:
       title: Vorschlag
     create:

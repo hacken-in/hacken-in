@@ -6,11 +6,8 @@
 = simple_form_for @suggestion, html: { class: 'form-horizontal' } do |f|
   %p= t "suggestions.new.introduction"
 
-  = f.input :name
-  = f.input :occurrence, hint: t("suggestions.new.occurrence_hint")
   = f.input :email_address, hint: t("suggestions.new.email_address_hint")
   = f.input :description, hint: t("suggestions.new.description_hint")
-  = f.input :place
 
   .form-actions
     = f.submit 'Absenden', class: 'btn btn-inverse'

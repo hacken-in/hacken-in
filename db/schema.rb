@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130728123334) do
+ActiveRecord::Schema.define(:version => 20130904175931) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -153,13 +153,9 @@ ActiveRecord::Schema.define(:version => 20130728123334) do
   add_index "single_events_users", ["user_id"], :name => "index_single_events_users_on_user_id"
 
   create_table "suggestions", :force => true do |t|
-    t.string   "name"
-    t.string   "occurrence"
     t.text     "description"
-    t.text     "place"
-    t.text     "more"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.string   "email_address"
   end
 

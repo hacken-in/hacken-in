@@ -2,36 +2,24 @@ ActiveAdmin.register Suggestion do
   menu priority: 1
   index do
     column :id
-    column :name
     column :email_address
-    column :occurrence
     column :description
-    column :more_as_inline
-    column :place
     default_actions
   end
 
   show do
     attributes_table do
       row :id
-      row :name
       row :email_address
-      row :occurrence
       row :description
-      row :more_as_inline
-      row :place
     end
   end
 
   form do |f|
     f.inputs "Suggestion" do
       f.input :id
-      f.input :name
       f.input :email_address
-      f.input :occurrence
       f.input :description
-      f.input :more_as_text, as: "text"
-      f.input :place
       f.buttons
     end
   end
