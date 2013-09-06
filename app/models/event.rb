@@ -168,7 +168,7 @@ class Event < ActiveRecord::Base
   # When there is none, the most recent one is returned.
   # When there are no events, nil is returned
   def closest_single_event(date=Date.today)
-    return nil if single_events.empty?
+    return nil if single_events.to_a.empty?
 
     coming_up = single_events.select { |s| s.occurrence.to_date >= date }.sort_by { |s| s.occurrence }
 
