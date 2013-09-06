@@ -1,6 +1,8 @@
 class SingleEvent < ActiveRecord::Base
   include TwitterHashTagFixer
 
+  attr_accessible :event, :occurrence
+
   after_destroy :update_event
 
   belongs_to :category
