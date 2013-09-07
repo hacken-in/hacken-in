@@ -34,6 +34,7 @@ class SingleEvent < ActiveRecord::Base
   scope :group_by_category, -> { joins(:event).group("events.category_id") }
   # Search for region, but also check for region_id = 1, that is the global region
   scope :in_region, ->(region) { joins(:event).where('events.region_id = ? or events.region_id = 1', region) }
+  scope :name_or_description_like, -> (search) { where(arel_table[:name].matches(search).or(arel_table[:description].matches(search))) }
 
   default_scope -> { includes(:event).order([:occurrence, 'single_events.name ASC', 'events.name ASC']) }
 
@@ -42,7 +43,7 @@ class SingleEvent < ActiveRecord::Base
   def self.search(search)
     search.strip!
     # Name + Description in Single Event
-    sevents = today_or_in_future.find(:all, :conditions => ['single_events.name LIKE ? OR single_events.description LIKE ?', "%#{search}%", "%#{search}%"])
+    sevents = today_or_in_future.name_or_description_like("%#{search}%")
 
     Event.search(search).each do |e|
       sevents.concat(e.single_events.today_or_in_future)
