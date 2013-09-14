@@ -29,7 +29,7 @@ class Api::CalendarsController < ApplicationController
       return
     end
 
-    @single_events = SingleEvent.where('? <= occurrence AND occurrence <= ?', from, to).in_region(current_region)
+    @single_events = SingleEvent.where('? <= occurrence AND occurrence <= ?', from.beginning_of_day, to.end_of_day).in_region(current_region)
     @single_events = @single_events.in_categories(params[:categories].split(',').map(&:to_i)) unless params[:categories].blank?
 
     @single_events.select! { |single_event| single_event.is_for_user? current_user } if current_user

@@ -19,7 +19,7 @@ class CalendarsController < ApplicationController
       raise ActionController::RoutingError.new('Not Found')
     end
 
-    @single_events = SingleEvent.in_next_from(4.weeks, @start_date).in_region(@region)
+    @single_events = SingleEvent.in_next_from(4.weeks, @start_date.beginning_of_day).in_region(@region)
     @single_events.select! { |single_event| single_event.is_for_user? current_user } if current_user
     @single_events.sort!
   end

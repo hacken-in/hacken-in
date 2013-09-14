@@ -32,7 +32,7 @@ class SingleEvent < ActiveRecord::Base
   scope :in_next,
     lambda { |delta| where(occurrence: (Time.now.to_date)..((Time.now + delta).to_date)) }
   scope :in_next_from,
-    lambda { |delta, start_date| where(occurrence: (start_date)..((start_date + delta).to_date)) }
+    lambda { |delta, start_date| where(occurrence: (start_date)..((start_date + delta).to_date.end_of_day)) }
   scope :recent_to_soon,
     lambda { |delta| where(occurrence: (Time.now.to_date - delta)..((Time.now + delta).to_date + 1.day)) }
   scope :only_tagged_with,
