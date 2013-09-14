@@ -38,6 +38,7 @@ ActiveAdmin.register SingleEvent do
       row :description do |p|
         convert_markdown p.description
       end
+      row :region
       row :venue
       row :venue_info
       row :twitter

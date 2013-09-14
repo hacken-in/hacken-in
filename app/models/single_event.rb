@@ -15,6 +15,8 @@ class SingleEvent < ActiveRecord::Base
 
   has_many :external_users, :class_name => 'SingleEventExternalUser', :dependent => :destroy
 
+  belongs_to :region
+
   validates_presence_of :event_id
 
   scope :in_future,
@@ -44,7 +46,7 @@ class SingleEvent < ActiveRecord::Base
   scope :group_by_category,
     joins(:event).group("events.category_id")
   # Search for region, but also check for region_id = 1, that is the global region
-  scope :in_region, lambda { |region| joins(:event).where('events.region_id = ? or events.region_id = 1', region)}
+  scope :in_region, lambda { |region| joins(:event).where('(single_events.region_id is not null and (single_events.region_id = ? or single_events.region_id = 1)) or (single_events.region_id is null and (events.region_id = ? or events.region_id = 1))', region, region)}
 
   default_scope includes(:event).order([:occurrence, 'single_events.name ASC', 'events.name ASC'])
 

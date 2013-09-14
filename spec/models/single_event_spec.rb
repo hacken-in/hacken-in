@@ -255,6 +255,21 @@ ical
     SingleEvent.in_region(region).count.should == 0
   end
 
+  it "should return the single event if it has the correct reagion and the event has not" do
+    region = Region.where(slug: "berlin").first || FactoryGirl.create(:berlin_region)
+    single_event.region = region
+    single_event.save
+    SingleEvent.in_region(region).count.should == 1
+  end
+
+  it "should not return the single event if it has a wrong region and the event has a correct one" do
+    region = Region.where(slug: "berlin").first || FactoryGirl.create(:berlin_region)
+    single_event.region = region
+    single_event.save
+    kregion = Region.where(slug: "koeln").first || FactoryGirl.create(:koeln_region)
+    SingleEvent.in_region(kregion).count.should == 0
+  end
+
   it "should find single events that are in global region, no matter what region you give to it" do
     gevent = FactoryGirl.create(:global_single_event)
     bregion = Region.where(slug: "berlin") || FactoryGirl.create(:berlin_region)

@@ -30,6 +30,11 @@
             - if @event.twitter_hashtag.present?
               = link_to "##{@event.twitter_hashtag}", "http://twitter.com/search/?q=##{@event.twitter_hashtag}"
         %tr
+          %th Region
+          %td
+            - if @event.region.present?
+              = @event.region.name
+        %tr
           %th Ort
           %td
             - if @event.venue.present?

@@ -15,6 +15,12 @@
       = form.input :occurrence
     = form.input :duration, placeholder: @single_event.event.duration
     = form.input :full_day
+    = form.input :region
+    - if @single_event.event.region.present?
+      %li
+        %label.label &nbsp;
+        Region der Veranstaltungsreihe:
+        = @single_event.event.region.name
     = form.input :venue
     - if @single_event.event.venue.present?
       %li
