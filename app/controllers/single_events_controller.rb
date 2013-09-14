@@ -7,7 +7,7 @@ class SingleEventsController < ApplicationController
     @single_event = SingleEvent.find params[:id]
     opengraph_data @single_event.to_opengraph
     @event = @single_event.event
-    @region = @event.region
+    @region = @single_event.region || @event.region
     respond_with @single_event
   end
 end
