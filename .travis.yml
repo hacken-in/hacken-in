@@ -1,11 +1,13 @@
 language: ruby
 rvm:
+  - 1.9.3
   - 2.0.0
-  - rbx-19mode
+  - rbx-head
   - ruby-head
 matrix:
   allow_failures:
-    - rvm: rbx-19mode
+    - rvm: 1.9.3
+    - rvm: rbx-head
     - rvm: ruby-head
 notifications:
   webhooks: https://www.buildheroes.com/api/projects/e27637d59452f18b5c97dec76d9b9f4a2e4cfcf4/builds
