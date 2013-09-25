@@ -54,7 +54,8 @@ gem 'redcarpet', '~> 2.2.2'
 # Attention: 0.6.0 has namespacing issues
 # The "/" root tries to open a non existend
 # dashboard controller
-gem 'activeadmin', github: "gregbell/active_admin", branch: 'rails4'
+# TODO: Set this to the Ruby Gems version as soon as this is released
+gem 'activeadmin', github: "gregbell/active_admin", branch: 'master'
 
 # Date Handling
 # TODO: gem 'ice_cube', '~> 0.10.0'
