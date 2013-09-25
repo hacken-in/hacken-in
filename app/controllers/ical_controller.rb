@@ -20,7 +20,7 @@ class IcalController < ApplicationController
   def like_welcome_page
     user = user_by_guid
     @single_events = SingleEvent.recent_to_soon(3.months).in_region(current_region)
-    @single_events.select! { |single_event| single_event.is_for_user? user } if user
+    @single_events.to_a.select! { |single_event| single_event.is_for_user? user } if user
     render_events @single_events
   end
 
