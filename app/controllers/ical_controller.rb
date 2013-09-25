@@ -14,12 +14,13 @@ class IcalController < ApplicationController
   end
 
   def personalized
-    render_events user.single_events.recent_to_soon(3.months)
+    render_events user_by_guid.single_events.recent_to_soon(3.months)
   end
 
   def like_welcome_page
+    user = user_by_guid
     @single_events = SingleEvent.recent_to_soon(3.months).in_region(current_region)
-    @single_events.select! { |single_event| single_event.is_for_user? user }
+    @single_events.select! { |single_event| single_event.is_for_user? user } if user
     render_events @single_events
   end
 
@@ -63,7 +64,7 @@ class IcalController < ApplicationController
     gabba.event "Event", GABBA_MAPPING[params[:action].to_sym]
   end
 
-  def user
+  def user_by_guid
     User.find_by_guid(params[:guid]) || raise(ActiveRecord::RecordNotFound)
   end
 
