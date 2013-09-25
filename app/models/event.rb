@@ -171,7 +171,7 @@ class Event < ActiveRecord::Base
   def closest_single_event(date=Date.today)
     return nil if single_events.to_a.empty?
 
-    coming_up = single_events.select { |s| s.occurrence.to_date >= date }.sort_by { |s| s.occurrence }
+    coming_up = single_events.to_a.select { |s| s.occurrence.to_date >= date }.sort_by { |s| s.occurrence }
 
     if coming_up.empty?
       single_events.last
