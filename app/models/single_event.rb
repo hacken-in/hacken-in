@@ -35,7 +35,8 @@ class SingleEvent < ActiveRecord::Base
   scope :group_by_day, -> { group("DAY(occurrence)") }
   scope :group_by_category, -> { joins(:event).group("events.category_id") }
   # Search for region, but also check for region_id = 1, that is the global region
-  scope :in_region, ->(region) { joins(:event).where('events.region_id = ? or events.region_id = 1', region) }
+  scope :in_region, ->(region) { joins(:event).where('(single_events.region_id is not null and (single_events.region_id = ? or single_events.region_id = 1)) or (single_events.region_id is null and (events.region_id = ? or events.region_id = 1))', region, region)}
+ 
   scope :name_or_description_like, -> (search) { where(arel_table[:name].matches(search).or(arel_table[:description].matches(search))) }
 
   default_scope -> { includes(:event).order([:occurrence, 'single_events.name ASC', 'events.name ASC']) }
