@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130728123334) do
+ActiveRecord::Schema.define(version: 20130914120958) do
 
   create_table "authorizations", force: true do |t|
     t.string   "provider"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20130728123334) do
 
   create_table "events", force: true do |t|
     t.string   "name"
+    t.integer  "region_id"
     t.text     "description"
     t.text     "schedule_yaml"
     t.string   "url"
@@ -70,7 +71,6 @@ ActiveRecord::Schema.define(version: 20130728123334) do
     t.integer  "venue_id"
     t.string   "venue_info"
     t.integer  "picture_id"
-    t.integer  "region_id"
   end
 
   add_index "events", ["category_id"], name: "index_events_on_category_id", using: :btree
@@ -111,9 +111,10 @@ ActiveRecord::Schema.define(version: 20130728123334) do
   create_table "single_event_external_users", force: true do |t|
     t.integer  "single_event_id"
     t.string   "email"
+    t.string   "session_token"
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   add_index "single_event_external_users", ["single_event_id"], name: "index_single_event_external_users_on_single_event_id", using: :btree
@@ -136,11 +137,13 @@ ActiveRecord::Schema.define(version: 20130728123334) do
     t.integer  "picture_id"
     t.string   "twitter"
     t.boolean  "use_venue_info_of_event", default: true
+    t.integer  "region_id"
   end
 
   add_index "single_events", ["category_id"], name: "index_single_events_on_category_id", using: :btree
   add_index "single_events", ["event_id"], name: "index_single_events_on_event_id", using: :btree
   add_index "single_events", ["picture_id"], name: "index_single_events_on_picture_id", using: :btree
+  add_index "single_events", ["region_id"], name: "index_single_events_on_region_id", using: :btree
   add_index "single_events", ["venue_id"], name: "index_single_events_on_venue_id", using: :btree
 
   create_table "single_events_users", id: false, force: true do |t|
@@ -152,11 +155,7 @@ ActiveRecord::Schema.define(version: 20130728123334) do
   add_index "single_events_users", ["user_id"], name: "index_single_events_users_on_user_id", using: :btree
 
   create_table "suggestions", force: true do |t|
-    t.string   "name"
-    t.string   "occurrence"
     t.text     "description"
-    t.text     "place"
-    t.text     "more"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "email_address"
@@ -208,7 +207,6 @@ ActiveRecord::Schema.define(version: 20130728123334) do
     t.string   "image_url"
     t.string   "team"
     t.string   "name"
-    t.integer  "current_region_id",      :default => 2
     t.string   "gravatar_email"
   end
 
@@ -228,7 +226,6 @@ ActiveRecord::Schema.define(version: 20130728123334) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.string   "url"
-    t.integer  "region_id",  :default => 2
   end
 
   add_index "venues", ["latitude", "longitude"], name: "index_venues_on_latitude_and_longitude", using: :btree
