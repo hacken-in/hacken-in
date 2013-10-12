@@ -2,6 +2,10 @@ ActiveAdmin.register Event do
   config.sort_order = "name_asc"
   menu priority: 2
 
+  filter :name
+  filter :region
+  filter :category
+
   index do
     column :id
     column :name
@@ -21,6 +25,8 @@ ActiveAdmin.register Event do
     end
 
     default_actions
+
+
   end
 
   show do
