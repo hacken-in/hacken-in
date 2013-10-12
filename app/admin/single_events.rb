@@ -55,4 +55,10 @@ ActiveAdmin.register SingleEvent do
   form do
     render partial: 'form'
   end
+
+  controller do
+    def permitted_params
+      params.permit!
+    end
+  end
 end

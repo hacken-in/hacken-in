@@ -37,6 +37,9 @@ ActiveAdmin.register Event do
   end
 
   controller do
+    def permitted_params
+      params.permit!
+    end
     def create
       [[:schedule_rules_json, :schedule_rules], [:excluded_times_json, :excluded_times]].each do |item|
         if params[:event][item[0]]

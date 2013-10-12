@@ -23,4 +23,10 @@ ActiveAdmin.register Suggestion do
       f.buttons
     end
   end
+
+  controller do
+    def permitted_params
+      params.permit!
+    end
+  end
 end

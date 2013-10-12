@@ -22,4 +22,9 @@ ActiveAdmin.register Picture do
     end
   end
   form partial: "picture_form"
+  controller do
+    def permitted_params
+      params.permit!
+    end
+  end
 end
