@@ -18,6 +18,14 @@ describe ActiveAdminAbility do
     ActiveAdminAbility.new(FactoryGirl.create(:user)).should_not be_able_to :update, comment
   end
 
+  it "should be able to create events, single_events and venues if region organizer" do
+    user = FactoryGirl.create(:user)
+    user.region_organizers.create(region: FactoryGirl.create(:berlin_region))
+    ActiveAdminAbility.new(user).should be_able_to :create, Event
+    ActiveAdminAbility.new(user).should be_able_to :create, SingleEvent
+    ActiveAdminAbility.new(user).should be_able_to :create, Venue
+  end
+
   it "should only be able to edit events if region organizer" do
     user = FactoryGirl.create(:user)
     event = FactoryGirl.create(:full_event)
@@ -56,6 +64,5 @@ describe ActiveAdminAbility do
     ActiveAdminAbility.new(user).should be_able_to :read, ActiveAdmin::Page
     ActiveAdminAbility.new(FactoryGirl.create(:user)).should_not be_able_to :read, ActiveAdmin::Page
   end
-
 
 end

@@ -19,6 +19,9 @@ class ActiveAdminAbility
 
       # Alle Regionen, die einem zugewiesen wurden
       if user.region_organizers.present?
+        can :create, Event
+        can :create, SingleEvent
+        can :create, Venue
         can :manage, Event, region_id: user.region_organizers.pluck(:region_id)
         can :manage, SingleEvent, event: {region_id: user.region_organizers.pluck(:region_id)}
         can :manage, Venue, region_id: user.region_organizers.pluck(:region_id)
