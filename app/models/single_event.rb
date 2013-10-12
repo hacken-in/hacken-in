@@ -1,8 +1,8 @@
 class SingleEvent < ActiveRecord::Base
   include TwitterHashTagFixer
 
-  attr_accessible :event, :occurrence
-
+  attr_accessible :event, :occurrence, :name, :description, :duration, :full_day, :region_id, :venue_id,
+    :venue_info, :use_venue_info_of_event, :category_id, :picture_id, :url, :twitter, :twitter_hashtag, :tag_list
   after_destroy :update_event
 
   belongs_to :category
