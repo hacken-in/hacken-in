@@ -248,4 +248,11 @@ DESC
     @response.body.should include @vcal_event7
     @response.body.should include @vcal_event8
   end
+
+  it "should render one single event" do
+    get :for_single_event, id: Event.first.single_events.first.id
+    @response.body.should start_with @vcal_start
+    @response.body.should end_with @vcal_end
+    @response.body.should include @vcal_event
+  end
 end

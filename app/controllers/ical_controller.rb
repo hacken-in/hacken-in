@@ -25,7 +25,12 @@ class IcalController < ApplicationController
   end
 
   def for_single_event
-    render_events SingleEvent.find(params[:id])
+    ri_cal = RiCal.Calendar
+    single_event = SingleEvent.find(params[:id])
+    if single_event
+      ri_cal.events.push(single_event.to_ri_cal_event(is_google_bot))
+    end
+    render text: ri_cal
   end
 
   def for_event
