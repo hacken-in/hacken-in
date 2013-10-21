@@ -9,7 +9,7 @@
     - if @current_user.admin?
       -# Admins dürfen alles
       = f.input :region, :as => :select, include_blank: false
-    - elsif (@venue.region.nil? || @current_user.assigned_regions.include?(@venue.region))
+    - else
       -# Wenn keine Region vorhanden ist, oder die Region innerhalb der vom Nutzer
       -# freigeschalteten ist, diese bearbeiten dürfen
       = f.input :region, :as => :select, :collection => @current_user.assigned_regions, include_blank: false
