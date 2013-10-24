@@ -78,7 +78,7 @@ gem "simple_form", github: "plataformatec/simple_form"
 
 # JavaScript runtime
 gem 'execjs', '~> 1.4.0'
-gem 'therubyracer', '~> 0.11.4'
+gem 'therubyracer', '~> 0.12.0'
 
 # User Picture using Gravatar
 gem 'gravatar_image_tag', '~> 1.1.3'

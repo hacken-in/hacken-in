@@ -206,7 +206,7 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     leaflet-rails (0.6.2)
-    libv8 (3.11.8.17)
+    libv8 (3.16.14.3)
     listen (1.3.1)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
@@ -357,8 +357,8 @@ GEM
     term-ansicolor (1.2.2)
       tins (~> 0.8)
     terminal-table (1.4.5)
-    therubyracer (0.11.4)
-      libv8 (~> 3.11.8.12)
+    therubyracer (0.12.0)
+      libv8 (~> 3.16.14.0)
       ref
     thor (0.18.1)
     thread_safe (0.1.3)
@@ -435,7 +435,7 @@ DEPENDENCIES
   simple_form!
   simplecov (~> 0.7.1)
   sqlite3 (~> 1.3.8)
-  therubyracer (~> 0.11.4)
+  therubyracer (~> 0.12.0)
   tipsy-rails!
   uglifier (~> 1.3.0)
   zero-clipboard-rails!
