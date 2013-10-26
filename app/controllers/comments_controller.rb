@@ -3,8 +3,9 @@ class CommentsController < ApplicationController
   respond_to :html, :xml
 
   def create
-    @comment = find_commentable.comments.build comment_params[:comment]
+    @comment = find_commentable.comments.build(comment_params)
     @comment.user = current_user
+
     authorize! :create, @comment
 
     if @comment.save
@@ -16,16 +17,16 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @comment = Comment.find comment_params[:id]
+    @comment = Comment.find params[:id]
     authorize! :edit, @comment
     respond_with @comment
   end
 
   def update
-    @comment = Comment.find comment_params[:id]
+    @comment = Comment.find params[:id]
     authorize! :update, @comment
 
-    if @comment.update_attributes comment_params[:comment]
+    if @comment.update_attributes(comment_params)
       flash[:notice] = t "comments.update.confirmation"
     end
 
@@ -34,7 +35,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find comment_params[:id]
+    @comment = Comment.find params[:id]
     authorize! :destroy, @comment
 
     if @comment.destroy
@@ -47,15 +48,15 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.permit!
+    params.require(:comment).permit(:body)
   end
 
   # This not ideal, but I don't know a better way right now.
   # There should be no mention of the Event classes in the comments controller
   def find_commentable
-    return SingleEvent.find comment_params[:single_event_id] unless comment_params[:single_event_id].nil?
-    return Event.find comment_params[:event_id] unless comment_params[:event_id].nil?
-    return BlogPost.find comment_params[:blog_post_id] unless comment_params[:blog_post_id].nil?
+    return SingleEvent.find params[:single_event_id] unless params[:single_event_id].nil?
+    return Event.find params[:event_id] unless params[:event_id].nil?
+    return BlogPost.find params[:blog_post_id] unless params[:blog_post_id].nil?
   end
 
 end
