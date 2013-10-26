@@ -26,7 +26,7 @@ ActiveAdmin.register Suggestion do
 
   controller do
     def permitted_params
-      params.permit!
+      params.permit(suggestion: [:email_address, :description])
     end
   end
 end
