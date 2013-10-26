@@ -61,7 +61,7 @@ ActiveAdmin.register Comment, as: "HackenComment" do
 
   controller do
     def permitted_params
-      params.permit!
+      params.permit(hacken_comment: [:body, :email])
     end
   end
 end
