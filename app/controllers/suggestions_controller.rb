@@ -12,7 +12,7 @@ class SuggestionsController < ApplicationController
   end
 
   def create
-    @suggestion = Suggestion.new params[:suggestion]
+    @suggestion = Suggestion.new(suggestion_params)
 
     if verify_recaptcha(:model => @suggestion)
       if @suggestion.save
@@ -24,6 +24,9 @@ class SuggestionsController < ApplicationController
       flash[:error] = t("suggestions.create.wrong_recaptcha")
       render :new
     end
+  end
 
+  def suggestion_params
+    params.require(:suggestion).permit(:email_address, :description)
   end
 end
