@@ -8,7 +8,6 @@ gem 'sqlite3', '~> 1.3.8', group: :test
 gem 'mysql2', '~> 0.3.13'
 
 # TODO: Remove Transition stuff --------------------------------------------
-gem 'protected_attributes'
 gem 'rails-observers' # Let's see if we can upgrade to callbacks ;)
 # --------------------------------------------------------------------------
 

@@ -3,7 +3,6 @@ require 'time_extensions'
 class Event < ActiveRecord::Base
   include TwitterHashTagFixer
 
-  attr_accessible :name, :category
 
   validates_presence_of :name
   validates_presence_of :category

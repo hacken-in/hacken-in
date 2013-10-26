@@ -1,5 +1,4 @@
 class Suggestion < ActiveRecord::Base
-  attr_accessible :email_address, :description
 
   serialize :more, Hash
 

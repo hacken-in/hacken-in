@@ -22,8 +22,6 @@ class User < ActiveRecord::Base
   has_many :authorizations
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :allow_ignore_view, :image_url
-  attr_protected :admin
 
   # Temporary auth token and method to store it when we are done :)
   attr_accessor :auth_temp_token
