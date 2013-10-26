@@ -16,7 +16,7 @@ ActiveAdmin.register Category do
 
   controller do
     def permitted_params
-      params.permit!
+      params.permit(category: [:title, :color])
     end
   end
 end
