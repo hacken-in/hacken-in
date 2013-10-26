@@ -22,9 +22,10 @@ ActiveAdmin.register Picture do
     end
   end
   form partial: "picture_form"
+
   controller do
     def permitted_params
-      params.permit!
+      params.permit(picture: [:box_image, :title, :description])
     end
   end
 end
