@@ -40,6 +40,7 @@ ActiveAdmin.register Event do
     def permitted_params
       params.permit!
     end
+
     def create
       [[:schedule_rules_json, :schedule_rules], [:excluded_times_json, :excluded_times]].each do |item|
         if params[:event][item[0]]
@@ -51,6 +52,7 @@ ActiveAdmin.register Event do
         format.html { redirect_to admin_event_path(@event) }
       end
     end
+
     def update
       [[:schedule_rules_json, :schedule_rules], [:excluded_times_json, :excluded_times]].each do |item|
         if params[:event][item[0]]
@@ -63,5 +65,4 @@ ActiveAdmin.register Event do
       end
     end
   end
-
 end
