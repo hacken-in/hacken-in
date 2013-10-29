@@ -3,8 +3,9 @@ class CommentsController < ApplicationController
   respond_to :html, :xml
 
   def create
-    @comment = find_commentable.comments.build params[:comment]
+    @comment = find_commentable.comments.build(comment_params)
     @comment.user = current_user
+
     authorize! :create, @comment
 
     if @comment.save
@@ -25,7 +26,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find params[:id]
     authorize! :update, @comment
 
-    if @comment.update_attributes params[:comment]
+    if @comment.update_attributes(comment_params)
       flash[:notice] = t "comments.update.confirmation"
     end
 
@@ -45,6 +46,10 @@ class CommentsController < ApplicationController
   end
 
   private
+
+  def comment_params
+    params.require(:comment).permit(:body)
+  end
 
   # This not ideal, but I don't know a better way right now.
   # There should be no mention of the Event classes in the comments controller

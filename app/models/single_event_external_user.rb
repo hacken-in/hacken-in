@@ -1,5 +1,4 @@
 class SingleEventExternalUser < ActiveRecord::Base
-  attr_accessible :email, :name, :single_event, :single_event_id, :session_token
 
   belongs_to :single_event
 

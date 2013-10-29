@@ -58,7 +58,22 @@ ActiveAdmin.register SingleEvent do
 
   controller do
     def permitted_params
-      params.permit!
+      params.permit(single_event: %i[
+        event
+        name
+        occurrence
+        duration
+        full_day
+        description
+        region
+        venue
+        venue_info
+        twitter
+        twitter_hashtag
+        url
+        picture
+        tags
+      ])
     end
   end
 end

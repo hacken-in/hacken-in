@@ -45,7 +45,14 @@ ActiveAdmin.register Venue do
 
   controller do
     def permitted_params
-      params.permit!
+      params.permit(venue: %i[
+        location
+        street
+        zipcode
+        city
+        country
+        url
+      ])
     end
   end
 end

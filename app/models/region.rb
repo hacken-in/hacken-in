@@ -6,6 +6,6 @@ class Region < ActiveRecord::Base
   has_many :organizers, :through => :region_organizers, :source => :user
 
   def to_param
-    self.slug
+    "#{self.id}-#{self.slug}"
   end
 end

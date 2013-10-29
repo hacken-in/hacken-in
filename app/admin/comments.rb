@@ -1,9 +1,5 @@
 #coding: utf-8
-
-# This is called HackenComment for a technical reason:
-# If you call it Comment, there is a bug that basically
-# blows up everything ;)
-ActiveAdmin.register Comment, as: "HackenComment" do
+ActiveAdmin.register Comment do
   menu priority: 5
   index do
     column :id
@@ -48,7 +44,6 @@ ActiveAdmin.register Comment, as: "HackenComment" do
       row :created_at
       row :updated_at
     end
-    active_admin_comments
   end
 
   form do |f|
@@ -61,7 +56,7 @@ ActiveAdmin.register Comment, as: "HackenComment" do
 
   controller do
     def permitted_params
-      params.permit!
+      params.permit(comment: [:body, :email])
     end
   end
 end
