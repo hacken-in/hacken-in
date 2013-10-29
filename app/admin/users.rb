@@ -38,7 +38,6 @@ ActiveAdmin.register User do
 
 
   controller do
-    with_role :admin
     defaults finder: :find_by_nickname
 
     def permitted_params

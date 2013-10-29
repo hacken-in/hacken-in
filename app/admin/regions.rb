@@ -8,10 +8,6 @@ ActiveAdmin.register Region do
   end
 
   controller do
-    with_role :admin
-  end
-
-  controller do
     def permitted_params
       params.permit(region: [:name, :slug, :latitude, :longitude, :perimeter])
     end
