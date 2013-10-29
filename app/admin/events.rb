@@ -38,7 +38,22 @@ ActiveAdmin.register Event do
 
   controller do
     def permitted_params
-      params.permit!
+      params.permit(event: %i[
+        name
+        region_id
+        description
+        schedule_yaml
+        url
+        twitter
+        created_at
+        updated_at
+        full_day
+        twitter_hashtag
+        category_id
+        venue_id
+        venue_info
+        picture_id
+      ])
     end
 
     def create
