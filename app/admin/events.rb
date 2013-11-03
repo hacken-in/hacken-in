@@ -76,6 +76,7 @@ ActiveAdmin.register Event do
           params[:event].delete item[0]
         end
       end
+      fix_start_time
       create! do |format|
         format.html { redirect_to admin_event_path(@event) }
       end
@@ -88,9 +89,29 @@ ActiveAdmin.register Event do
           params[:event].delete item[0]
         end
       end
+      fix_start_time
       update! do |format|
         format.html { redirect_to admin_event_path(@event) }
       end
+    end
+
+    private
+
+    # This fixes a timezone problem for the start time in
+    # the event.
+    def fix_start_time
+      time = Time.new(params[:event]["start_time(1i)"].to_i,
+                   params[:event]["start_time(2i)"].to_i,
+                   params[:event]["start_time(3i)"].to_i,
+                   params[:event]["start_time(4i)"].to_i,
+                   params[:event]["start_time(5i)"].to_i,
+                  )
+      params[:event].delete("start_time(1i)")
+      params[:event].delete("start_time(2i)")
+      params[:event].delete("start_time(3i)")
+      params[:event].delete("start_time(4i)")
+      params[:event].delete("start_time(5i)")
+      params[:event]["start_time"] = time
     end
   end
 end

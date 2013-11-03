@@ -27,14 +27,6 @@ class Event < ActiveRecord::Base
 
   acts_as_taggable
 
-  # Workaround that makes it possible
-  # to edit start times in active admin
-  composed_of :start_time,
-              :class_name => 'DateTime',
-              :mapping => %w(DateTime to_s),
-              :constructor => Proc.new{ |item| item },
-              :converter => Proc.new{ |item| item }
-
   # Search for region, but also check for region_id = 1, that is the global region
   scope :in_region, ->(region) { where('region_id = ? or region_id = 1', region)}
   scope :name_or_description_like, -> (search) { where(arel_table[:name].matches(search).or(arel_table[:description].matches(search))) }
@@ -74,18 +66,6 @@ class Event < ActiveRecord::Base
   end
 
   def start_time=(value)
-    # This is an ugly workaround for a timezone hack
-    # See #308 for details
-    if value.utc_offset != Time.zone.utc_offset
-      timezone = Time.zone.utc_offset / 60 / 60
-      offset = if timezone >= 0
-                   "+#{timezone}"
-                 else
-                   "-#{timezone}"
-                 end
-
-      value = value.change(:offset => offset)
-    end
     schedule.start_time = value.to_time
   end
 
