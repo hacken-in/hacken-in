@@ -70,10 +70,22 @@ class Event < ActiveRecord::Base
   end
 
   def start_time
-    schedule.start_time
+    schedule.start_time.in_time_zone
   end
 
   def start_time=(value)
+    # This is an ugly workaround for a timezone hack
+    # See #308 for details
+    if value.utc_offset != Time.zone.utc_offset
+      timezone = Time.zone.utc_offset / 60 / 60
+      offset = if timezone >= 0
+                   "+#{timezone}"
+                 else
+                   "-#{timezone}"
+                 end
+
+      value = value.change(:offset => offset)
+    end
     schedule.start_time = value.to_time
   end
 
