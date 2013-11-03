@@ -25,8 +25,6 @@ ActiveAdmin.register Event do
     end
 
     default_actions
-
-
   end
 
   show do
@@ -38,22 +36,37 @@ ActiveAdmin.register Event do
 
   controller do
     def permitted_params
-      params.permit(event: %i[
-        name
-        region_id
-        description
-        schedule_yaml
-        url
-        twitter
-        created_at
-        updated_at
-        full_day
-        twitter_hashtag
-        category_id
-        venue_id
-        venue_info
-        picture_id
-      ])
+      # ToDo: this is a sad workaround, I could not
+      # find a valid way to permit the schedule_rules and excluded_times
+      # values from the event. Those are arrays and are filtered out
+      # by default :(
+      params.permit!
+      # params.permit(event: %i[
+      #   name
+      #   region_id
+      #   description
+      #   schedule_yaml
+      #   url
+      #   twitter
+      #   created_at
+      #   updated_at
+      #   full_day
+      #   twitter_hashtag
+      #   category_id
+      #   venue_id
+      #   venue_info
+      #   picture_id
+      #   tag_list
+      #   start_time(1i)
+      #   start_time(2i)
+      #   start_time(3i)
+      #   start_time(4i)
+      #   start_time(5i)
+      #   duration
+      #   week_number
+      #   day_of_week
+      #   id
+      # ])
     end
 
     def create
