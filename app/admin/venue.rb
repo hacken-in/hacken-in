@@ -52,6 +52,7 @@ ActiveAdmin.register Venue do
         city
         country
         url
+        region_id
       ])
     end
   end
