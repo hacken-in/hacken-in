@@ -73,6 +73,12 @@ ActiveAdmin.register SingleEvent do
         url
         picture
         tags
+        region_id
+        venue_id
+        use_venue_info_of_event
+        category_id
+        picture_id
+        tag_list
       ])
     end
   end
