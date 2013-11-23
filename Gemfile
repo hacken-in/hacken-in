@@ -22,21 +22,16 @@ gem 'acts-as-taggable-on', '~> 2.4.1'
 # Statistics
 gem 'chartkick', '~> 1.2.1'
 
+# TODO: Remove
+# This lib is used exactly ONCE in the admin interface
+gem 'momentjs-rails', '~> 2.4.0'
+
 # Asset template engines
 gem 'sass-rails', '~> 4.0.1'
 gem 'coffee-script', '~> 2.2.0'
 gem 'leaflet-rails', '~> 0.7.1'
 gem 'uglifier', '~> 2.4.0'
 gem 'jquery-rails', '~> 3.0.0'
-gem 'pjax_rails', '~> 0.3.4'
-gem 'compass-rails', '~> 1.1.0'
-gem 'bootstrap-sass-rails', '~> 2.3.0.0'
-
-# TODO: Fix the version
-gem 'momentjs-rails', '~> 2.1.0'                                                    # Date parsing in Javascript
-gem 'zero-clipboard-rails', git: 'https://github.com/hacken-in/zero-clipboard-rails', branch: 'rails4' # Clipboard-Button on iCal Page
-gem 'tipsy-rails',          git: 'https://github.com/hacken-in/tipsy-rails', branch: 'rails4'
-gem 'font-awesome-rails', '~> 3.2.1.2'
 
 gem 'haml', '~> 4.0.4'
 gem 'md_emoji', '~> 1.0.0'
