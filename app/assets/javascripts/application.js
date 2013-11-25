@@ -7,9 +7,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require leaflet
-
-L.Icon.Default.imagePath = "/assets/";
-
 //= require jquery.balloon
 //= require jquery.tokeninput
 //= require jquery.endless-scroll
@@ -19,3 +16,6 @@ L.Icon.Default.imagePath = "/assets/";
 //= require jquery.pjax
 //= require_tree .
 //= require twitter/bootstrap
+
+L.Icon.Default.imagePath = "/assets/";
+
