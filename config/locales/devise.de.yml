@@ -15,10 +15,12 @@ de:
       unauthenticated: 'Du musst Dich anmelden oder registrieren, bevor Du fortfahren kannst.'
       unconfirmed: 'Du musst Deinen Account bestätigen, bevor Du fortfahren kannst.'
       locked: 'Dein Account ist gesperrt.'
-      invalid: 'Ungültige Login-Daten.'
+      invalid: 'E-Mail-Adresse oder Passwort ungültig.'
       invalid_token: 'Der Login-Token ist ungültig.'
       timeout: 'Deine Sitzung ist abgelaufen, bitte melde Dich erneut an.'
       inactive: 'Dein Account ist nicht aktiv.'
+      user:
+        not_found_in_database: 'E-Mail-Adresse oder Passwort ungültig.'
     sessions:
       signed_in: 'Erfolgreich angemeldet.'
       signed_out: 'Erfolgreich abgemeldet.'
