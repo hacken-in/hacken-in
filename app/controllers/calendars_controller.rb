@@ -13,7 +13,18 @@ class CalendarsController < ApplicationController
     end
 
     @months = []
-    13.times { |i| @months << (@start_date + i.months) }
+    8.times { |i| @months << (@start_date + i.months) }
+
+    # TODO: This is just for the design, needs to be implemented for real
+    @dates = (Date.today .. 5.days.from_now).map do |date|
+      {
+        weekday: date.strftime("%A")[0,2],
+        day: date.day,
+        has_events: (rand < 0.6),
+        active: false
+      }
+    end
+    @dates.first[:active] = true;
 
     if current_region.nil?
       raise ActionController::RoutingError.new('Not Found')

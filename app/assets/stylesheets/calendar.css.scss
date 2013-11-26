@@ -1,0 +1,28 @@
+ul.calendar-startselector-months, ul.calendar-startselector-days {
+  @include inline-list;
+  margin-bottom: 0;
+
+  li.active {
+    border-bottom: 4px solid $alert-color;
+  }
+}
+
+ul.calendar-startselector-months {
+  background: $secondary-color;
+}
+
+ul.calendar-startselector-days {
+  background: $primary-color;
+
+  li {
+    .weekday {
+      margin-top: 16px;
+      margin-bottom: -16px
+    }
+
+    .day {
+      font-size: $h1-font-size;
+      font-weight: 300;
+    }
+  }
+}

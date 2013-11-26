@@ -1,8 +1,10 @@
 %ul.calendar-startselector-months
-  - months.each do |m|
-    %li{data: { year: m.strftime('%Y'), month: m.month }}
-      = I18n.localize(m, format: '%b')
+  - months.each_with_index do |month, index|
+    %li{data: { year: month.strftime('%Y'), month: month.month }, class: (index == 0 ? 'active' : false) }
+      = I18n.localize(month, format: '%b')
 
 %ul.calendar-startselector-days
-  - (1..31).each do |d|
-    %li{data: { day: d }}= d
+  - dates.each do |date|
+    %li{class: [(date[:active] ? "active" : false), (date[:has_events] ? "has_events" : false)] }
+      .weekday= date[:weekday]
+      .day= date[:day]
