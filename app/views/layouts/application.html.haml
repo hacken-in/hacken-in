@@ -37,18 +37,18 @@
     %link{ href: 'http://fonts.googleapis.com/css?family=Roboto+Condensed:400italic,400,300,700', rel:'stylesheet', type:'text/css'}
 
   %body{:class => "#{controller.controller_name}_#{controller.action_name}" }
-    %header.container
-      .navbar
-        .navbar-inner
-          .brand
-            = link_to image_tag("germany-outline.png", class:"germany"), "/deutschland"
-            - if @region
-              = link_to "hacken.in/<span class='navbar-slug'>#{@region.slug}</span>".html_safe, region_path(@region.slug)
-            - else
-              = link_to "hacken.in".html_safe, root_path
-          = render_navigation
-          = render 'users/sessions/loginform_popup'
-          = render 'users/sessions/logoutform_popup'
+    %header
+      %nav.top-bar{ data: { topbar: true } }
+        %ul.title-area
+          %li.name
+            %h1= link_to 'hacken.in', :root
+
+          %section.top-bar-section
+            %ul.right
+              %li= link_to 'Login', user_session_path, class: "login-nav-link", :"data-reveal-id" => "login-form"
+
+      = render 'users/sessions/loginform_popup'
+      = render 'users/sessions/logoutform_popup'
 
     .container
       - if flash[:notice]

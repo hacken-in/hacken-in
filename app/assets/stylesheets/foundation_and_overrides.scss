@@ -927,7 +927,7 @@ $success-color: #43AC6A;
 // $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-// $topbar-bg-color: #333;
+$topbar-bg-color: #000;
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin
@@ -981,7 +981,7 @@ $success-color: #43AC6A;
 // $topbar-transition-speed: 300ms;
 // Using rem-calc for the below breakpoint causes issues with top bar
 // $topbar-breakpoint: #{upper-bound($medium-range)}; // Change to 9999px for always mobile layout
-// $topbar-media-query: "only screen and (min-width: #{upper-bound($medium-range)})";
+$topbar-media-query: "only screen"; // Always show the menu items
 
 // Divider Styles
 // $topbar-divider-border-bottom: solid 1px lighten($topbar-bg-color, 10%);
