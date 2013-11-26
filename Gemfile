@@ -26,12 +26,13 @@ gem 'chartkick', '~> 1.2.1'
 # This lib is used exactly ONCE in the admin interface
 gem 'momentjs-rails', '~> 2.4.0'
 
-# Asset template engines
+# Assets
 gem 'sass-rails', '~> 4.0.1'
 gem 'coffee-script', '~> 2.2.0'
 gem 'leaflet-rails', '~> 0.7.1'
 gem 'uglifier', '~> 2.4.0'
 gem 'jquery-rails', '~> 3.0.0'
+gem 'foundation-rails', '5.0.2.0'
 
 gem 'haml', '~> 4.0.4'
 gem 'md_emoji', '~> 1.0.0'

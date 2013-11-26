@@ -4,7 +4,7 @@
 
     %title= content_for?(:title) ? yield(:title) + " – " + sitename : sitename
     = stylesheet_link_tag "application"
-    = javascript_include_tag "application"
+    = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tags
     - if content_for?(:opengraph) 
       = yield(:opengraph)
@@ -14,6 +14,7 @@
           "fb:admins" => "520869354",
           "og:type" => "website",
           "og:description" => "Der Event-Kalender für Nerds")
+    %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
 
     :javascript
       var _gaq = _gaq || [];
@@ -82,3 +83,4 @@
               %a.nav-link{ href: "http://www.twitter.com/hacken_in", title: "hacken.in auf Twitter" }
                 %i.icon-twitter
 
+    = javascript_include_tag "application"
