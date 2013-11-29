@@ -37,50 +37,56 @@
     %link{ href: 'http://fonts.googleapis.com/css?family=Roboto+Condensed:400italic,400,300,700', rel:'stylesheet', type:'text/css'}
 
   %body{:class => "#{controller.controller_name}_#{controller.action_name}" }
-    %header
-      %nav.top-bar{ data: { topbar: true } }
-        %ul.title-area
-          %li.name
-            %h1= link_to 'hacken.in', :root
+    .off-canvas-wrap
+      .inner-wrap
+        %header
+          %nav.top-bar{ data: { topbar: true } }
+            %ul.title-area
+              %li.name
+                %h1= link_to 'hacken.in', :root
 
-          %section.top-bar-section
-            %ul.right
-              %li= link_to 'Login', user_session_path, class: "login-nav-link", :"data-reveal-id" => "login-form"
+              %section.top-bar-section
+                %ul.right
+                  %li= link_to 'Login', user_session_path, class: "login-nav-link", :"data-reveal-id" => "login-form"
+                  %li
+                    %a.left-off-canvas-toggle.menu-icon
+                      %span
 
-      = render 'users/sessions/loginform_popup'
-      = render 'users/sessions/logoutform_popup'
+          = render 'users/sessions/loginform_popup'
+          = render 'users/sessions/logoutform_popup'
+          = render 'modules/common/sidebar'
 
-    .container
-      - if flash[:notice]
-        .alert.alert-block
-          %button{type:'button', class:'close', "data-dismiss" => 'alert'}x
-          = flash[:notice]
-      - if flash[:error]
-        .alert.alert-block.alert-error
-          %button{type:'button', class:'close', "data-dismiss" => 'alert'}x
-          = flash[:error]
-      - if flash[:alert]
-        .alert.alert-block.alert-error
-          %button{type:'button', class:'close', "data-dismiss" => 'alert'}x
-          = flash[:alert]
+        .container
+          - if flash[:notice]
+            .alert.alert-block
+              %button{type:'button', class:'close', "data-dismiss" => 'alert'}x
+              = flash[:notice]
+          - if flash[:error]
+            .alert.alert-block.alert-error
+              %button{type:'button', class:'close', "data-dismiss" => 'alert'}x
+              = flash[:error]
+          - if flash[:alert]
+            .alert.alert-block.alert-error
+              %button{type:'button', class:'close', "data-dismiss" => 'alert'}x
+              = flash[:alert]
 
-      = yield
+          = yield
 
-    %footer.container.main-footer
-      .navbar
-        .navbar-inner
-          %ul.nav.footer-nav
-            %li= link_to 'TEAM', humans_path, class: 'nav-link'
-            %li= link_to 'IMPRESSUM', impressum_path, class: 'nav-link'
-          %ul.nav.social-nav.pull-right
-            %li
-              %a.nav-link{ href: "http://www.github.com/hacken-in", title: "hacken.in auf GitHub" }
-                %i.icon-github
-            %li
-              %a.nav-link{ href: "https://alpha.app.net/hacken_in", title: "hacken.in auf App.net" }
-                %i.icon-adn
-            %li
-              %a.nav-link{ href: "http://www.twitter.com/hacken_in", title: "hacken.in auf Twitter" }
-                %i.icon-twitter
+        %footer.container.main-footer
+          .navbar
+            .navbar-inner
+              %ul.nav.footer-nav
+                %li= link_to 'TEAM', humans_path, class: 'nav-link'
+                %li= link_to 'IMPRESSUM', impressum_path, class: 'nav-link'
+              %ul.nav.social-nav.pull-right
+                %li
+                  %a.nav-link{ href: "http://www.github.com/hcking", title: "hacken.in auf GitHub" }
+                    %i.icon-github
+                %li
+                  %a.nav-link{ href: "https://alpha.app.net/hacken_in", title: "hacken.in auf App.net" }
+                    %i.icon-adn
+                %li
+                  %a.nav-link{ href: "http://www.twitter.com/hacken_in", title: "hacken.in auf Twitter" }
+                    %i.icon-twitter
 
     = javascript_include_tag "application"
