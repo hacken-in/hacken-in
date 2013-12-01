@@ -273,6 +273,7 @@ de:
         one: Radar Eintrag
         other: Radar Einträge
       radar_setting: Radar Einstellung
+
   comments:
     _form:
       comment_button: Und ab!
@@ -404,3 +405,15 @@ de:
   minical:
     see_more: 'weitere Termine'
     add_new: 'neuen Termin'
+
+  modules:
+    common:
+      sidebar:
+        login_with: Mit %{provider} einloggen
+        register_instead: oder registrieren
+        login: Einloggen
+        email: E-Mail / Nickname
+        password: Passwort
+        remember_me: Eingeloggt bleiben
+        suggest_event: Termin vorschlagen
+        imprint: Impressum

@@ -47,12 +47,10 @@
 
               %section.top-bar-section
                 %ul.right
-                  %li= link_to 'Login', user_session_path, class: "login-nav-link", :"data-reveal-id" => "login-form"
                   %li
                     %a.left-off-canvas-toggle.menu-icon
                       %span
 
-          = render 'users/sessions/loginform_popup'
           = render 'users/sessions/logoutform_popup'
           = render 'modules/common/sidebar'
 

@@ -1,10 +1,24 @@
 %aside.left-off-canvas-menu
-  %ul.off-canvas-list
-    %li
-      %a This
-      %a is
-      %a just
-      %a a
-      %a test
+  .close-area.exit-off-canvas
 
-  %a.exit-off-canvas
+  = form_for resource, as: resource_name, url: session_path(resource_name) do |f|
+    %h2= t('.login')
+    .row= f.text_field :email, placeholder: t('.email')
+    .row= f.password_field :password, placeholder: t('.password')
+
+    .row= f.submit t('.login'), class: 'button'
+
+    .row
+      - if devise_mapping.rememberable?
+        = f.check_box :remember_me, :as => :boolean
+        = f.label :remember_me, t('.remember_me')
+
+    - User.omniauth_providers.each do |provider|
+      .row= link_to t('.login_with', provider: provider.to_s.capitalize), user_omniauth_authorize_url(provider), title: provider, class: 'button'
+
+    = link_to t('.register_instead'), new_registration_path(resource_name), class: 'button'
+
+  %hr
+
+  .row= link_to t('.suggest_event'), new_suggestion_path, class: 'button'
+  .row= link_to t('.imprint'), impressum_path, class: 'button'

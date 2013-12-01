@@ -1,0 +1,24 @@
+aside.left-off-canvas-menu {
+  h2 {
+    color: #adb1b4;
+  }
+
+  .close-area {
+    height: 80px;
+    background: #262930;
+    cursor: pointer;
+  }
+
+  input[type=submit] {
+    background-color: $alert-color;
+    color: white;
+    font-weight: bold;
+  }
+
+  hr {
+    background-color: #262930;
+    height: 20px;
+    border-width: 0px;
+  }
+}
+
