@@ -1,8 +1,0 @@
-- if current_user
-  .logoutform.logoutform-popup
-    .profile-link
-      %a{href: user_path(current_user)}
-        Mein Profil
-    .logout
-      = link_to "Abmelden", destroy_user_session_path, method: :delete
-    = link_to avatar_for_user(current_user, 48, "user_gravatar"), user_path(current_user)

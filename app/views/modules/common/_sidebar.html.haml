@@ -1,22 +1,28 @@
 %aside.left-off-canvas-menu
   .close-area.exit-off-canvas
 
-  = form_for resource, as: resource_name, url: session_path(resource_name) do |f|
-    %h2= t('.login')
-    .row= f.text_field :email, placeholder: t('.email')
-    .row= f.password_field :password, placeholder: t('.password')
+  - if current_user
+    .row= link_to t('.my_profile'), user_path(current_user)
+    .row= link_to t('.logout'), destroy_user_session_path, method: :delete
+    .row= link_to avatar_for_user(current_user, 48, "user_gravatar"), user_path(current_user)
 
-    .row= f.submit t('.login'), class: 'button'
+  - else
+    = form_for resource, as: resource_name, url: session_path(resource_name) do |f|
+      %h2= t('.login')
+      .row= f.text_field :email, placeholder: t('.email')
+      .row= f.password_field :password, placeholder: t('.password')
 
-    .row
-      - if devise_mapping.rememberable?
-        = f.check_box :remember_me, :as => :boolean
-        = f.label :remember_me, t('.remember_me')
+      .row= f.submit t('.login'), class: 'button'
 
-    - User.omniauth_providers.each do |provider|
-      .row= link_to t('.login_with', provider: provider.to_s.capitalize), user_omniauth_authorize_url(provider), title: provider, class: 'button'
+      .row
+        - if devise_mapping.rememberable?
+          = f.check_box :remember_me, :as => :boolean
+          = f.label :remember_me, t('.remember_me')
 
-    = link_to t('.register_instead'), new_registration_path(resource_name), class: 'button'
+      - User.omniauth_providers.each do |provider|
+        .row= link_to t('.login_with', provider: provider.to_s.capitalize), user_omniauth_authorize_url(provider), title: provider, class: 'button'
+
+      = link_to t('.register_instead'), new_registration_path(resource_name), class: 'button'
 
   %hr
 
