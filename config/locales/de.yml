@@ -309,6 +309,7 @@ de:
       add_service: "%{provider} hinzufügen"
       in_use: "Dein %{provider}-Account (User-Id: %{uid}) wird bereits von einem anderen Account verwendet. Wenn du dich mit einem anderen Account anmelden willst, geh auf die Seite von %{provider} und melde dich dort ab."
       email: "Hier kannst du eine E-Mail Adresse und ein Passwort hinzufügen. Damit kannst du dich auch anmelden, wenn deine Authorisierungsdienste mal pleite gehen oder so."
+
   events:
     show:
       edit: Bearbeiten
@@ -421,3 +422,7 @@ de:
         logout: Abmelden
         greeting: Hallo %{name}!
         add_to_my_calendar: In meinen Kalendar
+
+  calendars:
+    show:
+      title: Kalender
