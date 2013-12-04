@@ -49,6 +49,28 @@
   .row
     .small-11.small-centered.columns= link_to t('.imprint'), impressum_path, class: 'small-12 button'
 
+
+  - if current_user
+    %hr
+
+    .row
+      .small-11.small-centered.columns
+        %input{type: 'text', placeholder: t('.love_input')}
+        %ul.js-like-taglist
+          - current_user.likes.each do |tag|
+            %li{'data-tag' => tag.name, 'data-list' => 'like'}
+              = tag.name
+              %i.icon-remove.remove-tag.js-remove-tag
+
+    .row
+      .small-11.small-centered.columns
+        %input{type: 'text', placeholder: t('.hate_input')}
+        %ul.js-hate-taglist
+          - current_user.hates.each do |tag|
+            %li{'data-tag' => tag.name, 'data-list' => 'hate'}
+              = tag.name
+              %i.icon-remove.remove-tag.js-remove-tag
+
   %hr
 
   %ul.off-canvas-list

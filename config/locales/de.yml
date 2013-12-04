@@ -422,6 +422,8 @@ de:
         logout: Abmelden
         greeting: Hallo %{name}!
         add_to_my_calendar: In meinen Kalendar
+        love_input: Was liebst du?
+        hate_input: Was boykottierst du?
 
   calendars:
     show:
