@@ -10,6 +10,10 @@
       .small-11.small-centered.columns= link_to t('.my_profile'), user_path(current_user), class: 'small-12 button'
 
     .row
+      .small-11.small-centered.columns
+        = link_to t('.add_to_my_calendar'), '#', 'data-reveal-id' => 'calendarExportModal', class: 'small-12 button'
+
+    .row
       .small-11.small-centered.columns= link_to t('.logout'), destroy_user_session_path, method: :delete, class: 'small-12 button'
 
   - else
@@ -53,3 +57,5 @@
     %li= link_to 'Github', 'https://github.com/hcking'
     %li= link_to 'App.net', 'https://alpha.app.net/hacken_in'
     %li= link_to 'Twitter', 'https://www.twitter.com/hacken_in'
+    %li
+      %a.FlattrButton{style:"display:none;", href:"http://hacken.in"}

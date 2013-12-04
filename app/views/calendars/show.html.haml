@@ -1,36 +1,12 @@
 - content_for :title do
   Kalender
 
-.row.header-sep-line
-  .span4
-    = render partial: 'modules/calendars/startselector', locals: { months: @months, dates: @dates }
-    .calendar-calendar
-      = render partial: 'modules/calendars/calendar', locals: { single_events: @single_events }
-  .span2.calendar-settings
-    = form_tag search_path(region: current_region), :method => 'get' do
-      .input-append
-        = text_field_tag :search, params[:search], placeholder: "Suche..."
-        %button.btn
-          %i.icon-search
+= render partial: 'modules/calendars/startselector', locals: { months: @months, dates: @dates }
+= render partial: 'modules/calendars/calendar', locals: { single_events: @single_events }
 
-    = render partial: 'modules/tags/calendar_tags'
+-# TODO: Move into the header
+= form_tag search_path(region: current_region), :method => 'get' do
+  = text_field_tag :search, params[:search], placeholder: "Suche..."
 
-    - unless user_signed_in?
-      %p.not_logged_in_warning.muted
-        Als
-        = link_to "angemeldeter User", new_user_session_path
-        kannst du deinen Kalender hier auch noch nach bestimmten Hashtags filtern
-
-    = render 'modules/calendars/ical_popup'
-    .calendar-export
-      %button.btn.btn-large.btn-inverse.js-calendar-export
-        %i.icon-calendar
-        In meinen Kalender
-
-    %p.suggest_link
-      Fehlt ein Event? Dann 
-      = link_to "sag uns bescheid", new_suggestion_path
-      !
-
-    .center
-      %a{class:"FlattrButton", style:"display:none;", href:"http://hacken.in"}
+-# TODO: Move into the sidebar
+= render partial: 'modules/tags/calendar_tags'
