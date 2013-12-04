@@ -1,24 +1,5 @@
 - title "Abonnieren"
 
-- content_for :javascript_assets do
-  subscribe
-
-- content_for :javascript do
-  %script{type: "text/javascript", src: "http://tile.cloudmade.com/wml/latest/web-maps-lite.js"}
-  :javascript
-    $(function() {
-      $(".clippy_row div img").each(function(num,div) {
-        var clip = new ZeroClipboard.Client();
-        clip.setText($(this).parent().prev().val());
-        clip.glue($(this).parent().attr("id"));
-      });
-
-      $(".ical_link_field").mouseup(function(){
-        this.select();
-        return false;
-      });
-    });
-
 .abbonieren
 
   - if @event
