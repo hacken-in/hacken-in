@@ -4,8 +4,8 @@
 [![Code Climate](https://codeclimate.com/github/hcking/hcking.png)](https://codeclimate.com/github/hcking/hcking)
 [![Coverage Status](https://coveralls.io/repos/hcking/hcking/badge.png)](https://coveralls.io/r/hcking/hcking)
 
-This is the code of [hacken.in/koeln](http://hacken.in/koeln), an event
-calendar for geeks in and around Cologne.
+This is the code of [hacken.in](http://hacken.in/), an event
+calendar for geeks in and around Cologne and Berlin.
 
 We discuss features and problems in our [Google Group](http://groups.google.com/group/hcking).
 
