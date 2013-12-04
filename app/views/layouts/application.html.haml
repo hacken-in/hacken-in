@@ -68,21 +68,4 @@
 
         = yield
 
-        %footer.main-footer
-          .navbar
-            .navbar-inner
-              %ul.nav.footer-nav
-                %li= link_to 'TEAM', humans_path, class: 'nav-link'
-                %li= link_to 'IMPRESSUM', impressum_path, class: 'nav-link'
-              %ul.nav.social-nav.pull-right
-                %li
-                  %a.nav-link{ href: "http://www.github.com/hcking", title: "hacken.in auf GitHub" }
-                    %i.icon-github
-                %li
-                  %a.nav-link{ href: "https://alpha.app.net/hacken_in", title: "hacken.in auf App.net" }
-                    %i.icon-adn
-                %li
-                  %a.nav-link{ href: "http://www.twitter.com/hacken_in", title: "hacken.in auf Twitter" }
-                    %i.icon-twitter
-
     = javascript_include_tag "application"
