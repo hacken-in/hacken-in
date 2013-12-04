@@ -4,9 +4,5 @@
 = render partial: 'modules/calendars/startselector', locals: { months: @months, dates: @dates }
 = render partial: 'modules/calendars/calendar', locals: { single_events: @single_events }
 
--# TODO: Move into the header
-= form_tag search_path(region: current_region), :method => 'get' do
-  = text_field_tag :search, params[:search], placeholder: "Suche..."
-
 -# TODO: Move into the sidebar
 = render partial: 'modules/tags/calendar_tags'
