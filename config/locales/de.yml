@@ -419,3 +419,4 @@ de:
         imprint: Impressum
         my_profile: Mein Profil
         logout: Abmelden
+        greeting: Hallo %{name}!

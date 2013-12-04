@@ -2,29 +2,45 @@
   .close-area.exit-off-canvas
 
   - if current_user
-    .row= link_to t('.my_profile'), user_path(current_user)
-    .row= link_to t('.logout'), destroy_user_session_path, method: :delete
-    .row= link_to avatar_for_user(current_user, 48, "user_gravatar"), user_path(current_user)
+    .row
+      .small-11.small-centered.columns
+        %h3= t('.greeting', name: current_user.nickname)
+
+    .row
+      .small-11.small-centered.columns= link_to t('.my_profile'), user_path(current_user), class: 'small-12 button'
+
+    .row
+      .small-11.small-centered.columns= link_to t('.logout'), destroy_user_session_path, method: :delete, class: 'small-12 button'
 
   - else
     = form_for resource, as: resource_name, url: session_path(resource_name) do |f|
-      %h2= t('.login')
-      .row= f.text_field :email, placeholder: t('.email')
-      .row= f.password_field :password, placeholder: t('.password')
-
-      .row= f.submit t('.login'), class: 'button'
+      .row
+        .small-11.small-centered.columns
+          %h3= t('.login')
+      .row
+        .small-11.small-centered.columns= f.text_field :email, placeholder: t('.email')
+      .row
+        .small-11.small-centered.columns= f.password_field :password, placeholder: t('.password')
 
       .row
-        - if devise_mapping.rememberable?
-          = f.check_box :remember_me, :as => :boolean
-          = f.label :remember_me, t('.remember_me')
+        .small-11.small-centered.columns= f.submit t('.login'), class: 'small-12 button'
+
+      - if devise_mapping.rememberable?
+        .row
+          .small-11.small-centered.columns
+            = f.check_box :remember_me, :as => :boolean
+            = f.label :remember_me, t('.remember_me')
 
       - User.omniauth_providers.each do |provider|
-        .row= link_to t('.login_with', provider: provider.to_s.capitalize), user_omniauth_authorize_url(provider), title: provider, class: 'button'
+        .row
+          .small-11.small-centered.columns= link_to t('.login_with', provider: provider.to_s.capitalize), user_omniauth_authorize_url(provider), title: provider, class: 'small-12 button'
 
-      = link_to t('.register_instead'), new_registration_path(resource_name), class: 'button'
+      .row
+        .small-11.small-centered.columns= link_to t('.register_instead'), new_registration_path(resource_name), class: 'small-12 button'
 
   %hr
 
-  .row= link_to t('.suggest_event'), new_suggestion_path, class: 'button'
-  .row= link_to t('.imprint'), impressum_path, class: 'button'
+  .row
+    .small-11.small-centered.columns= link_to t('.suggest_event'), new_suggestion_path, class: 'small-12 button'
+  .row
+    .small-11.small-centered.columns= link_to t('.imprint'), impressum_path, class: 'small-12 button'
