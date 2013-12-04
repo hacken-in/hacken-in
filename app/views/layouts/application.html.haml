@@ -39,33 +39,9 @@
   %body{:class => "#{controller.controller_name}_#{controller.action_name}" }
     .off-canvas-wrap
       .inner-wrap
-        %header
-          %nav.top-bar{ data: { topbar: true } }
-            %ul.title-area
-              %li.name
-                %h1= link_to 'hacken.in', :root
-
-              %section.top-bar-section
-                %ul.right
-                  %li
-                    %a.left-off-canvas-toggle.menu-icon
-                      %span
-
-          = render 'modules/common/sidebar'
-
-        - if flash[:notice]
-          .success.alert-box{data: {alert: true}}
-            = flash[:notice]
-            %a.close &times;
-        - if flash[:error]
-          .error.alert-box{data: {alert: true}}
-            = flash[:error]
-            %a.close &times;
-        - if flash[:alert]
-          .info.alert-box{data: {alert: true}}
-            = flash[:alert]
-            %a.close &times;
-
+        = render 'modules/common/topbar'
+        = render 'modules/common/sidebar'
+        = render 'modules/common/flash'
         = yield
 
     = javascript_include_tag "application"

@@ -1,0 +1,12 @@
+- if flash[:notice]
+  .success.alert-box{data: {alert: true}}
+    = flash[:notice]
+    %a.close &times;
+- if flash[:error]
+  .error.alert-box{data: {alert: true}}
+    = flash[:error]
+    %a.close &times;
+- if flash[:alert]
+  .info.alert-box{data: {alert: true}}
+    = flash[:alert]
+    %a.close &times;
