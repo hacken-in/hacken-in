@@ -54,17 +54,17 @@
           = render 'modules/common/sidebar'
 
         - if flash[:notice]
-          .alert.alert-block
-            %button{type:'button', class:'close', "data-dismiss" => 'alert'}x
+          .success.alert-box{data: {alert: true}}
             = flash[:notice]
+            %a.close &times;
         - if flash[:error]
-          .alert.alert-block.alert-error
-            %button{type:'button', class:'close', "data-dismiss" => 'alert'}x
+          .error.alert-box{data: {alert: true}}
             = flash[:error]
+            %a.close &times;
         - if flash[:alert]
-          .alert.alert-block.alert-error
-            %button{type:'button', class:'close', "data-dismiss" => 'alert'}x
+          .info.alert-box{data: {alert: true}}
             = flash[:alert]
+            %a.close &times;
 
         = yield
 
