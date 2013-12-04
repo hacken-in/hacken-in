@@ -53,23 +53,22 @@
 
           = render 'modules/common/sidebar'
 
-        .container
-          - if flash[:notice]
-            .alert.alert-block
-              %button{type:'button', class:'close', "data-dismiss" => 'alert'}x
-              = flash[:notice]
-          - if flash[:error]
-            .alert.alert-block.alert-error
-              %button{type:'button', class:'close', "data-dismiss" => 'alert'}x
-              = flash[:error]
-          - if flash[:alert]
-            .alert.alert-block.alert-error
-              %button{type:'button', class:'close', "data-dismiss" => 'alert'}x
-              = flash[:alert]
+        - if flash[:notice]
+          .alert.alert-block
+            %button{type:'button', class:'close', "data-dismiss" => 'alert'}x
+            = flash[:notice]
+        - if flash[:error]
+          .alert.alert-block.alert-error
+            %button{type:'button', class:'close', "data-dismiss" => 'alert'}x
+            = flash[:error]
+        - if flash[:alert]
+          .alert.alert-block.alert-error
+            %button{type:'button', class:'close', "data-dismiss" => 'alert'}x
+            = flash[:alert]
 
-          = yield
+        = yield
 
-        %footer.container.main-footer
+        %footer.main-footer
           .navbar
             .navbar-inner
               %ul.nav.footer-nav
