@@ -11,19 +11,6 @@ module ApplicationHelper
     end
   end
 
-  def day_output_helper(date)
-      retval = <<-EOL
-        <div class='calendar-datebox-d'>
-          #{date.strftime('%d')}
-        </div>
-        <div class='calendar-datebox-box'>
-          <div class='calendar-datebox-my'>#{I18n.localize(date, format: '%b %Y')}</div>
-          <div class='calendar-datebox-wd'>#{I18n.localize(date, format: '%A')}</div>
-        </div>
-      EOL
-      retval.html_safe
-  end
-
   def truncate_html(html, length=30, opts={})
     HTML_Truncator.truncate(html, length, opts).html_safe
   end

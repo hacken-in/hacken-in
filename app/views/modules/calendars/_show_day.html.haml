@@ -1,0 +1,5 @@
+.calendar-datebox-d
+  = date.strftime('%d')
+.calendar-datebox-box
+  .calendar-datebox-my= I18n.localize(date, format: '%b %Y')
+  .calendar-datebox-wd= I18n.localize(date, format: '%A')

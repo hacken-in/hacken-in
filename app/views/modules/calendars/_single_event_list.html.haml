@@ -2,7 +2,6 @@
 - single_events.each do |single_event|
   - if current_date != single_event.occurrence.to_date
     - current_date = single_event.occurrence.to_date
-    %h1
-      = day_output_helper(current_date)
+    %h1= render partial: 'modules/calendars/show_day', locals: { date: current_date }
 
   = render partial: 'modules/calendars/entry', locals: {single_event: single_event}
