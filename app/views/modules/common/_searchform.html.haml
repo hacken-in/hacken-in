@@ -1,5 +1,7 @@
 %aside.right-off-canvas-menu
   .close-area.exit-off-canvas
 
-  = form_tag search_path(region: current_region), :method => 'get' do
-    = text_field_tag :search, params[:search], placeholder: "Suche..."
+  -# Todo: This should work on all pages
+  - if current_region.present?
+    = form_tag search_path(region: current_region), :method => 'get' do
+      = text_field_tag :search, params[:search], placeholder: "Suche..."

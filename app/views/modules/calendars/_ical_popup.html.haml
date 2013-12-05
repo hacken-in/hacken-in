@@ -1,70 +1,71 @@
 #calendarExportModal.reveal-modal{data: { reveal: true }}
-  .modal-header
-    %button.close{ 'data-dismiss' => 'modal' }
-      %i.icon-remove
-    %h3.black-bar-small-title Kalender importieren
-  .modal-body
-    - if user_signed_in?
-      %p
-        Hier kannst du den Hacken.in Kalender in deine bevorzugte Kalender-Applikation importieren
+  -# TODO This has to work on all pages, not just the calendar page
+    .modal-header
+      %button.close{ 'data-dismiss' => 'modal' }
+        %i.icon-remove
+      %h3.black-bar-small-title Kalender importieren
+    .modal-body
+      - if user_signed_in?
+        %p
+          Hier kannst du den Hacken.in Kalender in deine bevorzugte Kalender-Applikation importieren
 
-        - default_url = my_cal_url = url_for(action: "personalized", protocol: 'webcal', controller: "ical", format: "ical", only_path: false, guid: current_user.guid)
+          - default_url = my_cal_url = url_for(action: "personalized", protocol: 'webcal', controller: "ical", format: "ical", only_path: false, guid: current_user.guid)
+          - my_cal_url_http = my_cal_url.gsub(/\Awebcal/, 'http')
+          - no_ignore_url = url_for(action: "like_welcome_page", protocol: 'webcal', controller: "ical", format: "ical", only_path: false, guid: current_user.guid)
+          - no_ignore_url_http = no_ignore_url.gsub(/\Awebcal/, 'http')
+
+          .control.group
+            %label.radio
+              %input.calendar-import-setting{ type: 'radio', name: 'ical-radios', checked: 'checked', 'data-webcal-url' => no_ignore_url, 'data-http-url' => no_ignore_url_http }
+                meinen Kalender (meine Einstellungen berücksichtigen)
+            %label.radio
+              %input.calendar-import-setting{ type: 'radio', name: 'ical-radios', 'data-webcal-url' => my_cal_url, 'data-http-url' => my_cal_url_http }
+                nur Termine an denen ich teilnehme
+      - else
+        - default_url = my_cal_url = url_for(action: "general", protocol: 'webcal', controller: "ical", format: "ical", only_path: false)
         - my_cal_url_http = my_cal_url.gsub(/\Awebcal/, 'http')
-        - no_ignore_url = url_for(action: "like_welcome_page", protocol: 'webcal', controller: "ical", format: "ical", only_path: false, guid: current_user.guid)
-        - no_ignore_url_http = no_ignore_url.gsub(/\Awebcal/, 'http')
+        %p
+          Leider hast du dich nicht 
+          = link_to "angemeldetet", new_user_session_path
+          , somit kannst du nur nur einen ungefilterten Kalender abonnieren:
+          .control.group
+            %label.radio
+              %input.calendar-import-setting{ type: 'radio', name: 'ical-radios', checked: 'checked', 'data-webcal-url' => default_url, 'data-http-url' => my_cal_url_http }
+                Alle Termine, ungefiltert
 
-        .control.group
-          %label.radio
-            %input.calendar-import-setting{ type: 'radio', name: 'ical-radios', checked: 'checked', 'data-webcal-url' => no_ignore_url, 'data-http-url' => no_ignore_url_http }
-              meinen Kalender (meine Einstellungen berücksichtigen)
-          %label.radio
-            %input.calendar-import-setting{ type: 'radio', name: 'ical-radios', 'data-webcal-url' => my_cal_url, 'data-http-url' => my_cal_url_http }
-              nur Termine an denen ich teilnehme
-    - else
-      - default_url = my_cal_url = url_for(action: "general", protocol: 'webcal', controller: "ical", format: "ical", only_path: false)
-      - my_cal_url_http = my_cal_url.gsub(/\Awebcal/, 'http')
-      %p
-        Leider hast du dich nicht 
-        = link_to "angemeldetet", new_user_session_path
-        , somit kannst du nur nur einen ungefilterten Kalender abonnieren:
-        .control.group
-          %label.radio
-            %input.calendar-import-setting{ type: 'radio', name: 'ical-radios', checked: 'checked', 'data-webcal-url' => default_url, 'data-http-url' => my_cal_url_http }
-              Alle Termine, ungefiltert
+      %ul.nav.nav-tabs
+        %li.active= link_to 'iCal', '#ical', { 'data-toggle' => 'tab' }
+        %li= link_to 'Google', '#google', { 'data-toggle' => 'tab' }
+        %li= link_to 'Outlook', '#outlook', { 'data-toggle' => 'tab' }
+      .tab-content
 
-    %ul.nav.nav-tabs
-      %li.active= link_to 'iCal', '#ical', { 'data-toggle' => 'tab' }
-      %li= link_to 'Google', '#google', { 'data-toggle' => 'tab' }
-      %li= link_to 'Outlook', '#outlook', { 'data-toggle' => 'tab' }
-    .tab-content
+        #ical.tab-pane.active
+          .calendar-import.by-button
+            %p Einfach auf den Knopf drücken, um den Kalender zu importieren
+            = link_to 'In meinen iCal', default_url, class: 'btn btn-inverse calendar-import-url calendar-import-button'
 
-      #ical.tab-pane.active
-        .calendar-import.by-button
-          %p Einfach auf den Knopf drücken, um den Kalender zu importieren
-          = link_to 'In meinen iCal', default_url, class: 'btn btn-inverse calendar-import-url calendar-import-button'
+          .calendar-import.by-link
+            %p Alternativ kannst du den Import auch über den folgenden Link durchführen:
+            %input.input-text.calendar-import-url{ type: 'text', value: my_cal_url_http }
 
-        .calendar-import.by-link
-          %p Alternativ kannst du den Import auch über den folgenden Link durchführen:
-          %input.input-text.calendar-import-url{ type: 'text', value: my_cal_url_http }
+        #google.tab-pane
+          .calendar-import.by-button
+            %p Mit einem Buttonklick den Kalender importieren:
+            = link_to 'In meinen Google-Kalender', "#", class: 'btn btn-inverse calendar-import-button-google'
+          .calendar-import.by-link
+            %p
+              %strong Manuell:
+            %p 
+              In der linken Spalte neben "Other Calendars" auf den Pfeil klicken und dann auf "Add by URL".
+              Dort die folgende URL eintragen:
+            %input.input-text.calendar-import-url{ type: 'text', value: my_cal_url_http }
 
-      #google.tab-pane
-        .calendar-import.by-button
-          %p Mit einem Buttonklick den Kalender importieren:
-          = link_to 'In meinen Google-Kalender', "#", class: 'btn btn-inverse calendar-import-button-google'
-        .calendar-import.by-link
-          %p
-            %strong Manuell:
-          %p 
-            In der linken Spalte neben "Other Calendars" auf den Pfeil klicken und dann auf "Add by URL".
-            Dort die folgende URL eintragen:
-          %input.input-text.calendar-import-url{ type: 'text', value: my_cal_url_http }
+        #outlook.tab-pane
+          .calendar-import.by-button
+            %p Einfach auf den Knopf drücken, um den Kalender zu importieren
+            = link_to 'In meinen Outlook-Kalender', default_url, class: 'btn btn-inverse calendar-import-button'
 
-      #outlook.tab-pane
-        .calendar-import.by-button
-          %p Einfach auf den Knopf drücken, um den Kalender zu importieren
-          = link_to 'In meinen Outlook-Kalender', default_url, class: 'btn btn-inverse calendar-import-button'
-
-        .calendar-import.by-link
-          %p Alternativ kannst du den Import auch über den folgenden Link durchführen:
-          %input.input-text.calendar-import-url{ type: 'text', value: my_cal_url_http }
+          .calendar-import.by-link
+            %p Alternativ kannst du den Import auch über den folgenden Link durchführen:
+            %input.input-text.calendar-import-url{ type: 'text', value: my_cal_url_http }
 
