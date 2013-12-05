@@ -26,3 +26,13 @@ ul.calendar-startselector-days {
     }
   }
 }
+
+.day-divider {
+  background: $primary-color;
+  padding: 20px 0;
+
+  h2 {
+    font-size: $h5-font-size;
+    margin: 0;
+  }
+}
