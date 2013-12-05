@@ -6,7 +6,3 @@
       = day_output_helper(current_date)
 
   = render partial: 'modules/calendars/entry', locals: {single_event: single_event}
-:javascript
-  var calendarScrollFrom = "#{current_date+1.day}";
-  var calendarScrollTo   = "#{current_date+1.month}";
-  var endOfTheWorld      = false;
