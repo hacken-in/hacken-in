@@ -12,14 +12,6 @@ module ApplicationHelper
   end
 
   def day_output_helper(date)
-      date = date.to_date
-      today = Date.today
-      date_ext = case
-        when date == today then " - Heute"
-        when date == (today + 1) then " - Morgen"
-        when date == (today + 2) then " - Übermorgen"
-      end
-
       retval = <<-EOL
         <div class='calendar-datebox-d'>
           #{date.strftime('%d')}
@@ -27,7 +19,7 @@ module ApplicationHelper
         <div class='calendar-datebox-box'>
           <div class='calendar-datebox-my'>#{I18n.localize(date, format: '%b %Y')}</div>
           <div class='calendar-datebox-wd'>#{I18n.localize(date, format: '%A')}</div>
-        </div>#{date_ext}
+        </div>
       EOL
       retval.html_safe
   end

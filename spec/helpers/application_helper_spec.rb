@@ -5,48 +5,6 @@ describe ApplicationHelper do
   include ApplicationHelper
   include GravatarImageTag
 
-  it "should check if output for today is correct" do
-    today = Date.today
-    retval = <<-EOL
-        <div class='calendar-datebox-d'>
-          #{today.strftime('%d')}
-        </div>
-        <div class='calendar-datebox-box'>
-          <div class='calendar-datebox-my'>#{I18n.localize(today, format: '%b %Y')}</div>
-          <div class='calendar-datebox-wd'>#{I18n.localize(today, format: '%A')}</div>
-        </div> - Heute
-      EOL
-    day_output_helper(today).should == retval
-  end
-
-  it "should check if output for tomorrow is correct" do
-    tomorrow = Date.today+1
-    retval = <<-EOL
-        <div class='calendar-datebox-d'>
-          #{tomorrow.strftime('%d')}
-        </div>
-        <div class='calendar-datebox-box'>
-          <div class='calendar-datebox-my'>#{I18n.localize(tomorrow, format: '%b %Y')}</div>
-          <div class='calendar-datebox-wd'>#{I18n.localize(tomorrow, format: '%A')}</div>
-        </div> - Morgen
-      EOL
-    day_output_helper(tomorrow).should == retval
-  end
-
-  it "should check if output for day after tomorrow is correct" do
-    day_after_tomorrow = Date.today+2
-    retval = <<-EOL
-        <div class='calendar-datebox-d'>
-          #{day_after_tomorrow.strftime('%d')}
-        </div>
-        <div class='calendar-datebox-box'>
-          <div class='calendar-datebox-my'>#{I18n.localize(day_after_tomorrow, format: '%b %Y')}</div>
-          <div class='calendar-datebox-wd'>#{I18n.localize(day_after_tomorrow, format: '%A')}</div>
-        </div> - Übermorgen
-      EOL
-    day_output_helper(day_after_tomorrow).should == retval
-  end
-
   it "should convert markdown" do
     markdown_formatted_text = "I am *italic* and **bold**."
     convert_markdown(markdown_formatted_text).should == "<p>I am <em>italic</em> and <strong>bold</strong>.</p>\n"
