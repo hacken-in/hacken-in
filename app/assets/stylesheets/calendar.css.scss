@@ -13,6 +13,7 @@ ul.calendar-startselector-months {
 
 ul.calendar-startselector-days {
   background: $primary-color;
+  border-bottom: 1px solid #a0a0a0;
 
   li {
     .weekday {
@@ -44,6 +45,9 @@ ul.calendar-startselector-days {
 };
 
 .single-event {
+  margin-top: 10px;
+  border-bottom: 1px solid $primary-color;
+
   h3 {
     margin: 0;
   }
