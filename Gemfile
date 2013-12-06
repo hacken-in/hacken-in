@@ -107,6 +107,9 @@ group :development do
   gem 'better_errors', '~> 0.7.0'
   gem 'binding_of_caller', '~> 0.7.1'
 
+  # Faster test execution
+  gem 'spring', '1.0.0'
+
   # Guard
   gem 'guard', '~> 1.6.2'
   gem 'guard-rspec'
