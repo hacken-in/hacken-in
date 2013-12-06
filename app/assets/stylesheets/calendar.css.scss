@@ -36,3 +36,28 @@ ul.calendar-startselector-days {
     margin: 0;
   }
 }
+
+.indicator {
+  width: 5px;
+  height: 50px;
+  margin: 5px 0;
+};
+
+.single-event {
+  h3 {
+    margin: 0;
+  }
+
+  h4 {
+    font-size: $base-font-size;
+    margin: 0;
+  }
+
+  p.additional-info {
+    font-size: $base-font-size;
+  }
+
+  h3, h4, p.additional-info {
+    color: $body-font-color;
+  }
+}

@@ -1,11 +1,14 @@
 - color = single_event.category.try(:color)
 
-.calendar-entry.black-bar
-  .black-bar--category-indicator
-    = render partial: 'modules/categories/indicator', locals: { submodule: "medium", color: color }
-  %a.calendar-line.black-bar-content.title-link{ data: { hlcolor: color }, href: event_single_event_path(single_event.event, single_event)}
-    .calendar-line-title.black-bar-title
-      = single_event.title
-    - if !single_event.full_day
-      .calendar-line-time.black-bar-time
-        = I18n.localize(single_event.occurrence, format: "%H:%M Uhr")
+.single-event.row
+  .small-1.columns= render partial: 'modules/categories/indicator', locals: { color: color }
+  = link_to event_single_event_path(single_event.event, single_event), class: "small-11 columns"  do
+    %h3= single_event.title
+    %h4 I will be the subtitle
+    %p.additional-info
+      - if single_event.venue.present?
+        #{single_event.venue.city},
+        #{single_event.venue.location},
+        #{single_event.venue.street},
+      - if !single_event.full_day
+        = I18n.localize(single_event.occurrence, format: "%H:%M")
