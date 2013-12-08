@@ -68,8 +68,8 @@ gem 'omniauth-github', '~> 1.1.0'
 gem 'omniauth-twitter', '~> 1.0.1'
 
 # Picture Upload
-gem 'carrierwave', '~> 0.8.0'
-gem 'mini_magick', '~> 3.6.0'
+gem 'carrierwave', '~> 0.9.0'
+gem 'mini_magick', '~> 3.7.0'
 
 # Form Handling, aktuell die 3.0.0 RC, da die 2er Reihe nicht mit Rails 4.0 arbeitet
 gem "simple_form", git: "https://github.com/plataformatec/simple_form"
