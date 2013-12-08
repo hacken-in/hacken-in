@@ -46,7 +46,7 @@ gem "font-awesome-rails", "~> 3.2.1.2"
 
 gem 'haml', '~> 4.0.4'
 gem 'md_emoji', '~> 1.0.0'
-gem 'redcarpet', '~> 2.2.2'
+gem 'redcarpet', '~> 3.0.0'
 
 # Admin
 # Attention: 0.6.0 has namespacing issues
