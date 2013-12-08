@@ -117,8 +117,7 @@ group :development do
 end
 
 group :test, :development do
-  # Using an old version of db cleaner for now ... see: https://github.com/bmabey/database_cleaner/issues/224
-  gem 'database_cleaner', '1.0.1'
+  gem 'database_cleaner', '1.2.0'
   gem 'rspec-rails',  '~> 2.0'
   gem 'factory_girl_rails', '~> 4.2'
   gem 'faker', '~> 1.2.0'
