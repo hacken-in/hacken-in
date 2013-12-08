@@ -1,6 +1,6 @@
 GIT
-  remote: git://github.com/gregbell/active_admin.git
-  revision: 388ed07e477af5f5644d0c30cd45b4377c886dd7
+  remote: https://github.com/gregbell/active_admin
+  revision: 14fa117f42692f5075fe16ec04de2a6282840400
   branch: master
   specs:
     activeadmin (1.0.0.pre)
@@ -18,7 +18,7 @@ GIT
       sass-rails
 
 GIT
-  remote: git://github.com/hacken-in/tipsy-rails.git
+  remote: https://github.com/hacken-in/tipsy-rails
   revision: aae6f87c2babebae9f32493dd72aea33970a6d8f
   branch: rails4
   specs:
@@ -27,7 +27,7 @@ GIT
       sass-rails
 
 GIT
-  remote: git://github.com/hacken-in/zero-clipboard-rails.git
+  remote: https://github.com/hacken-in/zero-clipboard-rails
   revision: 73fb34a2524e6cc5b3e8262dd47d73aa1d8dc5ca
   branch: rails4
   specs:
@@ -36,8 +36,8 @@ GIT
       sass-rails
 
 GIT
-  remote: git://github.com/plataformatec/simple_form.git
-  revision: 5ebbe7087c7f474da7abe4dee8ea9998e4abddc2
+  remote: https://github.com/plataformatec/simple_form
+  revision: 3bb71085c7cc9098cb339fca88fcaae2e92b0fac
   specs:
     simple_form (3.0.1)
       actionpack (>= 4.0.0, < 4.1)

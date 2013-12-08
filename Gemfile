@@ -40,8 +40,8 @@ gem 'bootstrap-sass-rails', '~> 2.3.0.0'
 
 # TODO: Fix the version
 gem 'momentjs-rails', '~> 2.1.0'                                                    # Date parsing in Javascript
-gem 'zero-clipboard-rails', github: 'hacken-in/zero-clipboard-rails', branch: 'rails4' # Clipboard-Button on iCal Page
-gem 'tipsy-rails',          github: 'hacken-in/tipsy-rails', branch: 'rails4'
+gem 'zero-clipboard-rails', git: 'https://github.com/hacken-in/zero-clipboard-rails', branch: 'rails4' # Clipboard-Button on iCal Page
+gem 'tipsy-rails',          git: 'https://github.com/hacken-in/tipsy-rails', branch: 'rails4'
 gem "font-awesome-rails", "~> 3.2.1.2"
 
 gem 'haml', '~> 3.1.8'
@@ -54,7 +54,7 @@ gem 'redcarpet', '~> 2.2.2'
 # The "/" root tries to open a non existend
 # dashboard controller
 # TODO: Set this to the Ruby Gems version as soon as this is released
-gem 'activeadmin', github: "gregbell/active_admin", branch: 'master'
+gem 'activeadmin', git: "https://github.com/gregbell/active_admin", branch: 'master'
 
 # Date Handling
 # TODO: gem 'ice_cube', '~> 0.10.0'
@@ -73,7 +73,7 @@ gem 'carrierwave', '~> 0.8.0'
 gem 'mini_magick', '~> 3.6.0'
 
 # Form Handling, aktuell die 3.0.0 RC, da die 2er Reihe nicht mit Rails 4.0 arbeitet
-gem "simple_form", github: "plataformatec/simple_form"
+gem "simple_form", git: "https://github.com/plataformatec/simple_form"
 
 # JavaScript runtime
 gem 'execjs', '~> 1.4.0'
