@@ -40,8 +40,8 @@ gem 'bootstrap-sass-rails', '~> 2.3.0.0'
 
 # TODO: Fix the version
 gem 'momentjs-rails', '~> 2.1.0'                                                    # Date parsing in Javascript
-gem 'zero-clipboard-rails', github: 'hcking/zero-clipboard-rails', branch: 'rails4' # Clipboard-Button on iCal Page
-gem 'tipsy-rails',          github: 'hcking/tipsy-rails', branch: 'rails4'
+gem 'zero-clipboard-rails', github: 'hacken-in/zero-clipboard-rails', branch: 'rails4' # Clipboard-Button on iCal Page
+gem 'tipsy-rails',          github: 'hacken-in/tipsy-rails', branch: 'rails4'
 gem "font-awesome-rails", "~> 3.2.1.2"
 
 gem 'haml', '~> 3.1.8'

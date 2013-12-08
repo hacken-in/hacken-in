@@ -18,7 +18,7 @@ GIT
       sass-rails
 
 GIT
-  remote: git://github.com/hcking/tipsy-rails.git
+  remote: git://github.com/hacken-in/tipsy-rails.git
   revision: aae6f87c2babebae9f32493dd72aea33970a6d8f
   branch: rails4
   specs:
@@ -27,7 +27,7 @@ GIT
       sass-rails
 
 GIT
-  remote: git://github.com/hcking/zero-clipboard-rails.git
+  remote: git://github.com/hacken-in/zero-clipboard-rails.git
   revision: 73fb34a2524e6cc5b3e8262dd47d73aa1d8dc5ca
   branch: rails4
   specs:

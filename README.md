@@ -60,7 +60,7 @@ This will offer you the following comfortable features:
 
 ## Testing
 
-Hcking is developed in a test-driven way using Rspec and
+[Hacken.in](http://hacken.in) is developed in a test-driven way using Rspec and
 FactoryGirl. If you want to contribute to the project always add
 tests for your added functionality. If you find a bug it would be
 really helpful if you add a regression test that displays this

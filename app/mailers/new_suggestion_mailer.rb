@@ -6,7 +6,7 @@ class NewSuggestionMailer < ActionMailer::Base
 
   def new_suggestion(record)
     @record = record
-    mail to: RECIPIENTS, subject: "[hcking.de Vorschlag] Neuer Vorschlag eingereicht!"
+    mail to: RECIPIENTS, subject: "[hacken.in Vorschlag] Neuer Vorschlag eingereicht!"
   end
 
 end
