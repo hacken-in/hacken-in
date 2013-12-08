@@ -121,10 +121,10 @@ group :test, :development do
   gem 'database_cleaner', '1.0.1'
   gem 'rspec-rails',  '~> 2.0'
   gem 'factory_girl_rails', '~> 4.2'
-  gem 'faker', '~> 1.1.2'
-  gem 'coveralls', '~> 0.6.7'
-  gem 'simplecov', '~> 0.7.1'
-  gem 'brakeman', '~> 1.9.5'
+  gem 'faker', '~> 1.2.0'
+  gem 'coveralls', '~> 0.7.0'
+  gem 'simplecov', '~> 0.8.2'
+  gem 'brakeman', '~> 2.2.0'
 end
 
 gem 'recaptcha', '0.3.5'
