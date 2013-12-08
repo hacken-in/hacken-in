@@ -29,7 +29,7 @@ class Event < ActiveRecord::Base
 
   # Search for region, but also check for region_id = 1, that is the global region
   scope :in_region, ->(region) { where('region_id = ? or region_id = 1', region)}
-  scope :name_or_description_like, -> (search) { where(arel_table[:name].matches(search).or(arel_table[:description].matches(search))) }
+  scope :name_or_description_like, ->(search) { where(arel_table[:name].matches(search).or(arel_table[:description].matches(search))) }
 
   def self.search(search)
     unscoped.name_or_description_like("%#{search}%")

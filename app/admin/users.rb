@@ -41,14 +41,14 @@ ActiveAdmin.register User do
     defaults finder: :find_by_nickname
 
     def permitted_params
-      params.permit(user: %i[
-        nickname
-        email
-        admin
-        description
-        github
-        twitter
-        homepage
+      params.permit(user: [
+        :nickname,
+        :email,
+        :admin,
+        :description,
+        :github,
+        :twitter,
+        :homepage
       ])
     end
   end

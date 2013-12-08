@@ -127,3 +127,12 @@ group :test, :development do
 end
 
 gem 'recaptcha', '0.3.5'
+
+platform :rbx do
+  gem 'rubysl', '~> 2.0.0'
+  gem 'racc'
+  group :test do
+    gem 'rubysl-test-unit'
+    gem 'rubinius-coverage'
+  end
+end
