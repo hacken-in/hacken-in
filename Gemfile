@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 4.0.2'
-gem 'rake', '~> 10.0.3'
+gem 'rake', '~> 10.1.0'
 
 # Databases
 gem 'sqlite3', '~> 1.3.8', group: :test
@@ -32,7 +32,7 @@ gem 'chartkick', '~> 1.2.0'
 gem 'sass-rails', '~> 4.0.0'
 gem 'coffee-script', '~> 2.2.0'
 gem 'leaflet-rails', '~> 0.6.2'
-gem 'uglifier', '~> 1.3.0'
+gem 'uglifier', '~> 2.3.2'
 gem 'jquery-rails', '~> 3.0.0'
 gem 'pjax_rails', '~> 0.3.4'
 gem "compass-rails", "~> 1.1.0"
@@ -75,7 +75,7 @@ gem 'mini_magick', '~> 3.7.0'
 gem "simple_form", "~> 3.0.1"
 
 # JavaScript runtime
-gem 'execjs', '~> 1.4.0'
+gem 'execjs', '~> 2.0.2'
 gem 'therubyracer', '~> 0.12.0'
 
 # User Picture using Gravatar
