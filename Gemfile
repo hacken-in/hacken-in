@@ -103,17 +103,17 @@ group :development do
     gem 'growl', '~> 1.0.3'
   end
 
-  gem 'better_errors', '~> 0.7.0'
+  gem 'better_errors', '~> 1.0.1'
   gem 'binding_of_caller', '~> 0.7.1'
 
   # Faster test execution
   gem 'spring', '1.0.0'
 
   # Guard
-  gem 'guard', '~> 1.6.2'
-  gem 'guard-rspec'
-  gem 'guard-pow', '~> 1.0.0'
-  gem 'guard-bundler', '~> 1.0.0'
+  gem 'guard', '~> 2.2.4'
+  gem 'guard-rspec', '~> 4.2.0'
+  gem 'guard-pow', '~> 2.0.0'
+  gem 'guard-bundler', '~> 2.0.0'
 end
 
 group :test, :development do
