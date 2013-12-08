@@ -301,14 +301,14 @@ describe Event do
 
   it "should not find events for wrong region" do
     event = FactoryGirl.create(:simple)
-    region = Region.where(slug: "berlin") || FactoryGirl.create(:berlin_region)
+    region = Region.where(slug: "berlin").first || FactoryGirl.create(:berlin_region)
     Event.in_region(region).count.should == 0
   end
 
   it "should find events that are in global region, no matter what region you give to it" do
     gevent = FactoryGirl.create(:global_single_event)
-    bregion = Region.where(slug: "berlin") || FactoryGirl.create(:berlin_region)
-    kregion = Region.where(slug: "koeln")  || FactoryGirl.create(:koeln_region)
+    bregion = Region.where(slug: "berlin").first || FactoryGirl.create(:berlin_region)
+    kregion = Region.where(slug: "koeln").first  || FactoryGirl.create(:koeln_region)
 
     Event.in_region(bregion).count.should == 1
     Event.in_region(kregion).count.should == 1
