@@ -35,7 +35,7 @@ gem 'leaflet-rails', '~> 0.6.2'
 gem 'uglifier', '~> 1.3.0'
 gem 'jquery-rails', '~> 3.0.0'
 gem 'pjax_rails', '~> 0.3.4'
-gem "compass-rails", "~> 2.0.alpha.0"
+gem "compass-rails", "~> 1.1.0"
 gem 'bootstrap-sass-rails', '~> 2.3.0.0'
 
 # TODO: Fix the version
