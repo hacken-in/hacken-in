@@ -44,8 +44,7 @@ gem 'zero-clipboard-rails', git: 'https://github.com/hacken-in/zero-clipboard-ra
 gem 'tipsy-rails',          git: 'https://github.com/hacken-in/tipsy-rails', branch: 'rails4'
 gem "font-awesome-rails", "~> 3.2.1.2"
 
-gem 'haml', '~> 3.1.8'
-# TODO: gem 'haml', '~> 4.0.0'
+gem 'haml', '~> 4.0.4'
 gem 'md_emoji', '~> 1.0.0'
 gem 'redcarpet', '~> 2.2.2'
 
