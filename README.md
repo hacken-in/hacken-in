@@ -1,17 +1,16 @@
 # Welcome
 
-[![Build Status](https://secure.travis-ci.org/hcking/hcking.png?branch=master)](http://travis-ci.org/hcking/hcking)
-[![Code Climate](https://codeclimate.com/github/hcking/hcking.png)](https://codeclimate.com/github/hcking/hcking)
-[![Coverage Status](https://coveralls.io/repos/hcking/hcking/badge.png)](https://coveralls.io/r/hcking/hcking)
+[![Build Status](https://secure.travis-ci.org/hacken-in/website.png?branch=master)](http://travis-ci.org/hacken-in/website)
+[![Code Climate](https://codeclimate.com/github/hacken-in/website.png)](https://codeclimate.com/github/hacken-in/website)
+[![Coverage Status](https://coveralls.io/repos/hacken-in/website/badge.png)](https://coveralls.io/r/hacken-in/website)
 
-This is the code of [hacken.in](http://hacken.in/), an event
-calendar for geeks in and around Cologne and Berlin.
+This is the code of [hacken.in](http://hacken.in/), an event calendar for geeks in and around Cologne and Berlin.
 
 We discuss features and problems in our [Google Group](http://groups.google.com/group/hcking).
 
 ## Scope of hacken.in
 
-When you want to add an event to [hacken.in/koeln](http://hacken.in/koeln) please check with the following guidelines:
+When you want to add an event to [hacken.in](http://hacken.in) please check with the following guidelines:
 
 * Currently we only feature events in Ruhr area plus BIG events in Europe
 * The following topics are allowed:
