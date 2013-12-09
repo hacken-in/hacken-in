@@ -27,7 +27,7 @@ describe Event do
     event.schedule.all_occurrences.first.to_date.should == test_date.to_date
 
     event = Event.new(name: "Hallo", category: category)
-    event.schedule_yaml = "--- \n:start_date: #{test_date}\n:rrules: []\n\n:exrules: []\n\n:rdates: \n- #{test_date}\n:exdates: []\n\n:duration: \n:end_time: \n"
+    event.schedule_yaml = "--- \n:start_date: #{test_date.iso8601}\n:rrules: []\n\n:exrules: []\n\n:rdates: \n- #{test_date.iso8601}\n:exdates: []\n\n:duration: \n:end_time: \n"
 
     event.schedule.all_occurrences.size.should == 1
 
