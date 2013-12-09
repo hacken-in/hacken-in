@@ -132,7 +132,7 @@ platform :rbx do
   gem 'rubysl', '~> 2.0.0'
   gem 'racc'
   group :test do
-    gem 'rubysl-test-unit'
+    gem 'rubysl-test-unit', require: false
     gem 'rubinius-coverage'
   end
 end
