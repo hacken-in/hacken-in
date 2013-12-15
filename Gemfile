@@ -92,8 +92,6 @@ gem 'simple-navigation', '~> 3.10.0'
 # (Geocoder, Y U NO Semantic Versioning?)
 gem 'geocoder', '= 1.1.2'
 
-gem 'nokogiri', '~> 1.5.9'
-
 group :development do
   # Deployment
   gem 'capistrano', '~> 2.13.0'
