@@ -19,6 +19,4 @@
 //= require foundation/foundation.tooltip
 //= require foundation/foundation.topbar
 
-//= require_tree .
-
 $(function(){ $(document).foundation(); });
