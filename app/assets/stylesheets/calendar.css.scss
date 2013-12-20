@@ -1,33 +1,35 @@
-.calendar-startselector-months, .calendar-startselector-days {
-  @include grid-row();
+.calendar-startselector {
+  nav {
+    @include grid-row();
 
-  ul {
-    @include inline-list;
-    @include grid-column(12);
-  }
-
-  li.active {
-    border-bottom: 4px solid $alert-color;
-  }
-}
-
-.calendar-startselector-months {
-  background: $secondary-color;
-}
-
-.calendar-startselector-days {
-  background: $primary-color;
-  border-bottom: 1px solid #a0a0a0;
-
-  li {
-    .weekday {
-      margin-top: 16px;
-      margin-bottom: -16px
+    ul {
+      @include inline-list;
+      @include grid-column(12);
     }
 
-    .day {
-      font-size: $h1-font-size;
-      font-weight: 300;
+    li.active {
+      border-bottom: 4px solid $alert-color;
+    }
+  }
+
+  .months {
+    background: $secondary-color;
+  }
+
+  .days {
+    background: $primary-color;
+    border-bottom: 1px solid #a0a0a0;
+
+    li {
+      .weekday {
+        margin-top: 16px;
+        margin-bottom: -16px
+      }
+
+      .day {
+        font-size: $h1-font-size;
+        font-weight: 300;
+      }
     }
   }
 }

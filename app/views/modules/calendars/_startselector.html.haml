@@ -1,12 +1,13 @@
-.calendar-startselector-months
-  %ul
-    - months.each_with_index do |month, index|
-      %li{data: { year: month.strftime('%Y'), month: month.month }, class: (index == 0 ? 'active' : false) }
-        = I18n.localize(month, format: '%b')
+.calendar-startselector
+  %nav.months
+    %ul
+      - months.each_with_index do |month, index|
+        %li{data: { year: month.strftime('%Y'), month: month.month }, class: (index == 0 ? 'active' : false) }
+          = I18n.localize(month, format: '%b')
 
-.calendar-startselector-days
-  %ul
-    - dates.each do |date|
-      %li{class: [(date[:active] ? "active" : false), (date[:has_events] ? "has_events" : false)] }
-        .weekday= date[:weekday]
-        .day= date[:day]
+  %nav.days
+    %ul
+      - dates.each do |date|
+        %li{class: [(date[:active] ? "active" : false), (date[:has_events] ? "has_events" : false)] }
+          .weekday= date[:weekday]
+          .day= date[:day]
