@@ -67,6 +67,20 @@ class SingleEvent < ActiveRecord::Base
     sevents.uniq.sort
   end
 
+  # Return a hash mapping dates to the events occurring on that date in a specific date range
+  # Includes days without events
+  def self.events_per_day_in(date_range)
+    result = where(occurrence: date_range).group("DATE(occurrence)").count
+    days_with_events = result.keys
+    days_without_events = date_range.to_a - days_with_events
+
+    days_without_events.each do |day|
+      result[day] = 0
+    end
+
+    result
+  end
+
   # This is a little workaround. Rails optimizes .exists? queries and
   # removes includes from the current used scope. Sadly we have the
   # event table in the default scope and need the include. The workaround

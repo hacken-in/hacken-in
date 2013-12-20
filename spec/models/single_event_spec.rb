@@ -296,4 +296,23 @@ ical
       "Köln" => 1
     }
   end
+
+  # This describe does not do anything. "Why" you ask?
+  # See #318 for details.
+  describe "events_per_day_in" do
+    subject { SingleEvent }
+
+    let(:date_range) { Date.today..Date.tomorrow }
+    let(:date_with_events) { Date.today }
+    let(:date_without_events) { Date.tomorrow }
+
+    before do
+      SingleEvent.delete_all
+      FactoryGirl.create(:single_event, occurrence: date_with_events)
+      FactoryGirl.create(:single_event, occurrence: date_with_events)
+    end
+
+    it 'should give the right count for the day with events'
+    it 'should give the right count for the day without events'
+  end
 end
