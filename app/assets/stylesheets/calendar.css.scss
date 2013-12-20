@@ -1,17 +1,21 @@
-ul.calendar-startselector-months, ul.calendar-startselector-days {
-  @include inline-list;
-  margin-bottom: 0;
+.calendar-startselector-months, .calendar-startselector-days {
+  @include grid-row();
+
+  ul {
+    @include inline-list;
+    @include grid-column(12);
+  }
 
   li.active {
     border-bottom: 4px solid $alert-color;
   }
 }
 
-ul.calendar-startselector-months {
+.calendar-startselector-months {
   background: $secondary-color;
 }
 
-ul.calendar-startselector-days {
+.calendar-startselector-days {
   background: $primary-color;
   border-bottom: 1px solid #a0a0a0;
 
@@ -29,24 +33,36 @@ ul.calendar-startselector-days {
 }
 
 .day-divider {
+  @include grid-row();
   background: $primary-color;
   padding: 20px 0;
 
   h2 {
+    @include grid-column(12);
     font-size: $h5-font-size;
     margin: 0;
   }
 }
 
-.indicator {
-  width: 5px;
-  height: 50px;
-  margin: 5px 0;
-};
-
 .single-event {
+  @include grid-row();
+
   margin-top: 10px;
   border-bottom: 1px solid $primary-color;
+
+  .indicator-wrapper {
+    @include grid-column(2);
+  }
+
+  .indicator {
+    margin-top: 5px; // TODO: Check why this is necessary
+    width: 5px;
+    height: 50px;
+  }
+
+  .short-description {
+    @include grid-column(10);
+  }
 
   h3 {
     margin: 0;

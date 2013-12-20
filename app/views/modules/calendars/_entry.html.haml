@@ -1,8 +1,9 @@
 - color = single_event.category.try(:color)
 
-.single-event.row
-  .small-1.columns= render partial: 'modules/categories/indicator', locals: { color: color }
-  = link_to event_single_event_path(single_event.event, single_event), class: "small-11 columns"  do
+.single-event
+  .indicator-wrapper
+    = render partial: 'modules/categories/indicator', locals: { color: color }
+  = link_to event_single_event_path(single_event.event, single_event), class: "short-description"  do
     %h3= single_event.title
     %h4 I will be the subtitle
     %p.additional-info
