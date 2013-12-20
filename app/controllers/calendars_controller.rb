@@ -25,13 +25,14 @@ class CalendarsController < ApplicationController
     months
   end
 
-  # TODO: This is just for the design, needs to be implemented for real
   def generate_day_list(start_date, number_of_days)
-    dates = (start_date .. start_date + number_of_days.days).map do |date|
-      DayPresenter.new(date, (rand < 0.6))
+    date_range = start_date .. start_date + number_of_days.days
+
+    days = SingleEvent.events_per_day_in(date_range).sort.map do |day, occurrences|
+      DayPresenter.new(day, (occurrences > 0))
     end
-    dates.first.active = true
-    dates
+    days.first.active = true
+    days
   end
 
   def generate_single_event_list(start_date, number_of_weeks)
