@@ -14,6 +14,8 @@ class CalendarsController < ApplicationController
 
     @months = []
     8.times { |i| @months << (@start_date + i.months) }
+    @months = @months.map { |month| MonthPresenter.new(month) }
+    @months.first.active = true
 
     # TODO: This is just for the design, needs to be implemented for real
     @dates = (Date.today .. 5.days.from_now).map do |date|

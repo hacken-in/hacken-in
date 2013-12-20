@@ -1,9 +1,9 @@
 .calendar-startselector
   %nav.months
     %ul
-      - months.each_with_index do |month, index|
-        %li{data: { year: month.strftime('%Y'), month: month.month }, class: (index == 0 ? 'active' : false) }
-          = I18n.localize(month, format: '%b')
+      - months.each do |month|
+        %li{data: { year: month.year, month: month.month }, class: month.css_class }
+          = month
 
   %nav.days
     %ul
