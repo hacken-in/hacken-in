@@ -13,6 +13,10 @@ class MonthPresenter
     @month.month
   end
 
+  def data
+    { year: year, month: month }
+  end
+
   def to_s
     I18n.localize(@month, format: '%b')
   end

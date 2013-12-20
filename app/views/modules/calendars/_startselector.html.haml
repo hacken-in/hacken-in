@@ -2,7 +2,7 @@
   %nav.months
     %ul
       - months.each do |month|
-        %li{data: { year: month.year, month: month.month }, class: month.css_class }
+        %li{data: month.data, class: month.css_class }
           = month
 
   %nav.days
