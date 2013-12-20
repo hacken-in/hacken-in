@@ -8,6 +8,6 @@
   %nav.days
     %ul
       - dates.each do |date|
-        %li{class: [(date[:active] ? "active" : false), (date[:has_events] ? "has_events" : false)] }
-          .weekday= date[:weekday]
-          .day= date[:day]
+        %li{class: date.css_class }
+          .weekday= date.weekday
+          .day= date.day

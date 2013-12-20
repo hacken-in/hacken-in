@@ -19,14 +19,13 @@ class CalendarsController < ApplicationController
 
     # TODO: This is just for the design, needs to be implemented for real
     @dates = (Date.today .. 5.days.from_now).map do |date|
-      {
+      DayPresenter.new({
         weekday: date.strftime("%A")[0,2],
         day: date.day,
-        has_events: (rand < 0.6),
-        active: false
-      }
+        has_events: (rand < 0.6)
+      })
     end
-    @dates.first[:active] = true;
+    @dates.first.active = true
 
     if current_region.nil?
       raise ActionController::RoutingError.new('Not Found')
