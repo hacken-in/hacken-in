@@ -1,21 +1,19 @@
 class DayPresenter
   attr_accessor :active
+  attr_reader :has_events, :date
 
-  def initialize(day)
-    @day = day
+  def initialize(date, has_events)
+    @date = date
+    @has_events = has_events
     @active = false
   end
 
   def weekday
-    @day[:weekday]
+    date.strftime("%A")[0,2]
   end
 
   def day
-    @day[:day]
-  end
-
-  def has_events
-    @day[:has_events]
+    date.day
   end
 
   def css_class

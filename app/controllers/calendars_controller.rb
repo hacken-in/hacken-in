@@ -28,11 +28,7 @@ class CalendarsController < ApplicationController
   # TODO: This is just for the design, needs to be implemented for real
   def generate_day_list(start_date, number_of_days)
     dates = (start_date .. start_date + number_of_days.days).map do |date|
-      DayPresenter.new({
-        weekday: date.strftime("%A")[0,2],
-        day: date.day,
-        has_events: (rand < 0.6)
-      })
+      DayPresenter.new(date, (rand < 0.6))
     end
     dates.first.active = true
     dates
