@@ -2,38 +2,45 @@
 class CalendarsController < ApplicationController
 
   def show
-    @categories = Category.all
+    raise ActionController::RoutingError.new('Not Found') if current_region.nil?
 
-    # Die Monate, die angezeigt werden
-    begin
-      @start_date = params[:start].present? ? Date.parse(params[:start]) : Date.today
-    rescue ArgumentError
-      @start_date = Date.today
-      flash.now[:error] = 'Das war kein gültiges Datum... Wir zeigen dir mal den Kalender ab heute'
-    end
+    @categories    = Category.all
+    @start_date    = determine_start_date
+    @months        = generate_month_list
+    @dates         = generate_day_list
+    @single_events = generate_single_event_list
+  end
 
-    @months = []
-    8.times { |i| @months << (@start_date + i.months) }
-    @months = @months.map { |month| MonthPresenter.new(month) }
-    @months.first.active = true
+  private
 
-    # TODO: This is just for the design, needs to be implemented for real
-    @dates = (Date.today .. 5.days.from_now).map do |date|
+  def determine_start_date
+    params[:start].present? ? Date.parse(params[:start]) : Date.today
+  rescue ArgumentError
+    Date.today
+  end
+
+  def generate_month_list
+    months = (0..8).map { |i| MonthPresenter.new(@start_date + i.months) }
+    months.first.active = true
+    months
+  end
+
+  # TODO: This is just for the design, needs to be implemented for real
+  def generate_day_list
+    dates = (Date.today .. 5.days.from_now).map do |date|
       DayPresenter.new({
         weekday: date.strftime("%A")[0,2],
         day: date.day,
         has_events: (rand < 0.6)
       })
     end
-    @dates.first.active = true
-
-    if current_region.nil?
-      raise ActionController::RoutingError.new('Not Found')
-    end
-
-    @single_events = SingleEvent.in_next_from(4.weeks, @start_date).in_region(@region)
-    @single_events.to_a.select! { |single_event| single_event.is_for_user? current_user } if current_user
-    @single_events.sort!
+    dates.first.active = true
+    dates
   end
 
+  def generate_single_event_list
+    single_events = SingleEvent.in_next_from(4.weeks, @start_date).in_region(@region)
+    single_events.to_a.select! { |single_event| single_event.is_for_user? current_user } if current_user
+    single_events.sort
+  end
 end
