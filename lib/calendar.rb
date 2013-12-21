@@ -10,7 +10,7 @@ class Calendar
 
   # Yield the days in the right order
   def each
-    @event_list.group_by { |event| event.date }.sort.each do |date, events|
+    @event_list.select(&:is_for_user?).group_by { |event| event.date }.sort.each do |date, events|
       yield @day_class.new(date, events)
     end
   end
