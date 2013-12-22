@@ -1,12 +1,13 @@
+require 'forwardable'
+
 class Day
+  extend Forwardable
+  def_delegator :@sorted_events, :each
+
   attr_reader :date
 
   def initialize(date, events)
     @date = date
-    @events = events
-  end
-
-  def each(&b)
-    @events.sort.each(&b)
+    @sorted_events = events.sort
   end
 end
