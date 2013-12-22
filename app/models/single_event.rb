@@ -67,6 +67,10 @@ class SingleEvent < ActiveRecord::Base
     sevents.uniq.sort
   end
 
+  def date
+    occurrence.to_date
+  end
+
   # Return a hash mapping dates to the events occurring on that date in a specific date range
   # Includes days without events
   def self.events_per_day_in(date_range)
