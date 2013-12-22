@@ -22,6 +22,18 @@ describe Calendar do
     allow(event_on_date_two_not_for_the_user).to receive(:is_for_user?).with(user).and_return(false)
   end
 
+  describe 'empty?' do
+    context 'when the calendar is empty' do
+      subject { Calendar.new([], user, day_class) }
+      its(:empty?) { should be_true }
+    end
+
+    context 'when the calendar has events' do
+      subject { Calendar.new(event_list, user, day_class) }
+      its(:empty?) { should be_false }
+    end
+  end
+
   describe 'each' do
     subject { Calendar.new(event_list, user, day_class) }
     let(:day_one) { double('Day') }
