@@ -1,5 +1,5 @@
-- if single_events.size > 0
-  = render partial: 'modules/calendars/single_event_list', locals: {single_events: single_events}
+- unless calendar.empty?
+  = render partial: 'modules/calendars/single_event_list', locals: {calendar: calendar}
 
 - else
   .well

@@ -8,7 +8,7 @@ class CalendarsController < ApplicationController
     @start_date    = determine_start_date
     @months        = generate_month_list(@start_date, 8)
     @dates         = generate_day_list(@start_date, 5)
-    @single_events = generate_single_event_list(@start_date, 4)
+    @calendar      = generate_calendar(@start_date, 4)
   end
 
   private
@@ -35,9 +35,8 @@ class CalendarsController < ApplicationController
     days
   end
 
-  def generate_single_event_list(start_date, number_of_weeks)
+  def generate_calendar(start_date, number_of_weeks)
     single_events = SingleEvent.in_next_from(number_of_weeks.weeks, start_date).in_region(@region)
-    single_events.to_a.select! { |single_event| single_event.is_for_user? current_user } if current_user
-    single_events.sort
+    Calendar.new(single_events, current_user)
   end
 end
