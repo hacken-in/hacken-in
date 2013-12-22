@@ -2,4 +2,10 @@
   = t('.title')
 
 = render partial: 'modules/calendars/startselector', locals: { months: @months, dates: @dates }
-= render partial: 'modules/calendars/calendar', locals: { calendar: @calendar }
+
+- unless @calendar.empty?
+  - @calendar.each do |day|
+    = render partial: 'modules/calendars/day', locals: { day: day }
+- else
+  .well
+    Herzlichen Glückwunsch, du hast das Ende unseres Kalenders erreicht :-)

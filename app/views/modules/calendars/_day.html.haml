@@ -1,0 +1,5 @@
+.day-divider
+  %h2= I18n.localize(day.date, format: "%A, %d. %B %Y")
+
+- day.each do |single_event|
+  = render partial: 'modules/calendars/entry', locals: { single_event: single_event }
