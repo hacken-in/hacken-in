@@ -1,9 +1,11 @@
+require 'day'
+
 # Filter, sort and group a list of single events
 # (It is not aware that something like a database or Rails exists)
 class Calendar
   # Create a new instance given an event list and a user
   # The third argument is the class for creating the days
-  def initialize(event_list, user, day_class)
+  def initialize(event_list, user, day_class = Day)
     @event_list = event_list
     @day_class = day_class
   end
