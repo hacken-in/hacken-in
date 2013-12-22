@@ -7,12 +7,13 @@ class Calendar
   # The third argument is the class for creating the days
   def initialize(event_list, user, day_class = Day)
     @event_list = event_list
+    @user = user
     @day_class = day_class
   end
 
   # Yield the days in the right order
   def each
-    @event_list.select(&:is_for_user?).group_by { |event| event.date }.sort.each do |date, events|
+    @event_list.select { |event| event.is_for_user? @user }.group_by { |event| event.date }.sort.each do |date, events|
       yield @day_class.new(date, events)
     end
   end
