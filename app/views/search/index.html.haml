@@ -3,22 +3,5 @@
 
 %h1 Suche
 
-= form_tag search_path(region: current_region), :method => 'get' do
-  .input-append
-    = text_field_tag :search, params[:search], placeholder: "Suche..."
-    %button.btn
-      %i.icon-search
-
-- unless params[:search].blank?
-  %h1 Ergebniss 
-  - unless @single_events.blank?
-    - current_date = nil
-    - @single_events.each do |single_event|
-      - if current_date != single_event.occurrence.to_date
-        - current_date = single_event.occurrence.to_date
-        %h1= render partial: 'modules/calendars/show_day', locals: { date: current_date }
-      = render partial: 'modules/calendars/entry', locals: {single_event: single_event}
-
-    = paginate @single_events, :theme => 'twitter-bootstrap'
-  - else
-    Keine Termine gefunden
+- #TODO: Adjust
+%strong Has to be adjusted to new Calendar system and Foundation
