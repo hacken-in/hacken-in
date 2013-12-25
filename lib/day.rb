@@ -2,12 +2,12 @@ require 'forwardable'
 
 class Day
   extend Forwardable
-  def_delegator :@sorted_events, :each
+  def_delegator :@entries, :each
 
   attr_reader :date
 
-  def initialize(date, events)
+  def initialize(date, events, entry_class = CalendarEntry)
     @date = date
-    @sorted_events = events.sort
+    @entries = events.sort.map { |event| entry_class.new(event) }
   end
 end
