@@ -4,8 +4,8 @@ require 'redcarpet_extensions'
 module ApplicationHelper
 
   def sitename
-    if @region
-      "hacken.in/#{@region.slug}"
+    if current_region.present?
+      "hacken.in/#{current_region.slug}"
     else
       "hacken.in"
     end
