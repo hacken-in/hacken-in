@@ -5,17 +5,18 @@ class CalendarsController < ApplicationController
     raise ActionController::RoutingError.new('Not Found') if current_region.nil?
 
     @categories     = Category.all
-    @start_date     = determine_start_date
-    @start_selector = StartSelector.new(@start_date, 8, 5)
-    @calendar       = generate_calendar(@start_date, 4)
+    @start_selector = StartSelector.new(start_date, 8, 5)
+    @calendar       = generate_calendar(start_date, 4)
   end
 
   private
 
-  def determine_start_date
-    params[:start].present? ? Date.parse(params[:start]) : Date.today
-  rescue ArgumentError
-    Date.today
+  def start_date
+    @start_date ||= begin
+      Date.parse(params[:start])
+    rescue ArgumentError, TypeError
+      Date.today
+    end
   end
 
   def generate_calendar(start_date, number_of_weeks)
