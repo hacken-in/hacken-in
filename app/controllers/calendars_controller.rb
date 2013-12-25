@@ -4,7 +4,7 @@ class CalendarsController < ApplicationController
   def show
     raise ActionController::RoutingError.new('Not Found') if current_region.nil?
 
-    @start_selector = StartSelector.new(start_date, 8, 5)
+    @start_selector = StartSelector.new(start_date)
     single_events   = SingleEvent.in_next_from(4.weeks, start_date).in_region(current_region)
     @calendar       = Calendar.new(single_events, current_user)
   end

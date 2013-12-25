@@ -1,18 +1,19 @@
 class StartSelector
-  def initialize(start_date, number_of_months, number_of_days)
+  NUMBER_OF_MONTHS = 8
+  NUMBER_OF_DAYS = 5
+
+  def initialize(start_date)
     @start_date = start_date
-    @number_of_months = number_of_months
-    @number_of_days = number_of_days
   end
 
   def months
-    months = (0..@number_of_months).map { |i| MonthPresenter.new(@start_date + i.months) }
+    months = (0..NUMBER_OF_MONTHS).map { |i| MonthPresenter.new(@start_date + i.months) }
     months.first.active = true
     months
   end
 
   def days
-    date_range = @start_date .. @start_date + @number_of_days.days
+    date_range = @start_date .. @start_date + NUMBER_OF_DAYS.days
 
     days = SingleEvent.events_per_day_in(date_range).sort.map do |day, occurrences|
       DayPresenter.new(day, (occurrences > 0))
