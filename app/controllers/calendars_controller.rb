@@ -4,11 +4,10 @@ class CalendarsController < ApplicationController
   def show
     raise ActionController::RoutingError.new('Not Found') if current_region.nil?
 
-    @categories    = Category.all
-    @start_date    = determine_start_date
-    @months        = generate_month_list(@start_date, 8)
-    @dates         = generate_day_list(@start_date, 5)
-    @calendar      = generate_calendar(@start_date, 4)
+    @categories     = Category.all
+    @start_date     = determine_start_date
+    @start_selector = StartSelector.new(@start_date, 8, 5)
+    @calendar       = generate_calendar(@start_date, 4)
   end
 
   private
@@ -17,22 +16,6 @@ class CalendarsController < ApplicationController
     params[:start].present? ? Date.parse(params[:start]) : Date.today
   rescue ArgumentError
     Date.today
-  end
-
-  def generate_month_list(start_date, number_of_months)
-    months = (0..number_of_months).map { |i| MonthPresenter.new(start_date + i.months) }
-    months.first.active = true
-    months
-  end
-
-  def generate_day_list(start_date, number_of_days)
-    date_range = start_date .. start_date + number_of_days.days
-
-    days = SingleEvent.events_per_day_in(date_range).sort.map do |day, occurrences|
-      DayPresenter.new(day, (occurrences > 0))
-    end
-    days.first.active = true
-    days
   end
 
   def generate_calendar(start_date, number_of_weeks)

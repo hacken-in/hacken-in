@@ -1,7 +1,7 @@
 - content_for :title do
   = t('.title')
 
-= render partial: 'modules/calendars/startselector', locals: { months: @months, dates: @dates }
+= render partial: 'modules/calendars/startselector', locals: { start_selector: @start_selector }
 
 - unless @calendar.empty?
   - @calendar.each do |day|
