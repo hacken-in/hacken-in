@@ -11,7 +11,7 @@ class StartSelector
     months
   end
 
-  def dates
+  def days
     date_range = @start_date .. @start_date + @number_of_days.days
 
     days = SingleEvent.events_per_day_in(date_range).sort.map do |day, occurrences|

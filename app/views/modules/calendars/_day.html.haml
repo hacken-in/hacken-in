@@ -2,4 +2,4 @@
   %h2= I18n.localize(day.date, format: "%A, %d. %B %Y")
 
 - day.each do |entry|
-  = render partial: 'modules/calendars/entry', locals: { entry: entry }
+  = render partial: 'modules/calendars/entry', object: entry
