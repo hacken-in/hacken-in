@@ -1,5 +1,5 @@
 require 'forwardable'
-require 'day'
+require 'active_support/core_ext/integer/time'
 
 # Filter, sort and group a list of single events
 # (It is not aware that something like a database or Rails exists)
@@ -9,18 +9,16 @@ class Calendar
   # Does the calendar contain no entries?
   def_delegator :days, :empty?
 
-  # Create a new instance given an event list and a user
-  # The third argument is the class for creating the days
-  def initialize(events, user, day_class = Day)
+  # Create a new instance given a start date, region and user
+  def initialize(start_date, region, user)
     @user = user
-    @events = events
-    @day_class = day_class
+    @events = SingleEvent.list_all(from: start_date, in_next: 4.weeks, for_region: region)
   end
 
   # Yield the days in the right order
   def each
     days.sort.each do |date, events|
-      yield @day_class.new(date, events)
+      yield Day.new(date, events)
     end
   end
 

@@ -2,6 +2,8 @@ require 'calendar'
 require 'date'
 
 describe Calendar do
+  let(:start_date) { double("StartDate") }
+  let(:region) { double("Region") }
   let(:date_one) { Date.new(2013, 12, 25) }
   let(:date_two) { Date.new(2013, 12, 26) }
 
@@ -14,8 +16,12 @@ describe Calendar do
   let(:event_list) {[ event_on_date_one, event_on_date_two, another_event_on_date_one, event_on_date_two_not_for_the_user ]}
 
   let(:day_class) { double('DayClass') }
+  let(:single_event_class) { double('SingleEventClass') }
 
   before do
+    stub_const("SingleEvent", single_event_class)
+    stub_const("Day", day_class)
+    allow(single_event_class).to receive(:list_all).with(from: start_date, in_next: 4.weeks, for_region: region).and_return(event_list)
     allow(event_on_date_one).to receive(:is_for_user?).with(user).and_return(true)
     allow(event_on_date_two).to receive(:is_for_user?).with(user).and_return(true)
     allow(another_event_on_date_one).to receive(:is_for_user?).with(user).and_return(true)
@@ -24,18 +30,19 @@ describe Calendar do
 
   describe 'empty?' do
     context 'when the calendar is empty' do
-      subject { Calendar.new([], user, day_class) }
+      before { allow(single_event_class).to receive(:list_all).with(from: start_date, in_next: 4.weeks, for_region: region).and_return([]) }
+      subject { Calendar.new(start_date, region, user) }
       its(:empty?) { should be_true }
     end
 
     context 'when the calendar has events' do
-      subject { Calendar.new(event_list, user, day_class) }
+      subject { Calendar.new(start_date, region, user) }
       its(:empty?) { should be_false }
     end
   end
 
   describe 'each' do
-    subject { Calendar.new(event_list, user, day_class) }
+    subject { Calendar.new(start_date, region, user) }
     let(:day_one) { double('Day') }
     let(:day_two) { double('Day') }
 

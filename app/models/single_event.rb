@@ -67,6 +67,10 @@ class SingleEvent < ActiveRecord::Base
     sevents.uniq.sort
   end
 
+  def self.list_all(opts)
+    SingleEvent.in_next_from(opts[:in_next], opts[:from]).in_region(opts[:for_region])
+  end
+
   def date
     occurrence.to_date
   end
