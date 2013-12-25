@@ -6,7 +6,8 @@ class CalendarsController < ApplicationController
 
     @categories     = Category.all
     @start_selector = StartSelector.new(start_date, 8, 5)
-    @calendar       = generate_calendar(start_date, 4)
+    single_events   = SingleEvent.in_next_from(4.weeks, start_date).in_region(current_region)
+    @calendar       = Calendar.new(single_events, current_user)
   end
 
   private
@@ -17,10 +18,5 @@ class CalendarsController < ApplicationController
     rescue ArgumentError, TypeError
       Date.today
     end
-  end
-
-  def generate_calendar(start_date, number_of_weeks)
-    single_events = SingleEvent.in_next_from(number_of_weeks.weeks, start_date).in_region(@region)
-    Calendar.new(single_events, current_user)
   end
 end
