@@ -1,10 +1,13 @@
 .calendar-startselector {
   nav {
     @include grid-row();
+    overflow-y: hidden;
 
     ul {
       @include inline-list;
       @include grid-column(12);
+      padding-left: 0;
+      padding-right: 0;
     }
 
     li.active {
@@ -14,11 +17,37 @@
 
   .months {
     background: $secondary-color;
+
+    $margin-left-of-month-li: 20px;
+    $width-of-month-li: 40px;
+    $number-of-month: 20;
+
+    li {
+      width: $width-of-month-li;
+      margin-left: $margin-left-of-month-li;
+    }
+
+    ul {
+      width: $number-of-month * ($width-of-month-li + $margin-left-of-month-li);
+    }
   }
 
   .days {
     background: $primary-color;
     border-bottom: 1px solid #a0a0a0;
+
+    $margin-left-of-day-li: 20px;
+    $width-of-day-li: 60px;
+    $number-of-day: 20;
+
+    li {
+      width: $width-of-day-li;
+      margin-left: $margin-left-of-day-li;
+    }
+
+    ul {
+      width: $number-of-day * ($width-of-day-li + $margin-left-of-day-li);
+    }
 
     li {
       .weekday {
