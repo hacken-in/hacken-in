@@ -46,8 +46,6 @@
 
   .row
     .small-11.small-centered.columns= link_to t('.suggest_event'), new_suggestion_path, class: 'small-12 button'
-  .row
-    .small-11.small-centered.columns= link_to t('.imprint'), impressum_path, class: 'small-12 button'
 
 
   - if current_user
@@ -74,8 +72,8 @@
   %hr
 
   %ul.off-canvas-list
-    %li= link_to 'Team', humans_path
-    %li= link_to 'Impressum', impressum_path
+    %li= link_to t('.team'), humans_path
+    %li= link_to t('.imprint'), impressum_path
     %li= link_to 'Github', 'https://github.com/hcking'
     %li= link_to 'App.net', 'https://alpha.app.net/hacken_in'
     %li= link_to 'Twitter', 'https://www.twitter.com/hacken_in'
