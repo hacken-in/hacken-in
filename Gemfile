@@ -107,15 +107,15 @@ group :development do
   gem 'spring', '1.0.0'
 
   # Guard
-  gem 'guard', '~> 2.2.4'
-  gem 'guard-rspec', '~> 4.2.0'
+  gem 'guard', '~> 2.2.5'
+  gem 'guard-rspec', '~> 4.2.2'
   gem 'guard-pow', '~> 2.0.0'
   gem 'guard-bundler', '~> 2.0.0'
 end
 
 group :test, :development do
   gem 'database_cleaner', '1.2.0'
-  gem 'rspec-rails',  '~> 2.0'
+  gem 'rspec-rails',  '~> 3.0.0.beta1'
   gem 'factory_girl_rails', '~> 4.2'
   gem 'faker', '~> 1.2.0'
   gem 'coveralls', '~> 0.7.0'

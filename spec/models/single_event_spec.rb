@@ -148,7 +148,7 @@ describe SingleEvent do
     single_event.users << user
     single_event.save
 
-    single_event.should have(1).user
+    single_event.users.size.should be 1
     single_event.users.should eq [user]
   end
 
@@ -161,7 +161,7 @@ describe SingleEvent do
     single_event.url = "http://www.example.com/single"
     single_event.full_day = false
     assert_equal "http://www.example.com/single", single_event.url
-    single_event.full_day.should be_false
+    single_event.full_day.should be_falsey
     single_event.should_not be_a_full_day
 
     single_event.url = ""

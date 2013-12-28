@@ -10,14 +10,14 @@ describe User do
     u = User.create(nickname: "bitboxer2", email: "bodo2@example.com", password: "mylongpassword")
     u.should be_valid
     u2 = User.create(nickname: "bitboxer2", email: "bodo3@example.com", password: "mylongpassword")
-    u2.should have(1).error_on(:nickname)
+    u2.error_on(:nickname).length.should be 1
   end
 
   it "validates uniqueness of email" do
     u = User.create(nickname: "bitboxer3", email: "bodo4@example.com", password: "mylongpassword")
     u.should be_valid
     u2 = User.create(nickname: "bitboxer4", email: "bodo4@example.com", password: "mylongpassword")
-    u2.should have(1).error_on(:email)
+    u2.error_on(:email).length.should be 1
   end
 
   it "searches user by nickname" do
@@ -70,8 +70,8 @@ describe User do
 
   it "only changes user email when current password is given" do
     user = FactoryGirl.create(:user)
-    user.update_with_password(email: "newexample@example.com").should be_false
-    user.update_with_password(email: "newexample2@example.com", current_password: "hallo123").should be_true
+    user.update_with_password(email: "newexample@example.com").should be_falsey
+    user.update_with_password(email: "newexample2@example.com", current_password: "hallo123").should be_truthy
     user.reload
     user.email.should == "newexample2@example.com"
   end

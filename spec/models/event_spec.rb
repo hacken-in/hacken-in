@@ -5,10 +5,10 @@ describe Event do
   it "should validate presence of name" do
     category = FactoryGirl.create(:a_category)
     event = Event.new name: 'event', category: category
-    event.valid?.should be_true
+    event.valid?.should be_truthy
 
     event_without_name = Event.new category: category
-    event_without_name.valid?.should be_false
+    event_without_name.valid?.should be_falsey
   end
 
   it "should be saved" do
@@ -20,7 +20,7 @@ describe Event do
     assert_equal 0, event.schedule.all_occurrences.size
     event.schedule.add_recurrence_time(test_date)
     event.schedule.all_occurrences.size.should == 1
-    event.save.should be_true
+    event.save.should be_truthy
 
     event = Event.find_by_id(event.id)
     event.schedule.all_occurrences.size.should == 1
@@ -102,7 +102,7 @@ describe Event do
     expect { event.future_single_events_cleanup }.to change { SingleEvent.count }.by(-12)
 
     # "SingleEvent with id=#{first_single_event_id} should be deleted by cleanup."
-    SingleEvent.exists?(first_single_event_id).should be_false
+    SingleEvent.exists?(first_single_event_id).should be_falsey
   end
 
   it "should not remove single events that match the rules" do
