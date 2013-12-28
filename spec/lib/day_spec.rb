@@ -12,7 +12,9 @@ describe Day do
   let(:entry_class) { double('EntryClass') }
   subject { Day.new(date, events, entry_class) }
 
-  its(:date) { should be date }
+  it 'should set the date correctly' do
+    subject.date.should be date
+  end
 
   before do
     allow(entry_class).to receive(:new).with(event_1).and_return(entry_1)
