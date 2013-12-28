@@ -9,7 +9,7 @@ class DayPresenter
   end
 
   def weekday
-    date.strftime("%A")[0,2]
+    I18n.localize(date, format: '%a')
   end
 
   def day
