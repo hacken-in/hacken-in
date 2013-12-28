@@ -37,6 +37,7 @@
   %body{:class => "#{controller.controller_name}_#{controller.action_name}" }
     .off-canvas-wrap
       .inner-wrap
+        %a.exit-off-canvas
         = render 'modules/common/topbar'
         = render 'modules/common/sidebar'
         = render 'modules/common/searchform'
