@@ -27,7 +27,7 @@ gem 'acts-as-taggable-on', '~> 2.4.1'
 gem 'chartkick', '~> 1.2.1'
 
 # Asset template engines
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails', '~> 4.0.1'
 gem 'coffee-script', '~> 2.2.0'
 gem 'leaflet-rails', '~> 0.6.2'
 gem 'uglifier', '~> 2.3.2'
@@ -120,7 +120,7 @@ group :test, :development do
   gem 'faker', '~> 1.2.0'
   gem 'coveralls', '~> 0.7.0'
   gem 'simplecov', '~> 0.8.2'
-  gem 'brakeman', '~> 2.2.0'
+  gem 'brakeman', '~> 2.3.1'
 end
 
 gem 'recaptcha', '0.3.5'
