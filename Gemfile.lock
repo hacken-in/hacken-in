@@ -69,7 +69,7 @@ GEM
     arel (4.0.1)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
-    better_errors (1.0.1)
+    better_errors (1.1.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
@@ -586,7 +586,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin!
   acts-as-taggable-on (~> 2.4.1)
-  better_errors (~> 1.0.1)
+  better_errors (~> 1.1.0)
   binding_of_caller (~> 0.7.1)
   bootstrap-kaminari-views (~> 0.0.2)
   bootstrap-sass-rails (~> 2.3.0.0)
@@ -628,7 +628,7 @@ DEPENDENCIES
   racc
   rails (~> 4.0.2)
   rails-observers
-  rake (~> 10.1.0)
+  rake (~> 10.1.1)
   rb-fsevent (~> 0.9.0pre4)
   recaptcha (= 0.3.5)
   redcarpet (~> 3.0.0)

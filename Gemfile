@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 4.0.2'
-gem 'rake', '~> 10.1.0'
+gem 'rake', '~> 10.1.1'
 
 # Databases
 gem 'mysql2', '~> 0.3.13'
@@ -99,7 +99,7 @@ group :development do
     gem 'growl', '~> 1.0.3'
   end
 
-  gem 'better_errors', '~> 1.0.1'
+  gem 'better_errors', '~> 1.1.0'
   gem 'binding_of_caller', '~> 0.7.1'
 
   # Faster test execution
