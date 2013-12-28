@@ -32,12 +32,17 @@ describe Calendar do
     context 'when the calendar is empty' do
       before { allow(single_event_class).to receive(:list_all).with(from: start_date, in_next: 4.weeks, for_region: region).and_return([]) }
       subject { Calendar.new(start_date, region, user) }
-      its(:empty?) { should be_true }
+
+      it 'should be empty' do
+        subject.empty?.should be true
+      end
     end
 
     context 'when the calendar has events' do
       subject { Calendar.new(start_date, region, user) }
-      its(:empty?) { should be_false }
+      it 'should be empty' do
+        subject.empty?.should be false
+      end
     end
   end
 
