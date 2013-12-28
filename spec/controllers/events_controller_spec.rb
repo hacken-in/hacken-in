@@ -13,8 +13,8 @@ describe EventsController do
     event = FactoryGirl.create(:simple)
     single_event = FactoryGirl.create(:single_event, event: event)
 
-    Event.should_receive(:find).with(event.id.to_s).and_return(event)
-    event.should_receive(:closest_single_event).and_return(single_event)
+    expect(Event).to receive(:find).with(event.id.to_s).and_return(event)
+    expect(event).to receive(:closest_single_event).and_return(single_event)
 
     get :show, id: event.id
     expect(response).to redirect_to(event_single_event_path(event, single_event))

@@ -260,7 +260,7 @@ describe Event do
                      OpenStruct.new(:occurrence => future)]
 
     event = Event.new
-    event.stub(:single_events) { single_events }
+    allow(event).to receive(:single_events).and_return(single_events)
 
     event.closest_single_event(today).should == single_event_tomorrow
   end
@@ -271,7 +271,7 @@ describe Event do
 
     single_events = [OpenStruct.new(:occurrence => yesterday)]
     event = Event.new
-    event.stub(:single_events) { single_events }
+    allow(event).to receive(:single_events).and_return(single_events)
 
     event.closest_single_event(today).should == single_events.first
   end
@@ -280,7 +280,7 @@ describe Event do
     single_events = []
 
     event = Event.new
-    event.stub(:single_events) { single_events }
+    allow(event).to receive(:single_events).and_return(single_events)
 
     event.closest_single_event.should be_nil
   end
