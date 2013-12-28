@@ -11,6 +11,7 @@ notifications:
   webhooks: https://www.buildheroes.com/api/projects/e27637d59452f18b5c97dec76d9b9f4a2e4cfcf4/builds
 bundler_args: --without development
 before_script:
+  - mysql -e 'create database hcking_test;'
   - "cp config/database.yml_example config/database.yml"
   - "cp config/initializers/devise.rb_example config/initializers/devise.rb"
 script: "bundle exec rake db:drop db:create db:migrate spec"

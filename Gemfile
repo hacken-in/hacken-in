@@ -4,13 +4,11 @@ gem 'rails', '~> 4.0.2'
 gem 'rake', '~> 10.1.0'
 
 # Databases
-gem 'sqlite3', '~> 1.3.8', group: :test
 gem 'mysql2', '~> 0.3.13'
 
 # TODO: Remove Transition stuff --------------------------------------------
 gem 'rails-observers' # Let's see if we can upgrade to callbacks ;)
 # --------------------------------------------------------------------------
-
 
 # Memcache Store
 # DO NOT UPGRADE THIS
