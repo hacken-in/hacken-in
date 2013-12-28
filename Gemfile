@@ -77,6 +77,7 @@ gem 'execjs', '~> 2.0.2'
 gem 'therubyracer', '~> 0.12.0'
 
 # User Picture using Gravatar
+# TODO: Update (Tests need to be adjusted)
 gem 'gravatar_image_tag', '~> 1.1.3'
 
 # Pagination
