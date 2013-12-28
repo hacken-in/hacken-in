@@ -56,9 +56,15 @@
   padding: 20px 0;
 
   h2 {
-    @include grid-column(12);
+    @include grid-column(8);
     font-size: $h5-font-size;
     margin: 0;
+  }
+
+  a {
+    @include grid-column(4);
+    color: $body-font-color;
+    text-align: right;
   }
 }
 

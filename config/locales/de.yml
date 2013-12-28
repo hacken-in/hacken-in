@@ -416,7 +416,6 @@ de:
         email: E-Mail / Nickname
         password: Passwort
         remember_me: Eingeloggt bleiben
-        suggest_event: Termin vorschlagen
         team: Team
         imprint: Impressum
         my_profile: Mein Profil
@@ -425,6 +424,9 @@ de:
         add_to_my_calendar: In meinen Kalendar
         love_input: Was liebst du?
         hate_input: Was boykottierst du?
+    calendars:
+      day:
+        suggest_event: Termin vorschlagen
 
   calendars:
     show:
