@@ -1,5 +1,4 @@
-$LOAD_PATH.unshift File.join(__dir__, '..', '..', 'app')
-
+require 'spec_without_rails_helper'
 require 'models/day'
 require 'date'
 
