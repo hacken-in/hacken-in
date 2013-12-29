@@ -1,4 +1,6 @@
-require 'day'
+$LOAD_PATH.unshift File.join(__dir__, '..', '..', 'app')
+
+require 'models/day'
 require 'date'
 
 describe Day do

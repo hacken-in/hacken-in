@@ -1,4 +1,6 @@
-require 'calendar'
+$LOAD_PATH.unshift File.join(__dir__, '..', '..', 'app')
+
+require 'models/calendar'
 require 'date'
 
 describe Calendar do
