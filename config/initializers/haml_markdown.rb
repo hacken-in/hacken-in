@@ -1,7 +1,6 @@
 require "redcarpet"
 
 module Haml::Filters
-
   remove_filter("Markdown")
 
   module Markdown
