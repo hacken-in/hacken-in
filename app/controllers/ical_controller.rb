@@ -1,12 +1,7 @@
 class IcalController < ApplicationController
-  GABBA_MAPPING = {
-    general: "iCal",
-    personalized: "iCal-personalized",
-    like_welcome_page: "iCal-not-hated"
-  }
-
   before_filter :set_calendar_headers
-  before_filter :gabba, only: GABBA_MAPPING.keys if Rails.env.production?
+  before_filter :track_google_event, only: [:general, :personalized, :like_welcome_page]
+
   rescue_from ActiveRecord::RecordNotFound, with: :render_empty
 
   def general
@@ -64,13 +59,16 @@ class IcalController < ApplicationController
     render_events []
   end
 
-  def gabba
-    gabba = Gabba::Gabba.new "UA-40669307-2", "hacken.in"
-    gabba.event "Event", GABBA_MAPPING[params[:action].to_sym]
+  def track_google_event
+    GoogleAnalyticsEvent.track called_action
   end
 
   def user_by_guid
     User.find_by_guid(params[:guid]) || raise(ActiveRecord::RecordNotFound)
+  end
+
+  def called_action
+    [self.class.name, params[:action]].join("/")
   end
 
 end
