@@ -29,24 +29,6 @@ describe Calendar do
     allow(event_on_date_two_not_for_the_user).to receive(:is_for_user?).with(user).and_return(false)
   end
 
-  describe 'empty?' do
-    context 'when the calendar is empty' do
-      before { allow(single_event_class).to receive(:list_all).with(from: start_date, in_next: 4.weeks, for_region: region).and_return([]) }
-      subject { Calendar.new(start_date, region, user) }
-
-      it 'should be empty' do
-        subject.empty?.should be true
-      end
-    end
-
-    context 'when the calendar has events' do
-      subject { Calendar.new(start_date, region, user) }
-      it 'should be empty' do
-        subject.empty?.should be false
-      end
-    end
-  end
-
   describe 'each' do
     subject { Calendar.new(start_date, region, user) }
     let(:day_one) { double('Day') }

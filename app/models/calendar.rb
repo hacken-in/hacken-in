@@ -6,9 +6,6 @@ require 'active_support/core_ext/integer/time'
 class Calendar
   extend Forwardable
 
-  # Does the calendar contain no entries?
-  def_delegator :days, :empty?
-
   # Create a new instance given a start date, region and user
   def initialize(start_date, region, user)
     @user = user
