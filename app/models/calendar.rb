@@ -6,22 +6,32 @@ require 'active_support/core_ext/integer/time'
 class Calendar
   extend Forwardable
 
+  # Yield the days in the right order
+  def_delegator :days, :each
+
   # Create a new instance given a start date, region and user
   def initialize(start_date, region, user)
     @user = user
     @events = SingleEvent.list_all(from: start_date, in_next: 4.weeks, for_region: region)
   end
 
-  # Yield the days in the right order
-  def each
-    days.sort.each do |date, events|
-      yield Day.new(date, events)
-    end
-  end
-
   private
 
   def days
-    @days ||= @events.select { |event| event.is_for_user? @user }.group_by { |event| event.date }
+    @days ||= sorted_grouped_events_for_user.map do |date, events|
+      Day.new(date, events)
+    end
+  end
+
+  def sorted_grouped_events_for_user
+    grouped_events_for_user.sort
+  end
+
+  def grouped_events_for_user
+    events_for_user.group_by { |event| event.date }
+  end
+
+  def events_for_user
+    @events.select { |event| event.is_for_user? @user }
   end
 end
