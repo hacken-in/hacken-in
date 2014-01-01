@@ -29,7 +29,7 @@ describe Calendar do
     allow(event_on_date_two_not_for_the_user).to receive(:is_for_user?).with(user).and_return(false)
   end
 
-  describe 'each' do
+  describe 'days' do
     subject { Calendar.new(start_date, region, user) }
     let(:day_one) { double('Day') }
     let(:day_two) { double('Day') }
@@ -43,7 +43,7 @@ describe Calendar do
         .with(date_one, [event_on_date_one, another_event_on_date_one])
         .and_return(day_one)
 
-      expect { |b| subject.each(&b) }.to yield_successive_args(day_one, anything)
+      expect(subject.days.first).to be day_one
     end
 
     it 'should then yield the second day with only the events for the user' do
@@ -51,7 +51,7 @@ describe Calendar do
         .with(date_two, [event_on_date_two])
         .and_return(day_two)
 
-      expect { |b| subject.each(&b) }.to yield_successive_args(anything, day_two)
+      expect(subject.days[1]).to be day_two
     end
   end
 end

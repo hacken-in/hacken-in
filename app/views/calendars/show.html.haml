@@ -3,5 +3,5 @@
 
 = render partial: 'modules/calendars/start_selector', object: @start_selector
 
-- @calendar.each do |day|
+- @calendar.days.each do |day|
   = render partial: 'modules/calendars/day', object: day
