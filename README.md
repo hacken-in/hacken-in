@@ -6,7 +6,7 @@
 
 This is the code of [hacken.in](http://hacken.in/), an event calendar for geeks in and around Cologne and Berlin.
 
-We discuss features and problems in our [Google Group](http://groups.google.com/group/hcking).
+If you find a bug, please report it on our [tracker](https://github.com/hacken-in/website/issues). We discuss features and problems in our [Google Group](http://groups.google.com/group/hcking). You can find our backlog [here](https://github.com/hacken-in/website/wiki/Backlog).
 
 ## Scope of hacken.in
 
