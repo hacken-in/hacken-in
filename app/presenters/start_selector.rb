@@ -21,4 +21,8 @@ class StartSelector
     days.first.active = true
     days
   end
+
+  def to_partial_path
+    'modules/calendars/start_selector'
+  end
 end

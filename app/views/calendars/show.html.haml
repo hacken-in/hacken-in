@@ -1,7 +1,5 @@
 - content_for :title do
   = t('.title')
 
-= render partial: 'modules/calendars/start_selector', object: @start_selector
-
-- @calendar.days.each do |day|
-  = render partial: 'modules/calendars/day', object: day
+= render @start_selector
+= render @calendar.days

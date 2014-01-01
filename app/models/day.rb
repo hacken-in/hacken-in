@@ -10,4 +10,8 @@ class Day
     @date = date
     @entries = events.sort.map { |event| entry_class.new(event) }
   end
+
+  def to_partial_path
+    'modules/calendars/day'
+  end
 end
