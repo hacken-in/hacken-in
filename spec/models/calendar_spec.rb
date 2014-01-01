@@ -34,24 +34,16 @@ describe Calendar do
     let(:day_one) { double('Day') }
     let(:day_two) { double('Day') }
 
-    before do
-      allow(day_class).to receive(:new).and_return(double('Day'))
-    end
-
-    it 'should yield the first day first' do
+    it 'should offer the sorted days with filtered events' do
       allow(day_class).to receive(:new)
         .with(date_one, [event_on_date_one, another_event_on_date_one])
         .and_return(day_one)
 
-      expect(subject.days.first).to be day_one
-    end
-
-    it 'should then yield the second day with only the events for the user' do
       allow(day_class).to receive(:new)
         .with(date_two, [event_on_date_two])
         .and_return(day_two)
 
-      expect(subject.days[1]).to be day_two
+      expect(subject.days).to eq [day_one, day_two]
     end
   end
 end
