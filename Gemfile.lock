@@ -290,7 +290,7 @@ GEM
       actionpack (>= 3.0)
       activerecord (>= 3.0)
       polyamorous (~> 0.6.0)
-    rb-fsevent (0.9.3)
+    rb-fsevent (0.9.4)
     rb-inotify (0.9.3)
       ffi (>= 0.5.0)
     recaptcha (0.3.5)
@@ -580,7 +580,7 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.38)
-    uglifier (2.3.2)
+    uglifier (2.4.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     warden (1.2.3)
@@ -635,7 +635,7 @@ DEPENDENCIES
   rails (~> 4.0.2)
   rails-observers
   rake (~> 10.1.1)
-  rb-fsevent (~> 0.9.0pre4)
+  rb-fsevent (~> 0.9.4)
   recaptcha (= 0.3.5)
   redcarpet (~> 3.0.0)
   ri_cal (~> 0.8.8)
@@ -650,5 +650,5 @@ DEPENDENCIES
   spring (= 1.0.0)
   therubyracer (~> 0.12.0)
   tipsy-rails!
-  uglifier (~> 2.3.2)
+  uglifier (~> 2.4.0)
   zero-clipboard-rails!

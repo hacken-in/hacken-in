@@ -30,7 +30,7 @@ gem 'chartkick', '~> 1.2.1'
 gem 'sass-rails', '~> 4.0.1'
 gem 'coffee-script', '~> 2.2.0'
 gem 'leaflet-rails', '~> 0.6.2'
-gem 'uglifier', '~> 2.3.2'
+gem 'uglifier', '~> 2.4.0'
 gem 'jquery-rails', '~> 3.0.0'
 gem 'pjax_rails', '~> 0.3.4'
 gem "compass-rails", "~> 1.1.0"
@@ -96,7 +96,7 @@ group :development do
   gem 'capistrano', '~> 2.13.0'
 
   group :darwin do
-    gem 'rb-fsevent', '~> 0.9.0pre4'
+    gem 'rb-fsevent', '~> 0.9.4'
     gem 'growl', '~> 1.0.3'
   end
 
