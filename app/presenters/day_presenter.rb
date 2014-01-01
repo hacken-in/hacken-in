@@ -22,4 +22,8 @@ class DayPresenter
       (has_events ? "has_events" : false)
     ]
   end
+
+  def to_partial_path
+    'modules/calendars/start_selector/day'
+  end
 end

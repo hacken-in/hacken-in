@@ -24,4 +24,8 @@ class MonthPresenter
   def css_class
     active ? 'active' : 'inactive'
   end
+
+  def to_partial_path
+    'modules/calendars/start_selector/month'
+  end
 end
