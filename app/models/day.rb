@@ -1,10 +1,8 @@
-require 'forwardable'
-
 class Day
   extend Forwardable
-  def_delegator :@entries, :each
 
   attr_reader :date
+  attr_reader :entries
 
   def initialize(date, events, entry_class = CalendarEntry)
     @date = date

@@ -22,9 +22,9 @@ describe Day do
     allow(entry_class).to receive(:new).with(event_2).and_return(entry_2)
   end
 
-  describe 'each' do
-    it 'should yield the entries in the right order' do
-      expect { |b| subject.each(&b) }.to yield_successive_args(entry_1, entry_2)
+  describe 'entries' do
+    it 'should have the entries in the right order' do
+      expect(subject.entries).to eq [entry_1, entry_2]
     end
   end
 end
