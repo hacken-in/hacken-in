@@ -29,4 +29,8 @@ class CalendarEntry
   def color
     @single_event.category.try(:color)
   end
+
+  def to_partial_path
+    'modules/calendars/entry'
+  end
 end
