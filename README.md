@@ -46,17 +46,6 @@ If you want to add Events to your local page, you need an administrator:
 Pow is a really comfortable way to run the application on your machine.
 You can learn everything about it [here](http://pow.cx).
 
-### Guard
-
-If you are in the project directory, you can start Guard with `guard`.
-This will offer you the following comfortable features:
-
-* **Pow:** Pow will get restarted automatically when necessary.
-* **Bundler:** Bundler will run, when the Gemfile changes
-  server running
-* **Specs:** If you make changes to a spec or an application file, the
-  according spec will be run and you will get feedback.
-
 ## Testing
 
 [Hacken.in](http://hacken.in) is developed in a test-driven way using Rspec and
