@@ -94,11 +94,22 @@ group :development do
   # Deployment
   gem 'capistrano', '~> 2.13.0'
 
+  group :darwin do
+    gem 'rb-fsevent', '~> 0.9.4'
+    gem 'growl', '~> 1.0.3'
+  end
+
   gem 'better_errors', '~> 1.1.0'
   gem 'binding_of_caller', '~> 0.7.1'
 
   # Faster test execution
   gem 'spring', '1.0.0'
+
+  # Guard
+  gem 'guard', '~> 2.2.5'
+  gem 'guard-rspec', '~> 4.2.2'
+  gem 'guard-pow', '~> 2.0.0'
+  gem 'guard-bundler', '~> 2.0.0'
 end
 
 group :test, :development do
