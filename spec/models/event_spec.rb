@@ -247,6 +247,39 @@ describe Event do
     event.single_events.first.occurrence.min.should == time.min
   end
 
+  def create_week_based_event(time)
+    event = FactoryGirl.create(:simple)
+    event.start_time = time
+    event.schedule_rules = [{"type" => 'weekly', "interval" => 2, "days" => ["monday"]}]
+    event.save
+    event
+  end
+
+  it "should create a week based rule" do
+    time = Time.new(2012, 10, 10, 20, 15, 0)
+    event = create_week_based_event(time)
+
+    first_event = event.single_events.first.occurrence
+    second_event = event.single_events.second.occurrence
+    first_event.wday.should == 1
+    first_event.min.should == time.min
+    first_event.wday.should == 1
+
+    second_event.should == first_event + 14.days
+  end
+
+  it "should serialize a week based rule" do
+    time = Time.new(2012, 10, 10, 20, 15, 0)
+    event = create_week_based_event(time)
+    event.schedule_rules.should == [
+      {
+        "type" => "weekly",
+        "interval" => 2,
+        "days" => ["monday"]
+      }
+    ]
+  end
+
   it "should find a coming-up single event as the closest one" do
     today      = Date.new(2012, 2, 2)
     tomorrow   = Date.new(2012, 2, 3)

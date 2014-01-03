@@ -114,9 +114,15 @@ class Event < ActiveRecord::Base
   def schedule_rules
     schedule.recurrence_rules.map do |rule|
       hash = {}
-      hash["type"] = 'monthly' if rule.class == IceCube::MonthlyRule
-      hash["interval"] = rule.validations_for(:day_of_week).first.occ
-      hash["days"] = rule.validations_for(:day_of_week).map{|d| Date::DAYNAMES[d.day].downcase}
+      if rule.class == IceCube::MonthlyRule
+        hash["type"] = 'monthly'
+        hash["interval"] = rule.validations_for(:day_of_week).first.occ
+        hash["days"] = rule.validations_for(:day_of_week).map{|d| Date::DAYNAMES[d.day].downcase}
+      elsif rule.class == IceCube::WeeklyRule
+        hash["type"] = 'weekly'
+        hash["interval"] = rule.validations_for(:interval).first.interval
+        hash["days"] = rule.validations_for(:day).map{|d| Date::DAYNAMES[d.day].downcase}
+      end
       hash
     end
   end
@@ -127,12 +133,25 @@ class Event < ActiveRecord::Base
     end
     rules = JSON.load(rules) if rules.kind_of? String
     rules.each do |rule|
-      week_hash = {}
-      rule["days"].each do |d|
-        week_hash[d.to_sym] = [rule["interval"].to_i]
+      if (rule["type"] == 'monthly')
+        add_monthly_schedule rule
+      elsif (rule["type"] == 'weekly')
+        add_weekly_schedule rule
       end
-      schedule.add_recurrence_rule IceCube::Rule.monthly.day_of_week(week_hash)
     end
+  end
+
+  def add_monthly_schedule(rule)
+    week_hash = {}
+    rule["days"].each do |d|
+      week_hash[d.to_sym] = [rule["interval"].to_i]
+    end
+    schedule.add_recurrence_rule IceCube::Rule.monthly.day_of_week(week_hash)
+  end
+
+  def add_weekly_schedule(rule)
+    days = rule["days"].map(&:to_sym)
+    schedule.add_recurrence_rule IceCube::Rule.weekly(rule["interval"].to_i).day(*days)
   end
 
   def excluded_times
