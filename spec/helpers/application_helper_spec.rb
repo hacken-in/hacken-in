@@ -116,7 +116,7 @@ describe ApplicationHelper do
   it "should generate an image for a user with the default gravatar image" do
     user = User.create(nickname: "hansdampf", email: "mail@example.com")
     avatar_for_user(user, 20, "userimage").should ==
-      "<img alt=\"hansdampf\" class=\"userimage\" height=\"20\" src=\"http://gravatar.com/avatar/7daf6c79d4802916d83f6266e24850af?default=identicon&amp;size=20\" title=\"hansdampf\" width=\"20\" />"
+      "<img alt=\"hansdampf\" class=\"userimage\" height=\"20\" src=\"http://gravatar.com/avatar/7daf6c79d4802916d83f6266e24850af?default=identicon&size=20\" title=\"hansdampf\" width=\"20\" />"
   end
 
   it "should generate an image for a user with a separate gravatar image email" do
@@ -124,6 +124,6 @@ describe ApplicationHelper do
                        image_url: "http://example.com/logo.png",
                        gravatar_email: "gravatar@example.com")
     avatar_for_user(user, 20, "userimage").should ==
-      "<img alt=\"hansdampf\" class=\"userimage\" height=\"20\" src=\"http://gravatar.com/avatar/0cef130e32e054dd516c99e5181d30c4?default=identicon&amp;size=20\" title=\"hansdampf\" width=\"20\" />"
+      "<img alt=\"hansdampf\" class=\"userimage\" height=\"20\" src=\"http://gravatar.com/avatar/0cef130e32e054dd516c99e5181d30c4?default=identicon&size=20\" title=\"hansdampf\" width=\"20\" />"
   end
 end

@@ -159,7 +159,7 @@ GEM
     fssm (0.2.10)
     gabba (1.0.1)
     geocoder (1.1.2)
-    gravatar_image_tag (1.1.3)
+    gravatar_image_tag (1.2.0)
     haml (4.0.4)
       tilt
     has_scope (0.6.0.rc)
@@ -575,7 +575,7 @@ DEPENDENCIES
   font-awesome-rails (~> 3.2.1.2)
   gabba (~> 1.0.1)
   geocoder (= 1.1.2)
-  gravatar_image_tag (~> 1.1.3)
+  gravatar_image_tag (~> 1.2.0)
   haml (~> 4.0.4)
   ice_cube (~> 0.8.0)
   jquery-rails (~> 3.0.0)
