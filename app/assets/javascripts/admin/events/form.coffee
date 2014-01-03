@@ -48,14 +48,14 @@ $ ->
     self = this
 
     $(document).on 'click', ".delete-rule", ->
-      if (confirm("Wirklich löschen?"))
+      if (confirm("Wirklich löschen? Alle zukünftigen Termine, die auf dieser Regel basieren, werden dabei gelöscht."))
         self.rules.splice $(this).attr("data-no"), 1
       repaint()
       reserialize()
       false
 
     $(document).on 'click', ".delete-exclude", ->
-      if (confirm("Wirklich löschen?"))
+      if (confirm("Wirklich löschen? Wenn dieser Termin in der Zukunft liegt wird er wieder angelegt sollte eine Regel diesen anlegen wollen."))
         self.exdates.splice $(this).attr("data-no"), 1
       repaint()
       reserialize()
