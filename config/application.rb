@@ -46,5 +46,8 @@ module Hcking
 
     # Disable Feature "allow external guestes!
     config.allow_external_guests = false
+
+    # Enforce Available locales (new rails default behavior)
+    I18n.config.enforce_available_locales = true
   end
 end
