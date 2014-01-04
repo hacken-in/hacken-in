@@ -6,10 +6,6 @@ gem 'rake', '~> 10.1.1'
 # Databases
 gem 'mysql2', '~> 0.3.13'
 
-# TODO: Remove Transition stuff --------------------------------------------
-gem 'rails-observers' # Let's see if we can upgrade to callbacks ;)
-# --------------------------------------------------------------------------
-
 # Memcache Store
 # DO NOT UPGRADE THIS
 # We need exactly this version, because
