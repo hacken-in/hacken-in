@@ -29,7 +29,7 @@ gem 'chartkick', '~> 1.2.1'
 # Asset template engines
 gem 'sass-rails', '~> 4.0.1'
 gem 'coffee-script', '~> 2.2.0'
-gem 'leaflet-rails', '~> 0.6.2'
+gem 'leaflet-rails', '~> 0.7.1'
 gem 'uglifier', '~> 2.4.0'
 gem 'jquery-rails', '~> 3.0.0'
 gem 'pjax_rails', '~> 0.3.4'
