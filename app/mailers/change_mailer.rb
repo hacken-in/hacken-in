@@ -7,11 +7,13 @@ class ChangeMailer < ActionMailer::Base
   def mail_changes(record, changes)
     @record = record
     @changes = changes
-    mail to: RECIPIENTS, subject: "[hacken.in notify] Änderungen an #{record.class.to_s} # #{record.id}"
+    changes_mail = mail to: RECIPIENTS, subject: "[hacken.in notify] Änderungen an #{record.class.to_s} # #{record.id}"
+    changes_mail.deliver
   end
 
   def mail_create(record)
     @record = record
-    mail to: RECIPIENTS, subject: "[hacken.in notify] Neuer #{record.class.to_s} # #{record.id}"
+    created_mail = mail to: RECIPIENTS, subject: "[hacken.in notify] Neuer #{record.class.to_s} # #{record.id}"
+    created_mail.deliver
   end
 end
