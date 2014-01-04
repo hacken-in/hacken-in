@@ -85,10 +85,7 @@ gem 'bootstrap-kaminari-views', '~> 0.0.2'
 # Other dependencies
 gem 'gabba', '~> 1.0.1'
 gem 'simple-navigation', '~> 3.10.0'
-# TODO: Update geocoder
-# *Attention:* If you want to change to 1.1.3, you need to adjust our Code
-# (Geocoder, Y U NO Semantic Versioning?)
-gem 'geocoder', '= 1.1.2'
+gem 'geocoder', '~> 1.1.9'
 
 group :development do
   # Deployment

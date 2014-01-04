@@ -45,7 +45,7 @@ module Geocoder
     class Google < Base
       private
       def fetch_raw_data(query, reverse = false)
-        file = File.join("spec", "support", "fixtures", "#{self.class.name.parameterize}_#{query.parameterize}.json")
+        file = File.join("spec", "support", "fixtures", "#{self.class.name.parameterize}_#{query.to_s.parameterize}.json")
         unless File.exists? file
           result = super rescue "FAIL"
           File.new(file, "w+").puts result.force_encoding("utf-8")
