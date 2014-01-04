@@ -8,11 +8,10 @@
     %p Änderung wurde durchgeführt von #{User.current.nil? ? "Anonym" : link_to(User.current.nickname, user_url(User.current))}.
     %h2 Änderungen:
     %table{border:"1px"}
-      - @changes.keys.each do |key|
-        %tr
-          %th= key
-          %td= @changes[key][0]
-          %td= @changes[key][1]
+      %tr
+        %th Content
+        %td= @old_content
+        %td= @new_content
     %h2 Json der alten Version:
     %pre
       = @record.old_state

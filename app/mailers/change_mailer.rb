@@ -4,9 +4,10 @@ class ChangeMailer < ActionMailer::Base
 
   RECIPIENTS = ["bodo@wannawork.de", "lucas.dohmen@koeln.de"]
 
-  def mail_changes(record, changes)
+  def mail_changes(record, old_content)
     @record = record
-    @changes = changes
+    @old_content = old_content
+    @new_content = @record.body
     changes_mail = mail to: RECIPIENTS, subject: "[hacken.in notify] Änderungen an #{record.class.to_s} # #{record.id}"
     changes_mail.deliver
   end
