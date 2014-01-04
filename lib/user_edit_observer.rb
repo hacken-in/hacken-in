@@ -4,10 +4,7 @@ class UserEditObserver < ActiveRecord::Observer
   def after_update(record)
     changes = record.changes.except(:updated_at)
     if changes.keys.count > 0
-      begin
-        ChangeMailer.mail_changes(record, changes).deliver
-      rescue
-      end
+      ChangeMailer.mail_changes(record, changes).deliver
     end
   end
 
