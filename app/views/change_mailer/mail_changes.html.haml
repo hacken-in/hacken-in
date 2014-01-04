@@ -15,4 +15,4 @@
           %td= @changes[key][1]
     %h2 Json der alten Version:
     %pre
-      = @record.instance_variable_get(:@user_edit_observer_old_state)
+      = @record.old_state
