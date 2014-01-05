@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
     authorize! :create, @comment
 
     if @comment.save
+      ChangeMailer.mail_create(@comment)
       flash[:notice] = t "comments.create.confirmation"
     end
 
@@ -26,7 +27,9 @@ class CommentsController < ApplicationController
     @comment = Comment.find params[:id]
     authorize! :update, @comment
 
+    old_content = @comment.body
     if @comment.update_attributes(comment_params)
+      ChangeMailer.mail_changes(@comment, old_content)
       flash[:notice] = t "comments.update.confirmation"
     end
 
