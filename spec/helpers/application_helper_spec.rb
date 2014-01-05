@@ -126,4 +126,20 @@ describe ApplicationHelper do
     avatar_for_user(user, 20, "userimage").should ==
       "<img alt=\"hansdampf\" class=\"userimage\" height=\"20\" src=\"http://gravatar.com/avatar/0cef130e32e054dd516c99e5181d30c4?default=identicon&size=20\" title=\"hansdampf\" width=\"20\" />"
   end
+
+  it "should generate a string for a monthly rule" do
+     string_for_rule(IceCube::Rule.monthly.day_of_week({monday: [1]})).should == "An jedem 1. #{I18n.t("date.day_names")[1]} des Monats"
+  end
+
+  it "should generate a string for a monthly rule for the last day of the month" do
+     string_for_rule(IceCube::Rule.monthly.day_of_week({monday: [-1]})).should == "An jedem letzten #{I18n.t("date.day_names")[1]} des Monats"
+  end
+
+  it "should generate a string for a weekly rule" do
+     string_for_rule(IceCube::Rule.weekly(1).day(:monday)).should == "An jedem  #{I18n.t("date.day_names")[1]}"
+  end
+
+  it "should generate a string for a biweekly rule" do
+     string_for_rule(IceCube::Rule.weekly(2).day(:sunday)).should == "An jedem 2. #{I18n.t("date.day_names")[0]}"
+  end
 end

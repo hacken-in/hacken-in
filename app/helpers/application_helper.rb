@@ -80,12 +80,28 @@ module ApplicationHelper
   end
 
   def string_for_rule(rule)
+    if rule.instance_of? IceCube::MonthlyRule
+      string_for_monthly_rule(rule)
+    elsif rule.instance_of? IceCube::WeeklyRule
+      string_for_weekly_rule(rule)
+    end
+  end
+
+  def string_for_monthly_rule(rule)
     if rule.validations_for(:day_of_week).first.occ == -1
       occurrence = "letzten"
     else
       occurrence = "#{rule.validations_for(:day_of_week).first.occ}."
     end
     "An jedem #{occurrence} #{I18n.t("date.day_names")[rule.validations_for(:day_of_week).first.day]} des Monats"
+  end
+
+  def string_for_weekly_rule(rule)
+    occurrence = ""
+    if rule.validations_for(:interval).first.interval > 1
+      occurrence = "#{rule.validations_for(:interval).first.interval}."
+    end
+    "An jedem #{occurrence} #{I18n.t("date.day_names")[rule.validations_for(:day).first.day]}"
   end
 
   def avatar_for_user(user, size=16, class_name=nil)

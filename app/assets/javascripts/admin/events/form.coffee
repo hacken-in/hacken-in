@@ -12,6 +12,14 @@ $ ->
       "-1": "letzten"
     }
 
+    weekRules = {
+      1: "Jede",
+      2: "Jede 2.",
+      3: "Jede 3.",
+      4: "Jede 4.",
+      5: "Jede 5."
+    }
+
     weekdays = {
       "monday": "Montag",
       "tuesday": "Dienstag",
@@ -25,7 +33,12 @@ $ ->
     repaint = =>
       $("ul.rules").empty()
       for rule, i in @rules
-        rHtml = "<li>Jeden #{dayRules[rule.interval]} #{weekdays[rule.days[0]]} <a href='#' class='delete-rule' data-no='#{i}'><i class='icon-trash'></i></a></li>"
+        rHtml = "<li>"
+        if (rule.type == "monthly")
+          rHtml += "Jeden #{dayRules[rule.interval]} #{weekdays[rule.days[0]]}"
+        else if (rule.type == "weekly")
+          rHtml += "#{weekRules[rule.interval]} Woche an einem #{weekdays[rule.days[0]]}"
+        rHtml += " <a href='#' class='delete-rule' data-no='#{i}'><i class='icon-trash'></i></a></li>"
         $("ul.rules").append(rHtml)
 
       $("ul.excludes").empty()
@@ -61,13 +74,24 @@ $ ->
       reserialize()
       false
 
-    $("#add_rule").click =>
+    $("#add_rule_monthly").click =>
       @rules.push {
         interval: $("#week_number").val(),
         days: [
           $("#day_of_week").val()
         ],
         type: "monthly"
+      }
+      repaint()
+      reserialize()
+      false
+    $("#add_rule_weekly").click =>
+      @rules.push {
+        interval: $("#week_recurrence").val(),
+        days: [
+          $("#repeat_week_day").val()
+        ],
+        type: "weekly"
       }
       repaint()
       reserialize()
