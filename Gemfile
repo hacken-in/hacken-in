@@ -54,7 +54,9 @@ gem 'redcarpet', '~> 3.0.0'
 gem 'activeadmin', git: "https://github.com/gregbell/active_admin", branch: 'master'
 
 # Date Handling
-# TODO: gem 'ice_cube', '~> 0.10.0'
+# IceCube 0.11.1 has some issues, we sadly need to continue
+# using this old version. For details look into this ticket:
+# https://github.com/hacken-in/website/issues/323
 gem 'ice_cube', '~> 0.8.0'
 gem 'ri_cal', '~> 0.8.8'
 
