@@ -17,7 +17,8 @@ describe Event do
 
     category = FactoryGirl.create(:a_category)
     event = Event.new(name: "Hallo", category: category)
-    assert_equal 0, event.schedule.all_occurrences.size
+    assert_equal 1, event.schedule.all_occurrences.size
+    event.schedule.start_time = test_date
     event.schedule.add_recurrence_time(test_date)
     event.schedule.all_occurrences.size.should == 1
     event.save.should be_truthy
@@ -37,7 +38,8 @@ describe Event do
     schedule = IceCube::Schedule.new(1.year.ago)
     schedule.add_recurrence_time(7.days.from_now)
     event.schedule = schedule
-    event.schedule.all_occurrences.size.should == 1
+    # A start date not on the first occurrence counts as an occurrence of its own
+    event.schedule.all_occurrences.size.should == 2
   end
 
   it "should provide tagging" do
@@ -204,9 +206,12 @@ describe Event do
     expect { event.save }.to change { SingleEvent.count }.by 12
 
     event.single_events.count.should == 12
-    event.single_events.first.destroy
+    deleted_event = event.single_events.first.destroy
     event.reload
-    event.single_events.count.should == 11
+    # There's still 12 events as we always reify 12 future events
+    event.single_events.count.should == 12
+    # Make sure the previous first single_event has been properly removed from the schedule
+    event.single_events.first.occurrence.should_not == deleted_event.occurrence
   end
 
   it "should simplify exdates" do
