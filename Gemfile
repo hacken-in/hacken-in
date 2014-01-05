@@ -105,6 +105,9 @@ group :development do
   gem 'guard-rspec', '~> 4.2.2'
   gem 'guard-pow', '~> 2.0.0'
   gem 'guard-bundler', '~> 2.0.0'
+
+  # Silence asset pipeline and make log usable again
+  gem 'quiet_assets', '~> 1.0.2'
 end
 
 group :test, :development do
