@@ -16,6 +16,7 @@ class SuggestionsController < ApplicationController
 
     if verify_recaptcha(:model => @suggestion)
       if @suggestion.save
+        NewSuggestionMailer.new_suggestion(@suggestion)
         redirect_to :root, flash: {notice: t("suggestions.create.confirmation")}
       else
         render :new
