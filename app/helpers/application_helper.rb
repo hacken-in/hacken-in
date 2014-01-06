@@ -83,7 +83,7 @@ module ApplicationHelper
     "An jedem #{occurrence} #{I18n.t("date.day_names")[rule.validations_for(:day).first.day]}"
   end
 
-  def avatar_for_user(user, size=16, class_name=nil)
+  def avatar_for_user(user, size = 16, class_name = nil)
     if user.gravatar_email.present?
       gravatar_image_tag(user.gravatar_email, title: user.nickname, alt: user.nickname, class: class_name, gravatar: { default: :identicon, size: size })
     elsif user.email.present?
@@ -93,7 +93,7 @@ module ApplicationHelper
     end
   end
 
-  def avatar_for_external_user(external_user, size=16, class_name=nil)
+  def avatar_for_external_user(external_user, size = 16, class_name = nil)
     gravatar_image_tag(external_user.email, title: external_user.name, alt: external_user.name, class: class_name, gravatar: { default: :identicon, size: size })
   end
 
@@ -115,5 +115,4 @@ module ApplicationHelper
   # -----------------------------------------------------------
   # End of Devise methods
   # -----------------------------------------------------------
-
 end

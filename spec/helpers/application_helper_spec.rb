@@ -86,11 +86,11 @@ describe ApplicationHelper do
   end
 
   it "should generate a string for a monthly rule" do
-     string_for_rule(IceCube::Rule.monthly.day_of_week({monday: [1]})).should == "An jedem 1. #{I18n.t("date.day_names")[1]} des Monats"
+     string_for_rule(IceCube::Rule.monthly.day_of_week({ monday: [1] })).should == "An jedem 1. #{I18n.t("date.day_names")[1]} des Monats"
   end
 
   it "should generate a string for a monthly rule for the last day of the month" do
-     string_for_rule(IceCube::Rule.monthly.day_of_week({monday: [-1]})).should == "An jedem letzten #{I18n.t("date.day_names")[1]} des Monats"
+     string_for_rule(IceCube::Rule.monthly.day_of_week({ monday: [-1] })).should == "An jedem letzten #{I18n.t("date.day_names")[1]} des Monats"
   end
 
   it "should generate a string for a weekly rule" do
