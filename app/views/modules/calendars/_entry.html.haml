@@ -1,7 +1,7 @@
-.single-event
+.single-event{ itemscope: true, itemprop: 'event', itemtype: 'http://schema.org/Event' }
   .indicator-wrapper
     = render partial: 'modules/categories/indicator', locals: { color: entry.color }
-  = link_to event_single_event_path(*entry.path_info), class: "short-description"  do
-    %h3= entry.title
+  = link_to event_single_event_path(*entry.path_info), class: "short-description", itemprop: 'url' do
+    %h3{ itemprop: 'name' }= entry.title
     %h4= entry.subtitle
     %p.additional-info= entry.additional_info
