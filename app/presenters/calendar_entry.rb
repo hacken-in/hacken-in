@@ -1,18 +1,17 @@
-require 'forwardable'
-
 class CalendarEntry
-  extend Forwardable
-
-  def_delegators :@single_event, :title
-
   def initialize(single_event)
     @single_event = single_event
+    @event = @single_event.event
     @venue = @single_event.venue
   end
 
-  # TODO: Implement
+  def title
+    @event.name
+  end
+
+  # TODO: The subtitle could be empty
   def subtitle
-    "I will be the subtitle"
+    @single_event.name
   end
 
   def additional_info
