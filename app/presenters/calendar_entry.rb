@@ -17,7 +17,7 @@ class CalendarEntry
   def additional_info
     additional_info = []
     additional_info << formated_location if @venue.present?
-    additional_info << formated_door_time unless @single_event.full_day
+    additional_info << formated_start_date unless @single_event.full_day
     additional_info.join(", ")
   end
 
@@ -33,10 +33,6 @@ class CalendarEntry
     'modules/calendars/entry'
   end
 
-  def start_date
-    I18n.localize(@single_event.occurrence, format: "%C-%m-%d")
-  end
-
   private
 
   def formated_location
@@ -45,8 +41,8 @@ class CalendarEntry
       "</span>"
   end
 
-  def formated_door_time
-    "<span itemprop='doorTime' content='#{door_time}'>" +
+  def formated_start_date
+    "<span itemprop='startDate' content='#{door_time}'>" +
       start_time +
       "</span>"
   end
