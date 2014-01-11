@@ -4,4 +4,4 @@
   = link_to event_single_event_path(*entry.path_info), class: "short-description", itemprop: 'url' do
     %h3{ itemprop: 'name' }= entry.title
     %h4= entry.subtitle
-    %p.additional-info= entry.additional_info
+    %p.additional-info= raw entry.additional_info
