@@ -77,6 +77,9 @@ gem 'gravatar_image_tag', '~> 1.2.0'
 # Pagination
 gem 'bootstrap-kaminari-views', '~> 0.0.2'
 
+# For the auto follow script
+gem "twitter", "~> 5.5.1"
+
 # Other dependencies
 gem 'gabba', '~> 1.0.1'
 gem 'simple-navigation', '~> 3.10.0'
@@ -115,6 +118,7 @@ group :test, :development do
   gem 'coveralls', '~> 0.7.0'
   gem 'simplecov', '~> 0.8.2'
   gem 'brakeman', '~> 2.3.1'
+  gem 'vcr', '~> 2.8.0'
 end
 
 gem 'recaptcha', '0.3.5'

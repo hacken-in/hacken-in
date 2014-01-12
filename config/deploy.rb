@@ -7,7 +7,7 @@ set :deploy_to, "/var/www/virtual/hacken/hcking"
 set :user, "hacken"
 set :config_files, ['database.yml',
   'initializers/secret_token.rb', 'initializers/devise.rb', 'initializers/recaptcha.rb',
-  'omniauth.yml']
+  'omniauth.yml', 'twitter.yml']
 
 # Git Repo
 set :repository,  "git://github.com/hcking/hcking.git"

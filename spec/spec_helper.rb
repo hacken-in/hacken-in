@@ -3,12 +3,18 @@ ENV["RAILS_ENV"] ||= 'test'
 
 require 'simplecov'
 require 'coveralls'
+require 'vcr'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
   SimpleCov::Formatter::HTMLFormatter,
   Coveralls::SimpleCov::Formatter
 ]
 SimpleCov.start
+
+VCR.configure do |c|
+  c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
+  c.hook_into :faraday
+end
 
 require File.expand_path("../../config/environment", __FILE__)
 require 'database_cleaner'

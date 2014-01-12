@@ -16,5 +16,6 @@ public/uploads/*
 public/thisiscologne.json
 config/omniauth.yml
 config/initializers/devise.rb
+config/twitter.yml
 cert_file
 coverage
