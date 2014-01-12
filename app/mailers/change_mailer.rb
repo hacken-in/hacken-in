@@ -1,8 +1,8 @@
 # encoding: utf-8
 class ChangeMailer < ActionMailer::Base
-  default from: "bodo@wannawork.de"
+  default from: "admin@hacken.in"
 
-  RECIPIENTS = ["bodo@wannawork.de", "lucas.dohmen@koeln.de"]
+  RECIPIENTS = ["admin@hacken.in"]
 
   def mail_changes(record, old_content)
     @record = record

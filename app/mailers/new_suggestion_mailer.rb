@@ -1,8 +1,8 @@
 # encoding: utf-8
 class NewSuggestionMailer < ActionMailer::Base
-  default from: "bodo@wannawork.de"
+  default from: "admin@hacken.in"
 
-  RECIPIENTS = ["bodo@wannawork.de", "lucas.dohmen@koeln.de"]
+  RECIPIENTS = ["admin@hacken.in"]
   SUBJECT = "[hacken.in Vorschlag] Neuer Vorschlag eingereicht!"
 
   def new_suggestion(record)
