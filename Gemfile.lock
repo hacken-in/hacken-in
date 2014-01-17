@@ -640,7 +640,7 @@ DEPENDENCIES
   haml (~> 4.0.4)
   ice_cube (~> 0.11.1)
   jquery-rails (~> 3.0.0)
-  kaminari (~> 0.14.1)
+  kaminari (~> 0.15.1)
   leaflet-rails (~> 0.7.1)
   md_emoji (~> 1.0.0)
   mini_magick (~> 3.7.0)

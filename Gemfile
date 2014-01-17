@@ -73,7 +73,7 @@ gem 'gravatar_image_tag', '~> 1.2.0'
 # Pagination
 # Can't update to 0.15 for now, because ActiveAdmin
 # is locked to this version
-gem 'kaminari', '~> 0.14.1'
+gem 'kaminari', '~> 0.15.1'
 
 # For the auto follow script
 gem 'twitter', '~> 5.5.1'
