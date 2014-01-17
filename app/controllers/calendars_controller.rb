@@ -12,9 +12,4 @@ class CalendarsController < ApplicationController
   def start_date
     @start_date ||= params[:start].present? ? Date.parse(params[:start]) : Date.today
   end
-
-  # Raise a Not Found Routing Exception if no region was set
-  def require_region!
-    raise ActionController::RoutingError.new('Not Found') if current_region.nil?
-  end
 end

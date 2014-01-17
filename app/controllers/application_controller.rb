@@ -46,6 +46,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_region
 
+  # Raise a Not Found Routing Exception if no region was set
+  def require_region!
+    raise ActionController::RoutingError.new('Not Found') if current_region.nil?
+  end
+
   protected
 
   def configure_permitted_parameters
