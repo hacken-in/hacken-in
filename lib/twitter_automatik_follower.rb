@@ -33,7 +33,7 @@ class TwitterAutomatikFollower
     num_attempts = 0
     begin
       num_attempts += 1
-      @following_cache ||= @client.friends.to_a.map(&:handle)
+      @following_cache ||= @client.friends(include_user_entities: false, skip_status: true, count: 200).to_a.map(&:handle)
     rescue Twitter::Error::TooManyRequests => error
       if num_attempts <= MAX_ATTEMPTS
         puts "Rate limit for twitter, sleeping #{error.rate_limit.reset_in}"
