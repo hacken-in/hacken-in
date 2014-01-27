@@ -1,0 +1,33 @@
+class TwitterFollower
+  include TwitterClient
+
+  def initialize(client = connect)
+    @client = client
+  end
+
+  def follow
+    not_followed_handles.each do |handle|
+      puts "Following #{handle}"
+      @client.follow(handle)
+    end
+  end
+
+  def not_followed_handles
+    event_twitter_handles - following
+  end
+
+  def event_twitter_handles
+    (
+      Event.select(:twitter).uniq.map(&:twitter) +
+      SingleEvent.select("single_events.twitter").uniq.map(&:twitter)
+    ).compact.uniq
+  end
+
+  def following
+    too_many_request_wrapper do
+      @following_cache ||= @client.friends(include_user_entities: false, skip_status: true, count: 200).to_a.map(&:handle)
+    end
+    @following_cache
+  end
+
+end

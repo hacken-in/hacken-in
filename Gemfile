@@ -119,6 +119,7 @@ group :test, :development do
   gem 'simplecov', '~> 0.8.2'
   gem 'brakeman', '~> 2.3.1'
   gem 'vcr', '~> 2.8.0'
+  gem 'pry-rails'
 end
 
 gem 'recaptcha', '0.3.5'
