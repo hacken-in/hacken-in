@@ -30,9 +30,13 @@ class TwitterListUpdater
   end
 
   def list_for_region(region)
-    lists.find {|item|
-      item.name.casecmp(region.name)
+    list = lists.find {|item|
+      item.name.casecmp(region.name) == 0
     }
+    if list.nil?
+      list = @client.create_list(region.name)
+    end
+    list
   end
 
   def lists

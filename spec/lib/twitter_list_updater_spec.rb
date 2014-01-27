@@ -32,6 +32,16 @@ describe TwitterListUpdater do
     expect(TwitterListUpdater.new(client).list_for_region(@koeln_region)).to eq(entry)
   end
 
+  it "should find a create list if it does not exist" do
+    berlin= OpenStruct.new(name: "Berlin")
+    koeln = OpenStruct.new(name: "Köln")
+    client = instance_double(Twitter::REST::Client)
+
+    expect(client).to receive(:lists).and_return([berlin])
+    expect(client).to receive(:create_list).with("Köln").and_return(koeln)
+    expect(TwitterListUpdater.new(client).list_for_region(@koeln_region)).to eq(koeln)
+  end
+
   it "should get a list of members of a twitter list" do
     list = OpenStruct.new(name: "Köln")
     entry = OpenStruct.new(screen_name: "colognerb")
@@ -54,14 +64,16 @@ describe TwitterListUpdater do
   end
 
   it "should update all region lists and add missing handles" do
-    list = OpenStruct.new(name: "Köln")
+    berlin= OpenStruct.new(name: "Berlin")
+    koeln = OpenStruct.new(name: "Köln")
     entry = OpenStruct.new(screen_name: "bitboxer")
 
     client = instance_double(Twitter::REST::Client)
 
-    expect(client).to receive(:lists).and_return([list])
-    expect(client).to receive(:list_members).with(list, {:include_user_entities=>false, :skip_status=>true, :count=>200}).and_return([entry])
-    expect(client).to receive(:add_list_member).with(list, "another_example").and_return([])
+    expect(client).to receive(:lists).and_return([berlin, koeln])
+    expect(client).to receive(:list_members).with(berlin, {:include_user_entities=>false, :skip_status=>true, :count=>200}).and_return([entry])
+    expect(client).to receive(:list_members).with(koeln, {:include_user_entities=>false, :skip_status=>true, :count=>200}).and_return([entry])
+    expect(client).to receive(:add_list_member).with(koeln, "another_example").and_return([])
 
     TwitterListUpdater.new(client).update
   end
