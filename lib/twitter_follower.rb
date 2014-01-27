@@ -8,7 +8,11 @@ class TwitterFollower
   def follow
     not_followed_handles.each do |handle|
       puts "Following #{handle}"
-      @client.follow(handle)
+      begin
+        @client.follow(handle)
+      rescue => e
+        puts "Problems following #{handle}"
+      end
     end
   end
 
@@ -20,12 +24,12 @@ class TwitterFollower
     (
       Event.select(:twitter).uniq.map(&:twitter) +
       SingleEvent.select("single_events.twitter").uniq.map(&:twitter)
-    ).compact.uniq
+    ).compact.uniq.map(&:downcase)
   end
 
   def following
     too_many_request_wrapper do
-      @following_cache ||= @client.friends(include_user_entities: false, skip_status: true, count: 200).to_a.map(&:handle)
+      @following_cache ||= @client.friends(include_user_entities: false, skip_status: true, count: 200).to_a.map(&:handle).map(&:downcase)
     end
     @following_cache
   end
