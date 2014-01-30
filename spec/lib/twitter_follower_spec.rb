@@ -8,6 +8,10 @@ describe TwitterFollower do
     @event.twitter = "bitboxer"
     @event.save
 
+    @empty_event = FactoryGirl.create(:simple)
+    @empty_event.twitter = ""
+    @empty_event.save
+
     @single_event = FactoryGirl.create(:single_event)
     @single_event.twitter = "another_example"
     @single_event.save

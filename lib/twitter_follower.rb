@@ -24,7 +24,7 @@ class TwitterFollower
     (
       Event.select(:twitter).uniq.map(&:twitter) +
       SingleEvent.select("single_events.twitter").uniq.map(&:twitter)
-    ).compact.uniq.map(&:downcase)
+    ).compact.uniq.map(&:downcase).delete_if(&:blank?)
   end
 
   def following
