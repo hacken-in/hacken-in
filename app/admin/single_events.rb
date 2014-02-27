@@ -53,6 +53,10 @@ ActiveAdmin.register SingleEvent do
   end
 
   form do
+    if single_event.occurrence.nil?
+      start_date = Date.today + 3.days
+      single_event.occurrence = DateTime.new(start_date.year, start_date.month, start_date.day, 18, 00, 00)
+    end
     render partial: 'form'
   end
 
