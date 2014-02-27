@@ -1,4 +1,9 @@
 ActiveAdmin.register User do
+  filter :id
+  filter :email
+  filter :nickname
+  filter :admin
+
   menu priority: 6
   index do
     column :id
