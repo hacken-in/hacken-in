@@ -1,4 +1,7 @@
 ActiveAdmin.register SingleEvent do
+
+  filter :occurrence
+
   config.sort_order = "occurrence_asc"
   menu false
   controller do
