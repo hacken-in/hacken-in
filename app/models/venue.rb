@@ -18,7 +18,7 @@ class Venue < ActiveRecord::Base
   end
 
   def to_s
-    "#{location}, #{city}"
+    [location, city].delete_if {|d| d.blank? }.join(", ")
   end
 
   def to_opengraph

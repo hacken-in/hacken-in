@@ -50,6 +50,13 @@ describe Venue do
     venue.to_s.should == "Cowoco in der Gasmotorenfabrik, 3. Etage"
   end
 
+  it "should generate string with location and city" do
+    venue = Venue.new
+    venue.location = "Cowoco in der Gasmotorenfabrik, 3. Etage"
+    venue.city = "Köln"
+    venue.to_s.should == "Cowoco in der Gasmotorenfabrik, 3. Etage, Köln"
+  end
+
   it "should generate opengraph data for a venue" do
     venue = Venue.new
     venue.location = "Cowoco in der Gasmotorenfabrik, 3. Etage"
