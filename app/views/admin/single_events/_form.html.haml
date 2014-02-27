@@ -21,7 +21,7 @@
         %label.label &nbsp;
         Region der Veranstaltungsreihe:
         = @single_event.event.region.name
-    = form.input :venue
+    = form.input :venue, input_html: {class: 'chosen-select'}
     - if @single_event.event.venue.present?
       %li
         %label.label &nbsp;

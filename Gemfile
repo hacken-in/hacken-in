@@ -85,6 +85,9 @@ gem 'gabba', '~> 1.0.1'
 gem 'simple-navigation', '~> 3.10.0'
 gem 'geocoder', '~> 1.1.9'
 
+# Nicer drop down boxes in the admin area
+gem "chosen-rails", "~> 1.1.0"
+
 group :development do
   # Deployment
   gem 'capistrano', '~> 2.13.0'
