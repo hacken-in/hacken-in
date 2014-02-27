@@ -1,5 +1,6 @@
 ActiveAdmin.register Venue do
 
+  filter :location
   filter :region
   filter :locatoin
   filter :street
