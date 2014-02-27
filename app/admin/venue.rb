@@ -1,4 +1,13 @@
 ActiveAdmin.register Venue do
+
+  filter :region
+  filter :locatoin
+  filter :street
+  filter :zipcode
+  filter :city
+  filter :country
+  filter :url
+
   menu priority: 3
   index do
     column :id
@@ -7,7 +16,9 @@ ActiveAdmin.register Venue do
     column :zipcode
     column :city
     column :country
-    column :url
+    column :url do |venue|
+      link_to truncate(venue.url, length: 30), venue.url
+    end
     default_actions
   end
 
