@@ -3,7 +3,7 @@
   = form.inputs do
     = form.input :name
     = form.input :description, input_html: { class: 'autogrow preview-base', rows: 10 }, wrapper_html: { class: 'previewable' }
-    = form.input :venue
+    = form.input :venue, input_html: {class: 'chosen-select'}
     = form.input :venue_info
     - if @current_user.admin?
       -# Admins dürfen alles
