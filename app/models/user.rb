@@ -29,6 +29,10 @@ class User < ActiveRecord::Base
 
   validates :nickname, uniqueness: true
   validates :nickname, presence: true
+
+  validates :email, presence: true
+  validates :email, uniqueness: true
+
   validates_exclusion_of :nickname, in: %w(admin root administrator superuser), message: I18n.t('devise.registrations.exclusion')
   validate :username_format
 

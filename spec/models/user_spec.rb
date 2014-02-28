@@ -17,7 +17,8 @@ describe User do
     u = User.create(nickname: "bitboxer3", email: "bodo4@example.com", password: "mylongpassword")
     u.should be_valid
     u2 = User.create(nickname: "bitboxer4", email: "bodo4@example.com", password: "mylongpassword")
-    u2.error_on(:email).length.should be 1
+    u2.should_not be_valid
+    expect(u2.error_on(:email)).not_to be_empty
   end
 
   it "searches user by nickname" do
