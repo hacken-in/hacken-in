@@ -7,8 +7,29 @@ module Radar
       @radar_setting = radar_setting
     end
 
-    def fetch
-      p "fetchin meetup"
+    def fetch(start_time = Time.now)
+      event_ids = []
+      next_events.each do |event|
+        next if event[:time] < start_time
+        event_ids << event[:id]
+        update_event(event)
+      end
+      mark_missing(start_time, event_ids)
+    end
+
+    def update_event(event)
+      entry = @radar_setting.entries.find_or_create_by(entry_id: event[:id])
+      entry.entry_date = event[:time]
+      entry.state      = "UNCONFIRMED"
+      entry.content    = event.except(:id, :time)
+      entry.save
+    end
+
+    def mark_missing(start_time, event_ids)
+      @radar_setting.entries.where("entry_date > ? and entry_id not in (?)", start_time, event_ids).each do |entry|
+        entry.state = "MISSING"
+        entry.save
+      end
     end
 
     def group_urlname
