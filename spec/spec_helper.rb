@@ -4,7 +4,6 @@ ENV["RAILS_ENV"] ||= 'test'
 require 'simplecov'
 require 'coveralls'
 require 'vcr'
-require 'webmock/rspec'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
   SimpleCov::Formatter::HTMLFormatter,
