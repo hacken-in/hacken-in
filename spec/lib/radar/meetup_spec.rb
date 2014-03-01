@@ -10,15 +10,15 @@ describe Radar::Meetup do
     VCR.use_cassette('meetup_git_events') do
       events = Radar::Meetup.new(setting).next_events
       expect(events.length).to eq(12)
-      expect(events[1]).to eq({:id=>"qczjhhysgbtb",
-                               :url=>"http://www.meetup.com/Git-Aficionados/events/qczjhhysgbtb/",
-                               :title=>"Git Aficionados Meetup",
-                               :description=>"<p>Topics are coming up. Go ahead and suggest some.</p>",
-                               :venue=>"Co-Up, Adalbertstraße 8, Berlin, de",
-                               :updated=>Time.new(2013,12,14,16,49,18, "+01:00"),
-                               :duration=>0,
-                               :time=>Time.new(2014,04,15,20,00,00)
-      })
+      event = events[1]
+      expect(event[:id]).to eq("qczjhhysgbtb")
+      expect(event[:url]).to eq("http://www.meetup.com/Git-Aficionados/events/qczjhhysgbtb/")
+      expect(event[:title]).to eq("Git Aficionados Meetup")
+      expect(event[:description]).to eq("<p>Topics are coming up. Go ahead and suggest some.</p>")
+      expect(event[:venue]).to eq("Co-Up, Adalbertstraße 8, Berlin, de")
+      expect(event[:updated]).to eq(Time.new(2013,12,14,16,49,18, "+01:00"))
+      expect(event[:duration]).to eq(0)
+      expect(event[:time].utc).to eq(Time.utc(2014,04,15,18,00,00))
     end
   end
 
@@ -53,7 +53,7 @@ describe Radar::Meetup do
 
       expect(setting.entries.length).to eq(12)
       expect(event.entry_id).to    eq("qczjhhysgbtb")
-      expect(event.entry_date).to  eq(Time.new(2014,04,15,20,00,00))
+      expect(event.entry_date.utc).to  eq(Time.utc(2014,04,15,18,00,00))
       expect(event.state).to       eq(RadarEntry::States::UNCONFIRMED)
       expect(event.entry_type).to  eq("UPDATE")
       expect(event.content).to     eq({
@@ -72,7 +72,7 @@ describe Radar::Meetup do
     VCR.use_cassette('meetup_git_not_update_entries') do
       event = setting.entries.create(
         entry_id: "qczjhhysgbtb",
-        entry_date: Time.new(2014,04,15,20,00,00),
+        entry_date: Time.utc(2014,04,15,18,00,00),
         state: RadarEntry::States::CONFIRMED,
         content: {
           :url=>"http://www.meetup.com/Git-Aficionados/events/qczjhhysgbtb/",
@@ -93,7 +93,7 @@ describe Radar::Meetup do
 
   it "should mark an event as deleted if it is missing from the import" do
     VCR.use_cassette('meetup_git_update_entries') do
-      event = setting.entries.create(entry_id: "missing", entry_date: Time.new(2014,4,12,20,00))
+      event = setting.entries.create(entry_id: "missing", entry_date: Time.utc(2014,4,12,20,00))
       Radar::Meetup.new(setting).fetch(Time.new(2014,3,1,14,00))
 
       event.reload

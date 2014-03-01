@@ -79,14 +79,7 @@ module Radar
     end
 
     def get_time(event)
-      date = Time.at(event["time"] / 1000)
-      Time.new(date.year,
-               date.month,
-               date.day,
-               date.hour,
-               date.min,
-               date.sec,
-               get_offset(event["utc_offset"]))
+      Time.at(event["time"] / 1000)
     end
 
     def get_offset(offset)
