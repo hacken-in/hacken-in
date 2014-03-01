@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130914120958) do
+ActiveRecord::Schema.define(version: 20140301102753) do
 
   create_table "authorizations", force: true do |t|
     t.string   "provider"
@@ -84,6 +84,23 @@ ActiveRecord::Schema.define(version: 20130914120958) do
     t.string   "box_image"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "radar_entries", force: true do |t|
+    t.integer  "radar_setting_id"
+    t.integer  "entry_id"
+    t.datetime "entry_date"
+    t.string   "state"
+    t.text     "content"
+    t.text     "previous_confirmed_content"
+  end
+
+  create_table "radar_settings", force: true do |t|
+    t.integer  "event_id"
+    t.string   "url"
+    t.string   "radar_type"
+    t.datetime "last_processed"
+    t.string   "last_result"
   end
 
   create_table "region_organizers", force: true do |t|

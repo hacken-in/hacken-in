@@ -25,11 +25,19 @@ class ActiveAdminAbility
         can :manage, Event, region_id: user.region_organizers.pluck(:region_id)
         can :manage, SingleEvent, event: {region_id: user.region_organizers.pluck(:region_id)}
         can :manage, Venue, region_id: user.region_organizers.pluck(:region_id)
+
+        can :create, RadarSetting
+        can :manage, RadarSetting, event: {region_id: user.region_organizers.pluck(:region_id)}
+        can :manage, RadarEntry, event: {region_id: user.region_organizers.pluck(:region_id)}
       end
 
       if user.event_curations.present?
         can :manage, Event, id: user.event_curations.pluck(:event_id)
         can :manage, SingleEvent, event_id: user.event_curations.pluck(:event_id)
+
+        can :create, RadarSetting
+        can :manage, RadarSetting, event_id: user.event_curations.pluck(:event_id)
+        can :manage, RadarEntry, event_id: user.event_curations.pluck(:event_id)
       end
 
       # Wenn man Events hat, darf man auch das Dashboard anzeigen und somit

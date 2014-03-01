@@ -1,7 +1,6 @@
 class Event < ActiveRecord::Base
   include TwitterHashTagFixer
 
-
   validates_presence_of :name
   validates_presence_of :category
 
@@ -20,6 +19,7 @@ class Event < ActiveRecord::Base
   has_many :event_curations
   has_many :curators, :through => :event_curations, :source => :user
 
+  has_many :radar_settings
 
   attr_writer :schedule
 
