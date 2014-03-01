@@ -10,7 +10,6 @@ describe Radar::Meetup do
     VCR.use_cassette('meetup_git_events') do
       events = Radar::Meetup.new(setting).next_events
       expect(events.length).to eq(12)
-
       expect(events[1]).to eq({:id=>"qczjhhysgbtb",
                                :url=>"http://www.meetup.com/Git-Aficionados/events/qczjhhysgbtb/",
                                :title=>"Git Aficionados Meetup",
@@ -26,10 +25,10 @@ describe Radar::Meetup do
   it "should generate the RadarEntries for each event on meetup" do
     VCR.use_cassette('meetup_git_create_entries') do
       Radar::Meetup.new(setting).fetch(Time.new(2014,3,1,14,00))
+      event = setting.entries[1]
+
       expect(setting.last_processed).to eq(Time.new(2014,3,1,14,00))
       expect(setting.entries.length).to eq(12)
-
-      event = setting.entries[1]
       expect(event.entry_id).to    eq("qczjhhysgbtb")
       expect(event.entry_date).to  eq(Time.new(2014,04,15,20,00,00,"+02:00"))
       expect(event.state).to       eq(RadarEntry::States::UNCONFIRMED)
@@ -49,9 +48,9 @@ describe Radar::Meetup do
     VCR.use_cassette('meetup_git_update_entries') do
       event = setting.entries.create(entry_id: "qczjhhysgbtb")
       Radar::Meetup.new(setting).fetch(Time.new(2014,3,1,14,00))
-      expect(setting.entries.length).to eq(12)
-
       event.reload
+
+      expect(setting.entries.length).to eq(12)
       expect(event.entry_id).to    eq("qczjhhysgbtb")
       expect(event.entry_date).to  eq(Time.new(2014,04,15,20,00,00,"+02:00"))
       expect(event.state).to       eq(RadarEntry::States::UNCONFIRMED)
@@ -83,9 +82,9 @@ describe Radar::Meetup do
         }
       )
       Radar::Meetup.new(setting).fetch(Time.new(2014,3,1,14,00))
-      expect(setting.entries.length).to eq(12)
-
       event.reload
+
+      expect(setting.entries.length).to eq(12)
       expect(event.state).to eq(RadarEntry::States::CONFIRMED)
     end
   end
@@ -95,8 +94,8 @@ describe Radar::Meetup do
       event = setting.entries.create(entry_id: "missing", entry_date: Time.new(2014,4,12,20,00))
       Radar::Meetup.new(setting).fetch(Time.new(2014,3,1,14,00))
 
-      expect(setting.entries.length).to eq(13)
       event.reload
+      expect(setting.entries.length).to eq(13)
       expect(event.state).to  eq(RadarEntry::States::MISSING)
     end
   end
