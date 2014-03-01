@@ -88,6 +88,9 @@ gem 'geocoder', '~> 1.1.9'
 # Nicer drop down boxes in the admin area
 gem 'chosen-rails', '~> 1.1.0'
 
+# Meetup API
+gem 'ruby_meetup2', '~> 0.5.0'
+
 group :development do
   # Deployment
   gem 'capistrano', '~> 2.13.0'
@@ -112,6 +115,8 @@ group :development do
 
   # Silence asset pipeline and make log usable again
   gem 'quiet_assets', '~> 1.0.2'
+
+  gem 'webmock', '~> 1.17.3'
 end
 
 group :test, :development do

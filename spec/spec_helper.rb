@@ -4,6 +4,7 @@ ENV["RAILS_ENV"] ||= 'test'
 require 'simplecov'
 require 'coveralls'
 require 'vcr'
+require 'webmock/rspec'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
   SimpleCov::Formatter::HTMLFormatter,
@@ -13,7 +14,7 @@ SimpleCov.start
 
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
-  c.hook_into :faraday
+  c.hook_into :webmock
 end
 
 require File.expand_path("../../config/environment", __FILE__)
