@@ -116,7 +116,6 @@ group :development do
   # Silence asset pipeline and make log usable again
   gem 'quiet_assets', '~> 1.0.2'
 
-  gem 'webmock', '~> 1.17.3'
 end
 
 group :test, :development do
@@ -129,6 +128,10 @@ group :test, :development do
   gem 'brakeman', '~> 2.3.1'
   gem 'vcr', '~> 2.8.0'
   gem 'pry-rails'
+end
+
+group :test do
+  gem 'webmock', '~> 1.17.3'
 end
 
 gem 'recaptcha', '0.3.5'
