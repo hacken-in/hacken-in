@@ -9,12 +9,17 @@ module Radar
 
     def fetch(start_time = Time.now)
       event_ids = []
-      next_events.each do |event|
-        next if event[:time] < start_time
-        event_ids << event[:id]
-        update_event(event)
+      begin
+        next_events.each do |event|
+          next if event[:time] < start_time
+          event_ids << event[:id]
+          update_event(event)
+        end
+        mark_missing(start_time, event_ids)
+        @radar_setting.last_result = "OK"
+      rescue => e
+        @radar_setting.last_result = e.message[0..254]
       end
-      mark_missing(start_time, event_ids)
       @radar_setting.last_processed = start_time
       @radar_setting.save
     end
