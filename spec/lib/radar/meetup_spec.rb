@@ -15,9 +15,9 @@ describe Radar::Meetup do
                                :title=>"Git Aficionados Meetup",
                                :description=>"<p>Topics are coming up. Go ahead and suggest some.</p>",
                                :venue=>"Co-Up, Adalbertstraße 8, Berlin, de",
-                               :updated=>Time.new(2013,12,14,16,49,18,"+01:00"),
+                               :updated=>Time.new(2013,12,14,16,49,18, "+01:00"),
                                :duration=>0,
-                               :time=>Time.new(2014,04,15,20,00,00,"+02:00")
+                               :time=>Time.new(2014,04,15,20,00,00)
       })
     end
   end
@@ -53,7 +53,7 @@ describe Radar::Meetup do
 
       expect(setting.entries.length).to eq(12)
       expect(event.entry_id).to    eq("qczjhhysgbtb")
-      expect(event.entry_date).to  eq(Time.new(2014,04,15,20,00,00,"+02:00"))
+      expect(event.entry_date).to  eq(Time.new(2014,04,15,20,00,00))
       expect(event.state).to       eq(RadarEntry::States::UNCONFIRMED)
       expect(event.entry_type).to  eq("UPDATE")
       expect(event.content).to     eq({
@@ -72,7 +72,7 @@ describe Radar::Meetup do
     VCR.use_cassette('meetup_git_not_update_entries') do
       event = setting.entries.create(
         entry_id: "qczjhhysgbtb",
-        entry_date: Time.new(2014,04,15,20,00,00,"+02:00"),
+        entry_date: Time.new(2014,04,15,20,00,00),
         state: RadarEntry::States::CONFIRMED,
         content: {
           :url=>"http://www.meetup.com/Git-Aficionados/events/qczjhhysgbtb/",
