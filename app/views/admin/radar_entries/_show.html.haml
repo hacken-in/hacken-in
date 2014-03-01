@@ -1,0 +1,41 @@
+- if @radar_entry.entry_type == "MISSING"
+  %h2 Gelöscht
+- elsif @radar_entry.entry_type == "NEW"
+  %h2 Neu
+- elsif @radar_entry.entry_type == "UPDATE"
+  %h2 Aktualisiert
+
+.panel
+  %h3 Radar Eintrag
+
+  .attributes_table
+    %table{cellspacing:0, cellpadding: 0}
+      %tbody
+        %tr
+          %th &nbsp;
+          %th Neue Daten
+          %th Alte Daten
+        %tr
+          %th Titel
+          %td= @radar_entry.content[:title]
+          %td= @radar_entry.previous_confirmed_content[:title] if @radar_entry.previous_confirmed_content
+        %tr
+          %th Beschreibung
+          %td= sanitize @radar_entry.content[:description]
+          %td= sanitize @radar_entry.previous_confirmed_content[:description] if @radar_entry.previous_confirmed_content
+        %tr
+          %th Ort
+          %td= @radar_entry.content[:venue]
+          %td= @radar_entry.previous_confirmed_content[:venue] if @radar_entry.previous_confirmed_content
+        %tr
+          %th Länge
+          %td= @radar_entry.content[:duration]
+          %td= @radar_entry.previous_confirmed_content[:duration] if @radar_entry.previous_confirmed_content
+        %tr
+          %th URL
+          %td= link_to @radar_entry.content[:url], @radar_entry.content[:url]
+          %td= link_to @radar_entry.previous_confirmed_content[:url], @radar_entry.previous_confirmed_content[:url] if @radar_entry.previous_confirmed_content
+
+.action_items
+  .action_item
+    = link_to "Als bearbeitet markieren", confirm_admin_radar_entry_path(@radar_entry), class: "button"

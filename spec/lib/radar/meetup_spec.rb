@@ -32,6 +32,7 @@ describe Radar::Meetup do
       expect(event.entry_id).to    eq("qczjhhysgbtb")
       expect(event.entry_date).to  eq(Time.new(2014,04,15,20,00,00,"+02:00"))
       expect(event.state).to       eq(RadarEntry::States::UNCONFIRMED)
+      expect(event.entry_type).to  eq("NEW")
       expect(event.content).to     eq({
         :url=>"http://www.meetup.com/Git-Aficionados/events/qczjhhysgbtb/",
         :title=>"Git Aficionados Meetup",
@@ -46,7 +47,7 @@ describe Radar::Meetup do
 
   it "should update an event if it was already in the database" do
     VCR.use_cassette('meetup_git_update_entries') do
-      event = setting.entries.create(entry_id: "qczjhhysgbtb")
+      event = setting.entries.create(entry_id: "qczjhhysgbtb", entry_type: "NEW")
       Radar::Meetup.new(setting).fetch(Time.new(2014,3,1,14,00))
       event.reload
 
@@ -54,6 +55,7 @@ describe Radar::Meetup do
       expect(event.entry_id).to    eq("qczjhhysgbtb")
       expect(event.entry_date).to  eq(Time.new(2014,04,15,20,00,00,"+02:00"))
       expect(event.state).to       eq(RadarEntry::States::UNCONFIRMED)
+      expect(event.entry_type).to  eq("UPDATE")
       expect(event.content).to     eq({
         :url=>"http://www.meetup.com/Git-Aficionados/events/qczjhhysgbtb/",
         :title=>"Git Aficionados Meetup",
@@ -96,7 +98,9 @@ describe Radar::Meetup do
 
       event.reload
       expect(setting.entries.length).to eq(13)
-      expect(event.state).to  eq(RadarEntry::States::MISSING)
+      expect(event.content).to eq({})
+      expect(event.entry_type).to eq("MISSING")
+      expect(event.state).to  eq(RadarEntry::States::UNCONFIRMED)
     end
   end
 

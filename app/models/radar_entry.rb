@@ -1,6 +1,7 @@
 class RadarEntry < ActiveRecord::Base
   belongs_to :radar_setting
   has_one :event, through: :radar_setting
+  has_one :region, through: :event
 
   serialize :content
   serialize :previous_confirmed_content
@@ -8,7 +9,6 @@ class RadarEntry < ActiveRecord::Base
   module States
     CONFIRMED = "CONFIRMED"
     UNCONFIRMED = "UNCONFIRMED"
-    MISSING = "MISSING"
   end
 
   def confirm

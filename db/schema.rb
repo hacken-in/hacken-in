@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140301141104) do
+ActiveRecord::Schema.define(version: 20140301193843) do
 
   create_table "authorizations", force: true do |t|
     t.string   "provider"
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 20140301141104) do
     t.string   "state"
     t.text     "content"
     t.text     "previous_confirmed_content"
+    t.string   "entry_type"
   end
 
   create_table "radar_settings", force: true do |t|

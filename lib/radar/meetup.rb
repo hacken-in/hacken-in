@@ -23,8 +23,10 @@ module Radar
       entry = @radar_setting.entries.find_or_create_by(entry_id: event[:id])
       if (entry.entry_date != event[:time] ||
           entry.content != event.except(:id, :time))
+
         entry.entry_date = event[:time]
         entry.content    = event.except(:id, :time)
+        entry.entry_type = entry.entry_type.nil? ? "NEW" : "UPDATE"
         entry.state      = "UNCONFIRMED"
         entry.save
       end
@@ -32,7 +34,9 @@ module Radar
 
     def mark_missing(start_time, event_ids)
       @radar_setting.entries.where("entry_date > ? and entry_id not in (?)", start_time, event_ids).each do |entry|
-        entry.state = "MISSING"
+        entry.entry_type = "MISSING"
+        entry.content = {}
+        entry.state = "UNCONFIRMED"
         entry.save
       end
     end
