@@ -31,7 +31,7 @@ describe Radar::Meetup do
       event = setting.entries[1]
       expect(event.entry_id).to    eq("qczjhhysgbtb")
       expect(event.entry_date).to  eq(Time.new(2014,04,15,20,00,00,"+02:00"))
-      expect(event.state).to       eq("UNCONFIRMED")
+      expect(event.state).to       eq(RadarEntry::States::UNCONFIRMED)
       expect(event.content).to     eq({
         :url=>"http://www.meetup.com/Git-Aficionados/events/qczjhhysgbtb/",
         :title=>"Git Aficionados Meetup",
@@ -53,7 +53,7 @@ describe Radar::Meetup do
       event.reload
       expect(event.entry_id).to    eq("qczjhhysgbtb")
       expect(event.entry_date).to  eq(Time.new(2014,04,15,20,00,00,"+02:00"))
-      expect(event.state).to       eq("UNCONFIRMED")
+      expect(event.state).to       eq(RadarEntry::States::UNCONFIRMED)
       expect(event.content).to     eq({
         :url=>"http://www.meetup.com/Git-Aficionados/events/qczjhhysgbtb/",
         :title=>"Git Aficionados Meetup",
@@ -73,7 +73,7 @@ describe Radar::Meetup do
 
       expect(setting.entries.length).to eq(13)
       event.reload
-      expect(event.state).to  eq("MISSING")
+      expect(event.state).to  eq(RadarEntry::States::MISSING)
     end
   end
 

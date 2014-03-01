@@ -5,10 +5,16 @@ class RadarEntry < ActiveRecord::Base
   serialize :content
   serialize :previous_confirmed_content
 
+  module States
+    CONFIRMED = "CONFIRMED"
+    UNCONFIRMED = "UNCONFIRMED"
+    MISSING = "MISSING"
+  end
+
   def confirm
     self.previous_confirmed_content = content
     self.content = nil
-    self.state = "CONFIRMED"
+    self.state = RadarEntry::States::CONFIRMED
     self.save
   end
 

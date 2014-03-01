@@ -15,14 +15,19 @@ module Radar
         update_event(event)
       end
       mark_missing(start_time, event_ids)
+      @radar_setting.last_processed = start_time
+      @radar_setting.save
     end
 
     def update_event(event)
       entry = @radar_setting.entries.find_or_create_by(entry_id: event[:id])
-      entry.entry_date = event[:time]
-      entry.state      = "UNCONFIRMED"
-      entry.content    = event.except(:id, :time)
-      entry.save
+      if (entry.entry_date != event[:time] ||
+          entry.content != event.except(:id, :time))
+        entry.entry_date = event[:time]
+        entry.content    = event.except(:id, :time)
+        entry.state      = "UNCONFIRMED"
+        entry.save
+      end
     end
 
     def mark_missing(start_time, event_ids)
