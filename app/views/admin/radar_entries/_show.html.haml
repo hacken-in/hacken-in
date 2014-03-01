@@ -16,6 +16,9 @@
           %th Neue Daten
           %th Alte Daten
         %tr
+          %th Zeit
+          %td= @radar_entry.entry_date.strftime("%d.%m.%Y %H:%M")
+        %tr
           %th Titel
           %td= @radar_entry.content[:title]
           %td= @radar_entry.previous_confirmed_content[:title] if @radar_entry.previous_confirmed_content
