@@ -26,6 +26,7 @@ describe Radar::Meetup do
   it "should generate the RadarEntries for each event on meetup" do
     VCR.use_cassette('meetup_git_create_entries') do
       Radar::Meetup.new(setting).fetch(Time.new(2014,3,1,14,00))
+      expect(setting.last_processed).to eq(Time.new(2014,3,1,14,00))
       expect(setting.entries.length).to eq(12)
 
       event = setting.entries[1]
@@ -63,6 +64,29 @@ describe Radar::Meetup do
         :duration=>0,
       })
       expect(event.previous_confirmed_content).to eq(nil)
+    end
+  end
+
+  it "should not update an event that is not changed" do
+    VCR.use_cassette('meetup_git_not_update_entries') do
+      event = setting.entries.create(
+        entry_id: "qczjhhysgbtb",
+        entry_date: Time.new(2014,04,15,20,00,00,"+02:00"),
+        state: RadarEntry::States::CONFIRMED,
+        content: {
+          :url=>"http://www.meetup.com/Git-Aficionados/events/qczjhhysgbtb/",
+          :title=>"Git Aficionados Meetup",
+          :description=>"<p>Topics are coming up. Go ahead and suggest some.</p>",
+          :venue=>"Co-Up, Adalbertstraße 8, Berlin, de",
+          :updated=>Time.new(2013,12,14,16,49,18,"+01:00"),
+          :duration=>0,
+        }
+      )
+      Radar::Meetup.new(setting).fetch(Time.new(2014,3,1,14,00))
+      expect(setting.entries.length).to eq(12)
+
+      event.reload
+      expect(event.state).to eq(RadarEntry::States::CONFIRMED)
     end
   end
 
