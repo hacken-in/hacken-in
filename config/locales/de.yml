@@ -245,6 +245,8 @@ de:
         zipcode: PLZ
         city: Stadt
         country: Land
+      radar_setting:
+        radar_type: Radar Typ
 
     models:
       comment: Kommentar
@@ -258,8 +260,18 @@ de:
       blog_post:
         one: Blogeintrag
         other: Blogeinträge
-      venue: Ort
-      suggestion: Vorschlag
+      venue:
+        one: Ort
+        other: Orte
+      suggestion:
+        one: Vorschlag
+        other: Vorschläge
+      region:
+        one: Region
+        other: Regionen
+      radar_entry:
+        one: Radar Eintrag
+        other: Radar Einträge
       radar_setting: Radar Einstellung
   comments:
     _form:
