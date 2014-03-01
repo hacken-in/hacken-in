@@ -67,6 +67,21 @@
       - @event.excluded_times.each do |time|
         %li=l time
 
+  %h3 Radar Einstellungen (der Auto-Importer)
+
+  .radar_settings_link
+    %ul
+      - @event.radar_settings.each do |setting|
+        %a{href:edit_admin_event_radar_setting_path(@event, setting)}
+          = "#{setting.radar_type} - #{setting.url}"
+        (
+        = link_to "Löschen", admin_event_radar_setting_path(@event, setting), method: :delete, confirm: "Wirklich löschen?"
+        )
+
+  .radar_settings_new
+    %a{href:new_admin_event_radar_setting_path(@event)}
+      Neue Radar Einstellung hinzufügen
+
   %h3 Termine
 
   .single_event_link

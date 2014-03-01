@@ -260,6 +260,7 @@ de:
         other: Blogeinträge
       venue: Ort
       suggestion: Vorschlag
+      radar_setting: Radar Einstellung
   comments:
     _form:
       comment_button: Und ab!
