@@ -16,6 +16,9 @@
           %th Neue Daten
           %th Alte Daten
         %tr
+          %th Veranstaltungsreihe
+          %td= link_to @radar_entry.event, admin_event_single_events_path(@radar_entry.event)
+        %tr
           %th Zeit
           %td= @radar_entry.entry_date.strftime("%d.%m.%Y %H:%M")
         %tr
