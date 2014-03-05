@@ -23,7 +23,7 @@ ActiveAdmin.register RadarSetting do
 
   form do |f|
     f.inputs "Radar Einstellung" do
-      f.input :radar_type, as: :select, collection: ["Meetup"]
+      f.input :radar_type, as: :select, collection: ["Meetup", "Onruby"]
       f.input :url
     end
   end
