@@ -74,7 +74,7 @@ describe Radar::Meetup do
         entry_id: "qczjhhysgbtb",
         entry_date: Time.utc(2014,04,15,18,00,00),
         state: RadarEntry::States::CONFIRMED,
-        content: {
+        previous_confirmed_content: {
           :url=>"http://www.meetup.com/Git-Aficionados/events/qczjhhysgbtb/",
           :title=>"Git Aficionados Meetup",
           :description=>"<p>Topics are coming up. Go ahead and suggest some.</p>",

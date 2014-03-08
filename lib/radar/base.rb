@@ -27,7 +27,7 @@ module Radar
     def update_event(event)
       entry = @radar_setting.entries.find_or_create_by(entry_id: event[:id])
       if (entry.entry_date != event[:time] ||
-          entry.content != event.except(:id, :time))
+          entry.previous_confirmed_content != event.except(:id, :time))
 
         entry.entry_date = event[:time]
         entry.content    = event.except(:id, :time)
