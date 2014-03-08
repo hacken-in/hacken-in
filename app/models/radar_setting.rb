@@ -1,5 +1,5 @@
 class RadarSetting < ActiveRecord::Base
-  has_many :entries, class_name: "RadarEntry"
+  has_many :entries, class_name: "RadarEntry", :dependent => :destroy
   belongs_to :event
 
   def fetch
