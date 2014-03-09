@@ -13,7 +13,7 @@ class RadarEntry < ActiveRecord::Base
 
   def confirm
     self.previous_confirmed_content = content
-    self.content = nil
+    self.content = {}
     self.state = RadarEntry::States::CONFIRMED
     self.save
   end

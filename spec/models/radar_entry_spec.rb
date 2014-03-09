@@ -7,7 +7,7 @@ describe RadarEntry do
     entry = RadarEntry.create(content: {item: true}, state: RadarEntry::States::UNCONFIRMED)
     entry.confirm
     expect(entry.state).to eq(RadarEntry::States::CONFIRMED)
-    expect(entry.content).to be_nil
+    expect(entry.content).to eq({})
     expect(entry.previous_confirmed_content).to eq({item: true})
   end
 
