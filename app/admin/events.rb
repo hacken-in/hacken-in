@@ -77,8 +77,10 @@ ActiveAdmin.register Event do
         end
       end
       fix_start_time
-      create! do |format|
-        format.html { redirect_to admin_event_path(@event) }
+      create! do |success, failure|
+        success.html do
+          redirect_to admin_event_path(@event)
+        end
       end
     end
 
@@ -90,8 +92,10 @@ ActiveAdmin.register Event do
         end
       end
       fix_start_time
-      update! do |format|
-        format.html { redirect_to admin_event_path(@event) }
+      update! do |success, failure|
+        success.html do
+          redirect_to admin_event_path(@event)
+        end
       end
     end
 

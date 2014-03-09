@@ -9,7 +9,11 @@ ActiveAdmin.register RadarSetting do
     end
 
     def create
-      create!{ admin_event_path(params[:event_id]) }
+      create! do |success, failure|
+        success.html do
+          admin_event_path(params[:event_id])
+        end
+      end
     end
 
     def permitted_params
