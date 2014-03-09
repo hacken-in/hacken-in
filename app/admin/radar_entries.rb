@@ -19,11 +19,13 @@ ActiveAdmin.register RadarEntry do
     column :entry_date
     column :entry_type
     column :content do |entry|
-      (
-        "<p><strong>#{entry.content[:title]}</strong></p>" +
-        "#{sanitize entry.content[:description]}" +
-        "<p>#{entry.content[:venue]}</p>"
-      ).html_safe
+      if entry.content
+        (
+          "<p><strong>#{entry.content[:title]}</strong></p>" +
+          "#{sanitize entry.content[:description]}" +
+          "<p>#{entry.content[:venue]}</p>"
+        ).html_safe
+      end
     end
     column :actions do |entry|
       link_to(I18n.t('active_admin.view'), resource_path(entry), class: "member_link view_link")
