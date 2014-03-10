@@ -1,6 +1,3 @@
-# ToDo: 
-# * Add location data to the json export in onruby
-# * Add user name to topics to the json export in onruby
 require 'ruby_meetup'
 require 'open-uri'
 
@@ -21,7 +18,8 @@ module Radar
          url: "#{base_url}/events/#{event["id"]}",
          title: event["name"],
          description: description(event),
-         time: Time.parse(event["date"])
+         time: Time.parse(event["date"]),
+         venue: parse_location(event["location"])
       }
       result
     end
@@ -33,10 +31,14 @@ module Radar
     def description(event)
       desc = simple_format(event["description"])
       event["topics"].each do |topic|
-        desc += "<p>#{topic["name"]}</p>".html_safe
+        desc += "<p>#{topic["name"]} - #{topic["user"]["name"]}</p>".html_safe
         desc += simple_format(topic["description"])
       end
       desc
+    end
+
+    def parse_location(location)
+      "#{location["name"]}, #{location["street"]} #{location["house_number"]}, #{location["zip"]} #{location["city"]}, #{location["url"]}"
     end
 
     private
