@@ -5,9 +5,9 @@
 
       var map = new L.Map('mapCanvas', { center: eventLocation, zoom: 13, scrollWheelZoom: false });
 
-      var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/785896de12ad4cf892e32b9ec16b5cde/997/256/{z}/{x}/{y}.png';
-      var cloudmade = new L.TileLayer(cloudmadeUrl);
-      map.addLayer(cloudmade);
+      L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
 
       var markerLocation = eventLocation;
 
