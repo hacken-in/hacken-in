@@ -38,7 +38,9 @@ module Radar
     end
 
     def parse_location(location)
-      "#{location["name"]}, #{location["street"]} #{location["house_number"]}, #{location["zip"]} #{location["city"]}, #{location["url"]}"
+      if location
+        "#{location["name"]}, #{location["street"]} #{location["house_number"]}, #{location["zip"]} #{location["city"]}, #{location["url"]}"
+      end
     end
 
     private
