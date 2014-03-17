@@ -4,6 +4,8 @@ describe CalendarsController do
   let(:today) { double('Date') }
   let(:region_name) { 'koeln' }
   let(:region) { double('Region') }
+  let(:start_selector) { double('StartSelector') }
+  let(:calendar) { double('Calendar') }
 
   before do
     allow(Date).to receive(:today).and_return(today)
@@ -19,14 +21,16 @@ describe CalendarsController do
   end
 
   it "should initialize a start selector with today's date" do
-    expect(StartSelector).to receive(:new).with(today)
+    expect(StartSelector).to receive(:new).with(today).and_return(start_selector)
     get :show, region: region_name
+    expect(assigns[:start_selector]).to be start_selector
   end
 
   context 'no user logged in' do
     it "should initialize a calendar with today's date, the current region and nil" do
-      expect(Calendar).to receive(:new).with(today, region, nil)
+      expect(Calendar).to receive(:new).with(today, region, nil).and_return(calendar)
       get :show, region: region_name
+      expect(assigns[:calendar]).to be calendar
     end
   end
 
@@ -35,8 +39,9 @@ describe CalendarsController do
     before { sign_in user }
 
     it 'should initialize a calendar with the user' do
-      expect(Calendar).to receive(:new).with(today, region, user)
+      expect(Calendar).to receive(:new).with(today, region, user).and_return(calendar)
       get :show, region: region_name
+      expect(assigns[:calendar]).to be calendar
     end
   end
 end
