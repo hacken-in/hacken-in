@@ -1,0 +1,5 @@
+.day-divider
+  %h2= I18n.localize(day.date, format: "%A, %d. %B %Y")
+  = link_to t('.suggest_event'), new_suggestion_path
+
+= render day.entries

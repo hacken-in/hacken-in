@@ -1,0 +1,75 @@
+%aside.left-off-canvas-menu
+  .close-area.exit-off-canvas
+
+  - if current_user
+    .row
+      .small-11.small-centered.columns
+        %h3= t('.greeting', name: current_user.nickname)
+
+    .row
+      .small-11.small-centered.columns= link_to t('.my_profile'), user_path(current_user), class: 'small-12 button'
+
+    .row
+      .small-11.small-centered.columns
+        = link_to t('.add_to_my_calendar'), '#', 'data-reveal-id' => 'calendarExportModal', class: 'small-12 button'
+
+    .row
+      .small-11.small-centered.columns= link_to t('.logout'), destroy_user_session_path, method: :delete, class: 'small-12 button'
+
+  - else
+    = form_for resource, as: resource_name, url: session_path(resource_name) do |f|
+      .row
+        .small-11.small-centered.columns
+          %h3= t('.login')
+      .row
+        .small-11.small-centered.columns= f.text_field :email, placeholder: t('.email')
+      .row
+        .small-11.small-centered.columns= f.password_field :password, placeholder: t('.password')
+
+      .row
+        .small-11.small-centered.columns= f.submit t('.login'), class: 'small-12 button'
+
+      - if devise_mapping.rememberable?
+        .row
+          .small-11.small-centered.columns
+            = f.check_box :remember_me, :as => :boolean
+            = f.label :remember_me, t('.remember_me')
+
+      - User.omniauth_providers.each do |provider|
+        .row
+          .small-11.small-centered.columns= link_to t('.login_with', provider: provider.to_s.capitalize), user_omniauth_authorize_url(provider), title: provider, class: 'small-12 button'
+
+      .row
+        .small-11.small-centered.columns= link_to t('.register_instead'), new_registration_path(resource_name), class: 'small-12 button'
+
+  - if current_user
+    %hr
+
+    .row
+      .small-11.small-centered.columns
+        %input{type: 'text', placeholder: t('.love_input')}
+        %ul.js-like-taglist
+          - current_user.likes.each do |tag|
+            %li{'data-tag' => tag.name, 'data-list' => 'like'}
+              = tag.name
+              %i.icon-remove.remove-tag.js-remove-tag
+
+    .row
+      .small-11.small-centered.columns
+        %input{type: 'text', placeholder: t('.hate_input')}
+        %ul.js-hate-taglist
+          - current_user.hates.each do |tag|
+            %li{'data-tag' => tag.name, 'data-list' => 'hate'}
+              = tag.name
+              %i.icon-remove.remove-tag.js-remove-tag
+
+  %hr
+
+  %ul.off-canvas-list
+    %li= link_to t('.team'), humans_path
+    %li= link_to t('.imprint'), impressum_path
+    %li= link_to 'Github', 'https://github.com/hcking'
+    %li= link_to 'App.net', 'https://alpha.app.net/hacken_in'
+    %li= link_to 'Twitter', 'https://www.twitter.com/hacken_in'
+    %li
+      %a.FlattrButton{style:"display:none;", href:"http://hacken.in"}

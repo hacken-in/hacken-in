@@ -1,8 +1,0 @@
-%ul.calendar-startselector-months
-  - months.each do |m|
-    %li{data: { year: m.strftime('%Y'), month: m.month }}
-      = I18n.localize(m, format: '%b')
-
-%ul.calendar-startselector-days
-  - (1..31).each do |d|
-    %li{data: { day: d }}= d

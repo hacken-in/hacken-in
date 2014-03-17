@@ -1,21 +1,22 @@
-// This is a manifest file that'll be compiled into including all the files listed below.
-// Add new JavaScript/Coffee code in separate files in this directory and they'll automatically
-// be included in the compiled file accessible from http://example.com/assets/application.js
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// the compiled file.
-//
 //= require jquery
 //= require jquery_ujs
-//= require leaflet
-//= require jquery.balloon
-//= require jquery.tokeninput
-//= require jquery.endless-scroll
-//= require jquery.scrollTo
-//= require zero-clipboard
-//= require tipsy
-//= require jquery.pjax
-//= require_tree .
-//= require twitter/bootstrap
 
-L.Icon.Default.imagePath = "/assets/";
+// TODO: Don't include the parts we don't need
+// Please only remove the equal sign to make insertion easier
+//= require foundation/foundation
+//= require foundation/foundation.abide
+//= require foundation/foundation.accordion
+//= require foundation/foundation.alert
+//= require foundation/foundation.clearing
+//= require foundation/foundation.dropdown
+//= require foundation/foundation.interchange
+//= require foundation/foundation.joyride
+//= require foundation/foundation.magellan
+//= require foundation/foundation.offcanvas
+//= require foundation/foundation.orbit
+//= require foundation/foundation.reveal
+//= require foundation/foundation.tab
+//= require foundation/foundation.tooltip
+//= require foundation/foundation.topbar
 
+$(function(){ $(document).foundation(); });

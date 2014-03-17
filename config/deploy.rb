@@ -3,7 +3,7 @@ require "bundler/capistrano"
 
 # Settings
 set :application, "hcking"
-set :deploy_to, "/var/www/virtual/hacken/hcking"
+set :deploy_to, "/var/www/virtual/hacken/hacken_redesign"
 set :user, "hacken"
 set :config_files, ['database.yml',
   'initializers/secret_token.rb', 'initializers/devise.rb', 'initializers/recaptcha.rb',
@@ -12,7 +12,7 @@ set :config_files, ['database.yml',
 # Git Repo
 set :repository,  "git://github.com/hcking/hcking.git"
 set :scm, :git
-set :branch, "master"
+set :branch, "redesign"
 
 set :use_sudo, false
 

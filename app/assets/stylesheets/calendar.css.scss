@@ -1,0 +1,107 @@
+@mixin calendar-selector($margin-left-of-li, $width-of-li, $number-of-li) {
+  ul {
+    width: $number-of-li * ($width-of-li + $margin-left-of-li);
+  }
+
+  li {
+    width: $width-of-li;
+    margin-left: $margin-left-of-li;
+  }
+};
+
+.calendar-startselector {
+  nav {
+    @include grid-row();
+    overflow-y: hidden;
+
+    ul {
+      @include inline-list;
+      @include grid-column(12);
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    li.active {
+      border-bottom: 4px solid $alert-color;
+    }
+  }
+
+  .months {
+    background: $secondary-color;
+    @include calendar-selector(20px, 40px, 20);
+  }
+
+  .days {
+    background: $primary-color;
+    border-bottom: 1px solid #a0a0a0;
+    @include calendar-selector(20px, 60px, 20);
+
+    li {
+      .weekday {
+        margin-top: 16px;
+        margin-bottom: -16px
+      }
+
+      .day {
+        font-size: $h1-font-size;
+        font-weight: 300;
+      }
+    }
+  }
+}
+
+.day-divider {
+  @include grid-row();
+  background: $primary-color;
+  padding: 20px 0;
+
+  h2 {
+    @include grid-column(8);
+    font-size: $h5-font-size;
+    margin: 0;
+  }
+
+  a {
+    @include grid-column(4);
+    color: $body-font-color;
+    text-align: right;
+  }
+}
+
+.single-event {
+  @include grid-row();
+
+  margin-top: 10px;
+  border-bottom: 1px solid $primary-color;
+
+  .indicator-wrapper {
+    @include grid-column(2);
+  }
+
+  .indicator {
+    margin-top: 5px; // TODO: Check why this is necessary
+    width: 5px;
+    height: 50px;
+  }
+
+  .short-description {
+    @include grid-column(10);
+  }
+
+  h3 {
+    margin: 0;
+  }
+
+  h4 {
+    font-size: $base-font-size;
+    margin: 0;
+  }
+
+  p.additional-info {
+    font-size: $base-font-size;
+  }
+
+  h3, h4, p.additional-info {
+    color: $body-font-color;
+  }
+}

@@ -22,21 +22,17 @@ gem 'acts-as-taggable-on', '~> 2.4.1'
 # Statistics
 gem 'chartkick', '~> 1.2.1'
 
-# Asset template engines
+# TODO: Remove
+# This lib is used exactly ONCE in the admin interface
+gem 'momentjs-rails', '~> 2.4.0'
+
+# Assets
 gem 'sass-rails', '~> 4.0.1'
 gem 'coffee-script', '~> 2.2.0'
 gem 'leaflet-rails', '~> 0.7.1'
 gem 'uglifier', '~> 2.4.0'
 gem 'jquery-rails', '~> 3.0.0'
-gem 'pjax_rails', '~> 0.3.4'
-gem 'compass-rails', '~> 1.1.0'
-gem 'bootstrap-sass-rails', '~> 2.3.0.0'
-
-# TODO: Fix the version
-gem 'momentjs-rails', '~> 2.1.0'                                                    # Date parsing in Javascript
-gem 'zero-clipboard-rails', git: 'https://github.com/hacken-in/zero-clipboard-rails', branch: 'rails4' # Clipboard-Button on iCal Page
-gem 'tipsy-rails',          git: 'https://github.com/hacken-in/tipsy-rails', branch: 'rails4'
-gem 'font-awesome-rails', '~> 3.2.1.2'
+gem 'foundation-rails', '5.0.2.0'
 
 gem 'haml', '~> 4.0.4'
 gem 'md_emoji', '~> 1.0.0'
@@ -75,14 +71,15 @@ gem 'therubyracer', '~> 0.12.0'
 gem 'gravatar_image_tag', '~> 1.2.0'
 
 # Pagination
-gem 'bootstrap-kaminari-views', '~> 0.0.2'
+# Can't update to 0.15 for now, because ActiveAdmin
+# is locked to this version
+gem 'kaminari', '~> 0.15.1'
 
 # For the auto follow script
 gem 'twitter', '~> 5.5.1'
 
 # Other dependencies
 gem 'gabba', '~> 1.0.1'
-gem 'simple-navigation', '~> 3.10.0'
 gem 'geocoder', '~> 1.1.9'
 
 # Nicer drop down boxes in the admin area

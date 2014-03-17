@@ -4,32 +4,11 @@ require 'redcarpet_extensions'
 module ApplicationHelper
 
   def sitename
-    if @region
-      "hacken.in/#{@region.slug}"
+    if current_region.present?
+      "hacken.in/#{current_region.slug}"
     else
       "hacken.in"
     end
-  end
-
-  def day_output_helper(date)
-      date = date.to_date
-      today = Date.today
-      date_ext = case
-        when date == today then " - Heute"
-        when date == (today + 1) then " - Morgen"
-        when date == (today + 2) then " - Übermorgen"
-      end
-
-      retval = <<-EOL
-        <div class='calendar-datebox-d'>
-          #{date.strftime('%d')}
-        </div>
-        <div class='calendar-datebox-box'>
-          <div class='calendar-datebox-my'>#{I18n.localize(date, format: '%b %Y')}</div>
-          <div class='calendar-datebox-wd'>#{I18n.localize(date, format: '%A')}</div>
-        </div>#{date_ext}
-      EOL
-      retval.html_safe
   end
 
   def truncate_html(html, length=30, opts={})
@@ -104,7 +83,7 @@ module ApplicationHelper
     "An jedem #{occurrence} #{I18n.t("date.day_names")[rule.validations_for(:day).first.day]}"
   end
 
-  def avatar_for_user(user, size=16, class_name=nil)
+  def avatar_for_user(user, size = 16, class_name = nil)
     if user.gravatar_email.present?
       gravatar_image_tag(user.gravatar_email, title: user.nickname, alt: user.nickname, class: class_name, gravatar: { default: :identicon, size: size })
     elsif user.email.present?
@@ -114,7 +93,7 @@ module ApplicationHelper
     end
   end
 
-  def avatar_for_external_user(external_user, size=16, class_name=nil)
+  def avatar_for_external_user(external_user, size = 16, class_name = nil)
     gravatar_image_tag(external_user.email, title: external_user.name, alt: external_user.name, class: class_name, gravatar: { default: :identicon, size: size })
   end
 
@@ -136,5 +115,4 @@ module ApplicationHelper
   # -----------------------------------------------------------
   # End of Devise methods
   # -----------------------------------------------------------
-
 end

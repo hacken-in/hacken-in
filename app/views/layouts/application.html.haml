@@ -4,7 +4,7 @@
 
     %title= content_for?(:title) ? yield(:title) + " – " + sitename : sitename
     = stylesheet_link_tag "application"
-    = javascript_include_tag "application"
+    = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tags
     - if content_for?(:opengraph) 
       = yield(:opengraph)
@@ -14,6 +14,7 @@
           "fb:admins" => "520869354",
           "og:type" => "website",
           "og:description" => "Der Event-Kalender für Nerds")
+    %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
 
     :javascript
       var _gaq = _gaq || [];
@@ -31,54 +32,17 @@
         t.parentNode.insertBefore(s, t);
       })();
 
-    = yield(:javascript)
-
-    %link{ href: 'http://fonts.googleapis.com/css?family=Vollkorn:400italic,400,700', rel:'stylesheet', type:'text/css'}
+    %link{ href: 'http://fonts.googleapis.com/css?family=Roboto+Condensed:400italic,400,300,700', rel:'stylesheet', type:'text/css'}
 
   %body{:class => "#{controller.controller_name}_#{controller.action_name}" }
-    %header.container
-      .navbar
-        .navbar-inner
-          .brand
-            = link_to image_tag("germany-outline.png", class:"germany"), "/deutschland"
-            - if @region
-              = link_to "hacken.in/<span class='navbar-slug'>#{@region.slug}</span>".html_safe, region_path(@region.slug)
-            - else
-              = link_to "hacken.in".html_safe, root_path
-          = render_navigation
-          = render 'users/sessions/loginform_popup'
-          = render 'users/sessions/logoutform_popup'
+    .off-canvas-wrap
+      .inner-wrap
+        %a.exit-off-canvas
+        = render 'modules/common/topbar'
+        = render 'modules/common/sidebar'
+        = render 'modules/common/searchform'
+        = render 'modules/common/ical_popup'
+        = render 'modules/common/flash'
+        = yield
 
-    .container
-      - if flash[:notice]
-        .alert.alert-block
-          %button{type:'button', class:'close', "data-dismiss" => 'alert'}x
-          = flash[:notice]
-      - if flash[:error]
-        .alert.alert-block.alert-error
-          %button{type:'button', class:'close', "data-dismiss" => 'alert'}x
-          = flash[:error]
-      - if flash[:alert]
-        .alert.alert-block.alert-error
-          %button{type:'button', class:'close', "data-dismiss" => 'alert'}x
-          = flash[:alert]
-
-      = yield
-
-    %footer.container.main-footer
-      .navbar
-        .navbar-inner
-          %ul.nav.footer-nav
-            %li= link_to 'TEAM', humans_path, class: 'nav-link'
-            %li= link_to 'IMPRESSUM', impressum_path, class: 'nav-link'
-          %ul.nav.social-nav.pull-right
-            %li
-              %a.nav-link{ href: "http://www.github.com/hacken-in", title: "hacken.in auf GitHub" }
-                %i.icon-github
-            %li
-              %a.nav-link{ href: "https://alpha.app.net/hacken_in", title: "hacken.in auf App.net" }
-                %i.icon-adn
-            %li
-              %a.nav-link{ href: "http://www.twitter.com/hacken_in", title: "hacken.in auf Twitter" }
-                %i.icon-twitter
-
+    = javascript_include_tag "application"

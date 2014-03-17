@@ -1,6 +1,7 @@
 namespace :brakeman do
   EXCLUDED_CHECKS = [
-    'CheckSessionSettings' # This is just for easy setup, on the server we have a different secret
+    'CheckSessionSettings', # This is just for easy setup, on the server we have a different secret
+    'CheckRender' # False positive which happens quite regularly according to the documentation
   ]
 
   desc "Check if there are no brakeman warnings"

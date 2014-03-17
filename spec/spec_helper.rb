@@ -31,6 +31,8 @@ DatabaseCleaner[:active_record, { connection: :test }]
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
+  config.include Devise::TestHelpers, type: :controller
+
   config.fixture_path = "#{::Rails.root}/spec/support/fixtures"
   config.use_transactional_fixtures = true
   config.infer_base_class_for_anonymous_controllers = false
