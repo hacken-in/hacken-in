@@ -261,7 +261,7 @@ describe Event do
   end
 
   it "should create a week based rule" do
-    time = Time.new(2012, 10, 10, 20, 15, 0, 0)
+    time = Time.new(2012, 6, 10, 20, 15, 0, 0)
     event = create_week_based_event(time)
 
     first_event = event.single_events.first.occurrence
