@@ -138,6 +138,9 @@ en:
       confirmation: Comment deleted.
     update:
       confirmation: Comment updated.
+    comment_for:
+      html: Comment for %{link}
+      text: Comment for %{thing}
   common:
     back: Back
     confirm_delete: Are you sure?
@@ -366,6 +369,9 @@ en:
       title: Suggest something
     show:
       title: Suggestion
+    missing_event_tell_us: tell us
+    missing_event_then:
+      html: An event missing? Than %{link}!
   support:
     array:
       last_word_connector: and
@@ -403,6 +409,7 @@ en:
       no_next_events: Not taking part in any future events.
       no_recent_comments: No comments yet
       recent_comments: Recent comments
+    logged_in_user: Logged in user
   views:
     pagination:
       first: '&lt;&lt;'
@@ -414,3 +421,6 @@ en:
     next_label: Next &#8594;
     page_gap: '&hellip;'
     previous_label: '&#8592; Back'
+  calendars:
+    add_this_to_my_calendar: In my calendar
+    singular: Calendar
