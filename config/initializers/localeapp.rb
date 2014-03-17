@@ -1,7 +1,9 @@
-require 'localeapp/rails'
+if Rails.env.development?
+  require 'localeapp/rails'
 
-localeapp_config = YAML.load_file("config/localeapp.yml")
+  localeapp_config = YAML.load_file("config/localeapp.yml")
 
-Localeapp.configure do |config|
-  config.api_key = localeapp_config["key"]
+  Localeapp.configure do |config|
+    config.api_key = localeapp_config["key"]
+  end
 end
