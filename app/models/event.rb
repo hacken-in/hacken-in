@@ -50,8 +50,8 @@ class Event < ActiveRecord::Base
     self.schedule.next_occurrences(12).each do |occurrence|
       if !self.schedule.extimes.map(&:to_i).include? occurrence.to_i
         SingleEvent.where(event_id: self.id,
-          occurrence: occurrence,
-          based_on_rule: true).first_or_create
+                          occurrence: occurrence.utc,
+                          based_on_rule: true).first_or_create
       end
     end
   end
