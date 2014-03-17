@@ -14,7 +14,7 @@
       = form.input :region, :as => :select, :collection => @current_user.assigned_regions, include_blank: false
 
     = form.input :category, collection: Category.order("title")
-    = form.input :picture
+    = form.input :picture, input_html: {class: 'chosen-select'}
     = form.input :url
     = form.input :twitter
     = form.input :twitter_hashtag
