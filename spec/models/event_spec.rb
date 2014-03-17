@@ -72,6 +72,17 @@ describe Event do
     expect { event.save }.to change { SingleEvent.count }.by(-12)
   end
 
+  it "should generate single events if pattern changed" do
+    event = Event.new(name: "test")
+    event.start_time = Time.now
+    event.schedule_rules = [
+        {"type" => 'weekly', "interval" => 2, "days" => ["monday"]}
+    ]
+    event.category = FactoryGirl.create(:a_category)
+    event.save
+    expect { event.save }.not_to change { SingleEvent.count }
+  end
+
   it "should not regenerate single_event if schedule hasn't changed" do
     event = FactoryGirl.create(:simple)
     event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
