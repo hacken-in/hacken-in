@@ -12,7 +12,7 @@ set :config_files, ['database.yml',
 # Git Repo
 set :repository,  "git://github.com/hcking/hcking.git"
 set :scm, :git
-set :branch, "redesign"
+set :branch, "master"
 
 set :use_sudo, false
 
