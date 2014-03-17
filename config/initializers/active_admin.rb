@@ -1,3 +1,6 @@
+# Have to add this manually because we use cancancan
+require 'active_admin/cancan_adapter'
+
 ActiveAdmin.setup do |config|
   config.site_title = "hacken.in"
 

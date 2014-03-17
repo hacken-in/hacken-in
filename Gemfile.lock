@@ -73,7 +73,7 @@ GEM
       terminal-table (~> 1.4)
     buftok (0.2.0)
     builder (3.1.4)
-    cancan (1.6.10)
+    cancancan (1.7.0)
     capistrano (2.13.5)
       highline
       net-scp (>= 1.0.0)
@@ -625,7 +625,7 @@ DEPENDENCIES
   better_errors (~> 1.1.0)
   binding_of_caller (~> 0.7.1)
   brakeman (~> 2.3.1)
-  cancan (~> 1.6.10)
+  cancancan (~> 1.7)
   capistrano (~> 2.13.0)
   carrierwave (~> 0.9.0)
   chartkick (~> 1.2.1)
