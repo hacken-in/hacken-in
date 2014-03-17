@@ -19,3 +19,6 @@ config/initializers/devise.rb
 config/twitter.yml
 cert_file
 coverage
+config/initializers/localeapp.rb
+log/localeapp.yml
+.localeapp

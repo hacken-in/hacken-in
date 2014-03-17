@@ -1,181 +1,207 @@
 de:
   will_paginate:
-    previous_label: "&#8592; Zurück"
-    next_label: "Nächste &#8594;"
-    page_gap: "&hellip;"
+    previous_label: '&#8592; Zurück'
+    next_label: Nächste &#8594;
+    page_gap: '&hellip;'
   views:
     pagination:
-      first: "&lt;&lt;"
-      last: "&gt;&gt;"
-      next: "&gt;"
-      previous: "&lt;"
-      truncate: "..."
-
+      first: '&lt;&lt;'
+      last: '&gt;&gt;'
+      next: '&gt;'
+      previous: '&lt;'
+      truncate: '...'
   common:
     confirm_delete: Bist du sicher?
     markdown_info: Hier kannst du <a href="%{syntax_link}" target="_blank">Markdown</a> und <a href="http://www.emoji-cheat-sheet.com/">emojis</a> benutzen.
     show_preview: Vorschau
     show_comment: Kommentar
     back: Zurück
-
   errors:
     template:
       header:
-        one:    "Konnte %{model} nicht speichern: ein Fehler."
-        other:  "Konnte %{model} nicht speichern: %{count} Fehler."
-      body: "Bitte überprüfen Sie die folgenden Felder:"
-
+        one: 'Konnte %{model} nicht speichern: ein Fehler.'
+        other: 'Konnte %{model} nicht speichern: %{count} Fehler.'
+      body: 'Bitte überprüfen Sie die folgenden Felder:'
   date:
     formats:
-      default: "%d.%m.%Y"
-      short: "%e. %b"
-      long: "%e. %B %Y (%A)"
-      only_day: "%e"
-
-    day_names: [Sonntag, Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag]
-    abbr_day_names: [So, Mo, Di, Mi, Do, Fr, Sa]
-    month_names: [~, Januar, Februar, März, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember]
-    abbr_month_names: [~, Jan, Feb, Mär, Apr, Mai, Jun, Jul, Aug, Sep, Okt, Nov, Dez]
+      default: '%d.%m.%Y'
+      short: '%e. %b'
+      long: '%e. %B %Y (%A)'
+      only_day: '%e'
+    day_names:
+    - Sonntag
+    - Montag
+    - Dienstag
+    - Mittwoch
+    - Donnerstag
+    - Freitag
+    - Samstag
+    abbr_day_names:
+    - So
+    - Mo
+    - Di
+    - Mi
+    - Do
+    - Fr
+    - Sa
+    month_names:
+    - 
+    - Januar
+    - Februar
+    - März
+    - April
+    - Mai
+    - Juni
+    - Juli
+    - August
+    - September
+    - Oktober
+    - November
+    - Dezember
+    abbr_month_names:
+    - 
+    - Jan
+    - Feb
+    - Mär
+    - Apr
+    - Mai
+    - Jun
+    - Jul
+    - Aug
+    - Sep
+    - Okt
+    - Nov
+    - Dez
     order:
-      - :day
-      - :month
-      - :year
-
+    - :day
+    - :month
+    - :year
   time:
     formats:
-      default: "%A, %d. %B %Y, %H:%M Uhr"
-      short: "%d. %B, %H:%M Uhr"
-      long: "%A, %d. %B %Y, %H:%M Uhr"
-      time: "%H:%M"
-      long_without_time: "%A, %d. %B %Y"
-
-    am: "vormittags"
-    pm: "nachmittags"
-
+      default: '%A, %d. %B %Y, %H:%M Uhr'
+      short: '%d. %B, %H:%M Uhr'
+      long: '%A, %d. %B %Y, %H:%M Uhr'
+      time: '%H:%M'
+      long_without_time: '%A, %d. %B %Y'
+    am: vormittags
+    pm: nachmittags
   datetime:
     distance_in_words:
-      half_a_minute: 'eine halbe Minute'
+      half_a_minute: eine halbe Minute
       less_than_x_seconds:
-        one: 'weniger als eine Sekunde'
-        other: 'weniger als %{count} Sekunden'
+        one: weniger als eine Sekunde
+        other: weniger als %{count} Sekunden
       x_seconds:
-        one: 'eine Sekunde'
+        one: eine Sekunde
         other: '%{count} Sekunden'
       less_than_x_minutes:
-        one: 'weniger als eine Minute'
-        other: 'weniger als %{count} Minuten'
+        one: weniger als eine Minute
+        other: weniger als %{count} Minuten
       x_minutes:
-        one: 'eine Minute'
+        one: eine Minute
         other: '%{count} Minuten'
       about_x_hours:
-        one: 'etwa eine Stunde'
-        other: 'etwa %{count} Stunden'
+        one: etwa eine Stunde
+        other: etwa %{count} Stunden
       x_days:
-        one: 'ein Tag'
+        one: ein Tag
         other: '%{count} Tage'
       about_x_months:
-        one: 'etwa ein Monat'
-        other: 'etwa %{count} Monate'
+        one: etwa ein Monat
+        other: etwa %{count} Monate
       x_months:
-        one: 'ein Monat'
+        one: ein Monat
         other: '%{count} Monate'
       almost_x_years:
-        one: 'fast ein Jahr'
-        other: 'fast %{count} Jahre'
+        one: fast ein Jahr
+        other: fast %{count} Jahre
       about_x_years:
-        one: 'etwa ein Jahr'
-        other: 'etwa %{count} Jahre'
+        one: etwa ein Jahr
+        other: etwa %{count} Jahre
       over_x_years:
-        one: 'mehr als ein Jahr'
-        other: 'mehr als %{count} Jahre'
+        one: mehr als ein Jahr
+        other: mehr als %{count} Jahre
     prompts:
-      second: "Sekunden"
-      minute: "Minuten"
-      hour: "Stunden"
-      day: "Tag"
-      month: "Monat"
-      year: "Jahr"
-
+      second: Sekunden
+      minute: Minuten
+      hour: Stunden
+      day: Tag
+      month: Monat
+      year: Jahr
   number:
     format:
       precision: 2
       separator: ','
-      delimiter: '.'
+      delimiter: .
     currency:
       format:
-        unit: '€'
+        unit: €
         format: '%n%u'
-        separator: ","
-        delimiter: ""
+        separator: ','
+        delimiter: ''
         precision: 2
     percentage:
       format:
-        delimiter: ""
+        delimiter: ''
     precision:
       format:
-        delimiter: ""
+        delimiter: ''
     human:
       format:
-        delimiter: ""
+        delimiter: ''
         precision: 1
       storage_units:
-        # Storage units output formatting.
-        # %u is the storage unit, %n is the number (default: 2 MB)
-        format: "%n %u"
+        format: '%n %u'
         units:
           byte:
-            one:   "Byte"
-            other: "Bytes"
-          kb: "KB"
-          mb: "MB"
-          gb: "GB"
-          tb: "TB"
-
+            one: Byte
+            other: Bytes
+          kb: KB
+          mb: MB
+          gb: GB
+          tb: TB
   support:
     array:
-      words_connector: ", "
-      two_words_connector: " und "
-      last_word_connector: " und "
+      words_connector: ', '
+      two_words_connector: ' und '
+      last_word_connector: ' und '
     select:
-      prompt: "Bitte wählen:"
-
+      prompt: 'Bitte wählen:'
   activemodel:
     errors:
       template:
         header:
-          one:    "Konnte %{model} nicht speichern: ein Fehler."
-          other:  "Konnte %{model} nicht speichern: %{count} Fehler."
-        body: "Bitte überprüfen Sie die folgenden Felder:"
-
+          one: 'Konnte %{model} nicht speichern: ein Fehler.'
+          other: 'Konnte %{model} nicht speichern: %{count} Fehler.'
+        body: 'Bitte überprüfen Sie die folgenden Felder:'
   activerecord:
     errors:
       template:
         header:
-          one:    "Konnte %{model} nicht speichern: ein Fehler."
-          other:  "Konnte %{model} nicht speichern: %{count} Fehler."
-        body: "Bitte überprüfen Sie die folgenden Felder:"
-
+          one: 'Konnte %{model} nicht speichern: ein Fehler.'
+          other: 'Konnte %{model} nicht speichern: %{count} Fehler.'
+        body: 'Bitte überprüfen Sie die folgenden Felder:'
       messages:
-        inclusion: "ist kein gültiger Wert"
-        exclusion: "ist nicht verfügbar"
-        invalid: "ist nicht gültig"
-        confirmation: "stimmt nicht mit der Bestätigung überein"
-        accepted: "muss akzeptiert werden"
-        empty: "muss ausgefüllt werden"
-        blank: "muss ausgefüllt werden"
-        too_long: "ist zu lang (nicht mehr als %{count} Zeichen)"
-        too_short: "ist zu kurz (nicht weniger als %{count} Zeichen)"
-        wrong_length: "hat die falsche Länge (muss genau %{count} Zeichen haben)"
-        taken: "ist bereits vergeben"
-        not_a_number: "ist keine Zahl"
-        greater_than: "muss größer als %{count} sein"
-        greater_than_or_equal_to: "muss größer oder gleich %{count} sein"
-        equal_to: "muss genau %{count} sein"
-        less_than: "muss kleiner als %{count} sein"
-        less_than_or_equal_to: "muss kleiner oder gleich %{count} sein"
-        odd: "muss ungerade sein"
-        even: "muss gerade sein"
-        record_invalid: "Gültigkeitsprüfung ist fehlgeschlagen: %{errors}"
+        inclusion: ist kein gültiger Wert
+        exclusion: ist nicht verfügbar
+        invalid: ist nicht gültig
+        confirmation: stimmt nicht mit der Bestätigung überein
+        accepted: muss akzeptiert werden
+        empty: muss ausgefüllt werden
+        blank: muss ausgefüllt werden
+        too_long: ist zu lang (nicht mehr als %{count} Zeichen)
+        too_short: ist zu kurz (nicht weniger als %{count} Zeichen)
+        wrong_length: hat die falsche Länge (muss genau %{count} Zeichen haben)
+        taken: ist bereits vergeben
+        not_a_number: ist keine Zahl
+        greater_than: muss größer als %{count} sein
+        greater_than_or_equal_to: muss größer oder gleich %{count} sein
+        equal_to: muss genau %{count} sein
+        less_than: muss kleiner als %{count} sein
+        less_than_or_equal_to: muss kleiner oder gleich %{count} sein
+        odd: muss ungerade sein
+        even: muss gerade sein
+        record_invalid: 'Gültigkeitsprüfung ist fehlgeschlagen: %{errors}'
     attributes:
       user:
         email: E-Mailadresse
@@ -216,7 +242,7 @@ de:
         venue: Ort
         picture: Bild
         venue_info: Ort-Zusatzinfo (Raum, Gebäude, etc...)
-        use_venue_info_of_event: "Venue Info vom Event benutzen"
+        use_venue_info_of_event: Venue Info vom Event benutzen
       suggestion:
         email_address: E-Mailadresse
         description: Beschreibung
@@ -247,7 +273,6 @@ de:
         country: Land
       radar_setting:
         radar_type: Radar Typ
-
     models:
       comment: Kommentar
       event: Veranstaltungsreihe
@@ -273,43 +298,40 @@ de:
         one: Radar Eintrag
         other: Radar Einträge
       radar_setting: Radar Einstellung
-
   comments:
     _form:
       comment_button: Und ab!
     create:
-      confirmation: "Kommentar angelegt."
+      confirmation: Kommentar angelegt.
     update:
-      confirmation: "Kommentar aktualisiert."
+      confirmation: Kommentar aktualisiert.
     destroy:
-      confirmation: "Kommentar gelöscht."
-
+      confirmation: Kommentar gelöscht.
   registrations:
     edit:
       danger_zone: Danger Zone
-      warning: "Für Felder in der Danger-Zone brauchen wir dein Passwort, um die Änderungen zu machen."
+      warning: Für Felder in der Danger-Zone brauchen wir dein Passwort, um die Änderungen zu machen.
       edit_profile: Konto bearbeiten
       gravatar: Profilbild
       change_gravatar: ändern auf gravatar.com
       profile: Profildaten
       password_label: Passwort ändern
-      password_hint: "(leer lassen, wenn kein neues Passwort gewünscht ist)"
+      password_hint: (leer lassen, wenn kein neues Passwort gewünscht ist)
       save_profile: Speichern
       delete_profile: Konto löschen
       delete_profile_text: Du willst dein Konto löschen?
-      delete_confirm: "Ja, bitte mein Konto löschen"
+      delete_confirm: Ja, bitte mein Konto löschen
     oauth:
       title: OAuth Verknüpfungen
       more: Mit Accounts verbinden
       delete: entfernen
-      deleted: "Die Authorisierung für %{provider} wurde entfernt."
-      added: "Die Authorisierung für %{provider} wude hinzugefügt."
-      only_one_no_password: "Du hast zur Zeit kein Passwort gesetzt, daher kannst du die letzte Authorisierung nicht entfernen."
-      sign_in_with: "Einloggen mit %{provider}"
-      add_service: "%{provider} hinzufügen"
-      in_use: "Dein %{provider}-Account (User-Id: %{uid}) wird bereits von einem anderen Account verwendet. Wenn du dich mit einem anderen Account anmelden willst, geh auf die Seite von %{provider} und melde dich dort ab."
-      email: "Hier kannst du eine E-Mail Adresse und ein Passwort hinzufügen. Damit kannst du dich auch anmelden, wenn deine Authorisierungsdienste mal pleite gehen oder so."
-
+      deleted: Die Authorisierung für %{provider} wurde entfernt.
+      added: Die Authorisierung für %{provider} wude hinzugefügt.
+      only_one_no_password: Du hast zur Zeit kein Passwort gesetzt, daher kannst du die letzte Authorisierung nicht entfernen.
+      sign_in_with: Einloggen mit %{provider}
+      add_service: '%{provider} hinzufügen'
+      in_use: 'Dein %{provider}-Account (User-Id: %{uid}) wird bereits von einem anderen Account verwendet. Wenn du dich mit einem anderen Account anmelden willst, geh auf die Seite von %{provider} und melde dich dort ab.'
+      email: Hier kannst du eine E-Mail Adresse und ein Passwort hinzufügen. Damit kannst du dich auch anmelden, wenn deine Authorisierungsdienste mal pleite gehen oder so.
   events:
     show:
       edit: Bearbeiten
@@ -317,96 +339,86 @@ de:
       delete_confirm: Wirklich löschen?
       subscribe_ical: iCal für diese Veranstaltungssreihe abonnieren
       no_single_events: Keine Termine geplant
-      next_single_events: "Die nächsten Termine:"
+      next_single_events: 'Die nächsten Termine:'
       back: Zurück zur Übersicht
     create:
-      confirmation: "Veranstaltungsreihe angelegt."
+      confirmation: Veranstaltungsreihe angelegt.
     update:
-      confirmation: "Veranstaltungsreihe aktualisiert."
+      confirmation: Veranstaltungsreihe aktualisiert.
     destroy:
-      confirmation: "Veranstaltungsreihe gelöscht."
-
+      confirmation: Veranstaltungsreihe gelöscht.
   single_events:
     show:
       participants: Teilnehmer
       participate: Und ich!
       unparticipate: Doch nich
     push:
-      confirmation: "Du nimmst an dem Termin teil."
+      confirmation: Du nimmst an dem Termin teil.
     delete:
-      confirmation: "Du nimmst nicht mehr an dem Termin teil."
+      confirmation: Du nimmst nicht mehr an dem Termin teil.
     update:
-      confirmation: "Termin wurde bearbeitet."
-      error: "Beim Speichern ist ein Fehler aufgetreten"
+      confirmation: Termin wurde bearbeitet.
+      error: Beim Speichern ist ein Fehler aufgetreten
     create:
-      confirmation: "Termin angelegt."
+      confirmation: Termin angelegt.
     destroy:
-      confirmation: "Termin gelöscht."
-
+      confirmation: Termin gelöscht.
   subscriptions:
     index:
-      error: "Eintrag nicht gefunden"
-
+      error: Eintrag nicht gefunden
   users:
     show:
       edit: Profil bearbeiten
-      next_events: "Zugesagt für diese Termine"
-      no_next_events: "Keine Termine zugesagt."
-      recent_comments: "Aktuellste Kommentare"
-      no_recent_comments: "Keine Kommentare vorhanden."
-      ignore_tags: "Ignoriert folgende Hashtags"
-      no_ignore_tags: "Keine ignorierten Hashtags"
-      loved_tags: "Liebt folgende Hashtags"
-      no_loved_tags: "Keine geliebten Hashtags"
-      no_description: "Keine Beschreibung vorhanden."
+      next_events: Zugesagt für diese Termine
+      no_next_events: Keine Termine zugesagt.
+      recent_comments: Aktuellste Kommentare
+      no_recent_comments: Keine Kommentare vorhanden.
+      ignore_tags: Ignoriert folgende Hashtags
+      no_ignore_tags: Keine ignorierten Hashtags
+      loved_tags: Liebt folgende Hashtags
+      no_loved_tags: Keine geliebten Hashtags
+      no_description: Keine Beschreibung vorhanden.
     edit:
-      allow_ignore_view: "Ignorierte Hashtags öffentlich zeigen"
-
+      allow_ignore_view: Ignorierte Hashtags öffentlich zeigen
   user_tags:
     create:
-      confirmation: "Hashtag hinzugefügt"
-      error: "Hashtag konnte nicht hinzugefügt werden"
+      confirmation: Hashtag hinzugefügt
+      error: Hashtag konnte nicht hinzugefügt werden
     destroy:
-      confirmation: "Hashtag entfernt"
-      error: "Hashtag konnte nicht entfernt werden"
-
+      confirmation: Hashtag entfernt
+      error: Hashtag konnte nicht entfernt werden
   suggestions:
     new:
       title: Mache uns einen Vorschlag
-      introduction: "Bei uns im Kalender fehlt ein Termin? Es gibt eine neue Usergroup? Erzähl uns mehr davon :)"
-      email_address_hint: "Deine E-Mailadresse wird nur für eventuelle Rückfragen genutzt"
-      description_hint: "z.B. Themen, Besonderheiten, Terminrythmus, Anmeldung erforderlich..."
+      introduction: Bei uns im Kalender fehlt ein Termin? Es gibt eine neue Usergroup? Erzähl uns mehr davon :)
+      email_address_hint: Deine E-Mailadresse wird nur für eventuelle Rückfragen genutzt
+      description_hint: z.B. Themen, Besonderheiten, Terminrythmus, Anmeldung erforderlich...
     show:
       title: Vorschlag
     create:
-      confirmation: "Vielen Dank für deinen Vorschlag :)"
-      wrong_recaptcha: "Leider ist der reCaptcha falsch eingegeben worden."
-
+      confirmation: Vielen Dank für deinen Vorschlag :)
+      wrong_recaptcha: Leider ist der reCaptcha falsch eingegeben worden.
   formtastic:
-    :yes: "Ja"
-    :no: "Nein"
-    :submit: "Absenden"
-    :required: "Benötigt"
-    :create: "Erzeuge %{model}"
-    :update: "Änderungen speichern"
-
+    :yes: Ja
+    :no: Nein
+    :submit: Absenden
+    :required: Benötigt
+    :create: Erzeuge %{model}
+    :update: Änderungen speichern
   humans:
     team: Team
-
   active_admin:
     statistics:
-      events_by_category: "Veranstaltungsreihen insgesamt nach Kategorien"
-      users_over_time: "Registrierte Benutzer"
-      single_events_this_week_by_day: "Veranstaltungen dieses Woche nach Wochentag"
-      single_events_this_week_by_category: "Veranstaltungen diese Woche nach Kategorie"
-      single_events_this_week_by_city: "Veranstaltungen diese Woche nach Stadt"
+      events_by_category: Veranstaltungsreihen insgesamt nach Kategorien
+      users_over_time: Registrierte Benutzer
+      single_events_this_week_by_day: Veranstaltungen dieses Woche nach Wochentag
+      single_events_this_week_by_category: Veranstaltungen diese Woche nach Kategorie
+      single_events_this_week_by_city: Veranstaltungen diese Woche nach Stadt
     access_denied:
-      message: "I'm sorry, Dave. I'm afraid I can't do that."
-
+      message: I'm sorry, Dave. I'm afraid I can't do that.
   minical:
-    see_more: 'weitere Termine'
-    add_new: 'neuen Termin'
-
+    see_more: weitere Termine
+    add_new: neuen Termin
   modules:
     common:
       sidebar:
@@ -427,7 +439,7 @@ de:
     calendars:
       day:
         suggest_event: Termin vorschlagen
-
   calendars:
     show:
       title: Kalender
+  hello: Hallo
