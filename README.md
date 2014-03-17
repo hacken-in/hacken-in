@@ -41,6 +41,13 @@ If you want to add Events to your local page, you need an administrator:
 1. Run `rake setup:admin`
 1. Now you can log in with your new administrator ;)
 
+### Localeapp
+
+We use [localeapp](http://localeapp.com) to translate everything. If you want to play with the code, you can deactivate it by removing the
+initializer for it in the `config/initializer` directory.
+
+If we granted you access to localeapp, you will find the api key in the settings of the project.
+
 ### Pow
 
 Pow is a really comfortable way to run the application on your machine.
