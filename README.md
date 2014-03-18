@@ -13,7 +13,7 @@ If you find a bug, please report it on our [tracker](https://github.com/hacken-i
 
 When you want to add an event to [hacken.in](http://hacken.in) please check with the following guidelines:
 
-* Currently we only feature events in Ruhr area plus BIG events in Europe
+* Currently we only feature events in Ruhr area, Berlin and Munich plus BIG events in Europe
 * The following topics are allowed:
   * Programming (in any language)
   * Nerd-Culture (like Star Wars, Ponies, Gaming, Comics...)
