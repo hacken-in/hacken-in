@@ -1,3 +1,5 @@
+# If you don't have the localeapp api key, you can simple deactivate
+# localeapp and remove the complete code in this file :)
 if Rails.env.development?
   require 'localeapp/rails'
 
