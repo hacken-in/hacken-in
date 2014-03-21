@@ -15,7 +15,7 @@ class TwitterListUpdater
   def add_missing_to_list(handles, list)
      handles_in_list = members(list).map(&:screen_name)
      (handles - handles_in_list).each do |screen_name|
-       @client.add_list_member(list, screen_name)
+       @client.add_list_member(list, screen_name) unless screen_name == "hacken_in"
      end
   end
 

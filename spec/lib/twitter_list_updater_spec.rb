@@ -8,6 +8,10 @@ describe TwitterListUpdater do
     @event.twitter = "bitboxer"
     @event.save
 
+    event2 = FactoryGirl.create(:berlin_event)
+    event2.twitter = "hacken_in"
+    event2.save
+
     @single_event = FactoryGirl.create(:single_event)
 
     @koeln_region = Region.where(slug: "koeln").first || FactoryGirl.create(:koeln_region)
@@ -20,7 +24,7 @@ describe TwitterListUpdater do
   it "should return a hash with all twitter nicks + region_ids" do
     expect(TwitterListUpdater.new.twitter_by_region).to eq({
       2 => ["another_example"],
-      3 => ["bitboxer"]
+      3 => ["bitboxer", "hacken_in"]
     })
   end
 
