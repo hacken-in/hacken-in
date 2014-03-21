@@ -16,6 +16,10 @@ describe TwitterFollower do
     @single_event.twitter = "another_example"
     @single_event.save
 
+    single_event2 = FactoryGirl.create(:single_event)
+    single_event2.twitter = "hacken_in"
+    single_event2.save
+
     @twitter = TwitterFollower.new
   end
 
