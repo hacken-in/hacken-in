@@ -39,10 +39,12 @@ module Radar
 
     def mark_missing(start_time, event_ids)
       @radar_setting.entries.where("entry_date > ? and entry_id not in (?)", start_time, event_ids).each do |entry|
-        entry.entry_type = "MISSING"
-        entry.content = {}
-        entry.state = "UNCONFIRMED"
-        entry.save
+        if entry.entry_type != "MISSING"
+          entry.entry_type = "MISSING"
+          entry.content = {}
+          entry.state = "UNCONFIRMED"
+          entry.save
+        end
       end
     end
 

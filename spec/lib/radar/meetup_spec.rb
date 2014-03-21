@@ -104,6 +104,22 @@ describe Radar::Meetup do
     end
   end
 
+  it "should not unconfirm an alread confiremd missing entry" do
+    VCR.use_cassette('meetup_git_update_entries') do
+      event = setting.entries.create(
+        entry_id: "missing",
+        entry_date: Time.utc(2014,4,12,20,00),
+        entry_type: "MISSING",
+        state: RadarEntry::States::CONFIRMED
+      )
+      Radar::Meetup.new(setting).fetch(Time.new(2014,3,1,14,00))
+
+      event.reload
+      expect(event.entry_type).to eq("MISSING")
+      expect(event.state).to  eq(RadarEntry::States::CONFIRMED)
+    end
+  end
+
   it "should get the group_urlname from an meetup url" do
     expect(Radar::Meetup.new(setting).group_urlname).to eq("Git-Aficionados")
   end
