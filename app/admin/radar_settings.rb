@@ -11,7 +11,7 @@ ActiveAdmin.register RadarSetting do
     def create
       create! do |success, failure|
         success.html do
-          admin_event_path(params[:event_id])
+          redirect_to admin_event_path(params[:event_id])
         end
       end
     end
@@ -27,9 +27,10 @@ ActiveAdmin.register RadarSetting do
 
   form do |f|
     f.inputs "Radar Einstellung" do
-      f.input :radar_type, as: :select, collection: ["Meetup", "Onruby"]
-      f.input :url
+      f.input :radar_type, as: :select, collection: ["Meetup", "Onruby", "Ical", "Rss", "Twitter"]
+      f.input :url, hint: "Bei Meetup die URL der Gruppe, bei OnRuby die URL zur Startseite der Stadt, bei Twitter die URL zur Seite des Handles, bei iCal/RSS der Link zum jeweiligen Feed"
     end
+    f.actions
   end
 
 end

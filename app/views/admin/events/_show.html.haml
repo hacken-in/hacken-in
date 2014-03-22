@@ -72,11 +72,12 @@
   .radar_settings_link
     %ul
       - @event.radar_settings.each do |setting|
-        %a{href:edit_admin_event_radar_setting_path(@event, setting)}
-          = "#{setting.radar_type} - #{setting.url}"
-        (
-        = link_to "Löschen", admin_event_radar_setting_path(@event, setting), method: :delete, confirm: "Wirklich löschen?"
-        )
+        %li
+          %a{href:edit_admin_event_radar_setting_path(@event, setting)}
+            = "#{setting.radar_type} - #{setting.url}"
+          (
+          = link_to "Löschen", admin_event_radar_setting_path(@event, setting), method: :delete, confirm: "Wirklich löschen?"
+          )
 
   .radar_settings_new
     %a{href:new_admin_event_radar_setting_path(@event)}
