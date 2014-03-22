@@ -51,7 +51,9 @@ gem 'activeadmin', git: 'https://github.com/gregbell/active_admin', branch: 'mas
 
 # Date Handling
 gem 'ice_cube', '~> 0.11.1'
+# ri_cal should be replaced by the icalendar, see #348
 gem 'ri_cal', '~> 0.8.8'
+gem 'icalendar', '~> 1.5.2'
 
 # Authentication and Authorization
 gem 'devise', '~> 3.2.0'
