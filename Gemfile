@@ -91,6 +91,8 @@ gem 'chosen-rails', '~> 1.1.0'
 
 # Meetup API
 gem 'ruby_meetup2', '~> 0.5.0'
+# RSS parsing
+gem 'feedjira', '~> 1.1.0'
 
 group :development do
   # Manage locales, see http://www.localeapp.com/projects/5442
