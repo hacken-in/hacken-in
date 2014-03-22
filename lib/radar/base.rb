@@ -11,7 +11,7 @@ module Radar
       event_ids = []
       begin
         next_events.each do |event|
-          next if event[:time] < start_time
+          next if event[:time] && event[:time] < start_time
           event_ids << event[:id]
           update_event(event)
         end
