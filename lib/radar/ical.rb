@@ -23,7 +23,7 @@ module Radar
         time: event.start
       }
       if event.start && event.end &&
-         event.start.instance_of != Date && event.end.instance_of != Date
+         !event.start.instance_of?(Date) && !event.end.instance_of?(Date)
         result[:duration] = (event.end.to_i - event.start.to_i) / 60
       end
       result
