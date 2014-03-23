@@ -3,9 +3,10 @@
 [![Build Status](https://secure.travis-ci.org/hacken-in/website.png?branch=master)](http://travis-ci.org/hacken-in/website)
 [![Code Climate](https://codeclimate.com/github/hacken-in/website.png)](https://codeclimate.com/github/hacken-in/website)
 [![Coverage Status](https://coveralls.io/repos/hacken-in/website/badge.png)](https://coveralls.io/r/hacken-in/website)
+[![Stories in Ready](https://badge.waffle.io/hacken-in/website.png?label=ready&title=Ready)](https://waffle.io/hacken-in/website)
 
 This is the code of [hacken.in](http://hacken.in/), an event calendar for geeks in and around Cologne, Berlin and Munich.
-If you want to help us in extending the calendar to your city, please contact us in our [Google Group](http://groups.google.com/group/hcking).
+If you want to help us in extending the calendar to your city, please contact us in our [Google Group](http://groups.google.com/group/hacken-in).
 
 If you find a bug, please report it on our [tracker](https://github.com/hacken-in/website/issues). We discuss features and problems in our [Google Group](http://groups.google.com/group/hcking). You can find our backlog [here](https://github.com/hacken-in/website/wiki/Backlog).
 
@@ -41,12 +42,21 @@ If you want to add Events to your local page, you need an administrator:
 1. Run `rake setup:admin`
 1. Now you can log in with your new administrator ;)
 
+### Communication
+
+You can reach us on lots of ways. The most prefered one would be either to open an issue here or to use our [Google Group](http://groups.google.com/group/hacken-in). 
+
+### Waffle.io
+
+We use [waffle.io](http://waffle.io/hacken-in/website) to manage our tickets. Everyhing in the "ready" state is ready to be implemented.
+
 ### Localeapp
 
 We use [localeapp](http://localeapp.com) to translate everything. If you want to play with the code, you can deactivate it by removing the
 initializer for it in the `config/initializer` directory.
 
 If we granted you access to localeapp, you will find the api key in the settings of the project.
+
 
 ### Pow
 
