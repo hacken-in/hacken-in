@@ -20,7 +20,7 @@
           %td= link_to @radar_entry.event, admin_event_single_events_path(@radar_entry.event)
         %tr
           %th Zeit
-          %td= @radar_entry.entry_date.strftime("%d.%m.%Y %H:%M")
+          %td= @radar_entry.entry_date.strftime("%d.%m.%Y %H:%M") if @radar_entry.entry_date
         %tr
           %th Titel
           %td= @radar_entry.content[:title]
