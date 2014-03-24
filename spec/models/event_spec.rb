@@ -21,6 +21,7 @@ describe Event do
     event.schedule.start_time = test_date
     event.schedule.add_recurrence_time(test_date)
     event.schedule.all_occurrences.size.should == 1
+    event.duration = 50
     event.save.should be_truthy
 
     event = Event.find_by_id(event.id)

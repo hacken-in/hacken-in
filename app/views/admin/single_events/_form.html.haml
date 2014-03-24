@@ -13,7 +13,8 @@
         = " - basiert auf einer Regel der Veranstaltungsreihe"
     - else
       = form.input :occurrence
-    = form.input :duration, placeholder: @single_event.event.duration
+
+    = form.input :duration, as: :number, min: 0, placeholder: @single_event.event.duration
     = form.input :full_day
     = form.input :region
     - if @single_event.event.region.present?
