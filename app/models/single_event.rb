@@ -18,6 +18,7 @@ class SingleEvent < ActiveRecord::Base
   belongs_to :region
 
   validates_presence_of :event_id
+  validates :duration, :numericality => { :greater_than => 0 }
 
   scope :in_future, -> { where("occurrence >= ?", Time.now) }
   scope :today_or_in_future, -> { where("occurrence >= ?", Time.now.beginning_of_day)}

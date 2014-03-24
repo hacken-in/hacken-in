@@ -4,6 +4,8 @@ class Event < ActiveRecord::Base
   validates_presence_of :name
   validates_presence_of :category
 
+  validates :duration, :numericality => { :greater_than => 0 }
+
   before_save :schedule_to_yaml
   after_save :generate_single_events
 
@@ -100,7 +102,7 @@ class Event < ActiveRecord::Base
   end
 
   def duration
-    schedule.duration / 60
+    (schedule.duration / 60).to_i
   end
 
   def duration=(duration)
