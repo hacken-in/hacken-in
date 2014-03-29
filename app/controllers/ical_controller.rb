@@ -20,12 +20,7 @@ class IcalController < ApplicationController
   end
 
   def for_single_event
-    ri_cal = RiCal.Calendar
-    single_event = SingleEvent.find(params[:id])
-    if single_event
-      ri_cal.events.push(single_event.to_ri_cal_event(is_google_bot))
-    end
-    render text: ri_cal
+    render_events SingleEvent.where(id: params[:id])
   end
 
   def for_event
@@ -48,11 +43,11 @@ class IcalController < ApplicationController
   end
 
   def render_events(events)
-    ri_cal = RiCal.Calendar
-    ri_cal.events.push(*events.to_a.map do |e|
-      e.to_ri_cal_event(is_google_bot)
-    end)
-    render text: ri_cal
+    calendar = Icalendar::Calendar.new
+    events.each do |e|
+      calendar.add_event(e.to_ical_event(is_google_bot))
+    end
+    render text: calendar.to_ical
   end
 
   def render_empty

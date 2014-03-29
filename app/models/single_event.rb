@@ -196,37 +196,37 @@ class SingleEvent < ActiveRecord::Base
     alias_method :"#{item}?", item
   end
 
-  def to_ri_cal_event(links_in_description = false)
-    ri_cal_event = RiCal::Component::Event.new
-    ri_cal_event.summary = full_name
-    ri_cal_event.description = ActionController::Base.helpers.strip_tags("#{description}\n\n#{event.description}".strip)
+  def to_ical_event(links_in_description = false)
+    ical_event = Icalendar::Event.new
+    ical_event.summary = full_name
+    ical_event.description = ActionController::Base.helpers.strip_tags("#{description}\n\n#{event.description}".strip)
 
     start_time = occurrence
     end_time  = (occurrence + (event.schedule.duration || 1.hour))
 
     if full_day
-      ri_cal_event.dtstart = start_time.to_date
-      ri_cal_event.dtend = end_time.to_date
+      ical_event.dtstart = start_time.to_date
+      ical_event.dtend = end_time.to_date
     else
-      ri_cal_event.dtstart = start_time.utc
-      ri_cal_event.dtend = duration.nil? ? end_time.utc : (start_time + duration.minutes).utc
+      ical_event.dtstart = start_time.to_datetime
+      ical_event.dtend = (duration.nil? ? end_time : (start_time + duration.minutes)).to_datetime
     end
 
     if self.venue.present?
       location = [self.venue_info, self.venue.address].delete_if(&:blank?).join(", ").strip
     end
 
-    ri_cal_event.location = location if location.present?
+    ical_event.location = location if location.present?
     url = Rails.application.routes.url_helpers.event_single_event_url(
-              host: Rails.env.production? ? "hacken.in" : "hcking.dev",
+              host: Rails.env.production? ? "hacken.in" : "hacken.dev",
               event_id: event.id,
               id: id)
     if links_in_description
-      ri_cal_event.description = (ri_cal_event.description + "\n\n#{url}").strip
+      ical_event.description = (ical_event.description + "\n\n#{url}").strip
     else
-      ri_cal_event.url = url
+      ical_event.url = url
     end
-    ri_cal_event
+    ical_event
   end
 
   def update_event

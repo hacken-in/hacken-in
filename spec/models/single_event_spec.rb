@@ -189,31 +189,25 @@ describe SingleEvent do
     SingleEvent.only_tagged_with("meintag").should eq [single_event]
   end
 
-  it "should generate ri_cal_event" do
+  it "should generate ical_event" do
+    stamp = DateTime.now
     ical = <<ical
 BEGIN:VEVENT
-DTEND;VALUE=DATE-TIME:#{(single_event.occurrence + single_event.duration * 60).utc.strftime("%Y%m%dT%H%M%SZ")}
-DTSTART;VALUE=DATE-TIME:#{single_event.occurrence.utc.strftime("%Y%m%dT%H%M%SZ")}
 DESCRIPTION:
-URL:http://hcking.dev/events/1/dates/1
-SUMMARY:SimpleEvent (SimpleSingleEventName)
+DTEND:#{(single_event.occurrence + single_event.duration * 60).strftime("%Y%m%dT%H%M%S")}
+DTSTAMP:#{stamp.strftime("%Y%m%dT%H%M%S")}
+DTSTART:#{single_event.occurrence.strftime("%Y%m%dT%H%M%S")}
 LOCATION:Deutz-Mülheimerstraße 129\\, 51063 Köln
+SEQUENCE:0
+SUMMARY:SimpleEvent (SimpleSingleEventName)
+UID:uid
+URL:http://hacken.dev/events/1/dates/1
 END:VEVENT
 ical
-    single_event.to_ri_cal_event.to_s.strip.should eq ical.strip
-  end
-
-  it "should add link to description in ri_cal_event" do
-    ical = <<ical
-BEGIN:VEVENT
-DTEND;VALUE=DATE-TIME:#{(single_event.occurrence + single_event.duration * 60).utc.strftime("%Y%m%dT%H%M%SZ")}
-DTSTART;VALUE=DATE-TIME:#{single_event.occurrence.utc.strftime("%Y%m%dT%H%M%SZ")}
-DESCRIPTION:http://hcking.dev/events/1/dates/1
-SUMMARY:SimpleEvent (SimpleSingleEventName)
-LOCATION:Deutz-Mülheimerstraße 129\\, 51063 Köln
-END:VEVENT
-ical
-    single_event.to_ri_cal_event(true).to_s.strip.should eq ical.strip
+    event = single_event.to_ical_event
+    event.uid = "uid"
+    event.dtstamp = stamp
+    expect(event.to_ical.strip.gsub("\r\n", "\n")).to eq ical.strip
   end
 
   it "should respect venue_info of event only if boolean is set" do
