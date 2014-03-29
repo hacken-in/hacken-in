@@ -5,7 +5,7 @@ module Radar
   class Rss < Base
 
     def next_events
-      feed = Feedjira::Feed.fetch_and_parse @radar_setting.url
+      feed = Feedjira::Feed.parse open(@radar_setting.url, &:read)
       entries = feed.entries.sort_by(&:published)
       if @radar_setting.last_processed.nil?
         entries = entries[1..4]
