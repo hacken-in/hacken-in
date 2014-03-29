@@ -23,7 +23,7 @@ def generate_event_entry(single_event, description = "")
   event += "URL:http://hacken.dev/events/#{single_event.event.id}/dates/#{single_event.id}\r\n"
   event += "END:VEVENT\r\n"
   event += "(.*)"
-  Regexp.new(event, "m")
+  Regexp.new(event, Regexp::MULTILINE)
 end
 
 describe IcalController do
