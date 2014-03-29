@@ -41,6 +41,9 @@ Hcking::Application.routes.draw do
     end
   end
 
+  get "statistics"              => "statistics#index"
+  get "statistics/:region"      => "statistics#show", as: "show_statistic"
+
   get "abonnieren"              => "subscribe#index"
   get "humans"                  => "humans#index"
   get "impressum"               => "pages#show", page_name: "impressum"

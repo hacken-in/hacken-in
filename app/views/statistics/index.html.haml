@@ -1,0 +1,5 @@
+%h2 Statistiken
+
+%ul
+  - Region.all.each do |region|
+    %li= link_to region.name, show_statistic_path(region: region.slug)

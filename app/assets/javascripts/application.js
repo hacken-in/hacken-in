@@ -1,5 +1,7 @@
 //= require jquery
 //= require jquery_ujs
+//= require jsapi
+//= require chartkick
 
 // TODO: Don't include the parts we don't need
 // Please only remove the equal sign to make insertion easier
