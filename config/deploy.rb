@@ -10,7 +10,7 @@ set :config_files, ['database.yml',
   'omniauth.yml', 'twitter.yml']
 
 # Git Repo
-set :repository,  "git://github.com/hcking/hcking.git"
+set :repository,  "git://github.com/hacken-in/website.git"
 set :scm, :git
 set :branch, "master"
 
