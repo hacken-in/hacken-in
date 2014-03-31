@@ -10,7 +10,7 @@ describe Authorization do
       subject {Authorization.extract_auth_data(auth)}
 
       it "should be the right data" do
-        should eq ({
+        is_expected.to eq ({
           provider: "github",
           uid: "522537",
           token: "SOMETOKENTHATDOESNOTINTERESTYOU",
@@ -23,7 +23,7 @@ describe Authorization do
       subject {Authorization.extract_nick_data(auth)}
 
       it "should be the right data" do
-        should eq ({
+        is_expected.to eq ({
           github: "klaustopher"
         })
       end
@@ -37,7 +37,7 @@ describe Authorization do
       subject {Authorization.extract_auth_data(auth)}
 
       it "should be the right data" do
-        should eq ({
+        is_expected.to eq ({
           provider: "twitter",
           uid: "41772499",
           token: "UNDMEINTOKENAUCHNICHT",
@@ -50,7 +50,7 @@ describe Authorization do
       subject {Authorization.extract_nick_data(auth)}
 
       it "should be the right data" do
-        should eq ({
+        is_expected.to eq ({
           twitter: "klaustopher"
         })
       end

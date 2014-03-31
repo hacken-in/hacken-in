@@ -24,8 +24,8 @@ describe CommentsController do
 
     expect(response).to redirect_to(controller: 'events', action: 'show', id: simple.to_param, anchor: "comment_1")
     simple.reload
-    simple.comments.last.body.should == "hallo"
-    simple.comments.last.user.should == user
+    expect(simple.comments.last.body).to eq("hallo")
+    expect(simple.comments.last.user).to eq(user)
   end
 
   it "should create comment for singleevent if logged in" do
@@ -38,8 +38,8 @@ describe CommentsController do
     }.to change { Comment.count }.by 1
     expect(response).to redirect_to(controller: 'single_events', action: 'show', event_id: simple.event.to_param, id: simple.id, anchor: "comment_1")
     simple.reload
-    simple.comments.last.body.should == "hallo"
-    simple.comments.last.user.should == user
+    expect(simple.comments.last.body).to eq("hallo")
+    expect(simple.comments.last.user).to eq(user)
   end
 
   it "should not edit single event comment if not logged in" do
@@ -94,7 +94,7 @@ describe CommentsController do
                id: comment.id,
                comment: {body: "updated"}
     comment.reload
-    comment.body.should == "single event comment"
+    expect(comment.body).to eq("single event comment")
   end
 
   it "should not update single event comment if other user" do
@@ -105,7 +105,7 @@ describe CommentsController do
                id: comment.id,
                comment: {body: "updated"}
     comment.reload
-    comment.body.should == "single event comment"
+    expect(comment.body).to eq("single event comment")
   end
 
   it "should update single event comment if logged in" do
@@ -121,7 +121,7 @@ describe CommentsController do
                          event_id: comment.commentable.event.to_param,
                          anchor: "comment_1")
     comment.reload
-    comment.body.should == "updated"
+    expect(comment.body).to eq("updated")
   end
 
   it "should not update event comment if not logged in" do
@@ -130,7 +130,7 @@ describe CommentsController do
                id: comment.id,
                comment: {body: "updated"}
     comment.reload
-    comment.body.should == "event comment"
+    expect(comment.body).to eq("event comment")
   end
 
   it "should not update event comment if other user" do
@@ -140,7 +140,7 @@ describe CommentsController do
                id: comment.id,
                comment: {body: "updated"}
     comment.reload
-    comment.body.should == "event comment"
+    expect(comment.body).to eq("event comment")
   end
 
   it "should update event comment if logged in" do
@@ -154,7 +154,7 @@ describe CommentsController do
                          id: comment.commentable.to_param,
                          anchor: "comment_1")
     comment.reload
-    comment.body.should == "updated"
+    expect(comment.body).to eq("updated")
   end
 
   it "should should not delete single event comment if not logged in" do

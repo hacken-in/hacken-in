@@ -7,7 +7,7 @@ describe SingleEventsController do
   it "should be successful" do
     single_event = FactoryGirl.create(:single_event)
     get :show, id: single_event.id, event_id: single_event.event.id
-    response.should be_success
+    expect(response).to be_success
   end
 
   it "should be successful as user" do
@@ -16,7 +16,7 @@ describe SingleEventsController do
     sign_in user
 
     get :show, id: single_event.id, event_id: single_event.event.id
-    response.should be_success
+    expect(response).to be_success
   end
 
   it "should be successful as participated user" do
@@ -26,12 +26,12 @@ describe SingleEventsController do
     sign_in user
 
     get :show, id: single_event.id, event_id: single_event.event.id
-    response.should be_success
+    expect(response).to be_success
   end
 
   it "should render the comments partial in order to show and post comments" do
     single_event = FactoryGirl.create(:single_event)
     get :show, id: single_event.id, event_id: single_event.event.id
-    response.should be_success
+    expect(response).to be_success
   end
 end

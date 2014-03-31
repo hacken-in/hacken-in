@@ -9,14 +9,14 @@ describe Ability do
   [Comment, User].each do |klass|
     [:create, :update, :destroy].each do |action|
       it "anonym can't #{action} #{klass}" do
-        ability.should_not be_able_to action, klass
+        expect(ability).not_to be_able_to action, klass
       end
     end
   end
 
   [Event, SingleEvent, Comment, User].each do |klass|
     it "anonym can show #{klass}" do
-      ability.should be_able_to :show, klass
+      expect(ability).to be_able_to :show, klass
     end
   end
 
@@ -24,7 +24,7 @@ describe Ability do
     user = FactoryGirl.create(:user)
     event = FactoryGirl.create(:full_event)
 
-    Ability.new(user).should_not be_able_to :update, event
+    expect(Ability.new(user)).not_to be_able_to :update, event
   end
 
   it "lets curators of events edit those events" do
@@ -33,8 +33,8 @@ describe Ability do
     event = FactoryGirl.create(:full_event)
     event.curators << user
 
-    Ability.new(user).should be_able_to :update, event
-    Ability.new(user2).should_not be_able_to :update, event
+    expect(Ability.new(user)).to be_able_to :update, event
+    expect(Ability.new(user2)).not_to be_able_to :update, event
   end
 
   it "lets curators of events edit singleevents belonging to those events" do
@@ -43,8 +43,8 @@ describe Ability do
     single = FactoryGirl.create(:single_event)
     single.event.curators << user
 
-    Ability.new(user).should be_able_to :update, single
-    Ability.new(user2).should_not be_able_to :update, single
+    expect(Ability.new(user)).to be_able_to :update, single
+    expect(Ability.new(user2)).not_to be_able_to :update, single
   end
 
   # Region Organizers
@@ -55,8 +55,8 @@ describe Ability do
     event = FactoryGirl.create(:full_event)
     event.region.organizers << user
 
-    Ability.new(user).should be_able_to :update, event
-    Ability.new(user2).should_not be_able_to :update, event
+    expect(Ability.new(user)).to be_able_to :update, event
+    expect(Ability.new(user2)).not_to be_able_to :update, event
   end
 
   it "lets organizers edit singleevents belonging to events in their region" do
@@ -65,8 +65,8 @@ describe Ability do
     single = FactoryGirl.create(:single_event)
     single.event.region.organizers << user
 
-    Ability.new(user).should be_able_to :update, single
-    Ability.new(user2).should_not be_able_to :update, single
+    expect(Ability.new(user)).to be_able_to :update, single
+    expect(Ability.new(user2)).not_to be_able_to :update, single
   end
 
   it "lets organizers edit venue in their region" do
@@ -75,7 +75,7 @@ describe Ability do
     venue = FactoryGirl.create(:berlin_venue)
     venue.region.organizers << user
 
-    Ability.new(user).should be_able_to :update, venue
-    Ability.new(user2).should_not be_able_to :update, venue
+    expect(Ability.new(user)).to be_able_to :update, venue
+    expect(Ability.new(user2)).not_to be_able_to :update, venue
   end
 end

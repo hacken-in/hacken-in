@@ -75,8 +75,8 @@ describe Api::UserTagsController do
 
     post :create, kind: "like", tags: ['tag']
     user.reload
-    user.like_list.should == ["tag"]
-    user.hate_list.should == []
+    expect(user.like_list).to eq(["tag"])
+    expect(user.hate_list).to eq([])
   end
 
   it "should should remove tag from love if added to hate" do
@@ -87,7 +87,7 @@ describe Api::UserTagsController do
 
     post :create, kind: "hate", tags: ['tag']
     user.reload
-    user.hate_list.should == ["tag"]
-    user.like_list.should == []
+    expect(user.hate_list).to eq(["tag"])
+    expect(user.like_list).to eq([])
   end
 end

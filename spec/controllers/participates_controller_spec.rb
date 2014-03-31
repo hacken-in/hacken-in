@@ -16,7 +16,7 @@ describe ParticipatesController do
 
       post :update, single_event_id: single_event.id, event_id: single_event.event.id, format: format, state: :push
 
-      single_event.users.first.should == user
+      expect(single_event.users.first).to eq(user)
       assert_response_for single_event, format
     end
 
@@ -30,7 +30,7 @@ describe ParticipatesController do
 
       single_event.reload
 
-      single_event.users.length.should == 0
+      expect(single_event.users.length).to eq(0)
       assert_response_for single_event, format
     end
 
@@ -39,8 +39,8 @@ describe ParticipatesController do
 
       post :update, single_event_id: single_event.id, event_id: single_event.event.id, format: format, state: :push, name: "Hans Wurst"
 
-      single_event.external_users.length.should == 0
-      flash[:error].should_not be_nil
+      expect(single_event.external_users.length).to eq(0)
+      expect(flash[:error]).not_to be_nil
       assert_response_for single_event, format, { name: "Hans Wurst" }
     end
 
@@ -49,8 +49,8 @@ describe ParticipatesController do
 
       post :update, single_event_id: single_event.id, event_id: single_event.event.id, format: format, state: :push, name: "Hans Wurst", email: "hans#wurst.de"
 
-      single_event.external_users.length.should == 0
-      flash[:error].should_not be_nil
+      expect(single_event.external_users.length).to eq(0)
+      expect(flash[:error]).not_to be_nil
       assert_response_for single_event, format, { name: "Hans Wurst", email: "hans#wurst.de" }
     end
 
@@ -59,8 +59,8 @@ describe ParticipatesController do
 
       post :update, single_event_id: single_event.id, event_id: single_event.event.id, format: format, state: :push, name: "Hans Wurst", email: "hans@wurst.de"
 
-      single_event.external_users.length.should == 1
-      flash[:error].should be_nil
+      expect(single_event.external_users.length).to eq(1)
+      expect(flash[:error]).to be_nil
       assert_response_for single_event, format
     end
 
@@ -69,7 +69,7 @@ describe ParticipatesController do
 
       post :update, single_event_id: single_event.id, event_id: single_event.event.id, format: format, state: :push, name: "Hans Wurst", email: "hans@wurst.de"
 
-      cookies[:hacken_uuid].should_not be_nil
+      expect(cookies[:hacken_uuid]).not_to be_nil
     end
 
     it "should not generate a new uuid if one is already set with format #{format}" do
@@ -78,7 +78,7 @@ describe ParticipatesController do
 
       post :update, single_event_id: single_event.id, event_id: single_event.event.id, format: format, state: :push, name: "Hans Wurst", email: "hans@wurst.de"
 
-      cookies[:hacken_uuid].should == old_cookie_value
+      expect(cookies[:hacken_uuid]).to eq(old_cookie_value)
     end
 
 
@@ -87,7 +87,7 @@ describe ParticipatesController do
 
       post :update, single_event_id: single_event.id, event_id: single_event.event.id, format: format, state: :push, name: "Hans Wurst", email: "hans@wurst.de", keep_data: "1"
 
-      JSON.parse(cookies.signed[:hacken_daten] || "{}", symbolize_names: true).should == { email: "hans@wurst.de", name: "Hans Wurst" }
+      expect(JSON.parse(cookies.signed[:hacken_daten] || "{}", symbolize_names: true)).to eq({ email: "hans@wurst.de", name: "Hans Wurst" })
     end
 
     it "should not delete external participation if no uuid is present in cookie with format #{format}" do
@@ -98,8 +98,8 @@ describe ParticipatesController do
 
       single_event.reload
 
-      single_event.external_users.length.should == 1
-      flash[:error].should_not be_nil
+      expect(single_event.external_users.length).to eq(1)
+      expect(flash[:error]).not_to be_nil
       assert_response_for single_event, format
     end
 
@@ -112,8 +112,8 @@ describe ParticipatesController do
 
       single_event.reload
 
-      single_event.external_users.length.should == 0
-      flash[:error].should be_nil
+      expect(single_event.external_users.length).to eq(0)
+      expect(flash[:error]).to be_nil
       assert_response_for single_event, format
     end
 
@@ -125,7 +125,7 @@ describe ParticipatesController do
       post :update, single_event_id: single_event.id, event_id: single_event.event.id, format: format, state: :push
       post :update, single_event_id: single_event.id, event_id: single_event.event.id, format: format, state: :push
 
-      single_event.users.length.should == 1
+      expect(single_event.users.length).to eq(1)
       assert_response_for single_event, format
     end
 
@@ -137,8 +137,8 @@ describe ParticipatesController do
 
       single_event.reload
 
-      single_event.users.length.should == 0
-      flash[:error].should_not be_nil
+      expect(single_event.users.length).to eq(0)
+      expect(flash[:error]).not_to be_nil
       assert_response_for single_event, format
     end
   end

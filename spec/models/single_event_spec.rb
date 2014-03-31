@@ -11,7 +11,7 @@ describe SingleEvent do
   let(:time_now) { Time.now }
 
   it "create or find" do
-    single_event.should eq SingleEvent.where(event_id: single_event.event.id, occurrence: single_event.occurrence).first_or_create
+    expect(single_event).to eq SingleEvent.where(event_id: single_event.event.id, occurrence: single_event.occurrence).first_or_create
   end
 
   it "scope single events in the future" do
@@ -25,8 +25,8 @@ describe SingleEvent do
   end
 
   it "should generate title based on name" do
-    single_event.title.should eq "SimpleEvent (SimpleSingleEventName)"
-    single_event_without_name.title.should eq "SimpleEvent"
+    expect(single_event.title).to eq "SimpleEvent (SimpleSingleEventName)"
+    expect(single_event_without_name.title).to eq "SimpleEvent"
   end
 
   it "should sort events via date if they are not on the same day" do
@@ -41,7 +41,7 @@ describe SingleEvent do
     single_event2.event.save
 
     sorted_collection = [single_event, single_event2].sort
-    sorted_collection.should eq [single_event2, single_event]
+    expect(sorted_collection).to eq [single_event2, single_event]
   end
 
   it "should prefer all-day events when sorting" do
@@ -56,7 +56,7 @@ describe SingleEvent do
     single_event2.event.save
 
     sorted_collection = [single_event2, single_event].sort
-    sorted_collection.should eq [single_event, single_event2]
+    expect(sorted_collection).to eq [single_event, single_event2]
   end
 
   it "should sort via title when both are all-day events" do
@@ -71,7 +71,7 @@ describe SingleEvent do
     single_event2.event.save
 
     sorted_collection = [single_event2, single_event].sort
-    sorted_collection.should eq [single_event, single_event2]
+    expect(sorted_collection).to eq [single_event, single_event2]
   end
 
   it "should sort via time when both are not full day" do
@@ -84,7 +84,7 @@ describe SingleEvent do
     single_event2.event.save
 
     sorted_collection = [single_event, single_event2].sort
-    sorted_collection.should eq [single_event2, single_event]
+    expect(sorted_collection).to eq [single_event2, single_event]
   end
 
   it "should sort via title when both are at the same time" do
@@ -99,20 +99,20 @@ describe SingleEvent do
     single_event2.event.save
 
     sorted_collection = [single_event2, single_event].sort
-    single_event.should eq sorted_collection.first
-    single_event2.should eq sorted_collection.second
+    expect(single_event).to eq sorted_collection.first
+    expect(single_event2).to eq sorted_collection.second
   end
 
   it "should generate full name and name with date" do
-    single_event.full_name.should eq "SimpleEvent (SimpleSingleEventName)"
-    single_event.name_with_date.should eq "SimpleEvent (SimpleSingleEventName) am #{single_event.occurrence.strftime("%d.%m.%Y um %H:%M")}"
+    expect(single_event.full_name).to eq "SimpleEvent (SimpleSingleEventName)"
+    expect(single_event.name_with_date).to eq "SimpleEvent (SimpleSingleEventName) am #{single_event.occurrence.strftime("%d.%m.%Y um %H:%M")}"
   end
 
   it "should delete comment when singleevent is deleted" do
     comment = single_event.comments.build(body: "wow!")
     comment.save
     single_event.destroy
-    Comment.where(id: comment.id).should be_empty
+    expect(Comment.where(id: comment.id)).to be_empty
   end
 
   it "should generate opengraph data" do
@@ -125,7 +125,7 @@ describe SingleEvent do
       "og:street-address"=>"Deutz-Mülheimerstraße 129",
       "og:title"=>"SimpleEvent (SimpleSingleEventName) am #{extended_single_event.occurrence.strftime("%d.%m.%Y um %H:%M")}"
     }
-    single_event.to_opengraph.should eq hash
+    expect(single_event.to_opengraph).to eq hash
 
     hash = {
       "og:country-name"=>"DE",
@@ -148,26 +148,26 @@ describe SingleEvent do
     single_event.users << user
     single_event.save
 
-    single_event.users.size.should be 1
-    single_event.users.should eq [user]
+    expect(single_event.users.size).to be 1
+    expect(single_event.users).to eq [user]
   end
 
   it "get data from event if not defined in model" do
     single_event.event.url = "http://www.example.com"
     single_event.event.full_day = true
     assert_equal "http://www.example.com", single_event.url
-    single_event.should be_a_full_day
+    expect(single_event).to be_a_full_day
 
     single_event.url = "http://www.example.com/single"
     single_event.full_day = false
     assert_equal "http://www.example.com/single", single_event.url
-    single_event.full_day.should be_falsey
-    single_event.should_not be_a_full_day
+    expect(single_event.full_day).to be_falsey
+    expect(single_event).not_to be_a_full_day
 
     single_event.url = ""
     single_event.full_day = nil
     assert_equal "http://www.example.com", single_event.url
-    single_event.should be_a_full_day
+    expect(single_event).to be_a_full_day
   end
 
   it "should get single event if by_tag is correct" do
@@ -176,7 +176,7 @@ describe SingleEvent do
     single_event2.tag_list << "notmeintag"
     single_event2.save
 
-    SingleEvent.only_tagged_with("meintag").should eq [single_event]
+    expect(SingleEvent.only_tagged_with("meintag")).to eq [single_event]
   end
 
   # TODO: is this test necessary? it is equal with the previews
@@ -186,7 +186,7 @@ describe SingleEvent do
     single_event2.tag_list << "notmeintag"
     single_event2.save
 
-    SingleEvent.only_tagged_with("meintag").should eq [single_event]
+    expect(SingleEvent.only_tagged_with("meintag")).to eq [single_event]
   end
 
   it "should generate ical_event" do
@@ -213,47 +213,47 @@ ical
   it "should respect venue_info of event only if boolean is set" do
     single_event.event.venue_info = "VenueInfos"
     single_event.venue_info = nil
-    single_event.venue_info.should eq "VenueInfos"
+    expect(single_event.venue_info).to eq "VenueInfos"
     single_event.use_venue_info_of_event = false
-    single_event.venue_info.should be_nil
+    expect(single_event.venue_info).to be_nil
     single_event.venue_info = "Single Venue Info"
-    single_event.venue_info.should eq "Single Venue Info"
+    expect(single_event.venue_info).to eq "Single Venue Info"
     single_event.use_venue_info_of_event = true
-    single_event.venue_info.should eq "Single Venue Info"
+    expect(single_event.venue_info).to eq "Single Venue Info"
   end
 
   it "should fix twitter values if entered with @ in string" do
     single_event.twitter = "@wrong"
     single_event.save
-    single_event.twitter.should eq "wrong"
+    expect(single_event.twitter).to eq "wrong"
   end
 
   it "should fix twitter values if entered with url instead of handle" do
     single_event.twitter = "https://twitter.com/wrong"
     single_event.save
-    single_event.twitter.should eq "wrong"
+    expect(single_event.twitter).to eq "wrong"
   end
 
   it "should fix twitter hashtag if entered with # in string" do
     single_event.twitter_hashtag = "#wrong"
     single_event.save
-    single_event.twitter_hashtag.should eq "wrong"
+    expect(single_event.twitter_hashtag).to eq "wrong"
   end
 
   it "should only find the single events in cologne region" do
-    SingleEvent.in_region(single_event.event.region).count.should == 1
+    expect(SingleEvent.in_region(single_event.event.region).count).to eq(1)
   end
 
   it "should not find single events for wrong region" do
     region = Region.where(slug: "berlin").first || FactoryGirl.create(:berlin_region)
-    SingleEvent.in_region(region).count.should == 0
+    expect(SingleEvent.in_region(region).count).to eq(0)
   end
 
   it "should return the single event if it has the correct reagion and the event has not" do
     region = Region.where(slug: "berlin").first || FactoryGirl.create(:berlin_region)
     single_event.region = region
     single_event.save
-    SingleEvent.in_region(region).count.should == 1
+    expect(SingleEvent.in_region(region).count).to eq(1)
   end
 
   it "should not return the single event if it has a wrong region and the event has a correct one" do
@@ -261,7 +261,7 @@ ical
     single_event.region = region
     single_event.save
     kregion = Region.where(slug: "koeln").first || FactoryGirl.create(:koeln_region)
-    SingleEvent.in_region(kregion).count.should == 0
+    expect(SingleEvent.in_region(kregion).count).to eq(0)
   end
 
   it "should find single events that are in global region, no matter what region you give to it" do
@@ -269,8 +269,8 @@ ical
     bregion = Region.where(slug: "berlin").first || FactoryGirl.create(:berlin_region)
     kregion = Region.where(slug: "koeln").first  || FactoryGirl.create(:koeln_region)
 
-    SingleEvent.in_region(bregion).count.should == 1
-    SingleEvent.in_region(kregion).count.should == 1
+    expect(SingleEvent.in_region(bregion).count).to eq(1)
+    expect(SingleEvent.in_region(kregion).count).to eq(1)
 
     gevent.destroy
   end
@@ -285,10 +285,10 @@ ical
     berlin2 = FactoryGirl.create(:single_event_berlin)
     berlin2.occurrence = Date.today.end_of_week + 1.day
     berlin2.save
-    SingleEvent.this_week_by_city.should == {
+    expect(SingleEvent.this_week_by_city).to eq({
       "Berlin" => 1,
       "Köln" => 1
-    }
+    })
   end
 
   # This describe does not do anything. "Why" you ask?

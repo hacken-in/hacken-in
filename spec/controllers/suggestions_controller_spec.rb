@@ -5,7 +5,7 @@ describe SuggestionsController do
 
   it "should get new" do
     get :new
-    response.should be_success
+    expect(response).to be_success
   end
 
 end

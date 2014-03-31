@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Tag do
 
   it "should generate to_param with name" do
-    Tag.create(name: "tag name").to_param.should == "tag-name"
+    expect(Tag.create(name: "tag name").to_param).to eq("tag-name")
   end
 
 end

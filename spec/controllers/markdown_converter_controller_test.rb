@@ -6,15 +6,15 @@ describe Api::MarkdownConverterController do
     text = '**STRONG**'
     get :convert, text: text
 
-    response.should be_success
-    response.body.should == "<p><strong>STRONG</strong></p>\n"
+    expect(response).to be_success
+    expect(response.body).to eq("<p><strong>STRONG</strong></p>\n")
   end
 
   it "should render nothing if no text is given" do
     get :convert
 
-    response.should be_success
-    response.body.should be_empty
+    expect(response).to be_success
+    expect(response.body).to be_empty
   end
 
 end

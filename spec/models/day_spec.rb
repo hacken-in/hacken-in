@@ -14,7 +14,7 @@ describe Day do
   subject { Day.new(date, events, entry_class) }
 
   it 'should set the date correctly' do
-    subject.date.should be date
+    expect(subject.date).to be date
   end
 
   before do

@@ -6,7 +6,7 @@ describe HumansController do
 
   it "should get index" do
     get :index
-    response.should be_success
+    expect(response).to be_success
   end
 
   ["html", "text"].each do |format|
@@ -14,30 +14,30 @@ describe HumansController do
       bodo = FactoryGirl.create(:bodo)
 
       get :index, format: format
-      response.body.should =~ /#{bodo.nickname}/
+      expect(response.body).to match(/#{bodo.nickname}/)
     end
 
     it "should not show random guy in the #{format} team list" do
       tester = FactoryGirl.create(:user)
 
       get :index, format: format
-      response.body.should_not =~ /#{tester.nickname}/
+      expect(response.body).not_to match(/#{tester.nickname}/)
     end
 
     it "should show bodo's team name in the #{format} team list" do
       bodo = FactoryGirl.create(:bodo)
 
       get :index, format: format
-      response.body.should =~ /#{bodo.team}/
+      expect(response.body).to match(/#{bodo.team}/)
     end
 
     it "should show bodo's places on the web in the #{format} team list" do
       bodo = FactoryGirl.create(:bodo)
 
       get :index, format: format
-      response.body.should =~ /#{bodo.twitter}/
-      response.body.should =~ /#{bodo.github}/
-      response.body.should =~ /#{bodo.homepage}/
+      expect(response.body).to match(/#{bodo.twitter}/)
+      expect(response.body).to match(/#{bodo.github}/)
+      expect(response.body).to match(/#{bodo.homepage}/)
     end
   end
 end

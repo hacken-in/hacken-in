@@ -8,8 +8,8 @@ describe Region do
 
     region.organizers += [user, another_user]
 
-    user.organized_regions.should =~ [region]
-    another_user.organized_regions.should =~ [region]
+    expect(user.organized_regions).to match_array([region])
+    expect(another_user.organized_regions).to match_array([region])
   end
 
   it "doesn't get assigned twice to the same user" do
