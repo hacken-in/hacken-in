@@ -7,7 +7,7 @@ class TwitterFollower
 
   def follow
     not_followed_handles.each do |handle|
-      puts "Following #{handle}"
+      puts "Following #{handle}" unless Rails.env.test?
       begin
         @client.follow(handle)
       rescue => e
