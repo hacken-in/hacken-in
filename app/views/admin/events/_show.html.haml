@@ -88,7 +88,7 @@
   .single_event_link
     - if @event.single_events.count > 0
       %a{href:admin_event_single_events_path(@event)}
-        = pluralize(@event.single_events.count, "Termin", "Termine")
+        #{pluralize(@event.single_events.count, "Termin", "Termine")} anzeigen
 
   .single_event_new
     %a{href:new_admin_event_single_event_path(@event)}
