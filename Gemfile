@@ -44,7 +44,7 @@ gem 'redcarpet', '~> 3.0.0'
 # The '/' root tries to open a non existend
 # dashboard controller
 # TODO: Set this to the Ruby Gems version as soon as this is released
-gem 'activeadmin', git: 'https://github.com/gregbell/active_admin', branch: 'master'
+gem 'activeadmin', github: 'gregbell/active_admin', branch: 'master'
 
 # Date Handling
 gem 'ice_cube', '~> 0.11.1'
