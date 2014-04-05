@@ -11,17 +11,18 @@
             %strong= modifier.name
             \- #{modifier.description}
 
+  %h4 Without modifiers
+
   .styleguide-element
     = @example_html.gsub('$modifier_class', '').html_safe
   %code.styleguide-source
     = @example_html.gsub('$modifier_class', '')
 
-  .styleguide-html
-    = @example_html
-
   - modifiers.each do |modifier|
     .styleguide-element.styleguide-modifier
-      .styleguide-modifier-name= modifier.name
+      %h4.styleguide-modifier-name= modifier.name
       = @example_html.gsub('$modifier_class', " #{modifier.class_name}").html_safe
+    %code.styleguide-source
+      = @example_html.gsub('$modifier_class', " #{modifier.class_name}")
 
 </div>
