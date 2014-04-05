@@ -41,7 +41,12 @@ gem 'redcarpet', '~> 3.0.0'
 
 gem 'kss', '~> 0.5.0'
 
-gem 'activeadmin', git: 'https://github.com/gregbell/active_admin', branch: 'master'
+# Admin
+# Attention: 0.6.0 has namespacing issues
+# The '/' root tries to open a non existend
+# dashboard controller
+# TODO: Set this to the Ruby Gems version as soon as this is released
+gem 'activeadmin', github: 'gregbell/active_admin', branch: 'master'
 
 # Date Handling
 gem 'ice_cube', '~> 0.11.1'
