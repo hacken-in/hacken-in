@@ -32,7 +32,7 @@ gem 'coffee-script', '~> 2.2.0'
 gem 'leaflet-rails', '~> 0.7.1'
 gem 'uglifier', '~> 2.4.0'
 gem 'jquery-rails', '~> 3.0.0'
-gem 'foundation-rails', '5.0.2.0'
+gem 'foundation-rails', '5.2.2.0'
 gem "font-awesome-rails", '~> 4.0.3.1'
 
 gem 'haml', '~> 4.0.4'
