@@ -16,13 +16,13 @@
   .styleguide-element
     = @example_html.gsub('$modifier_class', '').html_safe
   %code.styleguide-source
-    = @example_html.gsub('$modifier_class', '')
+    = @example_html.gsub('$modifier_class', '').gsub("pseudo-class-", ":")
 
   - modifiers.each do |modifier|
     .styleguide-element.styleguide-modifier
       %h4.styleguide-modifier-name= modifier.name
       = @example_html.gsub('$modifier_class', " #{modifier.class_name}").html_safe
     %code.styleguide-source
-      = @example_html.gsub('$modifier_class', " #{modifier.class_name}")
+      = @example_html.gsub('$modifier_class', " #{modifier.class_name}").gsub("pseudo-class-", ":")
 
 </div>
