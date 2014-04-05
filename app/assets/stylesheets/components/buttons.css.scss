@@ -1,0 +1,15 @@
+/*
+  A button suitable for giving stars to someone.
+
+  .red - Make it red
+
+  Styleguide 1.1
+*/
+.nice {
+  font-family: "Times New Roman";
+  font-size: 30px;
+}
+
+.nice.red {
+  color: red !important;
+}

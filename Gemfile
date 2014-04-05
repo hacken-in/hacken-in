@@ -39,11 +39,8 @@ gem 'haml', '~> 4.0.4'
 gem 'md_emoji', '~> 1.0.0'
 gem 'redcarpet', '~> 3.0.0'
 
-# Admin
-# Attention: 0.6.0 has namespacing issues
-# The '/' root tries to open a non existend
-# dashboard controller
-# TODO: Set this to the Ruby Gems version as soon as this is released
+gem 'kss', '~> 0.5.0'
+
 gem 'activeadmin', git: 'https://github.com/gregbell/active_admin', branch: 'master'
 
 # Date Handling

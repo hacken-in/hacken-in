@@ -68,10 +68,13 @@ Hcking::Application.routes.draw do
 
   get "pages/:page_name"              => "pages#show"
 
+  get "styleguide/(:reference)" => "styleguide#index", as: "styleguide"
+
   get "deutschland" => "welcome#deutschland"
   get "move_to/:region" => "welcome#move_to", as: "move_region"
   get ":region" => "calendars#show", as: "region"
   match ":region/search" => "search#index", as: "search", via: [:get, :post]
+
 
   root to: "welcome#index"
 end
