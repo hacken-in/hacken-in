@@ -20,5 +20,6 @@
 //= require foundation/foundation.tab
 //= require foundation/foundation.tooltip
 //= require foundation/foundation.topbar
+//= require prism
 
 $(function(){ $(document).foundation(); });
