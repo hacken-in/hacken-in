@@ -13,7 +13,7 @@ bundler_args: --without development
 before_script:
   - mysql -e 'create database hcking_test;'
   - "cp config/database.yml_example config/database.yml"
-  - "cp config/twitter_example.yml config/twitter.yml"
+  - "cp config/twitter.yml_example config/twitter.yml"
   - "cp config/initializers/devise.rb_example config/initializers/devise.rb"
 script: "bundle exec rake db:drop db:create db:migrate ci"
 cache: bundler
