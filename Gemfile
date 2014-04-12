@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '~> 4.0.3'
 gem 'rake', '~> 10.1.1'
 
-gem 'thin', '~> 1.6.2'
+gem 'thin', '~> 1.6.1'
 
 # Databases
 gem 'mysql2', '~> 0.3.13'
@@ -136,6 +136,10 @@ group :test, :development do
   gem 'brakeman', '~> 2.3.1'
   gem 'vcr', '~> 2.9.0'
   gem 'pry-rails'
+end
+
+group :production do
+  gem 'shelly-dependencies'
 end
 
 group :test do

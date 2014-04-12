@@ -568,6 +568,9 @@ GEM
     sax-machine (0.2.1)
       nokogiri (~> 1.6.0)
     sexp_processor (4.4.2)
+    shelly-dependencies (0.2.4)
+      rake
+      thin
     simple_form (3.0.1)
       actionpack (>= 4.0.0, < 4.1)
       activemodel (>= 4.0.0, < 4.1)
@@ -700,12 +703,13 @@ DEPENDENCIES
   rubysl (~> 2.0.0)
   rubysl-test-unit
   sass-rails (~> 4.0.1)
+  shelly-dependencies
   simple_form (~> 3.0.1)
   simplecov (~> 0.8.2)
   spring (~> 1.1.2)
   spring-commands-rspec (~> 1.0.1)
   therubyracer (~> 0.12.0)
-  thin (~> 1.6.2)
+  thin (~> 1.6.1)
   twitter (~> 5.5.1)
   uglifier (~> 2.4.0)
   vcr (~> 2.9.0)

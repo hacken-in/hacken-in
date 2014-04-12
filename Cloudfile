@@ -1,0 +1,11 @@
+hacken-in:
+  ruby_version: 2.0.0
+  environment: production # RAILS_ENV
+  domains:
+    - hacken-in.shellyapp.com
+  servers:
+    app1:
+      size: large
+      thin: 4
+      databases:
+        - postgresql
