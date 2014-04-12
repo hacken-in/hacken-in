@@ -1,12 +1,12 @@
-aside.left-off-canvas-menu, aside.right-off-canvas-menu {
-  h3 {
-    color: #adb1b4;
-  }
+// TODO: Only on small screens, otherwise put next to real content
+// Call it sidebar
+$sidebar-divider-color: #262930;
 
-  .close-area {
-    height: 80px;
-    background: #262930;
-    cursor: pointer;
+aside.sidebar {
+  @include off-canvas-menu(left);
+
+  h3 {
+    color: $topbar-link-color;
   }
 
   input[type=submit] {
@@ -16,7 +16,7 @@ aside.left-off-canvas-menu, aside.right-off-canvas-menu {
   }
 
   hr {
-    background-color: #262930;
+    background-color: $sidebar-divider-color;
     height: 20px;
     border-width: 0px;
   }
