@@ -6,7 +6,7 @@ gem 'rake', '~> 10.1.1'
 gem 'thin', '~> 1.6.2'
 
 # Databases
-gem 'mysql2', '~> 0.3.13'
+#gem 'mysql2', '~> 0.3.13'
 
 # Memcache Store
 # DO NOT UPGRADE THIS
@@ -136,6 +136,10 @@ group :test, :development do
   gem 'brakeman', '~> 2.3.1'
   gem 'vcr', '~> 2.9.0'
   gem 'pry-rails'
+end
+
+group :production do
+  gem 'shelly-dependencies'
 end
 
 group :test do
