@@ -20,5 +20,11 @@ nav.top-bar {
       font-size: 0.575rem;
     }
   }
+
+  @media #{$medium-up} {
+    .sidebar-toggle {
+      display: none;
+    }
+  }
 }
 

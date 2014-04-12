@@ -40,7 +40,8 @@
         = render 'modules/common/topbar'
         = render 'modules/common/ical_popup'
         = render 'modules/common/flash'
-        = yield
-        = render 'modules/common/sidebar'
+        .row
+          %section.main= yield
+          = render 'modules/common/sidebar'
 
     = javascript_include_tag "application"

@@ -2,8 +2,20 @@
 // Call it sidebar
 $sidebar-divider-color: #262930;
 
+section.main {
+  @media #{$medium-up} {
+    @include grid-column(10);
+  }
+}
+
 aside.sidebar {
-  @include off-canvas-menu(left);
+  @media #{$small-only} {
+    @include off-canvas-menu(left);
+  }
+  @media #{$medium-up} {
+    @include grid-column(2);
+    background-color: $off-canvas-bg;
+  }
 
   h3 {
     color: $topbar-link-color;
@@ -21,4 +33,3 @@ aside.sidebar {
     border-width: 0px;
   }
 }
-
