@@ -6,9 +6,17 @@
 
     %section.top-bar-section
       %ul.right
+        - if current_region.present?
+          = form_tag search_path(region: current_region), :method => 'get' do
+            %li.search-form
+              .row
+                .search-field
+                  = text_field_tag :search, params[:search], placeholder: t('modules.common.topbar.search_form.field_placeholder')
+                .search-button
+                  %a.button{href: "#"}= t('modules.common.topbar.search_form.button')
+
+
+      %ul.left
         %li
           %a.left-off-canvas-toggle
             %span Sidebar
-        %li
-          %a.right-off-canvas-toggle
-            Search

@@ -1,1 +1,6 @@
-fr: {}
+fr:
+  modules:
+    common:
+      topbar:
+        search_form:
+          button: 

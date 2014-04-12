@@ -1,0 +1,24 @@
+nav.top-bar {
+  li.search_form {
+    @include grid-row($behavior: collapse);
+  }
+
+  .search-field {
+    @include grid-column($columns: 8, $collapse: true);
+
+    input {
+      font-size: 0.575rem;
+    }
+  }
+
+  .search-button {
+    @include grid-column($columns: 4, $collapse: true);
+
+    a.button {
+      padding-left: 12px;
+      padding-right: 12px;
+      font-size: 0.575rem;
+    }
+  }
+}
+

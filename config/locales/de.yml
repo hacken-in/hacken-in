@@ -1,15 +1,15 @@
 de:
   will_paginate:
-    previous_label: '&#8592; Zurück'
+    previous_label: "&#8592; Zurück"
     next_label: Nächste &#8594;
-    page_gap: '&hellip;'
+    page_gap: "&hellip;"
   views:
     pagination:
-      first: '&lt;&lt;'
-      last: '&gt;&gt;'
-      next: '&gt;'
-      previous: '&lt;'
-      truncate: '...'
+      first: "&lt;&lt;"
+      last: "&gt;&gt;"
+      next: "&gt;"
+      previous: "&lt;"
+      truncate: "..."
     welcome:
       deutschland:
         message: "[Hacken.in](http://hacken.in). Dein Kalender für Events rund ums Hacken, Geek-Kultur und alles, was zum Nerdsein gehört. \n\nMomentan gibt es uns für [Berlin](move_to/berlin), [Köln](move_to/koeln) und [München](move_to/muenchen)."
@@ -27,10 +27,10 @@ de:
       body: 'Bitte überprüfen Sie die folgenden Felder:'
   date:
     formats:
-      default: '%d.%m.%Y'
-      short: '%e. %b'
-      long: '%e. %B %Y (%A)'
-      only_day: '%e'
+      default: "%d.%m.%Y"
+      short: "%e. %b"
+      long: "%e. %B %Y (%A)"
+      only_day: "%e"
     day_names:
     - Sonntag
     - Montag
@@ -81,11 +81,11 @@ de:
     - :year
   time:
     formats:
-      default: '%A, %d. %B %Y, %H:%M Uhr'
-      short: '%d. %B, %H:%M Uhr'
-      long: '%A, %d. %B %Y, %H:%M Uhr'
-      time: '%H:%M'
-      long_without_time: '%A, %d. %B %Y'
+      default: "%A, %d. %B %Y, %H:%M Uhr"
+      short: "%d. %B, %H:%M Uhr"
+      long: "%A, %d. %B %Y, %H:%M Uhr"
+      time: "%H:%M"
+      long_without_time: "%A, %d. %B %Y"
     am: vormittags
     pm: nachmittags
   datetime:
@@ -96,25 +96,25 @@ de:
         other: weniger als %{count} Sekunden
       x_seconds:
         one: eine Sekunde
-        other: '%{count} Sekunden'
+        other: "%{count} Sekunden"
       less_than_x_minutes:
         one: weniger als eine Minute
         other: weniger als %{count} Minuten
       x_minutes:
         one: eine Minute
-        other: '%{count} Minuten'
+        other: "%{count} Minuten"
       about_x_hours:
         one: etwa eine Stunde
         other: etwa %{count} Stunden
       x_days:
         one: ein Tag
-        other: '%{count} Tage'
+        other: "%{count} Tage"
       about_x_months:
         one: etwa ein Monat
         other: etwa %{count} Monate
       x_months:
         one: ein Monat
-        other: '%{count} Monate'
+        other: "%{count} Monate"
       almost_x_years:
         one: fast ein Jahr
         other: fast %{count} Jahre
@@ -134,13 +134,13 @@ de:
   number:
     format:
       precision: 2
-      separator: ','
-      delimiter: .
+      separator: ","
+      delimiter: "."
     currency:
       format:
-        unit: €
-        format: '%n%u'
-        separator: ','
+        unit: "€"
+        format: "%n%u"
+        separator: ","
         delimiter: ''
         precision: 2
     percentage:
@@ -154,7 +154,7 @@ de:
         delimiter: ''
         precision: 1
       storage_units:
-        format: '%n %u'
+        format: "%n %u"
         units:
           byte:
             one: Byte
@@ -165,9 +165,9 @@ de:
           tb: TB
   support:
     array:
-      words_connector: ', '
-      two_words_connector: ' und '
-      last_word_connector: ' und '
+      words_connector: ", "
+      two_words_connector: " und "
+      last_word_connector: " und "
     select:
       prompt: 'Bitte wählen:'
   activemodel:
@@ -217,6 +217,8 @@ de:
         current_password: Aktuelles Passwort
         remember_me: Eingeloggt bleiben
         gravatar_email: Alternative E-mailadresse für Gravatar
+        name: Name
+        nickname: Nickname
       event:
         address: Adresse
         description: Beschreibung
@@ -233,7 +235,7 @@ de:
         picture: Bild
       single_event:
         category: Kategorie
-        topic: Überschrift
+        topic: "Überschrift"
         description: Beschreibung
         full_day: Ganzer Tag
         location: Veranstaltungsort
@@ -258,7 +260,7 @@ de:
       blog_post:
         user: Benutzer
         category: Kategorie
-        headline: Überschrift
+        headline: "Überschrift"
         publishable: Anzeigen auf der Webseite
         publishable_from: Anzeigen ab
         headline_teaser: Teaser für die Startseite
@@ -316,10 +318,10 @@ de:
       warning: Für Felder in der Danger-Zone brauchen wir dein Passwort, um die Änderungen zu machen.
       edit_profile: Konto bearbeiten
       gravatar: Profilbild
-      change_gravatar: ändern auf gravatar.com
+      change_gravatar: "ändern auf gravatar.com"
       profile: Profildaten
       password_label: Passwort ändern
-      password_hint: (leer lassen, wenn kein neues Passwort gewünscht ist)
+      password_hint: "(leer lassen, wenn kein neues Passwort gewünscht ist)"
       save_profile: Speichern
       delete_profile: Konto löschen
       delete_profile_text: Du willst dein Konto löschen?
@@ -332,7 +334,7 @@ de:
       added: Die Authorisierung für %{provider} wude hinzugefügt.
       only_one_no_password: Du hast zur Zeit kein Passwort gesetzt, daher kannst du die letzte Authorisierung nicht entfernen.
       sign_in_with: Einloggen mit %{provider}
-      add_service: '%{provider} hinzufügen'
+      add_service: "%{provider} hinzufügen"
       in_use: 'Dein %{provider}-Account (User-Id: %{uid}) wird bereits von einem anderen Account verwendet. Wenn du dich mit einem anderen Account anmelden willst, geh auf die Seite von %{provider} und melde dich dort ab.'
       email: Hier kannst du eine E-Mail Adresse und ein Passwort hinzufügen. Damit kannst du dich auch anmelden, wenn deine Authorisierungsdienste mal pleite gehen oder so.
   events:
@@ -407,7 +409,7 @@ de:
     :submit: Absenden
     :required: Benötigt
     :create: Erzeuge %{model}
-    :update: Änderungen speichern
+    :update: "Änderungen speichern"
   humans:
     team: Team
   active_admin:
@@ -424,6 +426,10 @@ de:
     add_new: neuen Termin
   modules:
     common:
+      topbar:
+        search_form:
+          field_placeholder: Finde Events
+          button: Suchen
       sidebar:
         login_with: Mit %{provider} einloggen
         register_instead: oder registrieren
@@ -446,3 +452,65 @@ de:
     show:
       title: Kalender
   hello: Hallo
+  simple_form:
+    hints:
+      user:
+        edit:
+          allow_ignore_view: 
+          current_password: 
+          email: 
+          github: 
+          gravatar_email: 
+          homepage: 
+          name: 
+          nickname: 
+          password_confirmation: 
+          twitter: 
+        new:
+          email: 
+          password: 
+          remember_me: 
+    labels:
+      user:
+        edit:
+          current_password: 
+          description: 
+          email: 
+          github: 
+          gravatar_email: 
+          homepage: 
+          name: 
+          nickname: 
+          password_confirmation: 
+          twitter: 
+        new:
+          password: 
+          remember_me: 
+      suggestion:
+        new:
+          description: 
+          email_address: 
+    placeholders:
+      user:
+        edit:
+          current_password: 
+          email: 
+          github: 
+          gravatar_email: 
+          homepage: 
+          name: 
+          nickname: 
+          password: 
+          password_confirmation: 
+          twitter: 
+        new:
+          email: 
+          password: 
+      suggestion:
+        new:
+          description: 
+          email_address: 
+    required:
+      html: <abbr title="required">*</abbr>
+      mark: "*"
+      text: required
