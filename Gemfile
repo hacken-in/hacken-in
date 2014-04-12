@@ -96,7 +96,7 @@ gem 'feedjira', '~> 1.1.0'
 
 group :development do
   # Manage locales, see http://www.localeapp.com/projects/5442
-  gem 'localeapp'
+  gem 'localeapp', require: false
 
   # Deployment
   gem 'capistrano', '~> 2.13.0'
