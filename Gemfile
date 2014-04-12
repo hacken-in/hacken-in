@@ -143,12 +143,3 @@ group :test do
 end
 
 gem 'recaptcha', '0.3.5'
-
-platform :rbx do
-  gem 'rubysl', '~> 2.0.0'
-  gem 'racc'
-  group :test do
-    gem 'rubysl-test-unit', require: false
-    gem 'rubinius-coverage'
-  end
-end
