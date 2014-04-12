@@ -46,6 +46,8 @@ gem 'kss', '~> 0.5.0'
 # dashboard controller
 # TODO: Set this to the Ruby Gems version as soon as this is released
 gem 'activeadmin', github: 'activeadmin', branch: 'master'
+gem 'ahoy_matey'
+gem 'groupdate'
 
 # Date Handling
 gem 'ice_cube', '~> 0.11.1'
