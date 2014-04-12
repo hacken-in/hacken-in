@@ -2,6 +2,7 @@
 //= require jquery_ujs
 //= require jsapi
 //= require chartkick
+//= require leaflet
 
 // TODO: Don't include the parts we don't need
 // Please only remove the equal sign to make insertion easier
@@ -21,5 +22,7 @@
 //= require foundation/foundation.tooltip
 //= require foundation/foundation.topbar
 //= require prism
+
+//= require pages/welcome
 
 $(function(){ $(document).foundation(); });

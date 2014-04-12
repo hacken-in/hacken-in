@@ -13,7 +13,7 @@
 // Since the typical default browser font-size is 16px, that makes the calculation for grid size.
 // If you want your base font-size to be different and not have it affect the grid breakpoints,
 // set $rem-base to $base-font-size and make sure $base-font-size is a px value.
-// $base-font-size: 100%;
+$base-font-size: 120%;
 
 // The $base-line-height is 100% while $base-font-size is 150%
 // $base-line-height: 150%;
@@ -40,6 +40,7 @@
 $body-font-family: "Roboto Condensed", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: normal;
 // $body-font-style: normal;
+$paragraph-margin-bottom: rem-calc(10);
 
 // We use this to control font-smoothing
 // $font-smoothing: antialiased;
@@ -50,7 +51,7 @@ $body-font-family: "Roboto Condensed", "Helvetica", Helvetica, Arial, sans-serif
 // $default-float: left;
 
 // We use these as default colors throughout
-$primary-color: #e4e4e4;
+$primary-color: #aadb61;
 $secondary-color: #f8f6f7;
 $alert-color: #fd322e;
 $success-color: #43AC6A;
