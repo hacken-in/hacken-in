@@ -5,9 +5,6 @@ gem 'rake', '~> 10.1.1'
 
 gem 'thin', '~> 1.6.1'
 
-# Databases
-gem 'pg'
-
 # Memcache Store
 # DO NOT UPGRADE THIS
 # We need exactly this version, because
@@ -97,6 +94,9 @@ gem 'ruby_meetup2', '~> 0.5.0'
 gem 'feedjira', '~> 1.1.0'
 
 group :development do
+  # Legacy Support :-)
+  gem 'mysql2', '~> 0.3.13'
+
   # Manage locales, see http://www.localeapp.com/projects/5442
   gem 'localeapp', require: false
 
@@ -139,6 +139,8 @@ group :test, :development do
 end
 
 group :production do
+  # Move pg gem to global block, once we're done with #364
+  gem 'pg', '~> 0.17.1'
   gem 'shelly-dependencies'
 end
 
