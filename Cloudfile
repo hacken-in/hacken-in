@@ -3,6 +3,7 @@ hacken-in:
   environment: production
   domains:
     - hacken-in.shellyapp.com
+    - release.hacken.in
   servers:
     app1:
       size: large
@@ -14,6 +15,7 @@ hacken-in-master:
   environment: production
   domains:
     - hacken-in-master.shellyapp.com
+    - master.hacken.in
   servers:
     app1:
       size: large
