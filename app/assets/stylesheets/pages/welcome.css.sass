@@ -1,0 +1,41 @@
+@media only screen and (max-width: 480px)
+  .welcome_map
+    .description
+      padding-bottom: 5px !important
+      p
+        font-size: 80% !important
+
+.welcome_map
+  @include grid-row()
+
+  #german_map
+    @include grid-column(12)
+    overflow: hidden
+    height: 400px
+
+    .leaflet-popup
+      .leaflet-popup-close-button
+        display: none
+      .leaflet-popup-content-wrapper
+        border: none
+        -webkit-border-radius: 0px
+        border-radius: 0px
+        background-color: black
+        font-size: 30px
+        font-weight: bold
+        .leaflet-popup-content
+          margin: 0px 10px
+          a
+            color: white
+            &:hover
+              text-decoration: none
+      .leaflet-popup-tip-container
+        display: none
+
+  .description
+    @include grid-column(12)
+    padding-bottom: 30px
+
+    p
+      font-size: 120%
+
