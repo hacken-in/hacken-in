@@ -14,7 +14,7 @@ describe EventHelper do
     event.save
     event.reload
 
-    expect(tag_list_for_taggable(event)).to eq("[{\"name\":\"ruby\"},{\"name\":\"rails\"}]")
+    expect(tag_list_for_taggable(event)).to eq("[{\"name\":\"rails\"},{\"name\":\"ruby\"}]")
   end
 
 end
