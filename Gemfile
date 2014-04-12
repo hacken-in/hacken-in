@@ -6,7 +6,7 @@ gem 'rake', '~> 10.1.1'
 gem 'thin', '~> 1.6.1'
 
 # Databases
-gem 'mysql2', '~> 0.3.13'
+gem 'pg'
 
 # Memcache Store
 # DO NOT UPGRADE THIS
