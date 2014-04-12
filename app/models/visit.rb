@@ -4,7 +4,7 @@ class Visit < ActiveRecord::Base
 
   class << self
     def grouped_by_creation_day
-      group_by_day(:created_at).count
+      group_by_day(:started_at).count
     end
   end
 end

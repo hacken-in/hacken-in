@@ -7,6 +7,7 @@ en:
       single_events_this_week_by_category: This weeks events by category
       single_events_this_week_by_day: This weeks events by day of the week
       users_over_time: Registered Users
+      page_visits: Visits per day
   activemodel:
     errors:
       template:
