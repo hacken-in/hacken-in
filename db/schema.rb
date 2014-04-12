@@ -49,12 +49,12 @@ ActiveRecord::Schema.define(version: 20140301193843) do
   create_table "event_curations", force: true do |t|
     t.integer  "user_id"
     t.integer  "event_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "event_curations", ["event_id"], name: "index_event_curations_on_event_id", using: :btree
-  add_index "event_curations", ["user_id"], name: "index_event_curations_on_user_id", using: :btree
+  add_index "event_curations", ["event_id"], name: "index_events_users_on_event_id", using: :btree
+  add_index "event_curations", ["user_id"], name: "index_events_users_on_user_id", using: :btree
 
   create_table "events", force: true do |t|
     t.string   "name"
@@ -107,12 +107,12 @@ ActiveRecord::Schema.define(version: 20140301193843) do
   create_table "region_organizers", force: true do |t|
     t.integer  "region_id"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "region_organizers", ["region_id"], name: "index_region_organizers_on_region_id", using: :btree
-  add_index "region_organizers", ["user_id"], name: "index_region_organizers_on_user_id", using: :btree
+  add_index "region_organizers", ["region_id"], name: "index_regions_users_on_region_id", using: :btree
+  add_index "region_organizers", ["user_id"], name: "index_regions_users_on_user_id", using: :btree
 
   create_table "regions", force: true do |t|
     t.string   "name"
@@ -120,8 +120,8 @@ ActiveRecord::Schema.define(version: 20140301193843) do
     t.float    "latitude"
     t.float    "longitude"
     t.float    "perimeter",  default: 20.0
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   add_index "regions", ["slug"], name: "index_regions_on_slug", using: :btree
@@ -131,8 +131,8 @@ ActiveRecord::Schema.define(version: 20140301193843) do
     t.string   "email"
     t.string   "session_token"
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   add_index "single_event_external_users", ["single_event_id"], name: "index_single_event_external_users_on_single_event_id", using: :btree
