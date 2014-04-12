@@ -12,11 +12,13 @@
 .calendar-startselector {
   nav {
     @include grid-row();
-    overflow-y: hidden;
+    overflow: hidden;
+    position: relative;
 
     ul {
       @include inline-list;
       @include grid-column(12);
+      position: absolute;
       padding-left: 0;
       padding-right: 0;
     }
@@ -29,12 +31,14 @@
   .months {
     background: $secondary-color;
     @include calendar-selector(20px, 40px, 20);
+    height: 30px;
   }
 
   .days {
-    background: $primary-color;
+    background: #eaeaea;
     border-bottom: 1px solid #a0a0a0;
     @include calendar-selector(20px, 60px, 20);
+    height: 106px;
 
     li {
       .weekday {
@@ -52,56 +56,71 @@
 
 .day-divider {
   @include grid-row();
-  background: $primary-color;
+  background: #eaeaea;
   padding: 20px 0;
 
   h2 {
-    @include grid-column(8);
+    @include grid-column(10);
     font-size: $h5-font-size;
+    line-height: 20px;
     margin: 0;
   }
 
   a {
-    @include grid-column(4);
+    @include grid-column(2);
     color: $body-font-color;
     text-align: right;
+
+    img {
+      width: 20px;
+    }
   }
+}
+
+.calendar-loading {
+  @include grid-row();
+  height: 100px;
 }
 
 .single-event {
   @include grid-row();
 
   margin-top: 10px;
-  border-bottom: 1px solid $primary-color;
+  border-bottom: 1px solid #eaeaea;
 
   .indicator-wrapper {
-    @include grid-column(2);
+    @include grid-column(1);
   }
 
   .indicator {
-    margin-top: 5px; // TODO: Check why this is necessary
+    margin: 5px 0px;
     width: 5px;
     height: 50px;
   }
 
   .short-description {
-    @include grid-column(10);
+    @include grid-column(11);
   }
 
   h3 {
     margin: 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: $body-font-color;
   }
 
   h4 {
-    font-size: $base-font-size;
+    font-size: 1em;
+    font-weight: bold;
     margin: 0;
+    color: #898e91;
   }
 
   p.additional-info {
     font-size: $base-font-size;
+    color: #898e91;
+    padding-left: 18px;
+    background: 0px 5px image-url("marker.png") no-repeat;
   }
 
-  h3, h4, p.additional-info {
-    color: $body-font-color;
-  }
 }

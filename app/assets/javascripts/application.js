@@ -24,6 +24,8 @@
 //= require prism
 //= require leaflet
 
+//= require models/calendar
 //= require pages/welcome
+//= require pages/calendar
 
 $(function(){ $(document).foundation(); });
