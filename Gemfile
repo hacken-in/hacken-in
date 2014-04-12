@@ -3,10 +3,10 @@ source 'https://rubygems.org'
 gem 'rails', '~> 4.0.3'
 gem 'rake', '~> 10.1.1'
 
-gem 'thin', '~> 1.6.2'
+gem 'thin', '~> 1.6.1'
 
 # Databases
-#gem 'mysql2', '~> 0.3.13'
+gem 'mysql2', '~> 0.3.13'
 
 # Memcache Store
 # DO NOT UPGRADE THIS
