@@ -4,6 +4,8 @@ gem 'rails', '~> 4.0.5'
 gem 'rake', '~> 10.1.1'
 
 gem 'thin', '~> 1.6.1'
+# Databases
+gem 'pg', '~> 0.17.1'
 
 # Memcache Store
 # DO NOT UPGRADE THIS
@@ -124,8 +126,6 @@ group :development do
 end
 
 group :test, :development do
-  # Use MySQL for local setups + travis (as long as #364 is open)
-  gem 'mysql2', '~> 0.3.13'
   gem 'database_cleaner', '1.2.0'
   gem 'rspec-rails',  '~> 3.0.0.beta1'
   gem 'factory_girl_rails', '~> 4.2'
@@ -138,8 +138,6 @@ group :test, :development do
 end
 
 group :production do
-  # Move pg gem to global block, once we're done with #364
-  gem 'pg', '~> 0.17.1'
   gem 'shelly-dependencies'
 end
 
