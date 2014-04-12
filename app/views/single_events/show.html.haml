@@ -3,45 +3,47 @@
 
 - color = @single_event.category.try(:color)
 
-.row.event.single-event{ itemscope: true, itemtype: 'http://schema.org/Event' }
-  .span4
-    .black-bar.black-bar-wide
-      .black-bar--category-indicator
-        = render partial: 'modules/categories/indicator', locals: { submodule: 'big', color: color }
-      .black-bar-content.black-bar-with-date{ data: { hlcolor: color } }
-        .black-bar-top-part
-          .black-bar-date
-            %meta{ itemprop: 'startDate', content: I18n.localize(@single_event.occurrence, format: "%FT%R%:z") }
-            = I18n.localize @single_event.occurrence, format: "%a, %d. %b %Y"
-        .black-bar-center-part
-          %h1.black-bar-title{ itemprop: "name" }
-            = @single_event.event.name
-          - if !@single_event.full_day
-            .black-bar-time= I18n.localize(@single_event.occurrence, format: "%H:%M Uhr")
-          .clearfix
-
-    .event-info
-      - if @single_event.name?
-        %h2= @single_event.name
-
-      = render "events/description", event: @single_event
-      = render "events/map", event: @single_event
-      .event-map
-
-      = render "events/venue", event: @single_event
-      .single_event_ical
-        %i{class:"icon-calendar"}
-        %a{href:single_event_ical_path(@single_event)} iCal Download
-      = render 'modules/social/share'
-      .clearfix
-
+.single-event{ itemscope: true, itemtype: 'http://schema.org/Event' }
+  .event-indicator
+    %meta{ itemprop: 'startDate', content: I18n.localize(@single_event.occurrence, format: "%FT%R%:z") }
+    %h2= I18n.localize @single_event.occurrence, format: "%a, %d. %b %Y"
+    = render partial: 'modules/categories/indicator', locals: { submodule: 'big', color: color }
+  .event-title
+    %h1.black-bar-title{ itemprop: "name" }
+      = @single_event.event.name
+      - if !@single_event.full_day
+        %h4= I18n.localize(@single_event.occurrence, format: "%H:%M Uhr")
+  
+  .event-content
+    .event-infos
       - if user_signed_in? && current_user.admin?
         .admin_edit_link
           = link_to "Bearbeiten", edit_admin_event_single_event_path(@single_event.event, @single_event)
+      - if @single_event.name?
+        %h2= @single_event.name
+      = render "events/description", event: @single_event
+      %p= render "events/venue", event: @single_event
+      - color = @single_event.category.try(:color)
+      .single-event-event-teaser
+        .event.event-preview{ style: "border-top: 3px solid #{color}"}
+          - if @single_event.picture.present?
+            = image_tag(@single_event.picture.box_image.url, class: 'event-image')
 
-      = render 'single_events/participants'
+          - if @single_event.event.description.present?
+            .event-text
+              = convert_markdown(@single_event.event.description, true)
 
-    = render partial: 'modules/comments/comments', locals: { commentable: @single_event }
+      .single-event-tags
+        - tags = (@single_event.tags | @single_event.event.tags).sort_by(&:name)
+        - unless tags.empty?
+          %h4
+            Lieben oder Boykottieren
+          - tags.each do |tag|
+            = render partial: "modules/tags/tag", locals: { tag: tag }
 
-  .span2
+      = render partial: "events/next_events", locals: { event: @single_event.event, current_single_event: @single_event }
+
     = render "single_events/sidebar"
+
+  .event-comments
+    = render partial: 'modules/comments/comments', locals: { commentable: @single_event }

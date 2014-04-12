@@ -1,21 +1,9 @@
-- color = @single_event.category.try(:color)
-.single-event-sidebar
-  .single-event-event-teaser
-    .event.event-preview{ style: "border-top: 3px solid #{color}"}
-      - if @single_event.picture.present?
-        = image_tag(@single_event.picture.box_image.url, class: 'event-image')
-
-      - if @single_event.event.description.present?
-        .event-text
-          = convert_markdown(@single_event.event.description, true)
-
-  .single-event-tags
-    - tags = (@single_event.tags | @single_event.event.tags).sort_by(&:name)
-    - unless tags.empty?
-      %h4
-        Lieben oder Boykottieren
-      - tags.each do |tag|
-        = render partial: "modules/tags/tag", locals: { tag: tag }
-
-  = render partial: "events/next_events", locals: { event: @single_event.event, current_single_event: @single_event }
-
+.event-sidebar
+  = render "events/map", event: @single_event
+  .event-map
+  .single_event_ical
+    %i{class:"icon-calendar"}
+      %a#icaldownload{href:single_event_ical_path(@single_event)} iCal Download
+  = render 'modules/social/share'
+  .clearfix
+  = render 'single_events/participants'

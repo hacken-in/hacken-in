@@ -4,5 +4,5 @@
   .content
     .previewable
       = form.text_area :body, class: 'preview-base'
-    = form.submit t('comments._form.comment_button'), class: 'btn btn-inverse comment-submit-button pull-right'
-    = render "commons/markdown_info"
+    = form.submit t('comments._form.comment_button'), class: 'button comment-submit-button'
+  = render "commons/markdown_info"
