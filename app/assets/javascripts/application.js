@@ -22,6 +22,7 @@
 //= require foundation/foundation.tooltip
 //= require foundation/foundation.topbar
 //= require prism
+//= require leaflet
 
 //= require pages/welcome
 

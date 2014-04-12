@@ -13,9 +13,9 @@
 
   - if user_signed_in?
     - if @single_event.attended_by_user?(current_user)
-      = button_to t('single_events.show.unparticipate'), event_single_event_participate_path(@single_event.event, @single_event, state: :delete), { method: :put, class: 'btn btn-inverse pull-right participate-button' }
+      = button_to t('single_events.show.unparticipate'), event_single_event_participate_path(@single_event.event, @single_event, state: :delete), { method: :put, class: 'button' }
     - else
-      = button_to t('single_events.show.participate'), event_single_event_participate_path(@single_event.event, @single_event, state: :push), { method: :put, class: 'btn btn-inverse pull-right participate-button' }
+      = button_to t('single_events.show.participate'), event_single_event_participate_path(@single_event.event, @single_event, state: :push), { method: :put, class: 'button' }
 
 - if Rails.application.config.allow_external_guests
   .event-participators
@@ -32,7 +32,7 @@
 
   - unless user_signed_in?
     - if @single_event.attended_by_external_user?(cookies[:hacken_uuid])
-      = button_to t('single_events.show.unparticipate'), event_single_event_participate_path(@single_event.event, @single_event, state: :delete), { method: :put, class: 'btn btn-inverse pull-right participate-button' }
+      = button_to t('single_events.show.unparticipate'), event_single_event_participate_path(@single_event.event, @single_event, state: :delete), { method: :put, class: 'button' }
     - else
       - cookie_data = external_participation_data
       = form_tag event_single_event_participate_path(@single_event.event, @single_event, state: :push), method: 'PUT', class: 'form-inline well' do
