@@ -8,8 +8,3 @@ if Rails.env.development? && File.exist?("config/localeapp.yml")
     config.api_key = localeapp_config["key"]
   end
 end
-
-# In production there should be a config file ;)
-if Rails.env.production?
-  require 'localeapp/rails'
-end
