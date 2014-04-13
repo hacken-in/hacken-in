@@ -16,18 +16,18 @@
         %p= t('modules.common.ical_popup.calendar_except_ignored')
 
         %ul.button-group
-          %li= link_to t('modules.common.ical_popup.import_into_ical_button'), get_ical_link_for('personalized', 'webcal'), class: 'button'
-          %li= link_to t('modules.common.ical_popup.import_into_google_button'), get_ical_link_for('personalized', 'google'), class: 'button'
-
-        %label{ for: 'my_cal_url' }= t('modules.common.ical_popup.manually')
-        %input{ name: 'my_cal_url', type: 'text', value: get_ical_link_for('personalized', 'http') }
-
-      #no-ignore-url-tab.content
-        %p= t('modules.common.ical_popup.calendar_only_participating')
-
-        %ul.button-group
           %li= link_to t('modules.common.ical_popup.import_into_ical_button'), get_ical_link_for('like_welcome_page', 'webcal'), class: 'button'
           %li= link_to t('modules.common.ical_popup.import_into_google_button'), get_ical_link_for('like_welcome_page', 'google'), class: 'button'
 
         %label{ for: 'my_cal_url' }= t('modules.common.ical_popup.manually')
         %input{ name: 'my_cal_url', type: 'text', value: get_ical_link_for('like_welcome_page', 'http') }
+
+      #no-ignore-url-tab.content
+        %p= t('modules.common.ical_popup.calendar_only_participating')
+
+        %ul.button-group
+          %li= link_to t('modules.common.ical_popup.import_into_ical_button'), get_ical_link_for('personalized', 'webcal'), class: 'button'
+          %li= link_to t('modules.common.ical_popup.import_into_google_button'), get_ical_link_for('personalized', 'google'), class: 'button'
+
+        %label{ for: 'my_cal_url' }= t('modules.common.ical_popup.manually')
+        %input{ name: 'my_cal_url', type: 'text', value: get_ical_link_for('personalized', 'http') }
