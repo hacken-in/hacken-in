@@ -7,12 +7,12 @@
 
     %dl.tabs{ 'data-tab' => true }
       %dd.active
-        = link_to t('modules.common.ical_popup.like_welcome_page_button'), '#my-cal-tab'
+        = link_to t('modules.common.ical_popup.like_welcome_page_button'), '#like-welcome-page-tab'
       %dd
-        = link_to t('modules.common.ical_popup.personalized_button'), '#no-ignore-url-tab'
+        = link_to t('modules.common.ical_popup.personalized_button'), '#personalized-tab'
 
     .tabs-content
-      #my-cal-tab.content.active
+      #like-welcome-page-tab.content.active
         %p= t('modules.common.ical_popup.like_welcome_page_description')
 
         %ul.button-group
@@ -22,7 +22,7 @@
         %label{ for: 'my_cal_url' }= t('modules.common.ical_popup.manually')
         %input{ name: 'my_cal_url', type: 'text', value: get_ical_link_for('like_welcome_page', 'http') }
 
-      #no-ignore-url-tab.content
+      #personalized-tab.content
         %p= t('modules.common.ical_popup.personalized_description')
 
         %ul.button-group
