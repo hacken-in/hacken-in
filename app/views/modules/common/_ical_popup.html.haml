@@ -1,15 +1,8 @@
 - if user_signed_in? && current_region.present?
   #calendarExportModal.reveal-modal{data: { reveal: true }}
     %button.close-reveal-modal Close
+
     %h3 Kalender importieren
-
-    - my_cal_url_webcal    = get_ical_link_for('personalized', 'webcal')
-    - my_cal_url_http      = get_ical_link_for('personalized', 'http')
-    - my_cal_url_google    = get_ical_link_for('personalized', 'google')
-    - no_ignore_url_webcal = get_ical_link_for('like_welcome_page', 'webcal')
-    - no_ignore_url_http   = get_ical_link_for('like_welcome_page', 'http')
-    - no_ignore_url_google = get_ical_link_for('like_welcome_page', 'google')
-
     %p= t('modules.common.ical_popup.explanation')
 
     %dl.tabs{ 'data-tab' => true }
@@ -23,18 +16,18 @@
         %p= t('modules.common.ical_popup.calendar_except_ignored')
 
         %ul.button-group
-          %li= link_to t('modules.common.ical_popup.import_into_ical_button'), my_cal_url_webcal, class: 'button'
-          %li= link_to t('modules.common.ical_popup.import_into_google_button'), my_cal_url_google, class: 'button'
+          %li= link_to t('modules.common.ical_popup.import_into_ical_button'), get_ical_link_for('personalized', 'webcal'), class: 'button'
+          %li= link_to t('modules.common.ical_popup.import_into_google_button'), get_ical_link_for('personalized', 'google'), class: 'button'
 
         %label{ for: 'my_cal_url' }= t('modules.common.ical_popup.manually')
-        %input{ name: 'my_cal_url', type: 'text', value: my_cal_url_http }
+        %input{ name: 'my_cal_url', type: 'text', value: get_ical_link_for('personalized', 'http') }
 
       #no-ignore-url-tab.content
         %p= t('modules.common.ical_popup.calendar_only_participating')
 
         %ul.button-group
-          %li= link_to t('modules.common.ical_popup.import_into_ical_button'), no_ignore_url_webcal, class: 'button'
-          %li= link_to t('modules.common.ical_popup.import_into_google_button'), no_ignore_url_google, class: 'button'
+          %li= link_to t('modules.common.ical_popup.import_into_ical_button'), get_ical_link_for('like_welcome_page', 'webcal'), class: 'button'
+          %li= link_to t('modules.common.ical_popup.import_into_google_button'), get_ical_link_for('like_welcome_page', 'google'), class: 'button'
 
         %label{ for: 'my_cal_url' }= t('modules.common.ical_popup.manually')
-        %input{ name: 'my_cal_url', type: 'text', value: no_ignore_url_http }
+        %input{ name: 'my_cal_url', type: 'text', value: get_ical_link_for('like_welcome_page', 'http') }
