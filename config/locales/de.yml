@@ -447,8 +447,10 @@ de:
         hate_input: Was boykottierst du?
       ical_popup:
         explanation: "Hier kannst du den Hacken.in Kalender in deine bevorzugte Kalender-Applikation importieren"
-        calendar_except_ignored: "Meinen Kalender (meine Einstellungen berücksichtigen)"
-        calendar_only_participating: "Nur Termine an denen ich teilnehme"
+        like_welcome_page_button: Alle Termine
+        like_welcome_page_description: "Meinen Kalender (meine Einstellungen berücksichtigen)"
+        personalized_button: Nur Termine an denen ich teilnehme
+        personalized_description: "Nur Termine an denen ich teilnehme"
         import_into_ical_button: In iCal/Outlook importieren
         import_into_google_button: In meinen Google Kalender importieren
         manually: "Oder importiere den Kalender von Hand:"
