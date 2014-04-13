@@ -8,21 +8,29 @@
     - my_cal_url_google    = "http://google.com/calendar/render?cid=#{CGI.escape(my_cal_url_http)}"
     - no_ignore_url_webcal = url_for(action: 'like_welcome_page', protocol: 'webcal', controller: 'ical', format: 'ical', only_path: false, guid: current_user.guid)
     - no_ignore_url_http   = url_for(action: 'like_welcome_page', protocol: 'http',   controller: 'ical', format: 'ical', only_path: false, guid: current_user.guid)
+    - no_ignore_url_google = "http://google.com/calendar/render?cid=#{CGI.escape(no_ignore_url_http)}"
 
-    %p
-      = t('modules.common.ical_popup.explanation')
+    %p= t('modules.common.ical_popup.explanation')
 
-      %label
-        %input{ type: 'radio', name: 'ical-radios', checked: true, 'data-webcal-url' => no_ignore_url_webcal, 'data-http-url' => no_ignore_url_http }
-          = t('modules.common.ical_popup.calendar_except_ignored')
-      %label
-        %input{ type: 'radio', name: 'ical-radios', 'data-webcal-url' => my_cal_url_webcal, 'data-http-url' => my_cal_url_http }
-          = t('modules.common.ical_popup.calendar_only_participating')
+    %dl.tabs{ 'data-tab' => true }
+      %dd.active
+        = link_to 'My Cal', '#my-cal-tab'
+      %dd
+        = link_to 'No Ignore URL', '#no-ignore-url-tab'
 
-    %ul.button-group
-      %li= link_to t('modules.common.ical_popup.import_into_ical_button'), my_cal_url_webcal, class: 'button'
-      %li= link_to t('modules.common.ical_popup.import_into_google_button'), my_cal_url_google, class: 'button'
+    .tabs-content
+      #my-cal-tab.content.active
+        %ul.button-group
+          %li= link_to t('modules.common.ical_popup.import_into_ical_button'), my_cal_url_webcal, class: 'button'
+          %li= link_to t('modules.common.ical_popup.import_into_google_button'), my_cal_url_google, class: 'button'
 
-    %label{ for: 'my_cal_url' }= t('modules.common.ical_popup.manually')
-    %input{ name: 'my_cal_url', type: 'text', value: my_cal_url_http }
+        %label{ for: 'my_cal_url' }= t('modules.common.ical_popup.manually')
+        %input{ name: 'my_cal_url', type: 'text', value: my_cal_url_http }
 
+      #no-ignore-url-tab.content
+        %ul.button-group
+          %li= link_to t('modules.common.ical_popup.import_into_ical_button'), no_ignore_url_webcal, class: 'button'
+          %li= link_to t('modules.common.ical_popup.import_into_google_button'), no_ignore_url_google, class: 'button'
+
+        %label{ for: 'my_cal_url' }= t('modules.common.ical_popup.manually')
+        %input{ name: 'my_cal_url', type: 'text', value: no_ignore_url_http }
