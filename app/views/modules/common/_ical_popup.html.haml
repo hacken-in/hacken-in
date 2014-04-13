@@ -14,12 +14,14 @@
 
     %dl.tabs{ 'data-tab' => true }
       %dd.active
-        = link_to 'My Cal', '#my-cal-tab'
+        = link_to 'Alle Termine', '#my-cal-tab'
       %dd
-        = link_to 'No Ignore URL', '#no-ignore-url-tab'
+        = link_to 'Nur Termine an denen ich teilnehme', '#no-ignore-url-tab'
 
     .tabs-content
       #my-cal-tab.content.active
+        %p= t('modules.common.ical_popup.calendar_except_ignored')
+
         %ul.button-group
           %li= link_to t('modules.common.ical_popup.import_into_ical_button'), my_cal_url_webcal, class: 'button'
           %li= link_to t('modules.common.ical_popup.import_into_google_button'), my_cal_url_google, class: 'button'
@@ -28,6 +30,8 @@
         %input{ name: 'my_cal_url', type: 'text', value: my_cal_url_http }
 
       #no-ignore-url-tab.content
+        %p= t('modules.common.ical_popup.calendar_only_participating')
+
         %ul.button-group
           %li= link_to t('modules.common.ical_popup.import_into_ical_button'), no_ignore_url_webcal, class: 'button'
           %li= link_to t('modules.common.ical_popup.import_into_google_button'), no_ignore_url_google, class: 'button'
