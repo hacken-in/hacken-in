@@ -3,11 +3,11 @@
     %button.close-reveal-modal Close
     %h3 Kalender importieren
 
-    - my_cal_url_webcal    = url_for(action: 'personalized',      protocol: 'webcal', controller: 'ical', format: 'ical', only_path: false, guid: current_user.guid)
-    - my_cal_url_http      = url_for(action: 'personalized',      protocol: 'http',   controller: 'ical', format: 'ical', only_path: false, guid: current_user.guid)
+    - my_cal_url_webcal    = url_for(action: 'personalized',      protocol: 'webcal', controller: 'ical', format: 'ical', guid: current_user.guid)
+    - my_cal_url_http      = url_for(action: 'personalized',      protocol: 'http',   controller: 'ical', format: 'ical', guid: current_user.guid)
     - my_cal_url_google    = "http://google.com/calendar/render?cid=#{CGI.escape(my_cal_url_http)}"
-    - no_ignore_url_webcal = url_for(action: 'like_welcome_page', protocol: 'webcal', controller: 'ical', format: 'ical', only_path: false, guid: current_user.guid)
-    - no_ignore_url_http   = url_for(action: 'like_welcome_page', protocol: 'http',   controller: 'ical', format: 'ical', only_path: false, guid: current_user.guid)
+    - no_ignore_url_webcal = url_for(action: 'like_welcome_page', protocol: 'webcal', controller: 'ical', format: 'ical', guid: current_user.guid)
+    - no_ignore_url_http   = url_for(action: 'like_welcome_page', protocol: 'http',   controller: 'ical', format: 'ical', guid: current_user.guid)
     - no_ignore_url_google = "http://google.com/calendar/render?cid=#{CGI.escape(no_ignore_url_http)}"
 
     %p= t('modules.common.ical_popup.explanation')
