@@ -3,12 +3,12 @@
     %button.close-reveal-modal Close
     %h3 Kalender importieren
 
-    - my_cal_url_webcal    = url_for(action: 'personalized',      protocol: 'webcal', controller: 'ical', format: 'ical', guid: current_user.guid)
-    - my_cal_url_http      = url_for(action: 'personalized',      protocol: 'http',   controller: 'ical', format: 'ical', guid: current_user.guid)
-    - my_cal_url_google    = "http://google.com/calendar/render?cid=#{CGI.escape(my_cal_url_http)}"
-    - no_ignore_url_webcal = url_for(action: 'like_welcome_page', protocol: 'webcal', controller: 'ical', format: 'ical', guid: current_user.guid)
-    - no_ignore_url_http   = url_for(action: 'like_welcome_page', protocol: 'http',   controller: 'ical', format: 'ical', guid: current_user.guid)
-    - no_ignore_url_google = "http://google.com/calendar/render?cid=#{CGI.escape(no_ignore_url_http)}"
+    - my_cal_url_webcal    = get_ical_link_for('personalized', 'webcal')
+    - my_cal_url_http      = get_ical_link_for('personalized', 'http')
+    - my_cal_url_google    = get_ical_link_for('personalized', 'google')
+    - no_ignore_url_webcal = get_ical_link_for('like_welcome_page', 'webcal')
+    - no_ignore_url_http   = get_ical_link_for('like_welcome_page', 'http')
+    - no_ignore_url_google = get_ical_link_for('like_welcome_page', 'google')
 
     %p= t('modules.common.ical_popup.explanation')
 
