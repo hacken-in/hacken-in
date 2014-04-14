@@ -1,0 +1,41 @@
+FORGE
+  remote: http://forge.puppetlabs.com
+  specs:
+    alup/rbenv (1.2.0)
+    jfryman/nginx (0.0.9)
+      puppetlabs/apt (>= 1.0.0)
+      puppetlabs/concat (>= 1.0.0)
+      puppetlabs/stdlib (>= 0.1.6)
+    puppetlabs/apt (1.4.2)
+      puppetlabs/stdlib (>= 2.2.1)
+    puppetlabs/concat (1.1.0-rc1)
+      puppetlabs/stdlib (>= 3.0.0)
+    puppetlabs/firewall (1.0.2)
+    puppetlabs/mysql (2.2.3)
+      puppetlabs/stdlib (>= 3.2.0)
+    puppetlabs/postgresql (3.3.3)
+      puppetlabs/apt (< 2.0.0, >= 1.1.0)
+      puppetlabs/concat (< 2.0.0, >= 1.0.0)
+      puppetlabs/firewall (>= 0.0.4)
+      puppetlabs/stdlib (< 5.0.0, >= 3.2.0)
+    puppetlabs/stdlib (4.1.0)
+    saz/memcached (2.4.0)
+      puppetlabs/firewall (>= 0.1.0)
+      puppetlabs/stdlib (>= 3.2.0)
+
+GIT
+  remote: git://github.com/hacken-in/puppet-hackenin.git
+  ref: master
+  sha: 05abd6d1e6003ccc09ff3d947827ffbf7f41a500
+  specs:
+    hacken-in/hackenin (1.0.1)
+      alup/rbenv (>= 0)
+      jfryman/nginx (>= 0)
+      puppetlabs/mysql (>= 0)
+      puppetlabs/postgresql (>= 0)
+      puppetlabs/stdlib (>= 0)
+      saz/memcached (>= 0)
+
+DEPENDENCIES
+  hacken-in/hackenin (>= 0)
+
