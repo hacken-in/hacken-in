@@ -51,6 +51,16 @@ class ApplicationController < ActionController::Base
     raise ActionController::RoutingError.new('Not Found') if current_region.nil?
   end
 
+  def get_ical_link_for(action, protocol)
+    if protocol == 'google'
+      raw_url = url_for(action: action, protocol: 'http', controller: 'ical', format: 'ical', guid: current_user.guid)
+      "http://google.com/calendar/render?cid=#{CGI.escape(raw_url)}"
+    else
+      url_for(action: action, protocol: protocol, controller: 'ical', format: 'ical', guid: current_user.guid)
+    end
+  end
+  helper_method :get_ical_link_for
+
   protected
 
   def configure_permitted_parameters

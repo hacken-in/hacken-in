@@ -1,6 +1,4 @@
-%aside.left-off-canvas-menu
-  .close-area.exit-off-canvas
-
+%aside.sidebar
   - if current_user
     .row
       .small-11.small-centered.columns
@@ -9,9 +7,10 @@
     .row
       .small-11.small-centered.columns= link_to t('.my_profile'), user_path(current_user), class: 'small-12 button'
 
-    .row
-      .small-11.small-centered.columns
-        = link_to t('.add_to_my_calendar'), '#', 'data-reveal-id' => 'calendarExportModal', class: 'small-12 button'
+    - if current_region.present?
+      .row
+        .small-11.small-centered.columns
+          = link_to t('.add_to_my_calendar'), '#', 'data-reveal-id' => 'calendarExportModal', class: 'small-12 button'
 
     .row
       .small-11.small-centered.columns= link_to t('.logout'), destroy_user_session_path, method: :delete, class: 'small-12 button'
@@ -41,27 +40,6 @@
 
       .row
         .small-11.small-centered.columns= link_to t('.register_instead'), new_registration_path(resource_name), class: 'small-12 button'
-
-  - if current_user
-    %hr
-
-    .row
-      .small-11.small-centered.columns
-        %input{type: 'text', placeholder: t('.love_input')}
-        %ul.js-like-taglist
-          - current_user.likes.each do |tag|
-            %li{'data-tag' => tag.name, 'data-list' => 'like'}
-              = tag.name
-              %i.icon-remove.remove-tag.js-remove-tag
-
-    .row
-      .small-11.small-centered.columns
-        %input{type: 'text', placeholder: t('.hate_input')}
-        %ul.js-hate-taglist
-          - current_user.hates.each do |tag|
-            %li{'data-tag' => tag.name, 'data-list' => 'hate'}
-              = tag.name
-              %i.icon-remove.remove-tag.js-remove-tag
 
   %hr
 

@@ -38,9 +38,10 @@
       .inner-wrap
         %a.exit-off-canvas
         = render 'modules/common/topbar'
-        = render 'modules/common/sidebar'
         = render 'modules/common/ical_popup'
         = render 'modules/common/flash'
-        = yield
+        .row
+          %section.main= yield
+          = render 'modules/common/sidebar'
 
     = javascript_include_tag "application"

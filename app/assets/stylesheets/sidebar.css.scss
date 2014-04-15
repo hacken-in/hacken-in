@@ -1,12 +1,23 @@
-aside.left-off-canvas-menu, aside.right-off-canvas-menu {
-  h3 {
-    color: #adb1b4;
+// Call it sidebar
+$sidebar-divider-color: #262930;
+
+section.main {
+  @media #{$medium-up} {
+    @include grid-column(10);
+  }
+}
+
+aside.sidebar {
+  @media #{$small-only} {
+    @include off-canvas-menu(left);
+  }
+  @media #{$medium-up} {
+    @include grid-column(2);
+    background-color: $off-canvas-bg;
   }
 
-  .close-area {
-    height: 80px;
-    background: #262930;
-    cursor: pointer;
+  h3 {
+    color: $topbar-link-color;
   }
 
   input[type=submit] {
@@ -16,9 +27,8 @@ aside.left-off-canvas-menu, aside.right-off-canvas-menu {
   }
 
   hr {
-    background-color: #262930;
+    background-color: $sidebar-divider-color;
     height: 20px;
     border-width: 0px;
   }
 }
-

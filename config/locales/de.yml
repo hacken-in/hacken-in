@@ -445,6 +445,15 @@ de:
         add_to_my_calendar: In meinen Kalendar
         love_input: Was liebst du?
         hate_input: Was boykottierst du?
+      ical_popup:
+        explanation: "Hier kannst du den Hacken.in Kalender in deine bevorzugte Kalender-Applikation importieren"
+        like_welcome_page_button: Alle Termine
+        like_welcome_page_description: "Meinen Kalender (meine Einstellungen berücksichtigen)"
+        personalized_button: Nur Termine an denen ich teilnehme
+        personalized_description: "Nur Termine an denen ich teilnehme"
+        import_into_ical_button: In iCal/Outlook importieren
+        import_into_google_button: In meinen Google Kalender importieren
+        manually: "Oder importiere den Kalender von Hand:"
     calendars:
       day:
         suggest_event: Termin vorschlagen
