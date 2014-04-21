@@ -26,6 +26,7 @@ describe Radar::Meetup do
     VCR.use_cassette('meetup_git_create_entries') do
       Radar::Meetup.new(setting).fetch(Time.new(2014,3,1,14,00))
       event = setting.entries[1]
+      event.reload
 
       expect(setting.last_processed).to eq(Time.new(2014,3,1,14,00))
       expect(setting.entries.length).to eq(12)

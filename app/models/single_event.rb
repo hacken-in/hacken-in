@@ -256,7 +256,7 @@ class SingleEvent < ActiveRecord::Base
         # ... damit er angezeigt wird
         true
       # ... oder er muss an dem Event teilnehmen
-      elsif self.users.include? user
+      elsif self.users.to_a.include? user
         true
       else
         false

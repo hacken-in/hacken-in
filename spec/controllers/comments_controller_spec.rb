@@ -22,7 +22,10 @@ describe CommentsController do
       put :create, event_id: simple.id, comment: { body: "hallo" }
     }.to change { Comment.count }.by 1
 
-    expect(response).to redirect_to(controller: 'events', action: 'show', id: simple.to_param, anchor: "comment_1")
+    expect(response).to redirect_to(controller: 'events',
+                                    action: 'show',
+                                    id: simple.to_param,
+                                    anchor: "comment_#{simple.comments.last.id}")
     simple.reload
     expect(simple.comments.last.body).to eq("hallo")
     expect(simple.comments.last.user).to eq(user)
@@ -36,7 +39,11 @@ describe CommentsController do
     expect {
       put :create, event_id: simple.event.id, single_event_id: simple.id, comment: { body: "hallo" }
     }.to change { Comment.count }.by 1
-    expect(response).to redirect_to(controller: 'single_events', action: 'show', event_id: simple.event.to_param, id: simple.id, anchor: "comment_1")
+    expect(response).to redirect_to(controller: 'single_events',
+                                    action: 'show',
+                                    event_id: simple.event.to_param,
+                                    id: simple.id,
+                                    anchor: "comment_#{simple.comments.last.id}")
     simple.reload
     expect(simple.comments.last.body).to eq("hallo")
     expect(simple.comments.last.user).to eq(user)
@@ -119,7 +126,7 @@ describe CommentsController do
                          action: 'show',
                          id: comment.commentable.to_param,
                          event_id: comment.commentable.event.to_param,
-                         anchor: "comment_1")
+                         anchor: "comment_#{comment.id}")
     comment.reload
     expect(comment.body).to eq("updated")
   end
@@ -152,7 +159,7 @@ describe CommentsController do
     expect(response).to redirect_to(controller: 'events',
                          action: 'show',
                          id: comment.commentable.to_param,
-                         anchor: "comment_1")
+                         anchor: "comment_#{comment.id}")
     comment.reload
     expect(comment.body).to eq("updated")
   end
