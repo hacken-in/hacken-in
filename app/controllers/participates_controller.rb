@@ -30,7 +30,7 @@ class ParticipatesController < ApplicationController
 
   def handle_signed_in_user(action)
     if action == "push"
-      @single_event.users.push(current_user)
+      @single_event.users.push(current_user) unless @single_event.users.include? current_user
     elsif action == "delete"
       @single_event.users.delete(current_user)
     end
