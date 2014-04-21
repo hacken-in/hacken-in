@@ -3,5 +3,5 @@
     = render partial: "/modules/calendars/day", locals: {day: day}
 
 :javascript
-  var calendarNextDate   = "#{days.last.date + 1.day}";
+  var calendarNextDate   = "#{h(days.last.date + 1.day)}";
   var endOfTheWorld      = false;
