@@ -36,9 +36,9 @@ User.create!([
 ])
 
 Picture.create!([
-  {id: 1, title: "Dog barking at a cloud",  description: "",                          box_image: "dog_barks_at_cloud.jpg"},
-  {id: 2, title: "Loads of cats",           description: "",                          box_image: "loads_of_cats.jpg"},
-  {id: 3, title: "Happy squirrel",          description: "Thats one happy squirrel!", box_image: "happy_squirrel.jpg"},
+  {id: 1, title: "Dog barking at a cloud",  description: "",                          box_image: File.open(Rails.root.join("spec/fixtures/uploads/dog_barks_at_cloud.jpg"))},
+  {id: 2, title: "Loads of cats",           description: "",                          box_image: File.open(Rails.root.join("spec/fixtures/uploads/loads_of_cats.jpg"))},
+  {id: 3, title: "Happy squirrel",          description: "Thats one happy squirrel!", box_image: File.open(Rails.root.join("spec/fixtures/uploads/happy_squirrel.jpg"))},
 ])
 
 Event.create!([
