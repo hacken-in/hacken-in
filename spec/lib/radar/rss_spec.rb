@@ -11,106 +11,29 @@ describe Radar::Rss do
     expect(events.count).to eq(4)
 
     event = events[1]
-    expect(event[:id]).to eq("tag:blogger.com,1999:blog-3022969446495862761.post-1992542315195053831")
-    expect(event[:url]).to eq("http://netzhansa.blogspot.com/2012/08/lparallel-and-how-i-was-thinking-too.html")
-    expect(event[:title]).to eq("lparallel and how I was thinking too complicated")
+    expect(event[:id]).to eq("tag:blogger.com,1999:blog-3022969446495862761.post-3360184680704008728")
+    expect(event[:url]).to eq("http://netzhansa.blogspot.com/2012/12/drakma-documentation-updates.html")
+    expect(event[:title]).to eq("DRAKMA documentation updates")
     expect(event[:description]).to eq((<<EOF
 <p>
-  Yesterday, I posted
-  a <a href="http://netzhansa.blogspot.de/2012/08/using-lparallel-to-utilize-multiple.html">short
-  article</a> that showed how I used lparallel to speed up a lengthy
-  computation by reading input data files in parallel.  A few readers
-  responded, and the response from James M. Lawrence, who is the
-  author of lparallel, is reproduced here because it contains source
-  code that can't be properly formatted in blogspot comments (any
-  suggestions regarding something better?).
+The <a href="http://weitz.de/drakma" target="drakma">DRAKMA documentation</a> has received a big overhaul to bring the docstrings and the HTML documentation in sync again.  I also restructured the large example section in the beginning so that the individual <a href="http://weitz.de/drakma/#examples" target="drakma">examples are indexed</a>.  I also added changed two examples so that they deal with <a href="http://weitz.de/drakma/#ex-binary-data" target="drakma">JSON</a> <a href="http://weitz.de/drakma/#ex-response-stream" target="drakma">data</a> as JSON is so popular nowadays.
 </p>
-<blockquote>
-  [citing James M. Lawrence]<br/>
-  Here is a map-reduce-style version:
-<pre>
-(defun slurp-alist (hash-table alist)
-  (loop
-    :for (key . data) :in alist
-    :do (setf (gethash key hash-table) data))
-  hash-table)
-
-(defun load-files-in-parallel (pathnames)
-  (flet ((parse (pathname)
-           (let ((result nil))
-             (read-and-parse-file
-              pathname
-              (lambda (key data)
-                (push (cons key data) result)))
-             result)))
-    (reduce #'slurp-alist
-            (lparallel:pmap 'vector #'parse pathnames)
-            :initial-value (make-hash-table))))
-</pre>
-  <p>
-    The benefit here is that worker threads do not have to contend for
-    a queue lock. A possible drawback is that the key-data pairs
-    survive until the final reduce, whereas the pairs have a shorter
-    lifetime when passed through a queue. Of course performance will
-    depend upon the scale and shape of the data.
-  </p>
-  <p>
-    Benchmarks with early versions of lparallel showed better
-    performance with a vector-based queue, however since then I found
-    a simple cons-based queue to be generally faster, which is
-    currently the default. There is still a compile-time option to get
-    the vector-based queue, and unless that is enabled the number
-    passed to make-queue is ignored. In other words, the 10000 is a
-    lie :)
-  </p>
-</blockquote>
+<h1>DRAKMA and JSON</h1>
 <p>
-  Motivated by James' reply, I spent some time to find out how the
-  process could be further optimized.  The idea to have the workers
-  cons up the data and then collect all data into the hash table at
-  the end of the operation reduced the run time for my application by
-  some 30%, which is not bad.
+A user suggested that DRAKMA should handle JSON data like text data, i.e. that the content type "application/json" should, by default, be on the <a href="http://weitz.de/drakma/#*text-content-types*" target="drakma">list of text content types</a>.  The issue with that suggestion is that <a href="http://www.ietf.org/rfc/rfc4627.txt" target="rfc4627">JSON data</a> is not following the encoding rules for text content type.  By default, JSON data is encoded in UTF-8.  It is possible to use UTF-16 and UTF-32 by the way of a byte order mark transmitted in the beginning of the file.  For textual content types, the character set is determined by the charset parameter in the Content-Type header, which is not used with "application/json".
 </p>
 <p>
-  A comment from Max Mikhanosha on G+ suggested that I could avoid the
-  queue and directly use a thread safe hash table.  It is a little
-  embarrassing that I assumed that I could not write hash tables from
-  multiple threads.  Both CCL's and SBCL's hash tables provide for
-  thread safe modes, so there is no point in tunneling the data
-  through a queue.
+I have thought about adding a DRAKMA:HTTP-JSON-REQUEST function that would deal with JSON encoding properly, but I think such a function would rather belong into a JSON library than into DRAKMA, so it is left out for now.
+</p>
+<h1>How useful are docstrings, really?</h1>
+<p>
+Getting the docstrings and the documentation into sync again was pretty laborious, and I fear that I have been missing quite a few things that were in one version of the documentation, but not in the other.  So far, Edi and I have used a forward-annotation strategy where the initial version of the documentation was created off the docstrings in the source code, and then manually edited to contain links and other niceties that real documentation deserves.  This, of course, is a pretty bad strategy, as edits must be repeated or the docstrings need to contain some form of markup so that no edits are needed.
 </p>
 <p>
-  As I am using CCL, I tried different values for the :SHARED keyword
-  argument to MAKE-HASH-TABLE.  The default is :LOCK-FREE, which makes
-  hash tables thread safe without requiring the grabbing of a lock for
-  each operation.  Other permitted values are T, which locks the table
-  for each access, or NIL for thread-unsafe hash tables.
+Going forward, I will probably start to generate docstrings from the XML documentation source.  That way, the documentation source can contain links and other, more advanced markup that is not useful in docstrings, and the two representations will not go out of sync.  The docstrings will no longer be inline with the source code, but go into a separate file that is generated as part of the release process.
 </p>
 <p>
-  I found that when writing to the hash table directly from the file
-  readers, :SHARED T would give me the best performance.  With that
-  option, my code ran another 10% faster than with consing up the file
-  results and then processing all the lists at the end.
-</p>
-<p>
-  lparallel is a great example how Common Lisp is an extensible
-  language.  The operators provided by it seamlessly integrate
-  parallel programming into the language, and with the help of my
-  readers, the code that I originally posted now became very small:
-  <pre>(defun load-files-in-parallel (pathnames)
-  (let ((hash-table (make-hash-table :shared t)))
-    (lparallel:pmap nil
-                    (lambda (pathname)
-                      (read-and-parse-file pathname
-                                           (lambda (key data)
-                                             (setf (gethash key hash-table)
-                                                   data))))
-                    pathnames)
-    hash-table))</pre>
-</p>
-<p>
-  Look, Ma!  All I needed was pmap!
-</p>
+Any thoughts?  Use comments or <a href="mailto:hans.huebner@gmail.com" target="_new">send email</a>.
 EOF
                                       ).strip
                                      )
