@@ -23,7 +23,7 @@ gem 'acts-as-taggable-on', '~> 2.4.1'
 gem 'chartkick', '~> 1.2.1'
 
 # Asset template engines
-gem 'sass-rails', '~> 4.0.1'
+gem 'sass-rails', '~> 4.0.2'
 gem 'coffee-script', '~> 2.2.0'
 gem 'leaflet-rails', '~> 0.7.1'
 gem 'uglifier', '~> 2.4.0'
