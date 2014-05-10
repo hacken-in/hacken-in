@@ -65,7 +65,7 @@ class SingleEvent < ActiveRecord::Base
       end
     end
 
-    sevents.uniq.sort
+    sevents.to_a.uniq.sort
   end
 
   def self.list_all(opts)
