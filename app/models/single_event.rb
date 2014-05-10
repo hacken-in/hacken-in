@@ -79,7 +79,7 @@ class SingleEvent < ActiveRecord::Base
   # Return a hash mapping dates to the events occurring on that date in a specific date range
   # Includes days without events
   def self.events_per_day_in(date_range)
-    result = where(occurrence: date_range).group('DATE(occurrence)').reorder("date(occurrence) ASC").count
+    result = where(occurrence: date_range).group('DATE(occurrence)').reorder("DATE(occurrence) ASC").count
     days_with_events = result.keys
     days_without_events = date_range.to_a - days_with_events
 
