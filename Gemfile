@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.0.3'
+gem 'rails', '~> 4.0.5'
 gem 'rake', '~> 10.1.1'
 
 gem 'thin', '~> 1.6.1'
@@ -26,7 +26,7 @@ gem 'chartkick', '~> 1.2.1'
 gem 'momentjs-rails', '~> 2.4.0'
 
 # Assets
-gem 'sass-rails', '~> 4.0.1'
+gem 'sass-rails', '~> 4.0.3'
 gem 'coffee-script', '~> 2.2.0'
 gem 'leaflet-rails', '~> 0.7.1'
 gem 'uglifier', '~> 2.4.0'
