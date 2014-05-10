@@ -37,11 +37,6 @@ If you want to work on the Project, follow the steps described here:
 1. To run your application locally you can now use `rails server`
 1. Now visit http://localhost:3000 in your webbrowser and you are ready to go!
 
-If you want to add Events to your local page, you need an administrator:
-
-1. Run `rake setup:admin`
-1. Now you can log in with your new administrator ;)
-
 ## Booting up the Vagrant VM
 
 Hacken.in can also be started in a virtual machine with Vagrant. This might be the perfect fit if you cannot or don't want to install 
