@@ -22,10 +22,9 @@ describe TwitterListUpdater do
   end
 
   it "should return a hash with all twitter nicks + region_ids" do
-    expect(TwitterListUpdater.new.twitter_by_region).to eq({
-      2 => ["another_example"],
-      3 => ["bitboxer", "hacken_in"]
-    })
+    region_hash = TwitterListUpdater.new.twitter_by_region
+    expect(region_hash[@koeln_region.id]).to eq(["another_example"])
+    expect(region_hash[@event.region.id]).to contain_exactly("bitboxer", "hacken_in")
   end
 
   it "should find a list to add members to" do

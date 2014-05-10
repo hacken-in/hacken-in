@@ -55,7 +55,7 @@ describe Event do
     expect(event.tag_list).to eq(["ruby", "rails", "jquery"])
     event.save
     event.reload
-    expect(event.tags.map {|e| e.name}).to eq(["ruby", "rails", "jquery"])
+    expect(event.tags.map {|e| e.name}).to eq(["jquery", "rails", "ruby"])
   end
 
   it "should generate single events for a new event" do

@@ -1,5 +1,9 @@
 FactoryGirl.define do
 
+  factory :comment do
+    body "single event comment"
+  end
+
   factory :single_event_comment, class: Comment do
     body "single event comment"
     commentable_type "SingleEvent"

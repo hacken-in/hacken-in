@@ -1,5 +1,5 @@
 class RadarSetting < ActiveRecord::Base
-  has_many :entries, class_name: "RadarEntry", :dependent => :destroy
+  has_many :entries, -> { order(:entry_date) }, class_name: 'RadarEntry', dependent: :destroy
   belongs_to :event
 
   def fetch

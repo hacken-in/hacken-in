@@ -30,7 +30,7 @@ If you want to work on the Project, follow the steps described here:
 1. Check out your fork
 1. `cd` into the directory, install the bundler gem and run `bundle install`
 1. Now create a database config: `cp config/database.yml_example config/database.yml`
-  * The example config requires MySQL including a database and a user
+  * The example config requires PostgreSQL including a database and a user
   * [More information](http://guides.rubyonrails.org/getting_started.html#configuring-a-database) on the database config
 1. Create the Devise & Omniauth configuration `cp config/initializers/devise.rb_example config/initializers/devise.rb` and edit the keys
 1. Now run `rake db:migrate` to setup your database

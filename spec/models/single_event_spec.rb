@@ -201,7 +201,7 @@ LOCATION:Deutz-Mülheimerstraße 129\\, 51063 Köln
 SEQUENCE:0
 SUMMARY:SimpleEvent (SimpleSingleEventName)
 UID:uid
-URL:http://hacken.dev/events/1/dates/1
+URL:http://hacken.dev/events/#{single_event.event.id}/dates/#{single_event.id}
 END:VEVENT
 ical
     event = single_event.to_ical_event
