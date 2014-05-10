@@ -33,7 +33,7 @@ If you want to work on the Project, follow the steps described here:
   * The example config requires PostgreSQL including a database and a user
   * [More information](http://guides.rubyonrails.org/getting_started.html#configuring-a-database) on the database config
 1. Create the Devise & Omniauth configuration `cp config/initializers/devise.rb_example config/initializers/devise.rb` and edit the keys
-1. Now run `rake db:migrate` to setup your database
+1. Now run `rake db:migrate db:seed` to setup your database. You will now have an admin user `admin@hacken.local` with the password `hacken_admin`
 1. To run your application locally you can now use `rails server`
 1. Now visit http://localhost:3000 in your webbrowser and you are ready to go!
 
