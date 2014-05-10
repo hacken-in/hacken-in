@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140301193843) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "authorizations", force: true do |t|
     t.string   "provider"
     t.string   "uid"
@@ -49,16 +52,15 @@ ActiveRecord::Schema.define(version: 20140301193843) do
   create_table "event_curations", force: true do |t|
     t.integer  "user_id"
     t.integer  "event_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "event_curations", ["event_id"], name: "index_events_users_on_event_id", using: :btree
-  add_index "event_curations", ["user_id"], name: "index_events_users_on_user_id", using: :btree
+  add_index "event_curations", ["event_id"], name: "index_event_curations_on_event_id", using: :btree
+  add_index "event_curations", ["user_id"], name: "index_event_curations_on_user_id", using: :btree
 
   create_table "events", force: true do |t|
     t.string   "name"
-    t.integer  "region_id"
     t.text     "description"
     t.text     "schedule_yaml"
     t.string   "url"
@@ -71,6 +73,7 @@ ActiveRecord::Schema.define(version: 20140301193843) do
     t.integer  "venue_id"
     t.string   "venue_info"
     t.integer  "picture_id"
+    t.integer  "region_id"
   end
 
   add_index "events", ["category_id"], name: "index_events_on_category_id", using: :btree
@@ -107,12 +110,12 @@ ActiveRecord::Schema.define(version: 20140301193843) do
   create_table "region_organizers", force: true do |t|
     t.integer  "region_id"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "region_organizers", ["region_id"], name: "index_regions_users_on_region_id", using: :btree
-  add_index "region_organizers", ["user_id"], name: "index_regions_users_on_user_id", using: :btree
+  add_index "region_organizers", ["region_id"], name: "index_region_organizers_on_region_id", using: :btree
+  add_index "region_organizers", ["user_id"], name: "index_region_organizers_on_user_id", using: :btree
 
   create_table "regions", force: true do |t|
     t.string   "name"
@@ -120,8 +123,8 @@ ActiveRecord::Schema.define(version: 20140301193843) do
     t.float    "latitude"
     t.float    "longitude"
     t.float    "perimeter",  default: 20.0
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "regions", ["slug"], name: "index_regions_on_slug", using: :btree
@@ -129,10 +132,10 @@ ActiveRecord::Schema.define(version: 20140301193843) do
   create_table "single_event_external_users", force: true do |t|
     t.integer  "single_event_id"
     t.string   "email"
-    t.string   "session_token"
     t.string   "name"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "session_token"
   end
 
   add_index "single_event_external_users", ["single_event_id"], name: "index_single_event_external_users_on_single_event_id", using: :btree
@@ -214,7 +217,6 @@ ActiveRecord::Schema.define(version: 20140301193843) do
     t.datetime "updated_at"
     t.boolean  "admin",                  default: false
     t.string   "nickname",               default: "",    null: false
-    t.integer  "current_region_id",      default: 2
     t.text     "description"
     t.string   "github"
     t.string   "twitter"
@@ -225,6 +227,7 @@ ActiveRecord::Schema.define(version: 20140301193843) do
     t.string   "image_url"
     t.string   "team"
     t.string   "name"
+    t.integer  "current_region_id",      default: 2
     t.string   "gravatar_email"
   end
 
@@ -234,7 +237,6 @@ ActiveRecord::Schema.define(version: 20140301193843) do
 
   create_table "venues", force: true do |t|
     t.string   "location"
-    t.integer  "region_id",  default: 2
     t.string   "street"
     t.string   "zipcode"
     t.string   "city"
@@ -244,6 +246,7 @@ ActiveRecord::Schema.define(version: 20140301193843) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.string   "url"
+    t.integer  "region_id",  default: 2
   end
 
   add_index "venues", ["latitude", "longitude"], name: "index_venues_on_latitude_and_longitude", using: :btree
