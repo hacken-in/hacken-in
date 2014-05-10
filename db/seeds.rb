@@ -1,11 +1,5 @@
 # encoding: UTF-8
-RadarSetting.create!([
-  {event_id: 1, url: "http://cats.example.com/Cats.js",                   radar_type: "Meetup", last_processed: "2014-02-20 09:37:15", last_result:   "OK"},
-  {event_id: 2, url: "http://squirrels.example.com/nuts/default?alt=rss", radar_type: "Rss",    last_processed: "2014-03-07 05:46:42", last_result:   "OK"},
-  {event_id: 3, url: "http://dogs.example.com/dogsonrails.ics",           radar_type: "Ical",   last_processed: "2014-03-12 01:20:23", last_result: "undefined method `force_encoding' for nil:NilClass"}
-])
-
-Region.create!([
+Region.create([
   {id: 1, name: "Global",  slug: "global",   latitude: nil,     longitude: nil,     perimeter:   nil},
   {id: 2, name: "Köln",    slug: "koeln",    latitude: 50.946,  longitude: 6.95889, perimeter:   20.0},
   {id: 3, name: "Berlin",  slug: "berlin",   latitude: 52.5186, longitude: 13.4081, perimeter:   20.0},
@@ -55,6 +49,14 @@ SingleEvent.create!([
   {id: 102, name: "Herding Cats",                                 description: "* Mauzi Mayer: Food as Code\r\n* Mucky Bude: Using the Whiskas REPL for debugging your bowl", event_id: 3, occurrence: Time.now.to_s, url: "", duration: nil, full_day: false, twitter_hashtag: "", based_on_rule: true, category_id: nil, venue_id: 69, venue_info: nil, picture_id: nil, twitter: nil, use_venue_info_of_event: true, region_id: nil},
   {id: 103, name: "Pitfalls and oppurtunities of peanut butter",  description: "", event_id: 2, occurrence: Time.now.to_s, url: "", duration: nil, full_day: false, twitter_hashtag: "#nuts", based_on_rule: true, category_id: nil, venue_id: nil, venue_info: nil, picture_id: nil, twitter: nil, use_venue_info_of_event: true, region_id: nil},
   {id: 104, name: "The lean flock",                               description: "Keeping your herd agile.", event_id: 4, occurrence: Time.now.to_s, url: "", duration: nil, full_day: false, twitter_hashtag: "", based_on_rule: true, category_id: nil, venue_id: nil, venue_info: nil, picture_id: nil, twitter: nil, use_venue_info_of_event: true, region_id: nil}
+])
+
+RadarSetting.create!([
+  {id: 1, event_id: 1, url: "http://gassigehen.example.com/gassi.rss", radar_type: "Rss", last_processed: "2014-03-07 05:46:42", last_result: "OK"}
+])
+
+RadarEntry.create!([
+  {id: 1, radar_setting_id: 1, entry_date: DateTime.now + 1.week, state: "UNCONFIRMED", content: {url: "http://gassigehen.example.com/meetup", title: "Meetup", description: "Awesome Event!", duration: 60}, entry_type: "NEW"}
 ])
 
 Venue.create!([
