@@ -99,6 +99,10 @@ group :development do
   # Manage locales, see http://www.localeapp.com/projects/5442
   gem 'localeapp'
 
+  # Local VM
+  gem 'librarian-puppet', '~> 1.0.1'
+  gem 'puppet', '~> 3.4.3'
+
   # Deployment
   gem 'capistrano', '~> 2.13.0'
 

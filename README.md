@@ -42,6 +42,31 @@ If you want to add Events to your local page, you need an administrator:
 1. Run `rake setup:admin`
 1. Now you can log in with your new administrator ;)
 
+## Booting up the Vagrant VM
+
+Hacken.in can also be started in a virtual machine with Vagrant. This might be the perfect fit if you cannot or don't want to install 
+PostgreSQL or MySQL on your computer. To get started with Vagrant, install the latest version of [Vagrant](http://www.vagrantup.com) and
+[VirtualBox](https://www.virtualbox.org), and check out your fork of the project (see *Getting Started*).
+
+In your working copy, run our bootstrap task, to install all required puppet modules (you only have to do this once):
+
+```bash
+$ bundle exec rake setup:vagrant
+```
+
+To start up the VM, type:
+
+```bash
+$ vagrant up
+```
+
+If the Vagrant exits successfully, you can access your local machine under the URL [hacken.local](http://hacken.local). All the files you
+change in your local folder are synced to the virtual machines, so you can work on hacken.in right away. :wrench:
+
+![hacken.local](https://i.imgur.com/rGh0pwE.png)
+
+If you're experiencing problems do not hesitate to contact us or - even better - file an issue.
+
 ### Communication
 
 You can reach us on lots of ways. The most prefered one would be either to open an issue here or to use our [Google Group](http://groups.google.com/group/hacken-in). 
