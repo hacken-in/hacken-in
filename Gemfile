@@ -15,7 +15,7 @@ gem 'pg', '~> 0.17.1'
 #
 #  https://github.com/mperham/dalli/issues/229
 #
-gem 'dalli', '~> 1.1.5'
+gem 'dalli', '~> 2.7.1'
 
 # Tags
 gem 'acts-as-taggable-on', '~> 2.4.1'

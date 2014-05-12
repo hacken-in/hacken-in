@@ -34,8 +34,8 @@ Hcking::Application.configure do
   # Use a different logger for distributed setups
   # config.logger = SyslogLogger.new
 
-  # Use a different cache store in production
-  config.cache_store = :dalli_store, '/home/hacken/memcached.sock'
+  # Shellycloud will inject MEMCACHE_SERVERS and Dalli will pick it up
+  config.cache_store = :dalli_store, nil, { :namespace => 'hcking', :compress => true }
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
