@@ -1,0 +1,12 @@
+# Codeship will inject the environment variables for us.
+test:
+  adapter: postgresql
+  host: localhost
+  encoding: unicode
+  pool: 10
+  username: <%= ENV['PG_USER'] %>
+  template: template1
+  password: <%= ENV['PG_PASSWORD'] %>
+  database: hcking_test
+  port: 5432
+  sslmode: disable
