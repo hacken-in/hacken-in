@@ -8,8 +8,15 @@ development:
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
+# Codeship will inject the environment variables for us.
 test:
   adapter: postgresql
-  database: hcking_test
-  username: travis
-  encoding: utf8
+  host: localhost
+  encoding: unicode
+  pool: 10
+  username: <%= ENV['PG_USER'] %>
+  template: template1
+  password: <%= ENV['PG_PASSWORD'] %>
+  database: hcking
+  port: 5432
+  sslmode: disable
