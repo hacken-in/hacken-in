@@ -41,7 +41,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     puppet.manifests_path = 'puppet/manifests'
 		puppet.facter = {
       'hackenin_application_environment' => 'development',
-      'hackenin_ruby_version'            => '2.0.0-p353'
+      'hackenin_ruby_version'            => '2.0.0-p451'
     }
   end
 
