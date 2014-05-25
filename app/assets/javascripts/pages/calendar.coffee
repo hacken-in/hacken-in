@@ -6,9 +6,12 @@ jQuery ->
       if $(window).scrollTop() > $(document).height() - $(window).height() - 300
         window.calendar.loadNextEntries()
 
-    scrollable = (selector) ->
-      divPos = 0
-      isDragging = false
+    scrollable = (selector, callback) ->
+      divPos       = 0
+      isDragging   = false
+      wasDragging  = false
+      mouseClicked = false
+      clickedElement  = null
       lastPosition =
         x: 0
         y: 0
@@ -23,12 +26,16 @@ jQuery ->
         $(selector + " ul").css "left", divPos + "px"
 
       startDrag = (event) ->
-        isDragging = true
+        wasDragging  = false
+        isDragging   = true
+        mouseClicked = true
         lastPosition.x = event.clientX
         lastPosition.y = event.clientY
+        clickedElement = event.target
 
       dragging = (event) ->
         if isDragging
+          wasDragging = true
           deltaX = event.clientX - lastPosition.x
           moveDiv deltaX
           lastPosition.x = event.clientX
@@ -36,6 +43,9 @@ jQuery ->
 
       stopDrag = ->
         isDragging = false
+        if !wasDragging && mouseClicked
+          callback(clickedElement)
+        mouseClicked = false
 
       $(selector).bind "mousewheel DOMMouseScroll", (e) ->
         e0 = e.originalEvent
@@ -60,6 +70,10 @@ jQuery ->
         dragging event.originalEvent.touches.item(0)
         event.originalEvent.preventDefault()
 
+    scrollable ".calendar-startselector nav.months", (element) ->
+      console.log "clicked on month!"
+      console.log element
 
-    scrollable ".calendar-startselector nav.months"
-    scrollable ".calendar-startselector nav.days"
+    scrollable ".calendar-startselector nav.days", (element) ->
+      date = $(element).parent().attr("data-date")
+      window.calendar.scrollToDate(moment(date).toDate())

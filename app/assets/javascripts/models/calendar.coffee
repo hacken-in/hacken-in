@@ -3,6 +3,7 @@ class @Calendar
   constructor: ->
     @endOfTheWorld = false
     @calendarNextDate = new Date()
+    @calendarFirstDate = null
     @currentlyReloading = false
     @updateLastDate($(".calendar-days"))
 
@@ -14,6 +15,28 @@ class @Calendar
       $(dates).each (i, day) =>
         date = moment($(day).attr("data-date")).add("days", 1).toDate()
         @calendarNextDate = date if date > @calendarNextDate
+        @calendarFirstDate = date if @calendarFirstDate? || date < @calendarFirstDate
+
+  scrollToDate: (date) ->
+    if date > @calendarFirstDate || date < @calendarNextDate
+      lastElement = null
+      parsedDate = moment(date).toDate()
+      $(".calendar-days *[data-date]").each (i, element) ->
+        curDate = moment($(element).attr("data-date")).toDate()
+        if lastElement? && curDate > parsedDate
+          lastElement.scrollIntoView()
+          return false
+
+        lastElement = element
+    else
+      @resetCalendar(date)
+
+  resetCalendar: (date) ->
+    return if @currentlyReloading
+    @calendarFirstDate = date
+    @calendarNextDate = date
+    $(".calendar-days").empty()
+    @loadNextEntries()
 
   loadNextEntries: ->
     return if @currentlyReloading || @endOfTheWorld
