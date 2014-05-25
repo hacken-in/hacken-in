@@ -1,19 +1,30 @@
 class @Calendar
 
-  # Lade die Einträge und hänge sie an die Liste UNTEN dran
-  # calendarScrollFrom und calendarScrollTo werden von dem nachgeladenen Content gesetzt
-  appendEntries: ->
-    @getEntries calendarNextDate, (data) ->
-      $(".calendars_show .spinner").hide()
-      $('.calendar-days').append(data)
-      window.currentlyReloading = false
+  constructor: ->
+    @endOfTheWorld = false
+    @calendarNextDate = new Date()
+    @currentlyReloading = false
+    @updateLastDate($(".calendar-days"))
 
-  # Hier werden die Einträge geladen und der Kalender wird komplett ersetzt
-  #
-  # Die Zeiten sind der Anfang des Kalenders (heute oder explizites Anfangsdatum) bis zum letzten sichtbaren Tag
-  replaceEntries: ->
-    @getEntries beginningOfTime, calendarScrollFrom, (data) ->
-      $('.calendar-calendar').html(data)
+  updateLastDate: (element) ->
+    dates = $(element).find("[data-date]")
+    if dates.length == 0
+      @endOfTheWorld = true
+    else
+      $(dates).each (i, day) =>
+        date = moment($(day).attr("data-date")).add("days", 1).toDate()
+        @calendarNextDate = date if date > @calendarNextDate
+
+  loadNextEntries: ->
+    return if @currentlyReloading || @endOfTheWorld
+    @currentlyReloading = true
+    $(".calendars_show .spinner").show()
+    @getEntries @calendarNextDate, (data) =>
+      node = $.parseHTML(data)
+      @updateLastDate(node)
+      $('.calendar-days').append($(data).children())
+      $(".calendars_show .spinner").hide()
+      @currentlyReloading = false
 
   # Interne Funktion für den AJAX Call ;)
   getEntries: (from, callback) ->
@@ -21,7 +32,7 @@ class @Calendar
       type: 'GET'
       url: '/api/calendar/'
       data:
-        start: from
+        start: moment(from).format("YYYY-MM-DD")
         region: regionSlug
       success: (data) ->
         callback(data)

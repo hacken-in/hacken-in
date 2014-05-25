@@ -3,11 +3,8 @@ jQuery ->
     window.calendar = new Calendar()
 
     $(window).scroll ->
-
-      if $(window).scrollTop() > $(document).height() - $(window).height() - 300 and not window.currentlyReloading and not window.endOfTheWorld
-        window.currentlyReloading = true
-        window.calendar.appendEntries()
-        $(".calendars_show .spinner").show()
+      if $(window).scrollTop() > $(document).height() - $(window).height() - 300
+        window.calendar.loadNextEntries()
 
     scrollable = (selector) ->
       divPos = 0
