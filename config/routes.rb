@@ -16,8 +16,9 @@ Hcking::Application.routes.draw do
   end
 
   namespace :api do
-    resource :calendar, only: [:show] do
+    resource :calendar, only: [] do
       get :entries
+      get :selector
     end
 
     match "markdown_converter" => "markdown_converter#convert", via: [:get, :post]

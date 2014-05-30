@@ -15,10 +15,11 @@ class @Calendar
       $(dates).each (i, day) =>
         date = moment($(day).attr("data-date")).add("days", 1).toDate()
         @calendarNextDate = date if date > @calendarNextDate
-        @calendarFirstDate = date if @calendarFirstDate? || date < @calendarFirstDate
+        @calendarFirstDate = date if @calendarFirstDate == null || date < @calendarFirstDate
 
-  scrollToDate: (date) ->
-    if date > @calendarFirstDate || date < @calendarNextDate
+  scrollToDate: (date, forceReset) ->
+    forceReset = false if forceReset == null || forceReset == undefined
+    if !forceReset && (date >= @calendarFirstDate && date < @calendarNextDate)
       lastElement = null
       parsedDate = moment(date).toDate()
       $(".calendar-days *[data-date]").each (i, element) ->
@@ -33,6 +34,7 @@ class @Calendar
 
   resetCalendar: (date) ->
     return if @currentlyReloading
+    @endOfTheWorld = false
     @calendarFirstDate = date
     @calendarNextDate = date
     $(".calendar-days").empty()
@@ -53,9 +55,20 @@ class @Calendar
   getEntries: (from, callback) ->
     $.ajax
       type: 'GET'
-      url: '/api/calendar/'
+      url: '/api/calendar/entries'
       data:
         start: moment(from).format("YYYY-MM-DD")
         region: regionSlug
       success: (data) ->
         callback(data)
+
+  updateDaySelector: (start_date, callback) ->
+    $.ajax
+      type: 'GET'
+      url: '/api/calendar/selector'
+      data:
+        start: moment(start_date).format("YYYY-MM-DD")
+      success: (data) ->
+        $(".calendar-startselector nav.days").replaceWith(data)
+        callback()
+

@@ -47,14 +47,14 @@ jQuery ->
           callback(clickedElement)
         mouseClicked = false
 
-      $(selector).bind "mousewheel DOMMouseScroll", (e) ->
+      $(selector).on "mousewheel DOMMouseScroll", (e) ->
         e0 = e.originalEvent
         deltaX = e0.wheelDeltaX or -e0.detail
         deltaY = e0.wheelDeltaY or -e0.detail
         moveDiv deltaX / 2
         e.preventDefault()
 
-      $(selector).bind "selectstart", (evt) ->
+      $(selector).on "selectstart", (evt) ->
         evt.preventDefault()
         false
 
@@ -70,10 +70,29 @@ jQuery ->
         dragging event.originalEvent.touches.item(0)
         event.originalEvent.preventDefault()
 
-    scrollable ".calendar-startselector nav.months", (element) ->
-      console.log "clicked on month!"
-      console.log element
+      itemWidth = $("li", selector).outerWidth(true)
+      $("ul", selector).css("width", (itemWidth * $("li", selector).length) + "px")
 
-    scrollable ".calendar-startselector nav.days", (element) ->
-      date = $(element).parent().attr("data-date")
-      window.calendar.scrollToDate(moment(date).toDate())
+    initScrollableMonths = ->
+      scrollable ".calendar-startselector nav.months", (element) ->
+        date = $(element).attr("data-date")
+        if date
+          $(".calendar-startselector nav.months .active").removeClass("active")
+          $(element).addClass("active")
+          selectedDate = moment(date).toDate()
+          window.calendar.updateDaySelector(
+            selectedDate,
+            -> initScrollableDays()
+          )
+          window.calendar.scrollToDate(selectedDate, true)
+
+    initScrollableDays = ->
+      scrollable ".calendar-startselector nav.days", (element) ->
+        date = $(element).parent().attr("data-date")
+        if date
+          $(".calendar-startselector nav.days .active").removeClass("active")
+          $(element).parent().addClass("active")
+          window.calendar.scrollToDate(moment(date).toDate())
+
+    initScrollableMonths()
+    initScrollableDays()

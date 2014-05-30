@@ -1,6 +1,10 @@
 .calendar-startselector
   %nav.months
-    %ul= render start_selector.months
+    %ul
+      - start_selector.months.each do |month|
+        = render partial: "/modules/calendars/start_selector/month", locals: {month: month}
 
   %nav.days
-    %ul= render start_selector.days
+    %ul
+      - start_selector.days.each do |day|
+        = render partial: "/modules/calendars/start_selector/day", locals: {day: day}

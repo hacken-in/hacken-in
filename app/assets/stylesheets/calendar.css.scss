@@ -32,6 +32,10 @@
     background: $secondary-color;
     @include calendar-selector(20px, 40px, 20);
     height: 30px;
+
+    .today {
+      font-weight: bold
+    }
   }
 
   .days {
@@ -39,6 +43,12 @@
     border-bottom: 1px solid #a0a0a0;
     @include calendar-selector(20px, 60px, 20);
     height: 106px;
+
+    li.today {
+      .weekday, .day {
+        font-weight: bold !important;
+      }
+    }
 
     li {
       .weekday {
@@ -50,6 +60,7 @@
         font-size: $h1-font-size;
         font-weight: 300;
       }
+
     }
   }
 }
