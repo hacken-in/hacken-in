@@ -16,7 +16,7 @@ Hcking::Application.routes.draw do
   end
 
   namespace :api do
-    resource :calendar, only: [] do
+    resource :calendar, only: :none do
       get :entries
       get :selector
     end
