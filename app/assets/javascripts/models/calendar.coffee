@@ -1,7 +1,7 @@
 class @Calendar
 
   constructor: ->
-    @endOfTheWorld = false
+    @endOfThePage = false
     @calendarNextDate = new Date()
     @calendarFirstDate = null
     @currentlyReloading = false
@@ -10,7 +10,7 @@ class @Calendar
   updateLastDate: (element) ->
     dates = $(element).find("[data-date]")
     if dates.length == 0
-      @endOfTheWorld = true
+      @endOfThePage = true
     else
       $(dates).each (i, day) =>
         date = moment($(day).attr("data-date")).add("days", 1).toDate()
@@ -34,14 +34,14 @@ class @Calendar
 
   resetCalendar: (date) ->
     return if @currentlyReloading
-    @endOfTheWorld = false
+    @endOfThePage = false
     @calendarFirstDate = date
     @calendarNextDate = date
     $(".calendar-days").empty()
     @loadNextEntries()
 
   loadNextEntries: ->
-    return if @currentlyReloading || @endOfTheWorld
+    return if @currentlyReloading || @endOfThePage
     @currentlyReloading = true
     $(".calendars_show .spinner").show()
     @getEntries @calendarNextDate, (data) =>
