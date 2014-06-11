@@ -1,7 +1,6 @@
 - content_for :title do
-  Suche
+  = t('search.title')
 
-%h1 Suche
+%h1= t('search.title')
 
-- #TODO: Adjust
-%strong Has to be adjusted to new Calendar system and Foundation
+= render partial: "modules/calendars/entry", collection: @search_result.entries
