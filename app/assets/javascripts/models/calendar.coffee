@@ -51,7 +51,6 @@ class @Calendar
       $(".calendars_show .spinner").hide()
       @currentlyReloading = false
 
-  # Interne Funktion für den AJAX Call ;)
   getEntries: (from, callback) ->
     $.ajax
       type: 'GET'
