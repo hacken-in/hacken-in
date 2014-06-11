@@ -10,25 +10,35 @@ section.main {
 aside.sidebar {
   @media #{$small-only} {
     @include off-canvas-menu(left);
+
+    h3 {
+      color: $topbar-link-color;
+    }
+
+    input[type=submit] {
+      background-color: $alert-color;
+      color: white;
+      font-weight: bold;
+    }
+
+    hr {
+      background-color: $sidebar-divider-color;
+      height: 20px;
+      border-width: 0px;
+    }
   }
+
   @media #{$medium-up} {
     @include grid-column(2);
-    background-color: $off-canvas-bg;
-  }
+    background-color: $secondary-color;
 
-  h3 {
-    color: $topbar-link-color;
-  }
-
-  input[type=submit] {
-    background-color: $alert-color;
-    color: white;
-    font-weight: bold;
-  }
-
-  hr {
-    background-color: $sidebar-divider-color;
-    height: 20px;
-    border-width: 0px;
+    ul.off-canvas-list {
+      li {
+        a {
+          @include grid-row(12);
+          @include button;
+        }
+      }
+    }
   }
 }
