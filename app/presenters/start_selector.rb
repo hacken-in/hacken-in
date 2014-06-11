@@ -1,6 +1,6 @@
 class StartSelector
   NUMBER_OF_MONTHS = 20
-  NUMBER_OF_DAYS = 20
+  NUMBER_OF_DAYS = 31
 
   def initialize(start_date)
     @start_date = start_date

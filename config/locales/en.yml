@@ -160,9 +160,9 @@ en:
     - Saturday
     formats:
       default: Y-%m-%d
-      long: "%B %d, %Y"
-      only_day: "%e"
-      short: "%b %d"
+      long: '%B %d, %Y'
+      only_day: '%e'
+      short: '%b %d'
     month_names:
     - 
     - January
@@ -207,16 +207,16 @@ en:
         other: more than %{count} years
       x_days:
         one: one day
-        other: "%{count} days"
+        other: '%{count} days'
       x_minutes:
         one: one minute
-        other: "%{count} minutes"
+        other: '%{count} minutes'
       x_months:
         one: one month
-        other: "%{count} months"
+        other: '%{count} months'
       x_seconds:
         one: one second
-        other: "%{count} seconds"
+        other: '%{count} seconds'
     prompts:
       day: Day
       hour: Hours
@@ -239,12 +239,12 @@ en:
       not_locked: was not locked
       not_saved:
         one: '1 error prohibited this %{resource} from being saved:'
-        other: "%{count} errors prohibited this %{resource} from being saved:"
+        other: '%{count} errors prohibited this %{resource} from being saved:'
     template:
       body: 'Please check the following fields:'
       header:
-        one: "%{model} could not be saved: one error."
-        other: "%{model} could not be saved: %{count} error."
+        one: '%{model} could not be saved: one error.'
+        other: '%{model} could not be saved: %{count} error.'
   events:
     create:
       confirmation: Event series created.
@@ -276,21 +276,21 @@ en:
   number:
     currency:
       format:
-        delimiter: ","
-        format: "%u%n"
+        delimiter: ','
+        format: '%u%n'
         precision: 2
-        separator: "."
-        unit: "€"
+        separator: .
+        unit: €
     format:
-      delimiter: ","
+      delimiter: ','
       precision: 2
-      separator: "."
+      separator: .
     human:
       format:
         delimiter: 
         precision: 3
       storage_units:
-        format: "%n %u"
+        format: '%n %u'
         units:
           byte:
             one: Byte
@@ -314,7 +314,7 @@ en:
       delete_profile_text: You want to delete your account?
       edit_profile: edit Account
       gravatar: Profile picture
-      password_hint: "(leave empty, if no new password is required)"
+      password_hint: (leave empty, if no new password is required)
       password_label: change password
       profile: Profile informations
       save_profile: save
@@ -335,7 +335,7 @@ en:
       default_message: 'Please review the problems below:'
     'no': 'No'
     required:
-      mark: "*"
+      mark: '*'
       text: required
     'yes': 'Yes'
   single_events:
@@ -376,17 +376,17 @@ en:
     array:
       last_word_connector: and
       two_words_connector: and
-      words_connector: ", "
+      words_connector: ', '
     select:
       prompt: 'Please choose:'
   time:
     am: morning
     formats:
-      default: "%a, %d %b %Y %H:%M:%S %z"
-      long: "%B %d, %Y %H:%M"
-      long_without_time: "%B %d, %Y"
-      short: "%d %b %H:%M"
-      time: "%H:%M"
+      default: '%a, %d %b %Y %H:%M:%S %z'
+      long: '%B %d, %Y %H:%M'
+      long_without_time: '%B %d, %Y'
+      short: '%d %b %H:%M'
+      time: '%H:%M'
     pm: afternoon
   user_tags:
     create:
@@ -412,15 +412,15 @@ en:
     logged_in_user: Logged in user
   views:
     pagination:
-      first: "&lt;&lt;"
-      last: "&gt;&gt;"
-      next: "&gt;"
-      previous: "&lt;"
-      truncate: "..."
+      first: '&lt;&lt;'
+      last: '&gt;&gt;'
+      next: '&gt;'
+      previous: '&lt;'
+      truncate: '...'
   will_paginate:
     next_label: Next &#8594;
-    page_gap: "&hellip;"
-    previous_label: "&#8592; Back"
+    page_gap: '&hellip;'
+    previous_label: '&#8592; Back'
   calendars:
     add_this_to_my_calendar: In my calendar
     singular: Calendar

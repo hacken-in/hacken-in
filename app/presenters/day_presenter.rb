@@ -19,7 +19,8 @@ class DayPresenter
   def css_class
     [
       (active ? "active" : false),
-      (has_events ? "has_events" : false)
+      (has_events ? "has_events" : false),
+      (date == Date.today ? "today" : false)
     ]
   end
 

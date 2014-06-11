@@ -1,5 +1,12 @@
 - content_for :title do
   = t('.title')
 
+:javascript
+  var regionSlug         = '#{current_region.slug}';
+
 = render @start_selector
-= render @calendar.days
+
+= render partial: "modules/calendars/days", locals: {days: @calendar.days}
+
+.calendar-loading
+  = render "modules/common/spinner"

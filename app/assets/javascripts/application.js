@@ -23,7 +23,10 @@
 //= require foundation/foundation.topbar
 //= require prism
 //= require leaflet
+//= require moment
 
+//= require models/calendar
 //= require pages/welcome
+//= require pages/calendar
 
 $(function(){ $(document).foundation(); });
