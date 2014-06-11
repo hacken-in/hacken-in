@@ -26,6 +26,7 @@ jQuery ->
         $(selector + " ul").css "left", divPos + "px"
 
       startDrag = (event) ->
+        window.getSelection().removeAllRanges()
         wasDragging  = false
         isDragging   = true
         mouseClicked = true
