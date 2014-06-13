@@ -32,6 +32,14 @@ aside.sidebar {
     @include grid-column(2);
     background-color: $secondary-color;
 
+    input[type=checkbox] {
+      display: inline;
+    }
+
+    label {
+      margin: 0px;
+    }
+
     ul.off-canvas-list {
       li {
         a {

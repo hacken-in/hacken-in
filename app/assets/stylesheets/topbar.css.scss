@@ -1,4 +1,9 @@
 nav.top-bar {
+
+  .name {
+    margin-left: 4px;
+  }
+
   li.search_form {
     @include grid-row($behavior: collapse);
   }
@@ -7,6 +12,8 @@ nav.top-bar {
     @include grid-column($columns: 8, $collapse: true);
 
     input {
+      line-height: 18px;
+      border: none;
       font-size: 0.575rem;
     }
   }
@@ -15,6 +22,7 @@ nav.top-bar {
     @include grid-column($columns: 4, $collapse: true);
 
     a.button {
+      line-height: 16px;
       padding-left: 12px;
       padding-right: 12px;
       font-size: 0.575rem;
