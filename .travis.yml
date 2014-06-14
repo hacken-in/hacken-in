@@ -6,9 +6,7 @@ matrix:
   allow_failures:
     - rvm: ruby-head
 notifications:
-  webhooks:
-    urls:
-      - https://webhooks.gitter.im/e/321b362d8ef976c4b71d
+  slack: hacken-in:v0VPwCbdNxNY7oVfJGsFLAJS
 bundler_args: --without development
 before_script:
   - psql -c 'create database hcking_test;' -U postgres
