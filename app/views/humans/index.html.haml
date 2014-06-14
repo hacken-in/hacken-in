@@ -1,6 +1,9 @@
 - content_for :title do
   Über
 
+%h3
+  Was ist hacken.in?
+
 :markdown
   [hacken.in](http://hacken.in) listet Events der Hacker-Community. Es ist ein Projekt von Hackern
   für Hacker, also open source, non-profit, werbefrei und kostenlos. Wer
@@ -10,38 +13,56 @@
 
   <a class="FlattrButton" style="display:none;" title="hacken.in" data-flattr-button="compact" data-flattr-uid="bodo.tasche" data-flattr-tags="events, calendar, hacking, hackers" data-flattr-category="text" href="http://hacken.in"></a>
 
-  Mit dem Feature "Klick dir deinen Kalender" kann ein individualisierter
-  Kalender erstellt werden, der jederzeit modifiziert und als iCal exportiert
-  werden kann.  Über das Vorschlagenformular kann jederzeit ein neuer Termin
-  eingereicht werden.
+%h3
+  Danke
 
-%h3.teamheadline Das einzigartige, unerreichte, großartige, wunderschöne und weltbeste hacken.in Team:
+:markdown
+  Hacken.in ist ein [OpenSource](http://de.wikipedia.org/wiki/OpenSource)
+  Projekt und hätte ohne die Verwendung von OpenSource-Software nie das Licht der Welt erblickt.
+  Das bedeutet, dass Du den Quellcode lesen kannst - oder auch einfach mitmachen!
 
-%ul.thumbnails
+  Wir möchten an dieser Stelle dankend die Projekte erwähnen, die uns geholfen oder inspiriert haben.
+  Die Liste ist nicht vollständig. Eine fehlende Erwähnung bedeutet nicht, dass das Projekt geschmäht wird.
+
+%ul
+  %li
+    %a{href: "http://ruby-lang.org/"} Ruby
+    &amp;
+    %a{href: "http://rubyonrails.org/"} Ruby on Rails
+  %li
+    %a{href: "https://github.com"} GitHub
+  %li
+    %a{href: "https://travis-ci.org/"} Travis
+  %li
+    %a{href: "https://codeclimate.com/"} CodeClimate
+  %li
+    %a{href: "https://shellycloud.com/"} ShellyCloud
+
+%h3
+  Das Team
+
+%ul.team-inline-list
   - @humans.each do |human|
-    %li.span2
-      .thumbnail.team-box
-        .thumb_link
-          = link_to avatar_for_user(human, 304, "user_gravatar"), user_path(human)
+    %li
+      .thumb_link
+        = link_to avatar_for_user(human, 250, "user_gravatar"), user_path(human)
 
-        .thumb_desc
-          %h3= link_to human.nickname, user_path(human)
-          %p
-            %strong
-              = human.team
-          %p.accounts
-            - unless human.twitter.blank?
-              %a{href: "http://twitter.com/#{human.twitter}"}
-                %i.icon-twitter
+      .thumb_desc
+        %h3= link_to human.nickname, user_path(human)
+        %p
+          %strong
+            = human.team
+        %p.accounts
+          - unless human.twitter.blank?
+            %a{href: "http://twitter.com/#{human.twitter}"}
+              %i.icon-twitter
 
-            - unless human.github.blank?
-              %a{href: "https://www.github.com/#{human.github}"}
-                %i.icon-github
+          - unless human.github.blank?
+            %a{href: "https://www.github.com/#{human.github}"}
+              %i.icon-github
 
-            - unless human.homepage.blank?
-              %a{href: human.homepage}
-                %i.icon-home
-.additional_members
-  %a{href: 'https://github.com/hacken-in/website/graphs/contributors'}
-    sowie einige weitere Mitstreiter, die uns mit Commits unterstützt haben:
-    hacken.in Contributors
+          - unless human.homepage.blank?
+            %a{href: human.homepage}
+              %i.icon-home
+:markdown
+  sowie einige [weitere Mitstreiter](https://github.com/hacken-in/website/graphs/contributors), die uns mit Commits unterstützt haben.
