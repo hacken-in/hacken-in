@@ -106,7 +106,9 @@
   border-bottom: 1px solid #eaeaea;
 
   .indicator-wrapper {
-    @include grid-column(1);
+    margin-left: 20px;
+    margin-right: 10px;
+    float: left;
   }
 
   .indicator {
