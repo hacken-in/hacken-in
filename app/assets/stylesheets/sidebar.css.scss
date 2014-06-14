@@ -55,11 +55,22 @@ aside.sidebar {
 
     .social-login {
       padding: 10px 5px;
+      margin-bottom: 10px;
+    }
+
+    .sidebar-button input {
+      padding: 10px 15px;
+      margin-bottom: 10px;
+    }
+
+    .sidebar-button a {
+      padding: 5px 15px;
+      margin-bottom: 10px;
     }
 
     ul {
       list-style-type: none;
-      padding-bottom: 20px;
+      padding-bottom: 10px;
       li.flattr {
         margin-top: 10px;
       }
