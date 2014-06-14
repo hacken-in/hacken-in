@@ -4,8 +4,11 @@ nav.top-bar {
     margin-left: 4px;
   }
 
+  .right {
+    background-color: transparent;
+  }
+
   li.search_form {
-    @include grid-row($behavior: collapse);
   }
 
   .search-field {
@@ -15,11 +18,14 @@ nav.top-bar {
       line-height: 18px;
       border: none;
       font-size: 0.575rem;
+      -webkit-appearance: none;
+      border-radius: 0;
     }
   }
 
   .search-button {
     @include grid-column($columns: 4, $collapse: true);
+    padding-right: 20px;
 
     a.button {
       line-height: 16px;
@@ -29,8 +35,18 @@ nav.top-bar {
     }
   }
 
+  @media #{$small-only} {
+    .sidebar-toggle a {
+      line-height: 45px;
+      font-size: 1.0625rem;
+      color: $topbar-menu-link-color;
+    }
+    .search-button {
+    }
+  }
+
   @media #{$medium-up} {
-    .sidebar-toggle {
+    .sidebar-toggle a {
       display: none;
     }
   }

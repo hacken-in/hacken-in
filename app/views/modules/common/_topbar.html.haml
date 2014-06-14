@@ -1,5 +1,12 @@
 %header.contain-to-grid
   %nav.top-bar{ data: { topbar: true } }
+
+    %ul.left
+      %li.sidebar-toggle
+        %a.left-off-canvas-toggle
+          %span
+            %i.fa.fa-bars
+
     %ul.title-area
       %li.name
         %h1= link_to 'hacken.in', :root
@@ -15,8 +22,3 @@
                 .search-button
                   %a.button{href: "#"}= t('modules.common.topbar.search_form.button')
 
-
-      %ul.left
-        %li.sidebar-toggle
-          %a.left-off-canvas-toggle
-            %span Sidebar
