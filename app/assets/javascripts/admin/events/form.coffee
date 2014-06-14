@@ -38,13 +38,13 @@ $ ->
           rHtml += "Jeden #{dayRules[rule.interval]} #{weekdays[rule.days[0]]}"
         else if (rule.type == "weekly")
           rHtml += "#{weekRules[rule.interval]} Woche an einem #{weekdays[rule.days[0]]}"
-        rHtml += " <a href='#' class='delete-rule' data-no='#{i}'><i class='icon-trash'></i></a></li>"
+        rHtml += " <a href='#' class='delete-rule' data-no='#{i}'><i class='fa fa-trash-o'></i></a></li>"
         $("ul.rules").append(rHtml)
 
       $("ul.excludes").empty()
       for date, i in @exdates
         display = moment(date).format("DD.MM.YYYY, H:mm:ss")
-        $("ul.excludes").append("<li>#{display} <a href='#' class='delete-exclude' data-no='#{i}'><i class='icon-trash'></i></a></li>")
+        $("ul.excludes").append("<li>#{display} <a href='#' class='delete-exclude' data-no='#{i}'><i class='fa fa-trash-o'></i></a></li>")
 
     init = =>
       @rules = JSON.parse($("#event_schedule_rules_json").val())
