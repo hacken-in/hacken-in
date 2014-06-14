@@ -37,8 +37,9 @@
       - User.omniauth_providers.each do |provider|
         .row
           .small-11.small-centered.columns
-            = link_to "<i class='fa fa-#{provider}'></i> ".html_safe + t('.login_with', provider: provider.to_s.capitalize), user_omniauth_authorize_url(provider), title: provider, class: 'small-12 button social-login'
-
+            = link_to user_omniauth_authorize_url(provider), title: provider, class: 'small-12 button social-login' do
+              %i{class: "fa fa-#{provider}"}
+              = t('.login_with', provider: provider.to_s.capitalize)
       .row
         .small-11.small-centered.columns= link_to t('.register_instead'), new_registration_path(resource_name), class: 'small-12 button social-login'
 
@@ -47,7 +48,13 @@
   %ul
     %li= link_to t('.team'), humans_path
     %li= link_to t('.imprint'), impressum_path
-    %li= link_to "<i class='fa fa-github'></i> ".html_safe  + 'Github', 'https://github.com/hacken-in/'
-    %li= link_to "<i class='fa fa-twitter'></i> ".html_safe + 'Twitter', 'https://www.twitter.com/hacken_in'
+    %li
+      = link_to 'https://github.com/hacken-in/' do
+        %i.fa.fa-github
+        Github
+    %li
+      = link_to 'https://www.twitter.com/hacken_in' do
+        %i.fa.fa-twitter
+        Twitter
     %li
       %a.FlattrButton{style:"display:none;", href:"http://hacken.in"}
