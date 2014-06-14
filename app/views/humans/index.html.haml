@@ -41,28 +41,34 @@
 %h3
   Das Team
 
-%ul.team-inline-list
-  - @humans.each do |human|
-    %li
-      .thumb_link
-        = link_to avatar_for_user(human, 250, "user_gravatar"), user_path(human)
+- @humans.each_slice(4) do |humans|
+  .team-row
+    - humans.each do |human|
+      .small-3.left.columns
+        .thumb_link
+          = link_to avatar_for_user(human, 190, "user_gravatar"), user_path(human)
 
-      .thumb_desc
-        %h3= link_to human.nickname, user_path(human)
-        %p
-          %strong
-            = human.team
-        %p.accounts
+        .thumb_desc
+          %h3= link_to human.nickname, user_path(human)
+          %p
+            %strong
+              = human.team
           - unless human.twitter.blank?
-            %a{href: "http://twitter.com/#{human.twitter}"}
-              %i.icon-twitter
+            %p
+              %a{href: "http://twitter.com/#{human.twitter}"}
+                %i.fa.fa-twitter
+                Twitter
 
           - unless human.github.blank?
-            %a{href: "https://www.github.com/#{human.github}"}
-              %i.icon-github
+            %p
+              %a{href: "https://www.github.com/#{human.github}"}
+                %i.fa.fa-github
+                Github
 
           - unless human.homepage.blank?
-            %a{href: human.homepage}
-              %i.icon-home
+            %p
+              %a{href: human.homepage}
+                %i.fa.fa-home
+                Homepage
 :markdown
-  sowie einige [weitere Mitstreiter](https://github.com/hacken-in/website/graphs/contributors), die uns mit Commits unterstützt haben.
+  Sowie einige [weitere Mitstreiter](https://github.com/hacken-in/website/graphs/contributors), die uns mit Commits unterstützt haben.
