@@ -431,8 +431,8 @@ de:
           field_placeholder: Finde Events
           button: Suchen
       sidebar:
-        login_with: Mit %{provider} einloggen
-        register_instead: oder registrieren
+        login_with: "%{provider} login"
+        register_instead: registrieren
         login: Einloggen
         email: E-Mail / Nickname
         password: Passwort
