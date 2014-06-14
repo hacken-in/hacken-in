@@ -1,9 +1,16 @@
 class SearchResult
   attr_reader :entries
-  PER_PAGE = 10
+
+  class << self
+    attr_accessor :per_page
+  end
+
+  self.per_page = 10
 
   def initialize(single_events, page, entry_class = CalendarEntry)
-    single_events = Kaminari.paginate_array(single_events).page(page).per(PER_PAGE)
+    first_page = self.class.per_page * (page - 1)
+    last_page = first_page + self.class.per_page
+    single_events = single_events[first_page...last_page]
     @entries = single_events.map { |event| entry_class.new(event) }
   end
 end
