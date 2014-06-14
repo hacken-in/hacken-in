@@ -8,6 +8,11 @@ section.main {
 }
 
 aside.sidebar {
+  .social-login {
+    @include grid-column(12);
+    @include button;
+  }
+
   @media #{$small-only} {
     @include off-canvas-menu(left);
 

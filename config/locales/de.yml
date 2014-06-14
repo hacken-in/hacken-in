@@ -432,7 +432,7 @@ de:
           button: Suchen
       sidebar:
         login_with: "%{provider} login"
-        register_instead: registrieren
+        register_instead: Registrieren
         login: Einloggen
         email: E-Mail / Nickname
         password: Passwort
