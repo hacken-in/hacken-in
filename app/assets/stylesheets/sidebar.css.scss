@@ -8,6 +8,11 @@ section.main {
 }
 
 aside.sidebar {
+  .social-login {
+    @include grid-column(12);
+    @include button;
+  }
+
   @media #{$small-only} {
     @include off-canvas-menu(left);
 
@@ -26,6 +31,10 @@ aside.sidebar {
       height: 20px;
       border-width: 0px;
     }
+
+    ul {
+      @include off-canvas-list;
+    }
   }
 
   @media #{$medium-up} {
@@ -40,11 +49,17 @@ aside.sidebar {
       margin: 0px;
     }
 
-    ul.off-canvas-list {
+    .social-login {
+      padding: 10px 5px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-bottom: 20px;
       li {
         a {
+          color: $body-font-color;
           @include grid-row(12);
-          @include button;
         }
       }
     }
