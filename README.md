@@ -70,14 +70,6 @@ You can reach us on lots of ways. The most prefered one would be either to open 
 
 We use [waffle.io](http://waffle.io/hacken-in/website) to manage our tickets. Everyhing in the "ready" state is ready to be implemented.
 
-### Localeapp
-
-We use [localeapp](http://localeapp.com) to translate everything. If you want to play with the code, you can deactivate it by removing the
-initializer for it in the `config/initializer` directory.
-
-If we granted you access to localeapp, you will find the api key in the settings of the project.
-
-
 ### Pow
 
 Pow is a really comfortable way to run the application on your machine.
