@@ -164,7 +164,6 @@ GEM
     fssm (0.2.10)
     gabba (1.0.1)
     geocoder (1.1.9)
-    gli (2.9.0)
     gravatar_image_tag (1.2.0)
     growl (1.0.3)
     guard (2.2.5)
@@ -227,13 +226,6 @@ GEM
       celluloid-io (>= 0.15.0)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
-    localeapp (0.7.1)
-      gli
-      i18n
-      json
-      rack
-      rest-client
-      ya2yaml
     loofah (1.2.1)
       nokogiri (>= 1.4.4)
     lumberjack (1.0.4)
@@ -446,7 +438,6 @@ GEM
     webmock (1.17.4)
       addressable (>= 2.2.7)
       crack (>= 0.3.2)
-    ya2yaml (0.31)
 
 PLATFORMS
   ruby
@@ -490,7 +481,6 @@ DEPENDENCIES
   kss (~> 0.5.0)
   leaflet-rails (~> 0.7.1)
   librarian-puppet (~> 1.0.1)
-  localeapp
   md_emoji (~> 1.0.0)
   mini_magick (~> 3.7.0)
   momentjs-rails (~> 2.4.0)
