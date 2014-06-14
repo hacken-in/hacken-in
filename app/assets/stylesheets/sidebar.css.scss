@@ -34,6 +34,10 @@ aside.sidebar {
 
     ul {
       @include off-canvas-list;
+      li.flattr {
+        margin: 10px 0px;
+        text-align: center;
+      }
     }
   }
 
@@ -56,11 +60,15 @@ aside.sidebar {
     ul {
       list-style-type: none;
       padding-bottom: 20px;
+      li.flattr {
+        margin-top: 10px;
+      }
       li {
         a {
           color: $body-font-color;
           @include grid-row(12);
         }
+
       }
     }
   }
