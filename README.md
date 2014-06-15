@@ -64,7 +64,7 @@ If you're experiencing problems do not hesitate to contact us or - even better -
 
 ### Communication
 
-You can reach us on lots of ways. The most prefered one would be either to open an issue here or to use our [Google Group](http://groups.google.com/group/hacken-in). 
+You can reach us on lots of ways. The most prefered one would be either to open an issue here or to use our [Google Group](http://groups.google.com/group/hacken-in). If you want to drink from the firehose (and see a lot of GIFs) join us in our Slack room. In order to get invited, just ping us via admin@hacken.in and we will add you.
 
 ### Waffle.io
 
