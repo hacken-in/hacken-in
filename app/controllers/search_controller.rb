@@ -1,6 +1,8 @@
 class SearchController < ApplicationController
   def index
-    unless params[:search].blank?
+    if params[:search].blank?
+      redirect_to region_path(current_region) 
+    else
       single_events = SingleEvent.search_in_region(params[:search], current_region)
       @search_result = SearchResult.new(single_events, page)
     end

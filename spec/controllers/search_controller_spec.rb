@@ -13,7 +13,6 @@ describe SearchController do
     allow(SingleEvent).to receive(:search_in_region)
       .with(search_params, region)
       .and_return(single_events)
-      # .with(search_params, region)
   end
 
   it 'should show page one of the results by default' do
@@ -30,5 +29,10 @@ describe SearchController do
       .and_return(search_results)
     get :index, search: search_params, region: region_name, page: '2'
     expect(assigns[:search_result]).to be search_results
+  end
+
+  it 'should redirect to the calendar page if no parameters where provided' do
+    get :index, region: region_name
+    expect(response).to redirect_to(region_path(region))
   end
 end
