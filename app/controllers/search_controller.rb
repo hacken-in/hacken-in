@@ -1,9 +1,13 @@
 class SearchController < ApplicationController
-  respond_to :html, :xml
-
   def index
-    unless params[:search].blank?
-      @single_events = Kaminari.paginate_array(SingleEvent.in_region(current_region).search(params[:search])).page(params[:page]).per(10)
-    end
+    redirect_to(region_path(current_region)) && return if params[:search].blank?
+    single_events = SingleEvent.search_in_region(params[:search], current_region)
+    @search_result = SearchResult.new(single_events, page)
+  end
+
+  private
+
+  def page
+    params[:page] || 1
   end
 end

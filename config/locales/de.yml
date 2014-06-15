@@ -368,6 +368,8 @@ de:
       confirmation: Termin angelegt.
     destroy:
       confirmation: Termin gelöscht.
+  search:
+    title: Suchergebnisse
   subscriptions:
     index:
       error: Eintrag nicht gefunden
