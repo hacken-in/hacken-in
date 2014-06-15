@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
 
-  PAGES = %w(impressum danke)
+  PAGES = %w(impressum)
 
   def show
     if PAGES.include? params[:page_name]
