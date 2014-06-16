@@ -89,7 +89,7 @@ describe Event do
     event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
     event.save
 
-    old_single_events = event.single_events.pluck(:id)
+    old_single_events = event.single_events.map {|e| e.id}
 
     event.description = "new desc"
     event.save
@@ -124,7 +124,7 @@ describe Event do
     event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
     event.save
 
-    single_event_ids = event.single_events.pluck(:id)
+    single_event_ids = event.single_events.map {|e| e.id}
 
     event.future_single_events_cleanup
 
