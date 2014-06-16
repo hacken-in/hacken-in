@@ -97,7 +97,7 @@ describe Event do
     se = event.single_events.to_a
 
     expect(se.length).to eq(12)
-    expect(event.single_events.pluck(:id).to eq(old_single_events)
+    expect(event.single_events.pluck(:id)).to eq(old_single_events)
   end
 
   it "should create future single events" do
