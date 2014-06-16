@@ -15,7 +15,7 @@ describe EventHelper do
     event.save
     event.reload
 
-    expect(tag_list_for_taggable(event)).to eq("[{\"name\":\"rails\"},{\"name\":\"ruby\"}]")
+    expect(JSON.load(tag_list_for_taggable(event))).to contain_exactly({"name" => "rails"}, {"name" => "ruby"})
   end
 
 end
