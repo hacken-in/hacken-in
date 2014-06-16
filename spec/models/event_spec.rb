@@ -49,13 +49,13 @@ describe Event do
     expect(event.tags.count).to eq(0)
 
     event.tag_list = "ruby, rails"
-    expect(event.tag_list).to eq(["ruby", "rails"])
+    expect(event.tag_list).to match_array(["ruby", "rails"])
 
     event.tag_list << "jquery"
-    expect(event.tag_list).to eq(["ruby", "rails", "jquery"])
+    expect(event.tag_list).to match_array(["ruby", "rails", "jquery"])
     event.save
     event.reload
-    expect(event.tags.map {|e| e.name}).to eq(["jquery", "rails", "ruby"])
+    expect(event.tags.map {|e| e.name}).to match_array(["jquery", "rails", "ruby"])
   end
 
   it "should generate single events for a new event" do
