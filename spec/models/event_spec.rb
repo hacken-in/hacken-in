@@ -55,7 +55,7 @@ describe Event do
     expect(event.tag_list).to match_array(["ruby", "rails", "jquery"])
     event.save
     event.reload
-    expect(event.tags.map {|e| e.name}).to match_array(["jquery", "rails", "ruby"])
+    expect(event.tags.pluck(:name)).to match_array(["jquery", "rails", "ruby"])
   end
 
   it "should generate single events for a new event" do
@@ -89,7 +89,7 @@ describe Event do
     event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
     event.save
 
-    old_single_events = event.single_events.map{|e| e.id}
+    old_single_events = event.single_events.pluck(:id)
 
     event.description = "new desc"
     event.save
@@ -97,7 +97,7 @@ describe Event do
     se = event.single_events.to_a
 
     expect(se.length).to eq(12)
-    expect(event.single_events.map { |e| e.id }).to eq(old_single_events)
+    expect(event.single_events.pluck(:id).to eq(old_single_events)
   end
 
   it "should create future single events" do
@@ -124,11 +124,11 @@ describe Event do
     event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
     event.save
 
-    single_event_ids = event.single_events.map {|e| e.id}
+    single_event_ids = event.single_events.pluck(:id)
 
     event.future_single_events_cleanup
 
-    expect(event.single_events.map { |e| e.id }).to eq(single_event_ids)
+    expect(event.single_events.pluck(:id)).to eq(single_event_ids)
   end
 
   it "should get single events ordered" do
