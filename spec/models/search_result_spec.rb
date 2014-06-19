@@ -1,5 +1,5 @@
 require 'spec_without_rails_helper'
-require 'models/search_result'
+require 'models/single_events_by_day'
 
-describe SearchResult do
+describe SingleEventsByDay do
 end

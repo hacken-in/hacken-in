@@ -1,4 +1,4 @@
-class SearchResult
+class SingleEventsByDay
   def initialize(single_events)
     @entries = single_events
   end

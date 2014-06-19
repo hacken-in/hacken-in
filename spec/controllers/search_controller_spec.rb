@@ -5,7 +5,7 @@ describe SearchController do
   let(:region_name) { 'koeln' }
   let(:region) { double('Region') }
   let(:search_params) { 'SearchParams' }
-  let(:search_results) { double('SearchResults') }
+  let(:search_results) { double('SingleEventsByDay') }
 
   before do
     allow(Region).to receive(:find_by_slug).with(region_name).and_return(region)
@@ -15,8 +15,8 @@ describe SearchController do
       .and_return(single_events)
   end
 
-  it 'should wrap the search results from the database in SearchResults' do
-    allow(SearchResult).to receive(:new)
+  it 'should sort the search results from the database by day' do
+    allow(SingleEventsByDay).to receive(:new)
       .with(single_events)
       .and_return(search_results)
     get :index, search: search_params, region: region_name
