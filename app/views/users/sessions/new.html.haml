@@ -8,8 +8,6 @@
 = simple_form_for resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-horizontal' } do |f|
   = f.input :email, label: 'E-Mail oder Nickname'
   = f.input :password
-  - if devise_mapping.rememberable?
-    = f.input :remember_me, :as => :boolean
 
   .controls
     = f.submit "Einloggen", class: 'btn btn-inverse'

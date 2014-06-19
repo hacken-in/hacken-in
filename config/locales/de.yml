@@ -215,7 +215,6 @@ de:
         password: Passwort
         password_confirmation: Passwort bestätigen
         current_password: Aktuelles Passwort
-        remember_me: Eingeloggt bleiben
         gravatar_email: Alternative E-mailadresse für Gravatar
         name: Name
         nickname: Nickname
@@ -438,7 +437,6 @@ de:
         login: Einloggen
         email: E-Mail / Nickname
         password: Passwort
-        remember_me: Eingeloggt bleiben
         team: Über
         imprint: Impressum
         my_profile: Mein Profil
@@ -480,7 +478,6 @@ de:
         new:
           email: 
           password: 
-          remember_me: 
     labels:
       user:
         edit:
@@ -496,7 +493,6 @@ de:
           twitter: 
         new:
           password: 
-          remember_me: 
       suggestion:
         new:
           description: 
