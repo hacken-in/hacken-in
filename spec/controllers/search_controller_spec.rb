@@ -15,19 +15,11 @@ describe SearchController do
       .and_return(single_events)
   end
 
-  it 'should show page one of the results by default' do
+  it 'should wrap the search results from the database in SearchResults' do
     allow(SearchResult).to receive(:new)
-      .with(single_events, 1)
+      .with(single_events)
       .and_return(search_results)
     get :index, search: search_params, region: region_name
-    expect(assigns[:search_result]).to be search_results
-  end
-
-  it 'should show page two when it was requested' do
-    allow(SearchResult).to receive(:new)
-      .with(single_events, '2')
-      .and_return(search_results)
-    get :index, search: search_params, region: region_name, page: '2'
     expect(assigns[:search_result]).to be search_results
   end
 

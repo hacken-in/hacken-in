@@ -3,4 +3,4 @@
 
 %h1= t('search.title')
 
-= render partial: "modules/calendars/entry", collection: @search_result.entries
+= render partial: "modules/calendars/days", locals: {days: @search_result.days}

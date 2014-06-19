@@ -1,16 +1,11 @@
 class SearchResult
-  attr_reader :entries
-
-  class << self
-    attr_accessor :per_page
+  def initialize(single_events)
+    @entries = single_events
   end
 
-  self.per_page = 10
-
-  def initialize(single_events, page, entry_class = CalendarEntry)
-    first_page = self.class.per_page * (page - 1)
-    last_page = first_page + self.class.per_page
-    single_events = single_events[first_page...last_page]
-    @entries = single_events.map { |event| entry_class.new(event) }
+  def days(entry_class = Day)
+    @entries.group_by { |event| event.date }.sort.map do |date, events|
+      entry_class.new(date, events)
+    end
   end
 end
