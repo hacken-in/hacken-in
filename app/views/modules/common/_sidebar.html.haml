@@ -28,12 +28,6 @@
       .row
         .sidebar-button.small-11.small-centered.columns= f.submit t('.login'), class: 'small-12 button'
 
-      - if devise_mapping.rememberable?
-        .row
-          .small-11.small-centered.columns
-            = f.check_box :remember_me, :as => :boolean
-            = f.label :remember_me, t('.remember_me')
-
       - User.omniauth_providers.each do |provider|
         .row
           .small-11.small-centered.columns

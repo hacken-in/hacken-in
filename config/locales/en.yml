@@ -80,7 +80,6 @@ en:
         homepage: Homepage
         password: Password
         password_confirmation: Confirm password
-        remember_me: Remember me
         twitter: Twitter
       venue:
         city: City
