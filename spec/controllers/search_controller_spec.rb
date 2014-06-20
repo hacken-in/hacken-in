@@ -5,7 +5,7 @@ describe SearchController do
   let(:region_name) { 'koeln' }
   let(:region) { double('Region') }
   let(:search_params) { 'SearchParams' }
-  let(:search_results) { double('SearchResults') }
+  let(:search_results) { double('SingleEventsByDay') }
 
   before do
     allow(Region).to receive(:find_by_slug).with(region_name).and_return(region)
@@ -15,19 +15,11 @@ describe SearchController do
       .and_return(single_events)
   end
 
-  it 'should show page one of the results by default' do
-    allow(SearchResult).to receive(:new)
-      .with(single_events, 1)
+  it 'should sort the search results from the database by day' do
+    allow(SingleEventsByDay).to receive(:new)
+      .with(single_events)
       .and_return(search_results)
     get :index, search: search_params, region: region_name
-    expect(assigns[:search_result]).to be search_results
-  end
-
-  it 'should show page two when it was requested' do
-    allow(SearchResult).to receive(:new)
-      .with(single_events, '2')
-      .and_return(search_results)
-    get :index, search: search_params, region: region_name, page: '2'
     expect(assigns[:search_result]).to be search_results
   end
 

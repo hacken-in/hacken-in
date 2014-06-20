@@ -1,39 +1,32 @@
 require 'spec_without_rails_helper'
-require 'models/search_result'
+require 'models/single_events_by_day'
 
-describe SearchResult do
-  let(:single_event_on_another_page) { double('SingleEvent on another page') }
-  let(:single_event) { double('SingleEvent') }
-  let(:single_events) do
-    [
-      single_event_on_another_page,
-      single_event_on_another_page,
-      single_event,
-      single_event,
-      single_event_on_another_page
-    ]
-  end
-  let(:page) { 2 }
-  let(:entry) { double('Entry') }
-  let(:entry_class) { double('EntryClass') }
-  let(:per_page) { 2 }
+describe SingleEventsByDay do
+  let(:date_one) { Date.new(2013, 12, 25) }
+  let(:date_two) { Date.new(2013, 12, 26) }
 
-  before do
-    SearchResult.per_page = per_page
+  let(:event_on_date_one) { double('SingleEvent', date: date_one) }
+  let(:event_on_date_two) { double('SingleEvent', date: date_two) }
+  let(:another_event_on_date_one) { double('SingleEvent', date: date_one) }
 
-    allow(entry_class).to receive(:new)
-      .twice
-      .with(single_event)
-      .and_return(entry)
-  end
+  let(:event_list) {[ event_on_date_one, event_on_date_two, another_event_on_date_one ]}
 
-  subject { SearchResult.new(single_events, page, entry_class) }
+  describe 'days' do
+    subject { SingleEventsByDay.new(event_list) }
+    let(:day_one) { double('Day') }
+    let(:day_two) { double('Day') }
+    let(:day_class) { double('DayClass') }
 
-  it 'should only return the specified number of entries per page' do
-    expect(subject.entries.length).to eq per_page
-  end
+    it 'should offer the sorted days with filtered events' do
+      allow(day_class).to receive(:new)
+        .with(date_one, [event_on_date_one, another_event_on_date_one])
+        .and_return(day_one)
 
-  it 'should return the entries wrapped in the entry class' do
-    expect(subject.entries.first).to be entry
+      allow(day_class).to receive(:new)
+        .with(date_two, [event_on_date_two])
+        .and_return(day_two)
+
+      expect(subject.days(day_class)).to eq [day_one, day_two]
+    end
   end
 end
