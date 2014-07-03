@@ -85,6 +85,9 @@ gem 'ruby_meetup2', '~> 0.5.0'
 # RSS parsing
 gem 'feedjira', '~> 1.3.0'
 
+# Bug Monitoring
+gem 'bugsnag', '~> 2.1.0'
+
 group :development do
   # Local VM
   gem 'librarian-puppet', '~> 2.0.1'
