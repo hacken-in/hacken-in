@@ -8,14 +8,7 @@ gem 'thin', '~> 1.6.1'
 gem 'pg', '~> 0.17.1'
 
 # Memcache Store
-# DO NOT UPGRADE THIS
-# We need exactly this version, because
-# newer versions can't connect to unix
-# sockets. See here:
-#
-#  https://github.com/mperham/dalli/issues/229
-#
-gem 'dalli', '~> 2.7.1'
+gem 'dalli', '~> 2.7.2'
 
 # Tags
 gem 'acts-as-taggable-on', '~> 3.2.6'
