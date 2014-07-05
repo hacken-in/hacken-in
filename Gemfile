@@ -95,9 +95,6 @@ group :development do
   gem 'librarian-puppet', '~> 1.0.1'
   gem 'puppet', '~> 3.4.3'
 
-  # Deployment
-  gem 'capistrano', '~> 2.13.0'
-
   group :darwin do
     gem 'rb-fsevent', '~> 0.9.4'
     gem 'growl', '~> 1.0.3'
