@@ -21,7 +21,7 @@ gem 'dalli', '~> 2.7.1'
 gem 'acts-as-taggable-on', '~> 3.2.6'
 
 # Statistics
-gem 'chartkick', '~> 1.2.1'
+gem 'chartkick', '~> 1.3.2'
 
 # TODO: Remove
 # This lib is used exactly ONCE in the admin interface
