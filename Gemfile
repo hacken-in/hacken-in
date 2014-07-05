@@ -141,4 +141,4 @@ group :test do
   gem 'webmock', '~> 1.17.3'
 end
 
-gem 'recaptcha', '0.3.5'
+gem 'recaptcha', '0.3.6'
