@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe EventsController do
+describe EventsController, type: :controller do
   include Devise::TestHelpers
 
   it "should redirect to calendar if there are no single events" do

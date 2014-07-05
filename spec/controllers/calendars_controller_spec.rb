@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe CalendarsController do
+describe CalendarsController, type: :controller do
   let(:today) { double('Date') }
   let(:region_name) { 'koeln' }
   let(:region) { double('Region') }

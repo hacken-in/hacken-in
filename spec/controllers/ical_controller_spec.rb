@@ -26,7 +26,7 @@ def generate_event_entry(single_event, description = "")
   Regexp.new(event, Regexp::MULTILINE)
 end
 
-describe IcalController do
+describe IcalController, type: :controller do
   include Devise::TestHelpers
 
   before do

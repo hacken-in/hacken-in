@@ -5,7 +5,7 @@ def assert_response_for single_event, format, query_params={}
   assert_redirected_to event_single_event_path(single_event.event, single_event, query_params) if format == :html
 end
 
-describe ParticipatesController do
+describe ParticipatesController, type: :controller do
   include Devise::TestHelpers
 
   [:html, :js].each do |format|

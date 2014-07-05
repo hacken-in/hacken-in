@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe HumansController do
+describe HumansController, type: :controller do
   include Devise::TestHelpers
   render_views
 
