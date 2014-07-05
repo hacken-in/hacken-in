@@ -129,7 +129,7 @@ group :test, :development do
   gem 'coveralls', '~> 0.7.0'
   gem 'simplecov', '~> 0.8.2'
   gem 'brakeman', '~> 2.6.1'
-  gem 'vcr', '~> 2.9.0'
+  gem 'vcr', '~> 2.9.2'
   gem 'pry-rails'
 end
 
