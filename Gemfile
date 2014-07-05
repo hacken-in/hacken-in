@@ -125,7 +125,7 @@ group :test, :development do
   gem 'database_cleaner', '1.3.0'
   gem 'rspec-rails',  '~> 3.0.0.beta1'
   gem 'factory_girl_rails', '~> 4.2'
-  gem 'faker', '~> 1.2.0'
+  gem 'faker', '~> 1.4.1'
   gem 'coveralls', '~> 0.7.0'
   gem 'simplecov', '~> 0.8.2'
   gem 'brakeman', '~> 2.6.1'
