@@ -56,7 +56,7 @@ gem 'icalendar', '~> 1.5.2'
 # Authentication and Authorization
 gem 'devise', '~> 3.2.0'
 gem 'devise-i18n', '~> 0.10.3'
-gem 'cancancan', '~> 1.7'
+gem 'cancancan', '~> 1.8.4'
 gem 'omniauth', '~> 1.1.3'
 gem 'omniauth-github', '~> 1.1.0'
 gem 'omniauth-twitter', '~> 1.0.1'
