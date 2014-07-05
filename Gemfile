@@ -38,7 +38,7 @@ gem "font-awesome-rails", '~> 4.1.0.0'
 
 gem 'haml', '~> 4.0.4'
 gem 'md_emoji', '~> 1.0.0'
-gem 'redcarpet', '~> 3.0.0'
+gem 'redcarpet', '~> 3.1.2'
 
 gem 'kss', '~> 0.5.0'
 
