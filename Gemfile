@@ -69,7 +69,7 @@ gem 'mini_magick', '~> 3.7.0'
 gem 'simple_form', '~> 3.0.1'
 
 # JavaScript runtime
-gem 'execjs', '~> 2.0.2'
+gem 'execjs', '~> 2.2.1'
 gem 'therubyracer', '~> 0.12.0'
 
 # User Picture using Gravatar
