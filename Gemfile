@@ -80,7 +80,7 @@ gem 'twitter', '~> 5.5.1'
 
 # Other dependencies
 gem 'gabba', '~> 1.0.1'
-gem 'geocoder', '~> 1.1.9'
+gem 'geocoder', '~> 1.2.2'
 
 # Nicer drop down boxes in the admin area
 gem 'chosen-rails', '~> 1.1.0'
