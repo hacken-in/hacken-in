@@ -373,9 +373,9 @@ GEM
     shelly-dependencies (0.2.4)
       rake
       thin
-    simple_form (3.0.1)
-      actionpack (>= 4.0.0, < 4.1)
-      activemodel (>= 4.0.0, < 4.1)
+    simple_form (3.0.2)
+      actionpack (~> 4.0)
+      activemodel (~> 4.0)
     simple_oauth (0.2.0)
     simplecov (0.8.2)
       docile (~> 1.1.0)
@@ -501,7 +501,7 @@ DEPENDENCIES
   ruby_meetup2 (~> 0.5.0)
   sass-rails (~> 4.0.3)
   shelly-dependencies
-  simple_form (~> 3.0.1)
+  simple_form (~> 3.0.2)
   simplecov (~> 0.8.2)
   spring (~> 1.1.2)
   spring-commands-rspec (~> 1.0.1)

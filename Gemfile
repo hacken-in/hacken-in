@@ -66,7 +66,7 @@ gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 3.7.0'
 
 # Form Handling
-gem 'simple_form', '~> 3.0.1'
+gem 'simple_form', '~> 3.0.2'
 
 # JavaScript runtime
 gem 'execjs', '~> 2.2.1'
