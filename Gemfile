@@ -18,7 +18,7 @@ gem 'pg', '~> 0.17.1'
 gem 'dalli', '~> 2.7.1'
 
 # Tags
-gem 'acts-as-taggable-on', '~> 2.4.1'
+gem 'acts-as-taggable-on', '~> 3.2.6'
 
 # Statistics
 gem 'chartkick', '~> 1.2.1'
