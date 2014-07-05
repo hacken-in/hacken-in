@@ -62,7 +62,7 @@ gem 'omniauth-github', '~> 1.1.0'
 gem 'omniauth-twitter', '~> 1.0.1'
 
 # Picture Upload
-gem 'carrierwave', '~> 0.9.0'
+gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 3.7.0'
 
 # Form Handling
