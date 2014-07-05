@@ -30,9 +30,9 @@ gem 'momentjs-rails', '~> 2.4.0'
 # Assets
 gem 'sass-rails', '~> 4.0.3'
 gem 'coffee-script', '~> 2.2.0'
-gem 'leaflet-rails', '~> 0.7.1'
-gem 'uglifier', '~> 2.4.0'
-gem 'jquery-rails', '~> 3.0.0'
+gem 'leaflet-rails', '~> 0.7.3'
+gem 'uglifier', '~> 2.5.1'
+gem 'jquery-rails', '~> 3.1.1'
 gem 'foundation-rails', '5.3.0.1'
 gem "font-awesome-rails", '~> 4.1.0.0'
 
@@ -117,7 +117,7 @@ group :development do
   gem 'guard-bundler', '~> 2.0.0'
 
   # Silence asset pipeline and make log usable again
-  gem 'quiet_assets', '~> 1.0.2'
+  gem 'quiet_assets', '~> 1.0.3'
 
 end
 
