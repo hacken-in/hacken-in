@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SuggestionsController do
+describe SuggestionsController, type: :controller do
   include Devise::TestHelpers
 
   it "should get new" do

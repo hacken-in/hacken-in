@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SearchController do
+describe SearchController, type: :controller do
   let(:single_events) { double('SingleEvents') }
   let(:region_name) { 'koeln' }
   let(:region) { double('Region') }

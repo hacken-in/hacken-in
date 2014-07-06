@@ -1,7 +1,7 @@
 # encoding: utf-8
 require 'spec_helper'
 
-describe SingleEventsController do
+describe SingleEventsController, type: :controller do
   include Devise::TestHelpers
 
   it "should be successful" do

@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'json'
 
-describe EventHelper do
+describe EventHelper, type: :helper do
   include EventHelper
 
   it "should get list for taggable" do

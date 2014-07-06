@@ -10,7 +10,7 @@ describe User do
     u = User.create(nickname: "bitboxer2", email: "bodo2@example.com", password: "mylongpassword")
     expect(u).to be_valid
     u2 = User.create(nickname: "bitboxer2", email: "bodo3@example.com", password: "mylongpassword")
-    expect(u2.error_on(:nickname).length).to be 1
+    expect(u2.errors[:nickname].length).to be 1
   end
 
   it "validates uniqueness of email" do
@@ -18,7 +18,7 @@ describe User do
     expect(u).to be_valid
     u2 = User.create(nickname: "bitboxer4", email: "bodo4@example.com", password: "mylongpassword")
     expect(u2).not_to be_valid
-    expect(u2.error_on(:email)).not_to be_empty
+    expect(u2.errors[:email]).not_to be_empty
   end
 
   it "searches user by nickname" do

@@ -8,14 +8,7 @@ gem 'thin', '~> 1.6.1'
 gem 'pg', '~> 0.17.1'
 
 # Memcache Store
-# DO NOT UPGRADE THIS
-# We need exactly this version, because
-# newer versions can't connect to unix
-# sockets. See here:
-#
-#  https://github.com/mperham/dalli/issues/229
-#
-gem 'dalli', '~> 2.7.1'
+gem 'dalli', '~> 2.7.2'
 
 # Tags
 gem 'acts-as-taggable-on', '~> 3.2.6'
@@ -104,12 +97,12 @@ group :development do
   gem 'binding_of_caller', '~> 0.7.1'
 
   # Faster test execution
-  gem 'spring', '~> 1.1.2'
-  gem 'spring-commands-rspec', '~> 1.0.1'
+  gem 'spring', '~> 1.1.3'
+  gem 'spring-commands-rspec', '~> 1.0.2'
 
   # Guard
-  gem 'guard', '~> 2.2.5'
-  gem 'guard-rspec', '~> 4.2.2'
+  gem 'guard', '~> 2.6.1'
+  gem 'guard-rspec', '~> 4.2.10'
   gem 'guard-pow', '~> 2.0.0'
   gem 'guard-bundler', '~> 2.0.0'
 
@@ -120,7 +113,7 @@ end
 
 group :test, :development do
   gem 'database_cleaner', '1.3.0'
-  gem 'rspec-rails',  '~> 3.0.0.beta1'
+  gem 'rspec-rails',  '~> 3.0.1'
   gem 'factory_girl_rails', '~> 4.2'
   gem 'faker', '~> 1.4.1'
   gem 'coveralls', '~> 0.7.0'

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe CommentsController do
+describe CommentsController, type: :controller do
   include Devise::TestHelpers
 
   it "should do not create comment for event if not logged in" do
