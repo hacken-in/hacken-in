@@ -40,7 +40,7 @@ gem 'kss', '~> 0.5.0'
 # The '/' root tries to open a non existend
 # dashboard controller
 # TODO: Set this to the Ruby Gems version as soon as this is released
-gem 'activeadmin', github: 'gregbell/active_admin', branch: 'master'
+gem 'activeadmin', github: 'activeadmin', branch: 'master'
 
 # Date Handling
 gem 'ice_cube', '~> 0.11.1'
