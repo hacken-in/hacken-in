@@ -25,7 +25,7 @@ ActiveAdmin.register Comment do
     end
     column :created_at
     column :updated_at
-    default_actions
+    actions
   end
 
   show do |ad|

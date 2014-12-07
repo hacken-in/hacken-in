@@ -20,7 +20,7 @@ ActiveAdmin.register Venue do
     column :url do |venue|
       link_to truncate(venue.url, length: 30), venue.url
     end
-    default_actions
+    actions
   end
 
   show do

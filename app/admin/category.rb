@@ -11,7 +11,7 @@ ActiveAdmin.register Category do
     column :color do |p|
       span p.color, style: "color: #{p.color}"
     end
-    default_actions
+    actions
   end
 
   controller do

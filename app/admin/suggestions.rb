@@ -4,7 +4,7 @@ ActiveAdmin.register Suggestion do
     column :id
     column :email_address
     column :description
-    default_actions
+    actions
   end
 
   show do
