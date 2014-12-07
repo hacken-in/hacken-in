@@ -10,11 +10,15 @@
   = f.input :password
 
   .controls
-    = f.submit "Einloggen", class: 'btn btn-inverse'
+    = f.submit "Einloggen", class: 'button'
     = render partial: 'users/shared/links'
 
 %h2 ... oder mit einem dieser Services
 %ul
   - User.omniauth_providers.each do |provider|
-    = link_to image_tag("oauth/#{provider.to_s}.png"), user_omniauth_authorize_url(provider)
+    %li
+      %a{href: user_omniauth_authorize_url(provider)}
+        %i{class:"fa fa-#{provider}"}
+        = provider
+
 
