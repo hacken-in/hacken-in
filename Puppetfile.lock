@@ -25,10 +25,10 @@ FORGE
 
 GIT
   remote: git://github.com/hacken-in/puppet-hackenin.git
-  ref: master
-  sha: a73ed537d566170b396ca2414099ecb0d2a011eb
+  ref: v1.0.2
+  sha: 48449bdb82eff345774190381c5b014b5cf38a9e
   specs:
-    hacken-in/hackenin (1.0.1)
+    hacken-in/hackenin (1.0.2)
       alup/rbenv (>= 0)
       jfryman/nginx (>= 0)
       puppetlabs/mysql (>= 0)
