@@ -18,6 +18,7 @@
     - tags = (@single_event.tags | @single_event.event.tags).sort_by(&:name)
     - tags.each do |tag|
       = render partial: "modules/tags/tag", locals: { tag: tag }
+
   .event-content
     - if @single_event.name?
       %h4= @single_event.name
