@@ -1,33 +1,33 @@
 - if event.description.present?
-  .event-description
-    .event-content-field
-      .content-field-icon
-        %i.icon-info-sign
-      .content-field-text{ itemprop: 'description' }
-        = convert_markdown event.description, true
+  .event-description{ itemprop: 'description' }
+    = convert_markdown event.description, true
 
-- if event.url.present?
-  .event-homepage
-    .event-content-field
-      .content-field-icon
-        %i.icon-home
-      .content-field-text
-        %a.hidden-link{ href: event.url }= event.url
+- if event.event.description.present?
+  .event-text
+    %h2
+      Allgemeine Beschreibung
+    = convert_markdown(event.event.description, true)
 
-- if event.twitter.present?
-  .event-twitter-handle
-    .event-content-field
-      .content-field-icon
-        %i.icon-twitter
-      .content-field-text
-        %a.hidden-link{ href: "http://twitter.com/#{event.twitter}" }
-          = "@#{event.twitter}"
+%ul.event-url-list
+  - if event.url.present?
+    %li.event-homepage
+      %i.fa.fa-home
+      %a.hidden-link{ href: event.url }= event.url
 
-- if event.twitter_hashtag.present?
-  .event-twitter-handle
-    .event-content-field
-      .content-field-icon
-        \#
-      .content-field-text
-        %a.hidden-link{ href: "http://twitter.com/search/?q=%23#{event.twitter_hashtag}" }
-          = "##{event.twitter_hashtag}"
+  - if event.twitter.present?
+    %li.event-twitter-handle
+      %i.fa.fa-twitter
+      %a.hidden-link{ href: "http://twitter.com/#{event.twitter}" }
+        = "@#{event.twitter}"
+
+  - if event.twitter_hashtag.present?
+    %li.event-twitter-hashtag
+      %span.hashtag #
+      %a.hidden-link{ href: "http://twitter.com/search/?q=%23#{event.twitter_hashtag}" }
+        = "##{event.twitter_hashtag}"
+
+  %li.event-ical
+    %i.fa.fa-calendar
+    %a{href:single_event_ical_path(@single_event)}
+      iCal Download
+

@@ -1,21 +1,30 @@
-- unless event.venue.nil? or event.venue.latitude.blank? or event.venue.longitude.blank?
-  :javascript
-    function initialize() {
-      var eventLocation = new L.LatLng(#{event.venue.latitude}, #{event.venue.longitude});
+.event-venue.row
+  - unless event.venue.nil? or event.venue.latitude.blank? or event.venue.longitude.blank?
+    :javascript
+      function initialize() {
+        var eventLocation = new L.LatLng(#{event.venue.latitude}, #{event.venue.longitude});
 
-      var map = new L.Map('mapCanvas', { center: eventLocation, zoom: 13, scrollWheelZoom: false });
+        var map = new L.Map('mapCanvas', { center: eventLocation, zoom: 13, scrollWheelZoom: false });
 
-      L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(map);
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
 
-      var markerLocation = eventLocation;
+        var markerLocation = eventLocation;
 
-      var marker = new L.Marker(eventLocation);
-      map.addLayer(marker);
-    }
+        var marker = new L.Marker(eventLocation);
+        map.addLayer(marker);
+      }
 
-    $(function() {
-      $('.event-map').append('<div id="mapCanvas"></div>');
-      initialize();
-    });
+      $(function() {
+        $('.event-venue-map').append('<div id="mapCanvas"></div>');
+        initialize();
+      });
+
+    .event-venue-map.column.large-8
+    .event-venue-address-small.column.large-4
+      = render "events/venue", event: @single_event
+
+  - else
+    .event-venue-address-full.column.large-12
+      = render "events/venue", event: @single_event
