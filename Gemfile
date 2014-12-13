@@ -29,6 +29,7 @@ gem 'jquery-rails', '~> 3.1.1'
 gem 'jquery-ui-rails', '~> 5.0.3'
 gem 'foundation-rails', '5.4.5.0'
 gem "font-awesome-rails", '~> 4.1.0.0'
+gem 'modernizr-rails', '~> 2.7.1'
 
 gem 'haml', '~> 4.0.4'
 gem 'md_emoji', '~> 1.0.0'
