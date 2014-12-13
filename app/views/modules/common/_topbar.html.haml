@@ -9,7 +9,9 @@
 
     %ul.title-area
       %li.name
-        %h1= link_to 'hacken.in', :root
+        = image_tag asset_path("logo/hacken_in-32-white.png"), class: "hacken-logo"
+        %h1
+          = link_to 'hacken.in', :root
 
     %section.top-bar-section
       %ul.right

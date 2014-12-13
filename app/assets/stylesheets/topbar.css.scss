@@ -1,7 +1,18 @@
 nav.top-bar {
 
-  .name {
-    margin-left: 4px;
+  .title-area {
+    @include grid-column($columns: 3);
+
+    .name {
+      margin-left: 4px;
+
+      .hacken-logo {
+        float: left;
+        max-height: 20px;
+        margin-top: 11px;
+        margin-right: 5px;
+      }
+    }
   }
 
   .right {
