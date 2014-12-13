@@ -25,8 +25,8 @@ FORGE
 
 GIT
   remote: git://github.com/hacken-in/puppet-hackenin.git
-  ref: v1.0.2
-  sha: 48449bdb82eff345774190381c5b014b5cf38a9e
+  ref: master
+  sha: fd71dbbefa70ef927b345b571b65d7e5591078a9
   specs:
     hacken-in/hackenin (1.0.2)
       alup/rbenv (>= 0)
