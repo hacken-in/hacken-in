@@ -10,7 +10,7 @@
     = convert_markdown comment.body, true
     - if comment.created_at != comment.updated_at
       %p.comment-edit-date
-        = "(zuletzt geändert am #{I18n.localize(comment.created_at, format: :long)})"
+        = "(zuletzt geändert am #{I18n.localize(comment.updated_at, format: :long)})"
     %p
       - if can? :edit, comment
         = link_to "Editieren", edit_comment_path(comment)
