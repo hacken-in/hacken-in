@@ -431,6 +431,7 @@ de:
         search_form:
           field_placeholder: Finde Events
           button: Suchen
+        test_environment_warning: Achtung, das ist unsere Test-Umgebung. Richtige Events gibt es auf <a href="http://www.hacken.in">hacken.in!</a>.
       sidebar:
         login_with: "%{provider} login"
         register_instead: Registrieren

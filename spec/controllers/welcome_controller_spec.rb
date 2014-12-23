@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe WelcomeController, type: :controller do
   include Devise::TestHelpers
-
   context "index" do
     it "should redirect to /deutschland if no region is set in session" do
       get :index
@@ -29,4 +28,19 @@ describe WelcomeController, type: :controller do
       expect(response).to redirect_to "/deutschland"
     end
   end
+
+  context "warn" do
+    render_views
+    it "should warn users visiting a staging app" do
+      @request.host = 'master.hacken.in'
+      FactoryGirl.create(:koeln_region)
+      get 'deutschland'
+      expect(response.body).to match(/Achtung, das ist unsere Test-Umgebung/)
+      get :move_to, region: "koeln"
+      @request.host = 'master.hacken.in'
+      get 'deutschland'
+      expect(response.body).to_not match(/Achtung, das ist unsere Test-Umgebung/)
+    end
+  end
+
 end

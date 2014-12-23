@@ -428,3 +428,4 @@ en:
       topbar:
         search_form:
           button: 
+        test_environment_warning: Caution, this is our sandbox environment. For real events check <a href="http://www.hacken.in">hacken.in!</a>.

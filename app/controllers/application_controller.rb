@@ -61,6 +61,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :get_ical_link_for
 
+  def staging_users_should_be_warned
+    session[:region].nil? && request.host == 'master.hacken.in'
+  end
+  helper_method :staging_users_should_be_warned
+
   protected
 
   def configure_permitted_parameters
