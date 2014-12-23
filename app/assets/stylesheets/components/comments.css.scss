@@ -1,0 +1,20 @@
+.comments {
+  margin-top: 15px;
+
+  h3 {
+    font-weight: bold;
+  }
+
+  .comment {
+    @include grid-row();
+    .comment-gravatar {
+      @include grid-column(1);
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .comment-content {
+      @include grid-column(11);
+    }
+  }
+}

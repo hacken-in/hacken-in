@@ -1,6 +1,7 @@
 .comment
   %a{name: "comment_#{comment.id}", class: "comment_anchor"}
-  %a{class: 'comment-avatar', href: user_path(comment.user)}= avatar_for_user(comment.user, 87, 'gravatar_image')
+  .comment-gravatar
+    %a{class: 'comment-avatar', href: user_path(comment.user)}= avatar_for_user(comment.user, 87, 'gravatar_image')
   .comment-content
     %p.comment-name
       = link_to comment.user_nickname, user_path(comment.user), class: 'hidden-link'

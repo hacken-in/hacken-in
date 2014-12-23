@@ -36,6 +36,5 @@
 
   = render 'modules/social/share'
   = render 'single_events/participants'
-  .event-comments
-    = render partial: 'modules/comments/comments', locals: { commentable: @single_event }
+  = render partial: 'modules/comments/comments', locals: { commentable: @single_event }
 
