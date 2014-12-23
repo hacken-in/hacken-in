@@ -7,7 +7,7 @@
     %p.no-comments
       %em Keine Kommentare vorhanden.
   - else
-    - commentable.comments.each do |comment|
+    - commentable.comments.order(:created_at).each do |comment|
       = render partial: "modules/comments/comment", locals: {comment: comment}
 
   .comment-event-form

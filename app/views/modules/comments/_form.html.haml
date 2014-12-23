@@ -1,8 +1,11 @@
-= form_for comment, url: comment.new_record? ? comments_path(comment) : comment_path(comment) do |form|
-  .comment-avatar
+= form_for comment, url: comment.new_record? ? comments_path(comment) : comment_path(comment), html: { class: 'comment-form' } do |form|
+  .comment-gravatar
     = avatar_for_user((comment.user.nil? ? current_user : comment.user), avatar_size, 'gravatar_user_input')
   .content
     .previewable
       = form.text_area :body, class: 'preview-base'
-    = form.submit t('comments._form.comment_button'), class: 'button comment-submit-button'
-  = render "commons/markdown_info"
+    .buttons
+      .markdown-preview
+        = render "commons/markdown_info"
+      .submit-button
+        = form.submit t('comments._form.comment_button'), class: 'button comment-submit-button'
