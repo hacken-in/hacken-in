@@ -29,5 +29,6 @@
 //= require models/calendar
 //= require pages/welcome
 //= require pages/calendar
+//= require preview
 
 $(function(){ $(document).foundation(); });

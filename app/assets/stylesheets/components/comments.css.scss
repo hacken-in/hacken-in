@@ -21,6 +21,10 @@
     }
   }
 
+  .previewable {
+    min-height: 200px;
+  }
+
   .comment-form {
     @include grid-row();
     .comment-gravatar {
