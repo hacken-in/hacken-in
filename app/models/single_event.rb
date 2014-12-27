@@ -31,7 +31,6 @@ class SingleEvent < ActiveRecord::Base
   scope :only_tagged_with, ->(tag) { tagged_with(tag) | joins(:event).where('events.id in (?)', Event.tagged_with(tag).map(&:id)) }
   scope :in_categories, ->(categories) { categories.blank? ? scoped : scoped.joins(:event).where('single_events.category_id IN (?) OR (single_events.category_id IS NULL AND events.category_id IN (?))', categories, categories) }
   scope :this_week, -> { where(occurrence: (Date.today.beginning_of_week)..(Date.today.end_of_week)) }
-  scope :group_by_day, -> { group('date(occurrence)') }
   scope :group_by_category, -> { joins(:event).group("events.category_id") }
   # Search for region, but also check for region_id = 1, that is the global region
   scope :in_region, ->(region) { joins(:event).where('(single_events.region_id is not null and (single_events.region_id = ? or single_events.region_id = 1)) or (single_events.region_id is null and (events.region_id = ? or events.region_id = 1))', region, region)}
@@ -279,7 +278,7 @@ class SingleEvent < ActiveRecord::Base
   end
 
   def self.this_week_by_day
-    week_stats = self.reorder(nil).this_week.group_by_day.count
+    week_stats = self.reorder(nil).this_week.group_by_day(:occurrence).count
     Hash[(Date.today.beginning_of_week .. Date.today.end_of_week).map do |day|
       [day.strftime("%a"), week_stats[day] || 0]
     end]
