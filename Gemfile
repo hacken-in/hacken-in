@@ -26,6 +26,7 @@ gem 'coffee-script', '~> 2.2.0'
 gem 'leaflet-rails', '~> 0.7.3'
 gem 'uglifier', '~> 2.5.1'
 gem 'jquery-rails', '~> 3.1.1'
+gem 'jquery-ui-rails', '~> 4.2.1'
 gem 'foundation-rails', '5.3.0.1'
 gem "font-awesome-rails", '~> 4.1.0.0'
 
