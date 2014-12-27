@@ -40,7 +40,11 @@
       @include calendar-selector(20px, 40px, 20);
       height: 30px;
 
-      .today {
+      li {
+        cursor: pointer;
+      }
+
+      li.today {
         font-weight: bold
       }
     }
@@ -58,6 +62,8 @@
       }
 
       li {
+        cursor: pointer;
+
         .weekday {
           margin-top: 16px;
           margin-bottom: -16px
