@@ -20,7 +20,6 @@ In the spirit of [free software](http://www.fsf.org/licensing/essays/free-sw.htm
 * Open a pull-request and work on a feature branch. During the work on your branch:
     * [Code Climate](http://codeclimate.com):rainbow: compares the "code quality" and the code coverage with the master branch. Both should stay the same or improve, never get worse.
     * A CI server provides feedback for your branch. We're using [Codeship](http://codeship.io):ship: to help us with this job. Because we're huge CI fans, all builds will also be checked by [Travis CI](http://travis-ci.org):construction_worker:.
-    * The [Hound CI](https://houndci.com):dog: checks for compliance with our style guidelines.
 * As soon as your feature is ready to be merged, you rebase the branch onto master and clean up your commit history
     * When you're ready, create a pull request.
     * We will review your branch and signal its readiness with a :shipit: or a GIF of our choosing. If there's feedback, we will discuss it with you. Don't worry - the worst thing that could happen to you, is being overwhelmed by a bunch of animated GIFs .
