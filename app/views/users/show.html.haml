@@ -39,28 +39,30 @@
           = link_to t('users.show.edit'), edit_user_registration_path
 
       .loves
-        Ich liebe
+        %h4
+          = t("views.users.show.i_love")
         %i.icon-heart
         .tags-list.clearfix
           - if @user.likes.length > 0
             - @user.likes.sort.each do |like|
               = render partial: "modules/tags/tag", locals: { tag: like }
           - else
-            Nichts
+            = t("views.users.show.nothing")
 
-      .hates
-        Ich boykottiere
+      .boycott
+        %h4
+          = t("views.users.show.i_boycott")
         %i.icon-thumbs-down
         .tags-list.clearfix
           - if @user.hates.length > 0
             - @user.hates.sort.each do |hate|
               = render partial: "modules/tags/tag", locals: { tag: hate }
           - else
-            Nichts
+            = t("views.users.show.nothing")
 
       .recent_events
         - unless @next_events.empty?
-          %h3
-            Ist bei diesen Events:
+          %h4
+            = t("views.users.show.at_these_events")
           .calendar-calendar
             = render partial: "modules/calendars/days", locals: {days: @next_events, suggestions: false}

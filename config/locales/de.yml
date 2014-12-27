@@ -13,6 +13,12 @@ de:
     welcome:
       deutschland:
         message: "[Hacken.in](http://hacken.in). Dein Kalender für Events rund ums Hacken, Geek-Kultur und alles, was zum Nerdsein gehört. \n\nMomentan gibt es uns für [Berlin](move_to/berlin), [Köln](move_to/koeln) und [München](move_to/muenchen)."
+    users:
+      show:
+        i_love: "Ich liebe"
+        i_boycott: "Ich boykottiere"
+        nothing: "Nichts"
+        at_these_events: "Ist bei diesen Events:"
   common:
     confirm_delete: Bist du sicher?
     markdown_info: Hier kannst du <a href="%{syntax_link}" target="_blank">Markdown</a> und <a href="http://www.emoji-cheat-sheet.com/">emojis</a> benutzen.
