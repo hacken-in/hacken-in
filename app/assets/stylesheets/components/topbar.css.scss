@@ -19,7 +19,8 @@ nav.top-bar {
     background-color: transparent;
   }
 
-  li.search_form {
+  li.search-form {
+    background: #000;
   }
 
   .search-field {
@@ -36,9 +37,9 @@ nav.top-bar {
 
   .search-button {
     @include grid-column($columns: 4, $collapse: true);
-    padding-right: 20px;
 
     a.button {
+      width: 100%;
       line-height: 16px;
       padding-left: 12px;
       padding-right: 12px;

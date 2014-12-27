@@ -4,7 +4,7 @@ ActiveAdmin.register Region do
     column :id
     column :name
     column :slug
-    default_actions
+    actions
   end
 
   controller do

@@ -24,7 +24,7 @@ ActiveAdmin.register Event do
       end
     end
 
-    default_actions
+    actions
   end
 
   show do

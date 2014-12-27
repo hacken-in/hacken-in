@@ -1,17 +1,18 @@
-%h3.black-bar-small-title Kommentare
+.comments
+  %h3 Kommentare
 
-%a{name: "comments", class: "comment_anchor"}
+  %a{name: "comments", class: "comment_anchor"}
 
-- if commentable.comments.count == 0
-  %p.no-comments
-    %em Keine Kommentare vorhanden.
-- else
-  - commentable.comments.each do |comment|
-    = render partial: "modules/comments/comment", locals: {comment: comment}
-
-.comment-event-form
-  - if can? :create, Comment
-    = render partial: "modules/comments/form", locals: { comment: commentable.comments.new(body: params[:body]), avatar_size: 87 }
+  - if commentable.comments.count == 0
+    %p.no-comments
+      %em Keine Kommentare vorhanden.
   - else
-    %p
-      %em Sie müssen angemeldet sein, um Kommentare abgeben zu können.
+    - commentable.comments.order(:created_at).each do |comment|
+      = render partial: "modules/comments/comment", locals: {comment: comment}
+
+  .comment-event-form
+    - if can? :create, Comment
+      = render partial: "modules/comments/form", locals: { comment: commentable.comments.new(body: params[:body]), avatar_size: 87 }
+    - else
+      %p
+        %em Sie müssen angemeldet sein, um Kommentare abgeben zu können.

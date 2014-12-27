@@ -32,6 +32,8 @@
         t.parentNode.insertBefore(s, t);
       })();
 
+    = javascript_include_tag "application"
+
     %link{ href: 'http://fonts.googleapis.com/css?family=Roboto+Condensed:400italic,400,300,700', rel:'stylesheet', type:'text/css'}
 
   %body{:class => "#{controller.controller_name}_#{controller.action_name}" }
@@ -40,9 +42,8 @@
         %a.exit-off-canvas
         = render 'modules/common/topbar'
         = render 'modules/common/ical_popup'
-        = render 'modules/common/flash'
         .row
+          = render 'modules/common/flash'
           %section.main= yield
           = render 'modules/common/sidebar'
 
-    = javascript_include_tag "application"

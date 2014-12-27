@@ -16,7 +16,7 @@ ActiveAdmin.register User do
     column :github
     column :twitter
     column :homepage
-    default_actions
+    actions
   end
 
   form do
