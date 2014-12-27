@@ -51,12 +51,12 @@
       .hates
         Ich boykottiere
         %i.icon-thumbs-down
-        - if @user.hates.length > 0
-          .tags-list.clearfix
+        .tags-list.clearfix
+          - if @user.hates.length > 0
             - @user.hates.sort.each do |hate|
               = render partial: "modules/tags/tag", locals: { tag: hate }
-        - else
-          Nichts
+          - else
+            Nichts
 
       .recent_events
         - unless @next_events.empty?
