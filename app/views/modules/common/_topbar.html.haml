@@ -4,7 +4,7 @@
       %h3
         = raw t('modules.common.topbar.test_environment_warning')
         %a.close{href: "#"}×
-  %nav.top-bar{ data: { topbar: true } }
+  %nav.top-bar{ data: { topbar: true }, role: "navigation" }
 
     %ul.left
       %li.sidebar-toggle
@@ -14,8 +14,8 @@
 
     %ul.title-area
       %li.name
-        = image_tag asset_path("logo/hacken_in-32-white.png"), class: "hacken-logo"
         %h1
+          = image_tag asset_path("logo/hacken_in-32-white.png"), class: "hacken-logo"
           = link_to 'hacken.in', :root
 
     %section.top-bar-section
