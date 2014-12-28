@@ -23,8 +23,4 @@ describe SearchController, type: :controller do
     expect(assigns[:search_result]).to be search_results
   end
 
-  it 'should redirect to the calendar page if no parameters where provided' do
-    get :index, region: region_name
-    expect(response).to redirect_to(region_path(region))
-  end
 end
