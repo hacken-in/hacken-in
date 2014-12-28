@@ -345,6 +345,10 @@ de:
       add_service: '%{provider} hinzufügen'
       in_use: 'Dein %{provider}-Account (User-Id: %{uid}) wird bereits von einem anderen Account verwendet. Wenn du dich mit einem anderen Account anmelden willst, geh auf die Seite von %{provider} und melde dich dort ab.'
       email: Hier kannst du eine E-Mail Adresse und ein Passwort hinzufügen. Damit kannst du dich auch anmelden, wenn deine Authorisierungsdienste mal pleite gehen oder so.
+    shared:
+      login: Einloggen
+      register: Registrieren
+      password_forgotten: Passwort vergessen?
   events:
     show:
       edit: Bearbeiten
