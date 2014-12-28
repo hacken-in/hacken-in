@@ -9,11 +9,3 @@
 - if devise_mapping.recoverable? && controller_name != 'passwords'
   &nbsp;
   = link_to t('registrations.shared.password_forgotten'), new_password_path(resource_name)
-
-- if devise_mapping.confirmable? && controller_name != 'confirmations'
-  &nbsp;
-  = link_to "E-Mail für die Aktivierung nicht erhalten?", new_confirmation_path(resource_name), class: 'button'
-
-- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
-  &nbsp;
-  = link_to "E-Mail zum entsperren des Kontos nicht bekommen?", new_unlock_path(resource_name), class: 'button'
