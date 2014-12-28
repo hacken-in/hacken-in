@@ -318,6 +318,9 @@ de:
     destroy:
       confirmation: Kommentar gelöscht.
   registrations:
+    new:
+      title: Registrieren
+      submit: Registrieren
     edit:
       danger_zone: Danger Zone
       warning: Für Felder in der Danger-Zone brauchen wir dein Passwort, um die Änderungen zu machen.

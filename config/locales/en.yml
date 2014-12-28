@@ -305,6 +305,9 @@ en:
       format:
         delimiter: 
   registrations:
+    new:
+      title: Register
+      submit: Register
     edit:
       change_gravatar: change on gravatar.com
       danger_zone: Danger Zone
