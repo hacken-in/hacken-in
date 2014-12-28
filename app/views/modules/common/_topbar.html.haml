@@ -26,7 +26,7 @@
             %ul.dropdown
               - @all_regions.each do |region|
                 %li
-                  = link_to region.name, "#"
+                  = link_to region.name, region_path(region.slug)
       - if current_region.present?
         %ul.right.show-for-medium-up
           = form_tag search_path(region: current_region), :method => 'get' do
