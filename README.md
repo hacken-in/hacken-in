@@ -1,7 +1,9 @@
 # Welcome
 
-[![Build Status](https://secure.travis-ci.org/hacken-in/website.png?branch=master)](http://travis-ci.org/hacken-in/website)
-[![Code Climate](https://codeclimate.com/github/hacken-in/website.png)](https://codeclimate.com/github/hacken-in/website)
+[![Travis Build Status](https://img.shields.io/travis/hacken-in/website.svg)](http://travis-ci.org/hacken-in/website)
+[![Codeship Build Status](https://img.shields.io/codeship/3c775da0-bbc6-0131-1826-124bbd4fc581.svg)](https://codeship.com/projects/20985)
+[![Code Climate](https://img.shields.io/codeclimate/github/hacken-in/website.svg)](https://codeclimate.com/github/hacken-in/website)
+[![Code Climate CodeCoverage](https://img.shields.io/codeclimate/coverage/github/hacken-in/website.svg)](https://codeclimate.com/github/hacken-in/website)
 [![Stories in Ready](https://badge.waffle.io/hacken-in/website.png?label=ready&title=Ready)](https://waffle.io/hacken-in/website)
 
 This is the code of [hacken.in](http://hacken.in/), an event calendar for geeks in and around Cologne, Berlin and Munich.
