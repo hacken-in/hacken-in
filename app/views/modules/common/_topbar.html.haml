@@ -21,12 +21,11 @@
     %section.top-bar-section
       %ul.left
         %li.has-dropdown
-          = link_to current_region.name, "#", :class => 'active'
+          = link_to current_region.nil? ? "" : current_region.name, "#", :class => 'active'
           %ul.dropdown
-            %li
-              = link_to "Berlin", "#"
-              = link_to "Koeln", "#"
-              = link_to "Muenchen", "#"
+            - @all_regions.each do |region|
+              %li
+                = link_to region.name, "#"
       - if current_region.present?
         %ul.right.show-for-medium-up
           = form_tag search_path(region: current_region), :method => 'get' do
