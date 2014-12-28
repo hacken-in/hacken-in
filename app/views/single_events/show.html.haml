@@ -7,7 +7,7 @@
   .event-indicator
     %meta{ itemprop: 'startDate', content: I18n.localize(@single_event.occurrence, format: "%FT%R%:z") }
     %h2= I18n.localize @single_event.occurrence, format: "%a, %d. %b %Y"
-  .event-title
+  .event-title.clearfix
     %h1.black-bar-title{ itemprop: "name" }
       = @single_event.event.name
     - if !@single_event.full_day
