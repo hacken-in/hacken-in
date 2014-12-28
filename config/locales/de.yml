@@ -375,6 +375,7 @@ de:
       confirmation: Termin gelöscht.
   search:
     title: Suchergebnisse
+    nothing_found: Keine Termine gefunden.
   subscriptions:
     index:
       error: Eintrag nicht gefunden

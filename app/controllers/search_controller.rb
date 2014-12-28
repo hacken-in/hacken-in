@@ -1,7 +1,10 @@
 class SearchController < ApplicationController
   def index
-    redirect_to(region_path(current_region)) && return if params[:search].blank?
-    single_events = SingleEvent.search_in_region(params[:search], current_region)
-    @search_result = SingleEventsByDay.new(single_events)
+    @search_result = if params[:search].present?
+                       single_events = SingleEvent.search_in_region(params[:search], current_region)
+                       SingleEventsByDay.new(single_events)
+                     else
+                       SingleEventsByDay.new([])
+                     end
   end
 end
