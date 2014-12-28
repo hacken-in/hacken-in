@@ -4,7 +4,7 @@
       %h3
         = raw t('modules.common.topbar.test_environment_warning')
         %a.close{href: "#"}×
-  %nav.top-bar{ data: { topbar: true } }
+  %nav.top-bar{ data: { topbar: true }, role: "navigation" }
 
     %ul.left
       %li.sidebar-toggle
@@ -14,11 +14,19 @@
 
     %ul.title-area
       %li.name
-        = image_tag asset_path("logo/hacken_in-32-white.png"), class: "hacken-logo"
         %h1
+          = image_tag asset_path("logo/hacken_in-32-white.png"), class: "hacken-logo"
           = link_to 'hacken.in', :root
 
     %section.top-bar-section
+      - unless current_region.nil?
+        %ul.left
+          %li.has-dropdown
+            = link_to current_region.nil? ? "" : current_region.name, "#", :class => 'active'
+            %ul.dropdown
+              - @all_regions.each do |region|
+                %li
+                  = link_to region.name, region_path(region.slug)
       - if current_region.present?
         %ul.right.show-for-medium-up
           = form_tag search_path(region: current_region), :method => 'get' do

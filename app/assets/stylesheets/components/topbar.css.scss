@@ -1,10 +1,13 @@
 nav.top-bar {
 
   .title-area {
-    @include grid-column($columns: 8);
-
     .name {
       margin-left: 4px;
+      h1 {
+        a {
+          display: inline;
+        }
+      }
 
       .hacken-logo {
         float: left;
