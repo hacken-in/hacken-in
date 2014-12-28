@@ -43,6 +43,9 @@ class ApplicationController < ActionController::Base
 
   def all_regions
     @all_regions = Region.all
+    if current_region
+      @all_regions = @all_regions.reject { |region| region.slug == current_region.slug }
+    end
   end
 
   def current_region
