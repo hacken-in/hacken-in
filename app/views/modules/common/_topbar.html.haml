@@ -19,8 +19,8 @@
           = link_to 'hacken.in', :root
 
     %section.top-bar-section
-      %ul.right
-        - if current_region.present?
+      - if current_region.present?
+        %ul.right.show-for-medium-up
           = form_tag search_path(region: current_region), :method => 'get' do
             %li.search-form
               .row
@@ -28,4 +28,9 @@
                   = text_field_tag :search, params[:search], placeholder: t('modules.common.topbar.search_form.field_placeholder')
                 .search-button
                   %a.button{href: "#"}= t('modules.common.topbar.search_form.button')
+        %ul.right.show-for-small-only
+          %li.search-icon
+            %a{href: search_path(region: current_region)}
+              %i.fa.fa-search
+
 

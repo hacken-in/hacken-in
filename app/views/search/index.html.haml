@@ -1,6 +1,19 @@
 - content_for :title do
   = t('search.title')
 
-%h1= t('search.title')
+.show-for-small-only
+  = form_tag search_path(region: current_region), :method => 'get' do
+    .row
+      .search-field
+        = text_field_tag :search, params[:search], placeholder: t('modules.common.topbar.search_form.field_placeholder')
+      .search-button
+        %input{type: "submit", class: "button", value: t('modules.common.topbar.search_form.button') }
 
-= render partial: "modules/calendars/days", locals: {days: @search_result.days, suggestions: true}
+- if params[:search].present?
+
+  - if @search_result.days.present?
+    %h1= t('search.title')
+
+    = render partial: "modules/calendars/days", locals: {days: @search_result.days, suggestions: true}
+  - else
+    %h1= t('search.nothing_found')

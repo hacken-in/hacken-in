@@ -1,7 +1,7 @@
 nav.top-bar {
 
   .title-area {
-    @include grid-column($columns: 3);
+    @include grid-column($columns: 8);
 
     .name {
       margin-left: 4px;
@@ -20,7 +20,14 @@ nav.top-bar {
   }
 
   li.search-form {
-    background: #000;
+    background: black;
+  }
+
+  li.search-icon a {
+    color: white;
+    font-size: 1.5rem;
+    margin-right: 10px;
+    background-color: black;
   }
 
   .search-field {

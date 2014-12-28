@@ -26,13 +26,13 @@
       }
     }
     .event-title{
-      @include grid-row();
       h1 {
-        @include grid-column(10);
+        float: left;
         font-size:$h2-font-size;
+        margin: 0px 20px;
       }
       h4 {
-        @include grid-column(2);
+        float: right;
         font-size:$h4-font-size;
         font-weight: 300;
         margin-top: 13px;
