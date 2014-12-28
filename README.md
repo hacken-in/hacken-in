@@ -90,6 +90,8 @@ This will offer you the following comfortable features:
 
 [Hacken.in](http://hacken.in) is developed in a test-driven way using RSpec and FactoryGirl. If you want to contribute to the project always add tests for your added functionality. If you find a bug it would be really helpful if you add a regression test that displays this misbehavior. Even better: Fix it afterwards :wink:
 
-## Note on Patches/Pull Requests
+## About Contributing
+
+Please note that this project is released with a Contributor [Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for details
