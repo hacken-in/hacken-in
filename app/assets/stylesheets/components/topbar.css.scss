@@ -1,7 +1,7 @@
 nav.top-bar {
 
   .title-area {
-    @include grid-column($columns: 3);
+    @include grid-column($columns: 5);
 
     .name {
       margin-left: 4px;
