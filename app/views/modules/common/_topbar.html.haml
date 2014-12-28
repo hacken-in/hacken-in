@@ -19,13 +19,14 @@
           = link_to 'hacken.in', :root
 
     %section.top-bar-section
-      %ul.left
-        %li.has-dropdown
-          = link_to current_region.nil? ? "" : current_region.name, "#", :class => 'active'
-          %ul.dropdown
-            - @all_regions.each do |region|
-              %li
-                = link_to region.name, "#"
+      - unless current_region.nil?
+        %ul.left
+          %li.has-dropdown
+            = link_to current_region.nil? ? "" : current_region.name, "#", :class => 'active'
+            %ul.dropdown
+              - @all_regions.each do |region|
+                %li
+                  = link_to region.name, "#"
       - if current_region.present?
         %ul.right.show-for-medium-up
           = form_tag search_path(region: current_region), :method => 'get' do
