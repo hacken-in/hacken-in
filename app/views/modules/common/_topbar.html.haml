@@ -19,6 +19,11 @@
           = link_to 'hacken.in', :root
 
     %section.top-bar-section
+      %ul.left
+        %li.has-dropdown
+          = link_to "Berlin", "#"
+          = link_to "Koeln", "#"
+          = link_to "Muenchen", "#"
       - if current_region.present?
         %ul.right.show-for-medium-up
           = form_tag search_path(region: current_region), :method => 'get' do
