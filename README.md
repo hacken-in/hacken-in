@@ -30,13 +30,13 @@ If you want to work on the Project, follow the steps described here:
 1. Fork the Project
 1. Check out your fork
 1. `cd` into the directory, install the bundler gem and run `bundle install`
-1. Now create a database config: `cp config/database.yml_example config/database.yml`
-  * The example config requires PostgreSQL including a database and a user
-  * [More information](http://guides.rubyonrails.org/getting_started.html#configuring-a-database) on the database config
-1. Create the Devise & Omniauth configuration `cp config/initializers/devise.rb_example config/initializers/devise.rb` and edit the keys
+1. Now create a database configuration: `cp config/database.yml_example config/database.yml`
+  * The example configuration requires PostgreSQL including a database and a user
+  * [More information](http://guides.rubyonrails.org/getting_started.html#configuring-a-database) on the database configuration
+1. Create the Devise & OmniAuth configuration `cp config/initializers/devise.rb_example config/initializers/devise.rb` and edit the keys
 1. Now run `rake db:migrate db:seed` to setup your database. You will now have an admin user `admin@hacken.local` with the password `hacken_admin`
 1. To run your application locally you can now use `rails server`
-1. Now visit http://localhost:3000 in your webbrowser and you are ready to go!
+1. Now visit http://localhost:3000 in your web browser and you are ready to go!
 
 ## Booting up the Vagrant VM
 
@@ -65,16 +65,15 @@ If you're experiencing problems do not hesitate to contact us or - even better -
 
 ### Communication
 
-You can reach us on lots of ways. The most prefered one would be either to open an issue here or to use our [Google Group](http://groups.google.com/group/hacken-in). If you want to drink from the firehose (and see a lot of GIFs) join us in our Slack room. In order to get invited, just ping us via admin@hacken.in and we will add you.
+You can reach us on lots of ways. The most preferred one would be either to open an issue here or to use our [Google Group](http://groups.google.com/group/hacken-in). If you want to drink from the firehose (and see a lot of GIFs) join us in our Slack room. In order to get invited, just ping us via admin@hacken.in and we will add you.
 
 ### Waffle.io
 
-We use [waffle.io](http://waffle.io/hacken-in/website) to manage our tickets. Everyhing in the "ready" state is ready to be implemented.
+We use [waffle.io](http://waffle.io/hacken-in/website) to manage our tickets. Everything in the "ready" state is ready to be implemented.
 
 ### Pow
 
-Pow is a really comfortable way to run the application on your machine.
-You can learn everything about it [here](http://pow.cx).
+Pow is a really comfortable way to run the application on your machine. You can learn everything about it [here](http://pow.cx).
 
 ### Guard
 
@@ -89,11 +88,7 @@ This will offer you the following comfortable features:
 
 ## Testing
 
-[Hacken.in](http://hacken.in) is developed in a test-driven way using Rspec and
-FactoryGirl. If you want to contribute to the project always add
-tests for your added functionality. If you find a bug it would be
-really helpful if you add a regression test that displays this
-misbehaviour. Even better: Fix it afterwards ;)
+[Hacken.in](http://hacken.in) is developed in a test-driven way using RSpec and FactoryGirl. If you want to contribute to the project always add tests for your added functionality. If you find a bug it would be really helpful if you add a regression test that displays this misbehavior. Even better: Fix it afterwards :wink:
 
 ## Note on Patches/Pull Requests
 
