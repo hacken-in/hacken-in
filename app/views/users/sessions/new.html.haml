@@ -1,19 +1,19 @@
 - content_for :title do
-  Einloggen
+  = t('sessions.new.title')
 
-%h2 Einloggen
+%h2= t('sessions.new.title')
 
-%h3 Mit Benutzerdaten
+%h3= t('sessions.new.with_user_data')
 
 = simple_form_for resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-horizontal' } do |f|
-  = f.input :email, label: 'E-Mail oder Nickname'
+  = f.input :email, label: t('sessions.new.email_or_username')
   = f.input :password
 
   %ul.controls
-    %li= f.submit "Einloggen", class: 'button'
+    %li= f.submit t('sessions.new.submit'), class: 'button'
     = render partial: 'users/shared/links'
 
-%h2 ... oder mit einem dieser Services
+%h2= t('sessions.new.with_other_service')
 %ul
   - User.omniauth_providers.each do |provider|
     %li

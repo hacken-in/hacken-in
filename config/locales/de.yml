@@ -317,6 +317,13 @@ de:
       confirmation: Kommentar aktualisiert.
     destroy:
       confirmation: Kommentar gelöscht.
+  sessions:
+    new:
+      title: Einloggen
+      with_user_data: Mit Benutzerdaten
+      email_or_username: E-Mail oder Nickname
+      submit: Einloggen
+      with_other_service: …oder mit einem dieser Services
   registrations:
     new:
       title: Registrieren
