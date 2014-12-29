@@ -5,6 +5,7 @@
 
 = simple_form_for resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'form-horizontal' } do |f|
   = f.input :email
-  .controls
-    = f.submit "Passwort zusenden", class: 'button'
+
+  %ul.controls
+    %li= f.submit "Passwort zusenden", class: 'button'
     = render partial: "users/shared/links"

@@ -15,6 +15,6 @@
   - if resource.auth_temp_token
     = f.hidden_field :auth_temp_token, value: resource.auth_temp_token
 
-  .controls
-    = f.submit t('registrations.new.submit'), class: 'button'
+  %ul.controls
+    %li= f.submit t('registrations.new.submit'), class: 'button'
     = render partial: "users/shared/links"

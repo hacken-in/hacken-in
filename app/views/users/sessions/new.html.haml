@@ -9,8 +9,8 @@
   = f.input :email, label: 'E-Mail oder Nickname'
   = f.input :password
 
-  .controls
-    = f.submit "Einloggen", class: 'button'
+  %ul.controls
+    %li= f.submit "Einloggen", class: 'button'
     = render partial: 'users/shared/links'
 
 %h2 ... oder mit einem dieser Services
