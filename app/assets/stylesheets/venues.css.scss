@@ -3,6 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .venue {
+  .description {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
   .venue-map {
     height: 300px;
     #mapCanvas {

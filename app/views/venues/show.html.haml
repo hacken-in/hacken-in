@@ -12,4 +12,6 @@
       = @venue.city
   %span
     = @venue.url
+%span.description
+  = @venue.description
 = render "venues/map", venue: @venue
