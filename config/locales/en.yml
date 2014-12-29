@@ -304,6 +304,13 @@ en:
     precision:
       format:
         delimiter: 
+  sessions:
+    new:
+      title: Login
+      with_user_data: With user data
+      email_or_username: Email or nickname
+      submit: Login
+      with_other_service: …or with one of these services
   registrations:
     new:
       title: Register
@@ -321,6 +328,9 @@ en:
       profile: Profile informations
       save_profile: save
       warning: To apply changes to fields of the danger zone your password is required.
+    password_forgotten:
+      title: Forgot your password?
+      submit: Forgot your password
     oauth:
       add_service: add %{provider}
       added: Added authorization for %{provider}.
