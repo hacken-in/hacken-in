@@ -19,6 +19,6 @@
 .recent-events
   -unless @next_events.empty?
     %h4
-      = t("views.users.show.at_these_events")
+      = t("views.venues.show.upcoming_events")
     .calendar-calendar
       = render partial: "modules/calendars/days", locals: {days: @next_events, suggestions: false}
