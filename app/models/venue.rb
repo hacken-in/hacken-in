@@ -22,7 +22,7 @@ class Venue < ActiveRecord::Base
   end
 
   def to_param
-    "#{self.id} - #{self.location}"
+    "#{self.id}-#{self.location}"
   end
 
   def to_opengraph

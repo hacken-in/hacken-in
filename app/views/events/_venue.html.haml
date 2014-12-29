@@ -1,9 +1,6 @@
 - unless event.venue.nil?
   %address.event-venue{ itemscope: true, itemprop: 'location', itemtype: 'http://schema.org/Place' }
-    - if event.venue.url.blank?
-      = event.venue.location
-    - else
-      = link_to event.venue.location, event.venue.url, itemprop: 'url'
+    = link_to event.venue.location, venue_path(event.venue)
     %br
     - if event.venue_info.present?
       = event.venue_info
@@ -16,3 +13,5 @@
         = event.venue.zipcode
       %span{ itemprop: 'addressLocality' }
         = event.venue.city
+    %br
+    = link_to event.venue.url, event.venue.url, itemprop: 'url'
