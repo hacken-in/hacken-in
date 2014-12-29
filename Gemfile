@@ -30,8 +30,8 @@ gem 'leaflet-rails', '~> 0.7.3'
 gem 'uglifier', '~> 2.5.1'
 gem 'jquery-rails', '~> 3.1.1'
 gem 'jquery-ui-rails', '~> 5.0.3'
-gem 'foundation-rails', '~> 5.4.0'
-gem "font-awesome-rails", '~> 4.1.0.0'
+gem 'foundation-rails', '5.4.5.0'
+gem 'font-awesome-rails', '~> 4.1.0.0'
 gem 'modernizr-rails', '~> 2.7.1'
 
 gem 'haml', '~> 4.0.4'
@@ -79,7 +79,6 @@ gem 'gravatar_image_tag', '~> 1.2.0'
 gem 'twitter', '~> 5.5.1'
 
 # Other dependencies
-gem 'gabba', '~> 1.0.1'
 gem 'geocoder', '~> 1.2.2'
 
 # Nicer drop down boxes in the admin area
