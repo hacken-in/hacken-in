@@ -1,6 +1,6 @@
 class IcalController < ApplicationController
   before_filter :set_calendar_headers
-  before_filter :track_google_event, only: [:general, :personalized, :like_welcome_page]
+  before_filter :track_event, only: [:general, :personalized, :like_welcome_page]
 
   rescue_from ActiveRecord::RecordNotFound, with: :render_empty
 
@@ -54,8 +54,8 @@ class IcalController < ApplicationController
     render_events []
   end
 
-  def track_google_event
-    GoogleAnalyticsEvent.track called_action
+  def track_event
+    ahoy.track "iCal", action: called_action
   end
 
   def user_by_guid
