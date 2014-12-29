@@ -1,5 +1,7 @@
 Hcking::Application.routes.draw do
 
+  get 'venues/show'
+
   devise_for :users, controllers: { sessions: 'sessions', omniauth_callbacks: "callbacks" }
 
   devise_scope :users do
