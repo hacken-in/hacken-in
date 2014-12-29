@@ -39,6 +39,9 @@ ActiveAdmin.register Venue do
     div do
       "<a class='map-link' href='http://maps.google.com/maps?z=18&q=#{venue.latitude},#{venue.longitude}' data-lat='#{venue.latitude}' data-lng='#{venue.longitude}'>Google Maps</a>".html_safe
     end
+    div do
+      convert_markdown venue.description
+    end
     attributes_table do
       row :single_events do |preset|
         ul do
@@ -66,7 +69,8 @@ ActiveAdmin.register Venue do
         :city,
         :country,
         :url,
-        :region_id
+        :region_id,
+        :description
       ])
     end
   end

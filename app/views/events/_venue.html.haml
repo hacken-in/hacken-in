@@ -1,17 +1,17 @@
 - unless event.venue.nil?
   %address.event-venue{ itemscope: true, itemprop: 'location', itemtype: 'http://schema.org/Place' }
-    = link_to event.venue.location, venue_path(event.venue)
-    %br
+    .location
+      = link_to event.venue.location, venue_path(event.venue)
     - if event.venue_info.present?
-      = event.venue_info
-      %br
-    %span{ itemscope: true, itemprop: 'address', itemtype: 'http://schema.org/PostalAddress' }
-      %span{ itemprop: 'streetAddress' }
+      .info
+        = event.venue_info
+    %div{ itemscope: true, itemprop: 'address', itemtype: 'http://schema.org/PostalAddress' }
+      %div{ itemprop: 'streetAddress' }
         = event.venue.street
-      %br
-      %span{ itemprop: 'postalCode' }
-        = event.venue.zipcode
-      %span{ itemprop: 'addressLocality' }
-        = event.venue.city
+      %div
+        %span{ itemprop: 'postalCode' }
+          = event.venue.zipcode
+        %span{ itemprop: 'addressLocality' }
+          = event.venue.city
     - if event.venue.url.present?
       = link_to event.venue.url, event.venue.url, itemprop: 'url'

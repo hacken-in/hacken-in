@@ -2,19 +2,19 @@
   = @venue.location
 
 %address.event-venue{ itemscope: true, itemprop: 'location', itemtype: 'http://schema.org/Place'  }
-  %span{ itemscope: true, itemprop: 'address', itemtype: 'http://schema.org/PostalAddress' }
-    %span{ itemprop: 'streetAddress' }
+  %div{ itemscope: true, itemprop: 'address', itemtype: 'http://schema.org/PostalAddress' }
+    %div{ itemprop: 'streetAddress' }
       = @venue.street
-    %br
-    %span{ itemprop: 'postalCode' }
-      = @venue.zipcode
-    %span{ itemprop: 'addressLocality' }
-      = @venue.city
-  %br
-  %span
-    = link_to @venue.url, @venue.url
-%span.description
-  = @venue.description
+    %div
+      %span{ itemprop: 'postalCode' }
+        = @venue.zipcode
+      %span{ itemprop: 'addressLocality' }
+        = @venue.city
+  - if @venue.url.present?
+    %div
+      = link_to @venue.url, @venue.url
+.description
+  = convert_markdown @venue.description, true
 = render "venues/map", venue: @venue
 
 .recent-events
