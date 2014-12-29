@@ -37,8 +37,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network "forwarded_port", guest: 5432, host: 5432, auto_correct: true
 
   config.vm.provision :puppet do |puppet|
-    puppet.module_path    = 'puppet/modules'
-    puppet.manifests_path = 'puppet/manifests'
+    puppet.module_path    = 'vagrant/puppet/modules'
+    puppet.manifests_path = 'vagrant/puppet/manifests'
 		puppet.facter = {
       'hackenin_application_environment' => 'development',
       'hackenin_ruby_version'            => File.read('.ruby-version').strip
