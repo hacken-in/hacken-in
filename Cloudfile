@@ -8,6 +8,7 @@ hacken-in:
     app1:
       size: large
       thin: 4
+      whenever: on
       databases:
         - postgresql
 hacken-in-master:
@@ -20,5 +21,6 @@ hacken-in-master:
     app1:
       size: large
       thin: 4
+      whenever: on
       databases:
         - postgresql
