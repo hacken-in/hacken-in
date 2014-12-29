@@ -334,6 +334,9 @@ de:
       delete_profile: Konto löschen
       delete_profile_text: Du willst dein Konto löschen?
       delete_confirm: Ja, bitte mein Konto löschen
+    password_forgotten:
+      title: Passwort vergessen?
+      submit: Passwort zusenden
     oauth:
       title: OAuth Verknüpfungen
       more: Mit Accounts verbinden
