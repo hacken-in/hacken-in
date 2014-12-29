@@ -10,8 +10,9 @@
       = @venue.zipcode
     %span{ itemprop: 'addressLocality' }
       = @venue.city
+  %br
   %span
-    = @venue.url
+    = link_to @venue.url, @venue.url
 %span.description
   = @venue.description
 = render "venues/map", venue: @venue
