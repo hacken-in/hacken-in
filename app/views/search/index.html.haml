@@ -1,7 +1,7 @@
 - content_for :title do
   = t('search.title')
 
-.show-for-small-only
+.show-for-small-only.search_form
   = form_tag search_path(region: current_region), :method => 'get' do
     .row
       .search-field
@@ -9,7 +9,7 @@
       .search-button
         %input{type: "submit", class: "button", value: t('modules.common.topbar.search_form.button') }
 
-- if params[:search].present?
+- unless params[:search].nil?
 
   - if @search_result.days.present?
     %h1= t('search.title')

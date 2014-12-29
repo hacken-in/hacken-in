@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140705143451) do
+ActiveRecord::Schema.define(version: 20141229081622) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -125,6 +125,7 @@ ActiveRecord::Schema.define(version: 20140705143451) do
     t.float    "perimeter",  default: 20.0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "active"
   end
 
   add_index "regions", ["slug"], name: "index_regions_on_slug", using: :btree

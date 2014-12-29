@@ -1,10 +1,10 @@
 # encoding: UTF-8
 Region.create([
-  {id: 1, name: "Global",  slug: "global",   latitude: nil,     longitude: nil,     perimeter:   nil},
-  {id: 2, name: "Köln",    slug: "koeln",    latitude: 50.946,  longitude: 6.95889, perimeter:   20.0},
-  {id: 3, name: "Berlin",  slug: "berlin",   latitude: 52.5186, longitude: 13.4081, perimeter:   20.0},
-  {id: 4, name: "München", slug: "muenchen", latitude: 48.1368, longitude: 11.5781, perimeter:   20.0},
-  {id: 5, name: "Hamburg", slug: "hamburg",  latitude: 53.5653, longitude: 10.0014, perimeter:   20.0}
+  {id: 1, name: "Global",  slug: "global",   latitude: nil,     longitude: nil,     perimeter: nil,  active: true},
+  {id: 2, name: "Köln",    slug: "koeln",    latitude: 50.946,  longitude: 6.95889, perimeter: 20.0, active: true},
+  {id: 3, name: "Berlin",  slug: "berlin",   latitude: 52.5186, longitude: 13.4081, perimeter: 20.0, active: true},
+  {id: 4, name: "München", slug: "muenchen", latitude: 48.1368, longitude: 11.5781, perimeter: 20.0, active: true},
+  {id: 5, name: "Hamburg", slug: "hamburg",  latitude: 53.5653, longitude: 10.0014, perimeter: 20.0, active: false}
 ])
 
 Category.create!([
