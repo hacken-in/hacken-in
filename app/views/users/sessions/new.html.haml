@@ -13,7 +13,7 @@
     %li= f.submit t('sessions.new.submit'), class: 'button'
     = render partial: 'users/shared/links'
 
-%h2= t('sessions.new.with_other_service')
+%h3= t('sessions.new.with_other_service')
 %ul
   - User.omniauth_providers.each do |provider|
     %li
