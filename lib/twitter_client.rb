@@ -2,12 +2,11 @@ module TwitterClient
   MAX_ATTEMPTS = 3
 
   def connect
-    twitter_config = YAML.load_file("config/twitter.yml")
     Twitter::REST::Client.new do |config|
-      config.consumer_key    = twitter_config["consumer_key"]
-      config.consumer_secret = twitter_config["consumer_secret"]
-      config.access_token    = twitter_config["access_token"]
-      config.access_token_secret = twitter_config["access_token_secret"]
+      config.consumer_key    = Rails.application.secrets.twitter_consumer_key
+      config.consumer_secret = Rails.application.secrets.twitter_consumer_secret
+      config.access_token    = Rails.application.secrets.twitter_access_token
+      config.access_token_secret = Rails.application.secrets.twitter_access_token_secret
     end
   end
 
