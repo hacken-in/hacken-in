@@ -1,6 +1,5 @@
 Hcking::Application.routes.draw do
 
-  get 'venues/show'
 
   devise_for :users, controllers: { sessions: 'sessions', omniauth_callbacks: "callbacks" }
 
@@ -69,6 +68,7 @@ Hcking::Application.routes.draw do
   get "export/ical"                       => "ical#everything"
 
   get "pages/:page_name"              => "pages#show"
+  get 'venues/:venue'                 => "venues#show"
 
   get "styleguide/(:reference)" => "styleguide#index", as: "styleguide"
 
