@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe OpengraphHelper do
+describe OpengraphHelper, type: :helper do
   include OpengraphHelper
 
   it "should render opengraph" do

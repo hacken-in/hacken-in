@@ -1,46 +1,49 @@
-.event-participators
-  %h3.black-bar-small-title.event-participators-title Teilnehmer
+.event-participents
+  %h3 Teilnehmer
   - if @single_event.users.empty?
     %p.no-participators
       %em keine Teilnehmer
   - else
-    %ul.event-participators-list
+    %ul.participators.clearfix
       - @single_event.users.each_with_index do |user, index|
-        - class_ = (index == 0 || index % 6 == 0) ? 'cuddle-to-left' : ''
-        %li{ class: "participator #{class_}"}
+        %li
           = link_to user_path(user) do
             = avatar_for_user(user, 85, "user_gravatar")
 
   - if user_signed_in?
-    - if @single_event.attended_by_user?(current_user)
-      = button_to t('single_events.show.unparticipate'), event_single_event_participate_path(@single_event.event, @single_event, state: :delete), { method: :put, class: 'button' }
-    - else
-      = button_to t('single_events.show.participate'), event_single_event_participate_path(@single_event.event, @single_event, state: :push), { method: :put, class: 'button' }
+    .participate
+      - if @single_event.attended_by_user?(current_user)
+        = button_to t('single_events.show.unparticipate'), event_single_event_participate_path(@single_event.event, @single_event, state: :delete), { method: :put, class: 'button small' }
+      - else
+        = button_to t('single_events.show.participate'), event_single_event_participate_path(@single_event.event, @single_event, state: :push), { method: :put, class: 'button small' }
 
-- if Rails.application.config.allow_external_guests
-  .event-participators
-    %h3.black-bar-small-title.event-participators-title externe Teilnehmer
-    - if @single_event.external_users.empty?
-      %p.no-participators
-        %em keine externen Teilnehmer
-    - else
-      %ul.event-participators-list
-        - @single_event.external_users.each_with_index do |extuser, index|
-          - class_ = (index == 0 || index % 6 == 0) ? 'cuddle-to-left' : ''
-          %li{ class: "participator #{class_}"}
-            = avatar_for_external_user(extuser, 85, "user_gravatar")
-
-  - unless user_signed_in?
-    - if @single_event.attended_by_external_user?(cookies[:hacken_uuid])
-      = button_to t('single_events.show.unparticipate'), event_single_event_participate_path(@single_event.event, @single_event, state: :delete), { method: :put, class: 'button' }
-    - else
-      - cookie_data = external_participation_data
-      = form_tag event_single_event_participate_path(@single_event.event, @single_event, state: :push), method: 'PUT', class: 'form-inline well' do
-        %input.input-large{ name: "name",  placeholder: "Name",   value: cookie_data[:name] || params[:name] }
-        %input.input-large{ name: "email", placeholder: "E-Mail", value: cookie_data[:email] || params[:email] }
-        %br
-        %label.checkbox
-          %input{type: "checkbox", name: "keep_data", value: "1", checked: cookie_data.present?}
-          Daten im Cookie speichern
-        - # TODO: Hier sollte ein Hinweis stehen, dass wir mit der E-Mail vernünftig umgehen
-        %input.btn.btn-inverse.pull-right.input-small{ type: "submit", value: t('single_events.show.participate') }
+-# TODO: 
+-# If we want to renable the external guests, this needs
+-# to be fixed here.
+-#
+-# - if Rails.application.config.allow_external_guests
+-#   .event-participators
+-#     %h3.black-bar-small-title.event-participators-title externe Teilnehmer
+-#     - if @single_event.external_users.empty?
+-#       %p.no-participators
+-#         %em keine externen Teilnehmer
+-#     - else
+-#       %ul.event-participators-list
+-#         - @single_event.external_users.each_with_index do |extuser, index|
+-#           - class_ = (index == 0 || index % 6 == 0) ? 'cuddle-to-left' : ''
+-#           %li{ class: "participator #{class_}"}
+-#             = avatar_for_external_user(extuser, 85, "user_gravatar")
+-#   - unless user_signed_in?
+-#     - if @single_event.attended_by_external_user?(cookies[:hacken_uuid])
+-#       = button_to t('single_events.show.unparticipate'), event_single_event_participate_path(@single_event.event, @single_event, state: :delete), { method: :put, class: 'button' }
+-#     - else
+-#       - cookie_data = external_participation_data
+-#       = form_tag event_single_event_participate_path(@single_event.event, @single_event, state: :push), method: 'PUT', class: 'form-inline well' do
+-#         %input.input-large{ name: "name",  placeholder: "Name",   value: cookie_data[:name] || params[:name] }
+-#         %input.input-large{ name: "email", placeholder: "E-Mail", value: cookie_data[:email] || params[:email] }
+-#         %br
+-#         %label.checkbox
+-#           %input{type: "checkbox", name: "keep_data", value: "1", checked: cookie_data.present?}
+-#           Daten im Cookie speichern
+-#         - # TODO: Hier sollte ein Hinweis stehen, dass wir mit der E-Mail vernünftig umgehen
+-#         %input.btn.btn-inverse.pull-right.input-small{ type: "submit", value: t('single_events.show.participate') }

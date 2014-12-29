@@ -1,6 +1,6 @@
 Hcking::Application.routes.draw do
 
-  devise_for :users, controllers: { omniauth_callbacks: "callbacks" }
+  devise_for :users, controllers: { sessions: 'sessions', omniauth_callbacks: "callbacks" }
 
   devise_scope :users do
     get 'users', :to => 'users#show', :as => :user_root # Rails 3
@@ -47,7 +47,7 @@ Hcking::Application.routes.draw do
   get "abonnieren"              => "subscribe#index"
   get "humans"                  => "humans#index"
   get "impressum"               => "pages#show", page_name: "impressum"
-  get "danke"                   => "pages#show", page_name: "danke"
+  get "sitemap.xml"             => "sitemap#show", format: "xml"
 
   # Calendar Links
   # These are the old links, without a region, redirect them to koeln

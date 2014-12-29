@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe CommentsPathHelper do
+describe CommentsPathHelper, type: :helper do
   include CommentsPathHelper
 
   let(:single_event) {

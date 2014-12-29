@@ -1,63 +1,68 @@
 - content_for :title do
   = @user.nickname
 
-.row
-  .span2.left_side
-    .black_sidebar
-      .big_gravatar
-        = avatar_for_user(@user, 256, "user_gravatar")
-      .inner_text
-        %h3
-          = @user.nickname
+.users.row
+  .avatar.columns.medium-4
+    = avatar_for_user(@user, 256, "user_gravatar")
+  .description.columns.medium-8
+    %h3.nickname
+      = @user.nickname
 
-        - if @user.name.present?
+    - if @user.name.present?
+      %h4.name
+        = @user.name
+
+    .description
+      - if @user.description?
+        = convert_markdown @user.description
+      - else
+        = t 'users.show.no_description'
+
+      %ul.links
+        - if @user.homepage?
+          %li.homepage
+            %i.fa.fa-home
+            %a{ href: @user.homepage}= @user.homepage
+
+        - if @user.twitter?
+          %li.twitter
+            %i.fa.fa-twitter
+            %a{ href: "https://twitter.com/#{@user.twitter}" }= "@#{@user.twitter}"
+
+        - if @user.github?
+          %li.github
+            %i.fa.fa-github
+            %a{ href: "https://github.com/#{@user.github}" }= @user.github
+
+      - if current_user == @user
+        .edit_profile
+          = link_to t('users.show.edit'), edit_user_registration_path
+
+      .loves
+        %h4
+          = t("views.users.show.i_love")
+        %i.icon-heart
+        .tags-list.clearfix
+          - if @user.likes.length > 0
+            - @user.likes.sort.each do |like|
+              = render partial: "modules/tags/tag", locals: { tag: like }
+          - else
+            = t("views.users.show.nothing")
+
+      .boycott
+        %h4
+          = t("views.users.show.i_boycott")
+        %i.icon-thumbs-down
+        .tags-list.clearfix
+          - if @user.hates.length > 0
+            - @user.hates.sort.each do |hate|
+              = render partial: "modules/tags/tag", locals: { tag: hate }
+          - else
+            = t("views.users.show.nothing")
+
+      .recent_events
+        - unless @next_events.empty?
           %h4
-            = @user.name
-
-        - if @user.description?
-          = convert_markdown @user.description
-        - else
-          = t 'users.show.no_description'
-
-    .link-list
-      - if @user.twitter?
-        %a{ href: "https://twitter.com/#{@user.twitter}" }
-          = image_tag "twitter_large.png"
-
-      - if @user.github?
-        %a{ href: "https://github.com/#{@user.github}" }
-          = image_tag "github_large.png"
-
-      - if @user.homepage?
-        %a{ href: @user.homepage}
-          = image_tag "home_large.png"
-
-    - if current_user == @user
-      .edit_profile
-        = link_to t('users.show.edit'), edit_user_registration_path
-
-  .span4.no_gap
-    .row.love_hate_row
-      .span2
-        %h3
-          Ich liebe 
-          %i.icon-heart
-        - if @user.likes.length > 0
-          - @user.likes.sort.each do |like|
-            = render partial: "modules/tags/tag", locals: { tag: like }
-        - else
-          Nichts
-
-      .span2
-        %h3
-          Ich boykottiere
-          %i.icon-thumbs-down
-        - if @user.hates.length > 0
-          - @user.hates.sort.each do |hate|
-            = render partial: "modules/tags/tag", locals: { tag: hate }
-        - else
-          Nichts
-    .recent_events
-      - unless @next_events.empty?
-        .calendar-calendar
-          TODO: Hier sollten Single Events stehen
+            = t("views.users.show.at_these_events")
+          .calendar-calendar
+            = render partial: "modules/calendars/days", locals: {days: @next_events, suggestions: false}

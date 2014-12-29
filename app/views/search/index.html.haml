@@ -1,7 +1,19 @@
 - content_for :title do
-  Suche
+  = t('search.title')
 
-%h1 Suche
+.show-for-small-only.search_form
+  = form_tag search_path(region: current_region), :method => 'get' do
+    .row
+      .search-field
+        = text_field_tag :search, params[:search], placeholder: t('modules.common.topbar.search_form.field_placeholder')
+      .search-button
+        %input{type: "submit", class: "button", value: t('modules.common.topbar.search_form.button') }
 
-- #TODO: Adjust
-%strong Has to be adjusted to new Calendar system and Foundation
+- unless params[:search].nil?
+
+  - if @search_result.days.present?
+    %h1= t('search.title')
+
+    = render partial: "modules/calendars/days", locals: {days: @search_result.days, suggestions: true}
+  - else
+    %h1= t('search.nothing_found')

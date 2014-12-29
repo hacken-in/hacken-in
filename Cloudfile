@@ -1,5 +1,5 @@
 hacken-in:
-  ruby_version: 2.0.0
+  ruby_version: 2.1.2
   environment: production
   domains:
     - hacken-in.shellyapp.com
@@ -11,7 +11,7 @@ hacken-in:
       databases:
         - postgresql
 hacken-in-master:
-  ruby_version: 2.0.0
+  ruby_version: 2.1.2
   environment: production
   domains:
     - hacken-in-master.shellyapp.com

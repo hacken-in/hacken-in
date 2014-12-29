@@ -1,6 +1,6 @@
 .DS_Store
 .bundle
-log/*.log
+log/*
 tmp/
 .sass-cache/
 config/database.yml
@@ -14,10 +14,7 @@ rails_best_practices_output.html
 public/uploads/*
 .powenv
 public/thisiscologne.json
-config/omniauth.yml
 config/localeapp.yml
-config/initializers/devise.rb
-config/twitter.yml
 cert_file
 coverage
 log/localeapp.yml

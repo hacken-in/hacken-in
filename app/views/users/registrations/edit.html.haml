@@ -65,13 +65,13 @@
     = f.input :password_confirmation, :as => :password
 
   .controls
-    =f.submit t('registrations.edit.save_profile'), class: 'btn btn-inverse'
+    =f.submit t('registrations.edit.save_profile'), class: 'button'
 
   %fieldset
     %legend= t 'registrations.edit.delete_profile'
   %p=t 'registrations.edit.delete_profile_text'
   %br
   .controls
-    = link_to t('registrations.edit.delete_confirm'), registration_path(resource_name), :confirm => t('common.confirm_delete'), :method => :delete, :class => 'btn btn-danger'
+    = link_to t('registrations.edit.delete_confirm'), registration_path(resource_name), :confirm => t('common.confirm_delete'), :method => :delete, :class => 'button'
 
 = link_to "Zurück", :back

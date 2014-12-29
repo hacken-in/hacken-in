@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Api::MarkdownConverterController do
+describe Api::MarkdownConverterController, type: :controller do
 
   it "should render markdown" do
     text = '**STRONG**'

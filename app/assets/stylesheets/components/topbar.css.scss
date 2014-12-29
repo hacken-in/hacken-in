@@ -1,14 +1,37 @@
 nav.top-bar {
 
-  .name {
-    margin-left: 4px;
+  .title-area {
+    .name {
+      margin-left: 4px;
+      h1 {
+        a {
+          padding-left: 5px;
+          display: inline;
+        }
+      }
+
+      .hacken-logo {
+        float: left;
+        max-height: 20px;
+        margin-top: 11px;
+        margin-left: 10px;
+      }
+    }
   }
 
   .right {
     background-color: transparent;
   }
 
-  li.search_form {
+  li.search-form {
+    background: black;
+  }
+
+  li.search-icon a {
+    color: white;
+    font-size: 1.5rem;
+    margin-right: 10px;
+    background-color: black;
   }
 
   .search-field {
@@ -25,9 +48,9 @@ nav.top-bar {
 
   .search-button {
     @include grid-column($columns: 4, $collapse: true);
-    padding-right: 20px;
 
-    a.button {
+    input.button {
+      width: 100%;
       line-height: 16px;
       padding-left: 12px;
       padding-right: 12px;

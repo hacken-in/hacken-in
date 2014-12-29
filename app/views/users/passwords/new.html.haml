@@ -1,10 +1,11 @@
 - content_for :title do
-  Passwort vergessen
+  = t('registrations.password_forgotten.title')
 
-%h2 Passwort vergessen?
+%h2= t('registrations.password_forgotten.title')
 
 = simple_form_for resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'form-horizontal' } do |f|
   = f.input :email
-  .controls
-    = f.submit "Passwort zusenden", class: 'btn btn-inverse'
+
+  %ul.controls
+    %li= f.submit t('registrations.password_forgotten.submit'), class: 'button'
     = render partial: "users/shared/links"

@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-  before_filter :set_current_user
+  before_filter :set_current_user, :all_regions
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   rescue_from CanCan::AccessDenied do |exception|
@@ -27,6 +27,10 @@ class ApplicationController < ActionController::Base
     authenticate_user!
   end
 
+  def after_sign_in_path_for(resource)
+    "/deutschland"
+  end
+
   def active_admin_user #use predefined method name
     return nil if !user_signed_in? || !can?(:read, ActiveAdmin::Page, :name => "Dashboard")
     current_user
@@ -39,6 +43,10 @@ class ApplicationController < ActionController::Base
 
   def is_google_bot
     !request.env["HTTP_USER_AGENT"].match(/googlebot/i).nil?
+  end
+
+  def all_regions
+    @all_regions = Region.where(active: true)
   end
 
   def current_region
@@ -60,6 +68,11 @@ class ApplicationController < ActionController::Base
     end
   end
   helper_method :get_ical_link_for
+
+  def staging_users_should_be_warned
+    session[:region].nil? && request.host == 'master.hacken.in'
+  end
+  helper_method :staging_users_should_be_warned
 
   protected
 

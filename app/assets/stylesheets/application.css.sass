@@ -1,13 +1,33 @@
 //*= require_self
 //*= require font-awesome
 @import foundation_and_overrides
-@import calendar
-@import topbar
-@import single_events
-@import sidebar
 @import leaflet
-@import components/buttons
-@import components/spinner
-@import pages/welcome
+@import leaflet
 @import prism
-@import leaflet
+
+@import components/buttons
+@import components/calendar-days
+@import components/comments
+@import components/controls
+@import components/event-participents
+@import components/markdown-info
+@import components/sidebar
+@import components/spinner
+@import components/tags
+@import components/topbar
+@import pages/calendar
+@import pages/humans
+@import pages/search
+@import pages/single_events
+@import pages/users
+@import pages/welcome
+
+.off-canvas-wrap
+  padding-bottom: 40px
+
+p
+  margin-bottom: 0.5em
+
+@media only screen and (max-width: 40em)
+  .main
+    margin: 10px

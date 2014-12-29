@@ -6,7 +6,7 @@
 
 = render @start_selector
 
-= render partial: "modules/calendars/days", locals: {days: @calendar.days}
+= render partial: "modules/calendars/days", locals: {days: @calendar.days, suggestions: true}
 
 .calendar-loading
   = render "modules/common/spinner"

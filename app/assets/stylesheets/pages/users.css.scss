@@ -1,0 +1,9 @@
+.users_show {
+  @include grid-row();
+
+  .description {
+    .edit_profile {
+      margin: 20px 0px;
+    }
+  }
+}

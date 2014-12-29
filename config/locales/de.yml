@@ -13,6 +13,12 @@ de:
     welcome:
       deutschland:
         message: "[Hacken.in](http://hacken.in). Dein Kalender für Events rund ums Hacken, Geek-Kultur und alles, was zum Nerdsein gehört. \n\nMomentan gibt es uns für [Berlin](move_to/berlin), [Köln](move_to/koeln) und [München](move_to/muenchen)."
+    users:
+      show:
+        i_love: "Ich liebe"
+        i_boycott: "Ich boykottiere"
+        nothing: "Nichts"
+        at_these_events: "Ist bei diesen Events:"
   common:
     confirm_delete: Bist du sicher?
     markdown_info: Hier kannst du <a href="%{syntax_link}" target="_blank">Markdown</a> und <a href="http://www.emoji-cheat-sheet.com/">emojis</a> benutzen.
@@ -215,7 +221,6 @@ de:
         password: Passwort
         password_confirmation: Passwort bestätigen
         current_password: Aktuelles Passwort
-        remember_me: Eingeloggt bleiben
         gravatar_email: Alternative E-mailadresse für Gravatar
         name: Name
         nickname: Nickname
@@ -312,7 +317,17 @@ de:
       confirmation: Kommentar aktualisiert.
     destroy:
       confirmation: Kommentar gelöscht.
+  sessions:
+    new:
+      title: Einloggen
+      with_user_data: Mit Benutzerdaten
+      email_or_username: E-Mail oder Nickname
+      submit: Einloggen
+      with_other_service: …oder mit einem dieser Services
   registrations:
+    new:
+      title: Registrieren
+      submit: Registrieren
     edit:
       danger_zone: Danger Zone
       warning: Für Felder in der Danger-Zone brauchen wir dein Passwort, um die Änderungen zu machen.
@@ -326,6 +341,9 @@ de:
       delete_profile: Konto löschen
       delete_profile_text: Du willst dein Konto löschen?
       delete_confirm: Ja, bitte mein Konto löschen
+    password_forgotten:
+      title: Passwort vergessen?
+      submit: Passwort zusenden
     oauth:
       title: OAuth Verknüpfungen
       more: Mit Accounts verbinden
@@ -337,6 +355,10 @@ de:
       add_service: '%{provider} hinzufügen'
       in_use: 'Dein %{provider}-Account (User-Id: %{uid}) wird bereits von einem anderen Account verwendet. Wenn du dich mit einem anderen Account anmelden willst, geh auf die Seite von %{provider} und melde dich dort ab.'
       email: Hier kannst du eine E-Mail Adresse und ein Passwort hinzufügen. Damit kannst du dich auch anmelden, wenn deine Authorisierungsdienste mal pleite gehen oder so.
+    shared:
+      login: Einloggen
+      register: Registrieren
+      password_forgotten: Passwort vergessen?
   events:
     show:
       edit: Bearbeiten
@@ -368,6 +390,9 @@ de:
       confirmation: Termin angelegt.
     destroy:
       confirmation: Termin gelöscht.
+  search:
+    title: Suchergebnisse
+    nothing_found: Keine Termine gefunden.
   subscriptions:
     index:
       error: Eintrag nicht gefunden
@@ -430,14 +455,14 @@ de:
         search_form:
           field_placeholder: Finde Events
           button: Suchen
+        test_environment_warning: Achtung, das ist unsere Test-Umgebung. Richtige Events gibt es auf <a href="http://www.hacken.in">hacken.in!</a>.
       sidebar:
         login_with: "%{provider} login"
         register_instead: Registrieren
         login: Einloggen
         email: E-Mail / Nickname
         password: Passwort
-        remember_me: Eingeloggt bleiben
-        team: Team
+        team: Über
         imprint: Impressum
         my_profile: Mein Profil
         logout: Abmelden
@@ -478,7 +503,6 @@ de:
         new:
           email: 
           password: 
-          remember_me: 
     labels:
       user:
         edit:
@@ -494,7 +518,6 @@ de:
           twitter: 
         new:
           password: 
-          remember_me: 
       suggestion:
         new:
           description: 

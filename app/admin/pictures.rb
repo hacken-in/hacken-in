@@ -7,7 +7,7 @@ ActiveAdmin.register Picture do
     end
     column :title
     column :description
-    default_actions
+    actions
   end
   show do |ad|
     attributes_table do

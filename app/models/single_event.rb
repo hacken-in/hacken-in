@@ -68,6 +68,10 @@ class SingleEvent < ActiveRecord::Base
     sevents.to_a.uniq.sort
   end
 
+  def self.search_in_region(search_parameters, region)
+    self.in_region(region).search(search_parameters)
+  end
+
   def self.list_all(opts)
     SingleEvent.in_next_from(opts[:in_next], opts[:from]).in_region(opts[:for_region])
   end

@@ -1,24 +1,45 @@
 %header.contain-to-grid
-  %nav.top-bar{ data: { topbar: true } }
+  - if staging_users_should_be_warned
+    .alert-box.alert.text-center
+      %h3
+        = raw t('modules.common.topbar.test_environment_warning')
+        %a.close{href: "#"}×
+  %nav.top-bar{ data: { topbar: true }, role: "navigation" }
 
     %ul.left
       %li.sidebar-toggle
-        %a.left-off-canvas-toggle
+        %a.left-off-canvas-toggle{href:'#'}
           %span
             %i.fa.fa-bars
 
     %ul.title-area
       %li.name
-        %h1= link_to 'hacken.in', :root
+        %h1
+          = image_tag asset_path("logo/hacken_in-32-white.png"), class: "hacken-logo"
+          = link_to 'hacken.in', :root
 
     %section.top-bar-section
-      %ul.right
-        - if current_region.present?
+      - unless current_region.nil?
+        %ul.left
+          %li.has-dropdown
+            = link_to current_region.nil? ? "" : current_region.name, "#", :class => 'active'
+            %ul.dropdown
+              - @all_regions.each do |region|
+                - if region != current_region
+                  %li
+                    = link_to region.name, move_region_path(region.slug)
+      - if current_region.present?
+        %ul.right.show-for-medium-up
           = form_tag search_path(region: current_region), :method => 'get' do
             %li.search-form
               .row
                 .search-field
                   = text_field_tag :search, params[:search], placeholder: t('modules.common.topbar.search_form.field_placeholder')
                 .search-button
-                  %a.button{href: "#"}= t('modules.common.topbar.search_form.button')
+                  %input{class:"button", type:"submit", value:t('modules.common.topbar.search_form.button')}
+        %ul.right.show-for-small-only
+          %li.search-icon
+            %a{href: search_path(region: current_region)}
+              %i.fa.fa-search
+
 

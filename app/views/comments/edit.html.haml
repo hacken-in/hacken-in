@@ -1,3 +1,4 @@
-%h2 Kommentar für #{link_to @comment.commentable_name, commentable_path(@comment)}
+.comments
+  %h2 Kommentar für #{link_to @comment.commentable_name, commentable_path(@comment)}
 
-= render partial: "modules/comments/form", locals: { comment: @comment, avatar_size: 87 }
+  = render partial: "modules/comments/form", locals: { comment: @comment, avatar_size: 87 }

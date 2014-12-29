@@ -5,11 +5,11 @@
 VAGRANTFILE_API_VERSION = "2"
 
 PUPPET_UPGRADE = <<EOF
-if [[ $(/usr/bin/puppet --version) != *3.4.3* ]]; then
+if [[ $(/usr/bin/puppet --version) != *3.7.3* ]]; then
   wget --quiet -P /tmp http://apt.puppetlabs.com/puppetlabs-release-precise.deb
   dpkg -i /tmp/puppetlabs-release-precise.deb
   aptitude update > /dev/null
-  aptitude install -y puppet=3.4.3
+  aptitude install -y puppet=3.7.3-1puppetlabs1
 fi
 EOF
 
@@ -45,5 +45,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     }
   end
 
-  config.vm.provision "shell", privileged: false, inline: HACKEN_BOOTSTRAP
+ config.vm.provision "shell", privileged: false, inline: HACKEN_BOOTSTRAP
 end

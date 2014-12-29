@@ -1,17 +1,26 @@
 require 'spec_helper'
 
-describe SearchController do
-  include Devise::TestHelpers
-  render_views
+describe SearchController, type: :controller do
+  let(:single_events) { double('SingleEvents') }
+  let(:region_name) { 'koeln' }
+  let(:region) { double('Region') }
+  let(:search_params) { 'SearchParams' }
+  let(:search_results) { double('SingleEventsByDay') }
 
-  it "should find single event with string 'Simple'" do
-    pending "Search is not working right now"
+  before do
+    allow(Region).to receive(:find_by_slug).with(region_name).and_return(region)
+    allow(Region).to receive(:find_by_slug).with(nil).and_return(nil)
+    allow(SingleEvent).to receive(:search_in_region)
+      .with(search_params, region)
+      .and_return(single_events)
+  end
 
-    single_event = FactoryGirl.create(:single_event)
-    single_event.occurrence = 1.week.from_now
-    single_event.save
-    get :index, search: "Simple", region: single_event.event.region.slug
-    assert_select('div.calendar-line-title', "SimpleEvent (SimpleSingleEventName)")
+  it 'should sort the search results from the database by day' do
+    allow(SingleEventsByDay).to receive(:new)
+      .with(single_events)
+      .and_return(search_results)
+    get :index, search: search_params, region: region_name
+    expect(assigns[:search_result]).to be search_results
   end
 
 end

@@ -7,43 +7,34 @@
   .event-indicator
     %meta{ itemprop: 'startDate', content: I18n.localize(@single_event.occurrence, format: "%FT%R%:z") }
     %h2= I18n.localize @single_event.occurrence, format: "%a, %d. %b %Y"
-    = render partial: 'modules/categories/indicator', locals: { submodule: 'big', color: color }
-  .event-title
+  .event-title.clearfix
     %h1.black-bar-title{ itemprop: "name" }
       = @single_event.event.name
-      - if !@single_event.full_day
-        %h4= I18n.localize(@single_event.occurrence, format: "%H:%M Uhr")
-  
+    - if !@single_event.full_day
+      %h4= I18n.localize(@single_event.occurrence, format: "%H:%M&nbsp;Uhr").html_safe
+    = render partial: 'modules/categories/indicator', locals: { submodule: 'big', color: color }
+
+  .tags-list.clearfix
+    - tags = (@single_event.tags | @single_event.event.tags).sort_by(&:name)
+    - tags.each do |tag|
+      = render partial: "modules/tags/tag", locals: { tag: tag }
+
   .event-content
-    .event-infos
-      - if user_signed_in? && current_user.admin?
-        .admin_edit_link
-          = link_to "Bearbeiten", edit_admin_event_single_event_path(@single_event.event, @single_event)
-      - if @single_event.name?
-        %h2= @single_event.name
-      = render "events/description", event: @single_event
-      %p= render "events/venue", event: @single_event
-      - color = @single_event.category.try(:color)
-      .single-event-event-teaser
-        .event.event-preview{ style: "border-top: 3px solid #{color}"}
-          - if @single_event.picture.present?
-            = image_tag(@single_event.picture.box_image.url, class: 'event-image')
+    - if @single_event.name?
+      %h4= @single_event.name
 
-          - if @single_event.event.description.present?
-            .event-text
-              = convert_markdown(@single_event.event.description, true)
+    - if @single_event.picture.present?
+      = image_tag(@single_event.picture.box_image.url, class: 'event-image')
 
-      .single-event-tags
-        - tags = (@single_event.tags | @single_event.event.tags).sort_by(&:name)
-        - unless tags.empty?
-          %h4
-            Lieben oder Boykottieren
-          - tags.each do |tag|
-            = render partial: "modules/tags/tag", locals: { tag: tag }
+    = render "events/description", event: @single_event
 
-      = render partial: "events/next_events", locals: { event: @single_event.event, current_single_event: @single_event }
+    = render "events/map",   event: @single_event
 
-    = render "single_events/sidebar"
+    - if user_signed_in? && current_user.admin?
+      .admin_edit_link
+        = link_to "Bearbeiten", edit_admin_event_single_event_path(@single_event.event, @single_event)
 
-  .event-comments
-    = render partial: 'modules/comments/comments', locals: { commentable: @single_event }
+  = render 'modules/social/share'
+  = render 'single_events/participants'
+  = render partial: 'modules/comments/comments', locals: { commentable: @single_event }
+
