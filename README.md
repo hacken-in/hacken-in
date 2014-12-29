@@ -33,14 +33,13 @@ If you want to work on the Project, follow the steps described here:
 1. Now create a database configuration: `cp config/database.yml_example config/database.yml`
   * The example configuration requires PostgreSQL including a database and a user
   * [More information](http://guides.rubyonrails.org/getting_started.html#configuring-a-database) on the database configuration
-1. Create the Devise & OmniAuth configuration `cp config/initializers/devise.rb_example config/initializers/devise.rb` and edit the keys
 1. Now run `rake db:migrate db:seed` to setup your database. You will now have an admin user `admin@hacken.local` with the password `hacken_admin`
 1. To run your application locally you can now use `rails server`
 1. Now visit http://localhost:3000 in your web browser and you are ready to go!
 
 ## Booting up the Vagrant VM
 
-Hacken.in can also be started in a virtual machine with Vagrant. This might be the perfect fit if you cannot or don't want to install 
+Hacken.in can also be started in a virtual machine with Vagrant. This might be the perfect fit if you cannot or don't want to install
 PostgreSQL or MySQL on your computer. To get started with Vagrant, install the latest version of [Vagrant](http://www.vagrantup.com) and
 [VirtualBox](https://www.virtualbox.org), and check out your fork of the project (see *Getting Started*).
 
