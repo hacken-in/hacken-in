@@ -1,0 +1,7 @@
+# config/deploy/shelly/before_restart
+set -e
+
+# Mount image uploads
+mkdir -p disk/uploads
+ln -s ../disk/uploads public/uploads
+
