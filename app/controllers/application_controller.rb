@@ -27,6 +27,10 @@ class ApplicationController < ActionController::Base
     authenticate_user!
   end
 
+  def after_sign_in_path_for(resource)
+    "/deutschland"
+  end
+
   def active_admin_user #use predefined method name
     return nil if !user_signed_in? || !can?(:read, ActiveAdmin::Page, :name => "Dashboard")
     current_user
@@ -42,10 +46,7 @@ class ApplicationController < ActionController::Base
   end
 
   def all_regions
-    @all_regions = Region.all
-    if current_region
-      @all_regions = @all_regions.reject { |region| region.slug == current_region.slug }
-    end
+    @all_regions = Region.where(active: true)
   end
 
   def current_region
