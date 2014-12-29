@@ -1,7 +1,13 @@
 %h1 
   = @venue.location
 
-%address
-  = @venue.street
-  = @venue.zipcode 
-  = @venue.city
+%address.event-venue{ itemscope: true, itemprop: 'location', itemtype: 'http://schema.org/Place'  }
+  %span{ itemscope: true, itemprop: 'address', itemtype: 'http://schema.org/PostalAddress' }
+    %span{ itemprop: 'streetAddress' }
+      = @venue.street
+    %br
+    %span{ itemprop: 'postalCode' }
+      = @venue.zipcode
+    %span{ itemprop: 'addressLocality' }
+      = @venue.city
+  %br
