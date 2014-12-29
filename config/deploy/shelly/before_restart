@@ -1,10 +1,7 @@
 # config/deploy/shelly/before_restart
 set -e
 
-# link nested directory public/system to persistent disk/system
-mkdir -p disk/system
-ln -s ../disk/system public/system
+# Mount image uploads
+mkdir -p disk/upload
+ln -s ../disk/upload public/upload
 
-# link without nested directory
-mkdir -p disk/uploads
-ln -s disk/uploads uploads
