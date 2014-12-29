@@ -47,6 +47,7 @@ Hcking::Application.routes.draw do
   get "abonnieren"              => "subscribe#index"
   get "humans"                  => "humans#index"
   get "impressum"               => "pages#show", page_name: "impressum"
+  get "sitemap.xml"             => "sitemap#show", format: "xml"
 
   # Calendar Links
   # These are the old links, without a region, redirect them to koeln
