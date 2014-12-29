@@ -1,0 +1,10 @@
+# config/deploy/shelly/before_restart
+set -e
+
+# link nested directory public/system to persistent disk/system
+mkdir -p disk/system
+ln -s ../disk/system public/system
+
+# link without nested directory
+mkdir -p disk/uploads
+ln -s disk/uploads uploads
