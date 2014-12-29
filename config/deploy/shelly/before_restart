@@ -2,6 +2,6 @@
 set -e
 
 # Mount image uploads
-mkdir -p disk/upload
-ln -s ../disk/upload public/upload
+mkdir -p disk/uploads
+ln -s ../disk/uploads public/uploads
 
