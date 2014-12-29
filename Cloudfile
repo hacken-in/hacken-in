@@ -2,8 +2,7 @@ hacken-in:
   ruby_version: 2.1.2
   environment: production
   domains:
-    - hacken-in.shellyapp.com
-    - release.hacken.in
+    - hacken.in
   servers:
     app1:
       size: large
