@@ -92,9 +92,6 @@ gem 'feedjira', '~> 1.3.0'
 gem 'bugsnag', '~> 2.1.0'
 
 group :development do
-  # Local VM
-  gem 'librarian-puppet', '~> 2.0.1'
-  gem 'puppet', '~> 3.4.3'
 
   group :darwin do
     gem 'rb-fsevent', '~> 0.9.4'
