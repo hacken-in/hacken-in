@@ -219,4 +219,7 @@ Devise.setup do |config|
   # OmniAuth strategies
   config.omniauth :twitter, Rails.application.secrets.auth_twitter_key, Rails.application.secrets.auth_twitter_secret
   config.omniauth :github, Rails.application.secrets.auth_github_key, Rails.application.secrets.auth_github_secret
+
+  # Explicitly set a hostname because everything else is stupid (issue #477)
+  config.full_host = 'https://hacken.in'
 end
