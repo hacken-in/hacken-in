@@ -1,0 +1,4 @@
+# Ohai, fellow robots. Pls dont crawl our staging env. kthxbai?
+# (This file was copied from robots-hacken-in-master.txt by our deploy hook)
+User-Agent: *
+Disallow: /
