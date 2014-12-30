@@ -61,4 +61,8 @@ Hcking::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+
+  # Explicitly set a hostname because everything else is stupid (issue #477)
+  OmniAuth.config.full_host = 'https://hacken.in'
 end
