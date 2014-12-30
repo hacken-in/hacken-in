@@ -10,6 +10,9 @@ gem 'pg', '~> 0.17.1'
 # Memcache Store
 gem 'dalli', '~> 2.7.2'
 
+# Recurring Tasks
+gem 'whenever', '~> 0.9.4'
+
 # Tags
 gem 'acts-as-taggable-on', '~> 3.2.6'
 
