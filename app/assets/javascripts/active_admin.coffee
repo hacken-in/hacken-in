@@ -3,6 +3,7 @@
 # = require jquery
 # = require jquery-ui
 # = require jsapi
+# = require ahoy
 # = require chartkick
 # = require chosen-jquery
 # = require admin/boxes/form

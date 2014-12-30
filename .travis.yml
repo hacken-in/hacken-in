@@ -13,3 +13,5 @@ before_script:
   - "cp config/database.yml_travis config/database.yml"
 script: "bundle exec rake db:drop db:create db:migrate ci"
 cache: bundler
+addons:
+  postgresql: "9.3"
