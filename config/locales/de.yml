@@ -221,7 +221,7 @@ de:
         password: Passwort
         password_confirmation: Passwort bestätigen
         current_password: Aktuelles Passwort
-        gravatar_email: Alternative E-mailadresse für Gravatar
+        gravatar_email: Alternative E-Mailadresse für Gravatar
         name: Name
         nickname: Nickname
       event:
@@ -321,7 +321,7 @@ de:
     new:
       title: Einloggen
       with_user_data: Mit Benutzerdaten
-      email_or_username: E-Mail oder Nickname
+      email_or_username: E-Mailadresse oder Nickname
       submit: Einloggen
       with_other_service: …oder mit einem dieser Services
   registrations:
@@ -354,7 +354,7 @@ de:
       sign_in_with: Einloggen mit %{provider}
       add_service: '%{provider} hinzufügen'
       in_use: 'Dein %{provider}-Account (User-Id: %{uid}) wird bereits von einem anderen Account verwendet. Wenn du dich mit einem anderen Account anmelden willst, geh auf die Seite von %{provider} und melde dich dort ab.'
-      email: Hier kannst du eine E-Mail Adresse und ein Passwort hinzufügen. Damit kannst du dich auch anmelden, wenn deine Authorisierungsdienste mal pleite gehen oder so.
+      email: Hier kannst du eine E-Mailadresse und ein Passwort hinzufügen. Damit kannst du dich auch anmelden, wenn deine Authorisierungsdienste mal pleite gehen oder so.
     shared:
       login: Einloggen
       register: Registrieren
