@@ -217,8 +217,6 @@ Devise.setup do |config|
   # end
 
   # OmniAuth strategies
-  config.omniauth :twitter, 'key', Rails.application.secrets.auth_twitter_key
-  config.omniauth :twitter, 'secret', Rails.application.secrets.auth_twitter_secret
-  config.omniauth :github, 'key', Rails.application.secrets.auth_github_key
-  config.omniauth :github, 'secret', Rails.application.secrets.auth_github_secret
+  config.omniauth :twitter, Rails.application.secrets.auth_twitter_key, Rails.application.secrets.auth_twitter_secret
+  config.omniauth :github, Rails.application.secrets.auth_github_key, Rails.application.secrets.auth_github_secret
 end
