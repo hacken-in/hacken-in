@@ -138,3 +138,4 @@ group :test do
 end
 
 gem 'recaptcha', '0.3.6'
+gem 'lograge', '~> 0.3.0'
