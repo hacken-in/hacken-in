@@ -75,7 +75,7 @@ describe ApplicationHelper, type: :helper do
   it "should generate an image for a user with the default gravatar image" do
     user = User.create(nickname: "hansdampf", email: "mail@example.com")
     expect(avatar_for_user(user, 20, "userimage")).to eq(
-      "<img alt=\"hansdampf\" class=\"userimage\" height=\"20\" src=\"http://gravatar.com/avatar/7daf6c79d4802916d83f6266e24850af?default=identicon&size=20\" title=\"hansdampf\" width=\"20\" />"
+      "<img alt=\"hansdampf\" class=\"userimage\" height=\"20\" src=\"https://secure.gravatar.com/avatar/7daf6c79d4802916d83f6266e24850af?default=identicon&secure=true&size=20\" title=\"hansdampf\" width=\"20\" />"
     )
   end
 
@@ -84,7 +84,7 @@ describe ApplicationHelper, type: :helper do
                        image_url: "http://example.com/logo.png",
                        gravatar_email: "gravatar@example.com")
     expect(avatar_for_user(user, 20, "userimage")).to eq(
-      "<img alt=\"hansdampf\" class=\"userimage\" height=\"20\" src=\"http://gravatar.com/avatar/0cef130e32e054dd516c99e5181d30c4?default=identicon&size=20\" title=\"hansdampf\" width=\"20\" />"
+      "<img alt=\"hansdampf\" class=\"userimage\" height=\"20\" src=\"https://secure.gravatar.com/avatar/0cef130e32e054dd516c99e5181d30c4?default=identicon&secure=true&size=20\" title=\"hansdampf\" width=\"20\" />"
     )
   end
 
