@@ -1,6 +1,6 @@
 .day-divider{"data-date" => day.date}
   %h2= I18n.localize(day.date, format: "%A, %d. %B %Y")
   - if suggestions
-    = link_to image_tag("plus.png", alt: t('.suggest_event')), new_suggestion_path
+    = link_to image_tag("plus.png", alt: t('.suggest_event')), new_suggestion_path, title: t('.suggest_event')
 
 = render partial: "modules/calendars/entry", collection: day.entries
