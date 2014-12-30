@@ -441,9 +441,9 @@ de:
     statistics:
       events_by_category: Veranstaltungsreihen insgesamt nach Kategorien
       users_over_time: Registrierte Benutzer
-      single_events_this_week_by_day: Veranstaltungen dieses Woche nach Wochentag
-      single_events_this_week_by_category: Veranstaltungen diese Woche nach Kategorie
-      single_events_this_week_by_city: Veranstaltungen diese Woche nach Stadt
+      single_events_this_week_by_day: Veranstaltungen dieser Woche nach Wochentag
+      single_events_this_week_by_category: Veranstaltungen dieser Woche nach Kategorie
+      single_events_this_week_by_city: Veranstaltungen dieser Woche nach Stadt
     access_denied:
       message: I'm sorry, Dave. I'm afraid I can't do that.
   minical:
