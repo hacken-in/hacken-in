@@ -25,8 +25,8 @@ class CalendarEntry
     [@single_event.event, @single_event]
   end
 
-  def color
-    @single_event.category.try(:color)
+  def category
+    @single_event.category
   end
 
   def to_partial_path

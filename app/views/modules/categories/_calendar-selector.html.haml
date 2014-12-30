@@ -2,7 +2,7 @@
   - categories.each do |c|
     %tr
       %td
-        = render partial: 'modules/categories/indicator', locals: { color: c.color, submodule: 'small' }
+        = render partial: 'modules/categories/indicator', locals: { category: c, submodule: 'small' }
       %td
         %label{for: "cat-#{c.id}"}
           = c.title

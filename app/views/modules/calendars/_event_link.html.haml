@@ -2,7 +2,7 @@
 
 .calendar-entry.black-bar.black-bar-wide
   .black-bar--category-indicator
-    = render partial: 'modules/categories/indicator', locals: { submodule: "big", color: color }
+    = render partial: 'modules/categories/indicator', locals: { submodule: "big", category: single_event.category }
   .calendar-line.black-bar-content{ data: { hlcolor: color } }
     .black-bar-content.black-bar-with-date{ data: { hlcolor: color } }
       .black-bar-top-part
