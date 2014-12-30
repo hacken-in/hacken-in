@@ -68,4 +68,7 @@ Hcking::Application.configure do
     environment['HTTP_HOST'] || 'hacken.in'
   end
 
+  # Shut up noisy rails logs
+  config.lograge.enabled = true
+
 end
