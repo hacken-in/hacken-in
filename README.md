@@ -4,12 +4,14 @@
 [![Codeship Build Status](https://img.shields.io/codeship/3c775da0-bbc6-0131-1826-124bbd4fc581.svg)](https://codeship.com/projects/20985)
 [![Code Climate](https://img.shields.io/codeclimate/github/hacken-in/website.svg)](https://codeclimate.com/github/hacken-in/website)
 [![Code Climate CodeCoverage](https://img.shields.io/codeclimate/coverage/github/hacken-in/website.svg)](https://codeclimate.com/github/hacken-in/website)
-[![Stories in Ready](https://badge.waffle.io/hacken-in/website.png?label=ready&title=Ready)](https://waffle.io/hacken-in/website)
+[![Pickable Stories](https://badge.waffle.io/hacken-in/website.png?label=ready&title=Pick One)](https://waffle.io/hacken-in/website)
 
 This is the code of [hacken.in](http://hacken.in/), an event calendar for geeks in and around Cologne, Berlin and Munich.
 If you want to help us in extending the calendar to your city, please contact us in our [Google Group](http://groups.google.com/group/hacken-in).
 
-If you find a bug, please report it on our [tracker](https://github.com/hacken-in/website/issues). We discuss features and problems in our [Google Group](http://groups.google.com/group/hcking). You can find our backlog [here](https://github.com/hacken-in/website/wiki/Backlog).
+If you find a bug, please report it on our [tracker](https://github.com/hacken-in/website/issues). We discuss features and problems in our [Google Group](http://groups.google.com/group/hcking). If you want to contribute to [hacken.in](http://hacken.in), have a look at our Kanban Board at [waffle.io](http://waffle.io/hacken-in/website). Just pick a card from the **Pick One** column and start hacking. This is our current activity level:
+
+[![Throughput Graph](https://graphs.waffle.io/hacken-in/website/throughput.svg)](https://waffle.io/hacken-in/website/metrics)
 
 ## Scope of hacken.in
 
@@ -64,11 +66,7 @@ If you're experiencing problems do not hesitate to contact us or - even better -
 
 ### Communication
 
-You can reach us on lots of ways. The most preferred one would be either to open an issue here or to use our [Google Group](http://groups.google.com/group/hacken-in). If you want to drink from the firehose (and see a lot of GIFs) join us in our Slack room. In order to get invited, just ping us via admin@hacken.in and we will add you.
-
-### Waffle.io
-
-We use [waffle.io](http://waffle.io/hacken-in/website) to manage our tickets. Everything in the "ready" state is ready to be implemented.
+You can reach us on lots of ways. The most preferred one would be either to open an issue here or to use our [Google Group](http://groups.google.com/group/hacken-in). If you want to drink from the firehose (and see a lot of GIFs) join us in our [Slack room](https://hacken-in.slack.com). Just ping us [on Twitter](https://twitter.com/hacken_in) or send an email to admin@hacken.in and we will add you.
 
 ### Pow
 

@@ -19,7 +19,9 @@ cert_file
 coverage
 log/localeapp.yml
 .localeapp
-puppet/modules
+vagrant/puppet/modules
+vagrant/vendor
 .librarian/
 .tmp/
 .vagrant/
+vendor/ruby

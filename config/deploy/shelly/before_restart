@@ -5,3 +5,5 @@ set -e
 mkdir -p disk/uploads
 ln -s ../disk/uploads public/uploads
 
+# Copy appropriate robots.txt
+cp "app/current/public/robots-$CLOUD_NAME.txt" "app/current/public/robots.txt"

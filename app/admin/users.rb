@@ -53,7 +53,15 @@ ActiveAdmin.register User do
         :description,
         :github,
         :twitter,
-        :homepage
+        :homepage,
+        :team,
+        :name,
+        :password,
+        :password_confirmation,
+        {
+          assigned_region_ids: [],
+          curated_event_ids: []
+        }
       ])
     end
   end

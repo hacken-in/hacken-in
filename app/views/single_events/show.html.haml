@@ -12,7 +12,7 @@
       = @single_event.event.name
     - if !@single_event.full_day
       %h4= I18n.localize(@single_event.occurrence, format: "%H:%M&nbsp;Uhr").html_safe
-    = render partial: 'modules/categories/indicator', locals: { submodule: 'big', color: color }
+    = render partial: 'modules/categories/indicator', locals: { submodule: 'big', category: @single_event.category }
 
   .tags-list.clearfix
     - tags = (@single_event.tags | @single_event.event.tags).sort_by(&:name)
@@ -24,7 +24,8 @@
       %h4= @single_event.name
 
     - if @single_event.picture.present?
-      = image_tag(@single_event.picture.box_image.url, class: 'event-image')
+      .event-image-box
+        = image_tag(@single_event.picture.box_image.url, class: 'event-image')
 
     = render "events/description", event: @single_event
 

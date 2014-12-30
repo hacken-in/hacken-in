@@ -39,5 +39,21 @@ ActiveAdmin.register_page "Dashboard" do
         end
       end
     end
+
+    columns do
+      column do
+        panel I18n.t("active_admin.statistics.page_visits") do
+          line_chart Visit.grouped_by_creation_day
+        end
+      end
+    end
+
+    columns do
+      column do
+        panel I18n.t("active_admin.statistics.ical_exports") do
+          line_chart Ahoy::Event.ical_by_day_and_action
+        end
+      end
+    end
   end
 end

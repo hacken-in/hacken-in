@@ -47,5 +47,8 @@ module Hcking
 
     # Enforce Available locales (new rails default behavior)
     I18n.config.enforce_available_locales = false
+
+    # Our weeks in analytics should start on Monday
+    Groupdate.week_start = :mon
   end
 end

@@ -16,6 +16,19 @@ ActiveRecord::Schema.define(version: 20141229081622) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "ahoy_events", id: false, force: true do |t|
+    t.uuid     "id",         null: false
+    t.uuid     "visit_id"
+    t.integer  "user_id"
+    t.string   "name"
+    t.json     "properties"
+    t.datetime "time"
+  end
+
+  add_index "ahoy_events", ["time"], name: "index_ahoy_events_on_time", using: :btree
+  add_index "ahoy_events", ["user_id"], name: "index_ahoy_events_on_user_id", using: :btree
+  add_index "ahoy_events", ["visit_id"], name: "index_ahoy_events_on_visit_id", using: :btree
+
   create_table "authorizations", force: true do |t|
     t.string   "provider"
     t.string   "uid"
@@ -253,5 +266,34 @@ ActiveRecord::Schema.define(version: 20141229081622) do
 
   add_index "venues", ["latitude", "longitude"], name: "index_venues_on_latitude_and_longitude", using: :btree
   add_index "venues", ["region_id"], name: "index_venues_on_region_id", using: :btree
+
+  create_table "visits", id: false, force: true do |t|
+    t.uuid     "id",               null: false
+    t.uuid     "visitor_id"
+    t.string   "ip"
+    t.text     "user_agent"
+    t.text     "referrer"
+    t.text     "landing_page"
+    t.integer  "user_id"
+    t.string   "referring_domain"
+    t.string   "search_keyword"
+    t.string   "browser"
+    t.string   "os"
+    t.string   "device_type"
+    t.string   "country"
+    t.string   "region"
+    t.string   "city"
+    t.string   "utm_source"
+    t.string   "utm_medium"
+    t.string   "utm_term"
+    t.string   "utm_content"
+    t.string   "utm_campaign"
+    t.string   "platform"
+    t.string   "app_version"
+    t.string   "os_version"
+    t.datetime "started_at"
+  end
+
+  add_index "visits", ["user_id"], name: "index_visits_on_user_id", using: :btree
 
 end

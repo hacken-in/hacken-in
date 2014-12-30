@@ -2,7 +2,7 @@
 
 **Please note that this project is released with a Contributor [Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.**
 
-In the spirit of [free software](http://www.fsf.org/licensing/essays/free-sw.html), **everyone** is encouraged to help improve this project – and we can assure you: there are a lot of things you can help us with. 
+In the spirit of [free software](http://www.fsf.org/licensing/essays/free-sw.html), **everyone** is encouraged to help improve this project – and we can assure you: there are a lot of things you can help us with.
 
 *You* can contribute by:
 
@@ -18,7 +18,10 @@ In the spirit of [free software](http://www.fsf.org/licensing/essays/free-sw.htm
 
 ## Contributing Code aka. The Pamphlet
 
-* Take over a ticket by leaving a comment and tell us that you want to work on this issue.
+* Pick a Ticket from the **Pick One** column at [waffle.io](http://waffle.io/hacken-in/website).
+* Leave a comment that you want to work on this you ticket
+* We will assign it to you and assist if you have any questions
+* Start hacking
 * Open a pull-request and work on a feature branch. During the work on your branch:
     * [Code Climate](http://codeclimate.com):rainbow: compares the "code quality" and the code coverage with the master branch. Both should stay the same or improve, never get worse.
     * A CI server provides feedback for your branch. We're using [Codeship](http://codeship.io):ship: to help us with this job. Because we're huge CI fans, all builds will also be checked by [Travis CI](http://travis-ci.org):construction_worker:.

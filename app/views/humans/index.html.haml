@@ -42,14 +42,16 @@
   Das Team
 
 - @humans.each_slice(4) do |humans|
-  .team-row
+  .team-row.row
     - humans.each do |human|
-      .small-3.left.columns
+      .human.large-3.columns.left
+        .thumb_desc
+          %h3= link_to human.nickname, user_path(human)
+
         .thumb_link
           = link_to avatar_for_user(human, 190, "user_gravatar"), user_path(human)
 
         .thumb_desc
-          %h3= link_to human.nickname, user_path(human)
           %p
             %strong
               = human.team
