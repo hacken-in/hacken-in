@@ -7,3 +7,22 @@
     }
   }
 }
+
+.registrations_edit {
+  .link_prefix {
+    float: left;
+    padding-top: 6px;
+    padding-right: 5px;
+  }
+  .link_input {
+    width: 200px;
+  }
+  .gravatar_edit {
+    .gravatar {
+      margin-bottom: 15px;
+    }
+    .button {
+      margin-bottom: 0px;
+    }
+  }
+}
