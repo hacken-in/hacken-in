@@ -6,8 +6,8 @@
 
         var map = new L.Map('mapCanvas', { center: eventLocation, zoom: 13, scrollWheelZoom: false });
 
-        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-          attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        L.tileLayer('//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="//www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
         var markerLocation = eventLocation;
