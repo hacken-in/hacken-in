@@ -1,7 +1,7 @@
 .m-event-tooltip{data: { behavior: 'event-tooltip--content', event_id: event.id }}
   .m-event-tooltip--title
     .m-event-tooltip--title--category
-      = render partial: 'modules/categories/indicator', locals: { submodule: 'small', color: event.category.color }
+      = render partial: 'modules/categories/indicator', locals: { submodule: 'small', category: event.category }
     = link_to event.title, event_single_event_path(event.event, event), class: 'm-event-tooltip--title'
 
   .m-event-tooltip--content
