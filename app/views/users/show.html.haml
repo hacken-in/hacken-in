@@ -49,16 +49,17 @@
           - else
             = t("views.users.show.nothing")
 
-      .boycott
-        %h4
-          = t("views.users.show.i_boycott")
-        %i.icon-thumbs-down
-        .tags-list.clearfix
-          - if @user.hates.length > 0
-            - @user.hates.sort.each do |hate|
-              = render partial: "modules/tags/tag", locals: { tag: hate }
-          - else
-            = t("views.users.show.nothing")
+      - if @user.allow_ignore_view
+        .boycott
+          %h4
+            = t("views.users.show.i_boycott")
+          %i.icon-thumbs-down
+          .tags-list.clearfix
+            - if @user.hates.length > 0
+              - @user.hates.sort.each do |hate|
+                = render partial: "modules/tags/tag", locals: { tag: hate }
+            - else
+              = t("views.users.show.nothing")
 
       .recent_events
         - unless @next_events.empty?
