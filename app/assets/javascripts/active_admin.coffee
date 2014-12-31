@@ -2,6 +2,7 @@
 # = require moment/de.js
 # = require jquery
 # = require jquery-ui
+# = require jquery_ujs
 # = require jsapi
 # = require ahoy
 # = require chartkick
