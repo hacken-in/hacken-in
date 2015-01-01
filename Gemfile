@@ -115,8 +115,6 @@ group :development do
   # Silence asset pipeline and make log usable again
   gem 'quiet_assets', '~> 1.0.3'
 
-  # Find and manage translation differences
-  gem 'i18n-tasks', '~> 0.7.10'
 
 end
 
@@ -130,6 +128,8 @@ group :test, :development do
   gem 'brakeman', '~> 2.6.1'
   gem 'vcr', '~> 2.9.2'
   gem 'pry-rails'
+  # Find and manage translation differences
+  gem 'i18n-tasks', '~> 0.7.10'
 end
 
 group :production do
