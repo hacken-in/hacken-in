@@ -57,6 +57,14 @@ To start up the VM, type:
 $ vagrant up
 ```
 
+If you use filesystem encryption, you might receive an error similar to `mount.nfs: mount to NFS server '.../' failed: timed out, giving up`. In this case, edit the Vagrantfile and uncomment the line: 
+
+```ruby
+config.vm.synced_folder ".", "/opt/hacken.in", type: 'rsync', rsync__args: ['-a']
+```
+
+Afterwards local code changes need to be re-synced to the VM via `$ vagrant reload --provision`.
+
 If the Vagrant exits successfully, you can access your local machine under the URL [hacken.local](http://hacken.local). All the files you
 change in your local folder are synced to the virtual machines, so you can work on hacken.in right away. :wrench:
 
