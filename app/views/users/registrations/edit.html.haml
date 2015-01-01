@@ -43,13 +43,13 @@
 
   %fieldset.gravatar_edit
     %legend
-      = t 'registragions.edit.gravatar'
+      = t 'registrations.edit.gravatar'
     = avatar_for_user(current_user, 256, 'gravatar')
     %p
       = link_to t('registrations.edit.change_gravatar'), "http://gravatar.com", target: '_blank', class: 'button'
   %fieldset
     %legend
-      = t 'registragions.edit.danger_zone'
+      = t 'registrations.edit.danger_zone'
     - if f.object.encrypted_password?
       .alert.alert-error
         %strong=t('registrations.edit.warning')
