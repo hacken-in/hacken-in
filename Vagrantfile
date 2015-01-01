@@ -26,7 +26,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.hostname = 'hacken'
 
   config.vm.synced_folder ".", "/opt/hacken.in", type: 'nfs'
-  # rsync fallback if NFS has issues issues with encrypted filesystems
+  # rsync fallback if NFS has issues with encrypted filesystems
   # local code changes need to be re-synced to the VM via `vagrant reload --provision`
   #config.vm.synced_folder ".", "/opt/hacken.in", type: 'rsync', rsync__args: ['-a']
 
