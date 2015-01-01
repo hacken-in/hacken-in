@@ -1,21 +1,13 @@
+---
 en:
   active_admin:
-    access_denied:
-      message: I'm sorry, Dave. I'm afraid I can't do that.
     statistics:
       events_by_category: Events by category
+      ical_exports: iCal Exports per Day
+      page_visits: Visits per day
       single_events_this_week_by_category: This weeks events by category
       single_events_this_week_by_day: This weeks events by day of the week
       users_over_time: Registered Users
-      page_visits: Visits per day
-      ical_exports: iCal Exports per Day
-  activemodel:
-    errors:
-      template:
-        body: 'Please check the following fields:'
-        header:
-          one: 'Could not save %{model}: One error.'
-          other: 'Could not save %{model}: %{count} errors.'
   activerecord:
     attributes:
       blog_post:
@@ -89,47 +81,6 @@ en:
         location: Company/Location
         street: Street
         zipcode: Postal code
-    errors:
-      messages:
-        accepted: must be accepted
-        blank: is required
-        confirmation: does not match with confirmation
-        empty: is required
-        equal_to: must be exactly %{count}
-        even: must be even
-        exclusion: is not available
-        greater_than: must be greater than %{count}
-        greater_than_or_equal_to: must be greater than or equal to %{count}
-        inclusion: is not a valid value
-        invalid: is not valid
-        less_than: must be less than %{count}
-        less_than_or_equal_to: must be less than or equal to %{count}
-        not_a_number: is not a number
-        odd: must be an odd number
-        record_invalid: 'Validation failed: %{errors}'
-        taken: is already taken
-        too_long: is too long (limited to %{count} characters)
-        too_short: is to short (not less than %{count} characters)
-        wrong_length: has the wrong length (must have exactly %{count} characters)
-      template:
-        body: 'Please check the following fields:'
-        header:
-          one: 'Could not save %{model}: one error.'
-          other: 'Could not save %{model}: %{count} errors.'
-    models:
-      blog_post:
-        one: Blog Post
-        other: Blog Posts
-      category:
-        one: Category
-        other: Categories
-      comment: Comment
-      event: Event series
-      picture: Picture
-      single_event: Date
-      suggestion: Suggestion
-      user: User
-      venue: Venue
   comments:
     _form:
       comment_button: save
@@ -139,18 +90,12 @@ en:
       confirmation: Comment deleted.
     update:
       confirmation: Comment updated.
-    comment_for:
-      html: Comment for %{link}
-      text: Comment for %{thing}
   common:
-    back: Back
     confirm_delete: Are you sure?
     markdown_info: You can use <a href="%{syntax_link}" target="_blank">Markdown</a> and <a href="http://www.emoji-cheat-sheet.com/">emojis</a>.
     show_comment: Comment
     show_preview: Preview
   date:
-    abbr_day_names: '["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]'
-    abbr_month_names: '[nil, "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]'
     day_names:
     - Sunday
     - Monday
@@ -159,182 +104,78 @@ en:
     - Thursday
     - Friday
     - Saturday
-    formats:
-      default: Y-%m-%d
-      long: '%B %d, %Y'
-      only_day: '%e'
-      short: '%b %d'
-    month_names:
-    - 
-    - January
-    - February
-    - March
-    - April
-    - May
-    - June
-    - July
-    - August
-    - September
-    - October
-    - November
-    - December
-    order:
-    - :year
-    - :month
-    - :day
-  datetime:
-    distance_in_words:
-      about_x_hours:
-        one: about one hour
-        other: about %{count} hours
-      about_x_months:
-        one: about a month
-        other: about %{count} months
-      about_x_years:
-        one: about a year
-        other: about %{count} years
-      almost_x_years:
-        one: almost a year
-        other: almost %{count} years
-      half_a_minute: a half minute
-      less_than_x_minutes:
-        one: less than a minute
-        other: less than %{count} minutes
-      less_than_x_seconds:
-        one: less than a second
-        other: less than %{count} seconds
-      over_x_years:
-        one: more than a year
-        other: more than %{count} years
-      x_days:
-        one: one day
-        other: '%{count} days'
-      x_minutes:
-        one: one minute
-        other: '%{count} minutes'
-      x_months:
-        one: one month
-        other: '%{count} months'
-      x_seconds:
-        one: one second
-        other: '%{count} seconds'
-    prompts:
-      day: Day
-      hour: Hours
-      minute: Minutes
-      month: Month
-      second: Seconds
-      year: Year
   devise:
     callbacks:
       user:
-        failure: Could not authenticate you from %{kind} because "%{reason}".
+        failure: Du konntest nicht Deinem %{kind}-Account angemeldet werden, weil "%{reason}".
+    confirmations:
+      confirmed: Your account was successfully confirmed. You are now signed in.
+      send_instructions: You will receive an email with instructions about how to confirm your account in a few minutes.
+      send_paranoid_instructions: If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes.
+    failure:
+      already_authenticated: You are already signed in.
+      inactive: Your account was not activated yet.
+      invalid: Invalid email or password.
+      invalid_token: Invalid authentication token.
+      locked: Your account is locked.
+      timeout: Your session expired, please sign in again to continue.
+      unauthenticated: You need to sign in or sign up before continuing.
+      unconfirmed: You have to confirm your account before continuing.
+    mailer:
+      confirmation_instructions:
+        subject: Confirmation instructions
+      reset_password_instructions:
+        subject: Reset password instructions
+      unlock_instructions:
+        subject: Unlock Instructions
+    omniauth_callbacks:
+      failure: Could not authenticate you from %{kind} because "%{reason}".
+      success: Successfully authenticated from %{kind} account.
+    passwords:
+      no_token: You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided.
+      send_instructions: You will receive an email with instructions about how to reset your password in a few minutes.
+      send_paranoid_instructions: If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes.
+      updated: Your password was changed successfully. You are now signed in.
+      updated_not_active: Your password was changed successfully.
     registrations:
+      destroyed: Bye! Your account was successfully cancelled. We hope to see you again soon.
       exclusion: is reserved
       format: doesn't fit the database
-  errors:
-    messages:
-      already_confirmed: was already confirmed, please try signing in
-      expired: has expired, please request a new one
-      not_found: not found
-      not_locked: was not locked
-      not_saved:
-        one: '1 error prohibited this %{resource} from being saved:'
-        other: '%{count} errors prohibited this %{resource} from being saved:'
-    template:
-      body: 'Please check the following fields:'
-      header:
-        one: '%{model} could not be saved: one error.'
-        other: '%{model} could not be saved: %{count} error.'
-  events:
-    create:
-      confirmation: Event series created.
-    destroy:
-      confirmation: Event series deleted.
-    show:
-      back: Back to overview
-      delete: Delete
-      delete_confirm: Do you really want to delete?
-      edit: Edit
-      next_single_events: 'Next events:'
-      no_single_events: No events scheduled
-      subscribe_ical: Subscribe to iCal feed for this event series
-    update:
-      confirmation: Event series updated.
-  formtastic:
-    create: Create %{model}
-    'no': 'No'
-    required: required
-    submit: submit
-    update: save changes
-    'yes': 'Yes'
-  hello: Hello world
-  humans:
-    team: Team
-  minical:
-    add_new: new Date
-    see_more: more dates
-  number:
-    currency:
-      format:
-        delimiter: ','
-        format: '%u%n'
-        precision: 2
-        separator: .
-        unit: €
-    format:
-      delimiter: ','
-      precision: 2
-      separator: .
-    human:
-      format:
-        delimiter: 
-        precision: 3
-      storage_units:
-        format: '%n %u'
-        units:
-          byte:
-            one: Byte
-            other: Bytes
-          gb: GB
-          kb: KB
-          mb: MB
-          tb: TB
-    percentage:
-      format:
-        delimiter: 
-    precision:
-      format:
-        delimiter: 
-  sessions:
-    new:
-      title: Login
-      with_user_data: With user data
-      email_or_username: Email or nickname
-      submit: Login
-      with_other_service: …or with one of these services
+      signed_up: Welcome! You have signed up successfully.
+      signed_up_but_inactive: You have signed up successfully. However, we could not sign you in because your account is not yet activated.
+      signed_up_but_locked: You have signed up successfully. However, we could not sign you in because your account is locked.
+      signed_up_but_unconfirmed: A message with a confirmation link has been sent to your email address. Please open the link to activate your account.
+      update_needs_confirmation: You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address.
+      updated: You updated your account successfully.
+    sessions:
+      signed_in: Signed in successfully.
+      signed_out: Signed out successfully.
+    unlocks:
+      send_instructions: You will receive an email with instructions about how to unlock your account in a few minutes.
+      send_paranoid_instructions: If your account exists, you will receive an email with instructions about how to unlock it in a few minutes.
+      unlocked: Your account has been unlocked successfully. Please sign in to continue.
+  modules:
+    common:
+      topbar:
+        search_form:
+          button: 
+        test_environment_warning: Caution, this is our sandbox environment. For real events check <a href="http://www.hacken.in">hacken.in!</a>.
   registrations:
-    new:
-      title: Register
-      submit: Register
     edit:
       change_gravatar: change on gravatar.com
-      danger_zone: Danger Zone
       delete_confirm: Yes, please delete my account
       delete_profile: delete account
       delete_profile_text: You want to delete your account?
       edit_profile: edit Account
-      gravatar: Profile picture
-      password_hint: (leave empty, if no new password is required)
+      password_hint: "(leave empty, if no new password is required)"
       password_label: change password
       profile: Profile informations
       save_profile: save
       warning: To apply changes to fields of the danger zone your password is required.
-    password_forgotten:
-      title: Forgot your password?
-      submit: Forgot your password
+    new:
+      submit: Register
+      title: Register
     oauth:
-      add_service: add %{provider}
       added: Added authorization for %{provider}.
       delete: remove
       deleted: Removed authorization for %{provider}.
@@ -342,32 +183,21 @@ en:
       in_use: 'Your %{provider} account (User-Id: %{uid}) is already used by another account. If you want to login with another account, open the site of %{provider} and logout there.'
       more: Connect with accounts
       only_one_no_password: You can’t remove the last authorization, because your password is empty.
-      sign_in_with: log in with  %{provider}
       title: OAuth connection
-  simple_form:
-    error_notification:
-      default_message: 'Please review the problems below:'
-    'no': 'No'
-    required:
-      mark: '*'
-      text: required
-    'yes': 'Yes'
+    password_forgotten:
+      submit: Forgot your password
+      title: Forgot your password?
+  sessions:
+    new:
+      email_or_username: Email or nickname
+      submit: Login
+      title: Login
+      with_other_service: "…or with one of these services"
+      with_user_data: With user data
   single_events:
-    create:
-      confirmation: Event created.
-    delete:
-      confirmation: You will no longer participate in the event.
-    destroy:
-      confirmation: Event deleted.
-    push:
-      confirmation: You will participate in the event.
     show:
-      participants: Participant
       participate: And me!
       unparticipate: Not yet
-    update:
-      confirmation: Updated Event.
-      error: Ooops. Something went wrong.
   subscriptions:
     index:
       error: Entry not found.
@@ -378,129 +208,14 @@ en:
       description_hint: e.g. topics, features a registration required ...
       email_address_hint: Your email address will be used only in case of questions
       introduction: There is a new user group? You are missing an event in our calendar? Tell us more! :)
-      more_hint: Twitter, Hashtag, Homepage, Something else
-      occurrence_hint: e.g. at 2014-12-14 or every third wednesday of the month
       title: Suggest something
-    show:
-      title: Suggestion
-    missing_event_tell_us: tell us
-    missing_event_then:
-      html: An event missing? Than %{link}!
-  support:
-    array:
-      last_word_connector: and
-      two_words_connector: and
-      words_connector: ', '
-    select:
-      prompt: 'Please choose:'
-  time:
-    am: morning
-    formats:
-      default: '%a, %d %b %Y %H:%M:%S %z'
-      long: '%B %d, %Y %H:%M'
-      long_without_time: '%B %d, %Y'
-      short: '%d %b %H:%M'
-      time: '%H:%M'
-    pm: afternoon
-  user_tags:
-    create:
-      confirmation: Hashtag added
-      error: Hashtag could not be added
-    destroy:
-      confirmation: Hashtag removed
-      error: Hashtag could not be removed
   users:
     edit:
       allow_ignore_view: Show ignored hashtags publicly
     show:
       edit: Edit profile
-      ignore_tags: Ignored hashtags
-      loved_tags: Liked hashtags
-      next_events: Takes part in these events
       no_description: No description
-      no_ignore_tags: No ignored hashtags
-      no_loved_tags: No liked hashtags
-      no_next_events: Not taking part in any future events.
-      no_recent_comments: No comments yet
-      recent_comments: Recent comments
-    logged_in_user: Logged in user
-  views:
-    pagination:
-      first: '&lt;&lt;'
-      last: '&gt;&gt;'
-      next: '&gt;'
-      previous: '&lt;'
-      truncate: '...'
   will_paginate:
     next_label: Next &#8594;
-    page_gap: '&hellip;'
-    previous_label: '&#8592; Back'
-  calendars:
-    add_this_to_my_calendar: In my calendar
-    singular: Calendar
-  modules:
-    common:
-      topbar:
-        search_form:
-          button: 
-        test_environment_warning: Caution, this is our sandbox environment. For real events check <a href="http://www.hacken.in">hacken.in!</a>.
-  errors:
-    messages:
-      expired: "has expired, please request a new one"
-      not_found: "not found"
-      already_confirmed: "was already confirmed, please try signing in"
-      not_locked: "was not locked"
-      not_saved:
-        one: "1 error prohibited this %{resource} from being saved:"
-        other: "%{count} errors prohibited this %{resource} from being saved:"
-
-  devise:
-    failure:
-      already_authenticated: 'You are already signed in.'
-      unauthenticated: 'You need to sign in or sign up before continuing.'
-      unconfirmed: 'You have to confirm your account before continuing.'
-      locked: 'Your account is locked.'
-      invalid: 'Invalid email or password.'
-      invalid_token: 'Invalid authentication token.'
-      timeout: 'Your session expired, please sign in again to continue.'
-      inactive: 'Your account was not activated yet.'
-    sessions:
-      signed_in: 'Signed in successfully.'
-      signed_out: 'Signed out successfully.'
-    passwords:
-      send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
-      updated: 'Your password was changed successfully. You are now signed in.'
-      updated_not_active: 'Your password was changed successfully.'
-      send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
-      no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
-    confirmations:
-      send_instructions: 'You will receive an email with instructions about how to confirm your account in a few minutes.'
-      send_paranoid_instructions: 'If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes.'
-      confirmed: 'Your account was successfully confirmed. You are now signed in.'
-    registrations:
-      signed_up: 'Welcome! You have signed up successfully.'
-      signed_up_but_unconfirmed: 'A message with a confirmation link has been sent to your email address. Please open the link to activate your account.'
-      signed_up_but_inactive: 'You have signed up successfully. However, we could not sign you in because your account is not yet activated.'
-      signed_up_but_locked: 'You have signed up successfully. However, we could not sign you in because your account is locked.'
-      updated: 'You updated your account successfully.'
-      update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address."
-      destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
-      exclusion: 'is reserved'
-      format: "doesn't fit the database" 
-    unlocks:
-      send_instructions: 'You will receive an email with instructions about how to unlock your account in a few minutes.'
-      unlocked: 'Your account has been unlocked successfully. Please sign in to continue.'
-      send_paranoid_instructions: 'If your account exists, you will receive an email with instructions about how to unlock it in a few minutes.'
-    omniauth_callbacks:
-      success: 'Successfully authenticated from %{kind} account.'
-      failure: 'Could not authenticate you from %{kind} because "%{reason}".'
-    callbacks:
-      user:
-        failure: 'Du konntest nicht Deinem %{kind}-Account angemeldet werden, weil "%{reason}".'
-    mailer:
-      confirmation_instructions:
-        subject: 'Confirmation instructions'
-      reset_password_instructions:
-        subject: 'Reset password instructions'
-      unlock_instructions:
-        subject: 'Unlock Instructions'
+    page_gap: "&hellip;"
+    previous_label: "&#8592; Back"

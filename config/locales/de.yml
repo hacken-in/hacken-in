@@ -1,42 +1,105 @@
+---
 de:
-  will_paginate:
-    previous_label: '&#8592; Zurück'
-    next_label: Nächste &#8594;
-    page_gap: '&hellip;'
-  views:
-    pagination:
-      first: '&lt;&lt;'
-      last: '&gt;&gt;'
-      next: '&gt;'
-      previous: '&lt;'
-      truncate: '...'
-    welcome:
-      deutschland:
-        message: "[Hacken.in](http://hacken.in). Dein Kalender für Events rund ums Hacken, Geek-Kultur und alles, was zum Nerdsein gehört. \n\nMomentan gibt es uns für [Berlin](move_to/berlin), [Köln](move_to/koeln) und [München](move_to/muenchen)."
-    users:
-      show:
-        i_love: "Ich liebe"
-        i_boycott: "Ich boykottiere"
-        nothing: "Nichts"
-        at_these_events: "Ist bei diesen Events:"
+  active_admin:
+    statistics:
+      events_by_category: Veranstaltungsreihen insgesamt nach Kategorien
+      ical_exports: iCal Exports pro Tag
+      page_visits: Besucher pro Tag
+      single_events_this_week_by_category: Veranstaltungen dieser Woche nach Kategorie
+      single_events_this_week_by_city: Veranstaltungen dieser Woche nach Stadt
+      single_events_this_week_by_day: Veranstaltungen dieser Woche nach Wochentag
+      users_over_time: Registrierte Benutzer
+  activerecord:
+    attributes:
+      blog_post:
+        category: Kategorie
+        headline: "Überschrift"
+        headline_teaser: Teaser für die Startseite
+        mp3file: MP3 Datei
+        publishable: Anzeigen auf der Webseite
+        publishable_from: Anzeigen ab
+        teaser_text: Teaser
+        user: Benutzer
+      category:
+        color: Farbe
+        podcast_category: Podcast Kategorie
+        title: Titel
+      comment:
+        body: Inhalt
+      event:
+        address: Adresse
+        category: Kategorie
+        city: Stadt
+        description: Beschreibung
+        duration: Länge (in Minuten)
+        full_day: Ganzer Tag
+        location: Veranstaltungsort
+        picture: Bild
+        start_time: Start-Zeit für wiederholende Termine
+        street: Straße
+        venue: Ort
+        venue_info: Ort-Zusatzinfo (Raum, Gebäude, etc...)
+        zipcode: Postleitzahl
+      picture:
+        description: Beschreibung
+        image: Datei
+        title: Titel
+      radar_setting:
+        radar_type: Radar Typ
+      single_event:
+        category: Kategorie
+        city: Stadt
+        description: Beschreibung
+        duration: Länge (in Minuten)
+        full_day: Ganzer Tag
+        location: Veranstaltungsort
+        occurrence: Termin
+        picture: Bild
+        street: Straße
+        topic: "Überschrift"
+        use_venue_info_of_event: Venue Info vom Event benutzen
+        venue: Ort
+        venue_info: Ort-Zusatzinfo (Raum, Gebäude, etc...)
+        zipcode: Postleitzahl
+      suggestion:
+        description: Beschreibung
+        email_address: E-Mailadresse
+      user:
+        current_password: Aktuelles Passwort
+        description: Beschreibung
+        email: E-Mailadresse
+        github: Github Account
+        gravatar_email: Alternative E-mailadresse für Gravatar
+        homepage: Homepage
+        name: Name
+        nickname: Nickname
+        password: Passwort
+        password_confirmation: Passwort bestätigen
+        twitter: Twitter Account
+      venue:
+        city: Stadt
+        country: Land
+        location: Firma/Location
+        street: Straße
+        zipcode: PLZ
+  calendars:
+    show:
+      title: Kalender
+  comments:
+    _form:
+      comment_button: Und ab!
+    create:
+      confirmation: Kommentar angelegt.
+    destroy:
+      confirmation: Kommentar gelöscht.
+    update:
+      confirmation: Kommentar aktualisiert.
   common:
     confirm_delete: Bist du sicher?
     markdown_info: Hier kannst du <a href="%{syntax_link}" target="_blank">Markdown</a> und <a href="http://www.emoji-cheat-sheet.com/">emojis</a> benutzen.
-    show_preview: Vorschau
     show_comment: Kommentar
-    back: Zurück
-  errors:
-    template:
-      header:
-        one: 'Konnte %{model} nicht speichern: ein Fehler.'
-        other: 'Konnte %{model} nicht speichern: %{count} Fehler.'
-      body: 'Bitte überprüfen Sie die folgenden Felder:'
+    show_preview: Vorschau
   date:
-    formats:
-      default: '%d.%m.%Y'
-      short: '%e. %b'
-      long: '%e. %B %Y (%A)'
-      only_day: '%e'
     day_names:
     - Sonntag
     - Montag
@@ -45,564 +108,160 @@ de:
     - Donnerstag
     - Freitag
     - Samstag
-    abbr_day_names:
-    - So
-    - Mo
-    - Di
-    - Mi
-    - Do
-    - Fr
-    - Sa
-    month_names:
-    - 
-    - Januar
-    - Februar
-    - März
-    - April
-    - Mai
-    - Juni
-    - Juli
-    - August
-    - September
-    - Oktober
-    - November
-    - Dezember
-    abbr_month_names:
-    - 
-    - Jan
-    - Feb
-    - Mär
-    - Apr
-    - Mai
-    - Jun
-    - Jul
-    - Aug
-    - Sep
-    - Okt
-    - Nov
-    - Dez
-    order:
-    - :day
-    - :month
-    - :year
-  time:
-    formats:
-      default: '%A, %d. %B %Y, %H:%M Uhr'
-      short: '%d. %B, %H:%M Uhr'
-      long: '%A, %d. %B %Y, %H:%M Uhr'
-      time: '%H:%M'
-      long_without_time: '%A, %d. %B %Y'
-    am: vormittags
-    pm: nachmittags
-  datetime:
-    distance_in_words:
-      half_a_minute: eine halbe Minute
-      less_than_x_seconds:
-        one: weniger als eine Sekunde
-        other: weniger als %{count} Sekunden
-      x_seconds:
-        one: eine Sekunde
-        other: '%{count} Sekunden'
-      less_than_x_minutes:
-        one: weniger als eine Minute
-        other: weniger als %{count} Minuten
-      x_minutes:
-        one: eine Minute
-        other: '%{count} Minuten'
-      about_x_hours:
-        one: etwa eine Stunde
-        other: etwa %{count} Stunden
-      x_days:
-        one: ein Tag
-        other: '%{count} Tage'
-      about_x_months:
-        one: etwa ein Monat
-        other: etwa %{count} Monate
-      x_months:
-        one: ein Monat
-        other: '%{count} Monate'
-      almost_x_years:
-        one: fast ein Jahr
-        other: fast %{count} Jahre
-      about_x_years:
-        one: etwa ein Jahr
-        other: etwa %{count} Jahre
-      over_x_years:
-        one: mehr als ein Jahr
-        other: mehr als %{count} Jahre
-    prompts:
-      second: Sekunden
-      minute: Minuten
-      hour: Stunden
-      day: Tag
-      month: Monat
-      year: Jahr
-  number:
-    format:
-      precision: 2
-      separator: ','
-      delimiter: .
-    currency:
-      format:
-        unit: €
-        format: '%n%u'
-        separator: ','
-        delimiter: ''
-        precision: 2
-    percentage:
-      format:
-        delimiter: ''
-    precision:
-      format:
-        delimiter: ''
-    human:
-      format:
-        delimiter: ''
-        precision: 1
-      storage_units:
-        format: '%n %u'
-        units:
-          byte:
-            one: Byte
-            other: Bytes
-          kb: KB
-          mb: MB
-          gb: GB
-          tb: TB
-  support:
-    array:
-      words_connector: ', '
-      two_words_connector: ' und '
-      last_word_connector: ' und '
-    select:
-      prompt: 'Bitte wählen:'
-  activemodel:
-    errors:
-      template:
-        header:
-          one: 'Konnte %{model} nicht speichern: ein Fehler.'
-          other: 'Konnte %{model} nicht speichern: %{count} Fehler.'
-        body: 'Bitte überprüfen Sie die folgenden Felder:'
-  activerecord:
-    errors:
-      template:
-        header:
-          one: 'Konnte %{model} nicht speichern: ein Fehler.'
-          other: 'Konnte %{model} nicht speichern: %{count} Fehler.'
-        body: 'Bitte überprüfen Sie die folgenden Felder:'
-      messages:
-        inclusion: ist kein gültiger Wert
-        exclusion: ist nicht verfügbar
-        invalid: ist nicht gültig
-        confirmation: stimmt nicht mit der Bestätigung überein
-        accepted: muss akzeptiert werden
-        empty: muss ausgefüllt werden
-        blank: muss ausgefüllt werden
-        too_long: ist zu lang (nicht mehr als %{count} Zeichen)
-        too_short: ist zu kurz (nicht weniger als %{count} Zeichen)
-        wrong_length: hat die falsche Länge (muss genau %{count} Zeichen haben)
-        taken: ist bereits vergeben
-        not_a_number: ist keine Zahl
-        greater_than: muss größer als %{count} sein
-        greater_than_or_equal_to: muss größer oder gleich %{count} sein
-        equal_to: muss genau %{count} sein
-        less_than: muss kleiner als %{count} sein
-        less_than_or_equal_to: muss kleiner oder gleich %{count} sein
-        odd: muss ungerade sein
-        even: muss gerade sein
-        record_invalid: 'Gültigkeitsprüfung ist fehlgeschlagen: %{errors}'
-    attributes:
+  devise:
+    callbacks:
       user:
-        email: E-Mailadresse
-        description: Beschreibung
-        twitter: Twitter Account
-        github: Github Account
-        homepage: Homepage
-        password: Passwort
-        password_confirmation: Passwort bestätigen
-        current_password: Aktuelles Passwort
-        gravatar_email: Alternative E-mailadresse für Gravatar
-        name: Name
-        nickname: Nickname
-      event:
-        address: Adresse
-        description: Beschreibung
-        full_day: Ganzer Tag
-        location: Veranstaltungsort
-        street: Straße
-        zipcode: Postleitzahl
-        city: Stadt
-        duration: Länge (in Minuten)
-        start_time: Start-Zeit für wiederholende Termine
-        venue: Ort
-        venue_info: Ort-Zusatzinfo (Raum, Gebäude, etc...)
-        category: Kategorie
-        picture: Bild
-      single_event:
-        category: Kategorie
-        topic: Überschrift
-        description: Beschreibung
-        full_day: Ganzer Tag
-        location: Veranstaltungsort
-        street: Straße
-        zipcode: Postleitzahl
-        city: Stadt
-        duration: Länge (in Minuten)
-        occurrence: Termin
-        venue: Ort
-        picture: Bild
-        venue_info: Ort-Zusatzinfo (Raum, Gebäude, etc...)
-        use_venue_info_of_event: Venue Info vom Event benutzen
-      suggestion:
-        email_address: E-Mailadresse
-        description: Beschreibung
-      comment:
-        body: Inhalt
-      category:
-        title: Titel
-        color: Farbe
-        podcast_category: Podcast Kategorie
-      blog_post:
-        user: Benutzer
-        category: Kategorie
-        headline: Überschrift
-        publishable: Anzeigen auf der Webseite
-        publishable_from: Anzeigen ab
-        headline_teaser: Teaser für die Startseite
-        teaser_text: Teaser
-        mp3file: MP3 Datei
-      picture:
-        title: Titel
-        description: Beschreibung
-        image: Datei
-      venue:
-        location: Firma/Location
-        street: Straße
-        zipcode: PLZ
-        city: Stadt
-        country: Land
-      radar_setting:
-        radar_type: Radar Typ
-    models:
-      comment: Kommentar
-      event: Veranstaltungsreihe
-      single_event: Termin
-      user: Benutzer
-      picture: Bild
-      category:
-        one: Kategorie
-        other: Kategorien
-      blog_post:
-        one: Blogeintrag
-        other: Blogeinträge
-      venue:
-        one: Ort
-        other: Orte
-      suggestion:
-        one: Vorschlag
-        other: Vorschläge
-      region:
-        one: Region
-        other: Regionen
-      radar_entry:
-        one: Radar Eintrag
-        other: Radar Einträge
-      radar_setting: Radar Einstellung
-  comments:
-    _form:
-      comment_button: Und ab!
-    create:
-      confirmation: Kommentar angelegt.
-    update:
-      confirmation: Kommentar aktualisiert.
-    destroy:
-      confirmation: Kommentar gelöscht.
-  sessions:
-    new:
-      title: Einloggen
-      with_user_data: Mit Benutzerdaten
-      email_or_username: E-Mail oder Nickname
-      submit: Einloggen
-      with_other_service: …oder mit einem dieser Services
-  registrations:
-    new:
-      title: Registrieren
-      submit: Registrieren
-    edit:
-      danger_zone: Danger Zone
-      warning: Für Felder in der Danger-Zone brauchen wir dein Passwort, um die Änderungen zu machen.
-      edit_profile: Konto bearbeiten
-      gravatar: Profilbild
-      change_gravatar: ändern auf gravatar.com
-      profile: Profildaten
-      password_label: Passwort ändern
-      password_hint: (leer lassen, wenn kein neues Passwort gewünscht ist)
-      save_profile: Speichern
-      delete_profile: Konto löschen
-      delete_profile_text: Du willst dein Konto löschen?
-      delete_confirm: Ja, bitte mein Konto löschen
-    password_forgotten:
-      title: Passwort vergessen?
-      submit: Passwort zusenden
-    oauth:
-      title: OAuth Verknüpfungen
-      more: Mit Accounts verbinden
-      delete: entfernen
-      deleted: Die Authorisierung für %{provider} wurde entfernt.
-      added: Die Authorisierung für %{provider} wude hinzugefügt.
-      only_one_no_password: Du hast zur Zeit kein Passwort gesetzt, daher kannst du die letzte Authorisierung nicht entfernen.
-      sign_in_with: Einloggen mit %{provider}
-      add_service: '%{provider} hinzufügen'
-      in_use: 'Dein %{provider}-Account (User-Id: %{uid}) wird bereits von einem anderen Account verwendet. Wenn du dich mit einem anderen Account anmelden willst, geh auf die Seite von %{provider} und melde dich dort ab.'
-      email: Hier kannst du eine E-Mail Adresse und ein Passwort hinzufügen. Damit kannst du dich auch anmelden, wenn deine Authorisierungsdienste mal pleite gehen oder so.
-    shared:
-      login: Einloggen
-      register: Registrieren
-      password_forgotten: Passwort vergessen?
-  events:
-    show:
-      edit: Bearbeiten
-      delete: Löschen
-      delete_confirm: Wirklich löschen?
-      subscribe_ical: iCal für diese Veranstaltungssreihe abonnieren
-      no_single_events: Keine Termine geplant
-      next_single_events: 'Die nächsten Termine:'
-      back: Zurück zur Übersicht
-    create:
-      confirmation: Veranstaltungsreihe angelegt.
-    update:
-      confirmation: Veranstaltungsreihe aktualisiert.
-    destroy:
-      confirmation: Veranstaltungsreihe gelöscht.
-  single_events:
-    show:
-      participants: Teilnehmer
-      participate: Und ich!
-      unparticipate: Doch nich
-    push:
-      confirmation: Du nimmst an dem Termin teil.
-    delete:
-      confirmation: Du nimmst nicht mehr an dem Termin teil.
-    update:
-      confirmation: Termin wurde bearbeitet.
-      error: Beim Speichern ist ein Fehler aufgetreten
-    create:
-      confirmation: Termin angelegt.
-    destroy:
-      confirmation: Termin gelöscht.
-  search:
-    title: Suchergebnisse
-    nothing_found: Keine Termine gefunden.
-  subscriptions:
-    index:
-      error: Eintrag nicht gefunden
-  users:
-    show:
-      edit: Profil bearbeiten
-      next_events: Zugesagt für diese Termine
-      no_next_events: Keine Termine zugesagt.
-      recent_comments: Aktuellste Kommentare
-      no_recent_comments: Keine Kommentare vorhanden.
-      ignore_tags: Ignoriert folgende Hashtags
-      no_ignore_tags: Keine ignorierten Hashtags
-      loved_tags: Liebt folgende Hashtags
-      no_loved_tags: Keine geliebten Hashtags
-      no_description: Keine Beschreibung vorhanden.
-    edit:
-      allow_ignore_view: Ignorierte Hashtags öffentlich zeigen
-  user_tags:
-    create:
-      confirmation: Hashtag hinzugefügt
-      error: Hashtag konnte nicht hinzugefügt werden
-    destroy:
-      confirmation: Hashtag entfernt
-      error: Hashtag konnte nicht entfernt werden
-  suggestions:
-    new:
-      title: Mache uns einen Vorschlag
-      introduction: Bei uns im Kalender fehlt ein Termin? Es gibt eine neue Usergroup? Erzähl uns mehr davon :)
-      email_address_hint: Deine E-Mailadresse wird nur für eventuelle Rückfragen genutzt
-      description_hint: z.B. Themen, Besonderheiten, Terminrythmus, Anmeldung erforderlich...
-    show:
-      title: Vorschlag
-    create:
-      confirmation: Vielen Dank für deinen Vorschlag :)
-      wrong_recaptcha: Leider ist der reCaptcha falsch eingegeben worden.
-  formtastic:
-    :yes: Ja
-    :no: Nein
-    :submit: Absenden
-    :required: Benötigt
-    :create: Erzeuge %{model}
-    :update: Änderungen speichern
-  humans:
-    team: Team
-  active_admin:
-    statistics:
-      events_by_category: Veranstaltungsreihen insgesamt nach Kategorien
-      users_over_time: Registrierte Benutzer
-      single_events_this_week_by_day: Veranstaltungen dieser Woche nach Wochentag
-      single_events_this_week_by_category: Veranstaltungen dieser Woche nach Kategorie
-      single_events_this_week_by_city: Veranstaltungen dieser Woche nach Stadt
-      page_visits: Besucher pro Tag
-      ical_exports: iCal Exports pro Tag
-    access_denied:
-      message: I'm sorry, Dave. I'm afraid I can't do that.
-  minical:
-    see_more: weitere Termine
-    add_new: neuen Termin
+        failure: Du konntest nicht Deinem %{kind}-Account angemeldet werden, weil "%{reason}".
+    confirmations:
+      confirmed: Vielen Dank für Deine Registrierung. Du bist jetzt angemeldet.
+      send_instructions: Du erhältst in wenigen Minuten eine E-Mail, mit der Du Deine Registrierung bestätigen kannst.
+      send_paranoid_instructions: Falls Deine E-Mail-Adresse in unserer Datenbank existiert erhältst Du in wenigen Minuten eine E-Mail mit der Du Deine Registrierung bestätigen kannst.
+    failure:
+      already_authenticated: Du bist bereits angemeldet.
+      inactive: Dein Account ist nicht aktiv.
+      invalid: Ungültige Anmeldedaten.
+      invalid_token: Der Anmelde-Token ist ungültig.
+      locked: Dein Account ist gesperrt.
+      timeout: Deine Sitzung ist abgelaufen, bitte melde Dich erneut an.
+      unauthenticated: Du musst Dich anmelden oder registrieren, bevor Du fortfahren kannst.
+      unconfirmed: Du musst Deinen Account bestätigen, bevor Du fortfahren kannst.
+    mailer:
+      confirmation_instructions:
+        subject: Anleitung zur Bestätigung Deines Accounts
+      reset_password_instructions:
+        subject: Anleitung um Dein Passwort zurückzusetzen
+      unlock_instructions:
+        subject: Anleitung um Deinen Account freizuschalten
+    omniauth_callbacks:
+      failure: Du konntest nicht Deinem %{kind}-Account angemeldet werden, weil "%{reason}".
+      success: Du hast Dich erfolgreich mit Deinem %{kind}-Account angemeldet.
+    passwords:
+      send_instructions: Du erhältst in wenigen Minuten eine E-Mail mit der Anleitung, wie Du Dein Passwort zurücksetzen kannst.
+      send_paranoid_instructions: Falls Deine E-Mail-Adresse in unserer Datenbank existiert erhältst Du in wenigen Minuten eine E-Mail mit der Anleitung, wie Du Dein Passwort zurücksetzen können.
+      updated: Dein Passwort wurde geändert. Du bist jetzt angemeldet.
+      updated_not_active: Dein Passwort wurde geändert.
+    registrations:
+      destroyed: Dein Account wurde gelöscht.
+      exclusion: Name ist nicht erlaubt.
+      format: passt nicht in die Datenbank - besser zusammen schreiben oder Unterstrich benutzen & keine Umlaute
+      signed_up: Du hast dich erfolgreich registriert.
+      signed_up_but_inactive: Du hast dich erfolgreich registriert. Wir konnten Dich noch nicht anmelden, da Dein Account inaktiv ist.
+      signed_up_but_locked: Du hast dich erfolgreich registriert. Wir konnten Dich noch nicht anmelden, da Dein Account gesperrt ist.
+      signed_up_but_unconfirmed: Du hast Dich erfolgreich registriert. Wir konnten Dich noch nicht anmelden, da Dein Account noch nicht bestätigt ist. Du erhältst in Kürze eine E-Mail mit der Anleitung, wie Du Deinen Account freischalten kannst.
+      update_needs_confirmation: Deine Daten wurden aktualisiert, aber Du musst Deine neue E-Mail-Adresse bestätigen. Du erhälsts in wenigen Minuten eine E-Mail, mit der Du die Änderung Deiner E-Mail-Adresse abschließen kannst.
+      updated: Deine Daten wurden aktualisiert.
+    sessions:
+      signed_in: Erfolgreich angemeldet.
+      signed_out: Erfolgreich abgemeldet.
+    unlocks:
+      send_instructions: Du erhältst in wenigen Minuten eine E-Mail mit der Anleitung, wie Du Deinen Account entsperren können.
+      send_paranoid_instructions: Falls Deine E-Mail-Adresse in unserer Datenbank existiert erhältst Du in wenigen Minuten eine E-Mail mit der Anleitung, wie Du Deinen Account entsperren kannst.
+      unlocked: Dein Account wurde entsperrt. Du bist jetzt angemeldet.
   modules:
-    common:
-      topbar:
-        search_form:
-          field_placeholder: Finde Events
-          button: Suchen
-        test_environment_warning: Achtung, das ist unsere Test-Umgebung. Richtige Events gibt es auf <a href="http://www.hacken.in">hacken.in!</a>.
-      sidebar:
-        login_with: "%{provider} login"
-        register_instead: Registrieren
-        login: Einloggen
-        email: E-Mail / Nickname
-        password: Passwort
-        team: Über
-        imprint: Impressum
-        my_profile: Mein Profil
-        logout: Abmelden
-        greeting: Hallo %{name}!
-        add_to_my_calendar: In meinen Kalender
-        love_input: Was liebst du?
-        hate_input: Was boykottierst du?
-      ical_popup:
-        explanation: Hier kannst du den Hacken.in Kalender in deine bevorzugte Kalender-Applikation importieren
-        like_welcome_page_button: Alle Termine
-        like_welcome_page_description: Meinen Kalender (meine Einstellungen berücksichtigen)
-        personalized_button: Nur Termine an denen ich teilnehme
-        personalized_description: Nur Termine an denen ich teilnehme
-        import_into_ical_button: In iCal/Outlook importieren
-        import_into_google_button: In meinen Google Kalender importieren
-        manually: 'Oder importiere den Kalender von Hand:'
     calendars:
       day:
         suggest_event: Termin vorschlagen
-  calendars:
+    common:
+      ical_popup:
+        explanation: Hier kannst du den Hacken.in Kalender in deine bevorzugte Kalender-Applikation importieren
+        import_into_google_button: In meinen Google Kalender importieren
+        import_into_ical_button: In iCal/Outlook importieren
+        like_welcome_page_button: Alle Termine
+        like_welcome_page_description: Meinen Kalender (meine Einstellungen berücksichtigen)
+        manually: 'Oder importiere den Kalender von Hand:'
+        personalized_button: Nur Termine an denen ich teilnehme
+        personalized_description: Nur Termine an denen ich teilnehme
+      sidebar:
+        add_to_my_calendar: In meinen Kalender
+        email: E-Mail / Nickname
+        greeting: Hallo %{name}!
+        imprint: Impressum
+        login: Einloggen
+        login_with: "%{provider} login"
+        logout: Abmelden
+        my_profile: Mein Profil
+        password: Passwort
+        register_instead: Registrieren
+        team: "Über"
+      topbar:
+        search_form:
+          button: Suchen
+          field_placeholder: Finde Events
+        test_environment_warning: Achtung, das ist unsere Test-Umgebung. Richtige Events gibt es auf <a href="http://www.hacken.in">hacken.in!</a>.
+  registrations:
+    edit:
+      change_gravatar: "ändern auf gravatar.com"
+      delete_confirm: Ja, bitte mein Konto löschen
+      delete_profile: Konto löschen
+      delete_profile_text: Du willst dein Konto löschen?
+      edit_profile: Konto bearbeiten
+      password_hint: "(leer lassen, wenn kein neues Passwort gewünscht ist)"
+      password_label: Passwort ändern
+      profile: Profildaten
+      save_profile: Speichern
+      warning: Für Felder in der Danger-Zone brauchen wir dein Passwort, um die Änderungen zu machen.
+    new:
+      submit: Registrieren
+      title: Registrieren
+    oauth:
+      added: Die Authorisierung für %{provider} wude hinzugefügt.
+      delete: entfernen
+      deleted: Die Authorisierung für %{provider} wurde entfernt.
+      email: Hier kannst du eine E-Mail Adresse und ein Passwort hinzufügen. Damit kannst du dich auch anmelden, wenn deine Authorisierungsdienste mal pleite gehen oder so.
+      in_use: 'Dein %{provider}-Account (User-Id: %{uid}) wird bereits von einem anderen Account verwendet. Wenn du dich mit einem anderen Account anmelden willst, geh auf die Seite von %{provider} und melde dich dort ab.'
+      more: Mit Accounts verbinden
+      only_one_no_password: Du hast zur Zeit kein Passwort gesetzt, daher kannst du die letzte Authorisierung nicht entfernen.
+      title: OAuth Verknüpfungen
+    password_forgotten:
+      submit: Passwort zusenden
+      title: Passwort vergessen?
+    shared:
+      login: Einloggen
+      password_forgotten: Passwort vergessen?
+      register: Registrieren
+  search:
+    nothing_found: Keine Termine gefunden.
+    title: Suchergebnisse
+  sessions:
+    new:
+      email_or_username: E-Mail oder Nickname
+      submit: Einloggen
+      title: Einloggen
+      with_other_service: "…oder mit einem dieser Services"
+      with_user_data: Mit Benutzerdaten
+  single_events:
     show:
-      title: Kalender
-  hello: Hallo
-  simple_form:
-    hints:
-      user:
-        edit:
-          allow_ignore_view: 
-          current_password: 
-          email: 
-          github: 
-          gravatar_email: 
-          homepage: 
-          name: 
-          nickname: 
-          password_confirmation: 
-          twitter: 
-        new:
-          email: 
-          password: 
-    labels:
-      user:
-        edit:
-          current_password: 
-          description: 
-          email: 
-          github: 
-          gravatar_email: 
-          homepage: 
-          name: 
-          nickname: 
-          password_confirmation: 
-          twitter: 
-        new:
-          password: 
-      suggestion:
-        new:
-          description: 
-          email_address: 
-    placeholders:
-      user:
-        edit:
-          current_password: 
-          email: 
-          github: 
-          gravatar_email: 
-          homepage: 
-          name: 
-          nickname: 
-          password: 
-          password_confirmation: 
-          twitter: 
-        new:
-          email: 
-          password: 
-      suggestion:
-        new:
-          description: 
-          email_address: 
-    required:
-      html: <abbr title="required">*</abbr>
-      mark: '*'
-      text: required
-    errors:
-    messages:
-      expired: "ist abgelaufen, bitte neu anfordern"
-      not_found: "nicht gefunden"
-      already_confirmed: "wurde bereits bestätigt"
-      not_locked: "ist nicht gesperrt"
-      not_saved:
-        one: "Konnte %{resource} nicht speichern: ein Fehler."
-        other: "Konnte %{resource} nicht speichern: %{count} Fehler."
-  devise:
-    failure:
-      already_authenticated: 'Du bist bereits angemeldet.'
-      unauthenticated: 'Du musst Dich anmelden oder registrieren, bevor Du fortfahren kannst.'
-      unconfirmed: 'Du musst Deinen Account bestätigen, bevor Du fortfahren kannst.'
-      locked: 'Dein Account ist gesperrt.'
-      invalid: 'Ungültige Anmeldedaten.'
-      invalid_token: 'Der Anmelde-Token ist ungültig.'
-      timeout: 'Deine Sitzung ist abgelaufen, bitte melde Dich erneut an.'
-      inactive: 'Dein Account ist nicht aktiv.'
-    sessions:
-      signed_in: 'Erfolgreich angemeldet.'
-      signed_out: 'Erfolgreich abgemeldet.'
-    passwords:
-      send_instructions: 'Du erhältst in wenigen Minuten eine E-Mail mit der Anleitung, wie Du Dein Passwort zurücksetzen kannst.'
-      updated: 'Dein Passwort wurde geändert. Du bist jetzt angemeldet.'
-      updated_not_active: 'Dein Passwort wurde geändert.'
-      send_paranoid_instructions: "Falls Deine E-Mail-Adresse in unserer Datenbank existiert erhältst Du in wenigen Minuten eine E-Mail mit der Anleitung, wie Du Dein Passwort zurücksetzen können."
-    confirmations:
-      send_instructions: 'Du erhältst in wenigen Minuten eine E-Mail, mit der Du Deine Registrierung bestätigen kannst.'
-      send_paranoid_instructions: 'Falls Deine E-Mail-Adresse in unserer Datenbank existiert erhältst Du in wenigen Minuten eine E-Mail mit der Du Deine Registrierung bestätigen kannst.'
-      confirmed: 'Vielen Dank für Deine Registrierung. Du bist jetzt angemeldet.'
-    registrations:
-      signed_up: 'Du hast dich erfolgreich registriert.'
-      signed_up_but_unconfirmed: 'Du hast Dich erfolgreich registriert. Wir konnten Dich noch nicht anmelden, da Dein Account noch nicht bestätigt ist. Du erhältst in Kürze eine E-Mail mit der Anleitung, wie Du Deinen Account freischalten kannst.'
-      signed_up_but_inactive: 'Du hast dich erfolgreich registriert. Wir konnten Dich noch nicht anmelden, da Dein Account inaktiv ist.'
-      signed_up_but_locked: 'Du hast dich erfolgreich registriert. Wir konnten Dich noch nicht anmelden, da Dein Account gesperrt ist.'
-      updated: 'Deine Daten wurden aktualisiert.'
-      update_needs_confirmation: "Deine Daten wurden aktualisiert, aber Du musst Deine neue E-Mail-Adresse bestätigen. Du erhälsts in wenigen Minuten eine E-Mail, mit der Du die Änderung Deiner E-Mail-Adresse abschließen kannst."
-      destroyed: 'Dein Account wurde gelöscht.'
-      exclusion: 'Name ist nicht erlaubt.'
-      format: 'passt nicht in die Datenbank - besser zusammen schreiben oder Unterstrich benutzen & keine Umlaute'
-    unlocks:
-      send_instructions: 'Du erhältst in wenigen Minuten eine E-Mail mit der Anleitung, wie Du Deinen Account entsperren können.'
-      unlocked: 'Dein Account wurde entsperrt. Du bist jetzt angemeldet.'
-      send_paranoid_instructions: "Falls Deine E-Mail-Adresse in unserer Datenbank existiert erhältst Du in wenigen Minuten eine E-Mail mit der Anleitung, wie Du Deinen Account entsperren kannst."
-    omniauth_callbacks:
-      success: 'Du hast Dich erfolgreich mit Deinem %{kind}-Account angemeldet.'
-      failure: 'Du konntest nicht Deinem %{kind}-Account angemeldet werden, weil "%{reason}".'
-    callbacks:
-      user:
-        failure: 'Du konntest nicht Deinem %{kind}-Account angemeldet werden, weil "%{reason}".'
-    mailer:
-      confirmation_instructions:
-        subject: 'Anleitung zur Bestätigung Deines Accounts'
-      reset_password_instructions:
-        subject: 'Anleitung um Dein Passwort zurückzusetzen'
-      unlock_instructions:
-        subject: 'Anleitung um Deinen Account freizuschalten'
+      participate: Und ich!
+      unparticipate: Doch nich
+  subscriptions:
+    index:
+      error: Eintrag nicht gefunden
+  suggestions:
+    create:
+      confirmation: Vielen Dank für deinen Vorschlag :)
+      wrong_recaptcha: Leider ist der reCaptcha falsch eingegeben worden.
+    new:
+      description_hint: z.B. Themen, Besonderheiten, Terminrythmus, Anmeldung erforderlich...
+      email_address_hint: Deine E-Mailadresse wird nur für eventuelle Rückfragen genutzt
+      introduction: Bei uns im Kalender fehlt ein Termin? Es gibt eine neue Usergroup? Erzähl uns mehr davon :)
+      title: Mache uns einen Vorschlag
+  users:
+    edit:
+      allow_ignore_view: Ignorierte Hashtags öffentlich zeigen
+    show:
+      edit: Profil bearbeiten
+      no_description: Keine Beschreibung vorhanden.
+  views:
+    users:
+      show:
+        at_these_events: 'Ist bei diesen Events:'
+        i_boycott: Ich boykottiere
+        i_love: Ich liebe
+        nothing: Nichts
+    welcome:
+      deutschland:
+        message: "[Hacken.in](http://hacken.in). Dein Kalender für Events rund ums Hacken, Geek-Kultur und alles, was zum Nerdsein gehört. \n\nMomentan gibt es uns für [Berlin](move_to/berlin), [Köln](move_to/koeln) und [München](move_to/muenchen)."
+  will_paginate:
+    next_label: Nächste &#8594;
+    page_gap: "&hellip;"
+    previous_label: "&#8592; Zurück"
