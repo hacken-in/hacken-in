@@ -1,11 +1,14 @@
 ---
 en:
   active_admin:
+    dashboard: MISSINGTRANSLATION
+    view: MISSINGTRANSLATION
     statistics:
       events_by_category: Events by category
       ical_exports: iCal Exports per Day
       page_visits: Visits per day
       single_events_this_week_by_category: This weeks events by category
+      single_events_this_week_by_city: This weeks events by city
       single_events_this_week_by_day: This weeks events by day of the week
       users_over_time: Registered Users
   activerecord:
@@ -43,6 +46,8 @@ en:
         description: Description
         image: File
         title: Title
+      radar_setting:
+        radar_type: Radar type
       single_event:
         category: Category
         city: City
@@ -72,6 +77,8 @@ en:
         github: GitHub
         gravatar_email: Gravatar eMail
         homepage: Homepage
+        name: Name
+        nickname: Nickname
         password: Password
         password_confirmation: Confirm password
         twitter: Twitter
@@ -81,6 +88,9 @@ en:
         location: Company/Location
         street: Street
         zipcode: Postal code
+  calendars:
+    show:
+      title: Calendar
   comments:
     _form:
       comment_button: save
@@ -155,13 +165,40 @@ en:
       send_paranoid_instructions: If your account exists, you will receive an email with instructions about how to unlock it in a few minutes.
       unlocked: Your account has been unlocked successfully. Please sign in to continue.
   modules:
+    calendars:
+      day:
+        suggest_event: Suggest event
     common:
+      ical_popup:
+        explanation: You can import the hacken.in calendar into your preferred calendar application here.
+        import_into_google_button: Import into my Google calendar
+        import_into_ical_button: Import into iCal/Outlook
+        like_welcome_page_button: All events
+        like_welcome_page_description: My calendar (include my settings)
+        manually: 'Manual import'
+        personalized_button: Only events I'm participating in
+        personalized_description: Only events I'm participating in
+      sidebar:
+        add_to_my_calendar: Add to my calendar
+        email: E-Mail / Nickname
+        greeting: Hello %{name}!
+        imprint: Imprint
+        login: Login
+        login_with: "%{provider} login"
+        logout: Logout
+        my_profile: My profile
+        password: Password
+        register_instead: Register
+        team: "About"
       topbar:
         search_form:
-          button: 
+          button: Search
+          field_placeholder: Find events
         test_environment_warning: Caution, this is our sandbox environment. For real events check <a href="http://www.hacken.in">hacken.in!</a>.
   registrations:
     edit:
+      danger_zone: Danger zone
+      gravatar: Gravatar
       change_gravatar: change on gravatar.com
       delete_confirm: Yes, please delete my account
       delete_profile: delete account
@@ -187,6 +224,13 @@ en:
     password_forgotten:
       submit: Forgot your password
       title: Forgot your password?
+    shared:
+      login: Login
+      password_forgotten: Forgot password?
+      register: Register
+  search:
+    nothing_found: No events found.
+    title: Search results
   sessions:
     new:
       email_or_username: Email or nickname
@@ -204,6 +248,7 @@ en:
   suggestions:
     create:
       confirmation: Thank you for your suggestion! :)
+      wrong_recaptcha: Unfortunately the reCaptcha was insert incorrectly.
     new:
       description_hint: e.g. topics, features a registration required ...
       email_address_hint: Your email address will be used only in case of questions
@@ -212,9 +257,19 @@ en:
   users:
     edit:
       allow_ignore_view: Show ignored hashtags publicly
-    show:
-      edit: Edit profile
-      no_description: No description
+    show: 
+        edit: Edit profile
+        no_description: No description
+  views:
+    users:
+      show:
+        at_these_events: 'At these Events:'
+        i_boycott: I boycott
+        i_love: I love
+        nothing: Nothing
+    welcome:
+      deutschland:
+        message: "[Hacken.in](http://hacken.in). Your calendar for events around hacking, geek culture and everything that has to do with being a nerd. At the moments there are events for [Berlin](move_to/berlin), [Cologne](/move_to/koeln) and [Munich](move_to/muenchen)."
   will_paginate:
     next_label: Next &#8594;
     page_gap: "&hellip;"
