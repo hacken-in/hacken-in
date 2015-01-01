@@ -1,6 +1,8 @@
 ---
 de:
   active_admin:
+    dashboard: MISSINGTRANSLATION
+    view: MISSINGTRANSLATION
     statistics:
       events_by_category: Veranstaltungsreihen insgesamt nach Kategorien
       ical_exports: iCal Exports pro Tag
@@ -64,6 +66,10 @@ de:
       suggestion:
         description: Beschreibung
         email_address: E-Mailadresse
+        more_as_text: Mehr
+        name: Name
+        occurrence: Zeitpunkt
+        place: Ort
       user:
         current_password: Aktuelles Passwort
         description: Beschreibung
@@ -140,6 +146,7 @@ de:
       send_paranoid_instructions: Falls Deine E-Mail-Adresse in unserer Datenbank existiert erhältst Du in wenigen Minuten eine E-Mail mit der Anleitung, wie Du Dein Passwort zurücksetzen können.
       updated: Dein Passwort wurde geändert. Du bist jetzt angemeldet.
       updated_not_active: Dein Passwort wurde geändert.
+      no_token: Du kannst diese Seite nur aufrufen, indem du auf einen Link in einer Passwort Reset Email klickst. Wenn du dies getan hast, bitte stell sicher, dass du die gesamte URL benutzt.
     registrations:
       destroyed: Dein Account wurde gelöscht.
       exclusion: Name ist nicht erlaubt.
@@ -190,6 +197,8 @@ de:
         test_environment_warning: Achtung, das ist unsere Test-Umgebung. Richtige Events gibt es auf <a href="http://www.hacken.in">hacken.in!</a>.
   registrations:
     edit:
+      danger_zone: Gefahrenzone
+      gravatar: Gravatar
       change_gravatar: "ändern auf gravatar.com"
       delete_confirm: Ja, bitte mein Konto löschen
       delete_profile: Konto löschen
