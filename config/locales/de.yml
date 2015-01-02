@@ -101,8 +101,8 @@ de:
     update:
       confirmation: Kommentar aktualisiert.
   common:
-    confirm_delete: Bist du sicher?
-    markdown_info: Hier kannst du <a href="%{syntax_link}" target="_blank">Markdown</a> und <a href="http://www.emoji-cheat-sheet.com/">emojis</a> benutzen.
+    confirm_delete: Bist Du sicher?
+    markdown_info: Hier kannst Du <a href="%{syntax_link}" target="_blank">Markdown</a> und <a href="http://www.emoji-cheat-sheet.com/">Emojis</a> benutzen.
     show_comment: Kommentar
     show_preview: Vorschau
   date:
@@ -117,11 +117,11 @@ de:
   devise:
     callbacks:
       user:
-        failure: Du konntest nicht Deinem %{kind}-Account angemeldet werden, weil "%{reason}".
+        failure: Du konntest nicht mit Deinem %{kind}-Account angemeldet werden, weil "%{reason}".
     confirmations:
       confirmed: Vielen Dank für Deine Registrierung. Du bist jetzt angemeldet.
       send_instructions: Du erhältst in wenigen Minuten eine E-Mail, mit der Du Deine Registrierung bestätigen kannst.
-      send_paranoid_instructions: Falls Deine E-Mail-Adresse in unserer Datenbank existiert erhältst Du in wenigen Minuten eine E-Mail mit der Du Deine Registrierung bestätigen kannst.
+      send_paranoid_instructions: Falls Deine E-Mail-Adresse in unserer Datenbank existiert, erhältst Du in wenigen Minuten eine E-Mail mit der Du Deine Registrierung bestätigen kannst.
     failure:
       already_authenticated: Du bist bereits angemeldet.
       inactive: Dein Account ist nicht aktiv.
@@ -139,21 +139,21 @@ de:
       unlock_instructions:
         subject: Anleitung um Deinen Account freizuschalten
     omniauth_callbacks:
-      failure: Du konntest nicht Deinem %{kind}-Account angemeldet werden, weil "%{reason}".
+      failure: Du konntest nicht mit Deinem %{kind}-Account angemeldet werden, weil "%{reason}".
       success: Du hast Dich erfolgreich mit Deinem %{kind}-Account angemeldet.
     passwords:
       send_instructions: Du erhältst in wenigen Minuten eine E-Mail mit der Anleitung, wie Du Dein Passwort zurücksetzen kannst.
-      send_paranoid_instructions: Falls Deine E-Mail-Adresse in unserer Datenbank existiert erhältst Du in wenigen Minuten eine E-Mail mit der Anleitung, wie Du Dein Passwort zurücksetzen können.
+      send_paranoid_instructions: Falls Deine E-Mail-Adresse in unserer Datenbank existiert, erhältst Du in wenigen Minuten eine E-Mail mit der Anleitung, wie Du Dein Passwort zurücksetzen können.
       updated: Dein Passwort wurde geändert. Du bist jetzt angemeldet.
       updated_not_active: Dein Passwort wurde geändert.
-      no_token: Du kannst diese Seite nur aufrufen, indem du auf einen Link in einer Passwort Reset Email klickst. Wenn du dies getan hast, bitte stell sicher, dass du die gesamte URL benutzt.
+      no_token: Du kannst diese Seite nur aufrufen, indem Du auf einen Link in einer Passwort Reset Email klickst. Wenn Du dies getan hast, bitte stell sicher, dass Du Die gesamte URL benutzt.
     registrations:
       destroyed: Dein Account wurde gelöscht.
       exclusion: Name ist nicht erlaubt.
       format: passt nicht in die Datenbank - besser zusammen schreiben oder Unterstrich benutzen & keine Umlaute
-      signed_up: Du hast dich erfolgreich registriert.
-      signed_up_but_inactive: Du hast dich erfolgreich registriert. Wir konnten Dich noch nicht anmelden, da Dein Account inaktiv ist.
-      signed_up_but_locked: Du hast dich erfolgreich registriert. Wir konnten Dich noch nicht anmelden, da Dein Account gesperrt ist.
+      signed_up: Du hast Dich erfolgreich registriert.
+      signed_up_but_inactive: Du hast Dich erfolgreich registriert. Wir konnten Dich noch nicht anmelden, da Dein Account inaktiv ist.
+      signed_up_but_locked: Du hast Dich erfolgreich registriert. Wir konnten Dich noch nicht anmelden, da Dein Account gesperrt ist.
       signed_up_but_unconfirmed: Du hast Dich erfolgreich registriert. Wir konnten Dich noch nicht anmelden, da Dein Account noch nicht bestätigt ist. Du erhältst in Kürze eine E-Mail mit der Anleitung, wie Du Deinen Account freischalten kannst.
       update_needs_confirmation: Deine Daten wurden aktualisiert, aber Du musst Deine neue E-Mail-Adresse bestätigen. Du erhälsts in wenigen Minuten eine E-Mail, mit der Du die Änderung Deiner E-Mail-Adresse abschließen kannst.
       updated: Deine Daten wurden aktualisiert.
@@ -161,8 +161,8 @@ de:
       signed_in: Erfolgreich angemeldet.
       signed_out: Erfolgreich abgemeldet.
     unlocks:
-      send_instructions: Du erhältst in wenigen Minuten eine E-Mail mit der Anleitung, wie Du Deinen Account entsperren können.
-      send_paranoid_instructions: Falls Deine E-Mail-Adresse in unserer Datenbank existiert erhältst Du in wenigen Minuten eine E-Mail mit der Anleitung, wie Du Deinen Account entsperren kannst.
+      send_instructions: Du erhältst in wenigen Minuten eine E-Mail mit der Anleitung, wie Du Deinen Account entsperren kannst.
+      send_paranoid_instructions: Falls Deine E-Mail-Adresse in unserer Datenbank existiert, erhältst Du in wenigen Minuten eine E-Mail mit der Anleitung, wie Du Deinen Account entsperren kannst.
       unlocked: Dein Account wurde entsperrt. Du bist jetzt angemeldet.
   modules:
     calendars:
@@ -170,11 +170,11 @@ de:
         suggest_event: Termin vorschlagen
     common:
       ical_popup:
-        explanation: Hier kannst du den Hacken.in Kalender in deine bevorzugte Kalender-Applikation importieren
+        explanation: Hier kannst Du den Hacken.in Kalender in Deine bevorzugte Kalender-Applikation importieren
         import_into_google_button: In meinen Google Kalender importieren
         import_into_ical_button: In iCal/Outlook importieren
         like_welcome_page_button: Alle Termine
-        like_welcome_page_description: Meinen Kalender (meine Einstellungen berücksichtigen)
+        like_welcome_page_description: Meinen Kalender (Meine Einstellungen berücksichtigen)
         manually: 'Oder importiere den Kalender von Hand:'
         personalized_button: Nur Termine an denen ich teilnehme
         personalized_description: Nur Termine an denen ich teilnehme
@@ -199,8 +199,8 @@ de:
     edit:
       danger_zone: Gefahrenzone
       gravatar: Gravatar
-      change_gravatar: "ändern auf gravatar.com"
-      delete_confirm: Ja, bitte mein Konto löschen
+      change_gravatar: "Ändern auf gravatar.com"
+      delete_confirm: Ja, bitte mein Konto löschen.
       delete_profile: Konto löschen
       delete_profile_text: Du willst dein Konto löschen?
       edit_profile: Konto bearbeiten
@@ -208,18 +208,18 @@ de:
       password_label: Passwort ändern
       profile: Profildaten
       save_profile: Speichern
-      warning: Für Felder in der Danger-Zone brauchen wir dein Passwort, um die Änderungen zu machen.
+      warning: Für Felder in der Danger-Zone brauchen wir Dein Passwort, um die Änderungen zu machen.
     new:
       submit: Registrieren
       title: Registrieren
     oauth:
       added: Die Authorisierung für %{provider} wude hinzugefügt.
-      delete: entfernen
+      delete: Entfernen
       deleted: Die Authorisierung für %{provider} wurde entfernt.
-      email: Hier kannst du eine E-Mail Adresse und ein Passwort hinzufügen. Damit kannst du dich auch anmelden, wenn deine Authorisierungsdienste mal pleite gehen oder so.
-      in_use: 'Dein %{provider}-Account (User-Id: %{uid}) wird bereits von einem anderen Account verwendet. Wenn du dich mit einem anderen Account anmelden willst, geh auf die Seite von %{provider} und melde dich dort ab.'
+      email: Hier kannst Du eine E-Mail Adresse und ein Passwort hinzufügen. Damit kannst Du Dich auch anmelden, wenn Deine Authorisierungsdienste mal pleite gehen oder so.
+      in_use: 'Dein %{provider}-Account (User-Id: %{uid}) wird bereits von einem anderen Account verwendet. Wenn Du Dich mit einem anderen Account anmelden willst, geh auf die Seite von %{provider} und melde Dich dort ab.'
       more: Mit Accounts verbinden
-      only_one_no_password: Du hast zur Zeit kein Passwort gesetzt, daher kannst du die letzte Authorisierung nicht entfernen.
+      only_one_no_password: Du hast zur Zeit kein Passwort gesetzt, daher kannst Du die letzte Authorisierung nicht entfernen.
       title: OAuth Verknüpfungen
     password_forgotten:
       submit: Passwort zusenden
@@ -241,19 +241,19 @@ de:
   single_events:
     show:
       participate: Und ich!
-      unparticipate: Doch nich
+      unparticipate: Doch nich.
   subscriptions:
     index:
-      error: Eintrag nicht gefunden
+      error: Eintrag nicht gefunden.
   suggestions:
     create:
-      confirmation: Vielen Dank für deinen Vorschlag :)
+      confirmation: Vielen Dank für Deinen Vorschlag :)
       wrong_recaptcha: Leider ist der reCaptcha falsch eingegeben worden.
     new:
       description_hint: z.B. Themen, Besonderheiten, Terminrythmus, Anmeldung erforderlich...
       email_address_hint: Deine E-Mailadresse wird nur für eventuelle Rückfragen genutzt
       introduction: Bei uns im Kalender fehlt ein Termin? Es gibt eine neue Usergroup? Erzähl uns mehr davon :)
-      title: Mache uns einen Vorschlag
+      title: Mache uns einen Vorschlag!
   users:
     edit:
       allow_ignore_view: Ignorierte Hashtags öffentlich zeigen

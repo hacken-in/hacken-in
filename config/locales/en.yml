@@ -19,7 +19,7 @@ en:
         headline_teaser: Teaser for homepage
         mp3file: MP3 File
         publishable: Show on website
-        publishable_from: show from
+        publishable_from: Show from
         teaser_text: Teaser
         user: User
       category:
@@ -73,7 +73,7 @@ en:
       user:
         current_password: Current password
         description: Description
-        email: eMail
+        email: E-Mail
         github: GitHub
         gravatar_email: Gravatar eMail
         homepage: Homepage
@@ -102,7 +102,7 @@ en:
       confirmation: Comment updated.
   common:
     confirm_delete: Are you sure?
-    markdown_info: You can use <a href="%{syntax_link}" target="_blank">Markdown</a> and <a href="http://www.emoji-cheat-sheet.com/">emojis</a>.
+    markdown_info: You can use <a href="%{syntax_link}" target="_blank">Markdown</a> and <a href="http://www.emoji-cheat-sheet.com/">Emojis</a>.
     show_comment: Comment
     show_preview: Preview
   date:
@@ -117,7 +117,7 @@ en:
   devise:
     callbacks:
       user:
-        failure: Du konntest nicht Deinem %{kind}-Account angemeldet werden, weil "%{reason}".
+        failure: You could not be logged in with your %{kind}-Account because "%{reason}".
     confirmations:
       confirmed: Your account was successfully confirmed. You are now signed in.
       send_instructions: You will receive an email with instructions about how to confirm your account in a few minutes.
@@ -199,22 +199,22 @@ en:
     edit:
       danger_zone: Danger zone
       gravatar: Gravatar
-      change_gravatar: change on gravatar.com
+      change_gravatar: Change on gravatar.com
       delete_confirm: Yes, please delete my account
-      delete_profile: delete account
+      delete_profile: Delete account
       delete_profile_text: You want to delete your account?
-      edit_profile: edit Account
+      edit_profile: Edit Account
       password_hint: "(leave empty, if no new password is required)"
-      password_label: change password
+      password_label: Change password
       profile: Profile informations
-      save_profile: save
+      save_profile: Save
       warning: To apply changes to fields of the danger zone your password is required.
     new:
       submit: Register
       title: Register
     oauth:
       added: Added authorization for %{provider}.
-      delete: remove
+      delete: Remove
       deleted: Removed authorization for %{provider}.
       email: You can enter your email address and password here, so you have backup login credentials in case your authorization provider is not available.
       in_use: 'Your %{provider} account (User-Id: %{uid}) is already used by another account. If you want to login with another account, open the site of %{provider} and logout there.'
@@ -241,7 +241,7 @@ en:
   single_events:
     show:
       participate: And me!
-      unparticipate: Not yet
+      unparticipate: Not yet.
   subscriptions:
     index:
       error: Entry not found.
