@@ -1,0 +1,11 @@
+// Recaptcha Reset
+div#recaptcha_widget_div {
+  margin-bottom: 10px;
+  * {
+    line-height: normal !important;
+  }
+  input {
+    height: auto;
+    display: inline;
+  }
+}
