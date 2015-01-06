@@ -105,15 +105,6 @@ de:
     markdown_info: Hier kannst Du <a href="%{syntax_link}" target="_blank">Markdown</a> und <a href="http://www.emoji-cheat-sheet.com/">Emojis</a> benutzen.
     show_comment: Kommentar
     show_preview: Vorschau
-  date:
-    day_names:
-    - Sonntag
-    - Montag
-    - Dienstag
-    - Mittwoch
-    - Donnerstag
-    - Freitag
-    - Samstag
   devise:
     callbacks:
       user:

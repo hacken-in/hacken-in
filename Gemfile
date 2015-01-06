@@ -78,6 +78,9 @@ gem 'gravatar_image_tag', '~> 1.2.0'
 # For the auto follow script
 gem 'twitter', '~> 5.5.1'
 
+# Include some generic language stuff (dates, common errors, …)
+gem 'rails-i18n'
+
 # Other dependencies
 gem 'geocoder', '~> 1.2.2'
 
