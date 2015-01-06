@@ -1,5 +1,6 @@
 Hcking::Application.routes.draw do
 
+
   devise_for :users, controllers: { sessions: 'sessions', omniauth_callbacks: "callbacks" }
 
   devise_scope :users do
@@ -31,6 +32,7 @@ Hcking::Application.routes.draw do
   resources :comments, only: [:create, :edit, :update]
   resources :suggestions, only: [:new, :create, :show]
   resource :calendar, only: [:show]
+  resources :venues, only: [:show]
 
   resources :events, only: [:index, :show] do
     resources :comments, except: [:new]

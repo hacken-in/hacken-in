@@ -21,6 +21,10 @@ class Venue < ActiveRecord::Base
     [location, city].delete_if {|d| d.blank? }.join(", ")
   end
 
+  def to_param
+    "#{self.id}-#{self.location.parameterize}"
+  end
+
   def to_opengraph
     {
       "og:latitude"=>latitude,

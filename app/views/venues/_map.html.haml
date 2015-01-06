@@ -1,0 +1,23 @@
+.venue.row
+  - unless venue.nil? or venue.latitude.blank? or venue.longitude.blank?
+    :javascript
+      function initialize() {
+        var eventLocation = new L.LatLng(#{venue.latitude}, #{venue.longitude});
+
+        var map = new L.Map('mapCanvas', { center: eventLocation, zoom: 13, scrollWheelZoom: false });
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        var markerLocation = eventLocation;
+
+        var marker = new L.Marker(eventLocation);
+        map.addLayer(marker);
+      }
+
+      $(function() {
+        $('.venue-map').append('<div id="mapCanvas"></div>');
+        initialize();
+      });
+  .venue-map.column.large-8

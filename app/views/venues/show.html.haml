@@ -1,0 +1,25 @@
+%h1 
+  = @venue.location
+
+%address.event-venue{ itemscope: true, itemprop: 'location', itemtype: 'http://schema.org/Place'  }
+  %div{ itemscope: true, itemprop: 'address', itemtype: 'http://schema.org/PostalAddress' }
+    %div{ itemprop: 'streetAddress' }
+      = @venue.street
+    %div
+      %span{ itemprop: 'postalCode' }
+        = @venue.zipcode
+      %span{ itemprop: 'addressLocality' }
+        = @venue.city
+  - if @venue.url.present?
+    %div
+      = link_to @venue.url, @venue.url
+.description
+  = convert_markdown @venue.description, true
+= render "venues/map", venue: @venue
+
+.recent-events
+  -unless @next_events.empty?
+    %h4
+      = t("views.venues.show.upcoming_events")
+    .calendar-calendar
+      = render partial: "modules/calendars/days", locals: {days: @next_events, suggestions: false}

@@ -8,6 +8,7 @@ ActiveAdmin.register Venue do
   filter :city
   filter :country
   filter :url
+  filter :description
 
   menu priority: 3
   index do
@@ -17,6 +18,7 @@ ActiveAdmin.register Venue do
     column :zipcode
     column :city
     column :country
+    column :description
     column :url do |venue|
       link_to truncate(venue.url, length: 30), venue.url
     end
@@ -36,6 +38,9 @@ ActiveAdmin.register Venue do
     end
     div do
       "<a class='map-link' href='http://maps.google.com/maps?z=18&q=#{venue.latitude},#{venue.longitude}' data-lat='#{venue.latitude}' data-lng='#{venue.longitude}'>Google Maps</a>".html_safe
+    end
+    div do
+      convert_markdown venue.description
     end
     attributes_table do
       row :single_events do |preset|
@@ -64,7 +69,8 @@ ActiveAdmin.register Venue do
         :city,
         :country,
         :url,
-        :region_id
+        :region_id,
+        :description
       ])
     end
   end

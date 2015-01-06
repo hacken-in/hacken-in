@@ -19,6 +19,9 @@ de:
         i_boycott: "Ich boykottiere"
         nothing: "Nichts"
         at_these_events: "Ist bei diesen Events:"
+    venues:
+      show:
+        upcoming_events: "Hier finden diese Events statt:"
   common:
     confirm_delete: Bist du sicher?
     markdown_info: Hier kannst du <a href="%{syntax_link}" target="_blank">Markdown</a> und <a href="http://www.emoji-cheat-sheet.com/">emojis</a> benutzen.

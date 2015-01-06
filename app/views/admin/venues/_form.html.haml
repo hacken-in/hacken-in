@@ -15,5 +15,6 @@
       = f.input :region, :as => :select, :collection => @current_user.assigned_regions, include_blank: false
 
     = f.input :country, collection: {"Deutschland" => "DE", "Niederlande" => "NL"}, as: :select
+    = f.input :description
 
   = f.button
