@@ -63,9 +63,9 @@ Hcking::Application.configure do
   config.active_support.deprecation = :notify
 
   # Explicitly set the hostname to pick up the ENV['HTTP_HOST']
-  # provided by Shellycloud. We default to our production hostname.
+  # provided by Shellycloud. Don't ask, don't tell. *sobs*
   OmniAuth.config.full_host = lambda do |environment|
-    environment['HTTP_HOST'] || 'hacken.in'
+    "https://#{environment['HTTP_HOST']}"
   end
 
   # Shut up noisy rails logs
