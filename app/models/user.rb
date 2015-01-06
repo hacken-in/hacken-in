@@ -146,7 +146,7 @@ class User < ActiveRecord::Base
 
   # Create a user from an OmniAuth request
   def self.from_omniauth(auth)
-    auth_token = Authorization.where(auth.slice(:provider, :uid)).first
+    auth_token = Authorization.where(provider: auth.provider, uid: auth.uid).first
     # If we have a token without an associated user (user canceled signup), we delete it and the user has to sign up
     if (auth_token && auth_token.user.nil?)
       auth_token.destroy
