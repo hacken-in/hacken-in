@@ -1,7 +1,7 @@
 # Welcome
 
-[![Travis Build Status](https://img.shields.io/travis/hacken-in/website.svg)](http://travis-ci.org/hacken-in/website)
-[![Codeship Build Status](https://img.shields.io/codeship/3c775da0-bbc6-0131-1826-124bbd4fc581.svg)](https://codeship.com/projects/20985)
+[![Travis Build Status](https://img.shields.io/travis/hacken-in/website/master.svg)](http://travis-ci.org/hacken-in/website)
+[![Codeship Build Status](https://img.shields.io/codeship/3c775da0-bbc6-0131-1826-124bbd4fc581/master.svg)](https://codeship.com/projects/20985)
 [![Code Climate](https://img.shields.io/codeclimate/github/hacken-in/website.svg)](https://codeclimate.com/github/hacken-in/website)
 [![Code Climate CodeCoverage](https://img.shields.io/codeclimate/coverage/github/hacken-in/website.svg)](https://codeclimate.com/github/hacken-in/website)
 [![Pickable Stories](https://badge.waffle.io/hacken-in/website.png?label=ready&title=Pick One)](https://waffle.io/hacken-in/website)
