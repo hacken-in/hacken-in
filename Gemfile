@@ -78,6 +78,9 @@ gem 'gravatar_image_tag', '~> 1.2.0'
 # For the auto follow script
 gem 'twitter', '~> 5.5.1'
 
+# Include some generic language stuff (dates, common errors, …)
+gem 'rails-i18n'
+
 # Other dependencies
 gem 'geocoder', '~> 1.2.2'
 
@@ -115,6 +118,7 @@ group :development do
   # Silence asset pipeline and make log usable again
   gem 'quiet_assets', '~> 1.0.3'
 
+
 end
 
 group :test, :development do
@@ -127,6 +131,8 @@ group :test, :development do
   gem 'brakeman', '~> 2.6.1'
   gem 'vcr', '~> 2.9.2'
   gem 'pry-rails'
+  # Find and manage translation differences
+  gem 'i18n-tasks', '~> 0.7.10'
 end
 
 group :production do
