@@ -65,7 +65,7 @@ de:
         zipcode: Postleitzahl
       suggestion:
         description: Beschreibung
-        email_address: E-Mailadresse
+        email_address: E-Mail-Adresse
         more_as_text: Mehr
         name: Name
         occurrence: Zeitpunkt
@@ -73,9 +73,9 @@ de:
       user:
         current_password: Aktuelles Passwort
         description: Beschreibung
-        email: E-Mailadresse
+        email: E-Mail-Adresse
         github: Github Account
-        gravatar_email: Alternative E-mailadresse für Gravatar
+        gravatar_email: Alternative E-Mail-Adresse für Gravatar
         homepage: Homepage
         name: Name
         nickname: Nickname
@@ -137,7 +137,7 @@ de:
       send_paranoid_instructions: Falls Deine E-Mail-Adresse in unserer Datenbank existiert, erhältst Du in wenigen Minuten eine E-Mail mit der Anleitung, wie Du Dein Passwort zurücksetzen können.
       updated: Dein Passwort wurde geändert. Du bist jetzt angemeldet.
       updated_not_active: Dein Passwort wurde geändert.
-      no_token: Du kannst diese Seite nur aufrufen, indem Du auf einen Link in einer Passwort Reset Email klickst. Wenn Du dies getan hast, bitte stell sicher, dass Du Die gesamte URL benutzt.
+      no_token: Du kannst diese Seite nur aufrufen, indem Du auf einen Link in einer Passwort Reset E-Mail klickst. Wenn Du dies getan hast, bitte stell sicher, dass Du Die gesamte URL benutzt.
     registrations:
       destroyed: Dein Account wurde gelöscht.
       exclusion: Name ist nicht erlaubt.
@@ -207,7 +207,7 @@ de:
       added: Die Authorisierung für %{provider} wude hinzugefügt.
       delete: Entfernen
       deleted: Die Authorisierung für %{provider} wurde entfernt.
-      email: Hier kannst Du eine E-Mail Adresse und ein Passwort hinzufügen. Damit kannst Du Dich auch anmelden, wenn Deine Authorisierungsdienste mal pleite gehen oder so.
+      email: Hier kannst Du eine E-Mail-Adresse und ein Passwort hinzufügen. Damit kannst Du Dich auch anmelden, wenn Deine Authorisierungsdienste mal pleite gehen oder so.
       in_use: 'Dein %{provider}-Account (User-Id: %{uid}) wird bereits von einem anderen Account verwendet. Wenn Du Dich mit einem anderen Account anmelden willst, geh auf die Seite von %{provider} und melde Dich dort ab.'
       more: Mit Accounts verbinden
       only_one_no_password: Du hast zur Zeit kein Passwort gesetzt, daher kannst Du die letzte Authorisierung nicht entfernen.
@@ -224,7 +224,7 @@ de:
     title: Suchergebnisse
   sessions:
     new:
-      email_or_username: E-Mail oder Nickname
+      email_or_username: E-Mail-Adresse oder Nickname
       submit: Einloggen
       title: Einloggen
       with_other_service: "…oder mit einem dieser Services"
@@ -242,7 +242,7 @@ de:
       wrong_recaptcha: Leider ist der reCaptcha falsch eingegeben worden.
     new:
       description_hint: z.B. Themen, Besonderheiten, Terminrythmus, Anmeldung erforderlich...
-      email_address_hint: Deine E-Mailadresse wird nur für eventuelle Rückfragen genutzt
+      email_address_hint: Deine E-Mail-Adresse wird nur für eventuelle Rückfragen genutzt
       introduction: Bei uns im Kalender fehlt ein Termin? Es gibt eine neue Usergroup? Erzähl uns mehr davon :)
       title: Mache uns einen Vorschlag!
   users:
