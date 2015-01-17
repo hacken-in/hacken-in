@@ -27,7 +27,43 @@ When you want to add an event to [hacken.in](http://hacken.in) please check with
 
 ## Getting Started
 
-If you want to work on the Project, follow the steps described here:
+If you want to work on hacken.in you have two options:
+
+1. Use our Vagrant VM.
+
+   The best method if you haven't tried Rails before and don't want to
+   install PostgreSQL on your computer.
+
+1. Start hacken.in locally with Pow
+
+   If you already have Pow and a local PostgreSQL installation, you
+   are good to go. Just skip to the section `Using Pow`.
+
+### Using the Vagrant VM
+
+Hacken.in can also be started in a virtual machine with Vagrant. This might be the perfect fit if you cannot or don't want to install PostgreSQL or MySQL on your computer. To get started with Vagrant, install the latest version of [Vagrant](http://www.vagrantup.com) and [VirtualBox](https://www.virtualbox.org), and check out your fork of the project (see *Getting Started*).
+
+Once your checkout is ready, type the following command into your terminal and our friendly setup assistant should take over from there on:
+
+```bash
+$ script/bootstrap
+```
+
+Once it is done, point your browser to [hacken.local](http://hacken.local). All the files you change in your local folder are synced to the virtual machines, so you can work on hacken.in right away. :wrench:
+
+If you use filesystem encryption, you might receive an error similar to `mount.nfs: mount to NFS server '.../' failed: timed out, giving up`. In this case, edit the Vagrantfile and uncomment the line:
+
+```ruby
+config.vm.synced_folder ".", "/opt/hacken.in", type: 'rsync', rsync__args: ['-a']
+```
+
+Afterwards local code can to be re-synced to the VM via `$ vagrant rsync-auto` which you can run in the background.
+
+![hacken.local](https://i.imgur.com/rGh0pwE.png)
+
+If you run into any problems: Don't be afraid to tell us on [Twitter](https://twitter.com/hacken_in) or open a ticket.
+
+### Using Pow
 
 1. Fork the Project
 1. Check out your fork
@@ -39,46 +75,9 @@ If you want to work on the Project, follow the steps described here:
 1. To run your application locally you can now use `rails server`
 1. Now visit http://localhost:3000 in your web browser and you are ready to go!
 
-## Booting up the Vagrant VM
-
-Hacken.in can also be started in a virtual machine with Vagrant. This might be the perfect fit if you cannot or don't want to install
-PostgreSQL or MySQL on your computer. To get started with Vagrant, install the latest version of [Vagrant](http://www.vagrantup.com) and
-[VirtualBox](https://www.virtualbox.org), and check out your fork of the project (see *Getting Started*).
-
-In your working copy, run our bootstrap task, to install all required puppet modules (you only have to do this once):
-
-```bash
-$ bundle exec rake setup:vagrant
-```
-
-To start up the VM, type:
-
-```bash
-$ vagrant up
-```
-
-If you use filesystem encryption, you might receive an error similar to `mount.nfs: mount to NFS server '.../' failed: timed out, giving up`. In this case, edit the Vagrantfile and uncomment the line: 
-
-```ruby
-config.vm.synced_folder ".", "/opt/hacken.in", type: 'rsync', rsync__args: ['-a']
-```
-
-Afterwards local code changes need to be re-synced to the VM via `$ vagrant reload --provision`.
-
-If the Vagrant exits successfully, you can access your local machine under the URL [hacken.local](http://hacken.local). All the files you
-change in your local folder are synced to the virtual machines, so you can work on hacken.in right away. :wrench:
-
-![hacken.local](https://i.imgur.com/rGh0pwE.png)
-
-If you're experiencing problems do not hesitate to contact us or - even better - file an issue.
-
 ### Communication
 
 You can reach us on lots of ways. The most preferred one would be either to open an issue here or to use our [Google Group](http://groups.google.com/group/hacken-in). If you want to drink from the firehose (and see a lot of GIFs) join us in our [Slack room](https://hacken-in.slack.com). Just ping us [on Twitter](https://twitter.com/hacken_in) or send an email to admin@hacken.in and we will add you.
-
-### Pow
-
-Pow is a really comfortable way to run the application on your machine. You can learn everything about it [here](http://pow.cx).
 
 ### Guard
 
@@ -100,4 +99,3 @@ This will offer you the following comfortable features:
 Please note that this project is released with a Contributor [Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for details
-
