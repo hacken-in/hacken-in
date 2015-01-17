@@ -28,7 +28,7 @@ class TwitterFollower
   end
 
   def following
-    too_many_request_wrapper do
+    request_wrapper do
       @following_cache ||= @client.friends(include_user_entities: false, skip_status: true, count: 200).to_a.map(&:handle).map(&:downcase)
     end
     @following_cache

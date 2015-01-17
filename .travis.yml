@@ -12,6 +12,7 @@ before_script:
   - psql -c 'create database hcking_test;' -U postgres
   - "cp config/database.yml_travis config/database.yml"
 script: "bundle exec rake db:drop db:create db:migrate ci"
+sudo: false
 cache: bundler
 addons:
   postgresql: "9.3"

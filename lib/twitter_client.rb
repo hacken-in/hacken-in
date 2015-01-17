@@ -10,19 +10,20 @@ module TwitterClient
     end
   end
 
-  def too_many_request_wrapper
+  def request_wrapper
     num_attempts = 0
     begin
+      raise "Giving up after #{num_attempts} attempts." if num_attempts >= MAX_ATTEMPTS
       num_attempts += 1
       yield
     rescue Twitter::Error::TooManyRequests => error
-      if num_attempts <= MAX_ATTEMPTS
-        puts "Rate limit for twitter, sleeping #{error.rate_limit.reset_in}"
-        sleep error.rate_limit.reset_in
-        retry
-      else
-        raise
-      end
+      puts "Rate limit for twitter, sleeping #{error.rate_limit.reset_in} seconds."
+      sleep error.rate_limit.reset_in
+      retry
+    rescue Twitter::Error::RequestTimeout
+      puts "Timeout connecting to Twitter, sleeping 30 seconds."
+      sleep 30
+      retry
     end
     @following_cache
   end

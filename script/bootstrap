@@ -121,8 +121,8 @@ step "Vagrant installation" do
 end
 
 step "Vagrant run." do
-  puts "  You will be asked for your System Password, so Vagrant can mount"
-  puts "  Files into the virtual machine. This will only happen once."
+  puts "  Vagrant might ask you for your system password."
+  puts "  No worries, this is just to share files with your computer."
   run "vagrant up"
 end
 
@@ -142,4 +142,19 @@ step "Try to resolve hacken.local" do
 end
 
 puts "\nAll green, you are ready to go! Good work."
-puts "Just open http://hacken.local in your browser."
+puts "Just open http://hacken.local in your browser.\n"
+
+puts <<-EOT
+We will now log you into your Vagrant machine
+You can run the local tests with:
+
+     vagrant@hacken:/opt/hacken.in$ bundle exec rake
+
+To leave the machine just type "exit" and hit <enter>.
+EOT
+
+puts "\n\n"
+
+step "Vagrant ssh" do
+  exec 'vagrant ssh -c "cd /opt/hacken.in; bash --login"'
+end
