@@ -22,7 +22,7 @@ class TwitterListUpdater
   def members(list)
     @list_members ||= Hash.new
     if @list_members[list].nil?
-      too_many_request_wrapper do
+      request_wrapper do
         @list_members[list] = @client.list_members(list, include_user_entities: false, skip_status: true, count: 200).to_a
       end
     end
@@ -40,7 +40,7 @@ class TwitterListUpdater
   end
 
   def lists
-    too_many_request_wrapper do
+    request_wrapper do
       @lists ||= @client.lists
     end
     @lists
