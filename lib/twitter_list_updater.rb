@@ -8,15 +8,19 @@ class TwitterListUpdater
   def update
     twitter_handles = twitter_by_region
     Region.all.each do |region|
-      add_missing_to_list(twitter_handles[region.id], list_for_region(region))
+      request_wrapper do
+        add_missing_to_list(twitter_handles[region.id], list_for_region(region))
+      end
     end
   end
 
   def add_missing_to_list(handles, list)
-     handles_in_list = members(list).map(&:screen_name)
-     (handles - handles_in_list).each do |screen_name|
-       @client.add_list_member(list, screen_name) unless screen_name == "hacken_in"
-     end
+    handles_in_list = members(list).map(&:screen_name)
+    (handles - handles_in_list).each do |screen_name|
+      request_wrapper do
+        @client.add_list_member(list, screen_name) unless screen_name == "hacken_in"
+      end
+    end
   end
 
   def members(list)
