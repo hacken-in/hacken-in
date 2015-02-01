@@ -1,0 +1,3 @@
+%ul
+  - Region.active.each do |region|
+    %li= link_to region.name, show_statistic_path(region: region.slug)

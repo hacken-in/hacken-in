@@ -265,3 +265,9 @@ de:
     next_label: Nächste &#8594;
     page_gap: "&hellip;"
     previous_label: "&#8592; Zurück"
+  statistics:
+    index:
+      headline: "Statistiken"
+    show:
+      headline: "Statistiken für %{region}"
+      weekdays: "Wochentage"

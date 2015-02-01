@@ -1,12 +1,7 @@
-%h2 Statistiken für #{@current_region.name}
+%h2= t("statistics.show.headline", region: @current_region.name)
 
-%h3 Wochentage
+%h3= t("statistics.show.weekdays")
 
 = column_chart @chart_data
 
-%p
-  Weitere Statistiken für
-
-%ul
-  - Region.all.each do |region|
-    %li= link_to region.name, show_statistic_path(region: region.slug)
+= render partial: 'other_regions'

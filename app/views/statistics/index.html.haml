@@ -1,5 +1,4 @@
-%h2 Statistiken
+%h2= t("statistics.index.headline")
 
-%ul
-  - Region.all.each do |region|
-    %li= link_to region.name, show_statistic_path(region: region.slug)
+= render partial: 'other_regions'
+
