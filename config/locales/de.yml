@@ -1,8 +1,8 @@
 ---
 de:
   active_admin:
-    dashboard: MISSINGTRANSLATION
-    view: MISSINGTRANSLATION
+    dashboard: Dashboard
+    view: Anzeigen
     statistics:
       events_by_category: Veranstaltungsreihen insgesamt nach Kategorien
       ical_exports: iCal Exports pro Tag
