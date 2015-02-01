@@ -67,6 +67,8 @@ search:
 ## Consider these keys not missing
 ignore_missing:
   - 'date.day_names'
+  - 'subscriptions.{push,delete}.confirmation'
+  - 'single_events.{push,delete}.confirmation'
 # - 'errors.messages.{accepted,blank,invalid,too_short,too_long}'
 # - '{devise,simple_form}.*'
 
@@ -74,6 +76,8 @@ ignore_missing:
 ignore_unused:
   - 'activerecord.attributes.*'
   - '{devise,kaminari,will_paginate}.*'
+  - 'subscriptions.{push,delete}.confirmation'
+  - 'single_events.{push,delete}.confirmation'
   #- 'simple_form.{yes,no}'
   #- 'simple_form.{placeholders,hints,labels}.*'
   #- 'simple_form.{error_notification,required}.:'

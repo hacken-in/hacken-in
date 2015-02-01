@@ -234,6 +234,10 @@ en:
       participate: And me!
       unparticipate: Not yet.
   subscriptions:
+    push:
+      confirmation: You now participate.
+    delete:
+      confirmation: You no longer participate.
     index:
       error: Entry not found.
   suggestions:

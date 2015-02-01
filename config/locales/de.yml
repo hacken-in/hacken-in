@@ -230,6 +230,10 @@ de:
       with_other_service: "…oder mit einem dieser Services"
       with_user_data: Mit Benutzerdaten
   single_events:
+    push:
+      confirmation: Du nimmst jetzt teil.
+    delete:
+      confirmation: Du nimmst nicht mehr teil.
     show:
       participate: Und ich!
       unparticipate: Doch nich.
