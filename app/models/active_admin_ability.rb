@@ -37,7 +37,7 @@ class ActiveAdminAbility
 
         can :create, RadarSetting
         can :manage, RadarSetting, event_id: user.event_curations.pluck(:event_id)
-        can :manage, RadarEntry, event_id: user.event_curations.pluck(:event_id)
+        can :manage, RadarEntry, event: { id: user.event_curations.pluck(:event_id) }
       end
 
       # Wenn man Events hat, darf man auch das Dashboard anzeigen und somit
