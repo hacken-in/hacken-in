@@ -5,11 +5,11 @@
 VAGRANTFILE_API_VERSION = "2"
 
 PUPPET_UPGRADE = <<EOF
-if [[ $(/usr/bin/puppet --version) != *3.7.3* ]]; then
+if [[ $(/usr/bin/puppet --version) != *3.7.4* ]]; then
   wget --quiet -P /tmp http://apt.puppetlabs.com/puppetlabs-release-precise.deb
   dpkg -i /tmp/puppetlabs-release-precise.deb
   aptitude update > /dev/null
-  aptitude install -y puppet=3.7.3-1puppetlabs1
+  aptitude install -y puppet=3.7.4-1puppetlabs1 puppet-common=3.7.4-1puppetlabs1
 fi
 EOF
 
