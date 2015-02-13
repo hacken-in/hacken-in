@@ -20,6 +20,9 @@ aside.sidebar {
 
   @media #{$small-only} {
     @include off-canvas-menu(left);
+    // give the off-canvas-menu a min-height to keep its content visible (see #448).
+    // 789px is needed in logged-out state
+    min-height: 789px;
 
     h3 {
       color: $topbar-link-color;
