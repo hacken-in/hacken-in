@@ -4,6 +4,7 @@ module Radar
   class Meetup < Base
 
     def next_events
+      sleep(2) unless Rails.env.test?
       json = JSON.parse(RubyMeetup::ApiKeyClient.new.get_path("/2/events", {group_urlname: group_urlname}))
       json["results"].map do |event|
         cleanup_event(event)
