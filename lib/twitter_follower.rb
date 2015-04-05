@@ -12,6 +12,7 @@ class TwitterFollower
         @client.follow(handle)
       rescue => e
         puts "Problems following #{handle}"
+        Bugsnag.notify "Problems following #{handle}"
       end
     end
   end

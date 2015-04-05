@@ -17,8 +17,13 @@ class TwitterListUpdater
   def add_missing_to_list(handles, list)
     handles_in_list = members(list).map(&:screen_name)
     (handles - handles_in_list).each do |screen_name|
-      request_wrapper do
-        @client.add_list_member(list, screen_name) unless screen_name == "hacken_in"
+      begin
+        request_wrapper do
+          @client.add_list_member(list, screen_name) unless screen_name == "hacken_in"
+        end
+      rescue => e
+        put "Problems adding #{screen_name} to the list"
+        Bugsnag.notify "Problems following #{screen_name}"
       end
     end
   end
