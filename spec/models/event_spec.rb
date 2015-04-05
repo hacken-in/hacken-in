@@ -365,4 +365,21 @@ describe Event do
 
     gevent.destroy
   end
+
+  describe 'duration wandering away bug #360' do
+    before do
+      @event = FactoryGirl.create(:simple, schedule_yaml: "---\n:start_date: 2011-08-07 13:13:00.000000000 +02:00\n:duration: 10800\n:rrules: []\n:exrules: []\n:rtimes:\n- 2011-08-08 19:00:00.000000000 +02:00\n- 2011-11-15 19:00:00.000000000 +01:00\n- 2012-02-06 19:00:00.000000000 +01:00\n:extimes: []\n")
+      @current_zone = Time.zone
+      Time.zone = ActiveSupport::TimeZone["Vancoover"]
+    end
+    after do
+      Time.zone = @current_zone
+    end
+
+    it "should not calculate strange durations" do
+      @event.reload
+      @event.start_time = Time.now
+      expect(@event.duration).to eql 60
+    end
+  end
 end

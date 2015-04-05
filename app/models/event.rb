@@ -102,11 +102,11 @@ class Event < ActiveRecord::Base
   end
 
   def duration
-    (schedule.duration / 60).to_i
+    ((schedule.end_time - schedule.start_time) / 60).to_i
   end
 
   def duration=(duration)
-    schedule.duration = duration.to_i * 60
+    schedule.end_time = schedule.start_time + duration.to_i * 60
   end
 
   # This returns a simplified view of the icecube system
