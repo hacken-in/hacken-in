@@ -63,7 +63,9 @@ class Event < ActiveRecord::Base
   end
 
   def start_time=(value)
+    duration = schedule.duration
     schedule.start_time = value.to_time
+    schedule.end_time = schedule.start_time + duration
   end
 
   def schedule
