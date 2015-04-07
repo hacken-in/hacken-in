@@ -19,6 +19,7 @@ module Radar
         @radar_setting.last_result = "OK"
       rescue => e
         @radar_setting.last_result = e.message[0..254]
+        Bugsnag.notify e
       end
       @radar_setting.last_processed = start_time
       @radar_setting.save
