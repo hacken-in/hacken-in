@@ -22,7 +22,6 @@ class TwitterListUpdater
           @client.add_list_member(list, screen_name) unless screen_name == "hacken_in"
         end
       rescue => e
-        put "Problems adding #{screen_name} to the list"
         Bugsnag.notify "Problems following #{screen_name}"
       end
     end
