@@ -17,8 +17,8 @@ module Radar
       result = {
         id: event.start.to_s,
         url: event.url.to_s,
-        title: event.summary.force_encoding("utf-8"),
-        description: event.description.force_encoding("utf-8"),
+        title: (event.summary || "").force_encoding("utf-8"),
+        description: (event.description || "").force_encoding("utf-8"),
         venue: event.location,
         time: event.start
       }
