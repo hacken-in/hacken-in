@@ -19,10 +19,11 @@ class TwitterListUpdater
     (handles - handles_in_list).each do |screen_name|
       begin
         request_wrapper do
+          sleep 0.5
           @client.add_list_member(list, screen_name) unless screen_name == "hacken_in"
         end
       rescue => e
-        Bugsnag.notify "Problems following #{screen_name}"
+        Bugsnag.notify "Problems following #{screen_name} #{e.message}"
       end
     end
   end
