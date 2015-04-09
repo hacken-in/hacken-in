@@ -9,9 +9,10 @@ class TwitterFollower
     not_followed_handles.each do |handle|
       puts "Following #{handle}" unless Rails.env.test?
       begin
+        sleep 0.5
         @client.follow(handle)
       rescue => e
-        Bugsnag.notify "Problems following #{handle}"
+        Bugsnag.notify "Problems following #{handle} #{e.message}"
       end
     end
   end
