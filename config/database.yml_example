@@ -1,10 +1,10 @@
 development:
   adapter: postgresql
   database: hcking
-  username: user
+  username: postgres
   host: localhost
   password: password
-  encoding: utf8       
+  template: hcking_template
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -12,7 +12,7 @@ development:
 test:
   adapter: postgresql
   database: hcking_test
-  username: user
+  username: postgres
   host: localhost
   password: password
-  encoding: utf8       
+  template: hcking_template

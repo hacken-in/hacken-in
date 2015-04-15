@@ -15,7 +15,7 @@ EOF
 
 HACKEN_BOOTSTRAP = <<EOF
   cd /opt/hacken.in
-  bundle
+  bundle install --path=vagrant/vendor
   bundle exec rake db:migrate
 EOF
 
