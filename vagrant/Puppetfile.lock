@@ -1,20 +1,15 @@
 FORGE
   remote: https://forgeapi.puppetlabs.com
   specs:
-    alup-rbenv (1.2.0)
     jfryman-nginx (0.2.1)
       puppetlabs-apt (>= 1.0.0)
       puppetlabs-concat (>= 1.1.0)
       puppetlabs-stdlib (>= 3.0.0)
-    nanliu-staging (1.0.2)
-    puppetlabs-apt (1.7.0)
+    puppetlabs-apt (1.8.0)
       puppetlabs-stdlib (>= 2.2.1)
-    puppetlabs-concat (1.1.2)
+    puppetlabs-concat (1.2.1)
       puppetlabs-stdlib (< 5.0.0, >= 3.2.0)
-    puppetlabs-firewall (1.3.0)
-    puppetlabs-mysql (3.1.0)
-      nanliu-staging (~> 1.0)
-      puppetlabs-stdlib (>= 3.2.0)
+    puppetlabs-firewall (1.5.0)
     puppetlabs-postgresql (4.1.0)
       puppetlabs-apt (< 2.0.0, >= 1.1.0)
       puppetlabs-concat (< 2.0.0, >= 1.1.0)
@@ -26,16 +21,14 @@ FORGE
 
 GIT
   remote: git://github.com/hacken-in/puppet-hackenin.git
-  ref: master
-  sha: 78faf1112771f49fbe0d92830cd5cdf2e90630d7
+  ref: v1.0.5
+  sha: 6a7cd03fa3b3d5d40e527d07c18b442a7fde1192
   specs:
-    hacken-in-hackenin (1.0.2)
-      alup-rbenv (>= 0)
-      jfryman-nginx (>= 0)
-      puppetlabs-mysql (>= 0)
-      puppetlabs-postgresql (>= 0)
-      puppetlabs-stdlib (>= 0)
-      saz-memcached (>= 0)
+    hacken-in-hackenin (1.0.5)
+      jfryman-nginx (= 0.2.1)
+      puppetlabs-postgresql (= 4.1.0)
+      puppetlabs-stdlib (= 4.5.0)
+      saz-memcached (= 2.6.0)
 
 DEPENDENCIES
   hacken-in-hackenin (>= 0)
