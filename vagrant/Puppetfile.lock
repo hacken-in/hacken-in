@@ -21,10 +21,10 @@ FORGE
 
 GIT
   remote: git://github.com/hacken-in/puppet-hackenin.git
-  ref: v1.0.4
-  sha: a1a448f408f6ab8eff682f2d896c461b760fed30
+  ref: v1.0.5
+  sha: 6a7cd03fa3b3d5d40e527d07c18b442a7fde1192
   specs:
-    hacken-in-hackenin (1.0.2)
+    hacken-in-hackenin (1.0.5)
       jfryman-nginx (= 0.2.1)
       puppetlabs-postgresql (= 4.1.0)
       puppetlabs-stdlib (= 4.5.0)
