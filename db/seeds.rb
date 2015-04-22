@@ -88,3 +88,8 @@ Tagging.create!([
   {tag_id: 3, taggable_id: 2, taggable_type: "Event", tagger_id: nil, tagger_type: nil, context: "tags"},
   {tag_id: 5, taggable_id: 2, taggable_type: "Event", tagger_id: nil, tagger_type: nil, context: "tags"},
 ])
+
+# Reset the Primary Key Sequence as the IDs are created manually for some of the seeds
+ActiveRecord::Base.connection.tables.each do |table|
+  ActiveRecord::Base.connection.reset_pk_sequence!(table)
+end
