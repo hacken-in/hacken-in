@@ -10,6 +10,9 @@ def seed(model_class, seeds)
   seeds.each do |seed|
     insert_seed(model_class, seed)
   end
+
+  # Reset the Primary Key Sequence as the IDs are chosen manually
+  ActiveRecord::Base.connection.reset_pk_sequence!(model_class.table_name)
 end
 
 seed(Region, [
@@ -101,8 +104,3 @@ seed(Tagging, [
   {id: 3, tag_id: 3, taggable_id: 2, taggable_type: "Event", tagger_id: nil, tagger_type: nil, context: "tags"},
   {id: 4, tag_id: 5, taggable_id: 2, taggable_type: "Event", tagger_id: nil, tagger_type: nil, context: "tags"},
 ])
-
-# Reset the Primary Key Sequence as the IDs are created manually for some of the seeds
-ActiveRecord::Base.connection.tables.each do |table|
-  ActiveRecord::Base.connection.reset_pk_sequence!(table)
-end
