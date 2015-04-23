@@ -1,4 +1,5 @@
 require 'ruby_meetup'
+require 'addressable/uri'
 
 module Radar
   class Meetup < Base
@@ -11,8 +12,14 @@ module Radar
       end
     end
 
+    # Optimistic group name parser for meetup.com.
+    # Will for example extract 'Git-Aficionados'
+    # from http://www.meetup.com/Git-Aficionados/events/155514542/
+    # As @radar_setting.url is user input we shouldn't be too naive.
     def group_urlname
-      @radar_setting.url.match(/http(?:s?):\/\/www.meetup.com\/([^\/]*)/)[1]
+      url = Addressable::URI.heuristic_parse(@radar_setting.url)
+      parts = url.path.split('/')
+      parts.second || ''
     end
 
     def cleanup_event(event)
