@@ -39,7 +39,9 @@ module Radar
     end
 
     def mark_missing(start_time, event_ids)
-      @radar_setting.entries.where("entry_date > ? and entry_id not in (?)", start_time, event_ids).each do |entry|
+      # Cast event_ids to string because they are stored as type varchar
+      # PostgreSQL will refuse to compare character varying <> integer
+      @radar_setting.entries.where("entry_date > ? and entry_id not in (?)", start_time, event_ids.map(&:to_s)).each do |entry|
         if entry.entry_type != "MISSING"
           entry.entry_type = "MISSING"
           entry.content = {}
