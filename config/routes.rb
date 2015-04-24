@@ -71,9 +71,9 @@ Hcking::Application.routes.draw do
 
   get "styleguide/(:reference)" => "styleguide#index", as: "styleguide"
 
-  get "deutschland" => "welcome#deutschland"
+  get "deutschland" => "welcome#deutschland", :constraints => { :format => 'html' }
   get "move_to/:region" => "welcome#move_to", as: "move_region"
-  get ":region" => "calendars#show", as: "region"
+  get ":region" => "calendars#show", as: "region", :constraints => { :format => 'html' }
   match ":region/search" => "search#index", as: "search", via: [:get, :post]
 
 
