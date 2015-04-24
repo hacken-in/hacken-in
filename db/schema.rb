@@ -16,8 +16,7 @@ ActiveRecord::Schema.define(version: 20141229081622) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "ahoy_events", id: false, force: true do |t|
-    t.uuid     "id",         null: false
+  create_table "ahoy_events", id: :uuid, force: true do |t|
     t.uuid     "visit_id"
     t.integer  "user_id"
     t.string   "name"
@@ -267,8 +266,7 @@ ActiveRecord::Schema.define(version: 20141229081622) do
   add_index "venues", ["latitude", "longitude"], name: "index_venues_on_latitude_and_longitude", using: :btree
   add_index "venues", ["region_id"], name: "index_venues_on_region_id", using: :btree
 
-  create_table "visits", id: false, force: true do |t|
-    t.uuid     "id",               null: false
+  create_table "visits", id: :uuid, force: true do |t|
     t.uuid     "visitor_id"
     t.string   "ip"
     t.text     "user_agent"
