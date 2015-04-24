@@ -125,6 +125,16 @@ describe Radar::Meetup do
     expect(Radar::Meetup.new(setting).group_urlname).to eq("Git-Aficionados")
   end
 
+  it "should get clean up b0rken urls" do
+    meetup = Radar::Meetup.new(RadarSetting.create(url: "www.meetup.com/Git-Aficionados/events/155514542/"))
+    expect(meetup.group_urlname).to eq("Git-Aficionados")
+  end
+
+  it "should fail gracefully when there is no URL to match" do
+    meetup = Radar::Meetup.new(RadarSetting.create(url: "lol sorry, but I haven't read the RFC"))
+    expect(meetup.group_urlname).to eq('')
+  end
+
   it "should get a time offset string from time in milliseconds" do
     meetup = Radar::Meetup.new(setting)
     expect(meetup.get_offset(3600000)).to eq("+01:00")
