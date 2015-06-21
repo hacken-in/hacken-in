@@ -14,7 +14,7 @@ $ ->
 
     koeln = new L.Popup()
     koeln.setLatLng([50.938056,6.956944])
-    koeln.setContent("<a href='/move_to/koeln'>Köln</a>")
+    koeln.setContent("<a href='/move_to/koeln'>KÃ¶ln</a>")
     map.addLayer(koeln)
 
     berlin = new L.Popup()
@@ -24,13 +24,19 @@ $ ->
 
     muenchen = new L.Popup()
     muenchen.setLatLng([48.1368,11.5781])
-    muenchen.setContent("<a href='/move_to/muenchen'>München</a>")
+    muenchen.setContent("<a href='/move_to/muenchen'>MÃ¼nchen</a>")
     map.addLayer(muenchen)
+
+    ruhrgebiet = new L.Popup()
+    ruhrgebiet.setLatLng([51.45564,7.01156])
+    ruhrgebiet.setContent("<a href='/move_to/ruhrgebiet'>Ruhrgebiet</a>")
+    map.addLayer(ruhrgebiet)
 
     map.fitBounds([
       [50.938056,6.956944],
       [52.516667,13.383333],
-      [48.1368,11.5781]
+      [48.1368,11.5781],
+      [51.45564,7.01156]
     ], {padding: [50, 50]})
 
   if $(".welcome_map").length > 0
