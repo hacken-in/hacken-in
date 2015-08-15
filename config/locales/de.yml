@@ -229,6 +229,10 @@ de:
       title: Einloggen
       with_other_service: "…oder mit einem dieser Services"
       with_user_data: Mit Benutzerdaten
+    edit:
+      title: Passwort ändern
+      password: Neues Passwort
+      password_confirmation: Neues Passwort (noch einmal, bitte)
   single_events:
     push:
       confirmation: Du nimmst jetzt teil.

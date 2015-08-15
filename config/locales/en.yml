@@ -229,6 +229,10 @@ en:
       title: Login
       with_other_service: "…or with one of these services"
       with_user_data: With user data
+    edit:
+      title: Change password
+      password: New passwort
+      password_confirmation: Please repeat your new password
   single_events:
     show:
       participate: And me!
