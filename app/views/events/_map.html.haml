@@ -4,10 +4,11 @@
       function initialize() {
         var eventLocation = new L.LatLng(#{event.venue.latitude}, #{event.venue.longitude});
 
-        var map = new L.Map('mapCanvas', { center: eventLocation, zoom: 13, scrollWheelZoom: false });
+        var map = new L.Map('mapCanvas', { center: eventLocation, zoom: 15, scrollWheelZoom: false });
 
-        L.tileLayer('//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          attribution: '&copy; <a href="//www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        L.tileLayer('//{s}.tile.thunderforest.com/transport/{z}/{x}/{y}.png', {
+        	attribution: '&copy; <a href="http://www.opencyclemap.org">OpenCycleMap</a>, &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        	maxZoom: 19
         }).addTo(map);
 
         var markerLocation = eventLocation;
