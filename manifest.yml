@@ -1,0 +1,13 @@
+---
+applications:
+- name: hacken-in-staging
+  memory: 350M
+  instances: 1
+  buildpack: 'https://github.com/cloudfoundry/ruby-buildpack.git#v1.6.12'
+  domain: de.a9sapp.eu
+  path: .
+  services:
+  - hcking_staging
+  env:
+    STACK: cedar
+    RAILS_ENV: production

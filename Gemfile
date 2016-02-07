@@ -136,9 +136,6 @@ group :test, :development do
   gem 'i18n-tasks', '~> 0.7.10'
 end
 
-group :production do
-  gem 'shelly-dependencies'
-end
 
 group :test do
   gem 'webmock', '~> 1.17.3'
