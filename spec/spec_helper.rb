@@ -52,6 +52,18 @@ RSpec.configure do |config|
   end
 end
 
+# Custom Matchers
+
+RSpec::Matchers.define :eq_html do |expected|
+  match do |actual|
+    EquivalentXml.equivalent?(Nokogiri::HTML(expected), Nokogiri::HTML(actual))
+  end
+
+  failure_message do |actual|
+    "expected that #{actual} would be equal to #{expected}"
+  end
+end
+
 # Mock GeoCoder
 # inspired by https://github.com/alexreisner/geocoder/blob/5d769cb343bc7559320649f4c329b11270990754/test/test_helper.rb#L45
 

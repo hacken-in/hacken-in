@@ -130,6 +130,7 @@ group :test, :development do
   gem 'pry-rails'
   # Find and manage translation differences
   gem 'i18n-tasks', '~> 0.7.10'
+  gem 'equivalent-xml', '~> 0.6.0'
 end
 
 group :production do

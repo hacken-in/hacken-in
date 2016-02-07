@@ -136,6 +136,8 @@ GEM
       thread
       thread_safe
     equalizer (0.0.9)
+    equivalent-xml (0.6.0)
+      nokogiri (>= 1.4.3)
     errbase (0.0.2)
     erubis (2.7.0)
     eventmachine (1.0.3)
@@ -467,6 +469,7 @@ DEPENDENCIES
   database_cleaner (= 1.3.0)
   devise (~> 3.2.0)
   devise-i18n (~> 0.10.3)
+  equivalent-xml (~> 0.6.0)
   execjs (~> 2.2.1)
   factory_girl_rails (~> 4.2)
   faker (~> 1.4.1)
