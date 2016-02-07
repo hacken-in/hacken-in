@@ -41,7 +41,7 @@ ActiveAdmin.setup do |config|
   #
   # Admin comments allow you to add comments to any model for admin use.
   # Admin comments are enabled by default.
-  config.allow_comments = false
+  config.comments = false
 
   # == Batch Actions
   #

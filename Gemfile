@@ -42,11 +42,7 @@ gem 'redcarpet', '~> 3.1.2'
 gem 'kss', '~> 0.5.0'
 
 # Admin
-# Attention: 0.6.0 has namespacing issues
-# The '/' root tries to open a non existend
-# dashboard controller
-# TODO: Set this to the Ruby Gems version as soon as this is released
-gem 'activeadmin', github: 'activeadmin', branch: 'master'
+gem 'activeadmin', '~> 1.0.0.pre2'
 gem 'ahoy_matey'
 gem 'groupdate'
 
