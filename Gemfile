@@ -123,7 +123,6 @@ group :test, :development do
   gem 'rspec-rails',  '~> 3.4.2'
   gem 'factory_girl_rails', '~> 4.2'
   gem 'faker', '~> 1.4.1'
-  gem 'simplecov', '~> 0.8.2'
   gem 'codeclimate-test-reporter', '~> 0.4.8', require: nil
   gem 'brakeman', '~> 2.6.1'
   gem 'vcr', '~> 2.9.2'
