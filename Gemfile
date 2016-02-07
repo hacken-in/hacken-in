@@ -1,7 +1,7 @@
 # coding: utf-8
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.1.8'
+gem 'rails', '~> 4.2.5.1'
 gem 'rake', '~> 10.3.2'
 
 gem 'thin', '~> 1.6.1'
@@ -15,7 +15,7 @@ gem 'dalli', '~> 2.7.2'
 gem 'whenever', '~> 0.9.4'
 
 # Tags
-gem 'acts-as-taggable-on', '~> 3.2.6'
+gem 'acts-as-taggable-on', '~> 3.5.0'
 
 # Statistics
 gem 'chartkick', '~> 1.3.2'
@@ -51,7 +51,7 @@ gem 'ice_cube', '~> 0.11.1'
 gem 'icalendar', '~> 1.5.2'
 
 # Authentication and Authorization
-gem 'devise', '~> 3.2.0'
+gem 'devise', '~> 3.5.6'
 gem 'devise-i18n', '~> 0.10.3'
 gem 'cancancan', '~> 1.8.4'
 gem 'omniauth', '~> 1.1.3'
@@ -120,7 +120,7 @@ end
 
 group :test, :development do
   gem 'database_cleaner', '1.3.0'
-  gem 'rspec-rails',  '~> 3.0.1'
+  gem 'rspec-rails',  '~> 3.4.2'
   gem 'factory_girl_rails', '~> 4.2'
   gem 'faker', '~> 1.4.1'
   gem 'simplecov', '~> 0.8.2'
