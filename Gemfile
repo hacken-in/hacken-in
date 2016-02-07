@@ -39,8 +39,6 @@ gem 'haml', '~> 4.0.4'
 gem 'md_emoji', '~> 1.0.0'
 gem 'redcarpet', '~> 3.1.2'
 
-gem 'kss', '~> 0.5.0'
-
 # Admin
 gem 'activeadmin', '~> 1.0.0.pre2'
 gem 'ahoy_matey'
