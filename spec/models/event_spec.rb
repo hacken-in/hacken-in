@@ -250,17 +250,11 @@ describe Event do
 
   it "should update rules" do
     event = FactoryGirl.create(:simple)
-    time = Time.new(2012, 10, 10, 20, 15, 0)
+    time = Time.utc(2012, 10, 10, 20, 15, 0)
     event.start_time = time
     event.schedule_rules = [{"type" => 'monthly', "interval" => -1, "days" => ["monday"]}]
     event.save
-    # TODO: wait till this is fixed in ice_cube
-    # hopefully it has no real issues in our system, only
-    # in the weird time setup on the travis systems
-    #
-    # https://github.com/seejohnrun/ice_cube/issues/115
     expect(event.single_events.first.occurrence.wday).to eq(1)
-    #event.single_events.first.occurrence.hour.should == time.hour
     expect(event.single_events.first.occurrence.min).to eq(time.min)
   end
 
@@ -273,7 +267,7 @@ describe Event do
   end
 
   it "should create a week based rule" do
-    time = Time.new(2012, 6, 10, 20, 15, 0, 0)
+    time = Time.utc(2012, 6, 10, 20, 15, 0, 0)
     event = create_week_based_event(time)
 
     first_event = event.single_events.first.occurrence
@@ -286,7 +280,7 @@ describe Event do
   end
 
   it "should serialize a week based rule" do
-    time = Time.new(2012, 10, 10, 20, 15, 0)
+    time = Time.utc(2012, 10, 10, 20, 15, 0)
     event = create_week_based_event(time)
     expect(event.schedule_rules).to eq([
       {
