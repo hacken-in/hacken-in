@@ -1,10 +1,6 @@
 language: ruby
 rvm:
-  - 2.1
-  - ruby-head
-matrix:
-  allow_failures:
-    - rvm: ruby-head
+  - 2.2.3
 notifications:
   slack: hacken-in:v0VPwCbdNxNY7oVfJGsFLAJS
 bundler_args: --without development
@@ -18,3 +14,5 @@ addons:
   postgresql: "9.3"
   code_climate:
     repo_token: e9119a0532e351ecb5e7a0807c08b3dcd5771bc31f85b45f823f1dbcd22f78fb
+after_success:
+  - "[[ $TRAVIS_BRANCH = 'master' ]] && bundle exec cap master deploy"

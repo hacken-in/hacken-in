@@ -1,10 +1,11 @@
 # coding: utf-8
 source 'https://rubygems.org'
+ruby '2.2.3'
 
 gem 'rails', '~> 4.2.5.1'
 gem 'rake', '~> 10.3.2'
 
-gem 'thin', '~> 1.6.1'
+gem 'unicorn', '~> 5.0.1'
 # Databases
 gem 'pg', '~> 0.17.1'
 
@@ -90,7 +91,9 @@ gem 'feedjira', '~> 1.3.0'
 gem 'bugsnag', '~> 3.0.0'
 
 group :development do
-
+  gem 'capistrano', '~> 3.4.0'
+  gem 'capistrano-bundler', '~> 1.1.4'
+  gem 'capistrano-rails', '~> 1.1.6'
   group :darwin do
     gem 'rb-fsevent', '~> 0.9.4'
     gem 'growl', '~> 1.0.3'
@@ -129,9 +132,6 @@ group :test, :development do
   gem 'equivalent-xml', '~> 0.6.0'
 end
 
-group :production do
-  gem 'shelly-dependencies'
-end
 
 group :test do
   gem 'webmock', '~> 1.17.3'
