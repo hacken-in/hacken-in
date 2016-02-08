@@ -144,3 +144,4 @@ end
 
 gem 'recaptcha', '0.3.6'
 gem 'lograge', '~> 0.3.0'
+gem 'rails_12factor', '~> 0.0.3'
