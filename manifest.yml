@@ -7,7 +7,6 @@ applications:
   domain: de.a9sapp.eu
   path: .
   services:
-  - hcking_staging
   env:
     STACK: cedar
     RAILS_ENV: production
