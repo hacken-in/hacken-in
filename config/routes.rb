@@ -69,8 +69,6 @@ Hcking::Application.routes.draw do
 
   get "pages/:page_name"              => "pages#show"
 
-  get "styleguide/(:reference)" => "styleguide#index", as: "styleguide"
-
   get "deutschland" => "welcome#deutschland", :constraints => { :format => 'html' }
   get "move_to/:region" => "welcome#move_to", as: "move_region"
   get ":region" => "calendars#show", as: "region", :constraints => { :format => 'html' }

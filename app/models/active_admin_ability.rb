@@ -29,6 +29,7 @@ class ActiveAdminAbility
         can :create, RadarSetting
         can :manage, RadarSetting, event: {region_id: user.region_organizers.pluck(:region_id)}
         can :manage, RadarEntry, event: {region_id: user.region_organizers.pluck(:region_id)}
+        can :manage, Picture
       end
 
       if user.event_curations.present?

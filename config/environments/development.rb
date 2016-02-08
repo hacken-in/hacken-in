@@ -20,6 +20,9 @@ Hcking::Application.configure do
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
 
+  # Do not suppress errors raised within `after_rollback`/`after_commit` callbacks
+  config.active_record.raise_in_transactional_callbacks = true
+
   # Do not compress assets
   config.assets.compress = false
   config.assets.debug = true

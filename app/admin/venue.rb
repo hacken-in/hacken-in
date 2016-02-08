@@ -51,9 +51,7 @@ ActiveAdmin.register Venue do
     end
   end
 
-  form do
-    render partial: 'form'
-  end
+  form partial: 'form'
 
   controller do
     def permitted_params

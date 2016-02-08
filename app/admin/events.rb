@@ -27,12 +27,8 @@ ActiveAdmin.register Event do
     actions
   end
 
-  show do
-    render partial: 'show'
-  end
-  form do
-    render partial: 'form'
-  end
+  show partial: 'show'
+  form partial: 'form'
 
   controller do
     def permitted_params

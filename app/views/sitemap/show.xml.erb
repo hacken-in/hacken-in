@@ -7,9 +7,6 @@
 <url>
   <loc><%= request.base_url %>/statistics</loc>
 </url>
-<url>
-  <loc><%= request.base_url %>/styleguide</loc>
-</url>
 <% @single_events.each do |single_event| %>
 <url>
   <loc><%= event_single_event_url(single_event.event, single_event) %></loc>
