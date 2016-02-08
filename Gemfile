@@ -9,9 +9,6 @@ gem 'unicorn', '~> 5.0.1'
 # Databases
 gem 'pg', '~> 0.17.1'
 
-# Memcache Store
-gem 'dalli', '~> 2.7.2'
-
 # Recurring Tasks
 gem 'whenever', '~> 0.9.4'
 
