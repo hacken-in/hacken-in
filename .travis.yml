@@ -15,9 +15,5 @@ addons:
   code_climate:
     repo_token: e9119a0532e351ecb5e7a0807c08b3dcd5771bc31f85b45f823f1dbcd22f78fb
 after_success:
-  - openssl aes-256-cbc -K $encrypted_ece5f7dc116b_key -iv $encrypted_ece5f7dc116b_iv -in config/travis/travis-deploy-key.enc -out config/travis/travis-deploy-key -d
   - eval "$(ssh-agent -s)" #start the ssh agent
-  - chmod 600 config/travis/travis-deploy-key # this key should have push access
-  - ssh-add config/travis/travis-deploy-key
-  - ssh-add -l
-  - '[[ "$TRAVIS_BRANCH" == "back-to-uberspace" ]] && bundle exec cap master deploy'
+  - script/deploy-to-uberspace
