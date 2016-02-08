@@ -19,9 +19,7 @@ ActiveAdmin.register User do
     actions
   end
 
-  form do
-    render partial: 'form'
-  end
+  form partial: 'form'
 
   show do
     attributes_table do

@@ -32,9 +32,7 @@ ActiveAdmin.register RadarEntry do
     end
   end
 
-  show do
-    render partial: 'show'
-  end
+  show partial: 'show'
 
   member_action :confirm, :method => :get do
     entry = RadarEntry.find(params[:id])
