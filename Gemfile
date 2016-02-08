@@ -91,9 +91,6 @@ gem 'feedjira', '~> 1.3.0'
 gem 'bugsnag', '~> 3.0.0'
 
 group :development do
-  gem 'capistrano', '~> 3.4.0'
-  gem 'capistrano-bundler', '~> 1.1.4'
-  gem 'capistrano-rails', '~> 1.1.6'
   group :darwin do
     gem 'rb-fsevent', '~> 0.9.4'
     gem 'growl', '~> 1.0.3'
@@ -132,6 +129,11 @@ group :test, :development do
   gem 'equivalent-xml', '~> 0.6.0'
 end
 
+group :deployment do
+  gem 'capistrano', '~> 3.4.0'
+  gem 'capistrano-bundler', '~> 1.1.4'
+  gem 'capistrano-rails', '~> 1.1.6'
+end
 
 group :test do
   gem 'webmock', '~> 1.17.3'
