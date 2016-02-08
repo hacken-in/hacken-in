@@ -1,0 +1,11 @@
+---
+applications:
+- name: hacken-in-staging
+  memory: 350M
+  instances: 1
+  buildpack: 'https://github.com/heroku/heroku-buildpack-ruby.git'
+  domain: de.a9sapp.eu
+  path: .
+  env:
+    STACK: cedar
+    RAILS_ENV: production

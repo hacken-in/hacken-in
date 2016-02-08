@@ -64,6 +64,7 @@ Hcking::Application.configure do
 
   # Explicitly set the hostname to pick up the ENV['HTTP_HOST']
   # provided by Shellycloud. Don't ask, don't tell. *sobs*
+  # TODO: Check how this will work after #607
   OmniAuth.config.full_host = lambda do |environment|
     "https://#{environment['HTTP_HOST']}"
   end

@@ -1,5 +1,6 @@
 # coding: utf-8
 source 'https://rubygems.org'
+ruby '2.1.8'
 
 gem 'rails', '~> 4.1.8'
 gem 'rake', '~> 10.3.2'
@@ -136,9 +137,6 @@ group :test, :development do
   gem 'i18n-tasks', '~> 0.7.10'
 end
 
-group :production do
-  gem 'shelly-dependencies'
-end
 
 group :test do
   gem 'webmock', '~> 1.17.3'
@@ -146,3 +144,4 @@ end
 
 gem 'recaptcha', '0.3.6'
 gem 'lograge', '~> 0.3.0'
+gem 'rails_12factor', '~> 0.0.3'
