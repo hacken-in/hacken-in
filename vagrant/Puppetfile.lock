@@ -5,11 +5,14 @@ FORGE
       puppetlabs-apt (>= 1.0.0)
       puppetlabs-concat (>= 1.1.0)
       puppetlabs-stdlib (>= 3.0.0)
+    maestrodev-wget (1.7.1)
     puppetlabs-apt (1.8.0)
       puppetlabs-stdlib (>= 2.2.1)
-    puppetlabs-concat (1.2.1)
+    puppetlabs-concat (1.2.5)
       puppetlabs-stdlib (< 5.0.0, >= 3.2.0)
-    puppetlabs-firewall (1.5.0)
+    puppetlabs-firewall (1.7.2)
+    puppetlabs-gcc (0.3.0)
+      puppetlabs-stdlib (< 5.0.0, >= 2.0.0)
     puppetlabs-postgresql (4.1.0)
       puppetlabs-apt (< 2.0.0, >= 1.1.0)
       puppetlabs-concat (< 2.0.0, >= 1.1.0)
@@ -18,17 +21,21 @@ FORGE
     saz-memcached (2.6.0)
       puppetlabs-firewall (>= 0.1.0)
       puppetlabs-stdlib (>= 3.2.0)
+    thomasvandoren-redis (0.10.0)
+      maestrodev-wget (>= 1.1.0)
+      puppetlabs-gcc (>= 0.0.3)
 
 GIT
   remote: git://github.com/hacken-in/puppet-hackenin.git
-  ref: v1.0.5
-  sha: 6a7cd03fa3b3d5d40e527d07c18b442a7fde1192
+  ref: v1.0.8
+  sha: 3f26721c11dba951765037bcfdadf9b50d32c8be
   specs:
-    hacken-in-hackenin (1.0.5)
+    hacken-in-hackenin (1.0.8)
       jfryman-nginx (= 0.2.1)
       puppetlabs-postgresql (= 4.1.0)
       puppetlabs-stdlib (= 4.5.0)
       saz-memcached (= 2.6.0)
+      thomasvandoren-redis (= 0.10.0)
 
 DEPENDENCIES
   hacken-in-hackenin (>= 0)
