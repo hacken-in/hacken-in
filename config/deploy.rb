@@ -11,7 +11,7 @@ set :keep_releases, 5
 
 namespace :deploy do
   task :restart do
-    run "svc -h svc -h ~/service/hacken-in-#{fetch(:stage)}"
+    execute "svc -h svc -h ~/service/hacken-in-#{fetch(:stage)}"
   end
 end
 
