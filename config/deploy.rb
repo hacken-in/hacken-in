@@ -11,7 +11,6 @@ set :keep_releases, 5
 
 namespace :deploy do
   task :restart do
-    info "Restarting Unicorn"
     run "svc -h svc -h ~/service/hacken-in-#{fetch(:stage)}"
   end
 end
