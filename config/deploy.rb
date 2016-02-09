@@ -19,4 +19,4 @@ namespace :deploy do
   end
 end
 
-after 'bundle:install', 'deploy:restart'
+after 'deploy:published', 'deploy:restart'
