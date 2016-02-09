@@ -6,7 +6,7 @@
 [![Code Climate CodeCoverage](https://img.shields.io/codeclimate/coverage/github/hacken-in/website.svg)](https://codeclimate.com/github/hacken-in/website)
 [![Pickable Stories](https://badge.waffle.io/hacken-in/website.png?label=ready&title=Pick One)](https://waffle.io/hacken-in/website)
 
-This is the code of [hacken.in](http://hacken.in/), an event calendar for geeks in and around Cologne, Berlin and Munich.
+This is the code of [hacken.in](http://hacken.in/), an event calendar for geeks in and around Cologne, Ruhr area, Berlin and Munich.
 If you want to help us in extending the calendar to your city, please contact us in our [Google Group](http://groups.google.com/group/hacken-in).
 
 If you find a bug, please report it on our [tracker](https://github.com/hacken-in/website/issues). We discuss features and problems in our [Google Group](http://groups.google.com/group/hcking). If you want to contribute to [hacken.in](http://hacken.in), have a look at our Kanban Board at [waffle.io](http://waffle.io/hacken-in/website). Just pick a card from the **Pick One** column and start hacking. This is our current activity level:
@@ -17,7 +17,7 @@ If you find a bug, please report it on our [tracker](https://github.com/hacken-i
 
 When you want to add an event to [hacken.in](http://hacken.in) please check with the following guidelines:
 
-* Currently we only feature events in Ruhr area, Berlin and Munich plus BIG events in Europe
+* Currently we only feature events in Cologne, Ruhr area, Berlin and Munich plus BIG events in Germany
 * The following topics are allowed:
   * Programming (in any language)
   * Nerd-Culture (like Star Wars, Ponies, Gaming, Comics...)
