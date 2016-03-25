@@ -23,7 +23,7 @@ namespace :deploy do
   task :migrate do
     on roles(:app) do
       within release_path do
-        execute "cd #{release_path}; source ~/hacken-in-#{fetch(:stage)}.secrets; bundle exec rails db:migrate"
+        execute "cd #{release_path}; source ~/hacken-in-#{fetch(:stage)}.secrets; bundle exec rake db:migrate"
       end
     end
   end
