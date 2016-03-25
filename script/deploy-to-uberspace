@@ -10,7 +10,7 @@ system "openssl aes-256-cbc -K $encrypted_ece5f7dc116b_key -iv $encrypted_ece5f7
 File.chmod(0600, DEPLOY_KEY)
 system("#{agent} ssh-add #{DEPLOY_KEY}")
 
-deploy_worked = system "rvm use $(cat .ruby-version); bundle exec cap #{environment} deploy"
+deploy_worked = system "bash -c 'rvm use $(cat .ruby-version); bundle exec cap #{environment} deploy'"
 
 abort "Bollocks!" unless deploy_worked
 
