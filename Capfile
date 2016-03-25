@@ -8,7 +8,6 @@ SSHKit.config.output_verbosity = Logger::DEBUG
 
 require 'capistrano/bundler'
 require 'capistrano/rails/assets'
-require 'capistrano/rails/migrations'
 require "airbrussh/capistrano"
 require "whenever/capistrano"
 

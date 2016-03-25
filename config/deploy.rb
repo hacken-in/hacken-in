@@ -19,6 +19,14 @@ namespace :deploy do
       execute "svc -h svc -h ~/service/hacken-in-#{fetch(:stage)}"
     end
   end
+
+  task :migrate do
+    on roles(:app) do
+      within release_path do
+        execute "cd #{release_path}; source ~/hacken-in-#{fetch(:stage)}.secrets; bundle exec rails db:migrate"
+      end
+    end
+  end
 end
 
 after "deploy:published", "deploy:restart"
