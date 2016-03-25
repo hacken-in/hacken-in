@@ -1,4 +1,3 @@
-# Shellycloud will *only* pick up this file
 set :output, 'whenever.log'
 
 every :day, :at => '03:21am' do
