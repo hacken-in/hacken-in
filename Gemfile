@@ -126,13 +126,6 @@ group :test, :development do
   gem 'equivalent-xml', '~> 0.6.0'
 end
 
-group :deployment do
-  gem "airbrussh", :require => false
-  gem 'capistrano', '~> 3.4.0'
-  gem 'capistrano-bundler', '~> 1.1.4'
-  gem 'capistrano-rails', '~> 1.1.6'
-end
-
 group :test do
   gem 'webmock', '~> 1.17.3'
 end
