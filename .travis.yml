@@ -16,8 +16,8 @@ addons:
     repo_token: e9119a0532e351ecb5e7a0807c08b3dcd5771bc31f85b45f823f1dbcd22f78fb
 deploy:
   - provider: script
-    script: script/deploy-to-uberspace
+    script: script/deploy-to-uberspace master
     branch: back-to-uberspace
   - provider: script
-    script: script/deploy-to-uberspace
-    branch: master
+    script: script/deploy-to-uberspace production
+    branch: release
