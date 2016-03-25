@@ -17,7 +17,9 @@ addons:
 deploy:
   - provider: script
     script: script/deploy-to-uberspace master
-    branch: back-to-uberspace
+    on:
+      branch: master
   - provider: script
     script: script/deploy-to-uberspace production
-    branch: release
+    on:
+      branch: release
