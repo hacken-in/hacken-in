@@ -4,14 +4,14 @@ set +x
 set +e
 
 DEPLOY_KEY="config/travis/travis-deploy-key"
-
-AGENT=$(eval ssh-agent -s)
 TARGET=$1
 
 if [ "$TARGET" == "" ]; then
   echo "Bollocks. Please set a deploy target with $0 <target>"
   exit 1
 fi
+
+eval "$(ssh-agent -s)"
 
 openssl aes-256-cbc -K $encrypted_ece5f7dc116b_key -iv $encrypted_ece5f7dc116b_iv -in $DEPLOY_KEY.enc -out $DEPLOY_KEY -d
 chmod 0600 $DEPLOY_KEY
