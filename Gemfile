@@ -9,9 +9,6 @@ gem 'unicorn', '~> 5.0.1'
 # Databases
 gem 'pg', '~> 0.17.1'
 
-# Recurring Tasks
-gem 'whenever', '~> 0.9.4'
-
 # Tags
 gem 'acts-as-taggable-on', '~> 3.5.0'
 

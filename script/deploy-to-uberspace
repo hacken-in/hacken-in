@@ -19,6 +19,5 @@ ssh-add $DEPLOY_KEY
 
 source "$HOME/.rvm/scripts/rvm"
 rvm use $(cat .ruby-version)
-bundle install --without development --path=${BUNDLE_PATH:-vendor/bundle}
-bundle exec cap $TARGET deploy
-
+bundle install --gemfile=Gemfile.deployment
+BUNDLE_GEMFILE=Gemfile.deployment bundle exec cap $TARGET deploy
