@@ -1,16 +1,24 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env bash
+
+set +x
+set +e
 
 DEPLOY_KEY="config/travis/travis-deploy-key"
 
-agent=`ssh-agent -s`
-branch=ENV["TRAVIS_BRANCH"]
-environment = (branch == "release") ? "production" : branch
+AGENT=$(eval ssh-agent -s)
+TARGET=$1
 
-system "openssl aes-256-cbc -K $encrypted_ece5f7dc116b_key -iv $encrypted_ece5f7dc116b_iv -in #{DEPLOY_KEY}.enc -out #{DEPLOY_KEY} -d"
-File.chmod(0600, DEPLOY_KEY)
-system("#{agent} ssh-add #{DEPLOY_KEY}")
+if [ "$TARGET" == "" ]; then
+  echo "Bollocks. Please set a deploy target with $0 <target>"
+  exit 1
+fi
 
-deploy_worked = system "bash -c 'rvm use $(cat .ruby-version); bundle exec cap #{environment} deploy'"
+openssl aes-256-cbc -K '$encrypted_ece5f7dc116b_key' -iv '$encrypted_ece5f7dc116b_iv' -in $DEPLOY_KEY.enc -out $DEPLOY_KEY -d
+chmod 0600 $DEPLOY_KEY
+ssh-add $DEPLOY_KEY
 
-abort "Bollocks!" unless deploy_worked
+source "$HOME/.rvm/scripts/rvm"
+rvm use $(cat .ruby-version)
+
+bundle exec cap $TARGET deploy
 
