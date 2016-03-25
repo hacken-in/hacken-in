@@ -3,15 +3,14 @@
 DEPLOY_KEY="config/travis/travis-deploy-key"
 
 agent=`ssh-agent -s`
+branch=ENV["TRAVIS_BRANCH"]
+environment = (branch == "release") ? "production" : branch
 
 system "openssl aes-256-cbc -K $encrypted_ece5f7dc116b_key -iv $encrypted_ece5f7dc116b_iv -in #{DEPLOY_KEY}.enc -out #{DEPLOY_KEY} -d"
 File.chmod(0600, DEPLOY_KEY)
 system("#{agent} ssh-add #{DEPLOY_KEY}")
 
-deploy_worked = case ENV["TRAVIS_BRANCH"]
-                when "back-to-uberspace" then system "#{agent} bundle exec cap master deploy"
-                when "master" then puts "NOT YET!"
-                end
+deploy_worked = system "#{agent} bundle exec cap #{environment} deploy"
 
 abort "Bollocks!" unless deploy_worked
 

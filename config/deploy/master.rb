@@ -1,1 +1,1 @@
-set :branch, 'back-to-uberspace'
+set :branch, 'master'
