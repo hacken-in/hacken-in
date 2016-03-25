@@ -28,6 +28,6 @@ namespace :deploy do
     end
   end
 end
-
+after "deploy:updated", "deploy:migrate"
 after "deploy:published", "deploy:restart"
 after "deploy:published", "whenever:update_crontab"

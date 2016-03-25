@@ -42,6 +42,9 @@ gem 'groupdate'
 gem 'ice_cube', '~> 0.11.1'
 gem 'icalendar', '~> 1.5.2'
 
+# Recurring Tasks
+gem 'whenever', '~> 0.9.4'
+
 # Authentication and Authorization
 gem 'devise', '~> 3.5.6'
 gem 'devise-i18n', '~> 0.10.3'
