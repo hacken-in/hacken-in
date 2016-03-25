@@ -3,7 +3,6 @@
 log/*
 tmp/
 .sass-cache/
-config/database.yml
 .rvmrc
 public/assets
 doc/*

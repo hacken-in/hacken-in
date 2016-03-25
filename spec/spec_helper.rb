@@ -1,21 +1,16 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
 
-require 'simplecov'
 require 'vcr'
 require 'webmock'
+
 require 'codeclimate-test-reporter'
-
 CodeClimate::TestReporter.start
-
-SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
-  SimpleCov::Formatter::HTMLFormatter
-]
-SimpleCov.start
 
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
   c.hook_into :webmock
+  c.ignore_hosts 'codeclimate.com'
 end
 
 require File.expand_path("../../config/environment", __FILE__)
@@ -49,6 +44,18 @@ RSpec.configure do |config|
 
   config.after(:each) do
     DatabaseCleaner.clean
+  end
+end
+
+# Custom Matchers
+
+RSpec::Matchers.define :eq_html do |expected|
+  match do |actual|
+    EquivalentXml.equivalent?(Nokogiri::HTML(expected), Nokogiri::HTML(actual))
+  end
+
+  failure_message do |actual|
+    "expected that #{actual} would be equal to #{expected}"
   end
 end
 

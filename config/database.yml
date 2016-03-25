@@ -1,0 +1,11 @@
+production:
+  url: <%= ENV['DATABASE_URL'] %>
+
+master:
+  url: <%= ENV['DATABASE_URL'] %>
+
+development:
+  url: "postgresql://postgres:password@localhost/hcking?template=hcking_template"
+
+test:
+  url: "postgresql://postgres:password@localhost/hcking_test?template=hcking_template"

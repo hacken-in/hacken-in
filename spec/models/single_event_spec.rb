@@ -291,22 +291,25 @@ ical
     })
   end
 
-  # This describe does not do anything. "Why" you ask?
-  # See #318 for details.
   describe "events_per_day_in" do
-    subject { SingleEvent }
+    subject { SingleEvent.events_per_day_in(date_range) }
 
-    let(:date_range) { Date.today..Date.tomorrow }
-    let(:date_with_events) { Date.today }
-    let(:date_without_events) { Date.tomorrow }
+    let(:date_range) { Date.parse('2010-02-01')..Date.parse('2010-02-02') }
+    let(:timestamp_with_events) { Time.parse('2010-02-01 13:00') }
+    let(:timestamp_without_events) { Time.parse('2010-02-02 13:00') }
 
     before do
       SingleEvent.delete_all
-      FactoryGirl.create(:single_event, occurrence: date_with_events)
-      FactoryGirl.create(:single_event, occurrence: date_with_events)
+      FactoryGirl.create(:single_event, occurrence: timestamp_with_events)
+      FactoryGirl.create(:single_event, occurrence: timestamp_with_events)
     end
 
-    it 'should give the right count for the day with events'
-    it 'should give the right count for the day without events'
+    it 'should give the right count for the day with events' do
+      expect(subject[timestamp_with_events.to_date]).to eq 2
+    end
+
+    it 'should give the right count for the day without events' do
+      expect(subject[timestamp_without_events.to_date]).to eq 0
+    end
   end
 end

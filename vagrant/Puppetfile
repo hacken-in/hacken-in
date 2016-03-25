@@ -1,5 +1,5 @@
 forge "https://forgeapi.puppetlabs.com"
 
 mod "hacken-in/hackenin",
-    :ref => 'v1.0.5',
+    :ref => 'v1.0.9',
     :git => "git://github.com/hacken-in/puppet-hackenin.git"

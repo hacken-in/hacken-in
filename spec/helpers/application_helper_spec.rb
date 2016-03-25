@@ -7,7 +7,7 @@ describe ApplicationHelper, type: :helper do
 
   it "should convert markdown" do
     markdown_formatted_text = "I am *italic* and **bold**."
-    expect(convert_markdown(markdown_formatted_text)).to eq("<p>I am <em>italic</em> and <strong>bold</strong>.</p>\n")
+    expect(convert_markdown(markdown_formatted_text)).to eq_html("<p>I am <em>italic</em> and <strong>bold</strong>.</p>\n")
   end
 
   it "should strip evil javascript" do
@@ -17,14 +17,14 @@ describe ApplicationHelper, type: :helper do
 
   it "should convert text with emoji" do
     mtext = "I am *italic* :smile:"
-    expect(convert_markdown(mtext)).to eq("<p>I am <em>italic</em> <img src=\"/assets/emojis/smile.png\" class=\"emoji\" title=\":smile:\" alt=\":smile:\" height=\"20\" width=\"20\"></p>\n")
+    expect(convert_markdown(mtext)).to eq_html("<p>I am <em>italic</em> <img src=\"/assets/emojis/smile.png\" class=\"emoji\" title=\":smile:\" alt=\":smile:\" height=\"20\" width=\"20\"></p>\n")
   end
 
   it "should convert markdown links" do
     markdown_formatted_text = "Let me [google](http://www.google.de) that for you"
 
-    expect(convert_markdown(markdown_formatted_text)).to eq("<p>Let me <a href=\"http://www.google.de\">google</a> that for you</p>\n")
-    expect(convert_markdown(markdown_formatted_text, true)).to eq("<p>Let me <a href=\"http://www.google.de\" rel=\"nofollow\">google</a> that for you</p>\n")
+    expect(convert_markdown(markdown_formatted_text)).to eq_html("<p>Let me <a href=\"http://www.google.de\">google</a> that for you</p>\n")
+    expect(convert_markdown(markdown_formatted_text, true)).to eq_html("<p>Let me <a href=\"http://www.google.de\" rel=\"nofollow\">google</a> that for you</p>\n")
   end
 
   it "should return an empty list for events withoud links" do
@@ -67,14 +67,14 @@ describe ApplicationHelper, type: :helper do
 
   it "should generate an image tag for user with an image url attached" do
     user = User.create(nickname: "hansdampf", image_url: "http://example.com/logo.png")
-    expect(avatar_for_user(user, 20, "userimage")).to eq(
+    expect(avatar_for_user(user, 20, "userimage")).to eq_html(
       "<img alt=\"hansdampf\" class=\"userimage\" src=\"http://example.com/logo.png\" title=\"hansdampf\" width=\"20\" />"
     )
   end
 
   it "should generate an image for a user with the default gravatar image" do
     user = User.create(nickname: "hansdampf", email: "mail@example.com")
-    expect(avatar_for_user(user, 20, "userimage")).to eq(
+    expect(avatar_for_user(user, 20, "userimage")).to eq_html(
       "<img alt=\"hansdampf\" class=\"userimage\" height=\"20\" src=\"https://secure.gravatar.com/avatar/7daf6c79d4802916d83f6266e24850af?default=identicon&secure=true&size=20\" title=\"hansdampf\" width=\"20\" />"
     )
   end
@@ -83,7 +83,7 @@ describe ApplicationHelper, type: :helper do
     user = User.create(nickname: "hansdampf", email: "mail@example.com",
                        image_url: "http://example.com/logo.png",
                        gravatar_email: "gravatar@example.com")
-    expect(avatar_for_user(user, 20, "userimage")).to eq(
+    expect(avatar_for_user(user, 20, "userimage")).to eq_html(
       "<img alt=\"hansdampf\" class=\"userimage\" height=\"20\" src=\"https://secure.gravatar.com/avatar/0cef130e32e054dd516c99e5181d30c4?default=identicon&secure=true&size=20\" title=\"hansdampf\" width=\"20\" />"
     )
   end

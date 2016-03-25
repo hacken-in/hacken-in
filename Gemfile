@@ -1,21 +1,19 @@
 # coding: utf-8
 source 'https://rubygems.org'
+ruby '2.2.3'
 
-gem 'rails', '~> 4.1.8'
+gem 'rails', '~> 4.2.5.1'
 gem 'rake', '~> 10.3.2'
 
-gem 'thin', '~> 1.6.1'
+gem 'unicorn', '~> 5.0.1'
 # Databases
 gem 'pg', '~> 0.17.1'
-
-# Memcache Store
-gem 'dalli', '~> 2.7.2'
 
 # Recurring Tasks
 gem 'whenever', '~> 0.9.4'
 
 # Tags
-gem 'acts-as-taggable-on', '~> 3.2.6'
+gem 'acts-as-taggable-on', '~> 3.5.0'
 
 # Statistics
 gem 'chartkick', '~> 1.3.2'
@@ -33,20 +31,13 @@ gem 'jquery-rails', '~> 3.1.1'
 gem 'jquery-ui-rails', '~> 5.0.3'
 gem 'foundation-rails', '5.4.5.0'
 gem 'font-awesome-rails', '~> 4.1.0.0'
-gem 'modernizr-rails', '~> 2.7.1'
 
 gem 'haml', '~> 4.0.4'
 gem 'md_emoji', '~> 1.0.0'
 gem 'redcarpet', '~> 3.1.2'
 
-gem 'kss', '~> 0.5.0'
-
 # Admin
-# Attention: 0.6.0 has namespacing issues
-# The '/' root tries to open a non existend
-# dashboard controller
-# TODO: Set this to the Ruby Gems version as soon as this is released
-gem 'activeadmin', github: 'activeadmin', branch: 'master'
+gem 'activeadmin', '~> 1.0.0.pre2'
 gem 'ahoy_matey'
 gem 'groupdate'
 
@@ -55,7 +46,7 @@ gem 'ice_cube', '~> 0.11.1'
 gem 'icalendar', '~> 1.5.2'
 
 # Authentication and Authorization
-gem 'devise', '~> 3.2.0'
+gem 'devise', '~> 3.5.6'
 gem 'devise-i18n', '~> 0.10.3'
 gem 'cancancan', '~> 1.8.4'
 gem 'omniauth', '~> 1.1.3'
@@ -94,10 +85,9 @@ gem 'ruby_meetup2', '~> 0.5.0'
 gem 'feedjira', '~> 1.3.0'
 
 # Bug Monitoring
-gem 'bugsnag', '~> 2.1.0'
+gem 'bugsnag', '~> 3.0.0'
 
 group :development do
-
   group :darwin do
     gem 'rb-fsevent', '~> 0.9.4'
     gem 'growl', '~> 1.0.3'
@@ -124,20 +114,23 @@ end
 
 group :test, :development do
   gem 'database_cleaner', '1.3.0'
-  gem 'rspec-rails',  '~> 3.0.1'
+  gem 'rspec-rails',  '~> 3.4.2'
   gem 'factory_girl_rails', '~> 4.2'
   gem 'faker', '~> 1.4.1'
-  gem 'simplecov', '~> 0.8.2'
-  gem 'codeclimate-test-reporter', '~> 0.4.3', require: nil
+  gem 'codeclimate-test-reporter', '~> 0.4.8', require: nil
   gem 'brakeman', '~> 2.6.1'
   gem 'vcr', '~> 2.9.2'
   gem 'pry-rails'
   # Find and manage translation differences
   gem 'i18n-tasks', '~> 0.7.10'
+  gem 'equivalent-xml', '~> 0.6.0'
 end
 
-group :production do
-  gem 'shelly-dependencies'
+group :deployment do
+  gem "airbrussh", :require => false
+  gem 'capistrano', '~> 3.4.0'
+  gem 'capistrano-bundler', '~> 1.1.4'
+  gem 'capistrano-rails', '~> 1.1.6'
 end
 
 group :test do

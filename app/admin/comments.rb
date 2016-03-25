@@ -1,5 +1,5 @@
 #coding: utf-8
-ActiveAdmin.register Comment do
+ActiveAdmin.register Comment, as: 'UserComment' do
   menu priority: 5
   index do
     column :id

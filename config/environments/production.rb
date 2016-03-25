@@ -10,7 +10,7 @@ Hcking::Application.configure do
   config.action_controller.perform_caching = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
-  config.serve_static_assets = false
+  config.serve_static_files = false
 
   # Compress JavaScripts and CSS
   config.assets.compress = true
@@ -29,13 +29,12 @@ Hcking::Application.configure do
   config.force_ssl = true
 
   # See everything in the log (default is :info)
-  # config.log_level = :debug
+  config.log_level = :info
 
   # Use a different logger for distributed setups
   # config.logger = SyslogLogger.new
 
-  # Shellycloud will inject MEMCACHE_SERVERS and Dalli will pick it up
-  config.cache_store = :dalli_store, nil, { :namespace => 'hcking', :compress => true }
+  config.cache_store = :memory_store
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
@@ -55,18 +54,15 @@ Hcking::Application.configure do
   # Enable threaded mode
   # config.threadsafe!
 
+  # Do not suppress errors raised within `after_rollback`/`after_commit` callbacks
+  config.active_record.raise_in_transactional_callbacks = true
+
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found)
   config.i18n.fallbacks = true
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
-
-  # Explicitly set the hostname to pick up the ENV['HTTP_HOST']
-  # provided by Shellycloud. Don't ask, don't tell. *sobs*
-  OmniAuth.config.full_host = lambda do |environment|
-    "https://#{environment['HTTP_HOST']}"
-  end
 
   # Shut up noisy rails logs
   config.lograge.enabled = true
