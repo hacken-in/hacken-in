@@ -14,6 +14,6 @@ addons:
   postgresql: "9.3"
   code_climate:
     repo_token: e9119a0532e351ecb5e7a0807c08b3dcd5771bc31f85b45f823f1dbcd22f78fb
-after_success:
-  - eval "$(ssh-agent -s)" #start the ssh agent
-  - script/deploy-to-uberspace
+deploy:
+  provider: script
+  script: script/deploy-to-uberspace
