@@ -4,8 +4,6 @@ set +x
 set +e
 
 DEPLOY_KEY="config/travis/travis-deploy-key"
-
-AGENT=$(eval ssh-agent -s)
 TARGET=$1
 
 if [ "$TARGET" == "" ]; then
@@ -13,12 +11,14 @@ if [ "$TARGET" == "" ]; then
   exit 1
 fi
 
+eval "$(ssh-agent -s)"
+
 openssl aes-256-cbc -K $encrypted_ece5f7dc116b_key -iv $encrypted_ece5f7dc116b_iv -in $DEPLOY_KEY.enc -out $DEPLOY_KEY -d
 chmod 0600 $DEPLOY_KEY
 ssh-add $DEPLOY_KEY
 
 source "$HOME/.rvm/scripts/rvm"
 rvm use $(cat .ruby-version)
-bundle install --without development --path=${BUNDLE_PATH:-vendor/bundle}
+bundle install --gemfile=Gemfile.deployment
 bundle exec cap $TARGET deploy
 
