@@ -1,4 +1,7 @@
-default:
+production:
+  url: <%= ENV['DATABASE_URL'] %>
+
+master:
   url: <%= ENV['DATABASE_URL'] %>
 
 development:
