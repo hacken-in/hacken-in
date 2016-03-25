@@ -64,13 +64,6 @@ Hcking::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  # Explicitly set the hostname to pick up the ENV['HTTP_HOST']
-  # provided by Shellycloud. Don't ask, don't tell. *sobs*
-  # TODO: Check how this will work after #607
-  OmniAuth.config.full_host = lambda do |environment|
-    "https://#{environment['HTTP_HOST']}"
-  end
-
   # Shut up noisy rails logs
   config.lograge.enabled = true
 
