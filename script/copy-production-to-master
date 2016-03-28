@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+
+require 'tmpdir'
+require 'logger'
+
+LOGGER = Logger.new(STDOUT)
+
+def try(message, command)
+  LOGGER.info(message)
+  unless system(command)
+    LOGGER.error("#{message} failed #{command} failed!")
+    exit(-1)
+  end
+end
+
+Dir.mktmpdir do |dir|
+  try "Halting master application", "svc -d ~/service/hacken-in-master"
+  try "Dumping hacken-in-production", "pg_dump -O hacken-in-production > #{dir}/production.sql"
+
+  try "Dropping the master DB", "dropdb hacken-in-master"
+  try "Creading the master DB", "createdb -O hacken-in-master hacken-in-master"
+
+  try "Restoring production DB to hacken-in-master",
+      "psql -U hacken-in-master -d hacken-in-master < #{dir}/production.sql"
+
+  try "Syncing uploads from production to master",
+      "rsync -a --delete /var/www/virtual/hacken/hacken.in/uploads/ /var/www/virtual/hacken/master.hacken.in/uploads/"
+
+  try "Starting master application", "svc -u ~/service/hacken-in-master"
+end
