@@ -2,24 +2,29 @@
 
 require 'tmpdir'
 require 'logger'
-logger = Logger.new(STDOUT)
+
+LOGGER = Logger.new(STDOUT)
+
+def try(message, command)
+  LOGGER.info(message)
+  unless system(command)
+    LOGGER.error("#{message} failed #{command} failed!")
+    exit(-1)
+  end
+end
 
 Dir.mktmpdir do |dir|
-  logger.info "Halting master application"
-  system "svc -d ~/service/hacken-in-master"
+  try "Halting master application", "svc -d ~/service/hacken-in-master"
+  try "Dumping hacken-in-production", "pg_dump -O hacken-in-production > #{dir}/production.sql"
 
-  logger.info "Dumping hacken-in-production"
-  system "pg_dump -O hacken-in-production > #{dir}/production.sql"
+  try "Dropping the master DB", "dropdb hacken-in-master"
+  try "Creading the master DB", "createdb -O hacken-in-master hacken-in-master"
 
-  system "dropdb hacken-in-master"
-  system "createdb -O hacken-in-master hacken-in-master"
+  try "Restoring production DB to hacken-in-master",
+      "psql -U hacken-in-master -d hacken-in-master < #{dir}/production.sql"
 
-  logger.info "Restoring production DB to hacken-in-master"
-  system "psql -U hacken-in-master -d hacken-in-master < #{dir}/production.sql"
+  try "Syncing uploads from production to master",
+      "rsync -a --delete /var/www/virtual/hacken/hacken.in/uploads/ /var/www/virtual/hacken/master.hacken.in/uploads/"
 
-  logger.info "Syncing uploads from production to master"
-  system "rsync -a --delete /var/www/virtual/hacken/hacken.in/uploads/ /var/www/virtual/hacken/master.hacken.in/uploads/"
-
-  logger.info "Starting master application"
-  system "svc -u ~/service/hacken-in-master"
+  try "Starting master application", "svc -u ~/service/hacken-in-master"
 end
