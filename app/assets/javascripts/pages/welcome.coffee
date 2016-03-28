@@ -32,6 +32,11 @@ $ ->
     ruhrgebiet.setContent("<a href='/move_to/ruhrgebiet'>Ruhrgebiet</a>")
     map.addLayer(ruhrgebiet)
 
+    hamburg = new L.Popup()
+    hamburg.setLatLng([53.5653,10.0014])
+    hamburg.setContent("<a href='/move_to/hamburg'>Hamburg</a>")
+    map.addLayer(hamburg)
+
     map.fitBounds([
       [50.938056,6.956944],
       [52.516667,13.383333],
