@@ -268,7 +268,7 @@ en:
         nothing: Nothing
     welcome:
       deutschland:
-        message: "[Hacken.in](http://hacken.in). Your calendar for events around hacking, geek culture and everything that has to do with being a nerd. At the moments there are events for [Berlin](move_to/berlin), [Cologne](/move_to/koeln) and [Munich](move_to/muenchen)."
+        message: "[Hacken.in](http://hacken.in). Your calendar for events around hacking, geek culture and everything that has to do with being a nerd. At the moments there are events for [Berlin](move_to/berlin), [Cologne](/move_to/koeln), [Munich](move_to/muenchen), [Hamburg](move_to/hamburg) and the [Ruhr area](move_to/ruhrgebiet)."
   will_paginate:
     next_label: Next &#8594;
     page_gap: "&hellip;"
