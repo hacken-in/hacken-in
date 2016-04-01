@@ -16,7 +16,7 @@ server "dubhe.uberspace.de", user: fetch(:user), roles: [:app, :db]
 namespace :deploy do
   task :restart do
     on roles(:app) do
-      execute "svc -h svc -h ~/service/hacken-in-#{fetch(:stage)}"
+      execute "svc -h ~/service/hacken-in-#{fetch(:stage)}"
     end
   end
 
