@@ -89,7 +89,7 @@ step "Bundler Run" do
     Then try again.
   EOL
 
-  run "cd vagrant; bundle install --path=vendor"
+  run "cd infrastructure/vagrant; bundle install --path=vendor"
 end
 
 
@@ -106,7 +106,7 @@ step "Puppet Module installation" do
     Then try again.
   EOL
 
-  run "cd vagrant; bundle exec librarian-puppet install --path=puppet/modules"
+  run "cd infrastructure/vagrant; bundle exec librarian-puppet install --path=puppet/modules"
 end
 
 step "Vagrant installation" do
