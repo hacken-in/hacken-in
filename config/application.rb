@@ -52,6 +52,10 @@ module Hcking
 
     # Our weeks in analytics should start on Monday
     Groupdate.week_start = :mon
+
     config.x.release_stage = (ENV["RELEASE_STAGE"] || Rails.env).to_sym
+
+    # Let the app know what version we're running (REVISION is written by Capistrano on deploy)
+    config.x.current_revision = File.exist?("#{Rails.root}/REVISION") ? File.read("#{Rails.root}/REVISION").strip : "UNKNOWN"
   end
 end
