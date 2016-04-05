@@ -52,5 +52,6 @@ module Hcking
 
     # Our weeks in analytics should start on Monday
     Groupdate.week_start = :mon
+    config.x.release_stage = (ENV["RELEASE_STAGE"] || Rails.env).to_sym
   end
 end
