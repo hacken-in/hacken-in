@@ -27,7 +27,7 @@
               - @all_regions.each do |region|
                 - if region != current_region
                   %li
-                    = link_to region.name, move_region_path(region.slug)
+                    = link_to region.name, move_region_path(region.main_slug)
       - if current_region.present?
         %ul.right.show-for-medium-up
           = form_tag search_path(region: current_region), :method => 'get' do

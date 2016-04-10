@@ -5,7 +5,7 @@ module ApplicationHelper
 
   def sitename
     if current_region.present?
-      "hacken.in/#{current_region.slug}"
+      "hacken.in/#{current_region.main_slug}"
     else
       "hacken.in"
     end
