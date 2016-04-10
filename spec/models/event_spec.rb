@@ -345,14 +345,14 @@ describe Event do
 
   it "should not find events for wrong region" do
     event = FactoryGirl.create(:simple)
-    region = Region.where(slug: "berlin").first || FactoryGirl.create(:berlin_region)
+    region = RegionSlug.where(slug: "berlin").first.try(:region) || FactoryGirl.create(:berlin_region)
     expect(Event.in_region(region).count).to eq(0)
   end
 
   it "should find events that are in global region, no matter what region you give to it" do
     gevent = FactoryGirl.create(:global_single_event)
-    bregion = Region.where(slug: "berlin").first || FactoryGirl.create(:berlin_region)
-    kregion = Region.where(slug: "koeln").first  || FactoryGirl.create(:koeln_region)
+    bregion = RegionSlug.where(slug: "berlin").first.try(:region) || FactoryGirl.create(:berlin_region)
+    kregion = RegionSlug.where(slug: "koeln").first.try(:region)  || FactoryGirl.create(:koeln_region)
 
     expect(Event.in_region(bregion).count).to eq(1)
     expect(Event.in_region(kregion).count).to eq(1)

@@ -245,29 +245,29 @@ ical
   end
 
   it "should not find single events for wrong region" do
-    region = Region.where(slug: "berlin").first || FactoryGirl.create(:berlin_region)
+    region = RegionSlug.where(slug: "berlin").first.try(:region) || FactoryGirl.create(:berlin_region)
     expect(SingleEvent.in_region(region).count).to eq(0)
   end
 
   it "should return the single event if it has the correct reagion and the event has not" do
-    region = Region.where(slug: "berlin").first || FactoryGirl.create(:berlin_region)
+    region = RegionSlug.where(slug: "berlin").first.try(:region) || FactoryGirl.create(:berlin_region)
     single_event.region = region
     single_event.save
     expect(SingleEvent.in_region(region).count).to eq(1)
   end
 
   it "should not return the single event if it has a wrong region and the event has a correct one" do
-    region = Region.where(slug: "berlin").first || FactoryGirl.create(:berlin_region)
+    region = RegionSlug.where(slug: "berlin").first.try(:region) || FactoryGirl.create(:berlin_region)
     single_event.region = region
     single_event.save
-    kregion = Region.where(slug: "koeln").first || FactoryGirl.create(:koeln_region)
+    kregion = RegionSlug.where(slug: "koeln").first.try(:region) || FactoryGirl.create(:koeln_region)
     expect(SingleEvent.in_region(kregion).count).to eq(0)
   end
 
   it "should find single events that are in global region, no matter what region you give to it" do
     gevent = FactoryGirl.create(:global_single_event)
-    bregion = Region.where(slug: "berlin").first || FactoryGirl.create(:berlin_region)
-    kregion = Region.where(slug: "koeln").first  || FactoryGirl.create(:koeln_region)
+    bregion = RegionSlug.where(slug: "berlin").first.try(:region) || FactoryGirl.create(:berlin_region)
+    kregion = RegionSlug.where(slug: "koeln").first.try(:region)  || FactoryGirl.create(:koeln_region)
 
     expect(SingleEvent.in_region(bregion).count).to eq(1)
     expect(SingleEvent.in_region(kregion).count).to eq(1)

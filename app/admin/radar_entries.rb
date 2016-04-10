@@ -1,4 +1,6 @@
 ActiveAdmin.register RadarEntry do
+  menu priority: 11
+
   filter :region, collection: -> { Region.all }
   filter :event, collection: -> { Event.joins(:radar_settings) }
   filter :state, as: :select, collection: ["UNCONFIRMED", "CONFIRMED"]

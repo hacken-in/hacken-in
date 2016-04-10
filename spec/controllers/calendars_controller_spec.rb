@@ -4,13 +4,14 @@ describe CalendarsController, type: :controller do
   let(:today) { double('Date') }
   let(:region_name) { 'koeln' }
   let(:region) { double('Region') }
+  let(:region_slug) { double('RegionSlug', region: region) }
   let(:start_selector) { double('StartSelector') }
   let(:calendar) { double('Calendar') }
 
   before do
     allow(Date).to receive(:today).and_return(today)
-    allow(Region).to receive(:find_by_slug).with(region_name).and_return(region)
-    allow(Region).to receive(:find_by_slug).with(nil).and_return(nil)
+    allow(RegionSlug).to receive(:find_by_slug).with(region_name).and_return(region_slug)
+    allow(RegionSlug).to receive(:find_by_slug).with(nil).and_return(nil)
     allow(Calendar).to receive(:new)
   end
 

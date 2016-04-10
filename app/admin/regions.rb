@@ -3,14 +3,16 @@ ActiveAdmin.register Region do
   index do
     column :id
     column :name
-    column :slug
     column :active
+    column :region_slugs do |region|
+      region.region_slugs.pluck(:slug).join(', ')
+    end
     actions
   end
 
   controller do
     def permitted_params
-      params.permit(region: [:name, :slug, :latitude, :longitude, :perimeter, :active])
+      params.permit(region: [:name, :latitude, :longitude, :perimeter, :active])
     end
   end
 end
