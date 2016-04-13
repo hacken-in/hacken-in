@@ -2,9 +2,9 @@
 FactoryGirl.define do
   factory :global_region, class: 'region' do
     id 1
-    name "global"
+    name 'global'
     after(:create) do |region, _evaluator|
-      RegionSlug.where(slug: 'global', region: region).first_or_create!
+      RegionSlug.where(slug: 'global', region: region, main_slug: true).first_or_create!
     end
   end
 
@@ -12,21 +12,20 @@ FactoryGirl.define do
     id 2
     name "Köln"
     after(:create) do |region, _evaluator|
-      RegionSlug.where(slug: 'koeln', region: region).first_or_create!
+      RegionSlug.where(slug: 'koeln', region: region, main_slug: true).first_or_create!
     end
   end
 
   factory :berlin_region, class: 'region' do
     id 3
-    name "Berlin"
+    name 'Berlin'
     after(:create) do |region, _evaluator|
-      RegionSlug.where(slug: 'berlin', region: region).first_or_create!
+      RegionSlug.where(slug: 'berlin', region: region, main_slug: true).first_or_create!
     end
   end
 
   factory :slugless_region, class: 'region' do
     id 4
-    name "Region"
+    name 'Region'
   end
 end
-

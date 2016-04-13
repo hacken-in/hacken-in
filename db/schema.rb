@@ -130,10 +130,11 @@ ActiveRecord::Schema.define(version: 20160410120717) do
   add_index "region_organizers", ["user_id"], name: "index_region_organizers_on_user_id", using: :btree
 
   create_table "region_slugs", force: :cascade do |t|
-    t.string   "slug",       null: false
-    t.integer  "region_id",  null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "slug",                       null: false
+    t.boolean  "main_slug",  default: false
+    t.integer  "region_id",                  null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "region_slugs", ["slug"], name: "index_region_slugs_on_slug", using: :btree
