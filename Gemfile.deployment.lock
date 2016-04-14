@@ -1,8 +1,6 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    airbrussh (1.0.1)
-      sshkit (>= 1.6.1, != 1.7.0)
     capistrano (3.4.0)
       i18n
       rake (>= 10.0.0)
@@ -29,7 +27,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  airbrussh
   capistrano (~> 3.4.0)
   capistrano-bundler (~> 1.1.4)
   capistrano-rails (~> 1.1.6)
