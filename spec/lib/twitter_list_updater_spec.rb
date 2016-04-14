@@ -14,7 +14,7 @@ describe TwitterListUpdater do
 
     @single_event = FactoryGirl.create(:single_event)
 
-    @koeln_region = Region.where(slug: "koeln").first || FactoryGirl.create(:koeln_region)
+    @koeln_region = RegionSlug.where(slug: "koeln").first.region || FactoryGirl.create(:koeln_region)
 
     @single_event.twitter = "another_example"
     @single_event.region = @koeln_region

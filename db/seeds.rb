@@ -16,11 +16,19 @@ def seed(model_class, seeds)
 end
 
 seed(Region, [
-  {id: 1, name: "Global",  slug: "global",   latitude: nil,     longitude: nil,     perimeter: nil,  active: true},
-  {id: 2, name: "Köln",    slug: "koeln",    latitude: 50.946,  longitude: 6.95889, perimeter: 20.0, active: true},
-  {id: 3, name: "Berlin",  slug: "berlin",   latitude: 52.5186, longitude: 13.4081, perimeter: 20.0, active: true},
-  {id: 4, name: "München", slug: "muenchen", latitude: 48.1368, longitude: 11.5781, perimeter: 20.0, active: true},
-  {id: 5, name: "Hamburg", slug: "hamburg",  latitude: 53.5653, longitude: 10.0014, perimeter: 20.0, active: false}
+  {id: 1, name: "Global",  latitude: nil,     longitude: nil,     perimeter: nil,  active: true},
+  {id: 2, name: "Köln",    latitude: 50.946,  longitude: 6.95889, perimeter: 20.0, active: true},
+  {id: 3, name: "Berlin",  latitude: 52.5186, longitude: 13.4081, perimeter: 20.0, active: true},
+  {id: 4, name: "München", latitude: 48.1368, longitude: 11.5781, perimeter: 20.0, active: true},
+  {id: 5, name: "Hamburg", latitude: 53.5653, longitude: 10.0014, perimeter: 20.0, active: false}
+])
+
+seed(RegionSlug, [
+  {id: 1, slug: "global",   region_id: 1},
+  {id: 2, slug: "koeln",    region_id: 2},
+  {id: 3, slug: "berlin",   region_id: 3},
+  {id: 4, slug: "muenchen", region_id: 4},
+  {id: 5, slug: "hamburg",  region_id: 5}
 ])
 
 seed(Category, [

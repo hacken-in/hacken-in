@@ -4,12 +4,13 @@ describe SearchController, type: :controller do
   let(:single_events) { double('SingleEvents') }
   let(:region_name) { 'koeln' }
   let(:region) { double('Region') }
+  let(:region_slug) { double('RegionSlug', region: region) }
   let(:search_params) { 'SearchParams' }
   let(:search_results) { double('SingleEventsByDay') }
 
   before do
-    allow(Region).to receive(:find_by_slug).with(region_name).and_return(region)
-    allow(Region).to receive(:find_by_slug).with(nil).and_return(nil)
+    allow(RegionSlug).to receive(:find_by_slug).with(region_name).and_return(region_slug)
+    allow(RegionSlug).to receive(:find_by_slug).with(nil).and_return(nil)
     allow(SingleEvent).to receive(:search_in_region)
       .with(search_params, region)
       .and_return(single_events)

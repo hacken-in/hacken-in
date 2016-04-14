@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160208010827) do
+ActiveRecord::Schema.define(version: 20160410120717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -129,9 +129,18 @@ ActiveRecord::Schema.define(version: 20160208010827) do
   add_index "region_organizers", ["region_id"], name: "index_region_organizers_on_region_id", using: :btree
   add_index "region_organizers", ["user_id"], name: "index_region_organizers_on_user_id", using: :btree
 
+  create_table "region_slugs", force: :cascade do |t|
+    t.string   "slug",                       null: false
+    t.boolean  "main_slug",  default: false
+    t.integer  "region_id",                  null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "region_slugs", ["slug"], name: "index_region_slugs_on_slug", using: :btree
+
   create_table "regions", force: :cascade do |t|
     t.string   "name",       limit: 255
-    t.string   "slug",       limit: 255
     t.float    "latitude"
     t.float    "longitude"
     t.float    "perimeter",              default: 20.0
@@ -139,8 +148,6 @@ ActiveRecord::Schema.define(version: 20160208010827) do
     t.datetime "updated_at"
     t.boolean  "active"
   end
-
-  add_index "regions", ["slug"], name: "index_regions_on_slug", using: :btree
 
   create_table "single_event_external_users", force: :cascade do |t|
     t.integer  "single_event_id"

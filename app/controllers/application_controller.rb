@@ -50,7 +50,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_region
-    @current_region ||= Region.find_by_slug(params[:region]) || Region.find_by_id(params[:region])
+    @current_region ||= RegionSlug.find_by_slug(params[:region]).try(:region) || Region.find_by_id(params[:region])
   end
   helper_method :current_region
 

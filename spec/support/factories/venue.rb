@@ -8,7 +8,7 @@ FactoryGirl.define do
     country "DE"
     latitude 50.9490279
     longitude 6.986784900000001
-    region { Region.find_by_slug("koeln") || FactoryGirl.create(:koeln_region) }
+    region { RegionSlug.where(slug: "koeln").first.try(:region) || FactoryGirl.create(:koeln_region) }
   end
 
   factory :berlin_venue, class: 'venue' do
@@ -19,6 +19,6 @@ FactoryGirl.define do
     country "DE"
     latitude 50.9490279
     longitude 6.986784900000001
-    region { Region.find_by_slug("berlin") || FactoryGirl.create(:berlin_region) }
+    region { RegionSlug.where(slug: "berlin").first.try(:region) || FactoryGirl.create(:berlin_region) }
   end
 end
