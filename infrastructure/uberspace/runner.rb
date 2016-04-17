@@ -17,7 +17,7 @@ require 'logger'
 LOG = Logger.new(STDOUT)
 APP_DIR = Pathname(__FILE__).dirname.parent.parent
 PIDFILE = APP_DIR.join "tmp/pids/unicorn.pid"
-UNICORN = "bundle exec unicorn_rails -c config/unicorn.rb -D"
+UNICORN = "bundle exec unicorn_rails -c config/unicorn.rb -D -e '# #{ENV['APP_NAME']}'"
 
 def pid
   File.exist?(PIDFILE) ? File.read(PIDFILE).to_i : nil
