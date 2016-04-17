@@ -6,8 +6,9 @@
 
 # paths
 app_path = ENV["APP_PATH"]
-working_directory "#{app_path}/current"
-pid               "#{app_path}/current/tmp/pids/unicorn.pid"
+
+working_directory "#{app_path}"
+pid               "#{app_path}/tmp/pids/unicorn.pid"
 
 # logging
 stderr_path "log/unicorn.stderr.log"
@@ -16,9 +17,12 @@ stdout_path "log/unicorn.stdout.log"
 # workers
 worker_processes 3
 
+# port from runner env
+listen ENV["UNICORN_PORT"]
+
 # use correct Gemfile on restarts
 before_exec do |server|
-  ENV['BUNDLE_GEMFILE'] = "#{app_path}/current/Gemfile"
+  ENV['BUNDLE_GEMFILE'] = "#{app_path}/Gemfile"
 end
 
 # preload
