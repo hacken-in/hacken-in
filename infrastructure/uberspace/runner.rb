@@ -43,7 +43,7 @@ def stop
 end
 
 Signal.trap("HUP") { restart }
-Signal.trap("INT") { stop }
+Signal.trap("TERM") { stop }
 
 start
 

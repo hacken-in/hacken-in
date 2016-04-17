@@ -7,5 +7,6 @@ path=`dirname $(readlink $0)`
 runner="${path}/runner.rb"
 source "${HOME}/${app_name}.secrets"
 export APP_PATH=`dirname $(dirname ${path})`
+cd $APP_PATH
 
 exec $runner
