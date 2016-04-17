@@ -27,6 +27,15 @@ namespace :deploy do
       end
     end
   end
+
+  task :setup do
+    on roles(:app) do
+      info "Creating hacken.in environment symlinks"
+      execute "ln -sf #{current_path}/infrastructure/uberspace/#{fetch(:stage)}/hacken-in-#{fetch(:stage)} ~/bin/"
+      execute "cd #{release_path}; source ~/hacken-in-#{fetch(:stage)}.secrets; bundle exec rake uberspace:print_htaccess > /var/www/virtual/hacken/#{fetch(:vhost)}/.htaccess"
+      execute "ln -snf /var/www/virtual/hacken/#{fetch(:vhost)} ~/hacken-in-#{fetch(:stage)}/shared/public"
+    end
+  end
 end
 after "deploy:updated", "deploy:migrate"
 after "deploy:published", "deploy:restart"
