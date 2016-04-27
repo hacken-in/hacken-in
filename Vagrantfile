@@ -10,7 +10,9 @@ if [[ $(/usr/bin/puppet --version) != *3.7.4* ]]; then
   dpkg -i /tmp/puppetlabs-release-precise.deb
   aptitude update > /dev/null
   aptitude install -y puppet=3.7.4-1puppetlabs1 puppet-common=3.7.4-1puppetlabs1
-fi
+  sed -i '/templatedir/d' /etc/puppet/puppet.conf
+  cp /etc/hiera.yaml /etc/puppet/hiera.yaml
+ fi
 EOF
 
 HACKEN_BOOTSTRAP = <<EOF
@@ -44,7 +46,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     puppet.manifests_path = 'vagrant/puppet/manifests'
 		puppet.facter = {
       'hackenin_application_environment' => 'development',
-      'hackenin_ruby_version'            => File.read('.ruby-version').strip.delete('-')
+      'hackenin_ruby_version'            => "2.2" # ¯\_ಠ_ಠ_/¯
     }
   end
 
