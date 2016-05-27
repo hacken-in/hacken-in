@@ -14,9 +14,6 @@ class ActiveAdminAbility
       # Achtung! Keine Blocks benutzen, sondern immer die
       # Hash Syntax. Nur so kann CanCan SQL-Queries draus basteln
 
-      # Alle eigenen Kommetare bearbeiten dürfen
-      can [:create, :update, :destroy], Comment, user_id: user.id
-
       # Alle Regionen, die einem zugewiesen wurden
       if user.region_organizers.present?
         can :create, Event

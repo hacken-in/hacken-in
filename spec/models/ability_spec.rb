@@ -6,7 +6,7 @@ describe Ability do
     described_class.new(nil)
   end
 
-  [Comment, User].each do |klass|
+  [User].each do |klass|
     [:create, :update, :destroy].each do |action|
       it "anonym can't #{action} #{klass}" do
         expect(ability).not_to be_able_to action, klass
@@ -14,7 +14,7 @@ describe Ability do
     end
   end
 
-  [Event, SingleEvent, Comment, User].each do |klass|
+  [Event, SingleEvent, User].each do |klass|
     it "anonym can show #{klass}" do
       expect(ability).to be_able_to :show, klass
     end

@@ -11,14 +11,6 @@ describe ActiveAdminAbility do
     expect(ActiveAdminAbility.new(user)).to be_able_to :manage, :all
   end
 
-  it "should only be able to edit own comments" do
-    comment = Comment.new
-    comment.user_id = user.id
-    comment.save
-    expect(ActiveAdminAbility.new(user)).to be_able_to :update, comment
-    expect(ActiveAdminAbility.new(FactoryGirl.create(:user))).not_to be_able_to :update, comment
-  end
-
   it "should be able to create events, single_events and venues if region organizer" do
     user.region_organizers.create(region: FactoryGirl.create(:berlin_region))
     expect(ActiveAdminAbility.new(user)).to be_able_to :create, Event

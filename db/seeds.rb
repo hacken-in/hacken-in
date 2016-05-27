@@ -90,10 +90,6 @@ seed(Venue, [
   {id: 4, location: "Elbphilharmonie",      region_id: 5, street: "Am Kaiserkai",       zipcode: "20457", city: "Hamburg", country: "DE", latitude: 53.542348,  longitude: 9.9808,    url: ""},
 ])
 
-seed(Comment, [
-  {id: 1, body: "Oh my. This looks [like a hyperlink](http://example.com/some-url).", user_id: 2, commentable_id: 101, commentable_type: "SingleEvent"}
-])
-
 seed(Authorization, [
   {id: 1, provider: "github", uid: "1337", user_id: 1, token: nil, secret: nil, token_expires: nil, temp_token: nil},
 ])

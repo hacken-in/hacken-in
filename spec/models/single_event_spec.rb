@@ -108,13 +108,6 @@ describe SingleEvent do
     expect(single_event.name_with_date).to eq "SimpleEvent (SimpleSingleEventName) am #{single_event.occurrence.strftime("%d.%m.%Y um %H:%M")}"
   end
 
-  it "should delete comment when singleevent is deleted" do
-    comment = single_event.comments.build(body: "wow!")
-    comment.save
-    single_event.destroy
-    expect(Comment.where(id: comment.id)).to be_empty
-  end
-
   it "should generate opengraph data" do
     hash = {
       "og:country-name"=>"DE",
