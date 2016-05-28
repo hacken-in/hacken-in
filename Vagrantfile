@@ -36,6 +36,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.customize ["modifyvm", :id, "--memory", "1024"]
   end
 
+  config.vm.provider "vmware_fusion" do |v|
+    v.vmx["memsize"] = "2048"
+    v.vmx["numvcpus"] = "2"
+  end
+
   config.vm.provision "shell", inline: PUPPET_UPGRADE
 
   config.vm.network "forwarded_port", guest: 3306, host: 3306, auto_correct: true
