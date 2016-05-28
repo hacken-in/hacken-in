@@ -32,8 +32,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # local code changes need to be re-synced to the VM via `vagrant reload --provision`
   #config.vm.synced_folder ".", "/opt/hacken.in", type: 'rsync', rsync__args: ['-a']
 
-  config.vm.provider :virtualbox do |vb|
-    vb.customize ["modifyvm", :id, "--memory", "1024"]
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = 2048
+    vb.cpus = 2
   end
 
   config.vm.provider "vmware_fusion" do |v|
