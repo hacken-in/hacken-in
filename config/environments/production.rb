@@ -46,6 +46,8 @@ Hcking::Application.configure do
   config.action_mailer.smtp_settings = {
     user_name: ENV["MAIL_USERNAME"],
     password: ENV["MAIL_PASSWORD"],
+    port: 587,
+    authentication: :plain
   }
   config.action_mailer.default_options = {
     from: "notifications@hacken.in"
