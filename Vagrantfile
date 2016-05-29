@@ -5,13 +5,14 @@
 VAGRANTFILE_API_VERSION = "2"
 
 PUPPET_UPGRADE = <<EOF
-if [[ $(/usr/bin/puppet --version) != *3.7.4* ]]; then
-  wget --quiet -P /tmp http://apt.puppetlabs.com/puppetlabs-release-precise.deb
-  dpkg -i /tmp/puppetlabs-release-precise.deb
+if [[ $(/usr/bin/env puppet --version) != *4.4.2* ]]; then
+  wget --quiet -P /tmp http://apt.puppetlabs.com/puppetlabs-release-pc1-precise.deb
+  aptitude remove --purge -y "puppet*"
+  dpkg -i /tmp/puppetlabs-release-pc1-precise.deb
   aptitude update > /dev/null
-  aptitude install -y puppet=3.7.4-1puppetlabs1 puppet-common=3.7.4-1puppetlabs1
-  sed -i '/templatedir/d' /etc/puppet/puppet.conf
-  cp /etc/hiera.yaml /etc/puppet/hiera.yaml
+  aptitude install -y puppet-agent python-software-properties
+#  sed -i '/templatedir/d' /etc/puppet/puppet.conf
+#  cp /etc/hiera.yaml /etc/puppet/hiera.yaml
  fi
 EOF
 
@@ -48,11 +49,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network "forwarded_port", guest: 5432, host: 5432, auto_correct: true
 
   config.vm.provision :puppet do |puppet|
-    puppet.module_path    = 'vagrant/puppet/modules'
-    puppet.manifests_path = 'vagrant/puppet/manifests'
-		puppet.facter = {
+    puppet.environment = 'development'
+    puppet.environment_path = 'vagrant/puppet/environments'
+    puppet.module_path = 'vagrant/puppet/modules'
+
+    puppet.facter = {
       'hackenin_application_environment' => 'development',
-      'hackenin_ruby_version'            => "2.2" # ¯\_ಠ_ಠ_/¯
+      'hackenin_ruby_version'            => "ruby2.2" # ¯\_ಠ_ಠ_/¯
     }
   end
 
