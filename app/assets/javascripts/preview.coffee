@@ -1,5 +1,5 @@
 $ ->
-  $('.preview .show-comment').click (event)->
+  $('.preview .show-text').click (event)->
     event.preventDefault()
 
     return if ($ this).hasClass('disabled')
@@ -15,7 +15,7 @@ $ ->
 
     new HckingPreview().transform_to_preview(($ this).parents('form'))
     ($ this).addClass('disabled')
-    ($ this).siblings('.show-comment').removeClass('disabled')
+    ($ this).siblings('.show-text').removeClass('disabled')
 
 HckingPreview = ->
   hide_preview: (base_form) ->

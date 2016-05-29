@@ -26,8 +26,6 @@ en:
         color: Color
         podcast_category: Podcast Category
         title: Title
-      comment:
-        body: Content
       event:
         address: Address
         category: Category
@@ -91,20 +89,11 @@ en:
   calendars:
     show:
       title: Calendar
-  comments:
-    _form:
-      comment_button: save
-    create:
-      confirmation: Comment saved.
-    destroy:
-      confirmation: Comment deleted.
-    update:
-      confirmation: Comment updated.
   common:
     confirm_delete: Are you sure?
     markdown_info: You can use <a href="%{syntax_link}" target="_blank">Markdown</a> and <a href="http://www.emoji-cheat-sheet.com/">Emojis</a>.
-    show_comment: Comment
-    show_preview: Preview
+    show_preview: Show preview
+    show_text: Show text
   devise:
     callbacks:
       user:

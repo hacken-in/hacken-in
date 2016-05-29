@@ -10,7 +10,6 @@ class SingleEvent < ActiveRecord::Base
 
   delegate :title, :description, to: :event, prefix: true
 
-  has_many :comments, as: :commentable, dependent: :destroy
   has_and_belongs_to_many :users
 
   has_many :external_users, :class_name => 'SingleEventExternalUser', :dependent => :destroy

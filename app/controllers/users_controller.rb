@@ -11,7 +11,6 @@ class UsersController < ApplicationController
     if @user
       # Collect recent activity of this user:
       @next_events = SingleEventsByDay.new(@user.single_events.today_or_in_future.limit(6)).days
-      @recent_comments = @user.comments.recent
 
       respond_with @user
     else

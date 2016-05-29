@@ -154,14 +154,6 @@ describe Event do
     expect(event.title).to eq("SimpleEvent")
   end
 
-  it "should delete comment when it is deleted" do
-    event = FactoryGirl.create(:simple)
-    comment = event.comments.build(body: "wow!")
-    comment.save
-    event.destroy
-    expect(Comment.where(id: comment.id).count).to eq(0)
-  end
-
   it "should generate opengraph data" do
     event = FactoryGirl.create(:simple)
     hash = {

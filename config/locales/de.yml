@@ -26,8 +26,6 @@ de:
         color: Farbe
         podcast_category: Podcast Kategorie
         title: Titel
-      comment:
-        body: Inhalt
       event:
         address: Adresse
         category: Kategorie
@@ -91,20 +89,11 @@ de:
   calendars:
     show:
       title: Kalender
-  comments:
-    _form:
-      comment_button: Und ab!
-    create:
-      confirmation: Kommentar angelegt.
-    destroy:
-      confirmation: Kommentar gelöscht.
-    update:
-      confirmation: Kommentar aktualisiert.
   common:
     confirm_delete: Bist Du sicher?
     markdown_info: Hier kannst Du <a href="%{syntax_link}" target="_blank">Markdown</a> und <a href="http://www.emoji-cheat-sheet.com/">Emojis</a> benutzen.
-    show_comment: Kommentar
-    show_preview: Vorschau
+    show_preview: Vorschau anzeigen
+    show_text: Text anzeigen
   devise:
     callbacks:
       user:
