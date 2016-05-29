@@ -18,8 +18,8 @@ cert_file
 coverage
 log/localeapp.yml
 .localeapp
-vagrant/puppet/modules
-vagrant/vendor
+infrastructure/vagrant/puppet/modules
+infrastructure/vagrant/vendor
 .librarian/
 .tmp/
 .vagrant/

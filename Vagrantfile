@@ -17,7 +17,7 @@ EOF
 
 HACKEN_BOOTSTRAP = <<EOF
   cd /opt/hacken.in
-  bundle install --path=vagrant/vendor
+  bundle install --path=infrastructure/vagrant/vendor
   bundle exec rake db:migrate
 EOF
 
@@ -48,8 +48,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network "forwarded_port", guest: 5432, host: 5432, auto_correct: true
 
   config.vm.provision :puppet do |puppet|
-    puppet.module_path    = 'vagrant/puppet/modules'
-    puppet.manifests_path = 'vagrant/puppet/manifests'
+    puppet.module_path    = 'infrastructure/vagrant/puppet/modules'
+    puppet.manifests_path = 'infrastructure/vagrant/puppet/manifests'
 		puppet.facter = {
       'hackenin_application_environment' => 'development',
       'hackenin_ruby_version'            => "2.2" # ¯\_ಠ_ಠ_/¯
