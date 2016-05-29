@@ -1,6 +1,6 @@
 !!! 5
 %html
-  %head
+  %head{"data-current-revision" => "#{Rails.configuration.x.current_revision}"}
 
     %title= content_for?(:title) ? yield(:title) + " – " + sitename : sitename
     = stylesheet_link_tag "application"

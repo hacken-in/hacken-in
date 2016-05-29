@@ -185,7 +185,7 @@ en:
         search_form:
           button: Search
           field_placeholder: Find events
-        test_environment_warning: Caution, this is our sandbox environment. For real events check <a href="http://www.hacken.in">hacken.in!</a>.
+        test_environment_warning: Caution, this is revision #{revision} of our sandbox environment. For real events check <a href="http://www.hacken.in">hacken.in!</a>.
   registrations:
     edit:
       danger_zone: Danger zone
@@ -256,7 +256,7 @@ en:
   users:
     edit:
       allow_ignore_view: Show ignored hashtags publicly
-    show: 
+    show:
         edit: Edit profile
         no_description: No description
   views:

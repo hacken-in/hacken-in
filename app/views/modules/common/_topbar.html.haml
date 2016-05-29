@@ -2,7 +2,7 @@
   - if staging_users_should_be_warned
     .alert-box.alert.text-center
       %h3
-        = raw t('modules.common.topbar.test_environment_warning')
+        = raw t('modules.common.topbar.test_environment_warning', revision: Rails.configuration.x.current_revision)
         %a.close{href: "#"}×
   %nav.top-bar{ data: { topbar: true }, role: "navigation" }
 

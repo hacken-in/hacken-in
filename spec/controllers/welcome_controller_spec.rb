@@ -34,8 +34,9 @@ describe WelcomeController, type: :controller do
     it "should warn users visiting a staging app" do
       Rails.configuration.x.release_stage = :master
       FactoryGirl.create(:koeln_region)
+      Rails.configuration.x.current_revision = "TESTREV"
       get 'deutschland'
-      expect(response.body).to match(/Achtung, das ist unsere Test-Umgebung/)
+      expect(response.body).to match(/Achtung, das ist Version TESTREV unserer Test-Umgebung/)
       get :move_to, region: "koeln"
       get 'deutschland'
       expect(response.body).to_not match(/Achtung, das ist unsere Test-Umgebung/)
