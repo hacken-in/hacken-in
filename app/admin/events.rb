@@ -27,7 +27,10 @@ ActiveAdmin.register Event do
     actions
   end
 
-  show partial: 'show'
+  show do
+    render partial: 'show'
+  end
+
   form partial: 'form'
 
   controller do
