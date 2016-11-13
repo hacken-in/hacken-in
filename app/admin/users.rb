@@ -39,6 +39,9 @@ ActiveAdmin.register User do
     end
   end
 
+  action_item only: :edit do
+    link_to 'Send password reset email.', send_password_reset_link_admin_user_path(user.id), :method => :post
+  end
 
   controller do
     defaults finder: :find_by_nickname
@@ -54,8 +57,6 @@ ActiveAdmin.register User do
         :homepage,
         :team,
         :name,
-        :password,
-        :password_confirmation,
         {
           assigned_region_ids: [],
           curated_event_ids: []
@@ -64,4 +65,10 @@ ActiveAdmin.register User do
     end
   end
 
+  member_action :send_password_reset_link, method: :post do
+    user = User.find(params[:id])
+    user.send_reset_password_instructions
+    flash[:notice] = "Password reset instructions where sent to #{user.email}."
+    redirect_to edit_admin_user_path(user)
+  end
 end
