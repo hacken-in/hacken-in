@@ -74,7 +74,7 @@ ignore_missing:
 
 ## Consider these keys used
 ignore_unused:
-  - 'activerecord.attributes.*'
+  - 'activerecord.{attributes,errors}.*'
   - '{devise,kaminari,will_paginate}.*'
   - 'subscriptions.{push,delete}.confirmation'
   - 'single_events.{push,delete}.confirmation'

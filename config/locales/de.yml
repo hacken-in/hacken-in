@@ -80,12 +80,22 @@ de:
         password: Passwort
         password_confirmation: Passwort bestätigen
         twitter: Twitter Account
+        reset_password_token: Token zum Ändern des Passworts
       venue:
         city: Stadt
         country: Land
         location: Firma/Location
         street: Straße
         zipcode: PLZ
+    errors:
+      models:
+        user:
+          attributes:
+            reset_password_token:
+              invalid: |-
+                war ungültig. Bitte lass' Dir von uns ein neues
+                schicken und achte darauf dass Du es vollständig aus
+                der E-Mail kopierst.
   calendars:
     show:
       title: Kalender
@@ -268,3 +278,6 @@ de:
     show:
       headline: "Statistiken für %{region}"
       weekdays: "Wochentage"
+  errors:
+    messages:
+      not_saved: "Ups. Wir konnten das leider nicht speichern:"

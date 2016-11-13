@@ -80,12 +80,21 @@ en:
         password: Password
         password_confirmation: Confirm password
         twitter: Twitter
+        reset_password_token: Token for resetting your password
       venue:
         city: City
         country: Country
         location: Company/Location
         street: Street
         zipcode: Postal code
+    errors:
+      models:
+        user:
+          attributes:
+            reset_password_token:
+              invalid: |-
+                was invalid. Please try resetting your password again
+                and be sure to copy the whole link from your email.
   calendars:
     show:
       title: Calendar
@@ -219,7 +228,7 @@ en:
       with_other_service: "…or with one of these services"
       with_user_data: With user data
     edit:
-      title: Change password
+      title: Change 
       password: New passwort
       password_confirmation: Please repeat your new password
   single_events:
@@ -268,3 +277,6 @@ en:
     show:
       headline: "Statistics for %{region}"
       weekdays: "Weekdays"
+  errors:
+    messages:
+      not_saved: "Sorry. We couldn't save that:"
