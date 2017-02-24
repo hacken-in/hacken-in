@@ -5,7 +5,7 @@ master:
   url: <%= ENV['DATABASE_URL'] %>
 
 development:
-  url: "postgresql://postgres:password@localhost/hcking?template=hcking_template"
+  url: <%= ENV['DATABASE_URL'] %>/development
 
 test:
-  url: "postgresql://postgres:password@localhost/hcking_test?template=hcking_template"
+  url: <%= ENV['DATABASE_URL'] %>/test
