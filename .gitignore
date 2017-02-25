@@ -23,4 +23,5 @@ infrastructure/vagrant/vendor
 .librarian/
 .tmp/
 .vagrant/
-vendor/ruby
+vendor/gems
+.env

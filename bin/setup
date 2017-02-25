@@ -1,0 +1,34 @@
+#!/usr/bin/env ruby
+require 'pathname'
+
+# path to your application root.
+APP_ROOT = Pathname.new File.expand_path('../../',  __FILE__)
+USER_MAPPING = "#{Process.uid}:#{Process.gid}"
+MINIMUM_DOCKER_VERSION="1.10"
+MINIMUM_COMPOSE_VERSION="1.10"
+
+Dir.chdir APP_ROOT do
+  puts "== Checking your Docker environment =="
+
+  docker_version = `docker version --format '{{.Server.Version}}'`
+  compose_version = `docker-compose version --short`
+
+  if Gem::Version.new(docker_version) < Gem::Version.new(MINIMUM_DOCKER_VERSION)
+    abort "You need Docker at least in Version #{MINIMUM_DOCKER_VERSION}. Please see README.md."
+  end
+
+  if Gem::Version.new(compose_version) < Gem::Version.new(MINIMUM_COMPOSE_VERSION)
+    abort "You need Docker Compose at least in Version #{MINIMUM_COMPOSE_VERSION}. Please see README.md."
+  end
+
+  puts "== Preparing for first Docker Compose Run =="
+  File.open(".env", "w") { |f| f.write "USER_MAPPING=#{USER_MAPPING}" }
+
+  puts "== Preparing Database =="
+  system "docker-compose run --rm web bundle"
+  system "docker-compose run --rm web rake db:setup"
+  system "docker-compose run --rm web rake db:create db:schema:load RAILS_ENV=test"
+
+  puts "== Starting Hacken.in =="
+  system "docker-compose up -d"
+end

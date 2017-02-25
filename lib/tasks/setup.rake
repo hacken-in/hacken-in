@@ -1,12 +1,6 @@
 require 'bundler/cli'
 
 namespace :setup do
-
-  desc "prepare vagrant run and install all puppet modules"
-  task :vagrant do
-    Bundler::CLI.start(['exec', 'librarian-puppet', 'install', '--path=puppet/modules'])
-  end
-
   desc "add an administrator, rake setup:admin user=USERNAME password=PASSWORD email=EMAIL"
   task admin: :environment do
     nick = ENV["user"] || begin
