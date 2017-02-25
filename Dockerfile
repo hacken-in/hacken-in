@@ -6,6 +6,7 @@ ENV RAILS_PORT 3000
 ENV RAILS_SERVE_STATIC_FILES true
 ENV RAILS_LOG_TO_STDOUT true
 ENV BUNDLE_BIN false
+ENV PATH "/app/bin:${PATH}"
 
 COPY Gemfile* /app/
 RUN apt-get update -qq && \
@@ -24,4 +25,4 @@ COPY . /app
 HEALTHCHECK --interval=5m --timeout=3s \
   CMD curl -f http://localhost:3000/deutschland || exit 1
 
-CMD bundle exec rails server -p $RAILS_PORT -b 0.0.0.0 -P /tmp/server.pid
+CMD rails server -p $RAILS_PORT -b 0.0.0.0 -P /tmp/server.pid
