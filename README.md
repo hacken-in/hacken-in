@@ -5,16 +5,16 @@
 [![Code Climate CodeCoverage](https://img.shields.io/codeclimate/coverage/github/hacken-in/hacken-in.svg)](https://codeclimate.com/github/hacken-in/hacken-in)
 [![Cool Tickets](https://img.shields.io/waffle/label/hacken-in/hacken-in/ready.svg?label=Cool%20Tickets)](https://waffle.io/hacken-in/hacken-in)
 
-This is the code of [hacken.in](http://hacken.in), an event calendar for geeks in various cities.
+This is the code of [hacken.in](https://hacken.in), an event calendar for geeks in various cities.
 
 * If you want to help us in extending the calendar to your city, please contact us in our [Google Group](http://groups.google.com/group/hacken-in).
 * If you find a bug, please report it on our [tracker](https://github.com/hacken-in/hacken-in/issues).
 * We discuss features and problems in our Slack.
-* If you want to contribute to [hacken.in](http://hacken.in), have a look at our Kanban Board at [waffle.io](http://waffle.io/hacken-in/hacken-in). Just pick a card from the **Pick One** column and start hacking.
+* If you want to contribute to [hacken.in](https://hacken.in), have a look at our Kanban Board at [waffle.io](http://waffle.io/hacken-in/hacken-in). Just pick a card from the **Pick One** column and start hacking.
 
 ## Scope of hacken.in
 
-When you want to add an event to [hacken.in](http://hacken.in), we feature the following topics:
+When you want to add an event to [hacken.in](https://hacken.in), we feature the following topics:
 
 * Programming (in any language)
 * Nerd-Culture (like Star Wars, Ponies, Gaming, Comics...)
@@ -55,7 +55,7 @@ If you want to drink from the firehose (and see a lot of GIFs) join us in our [S
 
 ## Testing
 
-[Hacken.in](http://hacken.in) is developed in a test-driven way using RSpec and FactoryGirl. If you want to contribute to the project always add tests for your added functionality. If you find a bug it would be really helpful if you add a regression test that displays this misbehavior. Even better: Fix it afterwards :wink:
+[Hacken.in](https://hacken.in) is developed in a test-driven way using RSpec and FactoryGirl. If you want to contribute to the project always add tests for your added functionality. If you find a bug it would be really helpful if you add a regression test that displays this misbehavior. Even better: Fix it afterwards :wink:
 
 ## About Contributing
 
