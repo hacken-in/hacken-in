@@ -4,8 +4,8 @@ ENV["RAILS_ENV"] ||= 'test'
 require 'vcr'
 require 'webmock'
 
-require 'codeclimate-test-reporter'
-CodeClimate::TestReporter.start
+require "simplecov"
+SimpleCov.start
 
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
