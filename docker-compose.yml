@@ -10,6 +10,7 @@ services:
       DATABASE_URL: 'postgres://postgres:@db:5432'
     volumes:
       - ".:/app"
+      - "./vendor/gems:/gems"
     user: "${USERID:-1000}"
     ports:
       - "3000:3000"
