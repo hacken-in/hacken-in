@@ -88,28 +88,11 @@ gem 'feedjira', '~> 1.3.0'
 gem 'bugsnag', '~> 3.0.0'
 
 group :development do
-  group :darwin do
-    gem 'rb-fsevent', '~> 0.9.4'
-    gem 'growl', '~> 1.0.3'
-  end
-
   gem 'better_errors', '~> 1.1.0'
   gem 'binding_of_caller', '~> 0.7.1'
 
-  # Faster test execution
-  gem 'spring', '~> 1.1.3'
-  gem 'spring-commands-rspec', '~> 1.0.2'
-
-  # Guard
-  gem 'guard', '~> 2.6.1'
-  gem 'guard-rspec', '~> 4.2.10'
-  gem 'guard-pow', '~> 2.0.0'
-  gem 'guard-bundler', '~> 2.0.0'
-
   # Silence asset pipeline and make log usable again
   gem 'quiet_assets', '~> 1.0.3'
-
-
 end
 
 group :test, :development do
@@ -131,4 +114,3 @@ group :test do
 end
 
 gem 'recaptcha', '0.3.6'
-gem 'lograge', '~> 0.3.0'
