@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
   db:
     image: postgres
@@ -6,9 +6,11 @@ services:
     build: .
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
     environment:
+      RAILS_ENV: "development"
       DATABASE_URL: 'postgres://postgres:@db:5432'
     volumes:
-      - .:/hacken-in
+      - ".:/app"
+    user: "${USERID:-1000}"
     ports:
       - "3000:3000"
     depends_on:

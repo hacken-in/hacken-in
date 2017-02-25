@@ -1,18 +1,20 @@
 FROM ruby:2.2.4
 
-RUN apt-get update -qq
-RUN apt-get install -y build-essential libpq-dev
-
 ENV BUNDLE_JOBS 4
-ENV RAILS_ENV development
+ENV RAILS_ENV production
 ENV RAILS_PORT 3000
 
-COPY Gemfile* /tmp/
-WORKDIR /tmp
-RUN bundle install
+COPY Gemfile* /app/
+RUN apt-get update -qq && \
+  apt-get install -y build-essential libpq-dev && \
+  groupadd --gid 4711 hacken && \
+  useradd -m --uid 4711 --gid 4711 hacken && \
+  chown hacken:hacken -Rv /app
 
-RUN mkdir /hacken-in
-WORKDIR /hacken-in
-ADD . /hacken-in
+USER hacken
+
+WORKDIR /app
+RUN bundle install --path=vendor/gems
+COPY . /app
 
 CMD ./bin/rails server -p $RAILS_PORT -b 0.0.0.0
