@@ -20,4 +20,4 @@ WORKDIR /app
 RUN bundle install --path=/gems
 COPY . /app
 
-CMD ./bin/rails server -p $RAILS_PORT -b 0.0.0.0 --pid=/tmp/server.pid
+CMD ./bin/rails server -p $RAILS_PORT -b 0.0.0.0 -P /tmp/server.pid
