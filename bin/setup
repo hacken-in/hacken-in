@@ -25,6 +25,7 @@ Dir.chdir APP_ROOT do
   File.open(".env", "w") { |f| f.write "USER_MAPPING=#{USER_MAPPING}" }
 
   puts "== Preparing Database =="
+  system "docker-compose run --rm web bundle"
   system "docker-compose run --rm web rake db:setup"
   system "docker-compose run --rm web rake db:create db:schema:load RAILS_ENV=test"
 
