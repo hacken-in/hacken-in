@@ -24,3 +24,4 @@ infrastructure/vagrant/vendor
 .tmp/
 .vagrant/
 vendor/gems
+.env
