@@ -31,19 +31,11 @@ We use Docker and Docker Compose for development. Therefore you need to follow t
     * If you’re using Windows, install [Docker for Windows](https://docs.docker.com/docker-for-windows)
     * If you’re using Linux, install [Docker](https://docs.docker.com/engine/installation/linux) and [Docker Compose](https://docs.docker.com/compose/install)
 * Clone this repository
-* In the folder now run:
+* In the folder now run `./bin/setup`
 
-```bash
-bash -c "echo USER_MAPPING=`id -u`:`id -g` > .env"
-docker-compose run --rm web rake db:setup
-docker-compose run --rm web rake db:create db:schema:load RAILS_ENV=test
-```
+You are now ready to go :smile: The app should be available at [http://localhost:3000](http://localhost:3000). If that's not the case, please ping us on Slack :smile:
 
-You are now ready to go :)
-
-To now start your app, run `docker-compose up` and you should be able to see the website at [http://localhost:3000](http://localhost:3000). If that's not the case, please ping us on Slack :)
-
-For all other commands you want to run, you always prefix them with `docker-compose run --rm web`. A few examples:
+If you want to start your app again later, run `docker-compose up`. For all other commands you want to run, you always prefix them with `docker-compose run --rm web`. A few examples:
 
 * Run all tests with `docker-compose run --rm web rake`
 * Run the migrations with `docker-compose run --rm web rake db:migrate`
