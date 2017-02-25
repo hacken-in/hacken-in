@@ -87,9 +87,6 @@ gem 'feedjira', '~> 1.3.0'
 # Bug Monitoring
 gem 'bugsnag', '~> 3.0.0'
 
-# The future
-gem 'rails_12factor'
-
 group :development do
   group :darwin do
     gem 'rb-fsevent', '~> 0.9.4'
