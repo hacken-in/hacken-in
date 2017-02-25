@@ -3,6 +3,8 @@ FROM ruby:2.2.4
 ENV BUNDLE_JOBS 4
 ENV RAILS_ENV production
 ENV RAILS_PORT 3000
+ENV RAILS_SERVE_STATIC_FILES true
+ENV RAILS_LOG_TO_STDOUT true
 
 COPY Gemfile* /app/
 RUN apt-get update -qq && \
@@ -18,4 +20,4 @@ WORKDIR /app
 RUN bundle install --path=/gems
 COPY . /app
 
-CMD ./bin/rails server -p $RAILS_PORT -b 0.0.0.0
+CMD ./bin/rails server -p $RAILS_PORT -b 0.0.0.0 --pid=/tmp/server.pid
