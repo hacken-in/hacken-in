@@ -1,10 +1,6 @@
 class EventsController < ApplicationController
   respond_to :html, :xml
 
-  def index
-    redirect_to :calendar
-  end
-
   def show
     event = Event.find params[:id]
     closest_single_event = event.closest_single_event
@@ -15,5 +11,4 @@ class EventsController < ApplicationController
       redirect_to :calendar
     end
   end
-
 end

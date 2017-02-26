@@ -15,12 +15,6 @@ describe CalendarsController, type: :controller do
     allow(Calendar).to receive(:new)
   end
 
-  it 'raises a NotFound exception when no region was given' do
-    expect do
-      get :show
-    end.to raise_exception(ActionController::RoutingError, 'Not Found')
-  end
-
   it "should initialize a start selector with today's date" do
     expect(StartSelector).to receive(:new).with(today).and_return(start_selector)
     get :show, region: region_name
