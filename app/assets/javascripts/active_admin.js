@@ -1,7 +1,6 @@
 //= require moment
 //= require moment/de.js
 //= require jquery
-//= require jquery-ui
 //= require jquery_ujs
 //= require chosen-jquery
 
