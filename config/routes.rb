@@ -1,22 +1,7 @@
 Hcking::Application.routes.draw do
   devise_for :users, controllers: { sessions: 'sessions', omniauth_callbacks: "callbacks" }
 
-  devise_scope :users do
-    get 'users', :to => 'users#show', :as => :user_root # Rails 3
-  end
-
-  resources :users, only: [:show] do
-    resources :authorizations, only: [:destroy]
-  end
-
   ActiveAdmin.routes(self)
-
-  namespace :admin do
-    resources :events do
-      resources :single_events
-      resources :radar_settings
-    end
-  end
 
   namespace :api do
     resource :calendar, only: :none do
@@ -25,6 +10,9 @@ Hcking::Application.routes.draw do
     end
   end
 
+  resources :users, only: [:show] do
+    resources :authorizations, only: [:destroy]
+  end
   resources :suggestions, only: [:new, :create, :show]
   resources :events, only: [:index, :show] do
     resources :single_events, path: "dates", only: [:show] do
