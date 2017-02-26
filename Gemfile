@@ -2,7 +2,7 @@
 source 'https://rubygems.org'
 ruby '2.2.4'
 
-gem 'rails', '~> 4.2.5.1'
+gem 'rails', '~> 4.2.8'
 gem 'rake', '~> 10.3.2'
 
 gem 'unicorn', '~> 5.0.1'
