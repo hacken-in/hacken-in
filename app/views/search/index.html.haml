@@ -2,9 +2,10 @@
   = t('search.title')
 
 .show-for-small-only.search_form
-  = form_tag search_path(region: current_region), :method => 'get' do
+  = form_tag search_index_path, :method => 'get' do
     .row
       .search-field
+        = hidden_field_tag :region, current_region.main_slug
         = text_field_tag :search, params[:search], placeholder: t('modules.common.topbar.search_form.field_placeholder')
       .search-button
         %input{type: "submit", class: "button", value: t('modules.common.topbar.search_form.button') }

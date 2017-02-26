@@ -60,10 +60,10 @@ class ApplicationController < ActionController::Base
 
   def get_ical_link_for(action, protocol)
     if protocol == 'google'
-      raw_url = url_for(action: action, protocol: 'http', controller: 'ical', format: 'ical', guid: current_user.guid)
+      raw_url = url_for(action: action, protocol: 'http', controller: 'ical', format: 'ical', guid: current_user.guid, region: current_region.main_slug)
       "http://google.com/calendar/render?cid=#{CGI.escape(raw_url)}"
     else
-      url_for(action: action, protocol: protocol, controller: 'ical', format: 'ical', guid: current_user.guid)
+      url_for(action: action, protocol: protocol, controller: 'ical', format: 'ical', guid: current_user.guid, region: current_region.main_slug)
     end
   end
   helper_method :get_ical_link_for

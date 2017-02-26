@@ -5,7 +5,7 @@
     %title= content_for?(:title) ? yield(:title) + " – " + sitename : sitename
     = stylesheet_link_tag "application"
     = csrf_meta_tags
-    - if content_for?(:opengraph) 
+    - if content_for?(:opengraph)
       = yield(:opengraph)
     = render_opengraph("og:title" => content_for?(:title) ? yield(:title) + " – hacken.in" : "hacken.in",
           "og:url" => url_for(only_path: false),
