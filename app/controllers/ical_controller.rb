@@ -1,6 +1,5 @@
 class IcalController < ApplicationController
   before_filter :set_calendar_headers
-  before_filter :track_event, only: [:general, :personalized, :like_welcome_page]
 
   rescue_from ActiveRecord::RecordNotFound, with: :render_empty
 
@@ -52,10 +51,6 @@ class IcalController < ApplicationController
 
   def render_empty
     render_events []
-  end
-
-  def track_event
-    ahoy.track "iCal", action: called_action
   end
 
   def user_by_guid

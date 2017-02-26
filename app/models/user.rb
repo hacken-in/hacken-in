@@ -200,18 +200,6 @@ class User < ActiveRecord::Base
     User.omniauth_providers - self.authorizations.map{ |a| a.provider.to_sym }
   end
 
-  def User.over_time
-    sum = 0
-
-    User.all.map do |user|
-      user.created_at.strftime "%Y-%m-%d"
-    end.group_by do |day|
-      day
-    end.sort.map do |day, occurrences|
-      [day, (sum += occurrences.length)]
-    end
-  end
-
   def set_external_nickname(ext_nick, force = false)
     ext_nick = ext_nick.select {|ext,nick| [:github, :twitter].include?(ext)}
     ext_nick = ext_nick.select {|ext,nick| self.send(ext).blank?} unless force

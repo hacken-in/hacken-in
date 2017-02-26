@@ -268,22 +268,6 @@ ical
     gevent.destroy
   end
 
-  it "should count the single events by city in this week" do
-    koeln = FactoryGirl.create(:single_event)
-    koeln.occurrence = Date.today.beginning_of_week + 1.days
-    koeln.save
-    berlin = FactoryGirl.create(:single_event_berlin)
-    berlin.occurrence = Date.today.beginning_of_week + 4.days
-    berlin.save
-    berlin2 = FactoryGirl.create(:single_event_berlin)
-    berlin2.occurrence = Date.today.end_of_week + 1.day
-    berlin2.save
-    expect(SingleEvent.this_week_by_city).to eq({
-      "Berlin" => 1,
-      "Köln" => 1
-    })
-  end
-
   describe "events_per_day_in" do
     subject { SingleEvent.events_per_day_in(date_range) }
 

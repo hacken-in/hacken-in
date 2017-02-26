@@ -188,10 +188,6 @@ class Event < ActiveRecord::Base
     end
   end
 
-  def self.group_by_category
-    Hash[Event.group("category_id").count.map {|category_id, amount_of_events| [ Category.title_for(category_id), amount_of_events ] }]
-  end
-
   private
 
   def schedule_to_yaml

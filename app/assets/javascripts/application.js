@@ -1,7 +1,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require jsapi
-//= require chartkick
 //= require leaflet
 
 // TODO: Don't include the parts we don't need
