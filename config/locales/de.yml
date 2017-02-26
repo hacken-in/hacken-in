@@ -184,7 +184,6 @@ de:
         search_form:
           button: Suchen
           field_placeholder: Finde Events
-        test_environment_warning: Achtung, das ist Version %{revision} unserer Test-Umgebung. Richtige Events gibt es auf <a href="http://www.hacken.in">hacken.in!</a>.
   registrations:
     edit:
       danger_zone: Gefahrenzone
