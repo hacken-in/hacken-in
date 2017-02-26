@@ -22,6 +22,7 @@ gem 'jquery-rails', '~> 3.1.1'
 gem 'jquery-ui-rails', '~> 5.0.3'
 gem 'foundation-rails', '5.4.5.0'
 gem 'font-awesome-rails', '~> 4.1.0.0'
+gem 'momentjs-rails', '~> 2.4.0'
 
 # Haml Templating Language
 gem 'haml', '~> 4.0.4'
@@ -32,7 +33,6 @@ gem 'md_emoji', '~> 1.0.0'
 
 # Admin
 gem 'activeadmin', '~> 1.0.0.pre2'
-gem 'momentjs-rails', '~> 2.4.0'
 gem 'chosen-rails', '~> 1.1.0'
 
 # Date Handling

@@ -3,7 +3,6 @@
 # = require jquery
 # = require jquery-ui
 # = require jquery_ujs
-# = require jsapi
 # = require chosen-jquery
 # = require admin/boxes/form
 # = require admin/events/form

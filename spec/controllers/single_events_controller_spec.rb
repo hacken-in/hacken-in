@@ -28,10 +28,4 @@ describe SingleEventsController, type: :controller do
     get :show, id: single_event.id, event_id: single_event.event.id
     expect(response).to be_success
   end
-
-  it "should render the comments partial in order to show and post comments" do
-    single_event = FactoryGirl.create(:single_event)
-    get :show, id: single_event.id, event_id: single_event.event.id
-    expect(response).to be_success
-  end
 end
