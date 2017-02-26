@@ -7,7 +7,7 @@ class CreateAhoyEvents < ActiveRecord::Migration
       # user
       t.integer :user_id
 
-      t.string :name
+      t.string :name, limit: 255
       t.json :properties
       t.timestamp :time
     end
