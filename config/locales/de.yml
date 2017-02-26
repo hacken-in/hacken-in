@@ -240,9 +240,6 @@ de:
     show:
       participate: Und ich!
       unparticipate: Doch nich.
-  subscriptions:
-    index:
-      error: Eintrag nicht gefunden.
   suggestions:
     create:
       confirmation: Vielen Dank für Deinen Vorschlag :)

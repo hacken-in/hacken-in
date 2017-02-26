@@ -19,10 +19,4 @@ describe EventsController, type: :controller do
     get :show, id: event.id
     expect(response).to redirect_to(event_single_event_path(event, single_event))
   end
-
-  it "should redirect to calender page" do
-    get :index
-    expect(response).to redirect_to(:calendar)
-  end
-
 end
