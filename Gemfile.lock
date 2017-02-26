@@ -445,7 +445,6 @@ DEPENDENCIES
   quiet_assets (~> 1.0.3)
   rails (~> 4.2.8)
   rails-i18n
-  rake (~> 10.3.2)
   recaptcha (= 0.3.6)
   redcarpet (~> 3.1.2)
   rspec-rails (~> 3.4.2)
