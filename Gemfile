@@ -3,9 +3,10 @@ source 'https://rubygems.org'
 ruby '2.2.4'
 
 gem 'rails', '~> 4.2.8'
-gem 'rake', '~> 10.3.2'
 
+# Rack HTTP Server
 gem 'unicorn', '~> 5.0.1'
+
 # Databases
 gem 'pg', '~> 0.17.1'
 
@@ -14,10 +15,6 @@ gem 'acts-as-taggable-on', '~> 3.5.0'
 
 # Statistics
 gem 'chartkick', '~> 1.3.2'
-
-# TODO: Remove
-# This lib is used exactly ONCE in the admin interface
-gem 'momentjs-rails', '~> 2.4.0'
 
 # Assets
 gem 'sass-rails', '~> 4.0.3'
@@ -29,14 +26,19 @@ gem 'jquery-ui-rails', '~> 5.0.3'
 gem 'foundation-rails', '5.4.5.0'
 gem 'font-awesome-rails', '~> 4.1.0.0'
 
+# Haml Templating Language
 gem 'haml', '~> 4.0.4'
-gem 'md_emoji', '~> 1.0.0'
+
+# Markdown + Emojis
 gem 'redcarpet', '~> 3.1.2'
+gem 'md_emoji', '~> 1.0.0'
 
 # Admin
 gem 'activeadmin', '~> 1.0.0.pre2'
 gem 'ahoy_matey'
 gem 'groupdate'
+gem 'momentjs-rails', '~> 2.4.0'
+gem 'chosen-rails', '~> 1.1.0'
 
 # Date Handling
 gem 'ice_cube', '~> 0.11.1'
@@ -73,19 +75,20 @@ gem 'twitter', '~> 5.6.0'
 # Include some generic language stuff (dates, common errors, …)
 gem 'rails-i18n'
 
-# Other dependencies
+# Geocode addresses
 gem 'geocoder', '~> 1.2.2'
-
-# Nicer drop down boxes in the admin area
-gem 'chosen-rails', '~> 1.1.0'
 
 # Meetup API
 gem 'ruby_meetup2', '~> 0.5.0'
+
 # RSS parsing
 gem 'feedjira', '~> 1.3.0'
 
 # Bug Monitoring
 gem 'bugsnag', '~> 3.0.0'
+
+# Captchas
+gem 'recaptcha', '0.3.6'
 
 group :development do
   gem 'better_errors', '~> 1.1.0'
@@ -111,5 +114,3 @@ end
 group :test do
   gem 'webmock', '~> 1.17.3'
 end
-
-gem 'recaptcha', '0.3.6'
