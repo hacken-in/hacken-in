@@ -5,8 +5,9 @@ notifications:
   slack: hacken-in:v0VPwCbdNxNY7oVfJGsFLAJS
 bundler_args: --without development
 before_script:
-  - psql -c 'create database hcking_test;' -U postgres
-  - "cp config/database.yml_travis config/database.yml"
+  - psql -c 'create database test;' -U postgres
+env:
+- DATABASE_URL="postgres://travis:@localhost:5432"
 script: "bundle exec rake db:drop db:create db:migrate ci"
 sudo: false
 cache: bundler
