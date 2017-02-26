@@ -55,10 +55,13 @@ Hcking::Application.routes.draw do
   get "export/ical"                       => "ical#everything"
 
   get "impressum" => "pages#show", id: "impressum"
-  get "deutschland" => "welcome#deutschland", :constraints => { :format => 'html' }
-  get "move_to/:region" => "welcome#move_to", as: "move_region"
+
+  get "deutschland", to: redirect("/") # Historic route
+  get "move_to/:region", to: redirect("/") # Historic route
+
   get ":region" => "calendars#show", as: "region", :constraints => { :format => 'html' }
+
   get ":region/search" => "search#index", as: "search"
 
-  root to: "welcome#index"
+  root to: "calendars#index"
 end
