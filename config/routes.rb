@@ -34,9 +34,7 @@ Hcking::Application.routes.draw do
   resource :calendar, only: [:show]
   resources :humans, only: [:index]
   resources :sitemap, only: [:index]
-
-  get "impressum"               => "pages#show", page_name: "impressum"
-  get "pages/:page_name"              => "pages#show"
+  resources :pages, only: [:show]
 
   # Calendar Links
   # These are the old links, without a region, redirect them to koeln
@@ -56,6 +54,7 @@ Hcking::Application.routes.draw do
   get "export/ical/single_event/:id"      => "ical#for_single_event", as: "single_event_ical"
   get "export/ical"                       => "ical#everything"
 
+  get "impressum" => "pages#show", id: "impressum"
   get "deutschland" => "welcome#deutschland", :constraints => { :format => 'html' }
   get "move_to/:region" => "welcome#move_to", as: "move_region"
   get ":region" => "calendars#show", as: "region", :constraints => { :format => 'html' }
