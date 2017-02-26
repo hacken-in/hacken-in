@@ -1,4 +1,4 @@
-set :output, 'whenever.log'
+set :output, 'log/whenever.log'
 
 every :day, :at => '03:21am' do
   rake 'twitter:follow'
@@ -18,4 +18,8 @@ end
 
 every :day, :at => '00:30am' do
   rake 'single_events:generate'
+end
+
+every :day, :at => '02:30am' do
+  system "letsencrypt certonly"
 end
