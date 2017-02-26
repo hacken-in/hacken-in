@@ -7,10 +7,13 @@ $ ->
   initMap = ->
     map = L.map('german_map', {closePopupOnClick: false})
 
-    # add an OpenStreetMap tile layer
-    L.tileLayer('//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="//www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map)
+    L.tileLayer('//stamen-tiles-{s}.a.ssl.fastly.net/toner-background/{z}/{x}/{y}.png', {
+     	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+     	subdomains: 'abcd',
+     	minZoom: 0,
+     	maxZoom: 20,
+     	ext: 'png'
+     }).addTo(map);
 
     koeln = new L.Popup()
     koeln.setLatLng([50.938056,6.956944])
