@@ -25,3 +25,4 @@ infrastructure/vagrant/vendor
 .vagrant/
 vendor/gems
 .env
+config/travis/travis-deploy-key

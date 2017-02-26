@@ -4,7 +4,7 @@ set :user, "hacken"
 set :application, "hacken-in"
 set :repo_url, "https://github.com/hacken-in/website.git"
 set :log_level, :info
-set :linked_dirs, ["log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"]
+set :linked_dirs, ["log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", "public/uploads"]
 
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 set :deploy_to, "~/#{fetch(:application)}-#{fetch(:stage)}"
