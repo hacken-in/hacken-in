@@ -5,6 +5,7 @@ Hcking::Application.routes.draw do
   namespace :admin do
     resources :events do
       resources :single_events
+      resources :radar_settings
     end
   end
 
