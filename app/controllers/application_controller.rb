@@ -69,7 +69,7 @@ class ApplicationController < ActionController::Base
   helper_method :get_ical_link_for
 
   def staging_users_should_be_warned
-    session[:region].nil? && Rails.application.config.x.release_stage == :master
+    Rails.application.config.x.release_stage == :master
   end
   helper_method :staging_users_should_be_warned
 

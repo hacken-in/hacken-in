@@ -183,7 +183,6 @@ en:
         search_form:
           button: Search
           field_placeholder: Find events
-        test_environment_warning: Caution, this is revision #{revision} of our sandbox environment. For real events check <a href="http://www.hacken.in">hacken.in!</a>.
   registrations:
     edit:
       danger_zone: Danger zone
