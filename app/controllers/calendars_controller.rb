@@ -2,6 +2,9 @@
 class CalendarsController < ApplicationController
   before_action :require_region!, only: [ :show ]
 
+  def index
+  end
+
   def show
     start_date = params[:start].present? ? Date.parse(params[:start]) : Date.today
 

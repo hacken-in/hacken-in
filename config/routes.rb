@@ -35,17 +35,9 @@ Hcking::Application.routes.draw do
   resources :humans, only: [:index]
   resources :sitemap, only: [:index]
   resources :pages, only: [:show]
+  # Imagine a `resources :calendars` here, but it needs to be at the bottom of this file
 
   # Calendar Links
-  # These are the old links, without a region, redirect them to koeln
-  get "ical",                    to: redirect('/export/ical/koeln/all')
-  get "personalized_ical/:guid", to: redirect('/export/ical/koeln/mylikes/%{guid}')
-  get "user_ical/:guid",         to: redirect('/export/ical/koeln/mine/%{guid}')
-  get "single_event_ical/:id",   to: redirect('/export/ical/single_event/%{id}')
-  get "event_ical/:id",          to: redirect('/export/ical/event/%{id}')
-  get "tag_ical/:id",            to: redirect('/export/ical/koeln/tag/%{id}')
-
-  # These are the new ones with a region in it
   get "export/ical/:region/all"           => "ical#general"
   get "export/ical/:region/mine/:guid"    => "ical#like_welcome_page"
   get "export/ical/:region/tag/:id"       => "ical#for_tag"
@@ -54,11 +46,19 @@ Hcking::Application.routes.draw do
   get "export/ical/single_event/:id"      => "ical#for_single_event", as: "single_event_ical"
   get "export/ical"                       => "ical#everything"
 
-  get "impressum" => "pages#show", id: "impressum"
-  get "deutschland" => "welcome#deutschland", :constraints => { :format => 'html' }
-  get "move_to/:region" => "welcome#move_to", as: "move_region"
+  # Old, historic routes that need to be redirected
+  get "ical",                    to: redirect('/export/ical/koeln/all')
+  get "personalized_ical/:guid", to: redirect('/export/ical/koeln/mylikes/%{guid}')
+  get "user_ical/:guid",         to: redirect('/export/ical/koeln/mine/%{guid}')
+  get "single_event_ical/:id",   to: redirect('/export/ical/single_event/%{id}')
+  get "event_ical/:id",          to: redirect('/export/ical/event/%{id}')
+  get "tag_ical/:id",            to: redirect('/export/ical/koeln/tag/%{id}')
+  get "deutschland",             to: redirect("/")
+  get "move_to/:region",         to: redirect("/")
+  get "impressum",               to: redirect("/pages/impressum")
+
+  # This would be `resources :calendars`, but it has special requirements for the URL...
   get ":region" => "calendars#show", as: "region", :constraints => { :format => 'html' }
   get ":region/search" => "search#index", as: "search"
-
-  root to: "welcome#index"
+  root to: "calendars#index"
 end
