@@ -1,1 +1,1 @@
-task ci: [ :spec, 'brakeman:check' ]
+task ci: [ :spec ]
