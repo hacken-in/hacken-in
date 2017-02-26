@@ -85,6 +85,7 @@ $ ->
       repaint()
       reserialize()
       false
+
     $("#add_rule_weekly").click =>
       @rules.push {
         interval: $("#week_recurrence").val(),
@@ -96,7 +97,3 @@ $ ->
       repaint()
       reserialize()
       false
-
-  $('.chosen-select').chosen
-    allow_single_deselect: true
-    no_results_text: 'No results matched'
