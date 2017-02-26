@@ -18,11 +18,10 @@ cert_file
 coverage
 log/localeapp.yml
 .localeapp
-infrastructure/vagrant/puppet/modules
-infrastructure/vagrant/vendor
 .librarian/
 .tmp/
 .vagrant/
 vendor/gems
+vendor/bundle
 .env
 config/travis/travis-deploy-key
