@@ -1,11 +1,5 @@
-%header.contain-to-grid
-  - if staging_users_should_be_warned
-    .alert-box.alert.text-center
-      %h3
-        = raw t('modules.common.topbar.test_environment_warning', revision: Rails.configuration.x.current_revision)
-        %a.close{href: "#"}×
+%header.contain-to-grid{ class: (staging_users_should_be_warned ? "staging" : "") }
   %nav.top-bar{ data: { topbar: true }, role: "navigation" }
-
     %ul.left
       %li.sidebar-toggle
         %a.left-off-canvas-toggle{href:'#'}
@@ -16,7 +10,10 @@
       %li.name
         %h1
           = image_tag asset_path("logo/hacken_in-32-white.png"), class: "hacken-logo"
-          = link_to 'hacken.in', :root
+          - if staging_users_should_be_warned
+            = link_to "master.hacken.in @ #{Rails.configuration.x.current_revision}", :root
+          - else
+            = link_to 'hacken.in', :root
 
     %section.top-bar-section
       - unless current_region.nil?
