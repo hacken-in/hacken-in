@@ -9,10 +9,10 @@ engines:
     config:
       languages:
       - ruby
-      exclude_paths:
-      - "spec/"
-      - "db/"
-      - "**/vendor/"
+    exclude_paths:
+    - "spec/"
+    - "db/"
+    - "**/vendor/"
   fixme:
     enabled: false
   rubocop:
