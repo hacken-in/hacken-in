@@ -16,14 +16,10 @@ addons:
   code_climate:
     repo_token: 6122247a9dd27a5926f1742443052dff7293cfc076a38ca47d7357538596c342
 after_success:
-  - git diff
   - bundle exec codeclimate-test-reporter
-  - git diff
 deploy:
   - provider: script
-    script:
-      - git diff
-      - script/deploy-to-uberspace master
+    script: script/deploy-to-uberspace master
     on:
       branch: master
   - provider: script
