@@ -6,6 +6,7 @@ set +e
 DEPLOY_KEY="config/travis/travis-deploy-key"
 TARGET=$1
 
+git diff
 if [ "$TARGET" == "" ]; then
   echo "Bollocks. Please set a deploy target with $0 <target>"
   exit 1
@@ -21,3 +22,4 @@ source "$HOME/.rvm/scripts/rvm"
 rvm use $(cat .ruby-version)
 bundle install --gemfile=Gemfile.deployment
 BUNDLE_GEMFILE=Gemfile.deployment bundle exec cap $TARGET deploy
+git diff
