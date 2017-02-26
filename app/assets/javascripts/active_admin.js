@@ -1,10 +1,6 @@
-//= require moment
-//= require moment/de.js
 //= require jquery
 //= require jquery_ujs
 //= require chosen-jquery
-
-//= require_self
 
 $(function() {
   $(".chosen-select").chosen({
@@ -63,8 +59,7 @@ $(function() {
         results = [];
         for (i = k = 0, len1 = ref1.length; k < len1; i = ++k) {
           date = ref1[i];
-          display = moment(date).format("DD.MM.YYYY, H:mm:ss");
-          results.push($("ul.excludes").append("<li>" + display + " <a href='#' class='delete-exclude' data-no='" + i + "'><i class='fa fa-trash-o'></i></a></li>"));
+          results.push($("ul.excludes").append("<li>" + date + " <a href='#' class='delete-exclude' data-no='" + i + "'><i class='fa fa-trash-o'></i></a></li>"));
         }
         return results;
       };
