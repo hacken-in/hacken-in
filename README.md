@@ -23,7 +23,7 @@ When you want to add an event to [hacken.in](https://hacken.in), we feature the 
 * Electronics and Robots
 * Networking
 
-If you want to help us in extending the calendar to your city, open an issue, so we can get you started!
+If you want to help us in extending the calendar to your city, [open an issue](https://github.com/hacken-in/hacken-in/issues/new), so we can get you started!
 
 ## Getting Started :point_right:
 
