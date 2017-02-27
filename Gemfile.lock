@@ -51,15 +51,6 @@ GEM
     acts-as-taggable-on (3.5.0)
       activerecord (>= 3.2, < 5)
     addressable (2.4.0)
-    ahoy_matey (1.1.0)
-      addressable
-      browser (>= 0.4.0)
-      errbase
-      geocoder
-      referer-parser
-      request_store
-      user_agent_parser
-      uuidtools
     arbre (1.0.3)
       activesupport (>= 3.0.0)
     arel (6.0.4)
@@ -72,7 +63,6 @@ GEM
     bourbon (3.2.4)
       sass (~> 3.2)
       thor
-    browser (0.8.0)
     buftok (0.2.0)
     bugsnag (3.0.0)
       json (~> 1.7, >= 1.7.7)
@@ -83,7 +73,6 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
-    chartkick (1.3.2)
     chosen-rails (1.1.1)
       coffee-rails (>= 3.2)
       compass-rails (>= 1.1.2)
@@ -131,7 +120,6 @@ GEM
     equalizer (0.0.11)
     equivalent-xml (0.6.0)
       nokogiri (>= 1.4.3)
-    errbase (0.0.2)
     erubis (2.7.0)
     execjs (2.2.2)
     factory_girl (4.5.0)
@@ -160,8 +148,6 @@ GEM
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     gravatar_image_tag (1.2.0)
-    groupdate (2.1.0)
-      activerecord (>= 3.0.0)
     haml (4.0.7)
       tilt
     has_scope (0.6.0)
@@ -304,8 +290,6 @@ GEM
     recaptcha (0.3.6)
     redcarpet (3.1.2)
     ref (1.0.5)
-    referer-parser (0.3.0)
-    request_store (1.1.0)
     responders (2.1.1)
       railties (>= 4.2.0, < 5.1)
     rspec-core (3.4.2)
@@ -387,8 +371,6 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
-    user_agent_parser (2.2.0)
-    uuidtools (2.1.5)
     vcr (2.9.2)
     warden (1.2.6)
       rack (>= 1.0)
@@ -404,13 +386,11 @@ PLATFORMS
 DEPENDENCIES
   activeadmin (~> 1.0.0.pre2)
   acts-as-taggable-on (~> 3.5.0)
-  ahoy_matey
   better_errors (~> 1.1.0)
   binding_of_caller (~> 0.7.1)
   bugsnag (~> 3.0.0)
   cancancan (~> 1.8.4)
   carrierwave (~> 0.10.0)
-  chartkick (~> 1.3.2)
   chosen-rails (~> 1.1.0)
   codeclimate-test-reporter (~> 1.0.0)
   coffee-script (~> 2.2.0)
@@ -426,13 +406,11 @@ DEPENDENCIES
   foundation-rails (= 5.4.5.0)
   geocoder (~> 1.2.2)
   gravatar_image_tag (~> 1.2.0)
-  groupdate
   haml (~> 4.0.4)
   i18n-tasks (~> 0.7.10)
   icalendar (~> 1.5.2)
   ice_cube (~> 0.11.1)
   jquery-rails (~> 3.1.1)
-  jquery-ui-rails (~> 5.0.3)
   leaflet-rails (~> 0.7.3)
   md_emoji (~> 1.0.0)
   mini_magick (~> 3.7.0)

@@ -1,16 +1,10 @@
 ---
 de:
   active_admin:
-    dashboard: Dashboard
+    dashboard: Willkommen
     view: Anzeigen
-    statistics:
-      events_by_category: Veranstaltungsreihen insgesamt nach Kategorien
-      ical_exports: iCal Exports pro Tag
-      page_visits: Besucher pro Tag
-      single_events_this_week_by_category: Veranstaltungen dieser Woche nach Kategorie
-      single_events_this_week_by_city: Veranstaltungen dieser Woche nach Stadt
-      single_events_this_week_by_day: Veranstaltungen dieser Woche nach Wochentag
-      users_over_time: Registrierte Benutzer
+    welcome_text: |
+      Willkommen im Admin Interface.
   activerecord:
     attributes:
       blog_post:

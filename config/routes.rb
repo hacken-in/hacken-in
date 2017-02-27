@@ -2,6 +2,12 @@ Hcking::Application.routes.draw do
   devise_for :users, controllers: { sessions: "sessions", omniauth_callbacks: "callbacks" }
 
   ActiveAdmin.routes(self)
+  namespace :admin do
+    resources :events do
+      resources :single_events
+      resources :radar_settings
+    end
+  end
 
   namespace :api do
     resource :calendar, only: :none do

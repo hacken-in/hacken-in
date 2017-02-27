@@ -13,18 +13,15 @@ gem 'pg', '~> 0.17.1'
 # Tags
 gem 'acts-as-taggable-on', '~> 3.5.0'
 
-# Statistics
-gem 'chartkick', '~> 1.3.2'
-
 # Assets
 gem 'sass-rails', '~> 4.0.3'
 gem 'coffee-script', '~> 2.2.0'
 gem 'leaflet-rails', '~> 0.7.3'
 gem 'uglifier', '~> 2.5.1'
 gem 'jquery-rails', '~> 3.1.1'
-gem 'jquery-ui-rails', '~> 5.0.3'
 gem 'foundation-rails', '5.4.5.0'
 gem 'font-awesome-rails', '~> 4.1.0.0'
+gem 'momentjs-rails', '~> 2.4.0'
 
 # Haml Templating Language
 gem 'haml', '~> 4.0.4'
@@ -35,9 +32,6 @@ gem 'md_emoji', '~> 1.0.0'
 
 # Admin
 gem 'activeadmin', '~> 1.0.0.pre2'
-gem 'ahoy_matey'
-gem 'groupdate'
-gem 'momentjs-rails', '~> 2.4.0'
 gem 'chosen-rails', '~> 1.1.0'
 
 # Date Handling

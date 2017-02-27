@@ -275,26 +275,4 @@ class SingleEvent < ActiveRecord::Base
   def attended_by_external_user?(session_uuid)
     session_uuid.present? && external_users.find_by_session_token(session_uuid).present?
   end
-
-  def self.this_week_by_day
-    week_stats = self.reorder(nil).this_week.group_by_day(:occurrence).count
-    Hash[(Date.today.beginning_of_week .. Date.today.end_of_week).map do |day|
-      [day.strftime("%a"), week_stats[day] || 0]
-    end]
-  end
-
-  def self.this_week_by_category
-    Hash[self.reorder(nil).this_week.group_by_category.count.map { |category_id, count| [ Category.title_for(category_id), count ] }]
-  end
-
-  def self.this_week_by_city
-    by_cities = Hash.new(0)
-    self.this_week.each do |se|
-      if se.venue
-        by_cities[se.venue.city] += 1
-      end
-    end
-    by_cities
-  end
 end
-
