@@ -31,3 +31,7 @@ In the spirit of [free software](http://www.fsf.org/licensing/essays/free-sw.htm
     * Travis CI:construction_worker: runs the test suite, if everything is green, the master branch will be deployed to [master.hacken.in](https://master.hacken.in).
     * When we want to release it to production, we will make a pull request from the `master` branch to the `release` branch. Travis CI:construction_worker: will automatically deploy it.
 * Welcome aboard! (You get extra points for deleting your old feature branch!)
+
+## Deploying your Changes
+* All changes that got merged into our `master` branch will automatically be published to [master.hacken.in](https://master.hacken.in). You can see the currently deployed revision right in the top left header bar
+* Deployments to our live site [hacken.in](https://hacken.in) are done via [GitHub releases](https://github.com/hacken-in/hacken-in/releases) (which is just a fancy way to say "we're using Git tags"). To deploy the live site, just set a new tag on master via the GitHub interface. There is a simple rake task `rake release:changelog` will give you a list of all changes since the last Release.
