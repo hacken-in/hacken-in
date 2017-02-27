@@ -3,17 +3,17 @@
 [![Travis Build Status](https://img.shields.io/travis/hacken-in/hacken-in/master.svg?style=flat-square)](http://travis-ci.org/hacken-in/hacken-in)
 [![Code Climate](https://img.shields.io/codeclimate/github/hacken-in/hacken-in.svg?style=flat-square)](https://codeclimate.com/github/hacken-in/hacken-in)
 [![Code Climate CodeCoverage](https://img.shields.io/codeclimate/coverage/github/hacken-in/hacken-in.svg?style=flat-square)](https://codeclimate.com/github/hacken-in/hacken-in)
-[![Cool Tickets](https://img.shields.io/waffle/label/hacken-in/hacken-in/ready.svg?label=Cool%20Tickets?style=flat-square)](https://waffle.io/hacken-in/hacken-in)
+[![Cool Tickets](https://img.shields.io/waffle/label/hacken-in/hacken-in/ready.svg?label=Cool%20Tickets&style=flat-square)](https://waffle.io/hacken-in/hacken-in)
 ![bugsnag](https://img.shields.io/badge/bugsnag-%F0%9F%90%9B-green.svg?style=flat-square)
+[![Contributer Coventant](https://img.shields.io/badge/contributor%20covenant-1.4-ff69bf.svg?style=flat-square)](http://contributor-covenant.org/version/1/4)
 
 This is the code of [hacken.in](https://hacken.in), an event calendar for geeks in various cities.
 
-* If you want to help us in extending the calendar to your city, please contact us in our [Google Group](http://groups.google.com/group/hacken-in).
+* If you want to contribute, check out our [Code of Conduct](CODE_OF_CONDUCT.md) and [Contribution Guide](CONTRIBUTING.md).
 * If you find a bug, please report it on our [tracker](https://github.com/hacken-in/hacken-in/issues).
 * We discuss features and problems in our Slack.
-* If you want to contribute to [hacken.in](https://hacken.in), have a look at our Kanban Board at [waffle.io](http://waffle.io/hacken-in/hacken-in). Just pick a card from the **Pick One** column and start hacking.
 
-## Scope of hacken.in
+## Scope of hacken.in :mag_right:
 
 When you want to add an event to [hacken.in](https://hacken.in), we feature the following topics:
 
@@ -22,6 +22,8 @@ When you want to add an event to [hacken.in](https://hacken.in), we feature the 
 * Software Development Methods and Software Engineering
 * Electronics and Robots
 * Networking
+
+If you want to help us in extending the calendar to your city, open an issue, so we can get you started!
 
 ## Getting Started :point_right:
 
