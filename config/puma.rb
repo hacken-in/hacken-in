@@ -30,6 +30,7 @@ plugin :tmp_restart
 
 # Write state path to communicate during deploy
 state_path 'tmp/pids/puma.state'
+activate_control_app 'unix://tmp/pids/puma.sock'
 
 on_worker_boot do
   # worker specific setup

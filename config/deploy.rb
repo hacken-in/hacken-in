@@ -17,7 +17,7 @@ namespace :deploy do
   task :restart do
     on roles(:app) do
       within release_path do
-        execute "touch tmp/restart.txt"
+        execute "bundle exec pumactl -F config/puma.rb phased-restart"
       end
     end
   end
