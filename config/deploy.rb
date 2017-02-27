@@ -17,7 +17,7 @@ namespace :deploy do
   task :restart do
     on roles(:app) do
       within release_path do
-        execute "bundle exec pumactl -F config/puma.rb phased-restart"
+        execute "cd #{release_path}; source ~/hacken-in-#{fetch(:stage)}.secrets; bundle exec pumactl -F config/puma.rb phased-restart"
       end
     end
   end
