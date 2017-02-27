@@ -28,6 +28,9 @@ preload_app!
 # Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart
 
+# Write state path to communicate during deploy
+state_path 'tmp/pids/puma.state'
+
 on_worker_boot do
   # worker specific setup
   ActiveRecord::Base.establish_connection
