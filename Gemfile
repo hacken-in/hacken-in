@@ -5,7 +5,7 @@ ruby '2.2.4'
 gem 'rails', '~> 4.2.8'
 
 # Rack HTTP Server
-gem 'unicorn', '~> 5.2.0'
+gem 'puma', '~> 3.7.1'
 
 # Databases
 gem 'pg', '~> 0.17.1'

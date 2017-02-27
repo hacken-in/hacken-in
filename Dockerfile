@@ -2,7 +2,7 @@ FROM ruby:2.2.4
 
 ENV BUNDLE_JOBS 4
 ENV RAILS_ENV production
-ENV RAILS_PORT 3000
+ENV PUMA_PORT 3000
 ENV RAILS_SERVE_STATIC_FILES true
 ENV RAILS_LOG_TO_STDOUT true
 ENV BUNDLE_BIN false
@@ -26,4 +26,4 @@ COPY . /app
 HEALTHCHECK --interval=5m --timeout=3s \
   CMD curl -f http://localhost:3000/deutschland || exit 1
 
-CMD rails server -p $RAILS_PORT -b 0.0.0.0 -P /tmp/server.pid
+CMD bundle exec puma -C config/puma.rb

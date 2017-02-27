@@ -4,6 +4,7 @@ services:
     image: postgres
   web:
     image: hackenin/hacken-in:release
+    command: bundle exec puma -C config/puma.rb
     environment:
       RAILS_ENV: "development"
       DATABASE_URL: 'postgres://postgres:@db:5432'
