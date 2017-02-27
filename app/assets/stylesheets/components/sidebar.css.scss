@@ -42,10 +42,6 @@ aside.sidebar {
 
     ul {
       @include off-canvas-list;
-      li.flattr {
-        margin: 10px 0px;
-        text-align: center;
-      }
     }
 
     .uberspace {
@@ -83,9 +79,6 @@ aside.sidebar {
     ul {
       list-style-type: none;
       padding-bottom: 10px;
-      li.flattr {
-        margin-top: 10px;
-      }
       li {
         a {
           color: $body-font-color;

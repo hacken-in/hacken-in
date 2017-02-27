@@ -20,16 +20,6 @@
     = favicon_link_tag('logo/hacken_in-apple-touch-icon-76x76.png', rel: 'apple-touch-icon', type:'image/png', sizes:'76x76')
     = favicon_link_tag('logo/hacken_in-apple-touch-icon-120x120.png', rel: 'apple-touch-icon', type:'image/png', sizes:'120x120')
     = favicon_link_tag('logo/hacken_in-apple-touch-icon-152x152.png', rel: 'apple-touch-icon', type:'image/png', sizes:'152x152')
-    :javascript
-
-      (function() {
-        var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
-        s.type = 'text/javascript';
-        s.async = true;
-        s.src = '//api.flattr.com/js/0.6/load.js?mode=auto';
-        t.parentNode.insertBefore(s, t);
-      })();
-
     = javascript_include_tag "application"
 
     %link{ href: '//fonts.googleapis.com/css?family=Roboto+Condensed:400italic,400,300,700', rel:'stylesheet', type:'text/css'}
