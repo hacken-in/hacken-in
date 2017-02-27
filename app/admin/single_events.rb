@@ -21,12 +21,6 @@ ActiveAdmin.register SingleEvent do
     column :url do |single_event|
       a "Link", href: single_event.url
     end
-    column :twitter do |single_event|
-      a "@#{single_event.twitter}", href: "http://twitter.com/#{single_event.twitter}" unless single_event.twitter.blank?
-    end
-    column :twitter_hashtag do |single_event|
-      a "##{single_event.twitter_hashtag}", href: "http://twitter.com/search/%23#{single_event.twitter_hashtag}" unless single_event.twitter_hashtag.blank?
-    end
     actions
   end
 
