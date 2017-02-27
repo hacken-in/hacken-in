@@ -19,14 +19,10 @@ after_success:
   - bundle exec codeclimate-test-reporter
 deploy:
   - provider: script
-    skip_cleanup: true
-    script: script/deploy-to-uberspace master && git diff && /bin/true
+    script: script/deploy-to-uberspace master
     on:
       branch: master
   - provider: script
     script: script/deploy-to-uberspace production
     on:
       branch: release
-  - provider: script
-    script: git diff && /bin/true
-    skip_cleanup: true
