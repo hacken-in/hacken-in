@@ -3,7 +3,7 @@ services:
   db:
     image: postgres
   web:
-    image: hackenin/hacken-in:release
+    image: hackenin/hacken-in:latest
     command: bundle exec puma -C config/puma.rb
     environment:
       RAILS_ENV: "development"
