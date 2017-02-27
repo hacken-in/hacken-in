@@ -85,8 +85,8 @@ gem 'bugsnag', '~> 3.0.0'
 gem 'recaptcha', '0.3.6'
 
 group :development do
-  gem 'better_errors', '~> 1.1.0'
-  gem 'binding_of_caller', '~> 0.7.1'
+  gem 'better_errors', '~> 2.1.1'
+  gem 'binding_of_caller', '~> 0.7.2'
 
   # Silence asset pipeline and make log usable again
   gem 'quiet_assets', '~> 1.0.3'
