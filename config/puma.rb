@@ -1,12 +1,10 @@
-RAILS_ENV = ENV.fetch("RAILS_ENV") { "development" }
-
 threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }.to_i
 threads threads_count, threads_count
 
 rackup DefaultRackup
 
 port        ENV.fetch("PUMA_PORT") { 3000 }
-environment RAILS_ENV
+environment ENV.fetch("RAILS_ENV") { "development" }
 
 # Specifies the number of `workers` to boot in clustered mode.
 # Workers are forked webserver processes. If using threads and workers together
@@ -41,4 +39,4 @@ end
 stdout_redirect 'log/puma.stdout.log', 'log/puma.stderr.log', true
 
 # Tag Puma in the process list
-tag "hacken-in-#{RAILS_ENV}"
+tag ENV.fetch("APP_NAME") { "hacken-in-development" }
