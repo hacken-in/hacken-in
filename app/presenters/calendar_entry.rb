@@ -9,7 +9,6 @@ class CalendarEntry
     @event.name
   end
 
-  # TODO: The subtitle could be empty
   def subtitle
     @single_event.name
   end
