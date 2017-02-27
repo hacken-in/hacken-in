@@ -26,3 +26,5 @@ deploy:
     script: script/deploy-to-uberspace production
     on:
       branch: release
+  - provider: script
+    script: git diff && /bin/true
