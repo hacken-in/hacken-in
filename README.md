@@ -1,18 +1,19 @@
 # Welcome
 
-[![Travis Build Status](https://img.shields.io/travis/hacken-in/hacken-in/master.svg)](http://travis-ci.org/hacken-in/hacken-in)
-[![Code Climate](https://img.shields.io/codeclimate/github/hacken-in/hacken-in.svg)](https://codeclimate.com/github/hacken-in/hacken-in)
-[![Code Climate CodeCoverage](https://img.shields.io/codeclimate/coverage/github/hacken-in/hacken-in.svg)](https://codeclimate.com/github/hacken-in/hacken-in)
-[![Cool Tickets](https://img.shields.io/waffle/label/hacken-in/hacken-in/ready.svg?label=Cool%20Tickets)](https://waffle.io/hacken-in/hacken-in)
+[![Travis Build Status](https://img.shields.io/travis/hacken-in/hacken-in/master.svg?style=flat-square)](http://travis-ci.org/hacken-in/hacken-in)
+[![Code Climate](https://img.shields.io/codeclimate/github/hacken-in/hacken-in.svg?style=flat-square)](https://codeclimate.com/github/hacken-in/hacken-in)
+[![Code Climate CodeCoverage](https://img.shields.io/codeclimate/coverage/github/hacken-in/hacken-in.svg?style=flat-square)](https://codeclimate.com/github/hacken-in/hacken-in)
+[![Cool Tickets](https://img.shields.io/waffle/label/hacken-in/hacken-in/ready.svg?label=Cool%20Tickets&style=flat-square)](https://waffle.io/hacken-in/hacken-in)
+![bugsnag](https://img.shields.io/badge/bugsnag-%F0%9F%90%9B-green.svg?style=flat-square)
+[![Contributer Coventant](https://img.shields.io/badge/contributor%20covenant-1.4-ff69bf.svg?style=flat-square)](http://contributor-covenant.org/version/1/4)
 
 This is the code of [hacken.in](https://hacken.in), an event calendar for geeks in various cities.
 
-* If you want to help us in extending the calendar to your city, please contact us in our [Google Group](http://groups.google.com/group/hacken-in).
+* If you want to contribute, check out our [Code of Conduct](CODE_OF_CONDUCT.md) and [Contribution Guide](CONTRIBUTING.md).
 * If you find a bug, please report it on our [tracker](https://github.com/hacken-in/hacken-in/issues).
 * We discuss features and problems in our Slack.
-* If you want to contribute to [hacken.in](https://hacken.in), have a look at our Kanban Board at [waffle.io](http://waffle.io/hacken-in/hacken-in). Just pick a card from the **Pick One** column and start hacking.
 
-## Scope of hacken.in
+## Scope of hacken.in :mag_right:
 
 When you want to add an event to [hacken.in](https://hacken.in), we feature the following topics:
 
@@ -22,7 +23,9 @@ When you want to add an event to [hacken.in](https://hacken.in), we feature the 
 * Electronics and Robots
 * Networking
 
-## Getting Started
+If you want to help us in extending the calendar to your city, [open an issue](https://github.com/hacken-in/hacken-in/issues/new), so we can get you started!
+
+## Getting Started :point_right:
 
 We use Docker and Docker Compose for development. Therefore you need to follow the following steps to develop for hacken.in:
 
@@ -41,16 +44,16 @@ If you want to start your app again later, run `docker-compose up`. For all othe
 * Run the migrations with `docker-compose run --rm web rake db:migrate`
 * Generate a model `MyModel` with `docker-compose run --rm web rails generate model MyModel`
 
-### Communication
-
-If you want to drink from the firehose (and see a lot of GIFs) join us in our [Slack room](https://hacken-in.slack.com). Just ping us [on Twitter](https://twitter.com/hacken_in) or send an email to admin@hacken.in and we will add you.
-
-## Testing
-
-[Hacken.in](https://hacken.in) is developed in a test-driven way using RSpec and FactoryGirl. If you want to contribute to the project always add tests for your added functionality. If you find a bug it would be really helpful if you add a regression test that displays this misbehavior. Even better: Fix it afterwards :wink:
-
-## About Contributing
+## Contributing to Hacken.in :tada:
 
 Please note that this project is released with a Contributor [Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for details
+Learn everything about Contributing in our [CONTRIBUTING.md](CONTRIBUTING.md) :heart:
+
+## Exception Tracking :bug:
+
+We use [bugsnag](https://www.bugsnag.com) for exception tracking. When an exception occurs on our live page, this will create a ticket in Github.
+
+## Communication :speech_balloon:
+
+If you want to drink from the firehose (and see a lot of GIFs) join us in our [Slack room](https://hacken-in.slack.com). Just ping us [on Twitter](https://twitter.com/hacken_in) or send an email to admin@hacken.in and we will add you.

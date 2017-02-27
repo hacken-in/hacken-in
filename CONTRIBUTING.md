@@ -16,6 +16,7 @@ In the spirit of [free software](http://www.fsf.org/licensing/essays/free-sw.htm
 
 ## Contributing Code aka. The Pamphlet
 
+* If you need help setting this project up, check out the [README](README.md). If you run into problems setting up the project for development don't hesitate to [open an issue](https://github.com/hacken-in/hacken-in/issues/new).
 * Pick a Ticket from the **Pick One** column at [waffle.io](http://waffle.io/hacken-in/hacken-in).
 * Leave a comment that you want to work on this you ticket
 * We will assign it to you and assist if you have any questions
