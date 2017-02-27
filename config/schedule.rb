@@ -21,6 +21,8 @@ every :day, :at => '00:30am' do
 end
 
 # master + production share letsencrypt, renew only one production
-every :day, :at => '02:30am' do
-  rake "uberspace:letsencrypt" if Rails.application.config.x.release_stage == :production
+if Rails.application.config.x.release_stage == :production
+  every :day, :at => '02:30am' do
+    rake "uberspace:letsencrypt"
+  end
 end
