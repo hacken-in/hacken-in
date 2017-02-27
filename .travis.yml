@@ -25,4 +25,4 @@ deploy:
   - provider: script
     script: script/deploy-to-uberspace production
     on:
-      branch: release
+      tags: true
