@@ -11,7 +11,7 @@
     %h1.black-bar-title{ itemprop: "name" }
       = @single_event.event.name
     - if !@single_event.full_day
-      %h4= I18n.localize(@single_event.occurrence, format: "%H:%M&nbsp;Uhr").html_safe
+      %h4= I18n.localize(@single_event.occurrence, format: "%H:%M Uhr")
     = render partial: 'modules/categories/indicator', locals: { submodule: 'big', category: @single_event.category }
 
   .tags-list.clearfix

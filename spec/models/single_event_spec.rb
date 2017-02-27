@@ -172,7 +172,6 @@ describe SingleEvent do
     expect(SingleEvent.only_tagged_with("meintag")).to eq [single_event]
   end
 
-  # TODO: is this test necessary? it is equal with the previews
   it "should get single event if event is tagged" do
     single_event.event.tag_list << "meintag"
     single_event.event.save

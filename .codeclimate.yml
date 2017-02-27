@@ -14,7 +14,7 @@ engines:
     - "db/"
     - "**/vendor/"
   fixme:
-    enabled: false
+    enabled: true
   rubocop:
     enabled: false
 ratings:
