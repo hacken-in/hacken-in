@@ -32,8 +32,6 @@ module ApplicationHelper
     raw html_unsafe_convert_markdown(markdown_text, without_follow)
   end
 
-  alias :html_safe_convert_markdown :convert_markdown
-
   def collect_links(item)
     links = []
 
@@ -91,10 +89,6 @@ module ApplicationHelper
     else
       image_tag(user.image_url, width: size, title: user.nickname, alt: user.nickname, class: class_name)
     end
-  end
-
-  def avatar_for_external_user(external_user, size = 16, class_name = nil)
-    gravatar_image_tag(external_user.email, title: external_user.name, alt: external_user.name, class: class_name, gravatar: { default: :identicon, size: size })
   end
 
   # -----------------------------------------------------------
