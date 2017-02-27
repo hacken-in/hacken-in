@@ -68,10 +68,10 @@ class ApplicationController < ActionController::Base
   end
   helper_method :get_ical_link_for
 
-  def staging_users_should_be_warned
+  def we_are_running_on_master
     Rails.application.config.x.release_stage == :master
   end
-  helper_method :staging_users_should_be_warned
+  helper_method :we_are_running_on_master
 
   protected
 

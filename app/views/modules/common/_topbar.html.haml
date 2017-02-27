@@ -1,4 +1,4 @@
-%header.contain-to-grid{ class: (staging_users_should_be_warned ? "staging" : "") }
+%header.contain-to-grid{ class: (we_are_running_on_master ? "staging" : "") }
   %nav.top-bar{ data: { topbar: true }, role: "navigation" }
     %ul.left
       %li.sidebar-toggle
@@ -10,7 +10,7 @@
       %li.name
         %h1
           = image_tag asset_path("logo/hacken_in-32-white.png"), class: "hacken-logo"
-          - if staging_users_should_be_warned
+          - if we_are_running_on_master
             = link_to "master.hacken.in @ #{Rails.configuration.x.current_revision}", :root
           - else
             = link_to 'hacken.in', :root
@@ -40,5 +40,3 @@
           %li.search-icon
             %a{href: search_index_path(region: current_region)}
               %i.fa.fa-search
-
-

@@ -8,4 +8,8 @@ class PagesController < ApplicationController
       render 'missing', status: 404
     end
   end
+
+  def robots
+    respond_to :text
+  end
 end
