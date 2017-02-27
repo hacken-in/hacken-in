@@ -3,7 +3,6 @@ services:
   db:
     image: postgres
   web:
-    build: .
     image: hackenin/hacken-in:release
     environment:
       RAILS_ENV: "development"
