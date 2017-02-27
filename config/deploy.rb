@@ -17,8 +17,7 @@ namespace :deploy do
   task :restart do
     on roles(:app) do
       within release_path do
-        execute "kill -USR2 $(cat #{release_path}/tmp/pids/unicorn.pid)"
-        execute "kill -WINCH $(cat #{release_path}/tmp/pids/unicorn.pid.oldbin)"
+        execute "touch tmp/restart.txt"
       end
     end
   end
