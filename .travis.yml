@@ -10,7 +10,7 @@ env:
 - DATABASE_URL="postgres://travis:@localhost:5432"
 script: "bundle exec rake db:drop db:create db:migrate ci"
 sudo: false
-cache: rvmbundler
+cache: bundler
 addons:
   postgresql: "9.3"
   code_climate:
