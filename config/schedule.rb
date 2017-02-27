@@ -20,6 +20,7 @@ every :day, :at => '00:30am' do
   rake 'single_events:generate'
 end
 
+# master + production share letsencrypt, renew only one production
 every :day, :at => '02:30am' do
-  system "letsencrypt certonly"
+  rake "uberspace:letsencrypt" if Rails.env.production?
 end
