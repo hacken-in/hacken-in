@@ -4,7 +4,7 @@ services:
     image: postgres
   web:
     build: .
-    image: moonglum/hacken-in:latest
+    image: hackenin/hacken-in:release
     environment:
       RAILS_ENV: "development"
       DATABASE_URL: 'postgres://postgres:@db:5432'
