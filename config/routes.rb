@@ -41,6 +41,9 @@ Hcking::Application.routes.draw do
   get "export/ical/single_event/:id"      => "ical#for_single_event", as: "single_event_ical"
   get "export/ical"                       => "ical#everything"
 
+  # Render individual robots.txt for master and production
+  get '/robots.:format' => 'pages#robots', :constraints => { :format => "txt" }
+
   # Old, historic routes that need to be redirected
   get "ical",                    to: redirect("/export/ical/koeln/all")
   get "personalized_ical/:guid", to: redirect("/export/ical/koeln/mylikes/%{guid}")
