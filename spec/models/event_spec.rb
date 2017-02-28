@@ -258,7 +258,7 @@ describe Event do
     event
   end
 
-  it "should create a week based rule" do
+  xit "should create a week based rule" do
     time = Time.utc(2012, 6, 10, 20, 15, 0, 0)
     event = create_week_based_event(time)
 
