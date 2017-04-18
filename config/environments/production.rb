@@ -42,14 +42,16 @@ Hcking::Application.configure do
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
 
-  # Disable delivery errors, bad email addresses will be ignored
-  # config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.delivery_method = :sendmail
-  config.action_mailer.sendmail_settings = {
-        location:  '/usr/sbin/sendmail',
-        arguments: '-i -t'
+  # Email Settings
+  config.action_mailer.smtp_settings = {
+    user_name: ENV["MAIL_USERNAME"],
+    password: ENV["MAIL_PASSWORD"],
+    port: 587,
+    authentication: :plain
   }
-  config.action_mailer.default_url_options = { host: "hacken.in" }
+  config.action_mailer.default_options = {
+    from: "notifications@hacken.in"
+  }
 
   # Enable threaded mode
   # config.threadsafe!

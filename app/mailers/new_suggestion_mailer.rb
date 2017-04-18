@@ -1,7 +1,5 @@
 # encoding: utf-8
 class NewSuggestionMailer < ActionMailer::Base
-  default from: "admin@hacken.in"
-
   RECIPIENTS = ["admin@hacken.in"]
   SUBJECT = "[hacken.in Vorschlag] Neuer Vorschlag eingereicht!"
 
