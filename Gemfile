@@ -1,6 +1,6 @@
 # coding: utf-8
 source 'https://rubygems.org'
-ruby '2.2.4'
+ruby '2.4.1'
 
 gem 'rails', '~> 4.2.8'
 
@@ -98,7 +98,7 @@ group :test, :development do
   gem 'factory_girl_rails', '~> 4.2'
   gem 'faker', '~> 1.4.1'
   gem 'codeclimate-test-reporter', '~> 1.0.0'
-  gem 'vcr', '~> 2.9.2'
+  gem 'vcr', '~> 3.0.3'
   gem 'pry-rails'
   # Find and manage translation differences
   gem 'i18n-tasks', '~> 0.7.10'
@@ -106,5 +106,5 @@ group :test, :development do
 end
 
 group :test do
-  gem 'webmock', '~> 1.17.3'
+  gem 'webmock', '~> 2.3.2'
 end
