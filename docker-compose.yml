@@ -4,10 +4,14 @@ services:
     image: postgres
   web:
     image: hackenin/hacken-in:latest
+    build:
+      context: .
     command: bundle exec puma -C config/puma.rb
     environment:
       RAILS_ENV: "development"
       DATABASE_URL: 'postgres://postgres:@db:5432'
+      BUNDLE_APP_CONFIG: /gems
+      GEM_HOME: "/gems"
     env_file: .env
     volumes:
       - ".:/app"
