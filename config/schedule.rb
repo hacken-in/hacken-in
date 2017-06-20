@@ -1,5 +1,5 @@
 set :output, 'log/whenever.log'
-set :job_template, "bash -l -c 'source ~/hacken-in-#{Rails.env}.secrets; :job'"
+set :job_template, "bash -l -c 'source ~/hacken-in-#{environment}.secrets; :job'"
 
 every :day, :at => '03:21am' do
   rake 'twitter:follow'
