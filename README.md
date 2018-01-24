@@ -1,8 +1,8 @@
 # Welcome
 
 [![Travis Build Status](https://img.shields.io/travis/hacken-in/hacken-in/master.svg?style=flat-square)](http://travis-ci.org/hacken-in/hacken-in)
-[![Code Climate](https://img.shields.io/codeclimate/github/hacken-in/hacken-in.svg?style=flat-square)](https://codeclimate.com/github/hacken-in/hacken-in)
-[![Code Climate CodeCoverage](https://img.shields.io/codeclimate/coverage/github/hacken-in/hacken-in.svg?style=flat-square)](https://codeclimate.com/github/hacken-in/hacken-in)
+[![Code Climate Maintainability](https://api.codeclimate.com/v1/badges/ea98e452e9c4715fea70/maintainability)](https://codeclimate.com/github/hacken-in/hacken-in/maintainability)
+[![Code Climate Test Coverage](https://api.codeclimate.com/v1/badges/ea98e452e9c4715fea70/test_coverage)](https://codeclimate.com/github/hacken-in/hacken-in/test_coverage)
 [![Cool Tickets](https://img.shields.io/waffle/label/hacken-in/hacken-in/ready.svg?label=Cool%20Tickets&style=flat-square)](https://waffle.io/hacken-in/hacken-in)
 ![bugsnag](https://img.shields.io/badge/bugsnag-%F0%9F%90%9B-green.svg?style=flat-square)
 [![Contributer Coventant](https://img.shields.io/badge/contributor%20covenant-1.4-ff69bf.svg?style=flat-square)](http://contributor-covenant.org/version/1/4)
