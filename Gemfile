@@ -2,7 +2,7 @@
 source 'https://rubygems.org'
 ruby '2.4.1'
 
-gem 'rails', '~> 4.2.8'
+gem 'rails', '~> 4.2.10'
 
 # Rack HTTP Server
 gem 'puma', '~> 3.7.1'
