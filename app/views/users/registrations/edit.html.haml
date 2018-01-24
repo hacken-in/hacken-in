@@ -37,9 +37,10 @@
     .control-group
       %label= t('registrations.oauth.more')
       .controls
-        - f.object.available_providers.each do |provider|
-          %a{href: user_omniauth_authorize_url(provider)}
-            %i{class: "fa fa-#{provider}"}
+        %a{href: user_twitter_omniauth_authorize_url}
+          %i.fa.fa-twitter
+        %a{href: user_github_omniauth_authorize_url}
+          %i.fa.fa-github
 
   %fieldset.gravatar_edit
     %legend

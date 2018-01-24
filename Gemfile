@@ -42,8 +42,8 @@ gem 'icalendar', '~> 1.5.2'
 gem 'whenever', '~> 0.10.0'
 
 # Authentication and Authorization
-gem 'devise', '~> 3.5.6'
-gem 'devise-i18n', '~> 0.10.3'
+gem 'devise', '~> 4.4.1'
+gem 'devise-i18n', '~> 1.5.0'
 gem 'cancancan', '~> 2.1.3'
 gem 'omniauth', '~> 1.8.1'
 gem 'omniauth-github', '~> 1.3.0'

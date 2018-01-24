@@ -66,17 +66,8 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) << :nickname
-    devise_parameter_sanitizer.for(:sign_up) << :name
-
-    devise_parameter_sanitizer.for(:account_update) << :nickname
-    devise_parameter_sanitizer.for(:account_update) << :name
-    devise_parameter_sanitizer.for(:account_update) << :description
-    devise_parameter_sanitizer.for(:account_update) << :twitter
-    devise_parameter_sanitizer.for(:account_update) << :github
-    devise_parameter_sanitizer.for(:account_update) << :homepage
-    devise_parameter_sanitizer.for(:account_update) << :gravatar_email
-    devise_parameter_sanitizer.for(:account_update) << :allow_ignore_view
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :name])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:nickname, :name, :description, :twitter, :github, :homepage, :gravatar_email, :allow_ignore_view ])
   end
 
   private

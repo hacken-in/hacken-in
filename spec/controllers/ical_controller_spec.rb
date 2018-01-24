@@ -27,8 +27,6 @@ def generate_event_entry(single_event, description = "")
 end
 
 describe IcalController, type: :controller do
-  include Devise::TestHelpers
-
   before do
     @user = FactoryGirl.create(:user)
     @user.hate_list << "php"

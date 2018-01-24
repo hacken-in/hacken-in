@@ -2,8 +2,6 @@
 require 'spec_helper'
 
 describe SingleEventsController, type: :controller do
-  include Devise::TestHelpers
-
   it "should be successful" do
     single_event = FactoryGirl.create(:single_event)
     get :show, id: single_event.id, event_id: single_event.event.id

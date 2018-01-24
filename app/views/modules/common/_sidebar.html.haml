@@ -28,12 +28,18 @@
       .row
         .sidebar-button.small-11.small-centered.columns= f.submit t('.login'), class: 'small-12 button'
 
-      - User.omniauth_providers.each do |provider|
-        .row
-          .small-11.small-centered.columns
-            = link_to user_omniauth_authorize_url(provider), title: provider, class: 'social-login' do
-              %i{class: "fa fa-#{provider}"}
-              = t('.login_with', provider: provider.to_s.capitalize)
+      .row
+        .small-11.small-centered.columns
+          = link_to user_twitter_omniauth_authorize_path, title: :twitter, class: 'social-login' do
+            %i.fa.fa-twitter
+            = t('.login_with', provider: 'Twitter')
+
+      .row
+        .small-11.small-centered.columns
+          = link_to user_github_omniauth_authorize_path, title: :github, class: 'social-login' do
+            %i.fa.fa-github
+            = t('.login_with', provider: 'Github')
+
       .row
         .small-11.small-centered.columns= link_to t('.register_instead'), new_registration_path(resource_name), class: 'social-login'
 

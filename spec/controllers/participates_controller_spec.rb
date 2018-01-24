@@ -6,8 +6,6 @@ def assert_response_for single_event, format, query_params={}
 end
 
 describe ParticipatesController, type: :controller do
-  include Devise::TestHelpers
-
   [:html, :js].each do |format|
     it "should create participate with format #{format}" do
       single_event = FactoryGirl.create(:single_event)

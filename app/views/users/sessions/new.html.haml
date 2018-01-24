@@ -15,10 +15,12 @@
 
 %h3= t('sessions.new.with_other_service')
 %ul
-  - User.omniauth_providers.each do |provider|
-    %li
-      %a{href: user_omniauth_authorize_url(provider)}
-        %i{class:"fa fa-#{provider}"}
-        = provider
+  %li
+    %a{href: user_twitter_omniauth_authorize_url}
+      %i.fa.fa-twitter
+      = provider
 
-
+  %li
+    %a{href: user_github_omniauth_authorize_url}
+      %i.fa.fa-github
+      = provider

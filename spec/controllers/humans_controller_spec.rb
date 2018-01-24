@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe HumansController, type: :controller do
-  include Devise::TestHelpers
   render_views
 
   it "should get index" do
