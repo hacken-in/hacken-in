@@ -76,7 +76,7 @@ gem 'geocoder', '~> 1.2.2'
 gem 'ruby_meetup2', '~> 0.5.0'
 
 # RSS parsing
-gem 'feedjira', '~> 1.3.0'
+gem 'feedjira', '~> 2.1.3'
 
 # Bug Monitoring
 gem 'bugsnag', '~> 3.0.0'
