@@ -45,9 +45,9 @@ gem 'whenever', '~> 0.9.4'
 gem 'devise', '~> 3.5.6'
 gem 'devise-i18n', '~> 0.10.3'
 gem 'cancancan', '~> 1.8.4'
-gem 'omniauth', '~> 1.1.3'
-gem 'omniauth-github', '~> 1.1.0'
-gem 'omniauth-twitter', '~> 1.0.1'
+gem 'omniauth', '~> 1.8.1'
+gem 'omniauth-github', '~> 1.3.0'
+gem 'omniauth-twitter', '~> 1.4.0'
 
 # Picture Upload
 gem 'carrierwave', '~> 0.10.0'
