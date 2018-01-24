@@ -25,3 +25,4 @@ vendor/gems
 vendor/bundle
 .env
 config/travis/travis-deploy-key
+/.pry_history
