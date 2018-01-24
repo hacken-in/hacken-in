@@ -306,7 +306,8 @@ GEM
       activesupport (>= 3.0)
       i18n
       polyamorous (~> 1.2)
-    recaptcha (0.3.6)
+    recaptcha (4.6.3)
+      json
     redcarpet (3.4.0)
     ref (2.0.0)
     responders (2.4.0)
@@ -440,7 +441,7 @@ DEPENDENCIES
   quiet_assets (~> 1.0.3)
   rails (~> 4.2.10)
   rails-i18n
-  recaptcha (= 0.3.6)
+  recaptcha (= 4.6.3)
   redcarpet (~> 3.4.0)
   rspec-rails (~> 3.7.2)
   ruby_meetup2 (~> 0.6.0)

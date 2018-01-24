@@ -1,5 +1,6 @@
 class SuggestionsController < ApplicationController
   respond_to :html, :xml
+  include Recaptcha::Verify
 
   def new
     @suggestion = Suggestion.new

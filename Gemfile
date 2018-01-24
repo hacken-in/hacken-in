@@ -82,7 +82,7 @@ gem 'feedjira', '~> 2.1.3'
 gem 'bugsnag', '~> 6.6.3'
 
 # Captchas
-gem 'recaptcha', '0.3.6'
+gem 'recaptcha', '4.6.3'
 
 group :development do
   gem 'better_errors', '~> 2.4.0'

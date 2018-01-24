@@ -2,6 +2,7 @@
 require 'redcarpet_extensions'
 
 module ApplicationHelper
+  include Recaptcha::ClientHelper
 
   def sitename
     if current_region.present?
