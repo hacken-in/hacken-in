@@ -98,7 +98,7 @@ group :test, :development do
   gem 'factory_girl_rails', '~> 4.2'
   gem 'faker', '~> 1.8.7'
   gem 'codeclimate-test-reporter', '~> 1.0.8'
-  gem 'vcr', '~> 3.0.3'
+  gem 'vcr', '~> 4.0.0'
   gem 'pry-rails'
   # Find and manage translation differences
   gem 'i18n-tasks', '~> 0.9.20'
