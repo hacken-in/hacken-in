@@ -64,7 +64,7 @@ gem 'therubyracer', '~> 0.12.0'
 gem 'gravatar_image_tag', '~> 1.2.0'
 
 # For the auto follow script
-gem 'twitter', '~> 5.6.0'
+gem 'twitter', '~> 6.2.0'
 
 # Include some generic language stuff (dates, common errors, …)
 gem 'rails-i18n'
