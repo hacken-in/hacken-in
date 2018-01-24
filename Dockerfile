@@ -1,4 +1,4 @@
-FROM ruby:2.4.1
+FROM ruby:2.4.3
 
 ENV BUNDLE_JOBS 4
 ENV RAILS_ENV production
