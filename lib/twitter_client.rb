@@ -20,12 +20,7 @@ module TwitterClient
       puts "Rate limit for twitter, sleeping #{error.rate_limit.reset_in} seconds."
       sleep error.rate_limit.reset_in
       retry
-    rescue Twitter::Error::RequestTimeout
-      puts "Timeout connecting to Twitter, sleeping 30 seconds."
-      sleep 30
-      retry
     end
     @following_cache
   end
-
 end

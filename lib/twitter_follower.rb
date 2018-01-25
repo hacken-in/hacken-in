@@ -30,9 +30,8 @@ class TwitterFollower
 
   def following
     request_wrapper do
-      @following_cache ||= @client.friends(include_user_entities: false, skip_status: true, count: 200).to_a.map(&:handle).map(&:downcase)
+      @following_cache ||= @client.friends(include_user_entities: false, skip_status: true, count: 200).to_a.map(&:screen_name).map(&:downcase)
     end
     @following_cache
   end
-
 end
