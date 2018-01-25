@@ -35,7 +35,7 @@ ActiveAdmin.register Event do
 
   controller do
     def permitted_params
-      # ToDo: this is a sad workaround, I could not
+      # TODO: this is a sad workaround, I could not
       # find a valid way to permit the schedule_rules and excluded_times
       # values from the event. Those are arrays and are filtered out
       # by default :(

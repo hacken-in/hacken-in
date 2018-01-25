@@ -35,7 +35,7 @@ gem 'activeadmin', '~> 1.0.0.pre2'
 gem 'chosen-rails', '~> 1.1.0'
 
 # Date Handling
-gem 'ice_cube', '~> 0.11.1'
+gem 'ice_cube', '~> 0.16.2'
 gem 'icalendar', '~> 1.5.2'
 
 # Recurring Tasks
