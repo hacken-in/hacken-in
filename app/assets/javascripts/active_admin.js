@@ -67,8 +67,8 @@ $(function() {
     init = (function(_this) {
       return function() {
         var date, j, len, ref, results;
-        _this.rules = JSON.parse($("#event_schedule_rules_json").val());
-        ref = JSON.parse($("#event_excluded_times_json").val());
+        _this.rules = JSON.parse($("#event_schedule_rules").val());
+        ref = JSON.parse($("#event_excluded_times").val());
         results = [];
         for (j = 0, len = ref.length; j < len; j++) {
           date = ref[j];
@@ -79,8 +79,8 @@ $(function() {
     })(this);
     reserialize = (function(_this) {
       return function() {
-        $("#event_schedule_rules_json").val(JSON.stringify(_this.rules));
-        return $("#event_excluded_times_json").val(JSON.stringify(_this.exdates));
+        $("#event_schedule_rules").val(JSON.stringify(_this.rules));
+        return $("#event_excluded_times").val(JSON.stringify(_this.exdates));
       };
     })(this);
     init();
