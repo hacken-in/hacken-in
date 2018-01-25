@@ -29,7 +29,7 @@ describe TwitterFollower do
   end
 
   it "should get the list of currently not following twitter handles" do
-    entry = OpenStruct.new(handle: "Bitboxer")
+    entry = OpenStruct.new(screen_name: "Bitboxer")
     client = instance_double(Twitter::REST::Client)
 
     expect(client).to receive(:friends).with({:include_user_entities=>false, :skip_status=>true, :count=>200}).and_return([entry])
@@ -37,7 +37,7 @@ describe TwitterFollower do
   end
 
   it "should try to follow the not following twitter handles" do
-    entry = OpenStruct.new(handle: "Bitboxer")
+    entry = OpenStruct.new(screen_name: "Bitboxer")
     client = instance_double(Twitter::REST::Client)
     expect(client).to receive(:friends).with({:include_user_entities=>false, :skip_status=>true, :count=>200}).and_return([entry])
     expect(client).to receive(:follow).with("another_example")
