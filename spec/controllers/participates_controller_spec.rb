@@ -8,8 +8,8 @@ end
 describe ParticipatesController, type: :controller do
   [:html, :js].each do |format|
     it "should create participate with format #{format}" do
-      single_event = FactoryGirl.create(:single_event)
-      user = FactoryGirl.create(:bodo)
+      single_event = FactoryBot.create(:single_event)
+      user = FactoryBot.create(:bodo)
       sign_in user
 
       post :update, single_event_id: single_event.id, event_id: single_event.event.id, format: format, state: :push
@@ -19,8 +19,8 @@ describe ParticipatesController, type: :controller do
     end
 
     it "should delete participate with format #{format}" do
-      single_event = FactoryGirl.create(:single_event)
-      user = FactoryGirl.create(:bodo)
+      single_event = FactoryBot.create(:single_event)
+      user = FactoryBot.create(:bodo)
       single_event.users << user
       sign_in user
 
@@ -33,7 +33,7 @@ describe ParticipatesController, type: :controller do
     end
 
     it "should not generate a new uuid if one is already set with format #{format}" do
-      single_event = FactoryGirl.create(:single_event)
+      single_event = FactoryBot.create(:single_event)
       old_cookie_value = cookies[:hacken_uuid] = "ich_habe_schon_eine_id"
 
       post :update, single_event_id: single_event.id, event_id: single_event.event.id, format: format, state: :push, name: "Hans Wurst", email: "hans@wurst.de"
@@ -42,8 +42,8 @@ describe ParticipatesController, type: :controller do
     end
 
     it "should not create participate two times for the same event with format #{format}" do
-      single_event = FactoryGirl.create(:single_event)
-      user = FactoryGirl.create(:bodo)
+      single_event = FactoryBot.create(:single_event)
+      user = FactoryBot.create(:bodo)
       sign_in user
 
       post :update, single_event_id: single_event.id, event_id: single_event.event.id, format: format, state: :push

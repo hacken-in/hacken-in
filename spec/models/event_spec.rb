@@ -3,7 +3,7 @@ require 'spec_helper'
 
 describe Event do
   it "should validate presence of name" do
-    category = FactoryGirl.create(:a_category)
+    category = FactoryBot.create(:a_category)
     event = Event.new name: 'event', category: category
     expect(event.valid?).to be_truthy
 
@@ -15,7 +15,7 @@ describe Event do
     test_date = 7.days.from_now
     test_date += 2.hours if test_date.hour < 2
 
-    category = FactoryGirl.create(:a_category)
+    category = FactoryBot.create(:a_category)
     event = Event.new(name: "Hallo", category: category)
     assert_equal 1, event.schedule.all_occurrences.size
     event.schedule.start_time = test_date
@@ -44,7 +44,7 @@ describe Event do
   end
 
   it "should provide tagging" do
-    category = FactoryGirl.create(:a_category)
+    category = FactoryBot.create(:a_category)
     event = Event.new(name: "Hallo", category: category)
     expect(event.tags.count).to eq(0)
 
@@ -59,13 +59,13 @@ describe Event do
   end
 
   it "should generate single events for a new event" do
-    event = FactoryGirl.create(:simple)
+    event = FactoryBot.create(:simple)
     event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
     expect { event.save }.to change { SingleEvent.count }.by 12
   end
 
   it "should generate single events if pattern changed" do
-    event = FactoryGirl.create(:simple)
+    event = FactoryBot.create(:simple)
     event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
     event.save
     #    existing single events should be removed
@@ -79,13 +79,13 @@ describe Event do
     event.schedule_rules = [
         {"type" => 'weekly', "interval" => 2, "days" => ["monday"]}
     ]
-    event.category = FactoryGirl.create(:a_category)
+    event.category = FactoryBot.create(:a_category)
     event.save
     expect { event.save }.not_to change { SingleEvent.count }
   end
 
   it "should not regenerate single_event if schedule hasn't changed" do
-    event = FactoryGirl.create(:simple)
+    event = FactoryBot.create(:simple)
     event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
     event.save
 
@@ -101,13 +101,13 @@ describe Event do
   end
 
   it "should create future single events" do
-    event = FactoryGirl.create(:simple)
+    event = FactoryBot.create(:simple)
     event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
     expect { event.future_single_event_creation }.to change { SingleEvent.count}.by 12
   end
 
   it "should clean up future single events" do
-    event = FactoryGirl.create(:simple)
+    event = FactoryBot.create(:simple)
     event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:monday)
     event.save
     first_single_event_id = event.single_events.first.id
@@ -120,7 +120,7 @@ describe Event do
   end
 
   it "should not remove single events that match the rules" do
-    event = FactoryGirl.create(:simple)
+    event = FactoryBot.create(:simple)
     event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
     event.save
 
@@ -132,7 +132,7 @@ describe Event do
   end
 
   it "should get single events ordered" do
-    event = FactoryGirl.create(:simple)
+    event = FactoryBot.create(:simple)
 
     # Always pick 1st March of next year, 15:15pm
     # This prevents us from falling into IceCube bug pitfalls
@@ -150,12 +150,12 @@ describe Event do
   end
 
   it "should return the title" do
-    event = FactoryGirl.create(:simple)
+    event = FactoryBot.create(:simple)
     expect(event.title).to eq("SimpleEvent")
   end
 
   it "should generate opengraph data" do
-    event = FactoryGirl.create(:simple)
+    event = FactoryBot.create(:simple)
     hash = {
       "og:country-name"=>"DE",
       "og:latitude"=>50.9490279,
@@ -166,7 +166,7 @@ describe Event do
       "og:title"=>"SimpleEvent"}
     expect(event.to_opengraph).to eq(hash)
 
-    event = FactoryGirl.create(:full_event)
+    event = FactoryBot.create(:full_event)
     hash = {
        "og:country-name"=>"DE",
        "og:locality"=>"CoWoCo, Gasmotorenfabrik, 3. Etage",
@@ -185,7 +185,7 @@ describe Event do
   end
 
   it "should not delete single events that are not based_on_rule" do
-    event = FactoryGirl.create(:simple)
+    event = FactoryBot.create(:simple)
     event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
     event.save
 
@@ -198,14 +198,14 @@ describe Event do
   end
 
   it "should check ice_cube abstraction" do
-    event = FactoryGirl.create(:simple)
+    event = FactoryBot.create(:simple)
     event.duration = 60
     event.save
     expect(event.schedule.duration).to eq(60 * 60)
   end
 
   it "should add a exception rule and don't recreate it - bug #83 if single event is deleted" do
-    event = FactoryGirl.create(:simple)
+    event = FactoryBot.create(:simple)
     event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
     expect { event.save }.to change { SingleEvent.count }.by 12
 
@@ -219,7 +219,7 @@ describe Event do
   end
 
   it "should simplify exdates" do
-    event = FactoryGirl.create(:simple)
+    event = FactoryBot.create(:simple)
     event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
     exclude = event.schedule.first
     event.schedule.add_exception_time exclude
@@ -227,7 +227,7 @@ describe Event do
   end
 
   it "should update exdates" do
-    event = FactoryGirl.create(:simple)
+    event = FactoryBot.create(:simple)
     event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
     exclude = event.schedule.first
     event.excluded_times = [exclude]
@@ -235,13 +235,13 @@ describe Event do
   end
 
   it "should simplify rrules" do
-    event = FactoryGirl.create(:simple)
+    event = FactoryBot.create(:simple)
     event.schedule.add_recurrence_rule IceCube::Rule.monthly.day_of_week({1 => [-1]})
     expect(event.schedule_rules).to eq([{"type" => 'monthly', "interval" => -1, "days" => ["monday"]}])
   end
 
   it "should update rules" do
-    event = FactoryGirl.create(:simple)
+    event = FactoryBot.create(:simple)
     time = Time.utc(2012, 10, 10, 20, 15, 0)
     event.start_time = time
     event.schedule_rules = [{"type" => 'monthly', "interval" => -1, "days" => ["monday"]}]
@@ -251,7 +251,7 @@ describe Event do
   end
 
   def create_week_based_event(time)
-    event = FactoryGirl.create(:simple)
+    event = FactoryBot.create(:simple)
     event.start_time = time
     event.schedule_rules = [{"type" => 'weekly', "interval" => 2, "days" => ["monday"]}]
     event.save
@@ -322,8 +322,8 @@ describe Event do
   end
 
   it "should assign users as curators" do
-    event = FactoryGirl.create(:simple)
-    user = FactoryGirl.create(:user)
+    event = FactoryBot.create(:simple)
+    user = FactoryBot.create(:user)
 
     event.curators << user
 
@@ -331,20 +331,20 @@ describe Event do
   end
 
   it "should only find the events in cologne region" do
-    event = FactoryGirl.create(:simple)
+    event = FactoryBot.create(:simple)
     expect(Event.in_region(event.region).count).to eq(1)
   end
 
   it "should not find events for wrong region" do
-    event = FactoryGirl.create(:simple)
-    region = RegionSlug.where(slug: "berlin").first.try(:region) || FactoryGirl.create(:berlin_region)
+    event = FactoryBot.create(:simple)
+    region = RegionSlug.where(slug: "berlin").first.try(:region) || FactoryBot.create(:berlin_region)
     expect(Event.in_region(region).count).to eq(0)
   end
 
   it "should find events that are in global region, no matter what region you give to it" do
-    gevent = FactoryGirl.create(:global_single_event)
-    bregion = RegionSlug.where(slug: "berlin").first.try(:region) || FactoryGirl.create(:berlin_region)
-    kregion = RegionSlug.where(slug: "koeln").first.try(:region)  || FactoryGirl.create(:koeln_region)
+    gevent = FactoryBot.create(:global_single_event)
+    bregion = RegionSlug.where(slug: "berlin").first.try(:region) || FactoryBot.create(:berlin_region)
+    kregion = RegionSlug.where(slug: "koeln").first.try(:region)  || FactoryBot.create(:koeln_region)
 
     expect(Event.in_region(bregion).count).to eq(1)
     expect(Event.in_region(kregion).count).to eq(1)
@@ -354,7 +354,7 @@ describe Event do
 
   describe 'duration wandering away bug #360' do
     before do
-      @event = FactoryGirl.create(:simple, schedule_yaml: "---\n:start_date: 2011-08-07 13:13:00.000000000 +02:00\n:duration: 10800\n:rrules: []\n:exrules: []\n:rtimes:\n- 2011-08-08 19:00:00.000000000 +02:00\n- 2011-11-15 19:00:00.000000000 +01:00\n- 2012-02-06 19:00:00.000000000 +01:00\n:extimes: []\n")
+      @event = FactoryBot.create(:simple, schedule_yaml: "---\n:start_date: 2011-08-07 13:13:00.000000000 +02:00\n:duration: 10800\n:rrules: []\n:exrules: []\n:rtimes:\n- 2011-08-08 19:00:00.000000000 +02:00\n- 2011-11-15 19:00:00.000000000 +01:00\n- 2012-02-06 19:00:00.000000000 +01:00\n:extimes: []\n")
     end
 
     it "should not calculate strange durations" do

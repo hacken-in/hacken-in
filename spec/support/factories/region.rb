@@ -1,5 +1,5 @@
 # encoding: utf-8
-FactoryGirl.define do
+FactoryBot.define do
   factory :global_region, class: 'region' do
     id 1
     name 'global'

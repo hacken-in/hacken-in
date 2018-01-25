@@ -28,7 +28,7 @@ end
 
 describe IcalController, type: :controller do
   before do
-    @user = FactoryGirl.create(:user)
+    @user = FactoryBot.create(:user)
     @user.hate_list << "php"
     @user.like_list << "ruby"
     @user.save
@@ -44,7 +44,7 @@ DESC
 END:VCALENDAR\r
 DESC
 
-    event = FactoryGirl.create(:simple)
+    event = FactoryBot.create(:simple)
     time = Time.now + 12.hours
     event.schedule.add_recurrence_time(time)
     event.url = "url"
@@ -54,7 +54,7 @@ DESC
     event.single_events.first.users << @user
     @vcal_event = generate_event_entry(event.single_events.first, "description")
 
-    event2 = FactoryGirl.create(:simple)
+    event2 = FactoryBot.create(:simple)
     time2 = (Date.today + 3.days).to_time
     event2.schedule.add_recurrence_time(time2)
     event2.tag_list << "php"
@@ -62,14 +62,14 @@ DESC
     event2.save
     @vcal_event2 = generate_event_entry(event2.single_events.first)
 
-    event3 = FactoryGirl.create(:simple)
+    event3 = FactoryBot.create(:simple)
     time3 = (Time.now + 24.hours).beginning_of_day
     event3.schedule.add_recurrence_time(time3)
     event3.full_day = true
     event3.save
     @vcal_event3 = generate_event_entry(event3.single_events.first)
 
-    event4 = FactoryGirl.create(:simple)
+    event4 = FactoryBot.create(:simple)
     time4 = (Time.now + 48.hours).beginning_of_day
     event4.schedule.add_recurrence_time(time4)
     event4.full_day = true
@@ -80,7 +80,7 @@ DESC
     se.save
     @vcal_event4 = generate_event_entry(event4.single_events.first, "First Event Description")
 
-    event5 = FactoryGirl.create(:simple)
+    event5 = FactoryBot.create(:simple)
     time5 = (Time.now + 48.hours).beginning_of_day
     event5.schedule.add_recurrence_time(time5)
     event5.full_day = false
@@ -92,7 +92,7 @@ DESC
     se.save
     @vcal_event5 = generate_event_entry(event5.single_events.first, "First Event Description")
 
-    event6 = FactoryGirl.create(:simple)
+    event6 = FactoryBot.create(:simple)
     time6 = (Time.now + 48.hours).beginning_of_day
     event6.schedule.add_recurrence_time(time6)
     event6.full_day = false
@@ -105,7 +105,7 @@ DESC
     se.save
     @vcal_event6 = generate_event_entry(event6.single_events.first, "First Event Description\\n\\nevent text")
 
-    event7 = FactoryGirl.create(:simple)
+    event7 = FactoryBot.create(:simple)
     time7 = (Date.today + 3.days).to_time
     event7.schedule.add_recurrence_time(time7)
     event7.tag_list << "php"
@@ -114,7 +114,7 @@ DESC
     event7.save
     @vcal_event7 = generate_event_entry(event7.single_events.first)
 
-    event8 = FactoryGirl.create(:berlin_event)
+    event8 = FactoryBot.create(:berlin_event)
     time8 = (Date.today + 3.days).to_time
     event8.schedule.add_recurrence_time(time8)
     event8.tag_list << "php"

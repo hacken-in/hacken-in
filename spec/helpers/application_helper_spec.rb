@@ -57,7 +57,7 @@ describe ApplicationHelper, type: :helper do
   end
 
   it "should return the link to a single event" do
-    single = FactoryGirl.create(:single_event)
+    single = FactoryBot.create(:single_event)
     single.event.url = "http://example.com"
     single.event.twitter_hashtag = "hashtag"
     single.event.twitter_hashtag = "hashtag"

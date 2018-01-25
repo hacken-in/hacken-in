@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :single_event, class: SingleEvent do
     name "SimpleSingleEventName"
     occurrence Time.new(2011,10,1,12,00)

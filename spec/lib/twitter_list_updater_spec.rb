@@ -4,17 +4,17 @@ require 'spec_helper'
 describe TwitterListUpdater do
 
   before(:each) do
-    @event = FactoryGirl.create(:berlin_event)
+    @event = FactoryBot.create(:berlin_event)
     @event.twitter = "bitboxer"
     @event.save
 
-    event2 = FactoryGirl.create(:berlin_event)
+    event2 = FactoryBot.create(:berlin_event)
     event2.twitter = "hacken_in"
     event2.save
 
-    @single_event = FactoryGirl.create(:single_event)
+    @single_event = FactoryBot.create(:single_event)
 
-    @koeln_region = RegionSlug.where(slug: "koeln").first.region || FactoryGirl.create(:koeln_region)
+    @koeln_region = RegionSlug.where(slug: "koeln").first.region || FactoryBot.create(:koeln_region)
 
     @single_event.twitter = "another_example"
     @single_event.region = @koeln_region

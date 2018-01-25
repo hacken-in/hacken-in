@@ -4,19 +4,19 @@ require 'spec_helper'
 describe TwitterFollower do
 
   before(:each) do
-    @event = FactoryGirl.create(:simple)
+    @event = FactoryBot.create(:simple)
     @event.twitter = "bitboxer"
     @event.save
 
-    @empty_event = FactoryGirl.create(:simple)
+    @empty_event = FactoryBot.create(:simple)
     @empty_event.twitter = ""
     @empty_event.save
 
-    @single_event = FactoryGirl.create(:single_event)
+    @single_event = FactoryBot.create(:single_event)
     @single_event.twitter = "another_example"
     @single_event.save
 
-    single_event2 = FactoryGirl.create(:single_event)
+    single_event2 = FactoryBot.create(:single_event)
     single_event2.twitter = "hacken_in"
     single_event2.save
 

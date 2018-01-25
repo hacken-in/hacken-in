@@ -25,7 +25,7 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 DatabaseCleaner[:active_record, { connection: :test }]
 
 RSpec.configure do |config|
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
   config.include Devise::Test::ControllerHelpers, type: :controller
 
   config.fixture_path = "#{::Rails.root}/spec/support/fixtures"

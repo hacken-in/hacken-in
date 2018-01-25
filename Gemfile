@@ -95,7 +95,7 @@ end
 group :test, :development do
   gem 'database_cleaner', '1.6.2'
   gem 'rspec-rails',  '~> 3.7.2'
-  gem 'factory_girl_rails', '~> 4.2'
+  gem 'factory_bot_rails'
   gem 'faker', '~> 1.8.7'
   gem 'codeclimate-test-reporter', '~> 1.0.8'
   gem 'vcr', '~> 4.0.0'

@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :radar_setting do
     association :event, factory: :event
   end

@@ -32,8 +32,8 @@ describe User do
   end
 
   it "lets users participate in single event" do
-    single = FactoryGirl.create(:single_event)
-    user = FactoryGirl.create(:user)
+    single = FactoryBot.create(:single_event)
+    user = FactoryBot.create(:user)
     user.single_events << single
     user.save
 
@@ -42,8 +42,8 @@ describe User do
   end
 
   it "lets users curate events" do
-    event = FactoryGirl.create(:simple)
-    user = FactoryGirl.create(:user)
+    event = FactoryBot.create(:simple)
+    user = FactoryBot.create(:user)
 
     user.curated_events << event
 
@@ -51,26 +51,26 @@ describe User do
   end
 
   it "ignores tags that are not publicy viewable by default" do
-    user = FactoryGirl.create(:user)
+    user = FactoryBot.create(:user)
     expect(user).not_to be_allow_ignore_view
   end
 
   it "doesn't change the users guid" do
-    user = FactoryGirl.create(:user)
+    user = FactoryBot.create(:user)
     guid = user.guid
 
     expect(user.guid).to eq(guid)
   end
 
   it "validates that user has a unique guid" do
-    first_user = FactoryGirl.create(:user)
-    second_user = FactoryGirl.create(:another_user)
+    first_user = FactoryBot.create(:user)
+    second_user = FactoryBot.create(:another_user)
 
     expect(first_user.guid).not_to eq(second_user.guid)
   end
 
   it "only changes user email when current password is given" do
-    user = FactoryGirl.create(:user)
+    user = FactoryBot.create(:user)
     expect(user.update_with_password(email: "newexample@example.com")).to be_falsey
     expect(user.update_with_password(email: "newexample2@example.com", current_password: "hallo123")).to be_truthy
     user.reload
@@ -78,10 +78,10 @@ describe User do
   end
 
   context "organizing regions" do
-    let!(:user) { FactoryGirl.create(:user) }
-    let!(:admin) { FactoryGirl.create(:bodo) }
-    let!(:koeln_region) { FactoryGirl.create(:koeln_region) }
-    let!(:berlin_region) { FactoryGirl.create(:berlin_region) }
+    let!(:user) { FactoryBot.create(:user) }
+    let!(:admin) { FactoryBot.create(:bodo) }
+    let!(:koeln_region) { FactoryBot.create(:koeln_region) }
+    let!(:berlin_region) { FactoryBot.create(:berlin_region) }
 
     it "lets users organize regions" do
       user.assigned_regions << koeln_region
@@ -104,77 +104,77 @@ describe User do
 
   context "fixes user input URLs" do
     it "should not fix twitter handle if it okay" do
-      user = FactoryGirl.create(:user)
+      user = FactoryBot.create(:user)
       user.twitter = "twitterhandle"
       user.save
       expect(user.twitter).to eq("twitterhandle")
     end
 
     it "should try to fix twitter handle if it starts with twitter.com/" do
-      user = FactoryGirl.create(:user)
+      user = FactoryBot.create(:user)
       user.twitter = "twitter.com/twitterhandle"
       user.save
       expect(user.twitter).to eq("twitterhandle")
     end
 
     it "should try to fix twitter handle if it starts with http://twitter.com/" do
-      user = FactoryGirl.create(:user)
+      user = FactoryBot.create(:user)
       user.twitter = "http://twitter.com/twitterhandle"
       user.save
       expect(user.twitter).to eq("twitterhandle")
     end
 
     it "should try to fix twitter handle if it starts with httpS://twitter.com/" do
-      user = FactoryGirl.create(:user)
+      user = FactoryBot.create(:user)
       user.twitter = "https://twitter.com/twitterhandle"
       user.save
       expect(user.twitter).to eq("twitterhandle")
     end
 
     it "should not try to fix github handle if it is okay" do
-      user = FactoryGirl.create(:user)
+      user = FactoryBot.create(:user)
       user.github = "githubhandle"
       user.save
       expect(user.github).to eq("githubhandle")
     end
 
     it "should try to fix github handle if it starts with github.com/" do
-      user = FactoryGirl.create(:user)
+      user = FactoryBot.create(:user)
       user.github = "github.com/githubhandle"
       user.save
       expect(user.github).to eq("githubhandle")
     end
 
     it "should try to fix github handle if it starts with http://github.com/" do
-      user = FactoryGirl.create(:user)
+      user = FactoryBot.create(:user)
       user.github = "http://github.com/githubhandle"
       user.save
       expect(user.github).to eq("githubhandle")
     end
 
     it "should try to fix github handle if it starts with httpS://github.com/" do
-      user = FactoryGirl.create(:user)
+      user = FactoryBot.create(:user)
       user.github = "https://github.com/githubhandle"
       user.save
       expect(user.github).to eq("githubhandle")
     end
 
     it "should add http:// if it is missing" do
-      user = FactoryGirl.create(:user)
+      user = FactoryBot.create(:user)
       user.homepage = "heise.de"
       user.save
       expect(user.homepage).to eq("http://heise.de")
     end
 
     it "should not add http:// if it is not missing" do
-      user = FactoryGirl.create(:user)
+      user = FactoryBot.create(:user)
       user.homepage = "http://heise.de"
       user.save
       expect(user.homepage).to eq("http://heise.de")
     end
 
     it "should not add http:// if it is a https link" do
-      user = FactoryGirl.create(:user)
+      user = FactoryBot.create(:user)
       user.homepage = "https://heise.de"
       user.save
       expect(user.homepage).to eq("https://heise.de")

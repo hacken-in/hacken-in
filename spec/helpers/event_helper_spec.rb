@@ -5,7 +5,7 @@ describe EventHelper, type: :helper do
   include EventHelper
 
   it "should get list for taggable" do
-    event = FactoryGirl.create(:simple)
+    event = FactoryBot.create(:simple)
     assert_equal "[]", tag_list_for_taggable(event)
     event.tag_list = "ruby, rails"
     expect(event.tag_list).to match_array(["ruby", "rails"])

@@ -2,12 +2,12 @@
 require "spec_helper"
 
 describe SingleEvent do
-  let(:single_event) { FactoryGirl.create(:single_event) }
-  let(:single_event2) { FactoryGirl.create(:single_event) }
-  let(:event) { FactoryGirl.create(:simple) }
-  let(:extended_single_event) { FactoryGirl.create(:extended_single_event) }
-  let(:single_event_without_name) { FactoryGirl.create(:single_event_without_name) }
-  let(:user) { FactoryGirl.create(:user) }
+  let(:single_event) { FactoryBot.create(:single_event) }
+  let(:single_event2) { FactoryBot.create(:single_event) }
+  let(:event) { FactoryBot.create(:simple) }
+  let(:extended_single_event) { FactoryBot.create(:extended_single_event) }
+  let(:single_event_without_name) { FactoryBot.create(:single_event_without_name) }
+  let(:user) { FactoryBot.create(:user) }
   let(:time_now) { Time.now }
 
   it "create or find" do
@@ -237,29 +237,29 @@ ical
   end
 
   it "should not find single events for wrong region" do
-    region = RegionSlug.where(slug: "berlin").first.try(:region) || FactoryGirl.create(:berlin_region)
+    region = RegionSlug.where(slug: "berlin").first.try(:region) || FactoryBot.create(:berlin_region)
     expect(SingleEvent.in_region(region).count).to eq(0)
   end
 
   it "should return the single event if it has the correct reagion and the event has not" do
-    region = RegionSlug.where(slug: "berlin").first.try(:region) || FactoryGirl.create(:berlin_region)
+    region = RegionSlug.where(slug: "berlin").first.try(:region) || FactoryBot.create(:berlin_region)
     single_event.region = region
     single_event.save
     expect(SingleEvent.in_region(region).count).to eq(1)
   end
 
   it "should not return the single event if it has a wrong region and the event has a correct one" do
-    region = RegionSlug.where(slug: "berlin").first.try(:region) || FactoryGirl.create(:berlin_region)
+    region = RegionSlug.where(slug: "berlin").first.try(:region) || FactoryBot.create(:berlin_region)
     single_event.region = region
     single_event.save
-    kregion = RegionSlug.where(slug: "koeln").first.try(:region) || FactoryGirl.create(:koeln_region)
+    kregion = RegionSlug.where(slug: "koeln").first.try(:region) || FactoryBot.create(:koeln_region)
     expect(SingleEvent.in_region(kregion).count).to eq(0)
   end
 
   it "should find single events that are in global region, no matter what region you give to it" do
-    gevent = FactoryGirl.create(:global_single_event)
-    bregion = RegionSlug.where(slug: "berlin").first.try(:region) || FactoryGirl.create(:berlin_region)
-    kregion = RegionSlug.where(slug: "koeln").first.try(:region)  || FactoryGirl.create(:koeln_region)
+    gevent = FactoryBot.create(:global_single_event)
+    bregion = RegionSlug.where(slug: "berlin").first.try(:region) || FactoryBot.create(:berlin_region)
+    kregion = RegionSlug.where(slug: "koeln").first.try(:region)  || FactoryBot.create(:koeln_region)
 
     expect(SingleEvent.in_region(bregion).count).to eq(1)
     expect(SingleEvent.in_region(kregion).count).to eq(1)
@@ -276,8 +276,8 @@ ical
 
     before do
       SingleEvent.delete_all
-      FactoryGirl.create(:single_event, occurrence: timestamp_with_events)
-      FactoryGirl.create(:single_event, occurrence: timestamp_with_events)
+      FactoryBot.create(:single_event, occurrence: timestamp_with_events)
+      FactoryBot.create(:single_event, occurrence: timestamp_with_events)
     end
 
     it 'should give the right count for the day with events' do
