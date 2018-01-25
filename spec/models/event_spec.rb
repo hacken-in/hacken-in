@@ -29,7 +29,7 @@ describe Event do
     expect(event.schedule.all_occurrences.first.to_date).to eq(test_date.to_date)
 
     event = Event.new(name: "Hallo", category: category)
-    event.schedule_yaml = "--- \n:start_date: #{test_date.iso8601}\n:rrules: []\n\n:exrules: []\n\n:rdates: \n- #{test_date.iso8601}\n:exdates: []\n\n:duration: \n:end_time: \n"
+    event.schedule_yaml = "--- \n:start_time: #{test_date.utc.iso8601}\n:rrules: []\n\n:rtimes: \n- #{test_date.utc.iso8601}\n:extimes: []\n\n:duration: \n:end_time: \n"
 
     expect(event.schedule.all_occurrences.size).to eq(1)
 
@@ -75,7 +75,7 @@ describe Event do
 
   it "should generate single events if pattern changed" do
     event = Event.new(name: "test")
-    event.start_time = Time.now
+    event.start_time = Time.current
     event.schedule_rules = [
         {"type" => 'weekly', "interval" => 2, "days" => ["monday"]}
     ]
@@ -136,7 +136,7 @@ describe Event do
 
     # Always pick 1st March of next year, 15:15pm
     # This prevents us from falling into IceCube bug pitfalls
-    today = DateTime.new(Time.now.year + 1, 3, 1, 15, 15)
+    today = DateTime.new(Time.current.year + 1, 3, 1, 15, 15)
 
     first = today + 2.days + (today.hour < 2 ? 2.hours : 0)
     second = today + 5.days + (today.hour < 2 ? 2.hours : 0)
@@ -218,7 +218,7 @@ describe Event do
     expect(event.single_events.first.occurrence).not_to eq(deleted_event.occurrence)
   end
 
-  it "should simplify exdates" do
+  it "should simplify extimes" do
     event = FactoryBot.create(:simple)
     event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
     exclude = event.schedule.first
@@ -226,7 +226,7 @@ describe Event do
     expect(event.excluded_times).to eq([exclude])
   end
 
-  it "should update exdates" do
+  it "should update extimes" do
     event = FactoryBot.create(:simple)
     event.schedule.add_recurrence_rule IceCube::Rule.weekly.day(:thursday)
     exclude = event.schedule.first
@@ -258,7 +258,7 @@ describe Event do
     event
   end
 
-  xit "should create a week based rule" do
+  it "should create a week based rule" do
     time = Time.utc(2012, 6, 10, 20, 15, 0, 0)
     event = create_week_based_event(time)
 
@@ -354,12 +354,12 @@ describe Event do
 
   describe 'duration wandering away bug #360' do
     before do
-      @event = FactoryBot.create(:simple, schedule_yaml: "---\n:start_date: 2011-08-07 13:13:00.000000000 +02:00\n:duration: 10800\n:rrules: []\n:exrules: []\n:rtimes:\n- 2011-08-08 19:00:00.000000000 +02:00\n- 2011-11-15 19:00:00.000000000 +01:00\n- 2012-02-06 19:00:00.000000000 +01:00\n:extimes: []\n")
+      @event = FactoryBot.create(:simple, schedule_yaml: "---\n:start_time: 2011-08-07 13:13:00.000000000 +00:00\n:duration: 10800\n:rrules: []\n:rtimes:\n- 2011-08-08 19:00:00.000000000 +00:00\n- 2011-11-15 19:00:00.000000000 +01:00\n- 2012-02-06 19:00:00.000000000 +01:00\n:extimes: []\n")
     end
 
     it "should not calculate strange durations" do
       @event.reload
-      @event.start_time = Time.now
+      @event.start_time = Time.current
       expect(@event.duration).to eql 180
     end
   end
