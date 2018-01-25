@@ -69,14 +69,10 @@ ActiveAdmin.register Event do
     end
 
     def create
-      [[:schedule_rules_json, :schedule_rules], [:excluded_times_json, :excluded_times]].each do |item|
-        if params[:event][item[0]]
-          params[:event][item[1]] = JSON.parse(params[:event][item[0]])
-          params[:event].delete item[0]
-        end
-      end
-      fix_start_time
-      create! do |success, failure|
+      params[:event][:schedule_rules] = JSON.parse(params[:event][:schedule_rules]) if params[:event][:schedule_rules]
+      params[:event][:excluded_times] = JSON.parse(params[:event][:excluded_times]) if params[:event][:excluded_times]
+      reconstruct_start_time
+      create! do |success|
         success.html do
           redirect_to admin_event_path(@event)
         end
@@ -84,14 +80,10 @@ ActiveAdmin.register Event do
     end
 
     def update
-      [[:schedule_rules_json, :schedule_rules], [:excluded_times_json, :excluded_times]].each do |item|
-        if params[:event][item[0]]
-          params[:event][item[1]] = JSON.parse(params[:event][item[0]])
-          params[:event].delete item[0]
-        end
-      end
-      fix_start_time
-      update! do |success, failure|
+      params[:event][:schedule_rules] = JSON.parse(params[:event][:schedule_rules]) if params[:event][:schedule_rules]
+      params[:event][:excluded_times] = JSON.parse(params[:event][:excluded_times]) if params[:event][:excluded_times]
+      reconstruct_start_time
+      update! do |success|
         success.html do
           redirect_to admin_event_path(@event)
         end
@@ -100,21 +92,15 @@ ActiveAdmin.register Event do
 
     private
 
-    # This fixes a timezone problem for the start time in
-    # the event.
-    def fix_start_time
-      time = Time.new(params[:event]["start_time(1i)"].to_i,
-                   params[:event]["start_time(2i)"].to_i,
-                   params[:event]["start_time(3i)"].to_i,
-                   params[:event]["start_time(4i)"].to_i,
-                   params[:event]["start_time(5i)"].to_i,
-                  )
-      params[:event].delete("start_time(1i)")
-      params[:event].delete("start_time(2i)")
-      params[:event].delete("start_time(3i)")
-      params[:event].delete("start_time(4i)")
-      params[:event].delete("start_time(5i)")
-      params[:event]["start_time"] = time
+    # Reconstruct the start time from its fragments
+    def reconstruct_start_time
+      params[:event]["start_time"] = Time.zone.local(
+        params[:event].delete("start_time(1i)").to_i,
+        params[:event].delete("start_time(2i)").to_i,
+        params[:event].delete("start_time(3i)").to_i,
+        params[:event].delete("start_time(4i)").to_i,
+        params[:event].delete("start_time(5i)").to_i
+      )
     end
   end
 end

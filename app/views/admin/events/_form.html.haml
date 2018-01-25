@@ -23,8 +23,8 @@
     = form.input :start_time, as: :datetime_select, hint: "Bei wiederholenden Terminen gib hier den Start-Zeitpunkt an. Die Uhrzeit wird für alle Termine benutzt. Der Tag um den Startzeitpunkt der Wochen-Regeln zu definieren."
     = form.input :duration, as: :number, min: 0
     = form.input :full_day
-    = form.input :schedule_rules_json, as: :hidden, input_html: {value: @event.schedule_rules.to_json}
-    = form.input :excluded_times_json, as: :hidden, input_html: {value: @event.excluded_times.to_json}
+    = form.input :schedule_rules, as: :hidden, input_html: {value: @event.schedule_rules.to_json}
+    = form.input :excluded_times, as: :hidden, input_html: {value: @event.excluded_times.to_json}
 
     %li.string.input.optional.stringish
       %label.label Terminregeln
