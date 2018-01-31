@@ -36,8 +36,8 @@ describe IcalController, type: :controller do
     @vcal_start =<<DESC
 BEGIN:VCALENDAR\r
 VERSION:2.0\r
+PRODID:icalendar-ruby\r
 CALSCALE:GREGORIAN\r
-PRODID:iCalendar-Ruby\r
 DESC
 
     @vcal_end =<<DESC
