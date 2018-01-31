@@ -12,10 +12,9 @@ class IcalController < ApplicationController
   end
 
   def like_welcome_page
-    user = user_by_guid
-    @single_events = SingleEvent.recent_to_soon(3.months).in_region(current_region)
-    @single_events.to_a.select! { |single_event| single_event.is_for_user? user } if user
-    render_single_events @single_events
+    single_events = SingleEvent.recent_to_soon(3.months).in_region(current_region)
+    single_events.to_a.select! { |single_event| single_event.is_for_user? user_by_guid } if user_by_guid
+    render_single_events single_events
   end
 
   def for_single_event
@@ -50,11 +49,6 @@ class IcalController < ApplicationController
   end
 
   def user_by_guid
-    User.find_by_guid(params[:guid]) || raise(ActiveRecord::RecordNotFound)
+    @user ||= User.find_by!(guid: params[:guid])
   end
-
-  def called_action
-    [self.class.name, params[:action]].join("/")
-  end
-
 end
