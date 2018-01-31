@@ -30,10 +30,6 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, alert: "Leider darfst du das nicht :("
   end
 
-  def is_google_bot
-    !request.env["HTTP_USER_AGENT"].match(/googlebot/i).nil?
-  end
-
   def all_regions
     @all_regions = Region.where(active: true)
   end

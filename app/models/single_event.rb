@@ -198,7 +198,7 @@ class SingleEvent < ActiveRecord::Base
     alias_method :"#{item}?", item
   end
 
-  def to_ical_event(links_in_description = false)
+  def to_ical_event
     ical_event = Icalendar::Event.new
     ical_event.summary = full_name
     ical_event.description = ActionController::Base.helpers.strip_tags("#{description}\n\n#{event.description}".strip)
@@ -223,11 +223,7 @@ class SingleEvent < ActiveRecord::Base
               host: Rails.env.production? ? "hacken.in" : "hacken.dev",
               event_id: event.id,
               id: id)
-    if links_in_description
-      ical_event.description = (ical_event.description + "\n\n#{url}").strip
-    else
-      ical_event.url = url
-    end
+    ical_event.url = url
     ical_event
   end
 

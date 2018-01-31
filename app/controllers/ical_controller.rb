@@ -44,7 +44,7 @@ class IcalController < ApplicationController
   def render_events(events)
     calendar = Icalendar::Calendar.new
     events.each do |e|
-      calendar.add_event(e.to_ical_event(is_google_bot))
+      calendar.add_event(e.to_ical_event)
     end
     render text: calendar.to_ical
   end
