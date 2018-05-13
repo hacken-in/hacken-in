@@ -4,6 +4,7 @@ rvm:
 notifications:
   slack: hacken-in:v0VPwCbdNxNY7oVfJGsFLAJS
 bundler_args: --without development
+before_install: gem install bundler
 before_script:
   - psql -c 'create database test;' -U postgres
 env:
