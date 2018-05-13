@@ -1,7 +1,5 @@
 version: '3'
 services:
-  db:
-    image: postgres
   web:
     image: hackenin/hacken-in:latest
     build:
@@ -10,14 +8,23 @@ services:
     environment:
       RAILS_ENV: "development"
       DATABASE_URL: 'postgres://postgres:@db:5432'
-      BUNDLE_APP_CONFIG: /gems
-      GEM_HOME: "/gems"
     env_file: .env
     volumes:
       - ".:/app"
-      - "./vendor/gems:/gems"
+      - "bundle:/bundle"
     user: "${USER_MAPPING:-1000:1000}"
     ports:
       - "3000:3000"
     depends_on:
       - db
+    stdin_open: true
+    tty: true
+
+  db:
+    image: postgres
+    volumes:
+    - postgres:/var/lib/postgresql/data
+
+volumes:
+  bundle:
+  postgres:
