@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_current_user, :all_regions
   before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_action :skip_session_cookie
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, alert: "Leider darfst du das nicht."
@@ -58,6 +59,15 @@ class ApplicationController < ActionController::Base
     Rails.application.config.x.release_stage == :master
   end
   helper_method :we_are_running_on_master
+
+  def skip_session_cookie
+    request.session_options[:skip] = true if privacy_mode?
+  end
+
+  def privacy_mode?
+    cookies[:disable_privacy_mode].nil?
+  end
+  helper_method :privacy_mode?
 
   protected
 

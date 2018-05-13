@@ -30,6 +30,7 @@ Hcking::Application.routes.draw do
   resources :sitemap, only: [:index]
   resources :pages, only: [:show]
   resources :search, only: [:index]
+  resource :privacy_settings, only: [:show, :create, :destroy]
   # Imagine a `resources :calendars` here, but it needs to be at the bottom of this file
 
   # Calendar Links

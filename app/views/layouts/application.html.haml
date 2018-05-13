@@ -28,6 +28,12 @@
         %a.exit-off-canvas
         = render 'modules/common/topbar'
         = render 'modules/common/ical_popup'
+
+        - if privacy_mode?
+          .alert-box.alert{data: {alert: true}}
+            = t("common.privacy_alert")
+            = link_to t("common.privacy_alert_more"), privacy_settings_path
+
         .row
           = render 'modules/common/flash'
           %section.main= yield

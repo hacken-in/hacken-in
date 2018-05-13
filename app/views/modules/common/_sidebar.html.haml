@@ -15,6 +15,13 @@
         .sidebar-button.small-11.small-centered.columns
           = link_to t('.add_to_my_calendar'), '#', 'data-reveal-id' => 'calendarExportModal', class: 'small-12 button'
 
+  - elsif privacy_mode?
+    .row
+      .small-11.small-centered.columns
+        %h3= t("common.privacy_alert_heading")
+        %p= t("common.privacy_alert")
+        = link_to t("common.privacy_alert_more"), privacy_settings_path
+
   - else
     = form_for resource, as: resource_name, url: session_path(resource_name) do |f|
       .row
@@ -47,6 +54,7 @@
 
   %ul
     %li= link_to t('.team'), humans_path
+    %li= link_to t('.privacy'), privacy_settings_path
     %li= link_to t('.imprint'), impressum_path
     %li
       = link_to 'https://github.com/hacken-in/' do

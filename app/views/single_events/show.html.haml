@@ -29,6 +29,7 @@
 
     = render "events/description", event: @single_event
 
-    = render "events/map",   event: @single_event
+    - unless privacy_mode?
+      = render "events/map",   event: @single_event
 
   = render 'single_events/participants'

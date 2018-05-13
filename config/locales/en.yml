@@ -97,6 +97,14 @@ en:
     markdown_info: You can use <a href="%{syntax_link}" target="_blank">Markdown</a> and <a href="http://www.emoji-cheat-sheet.com/">Emojis</a>.
     show_preview: Show preview
     show_text: Show text
+    privacy_alert_heading: Privacy
+    privacy_alert: |-
+      Hacken.in respects your Privacy.
+      Without your approval you will not receive cookies,
+      but this limits the functionality.
+    privacy_alert_more: To the privacy settings
+    privacy_alert_confirm: Accept Cookies
+    privacy_alert_withdraw: Withdraw Cookie Accept
   devise:
     callbacks:
       user:
@@ -165,6 +173,7 @@ en:
         add_to_my_calendar: Add to my calendar
         email: E-Mail / Nickname
         greeting: Hello %{name}!
+        privacy: Privacy
         imprint: Imprint
         login: Login
         login_with: "%{provider} login"
