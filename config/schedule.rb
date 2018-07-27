@@ -22,5 +22,5 @@ every :day, :at => '00:30am' do
 end
 
 every :day, :at => '02:30am' do
-  rake "uberspace:letsencrypt"
+  rake "uberspace:letsencrypt_renew"
 end
