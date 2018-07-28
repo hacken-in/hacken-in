@@ -34,9 +34,11 @@ gem 'md_emoji', '~> 1.0.2'
 gem 'activeadmin', '~> 1.0.0.pre2'
 gem 'chosen-rails', '~> 1.1.0'
 
-# Date Handling
+# Handle recurring events
 gem 'ice_cube', '~> 0.16.2'
-gem 'icalendar', '~> 1.5.2'
+
+# Export to iCal format
+gem 'icalendar', '~> 2.4.1'
 
 # Recurring Tasks
 gem 'whenever', '~> 0.10.0'
